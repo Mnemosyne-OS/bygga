@@ -1,38 +1,40 @@
 <p align="center">
-  <img alt="Bygga" src="docs/img/banner.svg">
+  <a href="https://bygga-eta.vercel.app"><img alt="Bygga" src="docs/img/banner.svg"></a>
 </p>
 
 <h1 align="center">Bygga</h1>
 
-<p align="center">Type the name on an IKEA box (or snap the label) and get a moving, manual-style assembly guide: tools check, parts check, then every step drawn in 3D line art. Not from IKEA? Photograph any paper manual and it becomes the same kind of guide. Runs locally, no live site yet.</p>
+<p align="center">Type the name on an IKEA box and follow every assembly step in 3D, drawn like the paper manual, or scan any other manual with Together AI. <a href="https://bygga-eta.vercel.app">bygga-eta.vercel.app</a></p>
 
 ## Tech stack
 
-- Next.js 16 (App Router, Cache Components) with React 19 and TypeScript, no CSS framework
-- three.js stage with ink outlines, hidden-line removal, fly-in arrows and a magnified callout per fitting
-- A parametric generator (`src/lib/plan`) that turns a product spec into panels, hardware, holes and ordered steps
-- Together AI: `openai/gpt-oss-120b` reads unknown products and answers "Stuck?" questions (streamed), a vision model reads box photos and identifies loose parts
-- 152 products drawn offline with typo-tolerant search; unknown names get a "what does it look like?" picker
-- Scan any manual (`/scan`): a vision model reads each page, `gpt-oss-120b` lays the parts out as boxes in millimetres, and `src/lib/plan/custom.ts` works out every joint, dowel, bolt and screw from where parts touch. Runs on the visitor's own Together key
-- Workshop (`/builds`): everything you finished, rendered together in one drawing at true scale next to a person
+- Next.js 16 (App Router, Cache Components) with React 19 and TypeScript, plain CSS, no UI kit
+- three.js line-art stage (`src/engine`): ink outlines, fly-in parts, a zoomed callout per fitting, offscreen thumbnails
+- A parametric plan generator (`src/lib/plan`) for 7 furniture types, with 152 products drawn offline and typo-tolerant search
+- Manual scanner (`/scan`): a vision model reads each page, `gpt-oss-120b` lays out the parts in millimetres, and `src/lib/plan/custom.ts` places every dowel, bolt and screw where parts touch
+- Together AI for unknown product names, photo lookup and the "Stuck?" helper, with model fallback lists in `src/lib/together.ts`
+- Workshop (`/builds`): every finished build merged into one scene and rendered at true scale next to a person
 
 ## Cloning & running
 
-1. Install: `npm install`
-2. Add your key: `cp .env.example .env.local`, then set `TOGETHER_API_KEY`
-3. Run it: `npm run dev`, then open http://localhost:3000 and try `BISSA`
-4. Deep link to a step: http://localhost:3000/build/malm-3-drawers?step=12, or see your builds at `/builds`
-5. Try the manual scanner without spending credits: on `/scan`, paste `bygga-dev-mock-key-000000` as the key (only accepted by `npm run dev`) and add any photo
-6. Before shipping: `npm run lint && npm run build`
+1. Clone: `git clone https://github.com/Luffixos/bygga.git && cd bygga && npm install`
+2. Optional key: `cp .env.example .env.local`, then set `TOGETHER_API_KEY` (the 152 offline products work without it)
+3. Run: `npm run dev`, open http://localhost:3000 and type `BISSA`
+4. Jump to a step: http://localhost:3000/build/malm-3-drawers?step=12, or see finished builds at `/builds`
+5. Try the scanner free: on `/scan`, paste `bygga-dev-mock-key-000000` as the key and add any photo (only `npm run dev` accepts it)
+6. Before pushing: `npm run lint && npm run build`
 
 ## Roadmap
 
-- [ ] teach the generator a few more shapes: bent-wood chairs like POÄNG, pegboards, kitchen units
-- [ ] let people flag a step that doesn't match their box, and feed that back into the spec
-- [ ] print view: the whole manual on A4, one step per panel
-- [ ] cache AI product reads on the server so the second person to ask gets it instantly
-- Real IKEA manuals are not scraped or mirrored on purpose: every guide is generated, and the cover links to the official PDF.
+- [ ] test the scanner on a stack of real manuals and tune the layout prompt
+- [ ] teach the generator bent-wood chairs, pegboards and kitchen units
+- [ ] let people flag a step that doesn't match their box
+- [ ] a print view: the whole guide on A4, one step per panel
+- [ ] cache AI product reads on the server so the second person to ask gets them instantly
+- Real IKEA PDFs are not scraped or mirrored on purpose: every guide is generated, and the cover links to the official manual.
 
 ## Security
 
-The server's Together key never leaves the server; the browser only talks to `/api/*`, which is rate limited per IP. A visitor's own key (needed for `/scan`) lives in their `localStorage`, rides along on their requests in an `x-together-key` header, and is never stored or logged. Scanned guides stay in the browser; sharing one puts the guide itself, compressed, in the link. Build progress lives in `localStorage` on the device and is never uploaded. Bygga is not affiliated with IKEA; product names are trademarks of Inter IKEA Systems B.V. MIT licensed.
+The server's Together key never reaches the browser, and every `/api/*` route is rate limited per IP. A visitor's own key (needed for `/scan`) stays in their `localStorage`, travels only in an `x-together-key` header, and is never stored or logged. Scanned guides and build progress live in the browser too, and a shared scan carries the guide inside its link.
+
+Not affiliated with IKEA, product names are trademarks of Inter IKEA Systems B.V. No license chosen yet, so all rights reserved.
