@@ -1,0 +1,93 @@
+import type { ProductSpec } from "./types";
+
+export type Phase = "cover" | "tools" | "parts" | "steps" | "done";
+
+export interface Progress {
+  slug: string;
+  name: string;
+  variant: string;
+  phase: Phase;
+  step: number;
+  steps: number;
+  tools: string[];
+  parts: string[];
+  missing?: string[];
+  category?: string;
+  minutes?: number;
+  people?: 1 | 2;
+  startedAt?: number;
+  doneAt?: number;
+  updatedAt: number;
+  spec?: ProductSpec;
+}
+
+const KEY = "bygga:builds";
+
+function read(): Record<string, Progress> {
+  try {
+    return JSON.parse(localStorage.getItem(KEY) || "{}");
+  } catch {
+    return {};
+  }
+}
+
+function write(all: Record<string, Progress>) {
+  try {
+    localStorage.setItem(KEY, JSON.stringify(all));
+  } catch {
+    /* storage full or blocked */
+  }
+}
+
+export function loadProgress(slug: string): Progress | null {
+  return read()[slug] ?? null;
+}
+
+export function saveProgress(p: Progress) {
+  const all = read();
+  all[p.slug] = { ...p, updatedAt: Date.now() };
+  write(all);
+}
+
+export function removeProgress(slug: string) {
+  const all = read();
+  delete all[slug];
+  write(all);
+}
+
+export function listProgress(): Progress[] {
+  return Object.values(read()).sort((a, b) => b.updatedAt - a.updatedAt);
+}
+
+const SPEC_KEY = "bygga:spec:";
+export function cacheSpec(slug: string, spec: ProductSpec) {
+  try {
+    localStorage.setItem(SPEC_KEY + slug, JSON.stringify(spec));
+  } catch {
+    /* ignore */
+  }
+}
+export function cachedSpec(slug: string): ProductSpec | null {
+  try {
+    const s = localStorage.getItem(SPEC_KEY + slug);
+    return s ? JSON.parse(s) : null;
+  } catch {
+    return null;
+  }
+}
+
+export function getPref<T>(k: string, d: T): T {
+  try {
+    const v = localStorage.getItem("bygga:pref:" + k);
+    return v ? (JSON.parse(v) as T) : d;
+  } catch {
+    return d;
+  }
+}
+export function setPref(k: string, v: unknown) {
+  try {
+    localStorage.setItem("bygga:pref:" + k, JSON.stringify(v));
+  } catch {
+    /* ignore */
+  }
+}
