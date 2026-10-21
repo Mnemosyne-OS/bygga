@@ -154,60 +154,65 @@ export default function HelpSheet({ plan, index, ai, onClose, focusMissing }: { 
             ))}
           </div>
 
-          <div className="ask-head">
-            <ISparkle size={18} />
-            <b>Ask about this step</b>
-            <span className="muted">{ai ? "Answers by Together AI" : "Needs a Together AI key"}</span>
-          </div>
-          {msgs.length === 0 && ai && (
-            <div className="ask-suggest">
-              {["The panels don't line up", "Which screw goes where?", "Is it normal to have parts left over?"].map((s) => (
-                <button key={s} className="chip" onClick={() => ask(s)}>
-                  {s}
-                </button>
-              ))}
-            </div>
+          {ai && (
+            <>
+              <div className="ask-head">
+                <ISparkle size={18} />
+                <b>Ask about this step</b>
+                <span className="muted">Answers by Together AI</span>
+              </div>
+              {msgs.length === 0 && (
+                <div className="ask-suggest">
+                  {["The panels don't line up", "Which screw goes where?", "Is it normal to have parts left over?"].map((s) => (
+                    <button key={s} className="chip" onClick={() => ask(s)}>
+                      {s}
+                    </button>
+                  ))}
+                </div>
+              )}
+              <div className="msgs">
+                {msgs.map((m, i) => (
+                  <motion.div key={i} className={"msg " + m.role} initial={{ opacity: 0, y: 8 }} animate={{ opacity: 1, y: 0 }}>
+                    {/* eslint-disable-next-line @next/next/no-img-element */}
+                    {m.image && <img src={m.image} alt="Your photo" />}
+                    {m.content ? <p>{m.content}</p> : <span className="typing">Thinking</span>}
+                  </motion.div>
+                ))}
+              </div>
+            </>
           )}
-          <div className="msgs">
-            {msgs.map((m, i) => (
-              <motion.div key={i} className={"msg " + m.role} initial={{ opacity: 0, y: 8 }} animate={{ opacity: 1, y: 0 }}>
-                {/* eslint-disable-next-line @next/next/no-img-element */}
-                {m.image && <img src={m.image} alt="Your photo" />}
-                {m.content ? <p>{m.content}</p> : <span className="typing">Thinking</span>}
-              </motion.div>
-            ))}
-          </div>
-          {!ai && <p className="note">Live answers switch on when the server has a Together AI key. The quick answers above always work.</p>}
         </div>
-        <form
-          className="ask-bar"
-          onSubmit={(e) => {
-            e.preventDefault();
-            ask(q);
-          }}
-        >
-          <button type="button" className="btn round small" onClick={() => file.current?.click()} disabled={!ai || busy} aria-label="Which part is this? Take a photo" title="Which part is this?">
-            <ICamera />
-          </button>
-          <input ref={inputRef} value={q} onChange={(e) => setQ(e.target.value)} placeholder={ai ? "Type your question" : "Live answers are off"} disabled={!ai} aria-label="Your question" />
-          <button type="submit" className="btn round small primary" disabled={!ai || busy || !q.trim()} aria-label="Send">
-            <ISend />
-          </button>
-          <input
-            ref={file}
-            type="file"
-            accept="image/*"
-            capture="environment"
-            hidden
-            onChange={async (e) => {
-              const f = e.target.files?.[0];
-              e.target.value = "";
-              if (!f) return;
-              const img = await shrink(f);
-              ask("Which part is this?", img);
+        {ai && (
+          <form
+            className="ask-bar"
+            onSubmit={(e) => {
+              e.preventDefault();
+              ask(q);
             }}
-          />
-        </form>
+          >
+            <button type="button" className="btn round small" onClick={() => file.current?.click()} disabled={busy} aria-label="Which part is this? Take a photo" title="Which part is this?">
+              <ICamera />
+            </button>
+            <input ref={inputRef} value={q} onChange={(e) => setQ(e.target.value)} placeholder="Type your question" aria-label="Your question" />
+            <button type="submit" className="btn round small primary" disabled={busy || !q.trim()} aria-label="Send">
+              <ISend />
+            </button>
+            <input
+              ref={file}
+              type="file"
+              accept="image/*"
+              capture="environment"
+              hidden
+              onChange={async (e) => {
+                const f = e.target.files?.[0];
+                e.target.value = "";
+                if (!f) return;
+                const img = await shrink(f);
+                ask("Which part is this?", img);
+              }}
+            />
+          </form>
+        )}
       </motion.aside>
     </motion.div>
   );

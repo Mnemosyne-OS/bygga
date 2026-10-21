@@ -59,7 +59,7 @@ async function scan(key: string, pages: string[], hint: string, send: (o: object
       try {
         const { text } = await chatText({
           key,
-          models: MODELS.vision,
+          models: MODELS.read,
           maxTokens: 2000,
           temperature: 0,
           signal,

@@ -3,10 +3,19 @@ import "server-only";
 const BASE = "https://api.together.xyz/v1";
 
 export const MODELS = {
-  plan: (process.env.TOGETHER_PLAN_MODEL ?? "openai/gpt-oss-120b,deepseek-ai/DeepSeek-V3.1,zai-org/GLM-5.2,meta-llama/Llama-3.3-70B-Instruct-Turbo").split(","),
-  text: (process.env.TOGETHER_TEXT_MODEL ?? "openai/gpt-oss-120b,zai-org/GLM-5.2,deepseek-ai/DeepSeek-V3.1,meta-llama/Llama-3.3-70B-Instruct-Turbo").split(","),
-  vision: (process.env.TOGETHER_VISION_MODEL ?? "Qwen/Qwen3-VL-32B-Instruct,Qwen/Qwen2.5-VL-72B-Instruct,meta-llama/Llama-4-Maverick-17B-128E-Instruct-FP8").split(","),
+  // laying out a scanned manual: the strongest reasoning we can afford per scan
+  plan: list(process.env.TOGETHER_PLAN_MODEL, "openai/gpt-oss-120b,zai-org/GLM-5.3-Flash,Qwen/Qwen3.7-Plus"),
+  // product lookups and the "Stuck?" chat: cheap and quick
+  text: list(process.env.TOGETHER_TEXT_MODEL, "openai/gpt-oss-120b,zai-org/GLM-5.3-Flash,Qwen/Qwen3.8-Flash"),
+  // box labels and loose parts
+  vision: list(process.env.TOGETHER_VISION_MODEL, "nvidia/NVIDIA-Nemotron-3.5-Super-VL,MiniMaxAI/MiniMax-M3,Qwen/Qwen3.5-9B"),
+  // reading manual pages, where small print matters most
+  read: list(process.env.TOGETHER_READ_MODEL, "MiniMaxAI/MiniMax-M3,nvidia/NVIDIA-Nemotron-3.5-Super-VL,Qwen/Qwen3.5-9B"),
 };
+
+function list(env: string | undefined, fallback: string) {
+  return (env?.trim() || fallback).split(",").map((m) => m.trim()).filter(Boolean);
+}
 
 export function hasKey() {
   return !!process.env.TOGETHER_API_KEY?.trim();
