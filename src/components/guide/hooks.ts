@@ -29,8 +29,6 @@ export function useWakeLock(active: boolean) {
   }, [active]);
 }
 
-type Cmd = "next" | "back" | "repeat" | "help" | "stop";
-
 interface SR {
   continuous: boolean;
   interimResults: boolean;
@@ -41,6 +39,7 @@ interface SR {
   onresult: ((e: { results: ArrayLike<ArrayLike<{ transcript: string }> & { isFinal: boolean }>; resultIndex: number }) => void) | null;
   onend: (() => void) | null;
   onerror: ((e: { error: string }) => void) | null;
+  onstart: (() => void) | null;
 }
 
 export function speechSupported() {
@@ -49,13 +48,19 @@ export function speechSupported() {
   return !!(w.SpeechRecognition || w.webkitSpeechRecognition);
 }
 
-/** Voice commands ("next", "back", "repeat", "help") and spoken step instructions. */
-export function useHandsFree(enabled: boolean, onCmd: (c: Cmd) => void) {
-  const cb = useRef(onCmd);
+export type Mic = "off" | "starting" | "on" | "denied" | "unsupported";
+
+/**
+ * Keeps the mic listening while voice mode is on. Phrases go to onPhrase while
+ * they are still being spoken and again when complete; once onPhrase returns
+ * true it has acted, and the rest of that phrase is ignored.
+ */
+export function useListener(enabled: boolean, onPhrase: (text: string, final: boolean) => boolean) {
+  const cb = useRef(onPhrase);
   useEffect(() => {
-    cb.current = onCmd;
+    cb.current = onPhrase;
   });
-  const [listening, setListening] = useState(false);
+  const [mic, setMic] = useState<Mic>("off");
   const [heard, setHeard] = useState("");
 
   useEffect(() => {
@@ -65,60 +70,71 @@ export function useHandsFree(enabled: boolean, onCmd: (c: Cmd) => void) {
     if (!Ctor) return;
     let stop = false;
     let rec: SR | null = null;
+    let fails = 0;
+    let timer: ReturnType<typeof setTimeout> | undefined;
+    let clear: ReturnType<typeof setTimeout> | undefined;
+    const handled = new Set<number>();
     const start = () => {
-      if (stop) return;
+      if (stop || document.visibilityState === "hidden") return;
+      handled.clear();
       rec = new Ctor();
       rec.continuous = true;
-      rec.interimResults = false;
+      rec.interimResults = true;
       rec.lang = "en-US";
+      rec.onstart = () => {
+        fails = 0;
+        setMic("on");
+      };
       rec.onresult = (e) => {
         for (let i = e.resultIndex; i < e.results.length; i++) {
-          const text = e.results[i][0].transcript.toLowerCase().trim();
-          setHeard(text);
-          if (/\b(next|done|continue|forward|okay next)\b/.test(text)) cb.current("next");
-          else if (/\b(back|previous|go back)\b/.test(text)) cb.current("back");
-          else if (/\b(repeat|again|replay|show me)\b/.test(text)) cb.current("repeat");
-          else if (/\b(help|stuck)\b/.test(text)) cb.current("help");
+          if (handled.has(i)) continue;
+          const r = e.results[i];
+          const text = r[0].transcript.trim();
+          if (!text) continue;
+          if (cb.current(text, r.isFinal)) {
+            handled.add(i);
+            setHeard(text);
+            clearTimeout(clear);
+            clear = setTimeout(() => setHeard(""), 2400);
+          } else if (r.isFinal) handled.add(i);
         }
       };
       rec.onend = () => {
-        setListening(false);
-        if (!stop) setTimeout(start, 250);
+        rec = null;
+        if (stop) return;
+        // quick restarts are normal; back off if it keeps failing
+        timer = setTimeout(start, Math.min(4000, 250 * 2 ** fails));
       };
       rec.onerror = (e) => {
-        if (e.error === "not-allowed" || e.error === "service-not-allowed") {
+        if (e.error === "not-allowed" || e.error === "service-not-allowed" || e.error === "audio-capture") {
           stop = true;
-          cb.current("stop");
-        }
+          setMic("denied");
+        } else if (e.error !== "no-speech" && e.error !== "aborted") fails++;
       };
       try {
+        setMic((m) => (m === "on" ? m : "starting"));
         rec.start();
-        setListening(true);
       } catch {
         /* already started */
       }
     };
+    const onVis = () => {
+      if (document.visibilityState === "hidden") rec?.abort();
+      else if (!rec) start();
+    };
+    document.addEventListener("visibilitychange", onVis);
     start();
     return () => {
       stop = true;
+      clearTimeout(timer);
+      clearTimeout(clear);
+      document.removeEventListener("visibilitychange", onVis);
       rec?.abort();
-      setListening(false);
     };
   }, [enabled]);
 
-  return { listening, heard };
-}
-
-export function speak(text: string) {
-  if (typeof window === "undefined" || !("speechSynthesis" in window)) return;
-  window.speechSynthesis.cancel();
-  const u = new SpeechSynthesisUtterance(text);
-  u.rate = 1;
-  u.pitch = 1;
-  const voices = window.speechSynthesis.getVoices();
-  const v = voices.find((x) => /en[-_](GB|US)/i.test(x.lang) && /natural|premium|enhanced|samantha|daniel/i.test(x.name)) ?? voices.find((x) => /^en/i.test(x.lang));
-  if (v) u.voice = v;
-  window.speechSynthesis.speak(u);
+  if (!enabled) return { mic: "off" as Mic, heard: "" };
+  return { mic: speechSupported() ? mic : ("unsupported" as Mic), heard };
 }
 
 export function haptic(ms = 8) {

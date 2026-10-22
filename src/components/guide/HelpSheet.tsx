@@ -53,7 +53,25 @@ async function shrink(file: File): Promise<string> {
   }
 }
 
-export default function HelpSheet({ plan, index, ai, onClose, focusMissing }: { plan: Plan; index: number; ai: boolean; onClose: () => void; focusMissing?: boolean }) {
+export default function HelpSheet({
+  plan,
+  index,
+  ai,
+  onClose,
+  focusMissing,
+  ask: asked,
+  onAnswer,
+}: {
+  plan: Plan;
+  index: number;
+  ai: boolean;
+  onClose: () => void;
+  focusMissing?: boolean;
+  /** A question already asked out loud. */
+  ask?: string;
+  /** Hears each finished answer, to read it aloud. */
+  onAnswer?: (text: string) => void;
+}) {
   const kind = index >= 0 ? plan.steps[index].kind : "general";
   const faqs = faqFor(kind);
   const [open, setOpen] = useState<number | null>(focusMissing ? faqs.length - 2 : null);
@@ -69,6 +87,18 @@ export default function HelpSheet({ plan, index, ai, onClose, focusMissing }: { 
     window.addEventListener("keydown", onKey);
     return () => window.removeEventListener("keydown", onKey);
   }, [onClose]);
+
+  // a question asked by voice goes straight in
+  const sent = useRef(false);
+  useEffect(() => {
+    if (!asked || !ai || sent.current) return;
+    const t = setTimeout(() => {
+      sent.current = true;
+      ask(asked);
+    }, 0);
+    return () => clearTimeout(t);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [asked, ai]);
 
   useEffect(() => {
     scroller.current?.scrollTo({ top: scroller.current.scrollHeight, behavior: "smooth" });
@@ -102,6 +132,7 @@ export default function HelpSheet({ plan, index, ai, onClose, focusMissing }: { 
         });
       }
       if (!text.trim()) throw new Error("empty");
+      onAnswer?.(text);
     } catch {
       setMsgs((m) => {
         const c = [...m];

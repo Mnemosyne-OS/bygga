@@ -10,13 +10,13 @@ import { buildPlan } from "@/lib/plan";
 import { stepContents } from "@/lib/plan/contents";
 import { matchCatalog, specForKind } from "@/lib/search";
 import { KIND_LABELS, type Kind } from "@/lib/products";
-import { cacheSpec, cachedSpec, loadProgress, saveProgress, type Phase, type Progress } from "@/lib/store";
+import { cacheSpec, cachedSpec, getPref, loadProgress, saveProgress, setPref, type Phase, type Progress } from "@/lib/store";
 import StageView, { type StageHandle } from "../StageView";
 import type { StageMode } from "@/engine/stage";
 import { LogoMark } from "../Logo";
 import { HwArt } from "../art/Hardware";
 import { Figure } from "../art/Figure";
-import { IBox, ICheck, IFlag, IGrid, IHammer, IHelp, IMic, IPause, IPlay, IReplay, IRotate, IScan, ISound, ISoundOff, ISparkle, IWrench } from "../art/Icons";
+import { ICheck, IGrid, IHelp, IMic, IPause, IPlay, IReplay, IRotate, IScan, ISound, ISoundOff, ISparkle } from "../art/Icons";
 import CoverPanel from "./CoverPanel";
 import ToolsPanel from "./ToolsPanel";
 import PartsPanel from "./PartsPanel";
@@ -26,8 +26,11 @@ import HelpSheet from "./HelpSheet";
 import Overview from "./Overview";
 import Loader from "./Loader";
 import Thumb from "../Thumb";
-import { haptic, speak, speechSupported, useHandsFree, useWakeLock } from "./hooks";
-import { playDone, playStep, setSound, soundOn } from "./sound";
+import { haptic, speechSupported, useListener, useWakeLock } from "./hooks";
+import { playDone, playStep, playTick, setSound, soundOn } from "./sound";
+import { mediaSession, voice } from "./voice";
+import { LINES, builtLine, needsLine, spokenAnswer, stepLines, toolsLine, whereLine } from "@/lib/voice/script";
+import { heardWords, parse, type Intent } from "@/lib/voice/commands";
 import { useMounted } from "@/lib/useMounted";
 import { getUserKey, keyHeaders } from "@/lib/userKey";
 import { decodeSpec } from "@/lib/scan/share";
@@ -76,7 +79,10 @@ export default function GuideApp({ slug, query, step, kind }: { slug: string; qu
   useEffect(() => {
     fetch("/api/status")
       .then((r) => r.json())
-      .then((j) => setAi(!!j.ai || !!getUserKey()))
+      .then((j) => {
+        setAi(!!j.ai || !!getUserKey());
+        voice.live = !!j.voice;
+      })
       .catch(() => {});
   }, []);
 
@@ -227,9 +233,12 @@ function Guide({ plan, slug, via, ai, startStep }: { plan: Plan; slug: string; v
   const [resume, setResume] = useState<Progress | null>(null);
   const [maxStep, setMaxStep] = useState(0);
   const [reached, setReached] = useState(deep !== null ? 3 : 0);
-  const [help, setHelp] = useState<null | { missing?: boolean }>(null);
+  const [help, setHelp] = useState<null | { missing?: boolean; ask?: string }>(null);
   const [overview, setOverview] = useState(false);
-  const [handsFree, setHandsFree] = useState(false);
+  const [voiceOn, setVoiceOn] = useState(false);
+  const [speaking, setSpeaking] = useState(false);
+  const [offer, setOffer] = useState(true);
+  const [usedVoice, setUsedVoice] = useState(false);
   const [hl, setHl] = useState<string[] | null>(null);
   const [hover3d, setHover3d] = useState<string | null>(null);
   const [introPlayed, setIntroPlayed] = useState(false);
@@ -248,6 +257,7 @@ function Guide({ plan, slug, via, ai, startStep }: { plan: Plan; slug: string; v
   if (mounted && !restored) {
     setRestored(true);
     setSoundState(soundOn());
+    setUsedVoice(getPref("voice", false));
     const p = loadProgress(slug);
     if (p) {
       setResume(p);
@@ -358,26 +368,161 @@ function Guide({ plan, slug, via, ai, startStep }: { plan: Plan; slug: string; v
     return () => window.removeEventListener("keydown", onKey);
   }, [phase, next, back, help, overview]);
 
-  // hands free
-  const { listening, heard } = useHandsFree(handsFree && phase === "steps", (c) => {
-    if (c === "next") next();
-    else if (c === "back") back();
-    else if (c === "repeat") {
-      stage.current?.replay();
-      const s = steps[step];
-      speak(`${s.title}. ${s.detail ?? ""}`);
-    } else if (c === "help") setHelp({});
-    else if (c === "stop") setHandsFree(false);
+  /* ---------- voice ---------- */
+
+  const said = useRef("");
+  const live = useRef({ next, back, step, voiceOn });
+  useEffect(() => {
+    live.current = { next, back, step, voiceOn };
   });
+  useEffect(() => voice.subscribe(setSpeaking), []);
+  useEffect(() => () => voice.stop(), []);
   useEffect(() => {
-    if (!handsFree || phase !== "steps") return;
-    const s = steps[step];
-    const t = setTimeout(() => speak(`Step ${step + 1}. ${s.title}. ${s.detail ?? ""}`), 250);
+    voice.rate = slow ? 0.9 : 1;
+  }, [slow]);
+
+  // runs inside the tap or key press, so the browser lets it play sound
+  const startVoice = useCallback(() => {
+    voice.unlock();
+    setVoiceOn(true);
+    setOffer(false);
+    setPref("voice", true);
+    said.current = String(step);
+    voice.say([canListen ? LINES.on : LINES.onNoMic, ...stepLines(plan, step)]);
+  }, [canListen, plan, step]);
+
+  const stopVoice = useCallback((confirm = false) => {
+    setVoiceOn(false);
+    setPref("voice", false);
+    if (confirm) voice.say([LINES.off]);
+    else voice.stop();
+  }, []);
+
+  // read each step as it comes up, and line up the next one
+  useEffect(() => {
+    if (!voiceOn) return;
+    if (phase === "done") {
+      if (said.current === "done") return;
+      const t = setTimeout(() => {
+        said.current = "done";
+        voice.say([builtLine(plan)]);
+      }, 700);
+      return () => clearTimeout(t);
+    }
+    if (phase !== "steps" || said.current === String(step)) return;
+    const t = setTimeout(() => {
+      said.current = String(step);
+      voice.say(stepLines(plan, step));
+    }, 250);
+    if (step + 1 < steps.length) voice.prefetch(stepLines(plan, step + 1));
     return () => clearTimeout(t);
-  }, [handsFree, phase, step, steps]);
+  }, [voiceOn, phase, step, plan, steps.length]);
+
+  const run = (intent: Intent) => {
+    haptic(10);
+    if (intent.kind !== "next") playTick();
+    switch (intent.kind) {
+      case "next":
+        setHelp(null);
+        setOverview(false);
+        next();
+        break;
+      case "back":
+        if (step === 0) voice.say([LINES.first]);
+        else back();
+        break;
+      case "repeat":
+        stage.current?.replay();
+        voice.say(stepLines(plan, step));
+        break;
+      case "replay":
+        stage.current?.replay();
+        break;
+      case "stop":
+        voice.stop();
+        break;
+      case "needs": {
+        const tools = toolsLine(plan, step);
+        voice.say([needsLine(plan, step) ?? LINES.nothing, ...(tools ? [tools] : [])]);
+        break;
+      }
+      case "where":
+        voice.say([whereLine(step, steps.length)]);
+        break;
+      case "slower":
+        setSlow(true);
+        voice.rate = 0.9;
+        voice.say([LINES.slower]);
+        break;
+      case "faster":
+        setSlow(false);
+        voice.rate = 1;
+        voice.say([LINES.normal]);
+        break;
+      case "help":
+        voice.stop();
+        setHelp({});
+        break;
+      case "commands":
+        voice.say([LINES.commands]);
+        break;
+      case "off":
+        stopVoice(true);
+        break;
+      case "goto": {
+        const n = intent.step === -1 ? steps.length : intent.step;
+        if (n >= 1 && n <= steps.length && n - 1 !== step) go("steps", n - 1, n - 1 > step ? 1 : -1);
+        break;
+      }
+      case "ask":
+        if (!ai) voice.say([LINES.noAnswer]);
+        else {
+          voice.say([LINES.checking]);
+          setHelp({ ask: intent.text });
+        }
+        break;
+    }
+  };
+
+  const { mic, heard } = useListener(voiceOn && phase === "steps", (text, final) => {
+    const intent = parse(text);
+    if (!intent) return false;
+    // the mic can hear the voice itself: ignore anything she is saying
+    if (voice.echo(heardWords(text))) return false;
+    // "stop" can't wait; everything else waits for the whole phrase
+    if (!final && intent.kind !== "stop") return false;
+    run(intent);
+    return true;
+  });
+
+  const speakAnswer = useCallback((text: string) => {
+    if (live.current.voiceOn) voice.say(spokenAnswer(text));
+  }, []);
+
   useEffect(() => {
-    if (!handsFree) window.speechSynthesis?.cancel();
-  }, [handsFree]);
+    const onKey = (e: KeyboardEvent) => {
+      const t = e.target as HTMLElement;
+      if (e.key.toLowerCase() !== "v" || e.metaKey || e.ctrlKey || phase !== "steps" || help || t?.tagName === "INPUT" || t?.tagName === "TEXTAREA") return;
+      if (voiceOn) stopVoice();
+      else startVoice();
+    };
+    window.addEventListener("keydown", onKey);
+    return () => window.removeEventListener("keydown", onKey);
+  }, [phase, help, voiceOn, startVoice, stopVoice]);
+
+  // headphone buttons and the lock screen: next track, previous track
+  useEffect(() => {
+    if (!voiceOn || phase !== "steps") return;
+    return mediaSession(
+      { title: `Step ${step + 1} of ${steps.length}`, artist: plan.spec.name },
+      {
+        next: () => live.current.next(),
+        back: () => live.current.back(),
+        play: () => voice.say(stepLines(plan, live.current.step)),
+        pause: () => voice.stop(),
+      },
+    );
+  }, [voiceOn, phase, step, steps.length, plan]);
 
   useEffect(() => {
     const base = `${plan.spec.name} | Bygga`;
@@ -401,7 +546,7 @@ function Guide({ plan, slug, via, ai, startStep }: { plan: Plan; slug: string; v
   };
 
   return (
-    <div className="guide" data-phase={phase}>
+    <div className="guide" data-phase={phase} data-voice={voiceOn ? "on" : undefined}>
       <header className="topbar">
         <Link href="/" className="home-btn" aria-label="Bygga home">
           <LogoMark size={34} />
@@ -430,8 +575,9 @@ function Guide({ plan, slug, via, ai, startStep }: { plan: Plan; slug: string; v
             {sound ? <ISound /> : <ISoundOff />}
           </button>
           {phase === "steps" && (
-            <button className={"icon-btn" + (handsFree ? " live" : "")} onClick={() => setHandsFree((h) => !h)} aria-pressed={handsFree} aria-label="Hands-free mode" data-tip={canListen ? "Hands-free" : "Read aloud"}>
-              <IMic />
+            <button className={"voice-btn" + (voiceOn ? " on" : "")} onClick={() => (voiceOn ? stopVoice() : startVoice())} aria-pressed={voiceOn} aria-label={voiceOn ? "Turn voice off" : "Turn voice on"} data-tip="Voice (V)">
+              <IMic size={18} />
+              <span>{voiceOn ? "Voice on" : "Voice"}</span>
             </button>
           )}
           <button className="icon-btn" onClick={() => setHelp({})} aria-label="Help" data-tip="Help">
@@ -516,7 +662,7 @@ function Guide({ plan, slug, via, ai, startStep }: { plan: Plan; slug: string; v
               <button className="icon-btn float" onClick={() => setPaused((p) => !p)} aria-label={paused ? "Play" : "Pause"} data-tip={paused ? "Play" : "Pause"}>
                 {paused ? <IPlay /> : <IPause />}
               </button>
-              <button className={"pill-btn float" + (slow ? " on" : "")} onClick={() => setSlow((s) => !s)} aria-pressed={slow}>
+              <button className={"pill-btn float" + (slow ? " on" : "")} onClick={() => setSlow(!slow)} aria-pressed={slow}>
                 Slow
               </button>
               <AnimatePresence>
@@ -530,14 +676,22 @@ function Guide({ plan, slug, via, ai, startStep }: { plan: Plan; slug: string; v
           )}
           {phase === "steps" && step === 0 && !moved && <span className="drag-hint">Drag to turn it around</span>}
           {phase === "parts" && <span className="sheet-caption">Lay your panels out like this</span>}
-          {handsFree && phase === "steps" && (
-            <div className="listening">
-              <span className={"eq" + (listening ? " on" : "")} aria-hidden="true">
+          {voiceOn && phase === "steps" && (
+            <div className="listening" role="status">
+              <span className={"eq" + (speaking ? " on" : "")} aria-hidden="true">
                 <i />
                 <i />
                 <i />
               </span>
-              <span>{canListen ? (heard ? `Heard “${heard}”` : "Say “next”, “back” or “repeat”") : "Reading steps aloud"}</span>
+              <span>
+                {heard
+                  ? `Heard “${heard}”`
+                  : mic === "denied" || mic === "unsupported"
+                    ? "Reading aloud. Tap done to move on"
+                    : mic === "on"
+                      ? "Say “next”, “back” or “again”"
+                      : "Starting the mic"}
+              </span>
             </div>
           )}
           {(via === "ai" || via === "scan") && phase === "cover" && (
@@ -598,7 +752,18 @@ function Guide({ plan, slug, via, ai, startStep }: { plan: Plan; slug: string; v
                   onMissingHelp={() => setHelp({ missing: true })}
                 />
               )}
-              {phase === "steps" && <StepPanel plan={plan} index={step} dir={dir} onNext={next} onBack={back} onHover={setHl} onHelp={() => setHelp({})} />}
+              {phase === "steps" && (
+                <StepPanel
+                  plan={plan}
+                  index={step}
+                  dir={dir}
+                  onNext={next}
+                  onBack={back}
+                  onHover={setHl}
+                  onHelp={() => setHelp({})}
+                  offer={!voiceOn && offer && (step === 0 || usedVoice) ? { again: usedVoice, listen: canListen, onStart: startVoice, onDismiss: () => setOffer(false) } : null}
+                />
+              )}
               {phase === "done" && <DonePanel plan={plan} slug={slug} startedAt={startedAt} doneAt={doneAt} onReview={back} />}
             </motion.div>
           </AnimatePresence>
@@ -611,7 +776,17 @@ function Guide({ plan, slug, via, ai, startStep }: { plan: Plan; slug: string; v
       </p>
 
       <AnimatePresence>
-        {help && <HelpSheet plan={plan} index={phase === "steps" ? step : -1} ai={ai} focusMissing={help.missing} onClose={() => setHelp(null)} />}
+        {help && (
+          <HelpSheet
+            plan={plan}
+            index={phase === "steps" ? step : -1}
+            ai={ai}
+            focusMissing={help.missing}
+            ask={help.ask}
+            onAnswer={voiceOn ? speakAnswer : undefined}
+            onClose={() => setHelp(null)}
+          />
+        )}
       </AnimatePresence>
       <AnimatePresence>
         {overview && (
@@ -640,41 +815,36 @@ function toggle(s: Set<string>, id: string) {
   return n;
 }
 
-/** Labeled phase stepper: Tools, Parts, Build (with step progress), Done. */
+/** Where you are: Tools, Parts, Build, Done. Earlier phases can be revisited. */
 function Stepper({ phase, step, total, reached, onJump }: { phase: Phase; step: number; total: number; reached: number; onJump: (p: Phase) => void }) {
-  const items: { id: Phase; label: string; icon: React.ReactNode }[] = [
-    { id: "tools", label: "Tools", icon: <IWrench size={16} /> },
-    { id: "parts", label: "Parts", icon: <IBox size={16} /> },
-    { id: "steps", label: "Build", icon: <IHammer size={16} /> },
-    { id: "done", label: "Done", icon: <IFlag size={16} /> },
+  const items: { id: Phase; label: string }[] = [
+    { id: "tools", label: "Tools" },
+    { id: "parts", label: "Parts" },
+    { id: "steps", label: "Build" },
+    { id: "done", label: "Done" },
   ];
   const cur = PHASES.indexOf(phase);
-  const pct = phase === "done" ? 1 : phase === "steps" ? (step + 1) / total : 0;
   return (
     <nav className="stepper" aria-label="Progress">
-      {items.map((it, i) => {
+      {items.map((it) => {
         const idx = PHASES.indexOf(it.id);
         const state = idx < cur ? "done" : idx === cur ? "now" : "next";
         const can = idx <= reached && idx !== cur && it.id !== "done";
+        const building = it.id === "steps" && phase === "steps";
         return (
-          <div key={it.id} className="stp-wrap">
-            {i > 0 && <span className={"stp-line" + (idx <= cur ? " on" : "")} />}
-            <button className={"stp " + state} disabled={!can} onClick={() => onJump(it.id)} aria-current={state === "now" ? "step" : undefined}>
-              {state === "now" && <motion.span layoutId="stp-bg" className="stp-bg" transition={{ type: "spring", stiffness: 460, damping: 38 }} />}
-              <span className="stp-ico">{state === "done" ? <ICheck size={14} strokeWidth={3} /> : it.icon}</span>
-              <span className="stp-label">{it.label}</span>
-              {it.id === "steps" && phase === "steps" && (
-                <span className="stp-count">
-                  {step + 1}/{total}
-                </span>
-              )}
-              {it.id === "steps" && (phase === "steps" || phase === "done") && (
-                <span className="stp-bar">
-                  <motion.i initial={false} animate={{ scaleX: pct }} transition={{ type: "spring", stiffness: 160, damping: 24 }} />
-                </span>
-              )}
-            </button>
-          </div>
+          <button key={it.id} className={"stp " + state} disabled={!can} onClick={() => onJump(it.id)} aria-current={state === "now" ? "step" : undefined}>
+            {it.label}
+            {building && (
+              <span className="stp-n">
+                {step + 1}/{total}
+              </span>
+            )}
+            {state === "now" && (
+              <span className="stp-line" aria-hidden="true">
+                <motion.i initial={false} animate={{ scaleX: building ? (step + 1) / total : 1 }} transition={{ type: "spring", stiffness: 160, damping: 26 }} />
+              </span>
+            )}
+          </button>
         );
       })}
     </nav>

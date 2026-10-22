@@ -20,7 +20,7 @@ function box(x0: number, x1: number, y0: number, y1: number, z0: number, z1: num
 }
 
 const FEATURES = [
-  { title: "Say “next”", text: "Voice moves the steps along." },
+  { title: "Say “next”", text: "A calm voice reads each step." },
   { title: "Screen stays on", text: "It won't dim mid step." },
   { title: "Which screw is this?", text: "Snap it, we'll name it." },
   { title: "Turn it around", text: "Drag to see any side." },

@@ -1,4 +1,30 @@
-import type { HwType, PartType, Plan } from "../types";
+import type { HwType, PartType, Plan, StepKind, TipKey } from "../types";
+
+const TIP_FOR: Partial<Record<StepKind, TipKey>> = {
+  join: "frame",
+  cams: "frame",
+  dowels: "frame",
+  bolts: "frame",
+  nails: "back",
+  square: "back",
+  shelves: "shelves",
+  drawer: "drawers",
+  runners: "drawers",
+  doors: "doors",
+  hinges: "doors",
+  legs: "legs",
+  slats: "slats",
+  anchor: "anchor",
+};
+
+/** The product tip worth showing on this step, once per topic. */
+export function tipFor(plan: Plan, index: number) {
+  const s = plan.steps[index];
+  const key = TIP_FOR[s.kind];
+  if (!key || !plan.spec.tips?.[key]) return index === 0 ? plan.spec.tips?.general : undefined;
+  const first = plan.steps.findIndex((x) => TIP_FOR[x.kind] === key);
+  return first === index ? plan.spec.tips[key] : undefined;
+}
 
 export interface StepContents {
   parts: { type: PartType; count: number }[];

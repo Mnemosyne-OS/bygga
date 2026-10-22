@@ -1,38 +1,13 @@
 "use client";
 
 import { motion } from "motion/react";
-import type { Plan, StepKind, TipKey, WarnId } from "@/lib/types";
-import { stepContents } from "@/lib/plan/contents";
+import type { Plan, WarnId } from "@/lib/types";
+import { stepContents, tipFor } from "@/lib/plan/contents";
 import { HwArt } from "../art/Hardware";
 import { ToolArt, TOOL_INFO } from "../art/Tools";
-import { IArrowLeft, IArrowRight, ICheck, IClock, IHelp, ISparkle, WarnIcon, WARN_TEXT } from "../art/Icons";
+import { IArrowLeft, IArrowRight, ICheck, IClock, IClose, IHelp, IMic, ISparkle, WarnIcon, WARN_TEXT } from "../art/Icons";
 import { TwoPeople } from "../art/Figure";
 import Thumb from "../Thumb";
-
-const TIP_FOR: Partial<Record<StepKind, TipKey>> = {
-  join: "frame",
-  cams: "frame",
-  dowels: "frame",
-  bolts: "frame",
-  nails: "back",
-  square: "back",
-  shelves: "shelves",
-  drawer: "drawers",
-  runners: "drawers",
-  doors: "doors",
-  hinges: "doors",
-  legs: "legs",
-  slats: "slats",
-  anchor: "anchor",
-};
-
-export function tipFor(plan: Plan, index: number) {
-  const s = plan.steps[index];
-  const key = TIP_FOR[s.kind];
-  if (!key || !plan.spec.tips?.[key]) return index === 0 ? plan.spec.tips?.general : undefined;
-  const first = plan.steps.findIndex((x) => TIP_FOR[x.kind] === key);
-  return first === index ? plan.spec.tips[key] : undefined;
-}
 
 export function minutesLeft(plan: Plan, index: number) {
   return plan.steps.slice(index).reduce((s, x) => s + x.minutes, 0);
@@ -46,6 +21,7 @@ export default function StepPanel({
   onBack,
   onHover,
   onHelp,
+  offer,
 }: {
   plan: Plan;
   index: number;
@@ -54,6 +30,8 @@ export default function StepPanel({
   onBack: () => void;
   onHover: (ids: string[] | null) => void;
   onHelp: () => void;
+  /** Invite to turn voice on, while it is off. */
+  offer?: { again: boolean; listen: boolean; onStart: () => void; onDismiss: () => void } | null;
 }) {
   const s = plan.steps[index];
   const c = stepContents(plan, index);
@@ -71,6 +49,23 @@ export default function StepPanel({
   return (
     <div className="pane step-pane">
       <div className="pane-scroll">
+        {offer && (
+          <div className="voice-offer">
+            <span className="voice-offer-ico">
+              <IMic size={20} />
+            </span>
+            <div className="voice-offer-text">
+              <b>{offer.again ? "Turn voice back on?" : "Hands full? Turn on voice"}</b>
+              <span>{offer.listen ? "Each step is read out loud. Say “next” to move on." : "Each step is read out loud. Tap done to move on."}</span>
+            </div>
+            <button className="btn voice-offer-go" onClick={offer.onStart}>
+              Turn on
+            </button>
+            <button className="voice-offer-x" onClick={offer.onDismiss} aria-label="Not now">
+              <IClose size={16} />
+            </button>
+          </div>
+        )}
         <motion.div key={index} initial={{ opacity: 0, x: 22 * dir }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}>
           <header className="pane-head">
             <div className="step-meta">

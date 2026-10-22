@@ -3,5 +3,5 @@ import { hasKey } from "@/lib/together";
 
 export async function GET() {
   await connection();
-  return Response.json({ ai: hasKey() });
+  return Response.json({ ai: hasKey(), voice: !!process.env.FAL_KEY?.trim() });
 }
