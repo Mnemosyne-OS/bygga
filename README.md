@@ -13,6 +13,7 @@
 - A parametric plan generator (`src/lib/plan`) for 7 furniture types, with 152 products drawn offline and typo-tolerant search
 - Manual scanner (`/scan`): a vision model reads each page, `gpt-oss-120b` lays out the parts in millimetres, and `src/lib/plan/custom.ts` places every dowel, bolt and screw where parts touch
 - Together AI for unknown product names, photo lookup and the "Stuck?" helper, with model fallback lists in `src/lib/together.ts`
+- A hands-free voice on Together AI (Kokoro, `src/lib/voice/tts.ts`): every catalog line is pre-recorded with `npm run voice`, the rest are recorded live, and saying "next" turns the page
 - Workshop (`/builds`): every finished build merged into one scene and rendered at true scale next to a person
 
 ## Cloning & running

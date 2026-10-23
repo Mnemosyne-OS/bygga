@@ -1,3689 +1,3689 @@
 {
  "h1pxonhu18": {
   "text": "This is the first step.",
-  "ms": 1511,
+  "ms": 1210,
   "heard": "This is the first step.",
   "ok": true,
   "takes": 1
  },
  "hoe1jue2em": {
   "text": "Nothing extra for this one.",
-  "ms": 1525,
+  "ms": 1407,
   "heard": "Nothing extra for this one.",
   "ok": true,
   "takes": 1
  },
  "jfthp6cnty": {
   "text": "Okay, I'll slow down.",
-  "ms": 1753,
-  "heard": "Okay, I'll slow down.",
+  "ms": 1215,
+  "heard": "Okay I'll slow down.",
   "ok": true,
   "takes": 1
  },
  "1kiwwwaaql7": {
   "text": "Voice is on. I'll read each step out loud. When you're done, just say next.",
-  "ms": 6038,
-  "heard": "Voice is on. I'll read each step out loud. When you're done, just say next.",
-  "ok": true,
-  "takes": 1
+  "ms": 3995,
+  "heard": "Voices on, I'll read each step out loud. When you're done, just say next.",
+  "ok": false,
+  "takes": 3
  },
  "1lq581nrtjm": {
   "text": "Voice is on. I'll read each step out loud. Tap done when you're ready for the next one.",
-  "ms": 5874,
+  "ms": 4561,
   "heard": "Voice is on. I'll read each step out loud. Tap done when you're ready for the next one.",
   "ok": true,
   "takes": 1
  },
  "7arfs6b7ka": {
   "text": "Back to normal speed.",
-  "ms": 1137,
+  "ms": 1201,
   "heard": "Back to normal speed.",
   "ok": true,
   "takes": 1
  },
  "1jpa015w2zf": {
   "text": "One moment.",
-  "ms": 814,
+  "ms": 768,
   "heard": "One moment.",
   "ok": true,
   "takes": 1
  },
  "k0v2vzl03u": {
   "text": "Okay, voice is off.",
-  "ms": 1711,
+  "ms": 1203,
   "heard": "Okay, voice is off.",
   "ok": true,
-  "takes": 2
+  "takes": 1
  },
  "1tpn4qjb1xz": {
   "text": "You can say next, back or again. Ask how many, or say stop to quiet me.",
-  "ms": 7807,
-  "heard": "You can say next, back, or again. Ask how many, or say stop to quiet me.",
+  "ms": 4254,
+  "heard": "You can say next, back, or again. Ask how many or say stop to quiet me.",
   "ok": true,
   "takes": 1
  },
  "rbc2ibh0ha": {
   "text": "Last step.",
-  "ms": 953,
+  "ms": 763,
   "heard": "Last step.",
   "ok": true,
   "takes": 1
  },
  "5cphrzp92y": {
   "text": "You're halfway there.",
-  "ms": 1501,
+  "ms": 903,
   "heard": "You're halfway there.",
   "ok": true,
   "takes": 1
  },
  "15oy97hw76f": {
   "text": "I can't look that up right now. The help button has quick answers.",
-  "ms": 3794,
+  "ms": 3394,
   "heard": "I can't look that up right now. The help button has quick answers.",
   "ok": true,
   "takes": 1
  },
  "1ns3ms744sg": {
   "text": "This one's easier with two people.",
-  "ms": 2076,
+  "ms": 1636,
   "heard": "This one's easier with two people.",
   "ok": true,
   "takes": 1
  },
  "iwxvn97b6y": {
   "text": "Kids climb, so always fix it to the wall.",
-  "ms": 3191,
+  "ms": 2195,
   "heard": "Kids climb, so always fix it to the wall.",
   "ok": true,
   "takes": 1
  },
  "2f0v82q3s77": {
   "text": "Step one.",
-  "ms": 942,
+  "ms": 709,
   "heard": "Step 1.",
   "ok": true,
   "takes": 1
  },
  "1e9q2btkp4q": {
   "text": "And that's it. It's built. Well done.",
-  "ms": 2840,
-  "heard": "And that's it. It's built. Well done.",
+  "ms": 1898,
+  "heard": "And that's it, it's built, well done.",
   "ok": true,
   "takes": 1
  },
  "ttiwuc43ag": {
   "text": "Fit bolts and dowels into the bottom.",
-  "ms": 2465,
+  "ms": 1862,
   "heard": "Fit bolts and dowels into the bottom.",
   "ok": true,
   "takes": 1
  },
  "25fltinygql": {
   "text": "You'll need six wooden dowels and four cam bolts.",
-  "ms": 3627,
+  "ms": 2576,
   "heard": "You'll need six wooden dowels and four cam bolts.",
   "ok": true,
   "takes": 1
  },
  "ow5cci2yi5": {
   "text": "Grab the screwdriver and the hammer.",
-  "ms": 2159,
+  "ms": 1678,
   "heard": "Grab the screwdriver and the hammer.",
   "ok": true,
   "takes": 1
  },
  "1hd3csrjy8i": {
   "text": "You're on step one of nine.",
-  "ms": 2029,
+  "ms": 1230,
   "heard": "You're on step one of nine.",
   "ok": true,
   "takes": 1
  },
  "5486xwjklz": {
   "text": "Step two.",
-  "ms": 949,
+  "ms": 708,
   "heard": "Step 2.",
   "ok": true,
   "takes": 1
  },
  "20qlicbzwl6": {
   "text": "Twist the bolts in by hand. Tap the dowels in halfway.",
-  "ms": 4396,
+  "ms": 3140,
   "heard": "Twist the bolts in by hand. Tap the dowels in halfway.",
   "ok": true,
   "takes": 1
  },
  "lj0jzsleni": {
   "text": "The thick outer panels are hollow. Tap dowels in gently or they can split the edge.",
-  "ms": 5668,
+  "ms": 4671,
   "heard": "The thick outer panels are hollow. Tap dowels in gently or they can split the edge.",
   "ok": true,
   "takes": 1
  },
  "15zm3f7mji": {
   "text": "You'll need two wooden dowels.",
-  "ms": 1950,
-  "heard": "You'll need two wooden dowels.",
+  "ms": 1414,
+  "heard": "you'll need two wooden dowels.",
   "ok": true,
   "takes": 1
  },
  "1qu8xn4wgdg": {
   "text": "Stand the dividers on the dowels.",
-  "ms": 2167,
+  "ms": 1648,
   "heard": "Stand the dividers on the dowels.",
   "ok": true,
   "takes": 1
  },
  "u345wk8jse": {
   "text": "Then tap dowels into their top edges.",
-  "ms": 2949,
-  "heard": "Then, tap dowels into their top edges.",
+  "ms": 1891,
+  "heard": "Then tap dowels into their top edges.",
   "ok": true,
   "takes": 1
  },
  "bpe9qkystg": {
   "text": "Step three.",
-  "ms": 974,
+  "ms": 730,
   "heard": "Step 3.",
   "ok": true,
   "takes": 1
  },
  "15sry1a9wp6": {
   "text": "You're on step two of nine.",
-  "ms": 2048,
+  "ms": 1255,
   "heard": "You're on step two of nine.",
   "ok": true,
   "takes": 1
  },
  "t9xdhqs5m8": {
   "text": "You'll need six wooden dowels.",
-  "ms": 2164,
+  "ms": 1531,
   "heard": "You'll need six wooden dowels.",
   "ok": true,
   "takes": 1
  },
  "224ejm63nge": {
   "text": "Lay the long shelf on top.",
-  "ms": 1970,
+  "ms": 1433,
   "heard": "Lay the long shelf on top.",
   "ok": true,
   "takes": 1
  },
  "2aw7uuiw0me": {
   "text": "Dowels go into both ends, and on top for the next row.",
-  "ms": 3919,
+  "ms": 2907,
   "heard": "Dowels go into both ends and on top for the next row.",
   "ok": true,
   "takes": 1
  },
  "kjlik50wxb": {
   "text": "You're on step three of nine.",
-  "ms": 2098,
+  "ms": 1281,
   "heard": "You're on step three of nine.",
   "ok": true,
   "takes": 1
  },
  "1akwzzel0fl": {
   "text": "You're on step four of nine.",
-  "ms": 2096,
+  "ms": 1271,
   "heard": "You're on step four of nine.",
   "ok": true,
   "takes": 1
  },
  "g66iyu2doo": {
   "text": "Step four.",
-  "ms": 1018,
+  "ms": 729,
   "heard": "Step 4.",
   "ok": true,
   "takes": 1
  },
  "1o6gjdi8xk8": {
   "text": "Step five.",
-  "ms": 997,
+  "ms": 768,
   "heard": "Step 5.",
   "ok": true,
   "takes": 1
  },
  "2a1vvkq31pn": {
   "text": "Add the next row of dividers.",
-  "ms": 1984,
+  "ms": 1536,
   "heard": "Add the next row of dividers.",
   "ok": true,
   "takes": 1
  },
  "aoigcsv1gu": {
   "text": "Add both sides.",
-  "ms": 1263,
+  "ms": 1000,
   "heard": "Add both sides.",
   "ok": true,
   "takes": 1
  },
  "1ammvv2i5t6": {
   "text": "Step six.",
-  "ms": 1022,
+  "ms": 785,
   "heard": "Step 6.",
   "ok": true,
   "takes": 1
  },
  "1epdroiltww": {
   "text": "Fit bolts and dowels into the top.",
-  "ms": 2474,
+  "ms": 1729,
   "heard": "Fit bolts and dowels into the top.",
   "ok": true,
   "takes": 1
  },
  "n77sxwovtb": {
   "text": "You're on step five of nine.",
-  "ms": 2106,
+  "ms": 1323,
   "heard": "You're on step five of nine.",
   "ok": true,
   "takes": 1
  },
  "20lcwf9q59e": {
   "text": "Slide them onto the bolts and dowels from the outside.",
-  "ms": 3213,
+  "ms": 2797,
   "heard": "Slide them onto the bolts and dowels from the outside.",
   "ok": true,
   "takes": 1
  },
  "22z5hqpr821": {
   "text": "You'll need four wooden dowels and four cam bolts.",
-  "ms": 3459,
+  "ms": 2604,
   "heard": "You'll need four wooden dowels and four cam bolts.",
   "ok": true,
   "takes": 1
  },
  "mpz314jpg8": {
   "text": "Lay it upside down on the box first.",
-  "ms": 2606,
+  "ms": 1864,
   "heard": "Lay it upside down on the box first.",
   "ok": true,
   "takes": 1
  },
  "4lu58gsx48": {
   "text": "You're on step six of nine.",
-  "ms": 2111,
+  "ms": 1319,
   "heard": "You're on step six of nine.",
   "ok": true,
   "takes": 1
  },
  "225nj0tmjly": {
   "text": "Put the top on.",
-  "ms": 1152,
+  "ms": 886,
   "heard": "Put the top on.",
   "ok": true,
   "takes": 1
  },
  "n7nyr7lomx": {
   "text": "Step seven.",
-  "ms": 1050,
+  "ms": 811,
   "heard": "Step 7.",
   "ok": true,
   "takes": 1
  },
  "1tql0mls7y4": {
   "text": "Lower it evenly so every dowel finds its hole.",
-  "ms": 3351,
+  "ms": 2589,
   "heard": "Lower it evenly so every dowel finds its hole.",
   "ok": true,
   "takes": 1
  },
  "cpf9q6vho6": {
   "text": "Step eight.",
-  "ms": 1000,
+  "ms": 694,
   "heard": "Step 8.",
   "ok": true,
   "takes": 1
  },
  "tace1hbvsz": {
   "text": "You're on step seven of nine.",
-  "ms": 2056,
+  "ms": 1364,
   "heard": "You're on step seven of nine.",
   "ok": true,
   "takes": 1
  },
  "179ec9zlot5": {
   "text": "You'll need eight cam locks.",
-  "ms": 2009,
+  "ms": 1281,
   "heard": "You'll need eight cam locks.",
   "ok": true,
   "takes": 1
  },
  "ibhj8i4tki": {
   "text": "Arrow towards the bolt, then turn clockwise until it's snug.",
-  "ms": 3903,
+  "ms": 3130,
   "heard": "Arrow towards the bolt, then turn clockwise until it's snug.",
   "ok": true,
   "takes": 1
  },
  "1d4oebdm14q": {
   "text": "Fix it to the wall.",
-  "ms": 1225,
+  "ms": 953,
   "heard": "Fix it to the wall.",
   "ok": true,
   "takes": 1
  },
  "ono828ewdc": {
   "text": "You'll need a wall bracket and two screws.",
-  "ms": 2653,
+  "ms": 1987,
   "heard": "You'll need a wall bracket and two screws.",
   "ok": true,
   "takes": 1
  },
  "4mm2s7ths8": {
   "text": "Grab the drill and a pencil.",
-  "ms": 1848,
+  "ms": 1431,
   "heard": "Grab the drill and a pencil.",
   "ok": true,
   "takes": 1
  },
  "m87vj5hacj": {
   "text": "You're on step eight of nine.",
-  "ms": 2011,
+  "ms": 1211,
   "heard": "You're on step eight of nine.",
   "ok": true,
   "takes": 1
  },
  "1rqumlz03xt": {
   "text": "Lock all the cam locks.",
-  "ms": 1724,
+  "ms": 1193,
   "heard": "Lock all the cam locks.",
   "ok": true,
-  "takes": 2
+  "takes": 1
  },
  "2a23wkok48h": {
   "text": "Wall screws aren't included. Pick ones made for your wall.",
-  "ms": 3703,
+  "ms": 3086,
   "heard": "Wall screws aren't included. Pick ones made for your wall.",
   "ok": true,
   "takes": 1
  },
  "1vvxsqi8y89": {
   "text": "You're on step nine of nine.",
-  "ms": 2170,
-  "heard": "You're on step nine of nine.",
+  "ms": 1271,
+  "heard": "You're on Step 9 of 9.",
   "ok": true,
   "takes": 1
  },
  "zz9wry8o8x": {
   "text": "You're on step two of thirteen.",
-  "ms": 2282,
+  "ms": 1411,
   "heard": "You're on step two of 13.",
   "ok": true,
   "takes": 1
  },
  "1bmqe5g6xcp": {
   "text": "And that's it. Your Kallax is built. Well done.",
-  "ms": 3313,
-  "heard": "And that's it. Your Calyx is built. Well done.",
+  "ms": 2490,
+  "heard": "And that's it, your Calix is built. Well done.",
   "ok": true,
   "takes": 1
  },
  "uv0ijs18x2": {
   "text": "You're on step one of thirteen.",
-  "ms": 2535,
+  "ms": 1412,
   "heard": "You're on step one of 13.",
   "ok": true,
   "takes": 1
  },
  "1yzpr4qk2ql": {
   "text": "You're on step three of thirteen.",
-  "ms": 2365,
+  "ms": 1460,
   "heard": "You're on step three of 13.",
   "ok": true,
   "takes": 1
  },
  "11bumrt03sf": {
   "text": "You're on step four of thirteen.",
-  "ms": 2326,
+  "ms": 1460,
   "heard": "You're on step four of 13.",
   "ok": true,
   "takes": 1
  },
  "ovjx8bna4a": {
   "text": "You're on step five of thirteen.",
-  "ms": 2355,
+  "ms": 1504,
   "heard": "You're on step five of 13.",
   "ok": true,
   "takes": 1
  },
  "ugm5tgttgj": {
   "text": "You're on step six of thirteen.",
-  "ms": 2346,
+  "ms": 1510,
   "heard": "You're on step six of 13.",
   "ok": true,
   "takes": 1
  },
  "20qcewzf7yh": {
   "text": "Add the next long shelf.",
-  "ms": 1859,
+  "ms": 1250,
   "heard": "Add the next long shelf.",
   "ok": true,
   "takes": 1
  },
  "y5bux89299": {
   "text": "You're on step seven of thirteen.",
-  "ms": 2359,
-  "heard": "You're on step 7 of 13.",
+  "ms": 1526,
+  "heard": "You're on step seven of 13.",
   "ok": true,
   "takes": 1
  },
  "2fnas5xv1pe": {
   "text": "Step nine.",
-  "ms": 1016,
+  "ms": 756,
   "heard": "Step 9.",
   "ok": true,
   "takes": 1
  },
  "2a89idkm6gk": {
   "text": "You're on step eight of thirteen.",
-  "ms": 2363,
-  "heard": "You're on step 8 of 13.",
+  "ms": 1412,
+  "heard": "You're on step eight of 13.",
   "ok": true,
   "takes": 1
  },
  "x9ee0sag3e": {
   "text": "You're on step nine of thirteen.",
-  "ms": 2364,
+  "ms": 1477,
   "heard": "You're on step nine of 13.",
   "ok": true,
   "takes": 1
  },
  "1jz4xpol4rz": {
   "text": "Step ten.",
-  "ms": 1013,
+  "ms": 754,
   "heard": "Step 10.",
   "ok": true,
   "takes": 1
  },
  "2cfrg6fkgom": {
   "text": "Step eleven.",
-  "ms": 1132,
+  "ms": 837,
   "heard": "Step 11.",
   "ok": true,
   "takes": 1
  },
  "1u0eg8gx4ca": {
   "text": "You're on step ten of thirteen.",
-  "ms": 2348,
+  "ms": 1436,
   "heard": "You're on step 10 of 13.",
   "ok": true,
   "takes": 1
  },
  "10r07fqtla2": {
   "text": "Step twelve.",
-  "ms": 1018,
+  "ms": 803,
   "heard": "Step 12.",
   "ok": true,
   "takes": 1
  },
  "m1sajsmqxg": {
   "text": "You're on step eleven of thirteen.",
-  "ms": 2428,
+  "ms": 1763,
   "heard": "You're on step 11 of 13.",
   "ok": true,
   "takes": 1
  },
  "osp6i0lqsk": {
   "text": "You're on step twelve of thirteen.",
-  "ms": 2290,
+  "ms": 1558,
   "heard": "You're on step 12 of 13.",
   "ok": true,
   "takes": 1
  },
  "kdp19d75bq": {
   "text": "You're on step thirteen of thirteen.",
-  "ms": 2544,
+  "ms": 1628,
   "heard": "You're on step 13 of 13.",
   "ok": true,
   "takes": 1
  },
  "2ew7xnj02jk": {
   "text": "Furniture like this can tip over if it isn't fixed. Wall screws aren't included: pick ones made for your wall.",
-  "ms": 7218,
+  "ms": 6123,
   "heard": "Furniture like this can tip over if it isn't fixed. Wall screws aren't included. Pick ones made for your wall.",
   "ok": true,
   "takes": 1
  },
  "5r731dja0w": {
   "text": "You'll need ten wooden dowels.",
-  "ms": 2091,
+  "ms": 1456,
   "heard": "You'll need 10 wooden dowels.",
   "ok": true,
   "takes": 1
  },
  "24h8mixiuud": {
   "text": "You'll need ten wooden dowels and four cam bolts.",
-  "ms": 3459,
-  "heard": "You'll need 10 wooden dowels and 4 cam bolts.",
+  "ms": 2561,
+  "heard": "You'll need 10 wooden dowels and four cam bolts.",
   "ok": true,
   "takes": 1
  },
  "12fid33mzo0": {
   "text": "You'll need two wall brackets and four screws.",
-  "ms": 3067,
+  "ms": 2173,
   "heard": "You'll need two wall brackets and four screws.",
   "ok": true,
   "takes": 1
  },
  "1mp0aogw8ym": {
   "text": "You'll need four wooden dowels.",
-  "ms": 2028,
+  "ms": 1438,
   "heard": "You'll need four wooden dowels.",
   "ok": true,
   "takes": 1
  },
  "1fseabbylj1": {
   "text": "You'll need fourteen wooden dowels and twelve cam bolts.",
-  "ms": 3817,
+  "ms": 3097,
   "heard": "You'll need 14 wooden dowels and 12 cam bolts.",
   "ok": true,
   "takes": 1
  },
  "rypbq8yh1o": {
   "text": "Fit the dowels and bolts into both sides.",
-  "ms": 2801,
+  "ms": 2136,
   "heard": "Fit the dowels and bolts into both sides.",
   "ok": true,
   "takes": 1
  },
  "umtid9uyq2": {
   "text": "You're on step one of eleven.",
-  "ms": 2298,
+  "ms": 1373,
   "heard": "You're on step one of 11.",
   "ok": true,
   "takes": 1
  },
  "19agvtjd4x8": {
   "text": "Lay one side down and add the panels.",
-  "ms": 2724,
+  "ms": 2161,
   "heard": "Lay one side down and add the panels.",
   "ok": true,
   "takes": 1
  },
  "10eadq4skop": {
   "text": "Tap the dowels in gently. Twist the bolts in by hand until they stop.",
-  "ms": 5161,
+  "ms": 3983,
   "heard": "Tap the dowels in gently. Twist the bolts in by hand until they stop.",
   "ok": true,
   "takes": 1
  },
  "2g8ztwcori4": {
   "text": "The holes should face each other. Push each panel onto the dowels.",
-  "ms": 4613,
+  "ms": 3408,
   "heard": "The holes should face each other. Push each panel onto the dowels.",
   "ok": true,
   "takes": 1
  },
  "1oieh6p49u2": {
   "text": "You're on step two of eleven.",
-  "ms": 2128,
+  "ms": 1400,
   "heard": "You're on step two of 11.",
   "ok": true,
   "takes": 1
  },
  "1qmsvli4rc5": {
   "text": "Line up the bolts with the holes, then press it on evenly.",
-  "ms": 3913,
+  "ms": 3016,
   "heard": "Line up the bolts with the holes, then press it on evenly.",
   "ok": true,
   "takes": 1
  },
  "2cvt3711kbj": {
   "text": "Add the other side.",
-  "ms": 1181,
+  "ms": 950,
   "heard": "Add the other side.",
   "ok": true,
   "takes": 1
  },
  "2a9ye1dpcvx": {
   "text": "Lock the cam locks.",
-  "ms": 1419,
+  "ms": 1130,
   "heard": "Lock the cam locks.",
   "ok": true,
   "takes": 1
  },
  "1k5jve15nty": {
   "text": "You're on step three of eleven.",
-  "ms": 2199,
+  "ms": 1377,
   "heard": "You're on step three of 11.",
   "ok": true,
   "takes": 1
  },
  "202r31gjdea": {
   "text": "You'll need twelve cam locks.",
-  "ms": 1931,
+  "ms": 1432,
   "heard": "You'll need 12 cam locks.",
   "ok": true,
   "takes": 1
  },
  "1295788yr84": {
   "text": "You're on step four of eleven.",
-  "ms": 2374,
+  "ms": 1333,
   "heard": "You're on step four of 11.",
   "ok": true,
   "takes": 1
  },
  "j3zskxb878": {
   "text": "Fit the plinth.",
-  "ms": 1161,
-  "heard": "Fit the plinth.",
-  "ok": true,
-  "takes": 1
+  "ms": 778,
+  "heard": "Fit the plinths.",
+  "ok": false,
+  "takes": 3
  },
  "2c38e7xvmx3": {
   "text": "You're on step five of eleven.",
-  "ms": 2191,
+  "ms": 1466,
   "heard": "You're on step five of 11.",
   "ok": true,
   "takes": 1
  },
  "hi9izdblt1": {
   "text": "Drop each one in with the arrow pointing at the bolt, then turn clockwise until it bites.",
-  "ms": 6058,
+  "ms": 4687,
   "heard": "Drop each one in with the arrow pointing at the bolt, then turn clockwise until it bites.",
   "ok": true,
   "takes": 1
  },
  "27n11ksoc7n": {
   "text": "Press it onto the dowels at the front, below the bottom panel.",
-  "ms": 3767,
+  "ms": 3121,
   "heard": "Press it onto the dowels at the front, below the bottom panel.",
   "ok": true,
   "takes": 1
  },
  "ks90bsn3pm": {
   "text": "Turn it face down.",
-  "ms": 1312,
+  "ms": 1086,
   "heard": "Turn it face down.",
   "ok": true,
   "takes": 1
  },
  "r707m3t4w0": {
   "text": "Lift it together and lay it on the box.",
-  "ms": 2518,
+  "ms": 2082,
   "heard": "Lift it together and lay it on the box.",
   "ok": true,
   "takes": 1
  },
  "15vm8xtk2wp": {
   "text": "You're on step six of eleven.",
-  "ms": 2140,
+  "ms": 1447,
   "heard": "You're on step six of 11.",
   "ok": true,
   "takes": 1
  },
  "kwq2qhpjdz": {
   "text": "Grab the tape measure.",
-  "ms": 1275,
+  "ms": 1097,
   "heard": "Grab the tape measure.",
   "ok": true,
   "takes": 1
  },
  "1f69o58yse7": {
   "text": "Check that it's square.",
-  "ms": 1289,
+  "ms": 995,
   "heard": "Check that it's square.",
   "ok": true,
   "takes": 1
  },
  "1zd7jzbokq8": {
   "text": "You're on step seven of eleven.",
-  "ms": 2134,
-  "heard": "You're on step 7 of 11.",
+  "ms": 1461,
+  "heard": "You're on step seven of 11.",
   "ok": true,
   "takes": 1
  },
  "1p3ub8mr0sp": {
   "text": "Nail on the back panel.",
-  "ms": 1852,
+  "ms": 1203,
   "heard": "Nail on the back panel.",
   "ok": true,
   "takes": 1
  },
  "2b3k1dge1ah": {
   "text": "Measure both diagonals. Push the corners gently until they match.",
-  "ms": 4733,
+  "ms": 3669,
   "heard": "Measure both diagonals. Push the corners gently until they match.",
   "ok": true,
   "takes": 1
  },
  "40bku667g9": {
   "text": "You'll need the nails.",
-  "ms": 1207,
+  "ms": 958,
   "heard": "You'll need the nails.",
   "ok": true,
   "takes": 1
  },
  "13m1h5xz72t": {
   "text": "Keep the back panel square while nailing. It is what stops the bookcase from wobbling.",
-  "ms": 5217,
+  "ms": 4352,
   "heard": "Keep the back panel square while nailing. It is what stops the bookcase from wobbling.",
   "ok": true,
   "takes": 1
  },
  "2g6a6mhbmrx": {
   "text": "Start at the corners, then work along the edges.",
-  "ms": 3291,
+  "ms": 2564,
   "heard": "Start at the corners, then work along the edges.",
   "ok": true,
   "takes": 1
  },
  "218iea1oxkp": {
   "text": "Stand it up together.",
-  "ms": 1465,
+  "ms": 1106,
   "heard": "Stand it up together.",
   "ok": true,
   "takes": 1
  },
  "e09g8xjnfe": {
   "text": "You're on step eight of eleven.",
-  "ms": 2136,
-  "heard": "You're on step 8 of 11.",
+  "ms": 1345,
+  "heard": "You're on step eight of 11.",
   "ok": true,
   "takes": 1
  },
  "udx6ec57ph": {
   "text": "Lift from the top, keep the bottom on the floor, and walk it up.",
-  "ms": 4101,
+  "ms": 3203,
   "heard": "Lift from the top, keep the bottom on the floor, and walk it up.",
   "ok": true,
   "takes": 1
  },
  "1dv3teyh4kq": {
   "text": "Add the shelf pins and shelves.",
-  "ms": 2004,
+  "ms": 1569,
   "heard": "Add the shelf pins and shelves.",
   "ok": true,
   "takes": 1
  },
  "ajgbjglqid": {
   "text": "You're on step nine of eleven.",
-  "ms": 2191,
-  "heard": "You're on step 9 of 11.",
+  "ms": 1408,
+  "heard": "You're on step nine of 11.",
   "ok": true,
   "takes": 1
  },
  "1a2qy6o2cqg": {
   "text": "You'll need sixteen shelf pins.",
-  "ms": 2460,
+  "ms": 1582,
   "heard": "You'll need 16 shelf pins.",
   "ok": true,
   "takes": 1
  },
  "27zyqma2su0": {
   "text": "Pick any height you like. Use the same hole on all four corners.",
-  "ms": 4530,
+  "ms": 3473,
   "heard": "Pick any height you like. Use the same hole on all four corners.",
   "ok": true,
   "takes": 1
  },
  "23b1aifmpyf": {
   "text": "You're on step ten of eleven.",
-  "ms": 2136,
+  "ms": 1358,
   "heard": "You're on step 10 of 11.",
   "ok": true,
   "takes": 1
  },
  "1yznsd0of6m": {
   "text": "You're on step eleven of eleven.",
-  "ms": 2352,
+  "ms": 1765,
   "heard": "You're on step 11 of 11.",
   "ok": true,
   "takes": 1
  },
  "1a94ralg5em": {
   "text": "You'll need ten wooden dowels and eight cam bolts.",
-  "ms": 3389,
+  "ms": 2653,
   "heard": "You'll need 10 wooden dowels and 8 cam bolts.",
   "ok": true,
   "takes": 1
  },
  "19efsou0xx0": {
   "text": "And that's it. Your Billy is built. Well done.",
-  "ms": 3624,
-  "heard": "And that's it. Your Billy is built. Well done.",
+  "ms": 2340,
+  "heard": "And that's it. Your billy is built. Well done.",
   "ok": true,
   "takes": 1
  },
  "u0hqr6ngjv": {
   "text": "Attach the panels to one side.",
-  "ms": 2138,
+  "ms": 1595,
   "heard": "Attach the panels to one side.",
   "ok": true,
   "takes": 1
  },
  "22nfu3yszjf": {
   "text": "Lay it on the flattened box so the front doesn't scratch.",
-  "ms": 3408,
+  "ms": 2770,
   "heard": "Lay it on the flattened box so the front doesn't scratch.",
   "ok": true,
   "takes": 1
  },
  "18ieqktywh6": {
   "text": "You'll need eight shelf pins.",
-  "ms": 1859,
+  "ms": 1276,
   "heard": "You'll need eight shelf pins.",
   "ok": true,
   "takes": 1
  },
  "le580cvbi0": {
   "text": "You'll need eight wooden dowels and eight cam bolts.",
-  "ms": 3462,
-  "heard": "You'll need 8 wooden dowels and 8 cam bolts.",
+  "ms": 2478,
+  "heard": "You'll need eight wooden dowels and eight cam bolts.",
   "ok": true,
   "takes": 1
  },
  "1dirh6r91e3": {
   "text": "You're on step one of fifteen.",
-  "ms": 2452,
+  "ms": 1389,
   "heard": "You're on step one of 15.",
   "ok": true,
   "takes": 1
  },
  "219p7gg2srg": {
   "text": "Screw the runners onto the sides.",
-  "ms": 2106,
+  "ms": 1657,
   "heard": "Screw the runners onto the sides.",
   "ok": true,
   "takes": 1
  },
  "234oxtk3kt4": {
   "text": "The open end of each runner points to the front.",
-  "ms": 2961,
+  "ms": 2217,
   "heard": "The open end of each runner points to the front.",
   "ok": true,
   "takes": 1
  },
  "smqpw0zvz9": {
   "text": "You'll need six drawer runners and twelve screws.",
-  "ms": 3209,
-  "heard": "You'll need 6 drawer runners and 12 screws.",
+  "ms": 2195,
+  "heard": "You'll need six drawer runners and 12 screws.",
   "ok": true,
   "takes": 1
  },
  "rtk76wu1jb": {
   "text": "You're on step six of fifteen.",
-  "ms": 2265,
+  "ms": 1466,
   "heard": "You're on step six of 15.",
   "ok": true,
   "takes": 1
  },
  "1a8j8om41b6": {
   "text": "You're on step five of fifteen.",
-  "ms": 2373,
+  "ms": 1486,
   "heard": "You're on step five of 15.",
   "ok": true,
   "takes": 1
  },
  "1prjikayfa5": {
   "text": "You're on step four of fifteen.",
-  "ms": 2368,
+  "ms": 1445,
   "heard": "You're on step four of 15.",
   "ok": true,
   "takes": 1
  },
  "17jazvmjcg6": {
   "text": "You're on step two of fifteen.",
-  "ms": 2280,
+  "ms": 1466,
   "heard": "You're on step two of 15.",
   "ok": true,
   "takes": 1
  },
  "jiwof4qdd3": {
   "text": "Build one drawer completely before starting the next. It is much easier to spot mistakes.",
-  "ms": 6003,
+  "ms": 5059,
   "heard": "Build one drawer completely before starting the next. It is much easier to spot mistakes.",
   "ok": true,
   "takes": 1
  },
  "k8k40zlqxf": {
   "text": "You're on step three of fifteen.",
-  "ms": 2379,
+  "ms": 1448,
   "heard": "You're on step three of 15.",
   "ok": true,
   "takes": 1
  },
  "23g4hywr230": {
   "text": "Stand it up.",
-  "ms": 961,
+  "ms": 734,
   "heard": "Stand it up.",
   "ok": true,
   "takes": 1
  },
  "jvor1n8hj6": {
   "text": "You're on step eight of fifteen.",
-  "ms": 2421,
+  "ms": 1392,
   "heard": "You're on step eight of 15.",
   "ok": true,
   "takes": 1
  },
  "2cm3o4ymbrh": {
   "text": "Turn it upright on a flat floor.",
-  "ms": 2131,
+  "ms": 1568,
   "heard": "Turn it upright on a flat floor.",
   "ok": true,
   "takes": 1
  },
  "194m0mf76ur": {
   "text": "You're on step seven of fifteen.",
-  "ms": 2285,
+  "ms": 1533,
   "heard": "You're on step seven of 15.",
   "ok": true,
   "takes": 1
  },
  "2f4cacyij04": {
   "text": "You're on step nine of fifteen.",
-  "ms": 2275,
+  "ms": 1460,
   "heard": "You're on step nine of 15.",
   "ok": true,
   "takes": 1
  },
  "1fu3vtezbc9": {
   "text": "Push the dowels into the drawer front.",
-  "ms": 2228,
+  "ms": 1833,
   "heard": "Push the dowels into the drawer front.",
   "ok": true,
   "takes": 1
  },
  "2a71hbyfgjr": {
   "text": "Attach the drawer sides.",
-  "ms": 1614,
+  "ms": 1234,
   "heard": "Attach the drawer sides.",
   "ok": true,
   "takes": 1
  },
  "1c152r1xzb0": {
   "text": "You're on step ten of fifteen.",
-  "ms": 2350,
+  "ms": 1443,
   "heard": "You're on step 10 of 15.",
   "ok": true,
   "takes": 1
  },
  "2dg32rshbxx": {
   "text": "Do this for all three drawers. The counts are for one.",
-  "ms": 3859,
+  "ms": 2716,
   "heard": "Do this for all three drawers. The counts are for one.",
   "ok": true,
   "takes": 1
  },
  "z8n0b12sbf": {
   "text": "Lay the front face down on something soft.",
-  "ms": 2782,
+  "ms": 2066,
   "heard": "Lay the front face down on something soft.",
   "ok": true,
   "takes": 1
  },
  "1u6d4goa3ru": {
   "text": "You're on step eleven of fifteen.",
-  "ms": 2424,
+  "ms": 1680,
   "heard": "You're on step 11 of 15.",
   "ok": true,
   "takes": 1
  },
  "1yb6dumaso4": {
   "text": "Grooves face inwards and down, ready for the bottom.",
-  "ms": 3586,
+  "ms": 2766,
   "heard": "Grooves face inwards and down, ready for the bottom.",
   "ok": true,
   "takes": 1
  },
  "t9c6tov5i1": {
   "text": "Slide in the drawer bottom.",
-  "ms": 1602,
+  "ms": 1317,
   "heard": "Slide in the drawer bottom.",
   "ok": true,
   "takes": 1
  },
  "2703t20yex4": {
   "text": "Smooth side up. It runs along the grooves until it stops.",
-  "ms": 4332,
-  "heard": "Smooth side up. It runs along the grooves until it stops.",
+  "ms": 3204,
+  "heard": "Smooth side up, it runs along the grooves until it stops.",
   "ok": true,
   "takes": 1
  },
  "1hdwo22yfog": {
   "text": "Screw on the drawer back.",
-  "ms": 1556,
+  "ms": 1211,
   "heard": "Screw on the drawer back.",
   "ok": true,
   "takes": 1
  },
  "x88jn69yef": {
   "text": "Step thirteen.",
-  "ms": 1217,
+  "ms": 939,
   "heard": "Step 13.",
   "ok": true,
   "takes": 1
  },
  "220442drxx6": {
   "text": "You're on step twelve of fifteen.",
-  "ms": 2406,
+  "ms": 1562,
   "heard": "You're on step 12 of 15.",
   "ok": true,
   "takes": 1
  },
  "1mn07ichw61": {
   "text": "You'll need four screws.",
-  "ms": 1705,
+  "ms": 1158,
   "heard": "You'll need four screws.",
   "ok": true,
   "takes": 1
  },
  "1vhm6du5wo7": {
   "text": "Step fourteen.",
-  "ms": 1205,
+  "ms": 960,
   "heard": "Step 14.",
   "ok": true,
   "takes": 1
  },
  "2fg8edmlydk": {
   "text": "You're on step thirteen of fifteen.",
-  "ms": 2514,
+  "ms": 1608,
   "heard": "You're on step 13 of 15.",
   "ok": true,
   "takes": 1
  },
  "1nrbukk9751": {
   "text": "Slide in all 3 drawers.",
-  "ms": 2326,
+  "ms": 1422,
   "heard": "Slide in all three drawers.",
   "ok": true,
   "takes": 1
  },
  "20g0w9leinh": {
   "text": "Check the bottom sits in the back's groove before you tighten.",
-  "ms": 3549,
+  "ms": 2738,
   "heard": "Check the bottom sits in the back's groove before you tighten.",
   "ok": true,
   "takes": 1
  },
  "19gqjchcmp": {
   "text": "You're on step fourteen of fifteen.",
-  "ms": 2483,
+  "ms": 1752,
   "heard": "You're on step 14 of 15.",
   "ok": true,
   "takes": 1
  },
  "hvddwr0l1h": {
   "text": "Rest the back on the runners, then push until it clicks closed.",
-  "ms": 4254,
+  "ms": 3244,
   "heard": "Rest the back on the runners, then push until it clicks closed.",
   "ok": true,
   "takes": 1
  },
  "ygz9qfw56q": {
   "text": "You're on step fifteen of fifteen.",
-  "ms": 2588,
+  "ms": 1660,
   "heard": "You're on step 15 of 15.",
   "ok": true,
   "takes": 1
  },
  "2ahokdduvtr": {
   "text": "And that's it. Your Malm is built. Well done.",
-  "ms": 3450,
+  "ms": 2311,
   "heard": "And that's it. Your mom is built. Well done.",
   "ok": true,
   "takes": 1
  },
  "x649fikc3i": {
   "text": "You're on step one of sixteen.",
-  "ms": 2349,
+  "ms": 1433,
   "heard": "You're on step one of 16.",
   "ok": true,
   "takes": 1
  },
  "1g8gfa6hfh1": {
   "text": "You're on step two of sixteen.",
-  "ms": 2306,
+  "ms": 1435,
   "heard": "You're on step two of 16.",
   "ok": true,
   "takes": 1
  },
  "nfhlh9q96s": {
   "text": "You're on step three of sixteen.",
-  "ms": 2439,
+  "ms": 1436,
   "heard": "You're on step three of 16.",
   "ok": true,
   "takes": 1
  },
  "1lsqyqzxeas": {
   "text": "Chests of drawers can tip over if they're not fixed. Wall screws aren't included: pick ones made for your wall.",
-  "ms": 7180,
+  "ms": 5983,
   "heard": "Chests of drawers can tip over if they're not fixed. Wall screws aren't included. Pick ones made for your wall.",
   "ok": true,
   "takes": 1
  },
  "16y32xv3i02": {
   "text": "Slide in the middle panel.",
-  "ms": 1665,
+  "ms": 1198,
   "heard": "Slide in the middle panel.",
   "ok": true,
   "takes": 1
  },
  "1fc0w7alqsh": {
   "text": "You'll need six drawer runners and four screws.",
-  "ms": 3117,
+  "ms": 2162,
   "heard": "You'll need six drawer runners and four screws.",
   "ok": true,
   "takes": 1
  },
  "5pjklrganc": {
   "text": "Its runners face both columns.",
-  "ms": 2092,
+  "ms": 1688,
   "heard": "Its runners face both columns.",
   "ok": true,
   "takes": 1
  },
  "6rquktbhfg": {
   "text": "You're on step four of sixteen.",
-  "ms": 2378,
+  "ms": 1435,
   "heard": "You're on step four of 16.",
   "ok": true,
   "takes": 1
  },
  "11zjru1tjqu": {
   "text": "You're on step five of sixteen.",
-  "ms": 2357,
+  "ms": 1505,
   "heard": "You're on step five of 16.",
   "ok": true,
   "takes": 1
  },
  "2bxvi4rrlh1": {
   "text": "You're on step seven of sixteen.",
-  "ms": 2432,
+  "ms": 1527,
   "heard": "You're on step seven of 16.",
   "ok": true,
   "takes": 1
  },
  "o5ye467fm0": {
   "text": "You're on step six of sixteen.",
-  "ms": 2437,
+  "ms": 1514,
   "heard": "You're on step six of 16.",
   "ok": true,
   "takes": 1
  },
  "21lf4k63ztq": {
   "text": "You're on step eight of sixteen.",
-  "ms": 2358,
-  "heard": "You're on step 8 of 16.",
+  "ms": 1382,
+  "heard": "You're on step eight of 16.",
   "ok": true,
   "takes": 1
  },
  "1h47e0jvokm": {
   "text": "You're on step nine of sixteen.",
-  "ms": 2429,
+  "ms": 1473,
   "heard": "You're on step nine of 16.",
   "ok": true,
   "takes": 1
  },
  "9ftkwrj848": {
   "text": "You're on step ten of sixteen.",
-  "ms": 2437,
+  "ms": 1463,
   "heard": "You're on step 10 of 16.",
   "ok": true,
   "takes": 1
  },
  "rb0d4j9ext": {
   "text": "You're on step twelve of sixteen.",
-  "ms": 2352,
+  "ms": 1558,
   "heard": "You're on step 12 of 16.",
   "ok": true,
   "takes": 1
  },
  "1l2aerhlfe": {
   "text": "You're on step eleven of sixteen.",
-  "ms": 2438,
+  "ms": 1710,
   "heard": "You're on step 11 of 16.",
   "ok": true,
   "takes": 1
  },
  "gxar9bghlh": {
   "text": "Do this for all six drawers. The counts are for one.",
-  "ms": 3857,
+  "ms": 2760,
   "heard": "Do this for all six drawers. The counts are for one.",
   "ok": true,
   "takes": 1
  },
  "1qn7esxgtm": {
   "text": "You're on step thirteen of sixteen.",
-  "ms": 2550,
+  "ms": 1629,
   "heard": "You're on step 13 of 16.",
   "ok": true,
   "takes": 1
  },
  "1bn9u8wq7xs": {
   "text": "You're on step fourteen of sixteen.",
-  "ms": 2435,
+  "ms": 1697,
   "heard": "You're on step 14 of 16.",
   "ok": true,
   "takes": 1
  },
  "ladopalfyb": {
   "text": "Step fifteen.",
-  "ms": 1225,
+  "ms": 920,
   "heard": "Step 15.",
   "ok": true,
   "takes": 1
  },
  "enoh0zo2kn": {
   "text": "You're on step fifteen of sixteen.",
-  "ms": 2549,
+  "ms": 1679,
   "heard": "You're on step 15 of 16.",
   "ok": true,
   "takes": 1
  },
  "274twnmki24": {
   "text": "You're on step sixteen of sixteen.",
-  "ms": 2598,
+  "ms": 1677,
   "heard": "You're on step 16 of 16.",
   "ok": true,
   "takes": 1
  },
  "1y9ajonerkd": {
   "text": "Slide in all 6 drawers.",
-  "ms": 2127,
+  "ms": 1401,
   "heard": "Slide in all six drawers.",
   "ok": true,
   "takes": 1
  },
  "25gkyfvinay": {
   "text": "Do this for all four drawers. The counts are for one.",
-  "ms": 3916,
+  "ms": 2738,
   "heard": "Do this for all four drawers. The counts are for one.",
   "ok": true,
   "takes": 1
  },
  "fn3ozqpzhg": {
   "text": "You'll need eight drawer runners and sixteen screws.",
-  "ms": 3422,
-  "heard": "You'll need 8 drawer runners and 16 screws.",
+  "ms": 2315,
+  "heard": "You'll need eight drawer runners and 16 screws.",
   "ok": true,
   "takes": 1
  },
  "1nnpi76dpgh": {
   "text": "You'll need four drawer runners and eight screws.",
-  "ms": 3062,
+  "ms": 2123,
   "heard": "You'll need four drawer runners and eight screws.",
   "ok": true,
   "takes": 1
  },
  "gf4rnzs54z": {
   "text": "Slide in all 4 drawers.",
-  "ms": 2168,
+  "ms": 1396,
   "heard": "Slide in all four drawers.",
   "ok": true,
   "takes": 1
  },
  "qb4fmvrtmm": {
   "text": "Do this for all two drawers. The counts are for one.",
-  "ms": 3800,
+  "ms": 2689,
   "heard": "Do this for all two drawers. The counts are for one.",
   "ok": true,
   "takes": 1
  },
  "1dw2b9jktsi": {
   "text": "Attach the side rails to the headboard.",
-  "ms": 2245,
+  "ms": 2034,
   "heard": "Attach the side rails to the headboard.",
   "ok": true,
   "takes": 1
  },
  "ri3ch32xgz": {
   "text": "You'll need four Allen bolts.",
-  "ms": 2065,
-  "heard": "You'll need four Allen bolts.",
+  "ms": 1388,
+  "heard": "you'll need four Allen bolts.",
   "ok": true,
   "takes": 1
  },
  "1o96or7ui0v": {
   "text": "Slide in all 2 drawers.",
-  "ms": 2180,
+  "ms": 1369,
   "heard": "Slide in all two drawers.",
   "ok": true,
   "takes": 1
  },
  "2bjd3ltl04a": {
   "text": "Grab the Allen key.",
-  "ms": 1311,
+  "ms": 1090,
   "heard": "Grab the Allen key.",
   "ok": true,
-  "takes": 1
+  "takes": 2
  },
  "1y8ih4fmolv": {
   "text": "One person holds, one bolts. Don't tighten fully yet.",
-  "ms": 4332,
+  "ms": 3267,
   "heard": "One person holds, one bolts. Don't tighten fully yet.",
   "ok": true,
   "takes": 1
  },
  "28pi8jn9q7e": {
   "text": "You're on step one of seven.",
-  "ms": 2039,
+  "ms": 1315,
   "heard": "You're on step one of seven.",
   "ok": true,
   "takes": 1
  },
  "204kihdie5a": {
   "text": "Attach the footboard.",
-  "ms": 1362,
+  "ms": 1084,
   "heard": "Attach the footboard.",
   "ok": true,
   "takes": 1
  },
  "1n80cqtehms": {
   "text": "Now tighten every bolt firmly.",
-  "ms": 2383,
+  "ms": 1590,
   "heard": "Now tighten every bolt firmly.",
   "ok": true,
   "takes": 1
  },
  "16b1lwpyoot": {
   "text": "Screw the slat supports to the rails.",
-  "ms": 2276,
+  "ms": 1818,
   "heard": "Screw the slat supports to the rails.",
   "ok": true,
   "takes": 1
  },
  "v37jzxh6ph": {
   "text": "Grab the screwdriver.",
-  "ms": 1306,
+  "ms": 1083,
   "heard": "Grab the screwdriver.",
   "ok": true,
   "takes": 1
  },
  "m0ph4rx2dy": {
   "text": "You'll need ten screws.",
-  "ms": 1621,
+  "ms": 1177,
   "heard": "You'll need 10 screws.",
   "ok": true,
   "takes": 1
  },
  "kimgtb0036": {
   "text": "You're on step two of seven.",
-  "ms": 2043,
+  "ms": 1344,
   "heard": "You're on step two of seven.",
   "ok": true,
   "takes": 1
  },
  "3pcho13w0q": {
   "text": "You're on step three of seven.",
-  "ms": 2120,
+  "ms": 1367,
   "heard": "You're on step three of seven.",
   "ok": true,
   "takes": 1
  },
  "1g07ndygsjm": {
   "text": "Keep them level with the bottom of the marks.",
-  "ms": 2465,
+  "ms": 2183,
   "heard": "Keep them level with the bottom of the marks.",
   "ok": true,
   "takes": 1
  },
  "2bfsl2zr1m2": {
   "text": "Screw the legs onto the center beam.",
-  "ms": 2355,
+  "ms": 1858,
   "heard": "Screw the legs onto the center beam.",
   "ok": true,
   "takes": 1
  },
  "1zr1keltzda": {
   "text": "You're on step four of seven.",
-  "ms": 2078,
+  "ms": 1365,
   "heard": "You're on step four of seven.",
   "ok": true,
   "takes": 1
  },
  "19n9wzx6mqb": {
   "text": "Turn them until they're firm.",
-  "ms": 1741,
+  "ms": 1320,
   "heard": "Turn them until they're firm.",
   "ok": true,
   "takes": 1
  },
  "aumthwfimw": {
   "text": "Hook the beam onto the head and foot.",
-  "ms": 2509,
+  "ms": 1690,
   "heard": "Hook the beam onto the head and foot.",
   "ok": true,
   "takes": 1
  },
  "a5lunb0wrg": {
   "text": "You're on step five of seven.",
-  "ms": 2115,
+  "ms": 1404,
   "heard": "You're on step five of seven.",
   "ok": true,
   "takes": 1
  },
  "17lba3ur6c": {
   "text": "Its feet should stand flat on the floor.",
-  "ms": 2552,
+  "ms": 1913,
   "heard": "Its feet should stand flat on the floor.",
   "ok": true,
   "takes": 1
  },
  "11yzipqcegi": {
   "text": "Curved side up, spread evenly from head to foot.",
-  "ms": 3716,
-  "heard": "Curved side up, spread evenly from head to foot.",
+  "ms": 2746,
+  "heard": "curved side up, spread evenly from head to foot.",
   "ok": true,
   "takes": 1
  },
  "1827xwru70u": {
   "text": "You're on step six of seven.",
-  "ms": 2114,
+  "ms": 1394,
   "heard": "You're on step six of seven.",
   "ok": true,
   "takes": 1
  },
  "9cfvuefev0": {
   "text": "Lay out the slats.",
-  "ms": 1340,
+  "ms": 1075,
   "heard": "Lay out the slats.",
   "ok": true,
   "takes": 1
  },
  "rt5ucw2j8f": {
   "text": "Add your mattress.",
-  "ms": 1181,
+  "ms": 926,
   "heard": "Add your mattress.",
   "ok": true,
   "takes": 1
  },
  "okb4hsxy1v": {
   "text": "Done. Check the bolts again after a week of use.",
-  "ms": 3501,
-  "heard": "Done. Check the bolts again after a week of use.",
+  "ms": 2513,
+  "heard": "Done, check the bolts again after a week of use.",
   "ok": true,
   "takes": 1
  },
  "py3iier5ev": {
   "text": "You're on step seven of seven.",
-  "ms": 2204,
+  "ms": 1409,
   "heard": "You're on step seven of seven.",
   "ok": true,
   "takes": 1
  },
  "gpimsm88t5": {
   "text": "You're on step two of seventeen.",
-  "ms": 2312,
+  "ms": 1525,
   "heard": "You're on step two of 17.",
   "ok": true,
   "takes": 1
  },
  "2eexotmde9s": {
   "text": "You're on step one of seventeen.",
-  "ms": 2442,
+  "ms": 1583,
   "heard": "You're on step one of 17.",
   "ok": true,
   "takes": 1
  },
  "2e5717h8k84": {
   "text": "You're on step three of seventeen.",
-  "ms": 2394,
+  "ms": 1621,
   "heard": "You're on step three of 17.",
   "ok": true,
   "takes": 1
  },
  "1hkjkdilzc8": {
   "text": "You're on step four of seventeen.",
-  "ms": 2371,
+  "ms": 1569,
   "heard": "You're on step four of 17.",
   "ok": true,
   "takes": 1
  },
  "2fas2fa07yu": {
   "text": "You're on step six of seventeen.",
-  "ms": 2302,
+  "ms": 1621,
   "heard": "You're on step six of 17.",
   "ok": true,
   "takes": 1
  },
  "59psu4o2cn": {
   "text": "You're on step seven of seventeen.",
-  "ms": 2441,
-  "heard": "You're on step 7 of 17.",
+  "ms": 1679,
+  "heard": "You're on step seven of 17.",
   "ok": true,
   "takes": 1
  },
  "cmnw7xwij5": {
   "text": "You're on step five of seventeen.",
-  "ms": 2357,
+  "ms": 1592,
   "heard": "You're on step five of 17.",
   "ok": true,
   "takes": 1
  },
  "cb3uz59kjp": {
   "text": "You're on step eight of seventeen.",
-  "ms": 2381,
-  "heard": "You're on step 8 of 17.",
+  "ms": 1558,
+  "heard": "You're on step eight of 17.",
   "ok": true,
   "takes": 1
  },
  "146ccr5yb85": {
   "text": "You're on step nine of seventeen.",
-  "ms": 2346,
+  "ms": 1578,
   "heard": "You're on step nine of 17.",
   "ok": true,
   "takes": 1
  },
  "1cxsgai8wnn": {
   "text": "You're on step ten of seventeen.",
-  "ms": 2355,
+  "ms": 1550,
   "heard": "You're on step 10 of 17.",
   "ok": true,
   "takes": 1
  },
  "1pzvv90qnho": {
   "text": "You're on step eleven of seventeen.",
-  "ms": 2512,
+  "ms": 1940,
   "heard": "You're on step 11 of 17.",
   "ok": true,
   "takes": 1
  },
  "2at4u8tmuu3": {
   "text": "You're on step twelve of seventeen.",
-  "ms": 2352,
+  "ms": 1664,
   "heard": "You're on step 12 of 17.",
   "ok": true,
   "takes": 1
  },
  "229r9chor0k": {
   "text": "You're on step thirteen of seventeen.",
-  "ms": 2577,
+  "ms": 1713,
   "heard": "You're on step 13 of 17.",
   "ok": true,
   "takes": 1
  },
  "23d012uyvj9": {
   "text": "You're on step fourteen of seventeen.",
-  "ms": 2541,
+  "ms": 1826,
   "heard": "You're on step 14 of 17.",
   "ok": true,
   "takes": 1
  },
  "12erskzdxo4": {
   "text": "Screw on the knobs.",
-  "ms": 1394,
+  "ms": 1017,
   "heard": "Screw on the knobs.",
   "ok": true,
   "takes": 1
  },
  "ppr1lgvvqi": {
   "text": "You're on step fifteen of seventeen.",
-  "ms": 2580,
+  "ms": 1744,
   "heard": "You're on step 15 of 17.",
   "ok": true,
   "takes": 1
  },
  "1rcf240ea0k": {
   "text": "You'll need three knobs.",
-  "ms": 1658,
+  "ms": 1087,
   "heard": "You'll need three knobs.",
   "ok": true,
   "takes": 1
  },
  "2coyzs5wa8k": {
   "text": "Step sixteen.",
-  "ms": 1225,
+  "ms": 984,
   "heard": "Step 16.",
   "ok": true,
   "takes": 1
  },
  "c51cp638v4": {
   "text": "You're on step sixteen of seventeen.",
-  "ms": 2550,
+  "ms": 1861,
   "heard": "You're on step 16 of 17.",
   "ok": true,
   "takes": 1
  },
  "1rcmhhp78ny": {
   "text": "Screw from inside the drawer. Snug is enough.",
-  "ms": 3456,
+  "ms": 2483,
   "heard": "Screw from inside the drawer. Snug is enough.",
   "ok": true,
   "takes": 1
  },
  "2cov0lwzuuw": {
   "text": "You're on step seventeen of seventeen.",
-  "ms": 2676,
+  "ms": 1895,
   "heard": "You're on step 17 of 17.",
   "ok": true,
   "takes": 1
  },
  "no5nreu7vt": {
   "text": "And that's it. Your Hemnes is built. Well done.",
-  "ms": 3688,
-  "heard": "And that's it. Your hemness is built. Well done.",
+  "ms": 2465,
+  "heard": "And that's it. Your hemis is built. Well done.",
   "ok": true,
   "takes": 1
  },
  "ksagswxt5": {
   "text": "And that's it. Your Rast is built. Well done.",
-  "ms": 3513,
-  "heard": "And that's it. Your RAST is built. Well done.",
+  "ms": 2416,
+  "heard": "And that's it, your RAST is built. Well done.",
   "ok": true,
   "takes": 1
  },
  "odq08qedl2": {
   "text": "You'll need ten drawer runners and twenty screws.",
-  "ms": 3176,
+  "ms": 2201,
   "heard": "You'll need 10 drawer runners and 20 screws.",
   "ok": true,
   "takes": 1
  },
  "gys1q7o3qj": {
   "text": "And that's it. Your Kullen is built. Well done.",
-  "ms": 3477,
-  "heard": "And that's it. Your coolant is built. Well done.",
+  "ms": 2390,
+  "heard": "And that's it, your cullen is built. Well done.",
   "ok": true,
   "takes": 1
  },
  "1mrfpp3mpwl": {
   "text": "Do this for all five drawers. The counts are for one.",
-  "ms": 3982,
+  "ms": 2861,
   "heard": "Do this for all five drawers. The counts are for one.",
   "ok": true,
   "takes": 1
  },
  "1w1r2y1l0gx": {
   "text": "And that's it. Your Alex is built. Well done.",
-  "ms": 3590,
-  "heard": "And that's it. Your Alex is built. Well done.",
+  "ms": 2466,
+  "heard": "And that's it, your Alex is built. Well done.",
   "ok": true,
   "takes": 1
  },
  "1gf4f92puqw": {
   "text": "Slide in all 5 drawers.",
-  "ms": 2185,
+  "ms": 1470,
   "heard": "Slide in all five drawers.",
   "ok": true,
   "takes": 1
  },
  "15l002ctfn2": {
   "text": "Lay the top upside down.",
-  "ms": 1819,
+  "ms": 1336,
   "heard": "Lay the top upside down.",
   "ok": true,
   "takes": 1
  },
  "mekqfu589u": {
   "text": "Screw a bolt into each leg.",
-  "ms": 2059,
+  "ms": 1456,
   "heard": "Screw a bolt into each leg.",
   "ok": true,
   "takes": 1
  },
  "35tq263qs6": {
   "text": "You're on step one of four.",
-  "ms": 1983,
+  "ms": 1259,
   "heard": "You're on step one of four.",
   "ok": true,
   "takes": 1
  },
  "w4fv1rn15p": {
   "text": "You'll need four leg bolts.",
-  "ms": 1941,
+  "ms": 1244,
   "heard": "You'll need four leg bolts.",
   "ok": true,
   "takes": 1
  },
  "14pa59bf8h9": {
   "text": "Turn them in by hand until only half is showing.",
-  "ms": 3202,
+  "ms": 2544,
   "heard": "Turn them in by hand until only half is showing.",
   "ok": true,
   "takes": 1
  },
  "1u89gybqqh9": {
   "text": "Put the flattened box under it so the surface stays scratch free.",
-  "ms": 3893,
+  "ms": 3226,
   "heard": "Put the flattened box under it so the surface stays scratch-free.",
   "ok": true,
   "takes": 1
  },
  "103fe5ey2vs": {
   "text": "You're on step two of four.",
-  "ms": 1994,
+  "ms": 1280,
   "heard": "You're on step two of four.",
   "ok": true,
   "takes": 1
  },
  "2e3e1dibvbh": {
   "text": "Screw in the legs.",
-  "ms": 1428,
+  "ms": 946,
   "heard": "Screw in the legs.",
   "ok": true,
   "takes": 1
  },
  "2dr5yq2olmr": {
   "text": "You're on step three of four.",
-  "ms": 2055,
+  "ms": 1314,
   "heard": "You're on step three of four.",
   "ok": true,
   "takes": 1
  },
  "evghye5hy9": {
   "text": "Turn each one clockwise by hand. Hand tight is enough.",
-  "ms": 4246,
+  "ms": 3180,
   "heard": "Turn each one clockwise by hand. Hand tight is enough.",
   "ok": true,
   "takes": 1
  },
  "22utc44c2bs": {
   "text": "Turn it over.",
-  "ms": 935,
+  "ms": 767,
   "heard": "Turn it over.",
   "ok": true,
   "takes": 1
  },
  "2f915efjnex": {
   "text": "Lift it by the top, not the legs.",
-  "ms": 2524,
+  "ms": 1733,
   "heard": "Lift it by the top, not the legs.",
   "ok": true,
   "takes": 1
  },
  "rprw1cjx7s": {
   "text": "You're on step four of four.",
-  "ms": 2143,
+  "ms": 1305,
   "heard": "You're on step four of four.",
   "ok": true,
   "takes": 1
  },
  "a01rjwymrq": {
   "text": "And that's it. Your Lack is built. Well done.",
-  "ms": 3521,
-  "heard": "And that's it. Your lack is built. Well done.",
+  "ms": 2290,
+  "heard": "And that's it, your lack is built. Well done.",
   "ok": true,
   "takes": 1
  },
  "16jeqbrkevb": {
   "text": "You're on step one of five.",
-  "ms": 2082,
+  "ms": 1267,
   "heard": "You're on step one of five.",
   "ok": true,
   "takes": 1
  },
  "18phpbrra8x": {
   "text": "You're on step two of five.",
-  "ms": 2072,
+  "ms": 1313,
   "heard": "You're on step two of five.",
   "ok": true,
   "takes": 1
  },
  "1u7k4u6gxhf": {
   "text": "You're on step three of five.",
-  "ms": 2174,
+  "ms": 1341,
   "heard": "You're on step three of five.",
   "ok": true,
   "takes": 1
  },
  "gl0vw8z6l4": {
   "text": "Fit the shelf between the legs.",
-  "ms": 1950,
+  "ms": 1449,
   "heard": "Fit the shelf between the legs.",
   "ok": true,
   "takes": 1
  },
  "d9d9j5lfyx": {
   "text": "Two screws through each leg.",
-  "ms": 1918,
+  "ms": 1374,
   "heard": "Two screws through each leg.",
   "ok": true,
   "takes": 1
  },
  "f7jq6vigqf": {
   "text": "You'll need eight screws.",
-  "ms": 1706,
+  "ms": 1053,
   "heard": "You'll need eight screws.",
   "ok": true,
   "takes": 1
  },
  "1wc16nbewbx": {
   "text": "Turn it over together.",
-  "ms": 1486,
+  "ms": 1114,
   "heard": "Turn it over together.",
   "ok": true,
   "takes": 1
  },
  "2a65r5pk6fa": {
   "text": "You're on step four of five.",
-  "ms": 2091,
+  "ms": 1310,
   "heard": "You're on step four of five.",
   "ok": true,
   "takes": 1
  },
  "1u4luwh8fw": {
   "text": "You're on step five of five.",
-  "ms": 2135,
+  "ms": 1354,
   "heard": "You're on step five of five.",
   "ok": true,
   "takes": 1
  },
  "1g5kgda64ns": {
   "text": "Screw a leg plate into each corner.",
-  "ms": 2398,
+  "ms": 1855,
   "heard": "Screw a leg plate into each corner.",
   "ok": true,
   "takes": 1
  },
  "3kmqqacaic": {
   "text": "You'll need four leg plates and sixteen screws.",
-  "ms": 3277,
+  "ms": 2268,
   "heard": "You'll need four leg plates and 16 screws.",
   "ok": true,
   "takes": 1
  },
  "20ifacy74sr": {
   "text": "Use the pre-drilled holes. Four screws per plate.",
-  "ms": 3566,
+  "ms": 2605,
   "heard": "Use the pre-drilled holes, four screws per plate.",
   "ok": true,
   "takes": 1
  },
  "1pnmpcz0b77": {
   "text": "Screw the rails under the top.",
-  "ms": 1981,
+  "ms": 1409,
   "heard": "Screw the rails under the top.",
   "ok": true,
   "takes": 1
  },
  "1zle61d02zr": {
   "text": "Bolt the legs into the corners.",
-  "ms": 2047,
+  "ms": 1669,
   "heard": "Bolt the legs into the corners.",
   "ok": true,
   "takes": 1
  },
  "24osexswy9a": {
   "text": "And that's it. Your Linnmon is built. Well done.",
-  "ms": 3695,
+  "ms": 2413,
   "heard": "And that's it. Your Linman is built. Well done.",
   "ok": true,
   "takes": 1
  },
  "60kifb0zme": {
   "text": "They frame the underside, set in from the edge.",
-  "ms": 3269,
+  "ms": 2433,
   "heard": "They frame the underside, set in from the edge.",
   "ok": true,
   "takes": 1
  },
  "1ficng5bie0": {
   "text": "You'll need eight Allen bolts.",
-  "ms": 1931,
+  "ms": 1340,
   "heard": "You'll need eight Allen bolts.",
   "ok": true,
   "takes": 1
  },
  "1kbtx2j3l4f": {
   "text": "Hand tight for now. Tighten them all once every leg is on.",
-  "ms": 3872,
+  "ms": 3249,
   "heard": "Hand tight for now. Tighten them all once every leg is on.",
   "ok": true,
   "takes": 1
  },
  "1xdor3cij15": {
   "text": "Fit the clothes rail.",
-  "ms": 1388,
+  "ms": 1035,
   "heard": "Fit the clothes rail.",
   "ok": true,
   "takes": 1
  },
  "1puqsvzy3zk": {
   "text": "You'll need four shelf pins.",
-  "ms": 1889,
+  "ms": 1381,
   "heard": "You'll need four shelf pins.",
   "ok": true,
   "takes": 1
  },
  "hbkpavniyf": {
   "text": "Add the shelf pins and the shelf.",
-  "ms": 2199,
+  "ms": 1602,
   "heard": "Add the shelf pins and the shelf.",
   "ok": true,
   "takes": 1
  },
  "zm4jo0h5us": {
   "text": "You'll need two screws.",
-  "ms": 1587,
+  "ms": 1121,
   "heard": "You'll need two screws.",
   "ok": true,
   "takes": 1
  },
  "26wabmp19by": {
   "text": "And that's it. Your Melltorp is built. Well done.",
-  "ms": 3759,
+  "ms": 2536,
   "heard": "And that's it. Your Meltorp is built. Well done.",
   "ok": true,
   "takes": 1
  },
  "26boreyr7cu": {
   "text": "Clip the holders on first, then drop the rail in.",
-  "ms": 3584,
+  "ms": 2553,
   "heard": "Clip the holders on first, then drop the rail in.",
   "ok": true,
   "takes": 1
  },
  "y5qk654f61": {
   "text": "You'll need eight hinges and sixteen screws.",
-  "ms": 3100,
-  "heard": "You'll need 8 hinges and 16 screws.",
+  "ms": 2116,
+  "heard": "You'll need eight hinges and 16 screws.",
   "ok": true,
   "takes": 1
  },
  "g7hpudsin5": {
   "text": "Press the hinges into the doors.",
-  "ms": 2098,
+  "ms": 1653,
   "heard": "Press the hinges into the doors.",
   "ok": true,
   "takes": 1
  },
  "ghaxmt4a4j": {
   "text": "Two small screws hold each one.",
-  "ms": 2483,
+  "ms": 1665,
   "heard": "Two small screws hold each one.",
   "ok": true,
   "takes": 1
  },
  "257g3d8pgni": {
   "text": "Hang the doors.",
-  "ms": 1360,
+  "ms": 835,
   "heard": "Hang the doors.",
   "ok": true,
   "takes": 1
  },
  "1yeq90w5bxe": {
   "text": "Slide each hinge arm onto its plate until it clicks.",
-  "ms": 3681,
+  "ms": 2812,
   "heard": "Slide each hinge arm onto its plate until it clicks.",
   "ok": true,
   "takes": 1
  },
  "civsch1415": {
   "text": "Line up the doors.",
-  "ms": 1252,
+  "ms": 974,
   "heard": "Line up the doors.",
   "ok": true,
   "takes": 1
  },
  "26z89qaq31h": {
   "text": "You'll need two knobs.",
-  "ms": 1430,
+  "ms": 1057,
   "heard": "You'll need two knobs.",
   "ok": true,
   "takes": 1
  },
  "vjsrj07da4": {
   "text": "Screw from the inside of the door.",
-  "ms": 2115,
+  "ms": 1617,
   "heard": "Screw from the inside of the door.",
   "ok": true,
   "takes": 1
  },
  "1742ff7klxq": {
   "text": "Turn the hinge screws a little until the gaps look even.",
-  "ms": 3308,
+  "ms": 2811,
   "heard": "Turn the hinge screws a little until the gaps look even.",
   "ok": true,
   "takes": 1
  },
  "lxmgaxmoq5": {
   "text": "And that's it. Your Brimnes is built. Well done.",
-  "ms": 3679,
-  "heard": "And that's it. Your Bremnes is built. Well done.",
+  "ms": 2434,
+  "heard": "And that's it, your Bremnes is built. Well done.",
   "ok": true,
   "takes": 1
  },
  "1yewe62dew": {
   "text": "You're on step one of twelve.",
-  "ms": 2199,
+  "ms": 1347,
   "heard": "You're on step one of 12.",
   "ok": true,
   "takes": 1
  },
  "7ulbwlvt75": {
   "text": "You're on step two of twelve.",
-  "ms": 2154,
+  "ms": 1341,
   "heard": "You're on step two of 12.",
   "ok": true,
   "takes": 1
  },
  "gpirlkxfbw": {
   "text": "You're on step three of twelve.",
-  "ms": 2227,
+  "ms": 1393,
   "heard": "You're on step three of 12.",
   "ok": true,
   "takes": 1
  },
  "uuleuff1m3": {
   "text": "You're on step five of twelve.",
-  "ms": 2219,
+  "ms": 1407,
   "heard": "You're on step five of 12.",
   "ok": true,
   "takes": 1
  },
  "28uukofqllh": {
   "text": "You're on step four of twelve.",
-  "ms": 2232,
+  "ms": 1347,
   "heard": "You're on step four of 12.",
   "ok": true,
   "takes": 1
  },
  "vdv8vkj946": {
   "text": "You're on step six of twelve.",
-  "ms": 2217,
+  "ms": 1406,
   "heard": "You're on step six of 12.",
   "ok": true,
   "takes": 1
  },
  "13mtw4nwwkc": {
   "text": "You're on step seven of twelve.",
-  "ms": 2222,
+  "ms": 1467,
   "heard": "You're on step 7 of 12.",
   "ok": true,
   "takes": 1
  },
  "1pzxtdr92ei": {
   "text": "You're on step eight of twelve.",
-  "ms": 2216,
+  "ms": 1318,
   "heard": "You're on step eight of 12.",
   "ok": true,
   "takes": 1
  },
  "1fe9863p2la": {
   "text": "You're on step ten of twelve.",
-  "ms": 2201,
+  "ms": 1386,
   "heard": "You're on step 10 of 12.",
   "ok": true,
   "takes": 1
  },
  "1g3ujv7dism": {
   "text": "You're on step nine of twelve.",
-  "ms": 2221,
+  "ms": 1318,
   "heard": "You're on step nine of 12.",
   "ok": true,
   "takes": 1
  },
  "jzrnid2wfx": {
   "text": "You're on step eleven of twelve.",
-  "ms": 2327,
+  "ms": 1595,
   "heard": "You're on step 11 of 12.",
   "ok": true,
   "takes": 1
  },
  "1sfj4tte9kb": {
   "text": "PAX must be fixed to the wall. Its frame is tall and narrow front to back.",
-  "ms": 5524,
-  "heard": "Pax must be fixed to the wall. Its frame is tall and narrow front to back.",
+  "ms": 3970,
+  "heard": "PAX must be fixed to the wall. Its frame is tall and narrow front to back.",
   "ok": true,
   "takes": 1
  },
  "g52d27scdw": {
   "text": "You're on step twelve of twelve.",
-  "ms": 2178,
+  "ms": 1456,
   "heard": "You're on step 12 of 12.",
   "ok": true,
   "takes": 1
  },
  "msjoslw97q": {
   "text": "Hang the door.",
-  "ms": 983,
+  "ms": 740,
   "heard": "Hang the door.",
   "ok": true,
   "takes": 1
  },
  "4ha5ueeu3g": {
   "text": "And that's it. Your Pax is built. Well done.",
-  "ms": 3376,
-  "heard": "And that's it. Your PAX is built. Well done.",
+  "ms": 2291,
+  "heard": "And that's it, your PAX is built. Well done.",
   "ok": true,
   "takes": 1
  },
  "lv1oecybh1": {
   "text": "Press the hinges into the door.",
-  "ms": 1926,
+  "ms": 1581,
   "heard": "Press the hinges into the door.",
   "ok": true,
   "takes": 1
  },
  "12sb0lwasgs": {
   "text": "You'll need two hinges and four screws.",
-  "ms": 2793,
+  "ms": 1900,
   "heard": "You'll need two hinges and four screws.",
   "ok": true,
   "takes": 1
  },
  "et78fnc65b": {
   "text": "Lay the seat upside down.",
-  "ms": 1842,
+  "ms": 1344,
   "heard": "Lay the seat upside down.",
   "ok": true,
   "takes": 1
  },
  "svj2v5u3dx": {
   "text": "And that's it. Your Eket is built. Well done.",
-  "ms": 3448,
-  "heard": "And that's it. Your ECCET is built. Well done.",
+  "ms": 2366,
+  "heard": "And that's it, your ECCIT is built. Well done.",
   "ok": true,
   "takes": 1
  },
  "1gd7aee5mdt": {
   "text": "Sit carefully the first time and check nothing wobbles.",
-  "ms": 3655,
+  "ms": 3012,
   "heard": "Sit carefully the first time and check nothing wobbles.",
   "ok": true,
   "takes": 1
  },
  "i82colfl6y": {
   "text": "On the flattened box, so it doesn't scratch.",
-  "ms": 2718,
+  "ms": 2109,
   "heard": "on the flattened box so it doesn't scratch.",
   "ok": true,
   "takes": 1
  },
  "1o0npevjv3": {
   "text": "By hand, until half of it is showing.",
-  "ms": 2700,
+  "ms": 2026,
   "heard": "by hand, until half of it is showing.",
   "ok": true,
   "takes": 1
  },
  "e6msygex3b": {
   "text": "Clockwise, by hand. Stop when each leg feels firm.",
-  "ms": 4531,
-  "heard": "Clockwise, by hand, stop when each leg feels firm.",
+  "ms": 2997,
+  "heard": "Clockwise by hand, stop when each leg feels firm.",
   "ok": true,
   "takes": 1
  },
  "2gme2navl34": {
   "text": "And that's it. Your Frosta is built. Well done.",
-  "ms": 3685,
-  "heard": "And that's it. Your Frosta is built. Well done.",
+  "ms": 2441,
+  "heard": "And that's it, your Froster is built. Well done.",
   "ok": true,
   "takes": 1
  },
  "q9cydkl6c5": {
   "text": "Join the backrest to the back legs.",
-  "ms": 2382,
+  "ms": 1760,
   "heard": "Join the backrest to the back legs.",
   "ok": true,
   "takes": 1
  },
  "p7ssm8vks5": {
   "text": "Fit the rails between the legs.",
-  "ms": 1957,
+  "ms": 1499,
   "heard": "Fit the rails between the legs.",
   "ok": true,
   "takes": 1
  },
  "27eztpvj3bv": {
   "text": "Don't tighten fully yet.",
-  "ms": 1603,
+  "ms": 1242,
   "heard": "Don't tighten fully yet.",
   "ok": true,
   "takes": 1
  },
  "1rtcps787vm": {
   "text": "Ease the legs apart a little to slot each one in.",
-  "ms": 3099,
+  "ms": 2532,
   "heard": "Ease the legs apart a little to slot each one in.",
   "ok": true,
   "takes": 1
  },
  "1hwdloi1tyr": {
   "text": "And that's it. Your Marius is built. Well done.",
-  "ms": 3700,
-  "heard": "And that's it. Your Marius is built. Well done.",
+  "ms": 2563,
+  "heard": "And that's it, your Marius is built. Well done.",
   "ok": true,
   "takes": 1
  },
  "1zc13oy03xk": {
   "text": "You're on step one of three.",
-  "ms": 2057,
+  "ms": 1262,
   "heard": "You're on step one of three.",
   "ok": true,
   "takes": 1
  },
  "nta10uhw4t": {
   "text": "Lay the seat in and screw it down.",
-  "ms": 2432,
+  "ms": 1489,
   "heard": "Lay the seat in and screw it down.",
   "ok": true,
   "takes": 1
  },
  "b3bdjf5jao": {
   "text": "You're on step two of three.",
-  "ms": 2028,
+  "ms": 1261,
   "heard": "You're on step two of three.",
   "ok": true,
   "takes": 1
  },
  "mh2tqdxmik": {
   "text": "Rails slot into the legs. Bolt them loosely.",
-  "ms": 3698,
+  "ms": 2590,
   "heard": "Rails slot into the legs. Bolt them loosely.",
   "ok": true,
   "takes": 1
  },
  "gce15uv9v3": {
   "text": "Add the front legs and rails.",
-  "ms": 2104,
+  "ms": 1512,
   "heard": "Add the front legs and rails.",
   "ok": true,
   "takes": 1
  },
  "1kiz6xs4jtj": {
   "text": "Then tighten every bolt firmly, and again after a week.",
-  "ms": 4282,
+  "ms": 3127,
   "heard": "Then tighten every bolt firmly, and again after a week.",
   "ok": true,
   "takes": 1
  },
  "106crh0de7j": {
   "text": "You're on step three of three.",
-  "ms": 2090,
+  "ms": 1282,
   "heard": "You're on step three of three.",
   "ok": true,
   "takes": 1
  },
  "e39dy6137a": {
   "text": "You'll need twelve wooden dowels and twelve cam bolts.",
-  "ms": 3606,
+  "ms": 2805,
   "heard": "You'll need 12 wooden dowels and 12 cam bolts.",
   "ok": true,
   "takes": 1
  },
  "uuatglxvqr": {
   "text": "And that's it. Your Ingolf is built. Well done.",
-  "ms": 3531,
-  "heard": "And that's it. Your Ingolf is built. Well done.",
+  "ms": 2539,
+  "heard": "And that's it, your engulf is built. Well done.",
   "ok": true,
   "takes": 1
  },
  "s0e79bz7ky": {
   "text": "You'll need twelve shelf pins.",
-  "ms": 1927,
+  "ms": 1424,
   "heard": "You'll need 12 shelf pins.",
   "ok": true,
   "takes": 1
  },
  "3kxsjp6bny": {
   "text": "And that's it. Your Ivar is built. Well done.",
-  "ms": 3609,
-  "heard": "And that's it. Your Ivar is built. Well done.",
+  "ms": 2435,
+  "heard": "And that's it, your IVAR is built. Well done.",
   "ok": true,
   "takes": 1
  },
  "13yx9xy3d6l": {
   "text": "And that's it. Your Finnby is built. Well done.",
-  "ms": 3516,
-  "heard": "And that's it. Your Finbi is built. Well done.",
+  "ms": 2339,
+  "heard": "And that's it, your Finbi is built. Well done.",
   "ok": true,
   "takes": 1
  },
  "t0xxyl6w1r": {
   "text": "And that's it. Your Gersby is built. Well done.",
-  "ms": 3610,
-  "heard": "And that's it. Your Gersbe is built. Well done.",
+  "ms": 2461,
+  "heard": "And that's it, your Gerspy is built. Well done.",
   "ok": true,
   "takes": 1
  },
  "1yhhuz0ubap": {
   "text": "And that's it. Your Laiva is built. Well done.",
-  "ms": 3666,
-  "heard": "And that's it. Your Liva is built. Well done.",
+  "ms": 2410,
+  "heard": "And that's it, your laver is built. Well done.",
   "ok": true,
   "takes": 1
  },
  "23cr54lb0fw": {
   "text": "And that's it. Your Idanäs is built. Well done.",
-  "ms": 3765,
-  "heard": "And that's it. Your idanas is built. Well done.",
+  "ms": 2587,
+  "heard": "And that's it, your IDENES is built. Well done.",
   "ok": true,
   "takes": 1
  },
  "7lphhy6a1x": {
   "text": "And that's it. Your Fjälkinge is built. Well done.",
-  "ms": 4011,
-  "heard": "And that's it. Your fjellkinge is built. Well done.",
+  "ms": 2737,
+  "heard": "And that's it, your F-Yelkinj is built. Well done.",
   "ok": true,
   "takes": 1
  },
  "m8he3fhqr": {
   "text": "And that's it. Your Baggebo is built. Well done.",
-  "ms": 3686,
-  "heard": "And that's it. Your Bagabo is built. Well done!",
+  "ms": 2487,
+  "heard": "And that's it, your Begibo is built. Well done.",
   "ok": true,
   "takes": 1
  },
  "29txoi3dgqt": {
   "text": "And that's it. Your Hauga is built. Well done.",
-  "ms": 3604,
-  "heard": "And that's it. Your Hoga is built. Well done.",
+  "ms": 2315,
+  "heard": "And that's it, your hogger is built. Well done.",
   "ok": true,
   "takes": 1
  },
  "5pw3ygb3oq": {
   "text": "And that's it. Your Hyllis is built. Well done.",
-  "ms": 3700,
-  "heard": "And that's it. Your Hillis is built. Well done.",
+  "ms": 2466,
+  "heard": "And that's it, your Hillys is built. Well done.",
   "ok": true,
   "takes": 1
  },
  "ar6gpmm5s3": {
   "text": "And that's it. Your Albert is built. Well done.",
-  "ms": 3693,
-  "heard": "And that's it. Your Albert is built. Well done.",
+  "ms": 2442,
+  "heard": "And that's it, your Albert is built. Well done.",
   "ok": true,
   "takes": 1
  },
  "1n3mkgnyj2n": {
   "text": "And that's it. Your Bror is built. Well done.",
-  "ms": 3623,
-  "heard": "And that's it. Your broar is built. Well done.",
+  "ms": 2265,
+  "heard": "And that's it, your broor is built. Well done.",
   "ok": true,
   "takes": 1
  },
  "kjtojg2eze": {
   "text": "And that's it. Your Omar is built. Well done.",
-  "ms": 3668,
-  "heard": "And that's it. Your OMAR is built. Well done.",
+  "ms": 2460,
+  "heard": "And that's it, your OMAR is built. Well done.",
   "ok": true,
   "takes": 1
  },
  "268nv5ft9do": {
   "text": "And that's it. Your Kolbjörn is built. Well done.",
-  "ms": 3861,
-  "heard": "And that's it. Your Kohlbjorn is built. Well done!",
+  "ms": 2491,
+  "heard": "And that's it. Your Colburn is built. Well done.",
   "ok": true,
   "takes": 1
  },
  "zw2aoa99hq": {
   "text": "You're on step one of eighteen.",
-  "ms": 2404,
+  "ms": 1381,
   "heard": "You're on step one of 18.",
   "ok": true,
   "takes": 1
  },
  "24br287dke6": {
   "text": "And that's it. Your Trofast is built. Well done.",
-  "ms": 3738,
-  "heard": "And that's it. Your TroFast is built. Well done.",
+  "ms": 2618,
+  "heard": "And that's it, your TraFest is built. Well done.",
   "ok": true,
   "takes": 1
  },
  "24gojac83o0": {
   "text": "You're on step two of eighteen.",
-  "ms": 2355,
+  "ms": 1360,
   "heard": "You're on step two of 18.",
   "ok": true,
   "takes": 1
  },
  "206qmp1wzkd": {
   "text": "And that's it. Your Vittsjö is built. Well done.",
-  "ms": 3920,
-  "heard": "And that's it. Your Vittsjö is built. Well done.",
+  "ms": 2466,
+  "heard": "And that's it, your vizier is built. Well done.",
   "ok": true,
   "takes": 1
  },
  "1q6xn95srht": {
   "text": "You'll need eight wooden dowels and four cam bolts.",
-  "ms": 3629,
+  "ms": 2478,
   "heard": "You'll need eight wooden dowels and four cam bolts.",
   "ok": true,
   "takes": 1
  },
  "4m8xaunshy": {
   "text": "You're on step four of eighteen.",
-  "ms": 2368,
+  "ms": 1359,
   "heard": "You're on step four of 18.",
   "ok": true,
   "takes": 1
  },
  "2fwltgc38ig": {
   "text": "You'll need eight wooden dowels.",
-  "ms": 2079,
+  "ms": 1398,
   "heard": "You'll need eight wooden dowels.",
   "ok": true,
   "takes": 1
  },
  "uif0e76lj9": {
   "text": "You'll need eight drawer runners and four screws.",
-  "ms": 3124,
-  "heard": "You'll need 8 drawer runners and 4 screws.",
+  "ms": 2049,
+  "heard": "You'll need eight drawer runners and four screws.",
   "ok": true,
   "takes": 1
  },
  "9inimwtmfk": {
   "text": "You're on step five of eighteen.",
-  "ms": 2345,
+  "ms": 1449,
   "heard": "You're on step five of 18.",
   "ok": true,
   "takes": 1
  },
  "2d7yommp5bv": {
   "text": "You're on step three of eighteen.",
-  "ms": 2358,
+  "ms": 1427,
   "heard": "You're on step three of 18.",
   "ok": true,
   "takes": 1
  },
  "295ymxzbsus": {
   "text": "You're on step six of eighteen.",
-  "ms": 2355,
+  "ms": 1410,
   "heard": "You're on step six of 18.",
   "ok": true,
   "takes": 1
  },
  "295tsax5f1z": {
   "text": "You're on step seven of eighteen.",
-  "ms": 2359,
+  "ms": 1494,
   "heard": "You're on step seven of 18.",
   "ok": true,
   "takes": 1
  },
  "14u2jbd6r2h": {
   "text": "You're on step eight of eighteen.",
-  "ms": 2535,
-  "heard": "You're on step 8 of 18.",
+  "ms": 1331,
+  "heard": "You're on step eight of 18.",
   "ok": true,
   "takes": 1
  },
  "1746azj1l2y": {
   "text": "You're on step eleven of eighteen.",
-  "ms": 2433,
+  "ms": 1624,
   "heard": "You're on step 11 of 18.",
   "ok": true,
   "takes": 1
  },
  "2eyfb7myfrm": {
   "text": "You're on step ten of eighteen.",
-  "ms": 2352,
+  "ms": 1384,
   "heard": "You're on step 10 of 18.",
   "ok": true,
   "takes": 1
  },
  "gg0cjghz0z": {
   "text": "You're on step nine of eighteen.",
-  "ms": 2349,
-  "heard": "You're on step 9 of 18.",
+  "ms": 1374,
+  "heard": "You're on step nine of 18.",
   "ok": true,
   "takes": 1
  },
  "2fwg7j6cj9y": {
   "text": "Do this for all eight drawers. The counts are for one.",
-  "ms": 3969,
+  "ms": 2746,
   "heard": "Do this for all eight drawers. The counts are for one.",
   "ok": true,
   "takes": 1
  },
  "jfck5vbwyw": {
   "text": "You're on step twelve of eighteen.",
-  "ms": 2350,
+  "ms": 1455,
   "heard": "You're on step 12 of 18.",
   "ok": true,
   "takes": 1
  },
  "9ysvm0wnzy": {
   "text": "You're on step fourteen of eighteen.",
-  "ms": 2503,
+  "ms": 1595,
   "heard": "You're on step 14 of 18.",
   "ok": true,
   "takes": 1
  },
  "qcbq8v4dhi": {
   "text": "You're on step thirteen of eighteen.",
-  "ms": 2550,
+  "ms": 1574,
   "heard": "You're on step 13 of 18.",
   "ok": true,
   "takes": 1
  },
  "1mnt94e3tlg": {
   "text": "Slide in all 8 drawers.",
-  "ms": 2164,
+  "ms": 1329,
   "heard": "Slide in all eight drawers.",
   "ok": true,
   "takes": 1
  },
  "22nuxk3uk7y": {
   "text": "You're on step fifteen of eighteen.",
-  "ms": 2522,
+  "ms": 1605,
   "heard": "You're on step 15 of 18.",
   "ok": true,
   "takes": 1
  },
  "1pbpx6qznub": {
   "text": "You're on step sixteen of eighteen.",
-  "ms": 2448,
+  "ms": 1576,
   "heard": "You're on step 16 of 18.",
   "ok": true,
   "takes": 1
  },
  "ty283rdkjd": {
   "text": "Step seventeen.",
-  "ms": 1503,
+  "ms": 1022,
   "heard": "Step 17.",
   "ok": true,
   "takes": 1
  },
  "1uq1urnsubh": {
   "text": "You'll need eight knobs.",
-  "ms": 1564,
+  "ms": 1004,
   "heard": "You'll need eight knobs.",
   "ok": true,
   "takes": 1
  },
  "24vk9c81ivl": {
   "text": "You'll need six knobs.",
-  "ms": 1721,
+  "ms": 1145,
   "heard": "You'll need six knobs.",
   "ok": true,
   "takes": 1
  },
  "qea9say48u": {
   "text": "You're on step seventeen of eighteen.",
-  "ms": 2593,
+  "ms": 1639,
   "heard": "You're on step 17 of 18.",
   "ok": true,
   "takes": 1
  },
  "1dplqwbyzf5": {
   "text": "You're on step eighteen of eighteen.",
-  "ms": 2549,
+  "ms": 1497,
   "heard": "You're on step 18 of 18.",
   "ok": true,
   "takes": 1
  },
  "spc6bappfl": {
   "text": "You'll need five knobs.",
-  "ms": 1768,
+  "ms": 1174,
   "heard": "You'll need five knobs.",
   "ok": true,
   "takes": 1
  },
  "zoesgwzc9e": {
   "text": "And that's it. Your Nordli is built. Well done.",
-  "ms": 3610,
-  "heard": "And that's it. Your Nordli is built. Well done.",
+  "ms": 2465,
+  "heard": "And that's it, your Nordli is built. Well done.",
   "ok": true,
   "takes": 1
  },
  "xhdf5i8nn1": {
   "text": "And that's it. Your Tarva is built. Well done.",
-  "ms": 3533,
-  "heard": "And that's it. Your Tarva is built. Well done.",
+  "ms": 2418,
+  "heard": "And that's it, your Tarver is built. Well done.",
   "ok": true,
   "takes": 1
  },
  "4y9ha9oxn0": {
   "text": "You'll need a knob.",
-  "ms": 1098,
+  "ms": 831,
   "heard": "You'll need a knob.",
   "ok": true,
   "takes": 1
  },
  "1ectlbhc5kf": {
   "text": "Screw on the handles.",
-  "ms": 1627,
+  "ms": 1133,
   "heard": "Screw on the handles.",
   "ok": true,
   "takes": 1
  },
  "1st446zy3y4": {
   "text": "You'll need two drawer runners and four screws.",
-  "ms": 3009,
+  "ms": 2071,
   "heard": "You'll need two drawer runners and four screws.",
   "ok": true,
   "takes": 1
  },
  "xqcfv5sdul": {
   "text": "You'll need three handles.",
-  "ms": 1702,
+  "ms": 1251,
   "heard": "You'll need three handles.",
   "ok": true,
   "takes": 1
  },
  "2cg8s3j1bsx": {
   "text": "And that's it. Your Koppang is built. Well done.",
-  "ms": 3597,
-  "heard": "And that's it. Your kokbang is built. Well done.",
+  "ms": 2411,
+  "heard": "And that's it, your copping is built. Well done.",
   "ok": true,
   "takes": 1
  },
  "1tuhb4e1uwq": {
   "text": "You'll need six handles.",
-  "ms": 1827,
+  "ms": 1228,
   "heard": "You'll need six handles.",
   "ok": true,
   "takes": 1
  },
  "o6zzyltfi2": {
   "text": "You'll need four knobs.",
-  "ms": 1680,
+  "ms": 1084,
   "heard": "You'll need four knobs.",
   "ok": true,
   "takes": 1
  },
  "1dfrue8oogg": {
   "text": "And that's it. Your Songesand is built. Well done.",
-  "ms": 3940,
-  "heard": "And that's it. Your Saint-José is built. Well done.",
+  "ms": 2763,
+  "heard": "And that's it, your Sanja sand is built. Well done.",
   "ok": true,
   "takes": 1
  },
  "35r5ypndo4": {
   "text": "Slide in the drawer.",
-  "ms": 1546,
+  "ms": 938,
   "heard": "Slide in the drawer.",
   "ok": true,
   "takes": 1
  },
  "195u78jvw94": {
   "text": "And that's it. Your Gursken is built. Well done.",
-  "ms": 3692,
-  "heard": "And that's it. Your Gerskin is built. Well done.",
+  "ms": 2465,
+  "heard": "And that's it, your Gerskin is built. Well done.",
   "ok": true,
   "takes": 1
  },
  "m0flfhsqjo": {
   "text": "And that's it. Your Vihals is built. Well done.",
-  "ms": 3767,
-  "heard": "And that's it. Your V-Hauls is built. Well done.",
+  "ms": 2491,
+  "heard": "And that's it, your Vihels is built. Well done.",
   "ok": true,
   "takes": 1
  },
  "3jhrziodfa": {
   "text": "You'll need twelve drawer runners and twenty-four screws.",
-  "ms": 3581,
+  "ms": 2679,
   "heard": "You'll need 12 drawer runners and 24 screws.",
   "ok": true,
   "takes": 1
  },
  "q019v16ihy": {
   "text": "And that's it. Your Nesna is built. Well done.",
-  "ms": 3604,
-  "heard": "And that's it. Your Nesna is built. Well done.",
+  "ms": 2389,
+  "heard": "And that's it, your Nestna is built. Well done.",
   "ok": true,
   "takes": 1
  },
  "1jf7fq4u0nl": {
   "text": "And that's it. Your Helmer is built. Well done.",
-  "ms": 3526,
+  "ms": 2440,
   "heard": "And that's it. Your Helmer is built. Well done.",
   "ok": true,
   "takes": 1
  },
  "21sczjocjm1": {
   "text": "And that's it. Your Micke is built. Well done.",
-  "ms": 3530,
-  "heard": "And that's it. Your Mike is built. Well done.",
+  "ms": 2243,
+  "heard": "And that's it, your mic is built. Well done.",
   "ok": true,
   "takes": 1
  },
  "2buyem1gf9t": {
   "text": "And that's it. Your Lagkapten is built. Well done.",
-  "ms": 3914,
-  "heard": "And that's it. Your Lug Cup then is built. Well done.",
+  "ms": 2568,
+  "heard": "And that's it, your lag kipn is built. Well done.",
   "ok": true,
   "takes": 1
  },
  "1920ohiyqw8": {
   "text": "And that's it. Your Bekant is built. Well done.",
-  "ms": 3610,
-  "heard": "And that's it. Your Bacant is built. Well done.",
+  "ms": 2493,
+  "heard": "And that's it, your BeCan is built. Well done.",
   "ok": true,
   "takes": 1
  },
  "4mbkcuwfmc": {
   "text": "And that's it. Your Idåsen is built. Well done.",
-  "ms": 4011,
-  "heard": "And that's it. Your e-Dosen is built. Well done.",
+  "ms": 2661,
+  "heard": "And that's it, your iDaysen is built. Well done.",
   "ok": true,
   "takes": 1
  },
  "dh5q4q4m8": {
   "text": "And that's it. Your Lisabo is built. Well done.",
-  "ms": 3694,
-  "heard": "And that's it. Your LisaBow is built. Well done.",
+  "ms": 2561,
+  "heard": "And that's it, your LeSabo is built. Well done.",
   "ok": true,
   "takes": 1
  },
  "2cxu5iyjouv": {
   "text": "And that's it. Your Trotten is built. Well done.",
-  "ms": 3618,
-  "heard": "And that's it. Your trotten is built. Well done.",
+  "ms": 2394,
+  "heard": "And that's it, your Tron is built. Well done.",
   "ok": true,
   "takes": 1
  },
  "2end0pkab9": {
   "text": "And that's it. Your Ekedalen is built. Well done.",
-  "ms": 4009,
-  "heard": "And that's it. Your ekedalen is built. Well done.",
+  "ms": 2658,
+  "heard": "And that's it. Your echidnal is built. Well done.",
   "ok": true,
   "takes": 1
  },
  "2ey6rvu3cal": {
   "text": "And that's it. Your Ingo is built. Well done.",
-  "ms": 3621,
-  "heard": "And that's it. Your Ingo is built. Well done.",
+  "ms": 2433,
+  "heard": "And that's it, your Ingo is built. Well done.",
   "ok": true,
   "takes": 1
  },
  "o9z4s3j1a4": {
   "text": "And that's it. Your Mörbylånga is built. Well done.",
-  "ms": 4176,
-  "heard": "And that's it. Your mörbylånga is built. Well done!",
+  "ms": 2759,
+  "heard": "And that's it, your Merbalanga is built. Well done.",
   "ok": true,
   "takes": 1
  },
  "r4h65rpnod": {
   "text": "And that's it. Your Vangsta is built. Well done.",
-  "ms": 3773,
-  "heard": "And that's it. Your Vanksta is built. Well done.",
+  "ms": 2514,
+  "heard": "And that's it, your Vangstu is built. Well done.",
   "ok": true,
   "takes": 1
  },
  "1xsksg67abt": {
   "text": "And that's it. Your Norråker is built. Well done.",
-  "ms": 3910,
-  "heard": "And that's it. Your Norroker is built. Well done.",
+  "ms": 2510,
+  "heard": "And that's it, your Noracre is built. Well done.",
   "ok": true,
   "takes": 1
  },
  "2baedhvpnfg": {
   "text": "And that's it. Your Skogsta is built. Well done.",
-  "ms": 3704,
-  "heard": "And that's it. Your Skogsta is built. Well done.",
+  "ms": 2536,
+  "heard": "And that's it, your Skogsta is built. Well done.",
   "ok": true,
   "takes": 1
  },
  "5khwhkdbqs": {
   "text": "And that's it. Your Lerhamn is built. Well done.",
-  "ms": 3908,
-  "heard": "And that's it. Your Lerham is built. Well done.",
+  "ms": 2485,
+  "heard": "And that's it, your Lurham is built. Well done.",
   "ok": true,
   "takes": 1
  },
  "1pxxremvw2h": {
   "text": "And that's it. Your Sandsberg is built. Well done.",
-  "ms": 3771,
+  "ms": 2689,
   "heard": "And that's it. Your Sandsburg is built. Well done.",
   "ok": true,
   "takes": 1
  },
  "nlfflv4k0l": {
   "text": "And that's it. Your Ingatorp is built. Well done.",
-  "ms": 3859,
-  "heard": "And that's it. Your ingatorp is built. Well done.",
+  "ms": 2539,
+  "heard": "And that's it, your EngateUp is built. Well done.",
   "ok": true,
   "takes": 1
  },
  "1t61zitw1nx": {
   "text": "And that's it. Your Tommaryd is built. Well done.",
-  "ms": 3775,
-  "heard": "And that's it. Your tomarid is built. Well done.",
+  "ms": 2539,
+  "heard": "And that's it, your Tomerit is built. Well done.",
   "ok": true,
   "takes": 1
  },
  "1052rnjtjlm": {
   "text": "And that's it. Your Listerby is built. Well done.",
-  "ms": 3677,
-  "heard": "And that's it. Your Listerby is built. Well done.",
+  "ms": 2517,
+  "heard": "And that's it, your Listerby is built. Well done.",
   "ok": true,
   "takes": 1
  },
  "1kqvo42ktrm": {
   "text": "And that's it. Your Holmerud is built. Well done.",
-  "ms": 3761,
-  "heard": "And that's it. Your Holmerud is built. Well done!",
+  "ms": 2463,
+  "heard": "And that's it, your HomeRed is built. Well done.",
   "ok": true,
   "takes": 1
  },
  "2dtr3da9ta4": {
   "text": "And that's it. Your Neiden is built. Well done.",
-  "ms": 3535,
-  "heard": "And that's it. Your Niden is built. Well done.",
+  "ms": 2416,
+  "heard": "And that's it, your Neaton is built. Well done.",
   "ok": true,
   "takes": 1
  },
  "1rm6imvg7sc": {
   "text": "And that's it. Your Klimpen is built. Well done.",
-  "ms": 3598,
-  "heard": "And that's it. Your Klimpen is built. Well done.",
+  "ms": 2441,
+  "heard": "And that's it, your Klimpen is built. Well done.",
   "ok": true,
   "takes": 1
  },
  "1gqx2spzmfw": {
   "text": "And that's it. Your Slattum is built. Well done.",
-  "ms": 3618,
-  "heard": "And that's it. Your slatum is built. Well done.",
+  "ms": 2411,
+  "heard": "And that's it, your slatum is built. Well done.",
   "ok": true,
   "takes": 1
  },
  "el7d8okuvv": {
   "text": "And that's it. Your Kritter is built. Well done.",
-  "ms": 3637,
-  "heard": "And that's it. Your critter is built. Well done.",
+  "ms": 2368,
+  "heard": "And that's it, your critter is built. Well done.",
   "ok": true,
   "takes": 1
  },
  "gw1yynudma": {
   "text": "And that's it. Your Sagstua is built. Well done.",
-  "ms": 3852,
-  "heard": "And that's it. Your sagstua is built. Well done.",
+  "ms": 2587,
+  "heard": "And that's it, your sagstua is built. Well done.",
   "ok": true,
   "takes": 1
  },
  "1wz1ah2xrg3": {
   "text": "And that's it. Your Sundvik is built. Well done.",
-  "ms": 3689,
-  "heard": "And that's it. Your Sundvik is built. Well done.",
+  "ms": 2516,
+  "heard": "And that's it. Your Sunvic is built. Well done.",
   "ok": true,
   "takes": 1
  },
  "9dy4kmvklo": {
   "text": "And that's it. Your Kleppstad is built. Well done.",
-  "ms": 3796,
-  "heard": "And that's it. Your Klepstad is built. Well done.",
+  "ms": 2567,
+  "heard": "And that's it, your Klepstead is built. Well done.",
   "ok": true,
   "takes": 1
  },
  "1mxinhc71l3": {
   "text": "And that's it. Your Visthus is built. Well done.",
-  "ms": 3683,
-  "heard": "And that's it. Your vistus is built. Well done.",
+  "ms": 2493,
+  "heard": "And that's it, your vistus is built. Well done.",
   "ok": true,
   "takes": 1
  },
  "162eplfc449": {
   "text": "And that's it. Your Rakkestad is built. Well done.",
-  "ms": 3915,
-  "heard": "And that's it. Your Rakkestad is built. Well done.",
+  "ms": 2685,
+  "heard": "And that's it, your Rakistat is built. Well done.",
   "ok": true,
   "takes": 1
  },
  "2b0wxp2hpb": {
   "text": "And that's it. Your Dombås is built. Well done.",
-  "ms": 3910,
-  "heard": "And that's it. Your Dumb Boss is built. Well done.",
+  "ms": 2510,
+  "heard": "And that's it, your Dambas is built. Well done.",
   "ok": true,
   "takes": 1
  },
  "2ebemmgo6k2": {
   "text": "You'll need six hinges and twelve screws.",
-  "ms": 2896,
-  "heard": "You'll need 6 hinges and 12 screws.",
+  "ms": 1966,
+  "heard": "You'll need six hinges and 12 screws.",
   "ok": true,
   "takes": 1
  },
  "15n0le3epme": {
   "text": "And that's it. Your Havsta is built. Well done.",
-  "ms": 3684,
-  "heard": "And that's it. Your Hofsta is built. Well done.",
+  "ms": 2491,
+  "heard": "And that's it, your Hairstyle is built. Well done.",
   "ok": true,
   "takes": 1
  },
  "q1vmcr5451": {
   "text": "You'll need four hinges and eight screws.",
-  "ms": 2752,
+  "ms": 1827,
   "heard": "You'll need four hinges and eight screws.",
   "ok": true,
   "takes": 1
  },
  "evdouy6uxw": {
   "text": "And that's it. Your Fabrikör is built. Well done.",
-  "ms": 3817,
-  "heard": "And that's it. Your fabricor is built. Well done.",
+  "ms": 2586,
+  "heard": "And that's it, your Fabriker is built. Well done.",
   "ok": true,
   "takes": 1
  },
  "1do0rbxlte5": {
   "text": "And that's it. Your Detolf is built. Well done.",
-  "ms": 3617,
-  "heard": "And that's it! Your DTOLF is built! Well done!",
+  "ms": 2516,
+  "heard": "And that's it, your detolf is built. Well done.",
   "ok": true,
   "takes": 1
  },
  "29r8e7cffyo": {
   "text": "You're on step three of fourteen.",
-  "ms": 2407,
+  "ms": 1504,
   "heard": "You're on step three of 14.",
   "ok": true,
   "takes": 1
  },
  "2ciu9ea98b0": {
   "text": "And that's it. Your Milsbo is built. Well done.",
-  "ms": 3861,
-  "heard": "And that's it. Your Millspo is built. Well done.",
+  "ms": 2516,
+  "heard": "And that's it, your Millspo is built. Well done.",
   "ok": true,
   "takes": 1
  },
  "u4yw97qh7p": {
   "text": "And that's it. Your Rudsta is built. Well done.",
-  "ms": 3689,
-  "heard": "And that's it. Your Rootsta is built. Well done.",
+  "ms": 2511,
+  "heard": "And that's it, your Rudster is built. Well done.",
   "ok": true,
   "takes": 1
  },
  "1hidxgukucm": {
   "text": "You're on step four of fourteen.",
-  "ms": 2357,
+  "ms": 1480,
   "heard": "You're on step four of 14.",
   "ok": true,
   "takes": 1
  },
  "18qagp2radc": {
   "text": "You're on step two of fourteen.",
-  "ms": 2274,
+  "ms": 1504,
   "heard": "You're on step two of 14.",
   "ok": true,
   "takes": 1
  },
  "1zasyegl1px": {
   "text": "You're on step one of fourteen.",
-  "ms": 2529,
+  "ms": 1433,
   "heard": "You're on step one of 14.",
   "ok": true,
   "takes": 1
  },
  "1x3304yc3qm": {
   "text": "You're on step eight of fourteen.",
-  "ms": 2344,
-  "heard": "You're on step 8 of 14.",
+  "ms": 1421,
+  "heard": "You're on step eight of 14.",
   "ok": true,
   "takes": 1
  },
  "5sm1fto52l": {
   "text": "You're on step seven of fourteen.",
-  "ms": 2354,
-  "heard": "You're on step 7 of 14.",
+  "ms": 1592,
+  "heard": "You're on step seven of 14.",
   "ok": true,
   "takes": 1
  },
  "rir65jfwgc": {
   "text": "You're on step six of fourteen.",
-  "ms": 2355,
+  "ms": 1508,
   "heard": "You're on step six of 14.",
   "ok": true,
   "takes": 1
  },
  "16x8d25yjh5": {
   "text": "You're on step nine of fourteen.",
-  "ms": 2362,
+  "ms": 1517,
   "heard": "You're on step nine of 14.",
   "ok": true,
   "takes": 1
  },
  "1jkf72cy3ti": {
   "text": "You're on step ten of fourteen.",
-  "ms": 2529,
+  "ms": 1482,
   "heard": "You're on step 10 of 14.",
   "ok": true,
   "takes": 1
  },
  "28ma0jmhmeo": {
   "text": "You're on step five of fourteen.",
-  "ms": 2361,
+  "ms": 1548,
   "heard": "You're on step five of 14.",
   "ok": true,
   "takes": 1
  },
  "qypayrg0hz": {
   "text": "You're on step thirteen of fourteen.",
-  "ms": 2543,
+  "ms": 1650,
   "heard": "You're on step 13 of 14.",
   "ok": true,
   "takes": 1
  },
  "6hmh64qedq": {
   "text": "You're on step twelve of fourteen.",
-  "ms": 2347,
+  "ms": 1577,
   "heard": "You're on step 12 of 14.",
   "ok": true,
   "takes": 1
  },
  "1ty145mjcu9": {
   "text": "You'll need three hinges and six screws.",
-  "ms": 2816,
+  "ms": 1900,
   "heard": "You'll need three hinges and six screws.",
   "ok": true,
   "takes": 1
  },
  "1a6bjszk83y": {
   "text": "And that's it. Your Bestå is built. Well done.",
-  "ms": 3942,
-  "heard": "And that's it. Your bestore is built. Well done.",
+  "ms": 2438,
+  "heard": "And that's it, your bestow is built. Well done.",
   "ok": true,
   "takes": 1
  },
  "2cdz5x7n1ak": {
   "text": "You're on step eleven of fourteen.",
-  "ms": 2438,
+  "ms": 1696,
   "heard": "You're on step 11 of 14.",
   "ok": true,
   "takes": 1
  },
  "12fbtgp8xft": {
   "text": "You're on step fourteen of fourteen.",
-  "ms": 2467,
+  "ms": 1695,
   "heard": "You're on step 14 of 14.",
   "ok": true,
   "takes": 1
  },
  "14giat14yrv": {
   "text": "And that's it. Your Tonstad is built. Well done.",
-  "ms": 3747,
-  "heard": "And that's it. Your Tonstad is built. Well done.",
+  "ms": 2589,
+  "heard": "And that's it, your Tonstad is built. Well done.",
   "ok": true,
   "takes": 1
  },
  "etjrg97uk": {
   "text": "Fit the hinges to the fronts.",
-  "ms": 1845,
+  "ms": 1359,
   "heard": "Fit the hinges to the fronts.",
   "ok": true,
   "takes": 1
  },
  "hhbwf5c8ta": {
   "text": "You'll need two handles.",
-  "ms": 1566,
+  "ms": 1165,
   "heard": "You'll need two handles.",
   "ok": true,
   "takes": 1
  },
  "1kghwbrh7d5": {
   "text": "Hang the fronts, bottom first.",
-  "ms": 2246,
-  "heard": "Hang the fronts, bottom first.",
+  "ms": 1562,
+  "heard": "Hang the front's bottom first.",
   "ok": true,
   "takes": 1
  },
  "21qmc7988hw": {
   "text": "You'll need four hinges.",
-  "ms": 1734,
+  "ms": 1147,
   "heard": "You'll need four hinges.",
   "ok": true,
   "takes": 1
  },
  "1r7lmkbz979": {
   "text": "They go on the inside, along the bottom edge.",
-  "ms": 3047,
+  "ms": 2481,
   "heard": "They go on the inside, along the bottom edge.",
   "ok": true,
   "takes": 1
  },
  "26ys4eqw56d": {
   "text": "Near the top edge, so the fronts tip open easily.",
-  "ms": 3784,
-  "heard": "near the top edge so the fronts tip open easily.",
+  "ms": 2730,
+  "heard": "near the top edge so the front's tip open easily.",
   "ok": true,
   "takes": 1
  },
  "23zjf3jy0ru": {
   "text": "You'll need sixteen wooden dowels and sixteen cam bolts.",
-  "ms": 3996,
+  "ms": 3091,
   "heard": "You'll need 16 wooden dowels and 16 cam bolts.",
   "ok": true,
   "takes": 1
  },
  "1bjp55ivbkk": {
   "text": "Each one tips open from the top. Check it swings freely before the next.",
-  "ms": 5566,
-  "heard": "Each one tips open from the top. Check. It swings freely before the next.",
+  "ms": 4047,
+  "heard": "Each one tips open from the top. Check it swings freely before the next.",
   "ok": true,
   "takes": 1
  },
  "hiwdt2kvm5": {
   "text": "And that's it. Your Bissa is built. Well done.",
-  "ms": 3603,
-  "heard": "And that's it. Your visa is built. Well done.",
+  "ms": 2364,
+  "heard": "And that's it, your BISA is built. Well done.",
   "ok": true,
   "takes": 1
  },
  "nmb61szmf2": {
   "text": "You'll need sixteen cam locks.",
-  "ms": 2288,
+  "ms": 1559,
   "heard": "You'll need 16 cam locks.",
   "ok": true,
   "takes": 1
  },
  "1paeo3dknzz": {
   "text": "Shoe cabinets are shallow and tip forward easily. Always fix it to the wall. Wall screws aren't included.",
-  "ms": 7485,
+  "ms": 6016,
   "heard": "Shoe cabinets are shallow and tip forward easily. Always fix it to the wall. Wall screws aren't included.",
   "ok": true,
   "takes": 1
  },
  "14l1bpw68e1": {
   "text": "You'll need six hinges.",
-  "ms": 1760,
+  "ms": 1240,
   "heard": "You'll need six hinges.",
   "ok": true,
   "takes": 1
  },
  "6lwkroq8dl": {
   "text": "Hang the front.",
-  "ms": 1009,
+  "ms": 838,
   "heard": "Hang the front.",
   "ok": true,
   "takes": 1
  },
  "1i7uyyegixz": {
   "text": "And that's it. Your Ställ is built. Well done.",
-  "ms": 3863,
-  "heard": "And that's it. Your stall is built. Well done.",
+  "ms": 2344,
+  "heard": "And that's it, your Stell is built. Well done.",
   "ok": true,
   "takes": 1
  },
  "fdmic6brk0": {
   "text": "You'll need two hinges.",
-  "ms": 1621,
+  "ms": 1132,
   "heard": "You'll need two hinges.",
   "ok": true,
   "takes": 1
  },
  "dmt79pfey2": {
   "text": "Fit the hinges to the front.",
-  "ms": 1757,
+  "ms": 1342,
   "heard": "Fit the hinges to the front.",
   "ok": true,
   "takes": 1
  },
  "5loe9wfymn": {
   "text": "And that's it. Your Trones is built. Well done.",
-  "ms": 3679,
-  "heard": "And that's it. Your Trones is built. Well done.",
+  "ms": 2364,
+  "heard": "And that's it, your Trons is built. Well done.",
   "ok": true,
   "takes": 1
  },
  "228btnhodg5": {
   "text": "And that's it. Your Brusali is built. Well done.",
-  "ms": 3774,
-  "heard": "And that's it. Your Broussali is built. Well done.",
+  "ms": 2611,
+  "heard": "And that's it, your brusale is built. Well done.",
   "ok": true,
   "takes": 1
  },
  "74fclosyec": {
   "text": "And that's it. Your Mackapär is built. Well done.",
-  "ms": 3832,
-  "heard": "And that's it! Your makapar is built. Well done!",
+  "ms": 2610,
+  "heard": "And that's it. Your MacApair is built. Well done.",
   "ok": true,
   "takes": 1
  },
  "1j5bhctlsog": {
   "text": "Lay the seat frame upside down.",
-  "ms": 2132,
+  "ms": 1591,
   "heard": "Lay the seat frame upside down.",
   "ok": true,
   "takes": 1
  },
  "1u63rua0x1j": {
   "text": "Clockwise by hand until each one is snug.",
-  "ms": 3113,
+  "ms": 2328,
   "heard": "clockwise by hand until each one is snug.",
   "ok": true,
   "takes": 1
  },
  "kyfc8h4nxz": {
   "text": "Put a blanket or the flattened box under it first.",
-  "ms": 3345,
+  "ms": 2480,
   "heard": "Put a blanket or the flattened box under it first.",
   "ok": true,
   "takes": 1
  },
  "1qw0d4ovnzf": {
   "text": "Bolt on the armrests.",
-  "ms": 1731,
+  "ms": 1165,
   "heard": "Bolt on the armrests.",
   "ok": true,
   "takes": 1
  },
  "24lj3722dng": {
   "text": "Line up the holes, then bolt loosely. Tighten once both arms are on.",
-  "ms": 5003,
+  "ms": 3835,
   "heard": "Line up the holes, then bolt loosely. Tighten once both arms are on.",
   "ok": true,
   "takes": 1
  },
  "ikuriyayt2": {
   "text": "Attach the backrest.",
-  "ms": 1408,
+  "ms": 1128,
   "heard": "Attach the backrest.",
   "ok": true,
   "takes": 1
  },
  "8tk9rbhfy9": {
   "text": "You'll need two Allen bolts.",
-  "ms": 1891,
-  "heard": "You'll need two Allen bolts.",
+  "ms": 1383,
+  "heard": "you'll need two Allen bolts.",
   "ok": true,
   "takes": 1
  },
  "l7afy0ypgn": {
   "text": "Drop in the seat cushion.",
-  "ms": 1438,
+  "ms": 1221,
   "heard": "Drop in the seat cushion.",
   "ok": true,
   "takes": 1
  },
  "129lo1kmf7q": {
   "text": "Slide it down behind the seat, then bolt it from the back.",
-  "ms": 3724,
+  "ms": 3008,
   "heard": "Slide it down behind the seat, then bolt it from the back.",
   "ok": true,
   "takes": 1
  },
  "22vms0ibxm2": {
   "text": "Lift it by the frame, never by the legs.",
-  "ms": 2977,
+  "ms": 2258,
   "heard": "Lift it by the frame, never by the legs.",
   "ok": true,
-  "takes": 2
+  "takes": 1
  },
  "1ed8lq2yr44": {
   "text": "Add the back cushion.",
-  "ms": 1422,
+  "ms": 1090,
   "heard": "Add the back cushion.",
   "ok": true,
   "takes": 1
  },
  "1uzq5mfqjkp": {
   "text": "And that's it. Your Poäng is built. Well done.",
-  "ms": 3439,
-  "heard": "And that's it. Your pooing is built. Well done.",
+  "ms": 2290,
+  "heard": "And that's it, your pieing is built. Well done.",
   "ok": true,
   "takes": 1
  },
  "yg38ya4a69": {
   "text": "And that's it. Your Strandmon is built. Well done.",
-  "ms": 3693,
-  "heard": "And that's it. Your Strandmon is built. Well done.",
+  "ms": 2615,
+  "heard": "And that's it, your Stranman is built. Well done.",
   "ok": true,
   "takes": 1
  },
  "xwn9rd07n6": {
   "text": "And that's it. Your Ekerö is built. Well done.",
-  "ms": 3695,
-  "heard": "And that's it. Your ekkerø is built. Well done!",
+  "ms": 2535,
+  "heard": "And that's it. Your Echorer is built. Well done.",
   "ok": true,
   "takes": 1
  },
  "27xzs7xnk0v": {
   "text": "Plump them up and lean them against the backrest.",
-  "ms": 2853,
+  "ms": 2267,
   "heard": "Plump them up and lean them against the backrest.",
   "ok": true,
   "takes": 1
  },
  "v7z9x6y47z": {
   "text": "Zips face the back.",
-  "ms": 1478,
+  "ms": 1141,
   "heard": "Zips face the back.",
   "ok": true,
   "takes": 1
  },
  "qa127xyopd": {
   "text": "You'll need three Allen bolts.",
-  "ms": 1926,
+  "ms": 1440,
   "heard": "You'll need three Allen bolts.",
   "ok": true,
   "takes": 1
  },
  "m9njveaip7": {
   "text": "Add the back cushions.",
-  "ms": 1571,
+  "ms": 1128,
   "heard": "Add the back cushions.",
   "ok": true,
   "takes": 1
  },
  "24gor7lo1nr": {
   "text": "And that's it. Your Kivik is built. Well done.",
-  "ms": 3614,
-  "heard": "And that's it. Your Kivik is built. Well done.",
+  "ms": 2344,
+  "heard": "And that's it, your Kivik is built. Well done.",
   "ok": true,
   "takes": 1
  },
  "122wpml80xx": {
   "text": "And that's it. Your Klippan is built. Well done.",
-  "ms": 3522,
-  "heard": "And that's it. Your clip-in is built. Well done.",
+  "ms": 2389,
+  "heard": "And that's it, your clip-in is built. Well done.",
   "ok": true,
   "takes": 1
  },
  "kva23stsjo": {
   "text": "And that's it. Your Ektorp is built. Well done.",
-  "ms": 3672,
-  "heard": "And that's it. Your ektorp is built. Well done!",
+  "ms": 2465,
+  "heard": "And that's it, your ectorp is built. Well done.",
   "ok": true,
   "takes": 1
  },
  "thn4rxxbw1": {
   "text": "And that's it. Your Friheten is built. Well done.",
-  "ms": 4064,
-  "heard": "And that's it. Your friheten is built. Well done.",
+  "ms": 2443,
+  "heard": "And that's it, your FriHit'n is built. Well done.",
   "ok": true,
   "takes": 1
  },
  "1alqcgxqx0l": {
   "text": "And that's it. Your Söderhamn is built. Well done.",
-  "ms": 3923,
-  "heard": "And that's it. Your Söderhamn is built. Well done!",
+  "ms": 2616,
+  "heard": "And that's it, your Surtr ham is built. Well done.",
   "ok": true,
   "takes": 1
  },
  "gk0h9bcbae": {
   "text": "And that's it. Your Vimle is built. Well done.",
-  "ms": 3469,
-  "heard": "And that's it. Your Vimal is built. Well done.",
+  "ms": 2314,
+  "heard": "And that's it, your Vimal is built. Well done.",
   "ok": true,
   "takes": 1
  },
  "295z3k7guvr": {
   "text": "And that's it. Your Glostad is built. Well done.",
-  "ms": 3862,
-  "heard": "And that's it. Your Glostad is built. Well done.",
+  "ms": 2512,
+  "heard": "And that's it, your Gloucester is built. Well done.",
   "ok": true,
   "takes": 1
  },
  "p7rpd4o08i": {
   "text": "And that's it. Your Landskrona is built. Well done.",
-  "ms": 3933,
-  "heard": "And that's it. Your Landskrona is built. Well done!",
+  "ms": 2657,
+  "heard": "And that's it, your Landskrona is built. Well done.",
   "ok": true,
   "takes": 1
  },
  "22kfy2w2h7y": {
   "text": "And that's it. Your Uppland is built. Well done.",
-  "ms": 3685,
-  "heard": "And that's it. Your upland is built. Well done.",
+  "ms": 2491,
+  "heard": "And that's it, your upland is built. Well done.",
   "ok": true,
   "takes": 1
  },
  "19e8o8uwlgf": {
   "text": "And that's it. Your Stefan is built. Well done.",
-  "ms": 3690,
-  "heard": "And that's it. Your Stefan is built. Well done.",
+  "ms": 2416,
+  "heard": "And that's it, your Stefan is built. Well done.",
   "ok": true,
   "takes": 1
  },
  "q80gfrfa0c": {
   "text": "Drop in the seat cushions.",
-  "ms": 1591,
+  "ms": 1310,
   "heard": "Drop in the seat cushions.",
   "ok": true,
   "takes": 1
  },
  "1d8uu8bw7ir": {
   "text": "And that's it. Your Hemlingby is built. Well done.",
-  "ms": 3833,
-  "heard": "And that's it. Your Hemlingbee is built. Well done.",
+  "ms": 2613,
+  "heard": "And that's it, your Hemlingbee is built. Well done.",
   "ok": true,
   "takes": 1
  },
  "nqtuz1vu4p": {
   "text": "And that's it. Your Teodores is built. Well done.",
-  "ms": 3775,
-  "heard": "And that's it. Your Teodores is built. Well done.",
+  "ms": 2610,
+  "heard": "And that's it, your Teodoriz is built. Well done.",
   "ok": true,
   "takes": 1
  },
  "rwzbm64qmz": {
   "text": "And that's it. Your Adde is built. Well done.",
-  "ms": 3427,
-  "heard": "And that's it. Your Addy is built. Well done.",
+  "ms": 2265,
+  "heard": "And that's it, your ad is built. Well done.",
   "ok": true,
   "takes": 1
  },
  "s5pnflh7ql": {
   "text": "And that's it. Your Odger is built. Well done.",
-  "ms": 3518,
-  "heard": "And that's it. Your Odger is built. Well done.",
+  "ms": 2391,
+  "heard": "And that's it, your Audra is built. Well done.",
   "ok": true,
   "takes": 1
  },
  "25m7g7vc2q9": {
   "text": "And that's it. Your Janinge is built. Well done.",
-  "ms": 3665,
-  "heard": "And that's it. Your Zhenning is built. Well done.",
+  "ms": 2511,
+  "heard": "And that's it, your JANNage is built. Well done.",
   "ok": true,
   "takes": 1
  },
  "1am8if01xrm": {
   "text": "And that's it. Your Terje is built. Well done.",
-  "ms": 3668,
-  "heard": "And that's it. Your terrier is built. Well done.",
+  "ms": 2419,
+  "heard": "And that's it. Your turj is built. Well done.",
   "ok": true,
   "takes": 1
  },
  "26ycwypvvpj": {
   "text": "And that's it. Your Bergmund is built. Well done.",
-  "ms": 3688,
-  "heard": "And that's it. Your Beardmund is built. Well done!",
+  "ms": 2587,
+  "heard": "And that's it, your Bergmund is built. Well done.",
   "ok": true,
   "takes": 1
  },
  "bqcuit7r9o": {
   "text": "And that's it. Your Stig is built. Well done.",
-  "ms": 3512,
-  "heard": "And that's it. Your Stig is built. Well done.",
+  "ms": 2269,
+  "heard": "And that's it, your Stig is built. Well done.",
   "ok": true,
   "takes": 1
  },
  "bnqkt5inlw": {
   "text": "And that's it. Your Dalfred is built. Well done.",
-  "ms": 3688,
-  "heard": "And that's it. Your Dalfred is built. Well done.",
+  "ms": 2539,
+  "heard": "And that's it, your Dalfred is built. Well done.",
   "ok": true,
   "takes": 1
  },
  "27ki8i91o9t": {
   "text": "And that's it. Your Kyrre is built. Well done.",
-  "ms": 3602,
-  "heard": "And that's it. Your Kira is built. Well done.",
+  "ms": 2267,
+  "heard": "And that's it, your cure is built. Well done.",
   "ok": true,
   "takes": 1
  },
  "2ew8s7sf43n": {
   "text": "And that's it. Your Bekväm is built. Well done.",
-  "ms": 3838,
-  "heard": "And that's it. Your Bekvam is built. Well done.",
+  "ms": 2441,
+  "heard": "And that's it, your Beckfim is built. Well done.",
   "ok": true,
   "takes": 1
  },
  "ajox3wvyuc": {
   "text": "Tap the dowels into one side.",
-  "ms": 2075,
+  "ms": 1617,
   "heard": "Tap the dowels into one side.",
   "ok": true,
   "takes": 1
  },
  "2pc2wzmo8i": {
   "text": "Grab the hammer.",
-  "ms": 1051,
+  "ms": 846,
   "heard": "Grab the hammer.",
   "ok": true,
   "takes": 1
  },
  "py57vxu532": {
   "text": "Lay the side flat with the holes facing up.",
-  "ms": 2939,
+  "ms": 2132,
   "heard": "Lay the side flat with the holes facing up.",
   "ok": true,
   "takes": 1
  },
  "2cjqv2xwmlj": {
   "text": "You're on step one of ten.",
-  "ms": 2072,
-  "heard": "You're on step one of ten.",
+  "ms": 1260,
+  "heard": "You're on step one of 10.",
   "ok": true,
   "takes": 1
  },
  "22kwrv8rfne": {
   "text": "Fit the top, shelf and bottom.",
-  "ms": 2685,
+  "ms": 1525,
   "heard": "Fit the top, shelf, and bottom.",
   "ok": true,
   "takes": 1
  },
  "6fmd4b7oey": {
   "text": "You're on step two of ten.",
-  "ms": 2022,
+  "ms": 1262,
   "heard": "You're on step two of 10.",
   "ok": true,
   "takes": 1
  },
  "gcj83buulg": {
   "text": "You'll need six cam bolts.",
-  "ms": 1995,
+  "ms": 1414,
   "heard": "You'll need six cam bolts.",
   "ok": true,
   "takes": 1
  },
  "1mfeft7e2fx": {
   "text": "Press each panel onto the dowels. The holes face the side.",
-  "ms": 4240,
+  "ms": 3167,
   "heard": "Press each panel onto the dowels. The holes face the side.",
   "ok": true,
   "takes": 1
  },
  "r7sz3l9qaz": {
   "text": "You'll need six cam locks.",
-  "ms": 1991,
+  "ms": 1373,
   "heard": "You'll need six cam locks.",
   "ok": true,
   "takes": 1
  },
  "28yc0zg9vai": {
   "text": "Arrow towards the bolt, then turn clockwise until it bites.",
-  "ms": 3976,
+  "ms": 3200,
   "heard": "Arrow towards the bolt, then turn clockwise until it bites.",
   "ok": true,
   "takes": 1
  },
  "1pyckmz8k4a": {
   "text": "It sits in the middle of the bottom shelf.",
-  "ms": 2587,
+  "ms": 1882,
   "heard": "It sits in the middle of the bottom shelf.",
   "ok": true,
   "takes": 1
  },
  "17s8bbp5mbe": {
   "text": "Screw in the record divider.",
-  "ms": 1852,
+  "ms": 1449,
   "heard": "Screw in the record divider.",
   "ok": true,
   "takes": 1
  },
  "1oo9xcxggnj": {
   "text": "You're on step three of ten.",
-  "ms": 2098,
+  "ms": 1260,
   "heard": "You're on step three of 10.",
   "ok": true,
   "takes": 1
  },
  "1n38ewbedgv": {
   "text": "You're on step four of ten.",
-  "ms": 2022,
-  "heard": "You're on step four of ten.",
+  "ms": 1263,
+  "heard": "You're on step four of 10.",
   "ok": true,
   "takes": 1
  },
  "1ca9lazojsx": {
   "text": "Lock the other cams.",
-  "ms": 1387,
+  "ms": 1081,
   "heard": "Lock the other cams.",
   "ok": true,
   "takes": 1
  },
  "fy2xg0d3j9": {
   "text": "You're on step six of ten.",
-  "ms": 2017,
+  "ms": 1313,
   "heard": "You're on step six of 10.",
   "ok": true,
   "takes": 1
  },
  "ln8ail3fcr": {
   "text": "You'll need six wooden dowels and six cam bolts.",
-  "ms": 3582,
+  "ms": 2715,
   "heard": "You'll need six wooden dowels and six cam bolts.",
   "ok": true,
   "takes": 1
  },
  "qqmrrkhcfr": {
   "text": "You're on step five of ten.",
-  "ms": 2024,
+  "ms": 1282,
   "heard": "You're on step five of 10.",
   "ok": true,
   "takes": 1
  },
  "1s3wyca5b8m": {
   "text": "And that's it. Your Äpplarö is built. Well done.",
-  "ms": 4171,
-  "heard": "And that's it. Your apple-a-roe is built. Well done.",
-  "ok": false,
-  "takes": 3
+  "ms": 2537,
+  "heard": "And that's it, your Eplerer is built. Well done.",
+  "ok": true,
+  "takes": 2
  },
  "15uxbfujyly": {
   "text": "Screw on the back rail.",
-  "ms": 1678,
+  "ms": 1179,
   "heard": "Screw on the back rail.",
   "ok": true,
   "takes": 1
  },
  "12blmoj8llu": {
   "text": "You're on step eight of ten.",
-  "ms": 2042,
-  "heard": "You're on step 8 of 10.",
+  "ms": 1210,
+  "heard": "You're on step eight of 10.",
   "ok": true,
   "takes": 1
  },
  "28v93f03ehd": {
   "text": "You're on step seven of ten.",
-  "ms": 2024,
+  "ms": 1365,
   "heard": "You're on step seven of 10.",
   "ok": true,
   "takes": 1
  },
  "13gkhf6v31a": {
   "text": "It keeps the stand from wobbling.",
-  "ms": 1945,
+  "ms": 1563,
   "heard": "It keeps the stand from wobbling.",
   "ok": true,
   "takes": 1
  },
  "1dbqalx8l52": {
   "text": "Lift from the top and set it down on all four corners.",
-  "ms": 3826,
+  "ms": 3054,
   "heard": "Lift from the top and set it down on all four corners.",
   "ok": true,
   "takes": 1
  },
  "qxxvgrhtp9": {
   "text": "Stick on the felt pads.",
-  "ms": 1664,
+  "ms": 1194,
   "heard": "Stick on the felt pads.",
   "ok": true,
   "takes": 1
  },
  "2osugws40y": {
   "text": "You're on step nine of ten.",
-  "ms": 2021,
+  "ms": 1255,
   "heard": "You're on step nine of 10.",
   "ok": true,
   "takes": 1
  },
  "jbyzrbenxu": {
   "text": "You'll need four felt pads.",
-  "ms": 2032,
+  "ms": 1322,
   "heard": "You'll need four felt pads.",
   "ok": true,
   "takes": 1
  },
  "p98zcxuqs6": {
   "text": "You're on step ten of ten.",
-  "ms": 2117,
+  "ms": 1309,
   "heard": "You're on step 10 of 10.",
   "ok": true,
   "takes": 1

@@ -2,13 +2,14 @@
  * Pre-records every line the hands-free voice can say for the offline catalog.
  *
  *   npm run voice -- --dry      list what would be recorded and the cost
- *   npm run voice               record missing clips (needs FAL_KEY and TOGETHER_API_KEY)
+ *   npm run voice               record missing clips (needs TOGETHER_API_KEY)
  *   npm run voice -- --only 10  record just the first few, to check the sound
  *   npm run voice -- --recheck  re-run the transcript check on the log, no recording
  *
- * Clips are named by clipId(text), so only new or changed lines are recorded.
- * Each clip is loudness-matched, trimmed, then transcribed with Whisper on
- * Together and re-recorded if it doesn't say what the script says.
+ * The voice is TTS in src/lib/voice/tts.ts, on Together AI. Clips are named by
+ * clipId(text), so only new or changed lines are recorded. Each clip is
+ * loudness-matched, trimmed, then transcribed with Whisper on Together and
+ * re-recorded if it doesn't say what the script says.
  */
 import { execFileSync } from "node:child_process";
 import { existsSync, mkdirSync, readFileSync, rmSync, writeFileSync } from "node:fs";
@@ -21,14 +22,13 @@ import { specForKind } from "@/lib/search";
 import { SAMPLE_SCAN } from "@/lib/scan/sample";
 import type { Plan } from "@/lib/types";
 import { LINES, VOICE_DIR, builtLine, clipId, numWords, stepLines, whereLine } from "@/lib/voice/script";
+import { TTS, speak } from "@/lib/voice/tts";
 
 const ROOT = path.resolve(import.meta.dirname, "../..");
 const OUT = path.join(ROOT, "public", VOICE_DIR);
 const LOG = path.join(import.meta.dirname, "clips.json");
-const MODEL = "elevenlabs/tts/eleven-v4";
-const VOICE = "Matilda";
-const USD_PER_1K = 0.08;
-// no delivery tags: on short lines they push her into a whisper
+const USD_PER_1K = TTS.usdPer1K;
+// nothing added to the text: delivery tags on short lines push a voice into a whisper
 const DIRECTION = "";
 
 const args = process.argv.slice(2);
@@ -67,17 +67,8 @@ const env = (k: string) => {
   return v;
 };
 
-async function render(text: string, seed: number): Promise<Buffer> {
-  const r = await fetch(`https://fal.run/${MODEL}`, {
-    method: "POST",
-    headers: { Authorization: `Key ${env("FAL_KEY")}`, "Content-Type": "application/json" },
-    body: JSON.stringify({ text: DIRECTION + text, voice: VOICE, stability: 0.5, output_format: "mp3_44100_192", seed }),
-  });
-  const body = await r.text();
-  if (!r.ok) throw new Error(`fal ${r.status}: ${body.slice(0, 200)}`);
-  const url = JSON.parse(body).audio?.url;
-  if (!url) throw new Error("fal: no audio url");
-  return Buffer.from(await (await fetch(url)).arrayBuffer());
+async function render(text: string): Promise<Buffer> {
+  return Buffer.from(await speak(DIRECTION + text, env("TOGETHER_API_KEY")));
 }
 
 /** Trim silence, fade the edges, match loudness (two passes), mono 64 kbps mp3. */
@@ -178,7 +169,7 @@ async function main() {
     for (let take = 1; take <= 3; take++) {
       const raw = path.join(tmp, `${c.id}-${take}.mp3`);
       const fin = path.join(tmp, `${c.id}-${take}-fin.mp3`);
-      writeFileSync(raw, await render(c.text, 1000 + take));
+      writeFileSync(raw, await render(c.text));
       spent += ((c.text.length + DIRECTION.length) / 1000) * USD_PER_1K;
       const ms = finish(raw, fin);
       const heard = await transcribe(fin);
@@ -215,7 +206,7 @@ async function main() {
   // keep only clips the current script still uses
   const ids = Object.fromEntries(all.filter((c) => log[c.id]).map((c) => [c.id, log[c.id].ms]));
   writeFileSync(LOG, JSON.stringify(Object.fromEntries(Object.entries(log).filter(([id]) => id in ids)), null, 1));
-  writeFileSync(path.join(OUT, "manifest.json"), JSON.stringify({ voice: `${VOICE} (Eleven v4)`, clips: ids }));
+  writeFileSync(path.join(OUT, "manifest.json"), JSON.stringify({ voice: `${TTS.name} (${TTS.label})`, clips: ids }));
   rmSync(tmp, { recursive: true, force: true });
   const flagged = Object.values(log).filter((e) => !e.ok).length;
   console.log(`done: ${Object.keys(ids).length} clips, ${flagged} to listen to, $${spent.toFixed(2)} spent`);

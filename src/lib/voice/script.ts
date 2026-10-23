@@ -1,5 +1,6 @@
 import type { HwKind, Plan, ToolId } from "../types";
 import { stepContents, tipFor } from "../plan/contents";
+import { TTS } from "./tts";
 
 /**
  * What the hands-free voice says. Every line is one clip: the recorder renders
@@ -7,8 +8,8 @@ import { stepContents, tipFor } from "../plan/contents";
  * and self-contained so they can be reused across products.
  */
 
-/** Pre-recorded clips live under this folder, named by clipId(). */
-export const VOICE_DIR = "/voice/matilda";
+/** Pre-recorded clips live under this folder, named by clipId(): one folder per voice. */
+export const VOICE_DIR = `/voice/${TTS.name.toLowerCase()}`;
 
 export const LINES = {
   on: "Voice is on. I'll read each step out loud. When you're done, just say next.",
