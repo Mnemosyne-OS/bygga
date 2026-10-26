@@ -523,6 +523,7 @@ KLEPPSTAD|sliding|Wardrobe with sliding doors, 117 × 55 × 176 cm|117|176|55|sl
 KLEPPSTAD|wardrobe|Wardrobe with 3 doors, 117 × 55 × 176 cm|117|176|55|doors=2
 KLIPPUGGLA|bed|Bed frame with storage, 90 × 200 cm|106|100|209|m=90
 KNARREVIK|nightstand|Bedside table, 37 × 28 × 45 cm|37|45|28|rows=1
+KNOXHULT|cornercab|Corner base cabinet, 100 × 91 cm|100|91|61|shelves=1,blind=50
 KNOXHULT|kitchen|High cabinet with door, 60 × 31 × 153 cm|60|153|31|doors=1
 KNOXHULT|kitchen|High cabinet with doors, 60 × 31 × 228 cm|60|228|31
 KNOXHULT|wallcab|Wall cabinet with door, 40 × 75 cm|40|75|35|doors=1
@@ -680,6 +681,17 @@ METOD|appliance|High cab f fridge/freezer w 3 doors, 60 × 60 × 240 cm|60|240|6
 METOD|appliance|High cab for fridge with 3 doors, 60 × 60 × 240 cm|60|240|60|use=fridge,z=d1+d1+d1@60
 METOD|appliance|Wall cb f extr hood w shlf/door, 80 × 80 cm|80|80|37|use=hood,z=d1s1,hung=1
 METOD|appliance|Wall cb f extr hood w shlf/door, 80 × 100 cm|80|100|37|use=hood,z=d1s1,hung=1
+METOD|cornercab|Corner wall cab w carousel/glass dr, 68 × 60 cm|68|60|68|hung=1,inner=carousel
+METOD|cornercab|Corner wall cab w shelves/glass dr, 68 × 80 cm|68|80|68|shelves=2,hung=1
+METOD|cornercab|Corner wall cabinet with shelves, 68 × 80 cm|68|80|68|shelves=2,hung=1
+METOD|cornercab|Corner wall cabinet, 68 × 37 × 80 cm|68|80|68|doors=0,sd=37,hung=1
+METOD|cornercab|Corner wall cabinet with carousel, 68 × 100 cm|68|100|68|hung=1,inner=carousel
+METOD|cornercab|Corner base cabinet with carousel, 88 × 88 cm|88|80|88|inner=carousel
+METOD|cornercab|Corner base cabinet with shelf, 88 × 88 cm|88|80|88|shelves=1
+METOD|cornercab|Corner base cabinet, 88 × 60 × 80 cm|88|80|88|doors=0,sd=60
+METOD|cornercab|Corner base cabinet, 128 × 60 × 80 cm|128|80|60|doors=0,blind=60
+METOD|cornercab|Corner base cab w pull-out fitting, 128 × 68 cm|128|80|68|blind=60,inner=pullout
+METOD|cornercab|Corner base cabinet with shelf, 128 × 68 cm|128|80|68|shelves=1,blind=60
 METOD|kitchen|High cabinet with shelves, 40 × 37 × 200 cm|40|200|37|doors=0
 METOD|kitchen|Base cabinet with shelves, 60 × 60 cm|60|80|60|doors=0
 METOD|kitchen|Base cabinet, 60 × 60 × 80 cm|60|80|60|doors=0
@@ -726,6 +738,8 @@ METOD / KNIVSHULT|appliance|High cab f oven w door/3 drawers, 60 × 60 × 220 cm
 METOD / KNIVSHULT|appliance|High cabinet f built-in appliances, 60 × 60 × 220 cm|60|220|60|use=appliance,z=r2@80+g@60+d1||metod-knivshult-high-cabinet-f-built-in-applianc-3
 METOD / KNIVSHULT|appliance|High cabinet f built-in appliances, 60 × 60 × 240 cm|60|240|60|use=appliance,z=r2@80+g@60+d1||metod-knivshult-high-cabinet-f-built-in-applianc-4
 METOD / KNIVSHULT|appliance|High cabinet f oven+door/2 drawers, 60 × 60 × 240 cm|60|240|60|use=oven,z=r2@80+g@60+d1
+METOD / KNIVSHULT|cornercab|Corner base cab w drawer and p-out, 128 × 68 cm|128|80|68|rows=1,blind=60,inner=pullout
+METOD / KNIVSHULT|cornercab|Corner base cab w drawer and shelf, 128 × 68 cm|128|80|68|rows=1,shelves=1,blind=60
 METOD / KNIVSHULT|kitchen|Base cab 4 frnts/4 drawers, 40 × 37 cm|40|80|37|z=r4
 METOD / KNIVSHULT|kitchen|Base cab 4 frnts/4 drawers, 40 × 60 cm|40|80|60|z=r4||metod-knivshult-base-cab-4-frnts-4-drawers-40-x-2
 METOD / KNIVSHULT|kitchen|Base cb 2 fronts/2 high drawers, 40 × 60 cm|40|80|60|z=r2
@@ -762,6 +776,8 @@ METOD / MAXIMERA|appliance|High cabinet f built-in appliances, 60 × 60 × 240 c
 METOD / MAXIMERA|appliance|High cabinet f oven+door/2 drawers, 60 × 60 × 240 cm|60|240|60|use=oven,z=r2@80+g@60+d1||metod-maximera-high-cabinet-f-oven-door-2-drawer-2
 METOD / MAXIMERA|appliance|Base cab f hob/2 fronts/3 drawers, 80 × 60 cm|80|80|60|use=hob,z=r2
 METOD / MAXIMERA|appliance|Base cab f hob/3 fronts/3 drawers, 80 × 60 cm|80|80|60|use=hob,z=r3||metod-maximera-base-cab-f-hob-3-fronts-3-drawers-2
+METOD / MAXIMERA|cornercab|Corner base cab w drawer and p-out, 128 × 68 cm|128|80|68|rows=1,blind=60,inner=pullout
+METOD / MAXIMERA|cornercab|Corner base cab w drawer and shelf, 128 × 68 cm|128|80|68|rows=1,shelves=1,blind=60
 METOD / MAXIMERA|kitchen|Base cabinet with 2 drawers, 60 × 37 cm|60|80|37|z=r2
 METOD / MAXIMERA|kitchen|Base cabinet with 3 drawers, 60 × 60 cm|60|80|60|z=r3
 METOD / MAXIMERA|kitchen|Base cb 2 fronts/2 high drawers, 60 × 60 cm|60|80|60|z=r2

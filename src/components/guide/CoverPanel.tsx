@@ -266,6 +266,7 @@ const SHORTHAND: [RegExp, string][] = [
   [/\b(\d) h\b/g, "$1 high"],
   [/\bshlf\b/g, "shelf"],
   [/\bshlvs?\b/g, "shelves"],
+  [/\bp-out\b/g, "pull-out"],
 ];
 
 /** IKEA's shorthand spelled out, first letter up. */

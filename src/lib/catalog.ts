@@ -481,6 +481,8 @@ export function catalogSpec(slug: string): ProductSpec | null {
 function sizeLabel(x: Entry, same: Entry[]) {
   const head = x.variant.split(",")[0];
   if (x.shelf?.style === "grid" && x.shelf.cols && x.shelf.rows) return `${head}, ${x.shelf.cols} × ${x.shelf.rows}`;
+  // a corner cabinet goes by IKEA's own measure, leg by leg
+  if (x.cabinet?.corner) return x.variant;
   if ((x.archetype === "shelf" || x.archetype === "cabinet") && /\d+ × \d+/.test(x.variant)) {
     const twin = same.some((o) => o !== x && o.size.w === x.size.w && o.size.h === x.size.h);
     return `${head}, ${x.size.w} × ${x.size.h} cm${twin ? `, ${x.size.d} deep` : ""}`;

@@ -5,6 +5,7 @@ import { clamp } from "./math";
 import { buildFitted } from "./fitted";
 import { buildMixed } from "./mixed";
 import { buildSliding } from "./sliding";
+import { buildCornerCabinet } from "./cornercab";
 
 export function defaultsCabinet(s: ProductSpec): CabinetParams {
   const p = s.cabinet ?? {};
@@ -22,6 +23,7 @@ export function defaultsCabinet(s: ProductSpec): CabinetParams {
 }
 
 export function buildCabinet(b: PlanBuilder, s: ProductSpec) {
+  if (s.cabinet?.corner) return buildCornerCabinet(b, s);
   if (s.cabinet?.fit) return buildFitted(b, s);
   if (s.cabinet?.drawers) return buildMixed(b, s);
   if (s.cabinet?.fronts === "sliding") return buildSliding(b, s);

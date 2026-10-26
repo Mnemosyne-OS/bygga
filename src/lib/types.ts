@@ -70,6 +70,20 @@ export interface CabinetParams {
   drawerAt?: "top" | "bottom"; // where the drawers are; under the doors unless it says top
   slides?: number; // sliding doors: how many, running in two tracks
   fit?: FitParams; // built around a basin, a sink or an appliance that is fitted afterwards
+  corner?: CornerCab; // a kitchen corner cabinet
+}
+
+/**
+ * A kitchen corner cabinet. An L has a leg along each wall, `depth` deep, and a door in two halves that folds at the
+ * inner corner (size.w and size.d are the legs). A blind corner is one long carcass with a door at its open end;
+ * the rest of its front hides behind the cabinet on the other wall.
+ */
+export interface CornerCab {
+  shape: "l" | "blind";
+  depth?: number; // cm: how deep each leg of an L is
+  door?: number; // cm: how wide a blind corner's door is
+  inner?: "shelf" | "carousel" | "pullout"; // what goes inside, besides the shelves
+  drawer?: boolean; // a blind corner: a drawer over the door
 }
 
 /** What a fitted cabinet is built around. The guide builds the cabinet only, and says so at the end. */

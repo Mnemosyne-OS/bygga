@@ -94,6 +94,10 @@ const WASH_FLOOR = new Set(["HEMNES", "NYSJÖN"]);
 const RACK_SIZE: Record<string, [number, number, number]> = { RIGGA: [111, 175, 51] };
 /** Day-beds' outer size (w, h, d) from IKEA's product pages: IKEA's measure is only the mattress size. */
 const DAYBED_SIZE: Record<string, [number, number, number]> = { HEMNES: [210, 83, 91], BRIMNES: [205, 58, 87], FLEKKE: [207, 86, 91], VIHALS: [206, 75, 86] };
+/** Blind corner base cabinets: how wide the door at the open end is, in cm (IKEA gives only the whole width). */
+const BLIND_DOOR: Record<string, number> = { METOD: 60, KNOXHULT: 50 };
+/** Corner base cabinets IKEA measures wide by high, with the worktop on top, and how deep they are. */
+const CORNER_WH: Record<string, number> = { KNOXHULT: 61 };
 
 type Pick = { kind: Kind; x?: X } | string;
 type Rule = [RegExp, (m: RegExpMatchArray, c: Ctx) => Pick];
@@ -181,6 +185,22 @@ const RULES: Rule[] = [
   [/^(glass-door cabinet with|high cabinet w gls-drs and) (\d) drawers?$/, (m) => ({ kind: "mixed", x: { rows: Number(m[2]) } })],
   [/^wardrobe with (\d) doors and (\d) drawers$/, (m) => (Number(m[1]) > 2 ? "wardrobe with more than 2 doors and drawers" : { kind: "mixed", x: { doors: Number(m[1]) as 1 | 2, rows: Number(m[2]), rail: true } })],
   [/^base cabinet with drawer\/(2 )?doors?$/, (m) => ({ kind: "mixed", x: { doors: m[1] ? 2 : 1, rows: 1, dtop: true } })],
+  // kitchen corner cabinets: an L with a door that folds at the inner corner, or a long blind corner with a door at its
+  // open end, a drawer over it in some (the carousels, shelves and fittings sold alone stay skipped)
+  [/^corner (base|wall) cab(?:inet)?(?: (?:with|w) (shelf|shelves|carousel|pull-out fitting|drawer and p-out|drawer and shelf)(?:\/glass dr)?)?$/, (m, c) => {
+    const family = c.f.name.split(" / ")[0].trim();
+    const what = m[2] ?? "";
+    const x: X = {};
+    if (m[1] === "wall") x.hung = true;
+    else if ((c.sz.n[0] ?? 0) >= 100) x.blind = BLIND_DOOR[family] ?? 60;
+    // a METOD frame on its own comes without a door or shelves
+    if (!what && family === "METOD" && !c.f.spr) x.doors = 0;
+    if (/shel/.test(what) || (!what && x.blind && x.doors !== 0)) x.shelves = x.hung ? Math.max(1, Math.round(((c.sz.n[1] ?? 80) - 20) / 30)) : 1;
+    if (what === "carousel") x.inner = "carousel";
+    if (/p(ull)?-out/.test(what)) x.inner = "pullout";
+    if (/drawer/.test(what)) x.rows = 1;
+    return { kind: "cornercab", x };
+  }],
   // things that are several products, or only part of one
   [/\b(and|set of \d|sets?)\b|\+|combination|\bcomb\b|\bchairs\b|armchairs|benches/, () => "set or combination"],
   // office and swivel chairs: a star base on castors, a gas lift, the seat on top
@@ -542,6 +562,19 @@ export function classify(f: Fact, hints: Hints): Verdict {
       d = Math.min(175, Math.max(140, d + 68));
       delete x.chaise;
     }
+  } else if (kind === "cornercab") {
+    // an L is measured leg by leg ("88x88"), or as a frame with its leg's depth ("88x60x80"); a blind corner wide by deep;
+    // a wall cabinet wide by high; some families wide by high with the worktop on top
+    if (sz.ext || v.length < 2) return { skip: "corner cabinet with a size we can't read" };
+    const ell = !x.blind;
+    if (v.length === 3) {
+      set(v[0], v[2], ell ? v[0] : v[1]);
+      if (ell) x.sd = v[1];
+    } else if (x.hung) set(v[0], v[1], v[0]);
+    else if (CORNER_WH[family]) set(v[0], v[1], CORNER_WH[family]);
+    else set(v[0], 80, v[1]);
+    guessed.h = v.length === 2 && !x.hung && !CORNER_WH[family];
+    if (hint?.x.knobs) x.knobs = hint.x.knobs;
   } else if (kind === "office") {
     // IKEA gives no size for office chairs: a typical one, taller with a headrest, smaller for children
     if (v.length === 3) set(v[0], v[2], v[1]);
