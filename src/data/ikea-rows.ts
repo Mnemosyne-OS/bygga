@@ -921,22 +921,40 @@ OSKARSHAMN|armchair|Wing chair|75|104|80
 ÖVNING|trolley|Trolley, 54 × 33 cm|54|80|33||kids children
 PÅHL|desk|Desk, 96 × 58 cm|96|74|58||kids children
 PÄRONHOLMEN|backbench|Bench with backrest, outdoor|120|86|60||outdoor garden
+PAX|cabinet|Add-on corner unit with 4 shelves, 53 × 58 × 201 cm|53|201|58|doors=0,shelves=4
+PAX|cabinet|Add-on corner unit with 4 shelves, 53 × 35 × 236 cm|53|236|35|doors=0,shelves=4
+PAX|cornerrobe|Corner wardrobe, 161/188 × 201 cm|161|201|188|doors=0,shelves=2,u=75+50,v=100
+PAX|cornerrobe|Corner wardrobe, 210/180 × 236 cm|180|236|210|doors=0,shelves=2,u=75+50,v=100,cu=58
+PAX|cornerrobe|Corner wardrobe, 211/161 × 201 cm|211|201|161|doors=0,shelves=2,u=100+75,v=75
+PAX|cornerrobe|Corner wardrobe, 211/213 × 236 cm|211|236|213|doors=0,shelves=2,u=100+75,v=75+50
 PAX|wardrobe|Wardrobe frame, 50 × 58 × 201 cm|50|201|58|doors=0,shelves=2
 PAX|wardrobe|Wardrobe frame, 75 × 58 × 201 cm|75|201|58|doors=0,shelves=2
 PAX / AULI|cabrow|Wardrobe with sliding doors, 150 × 43 × 201 cm|150|201|43|shelves=2,slides=2,n=2,of=wardrobe
 PAX / AULI|cabrow|Wardrobe with sliding doors, 150 × 66 × 201 cm|150|201|66|shelves=2,slides=2,n=2,of=wardrobe
 PAX / BERGSBO|cabrow|Wardrobe, 200 × 60 × 201 cm|200|201|60|n=2,of=wardrobe
 PAX / BERGSBO|cabrow|Wardrobe, 200 × 60 × 236 cm|200|236|60|n=2,of=wardrobe
+PAX / BERGSBO|cornerrobe|Corner wardrobe, 111/88 × 201 cm|111|201|88|shelves=2,u=75
 PAX / BERGSBO|wardrobe|Wardrobe|50|236|58
 PAX / BERGSBO|wardrobe|Wardrobe, 100 × 60 × 201 cm|100|201|60
+PAX / BERGSBO/ÅHEIM|cornerrobe|Corner wardrobe, 211/161 × 236 cm|211|236|161|shelves=2,u=100+75,v=75
+PAX / FARDAL/ÅHEIM|cornerrobe|Corner wardrobe, 111/88 × 201 cm|111|201|88|shelves=2,u=75
 PAX / FLISBERGET|cabrow|Wardrobe, 200 × 60 × 201 cm|200|201|60|n=2,of=wardrobe
+PAX / FLISBERGET|cornerrobe|Corner wardrobe, 111/88 × 201 cm|111|201|88|shelves=2,u=75
+PAX / FLISBERGET|cornerrobe|Corner wardrobe, 161/88 × 201 cm|161|201|88|shelves=2,u=75+50
+PAX / FLISBERGET|cornerrobe|Corner wardrobe, 161/111 × 201 cm|161|201|111|shelves=2,u=100,cu=58
 PAX / FLISBERGET|wardrobe|Wardrobe, 100 × 60 × 201 cm|100|201|60
 PAX / FORSAND|cabrow|Wardrobe, 200 × 60 × 201 cm|200|201|60|n=2,of=wardrobe
+PAX / FORSAND|cornerrobe|Corner wardrobe, 111/88 × 201 cm|111|201|88|shelves=2,u=75
+PAX / FORSAND|cornerrobe|Corner wardrobe, 111/88 × 236 cm|111|236|88|shelves=2,u=75
 PAX / FORSAND|wardrobe|Wardrobe, 100 × 60 × 201 cm|100|201|60
 PAX / FORSAND|wardrobe|Wardrobe, 100 × 60 × 236 cm|100|236|60
+PAX / FYRUDDEN|cornerrobe|Corner wardrobe, 161/111 × 236 cm|161|236|111|shelves=2,u=100,cu=58
 PAX / GRIMO|cabrow|Wardrobe with sliding doors, 150 × 43 × 201 cm|150|201|43|shelves=2,slides=2,n=2,of=wardrobe
 PAX / GRIMO|cabrow|Wardrobe, 150 × 66 × 201 cm|150|201|66|shelves=2,slides=2,n=2,of=wardrobe
+PAX / GRIMO|cornerrobe|Corner wardrobe, 110/110 × 201 cm|110|201|110|shelves=2,u=50,cu=58
 PAX / GRIMO|wardrobe|Wardrobe, 100 × 60 × 201 cm|100|201|60
+PAX / GRIMO/ÅHEIM|cornerrobe|Corner wardrobe, 211/161 × 201 cm|211|201|161|shelves=2,u=100+75,v=75
+PAX / GULLABERG|cornerrobe|Corner wardrobe, 161/111 × 201 cm|161|201|111|shelves=2,u=100,cu=58
 PAX / HASVIK|cabrow|Wardrobe with sliding doors, 150 × 43 × 201 cm|150|201|43|shelves=2,slides=2,n=2,of=wardrobe
 PAX / HASVIK|cabrow|Wardrobe, 150 × 66 × 201 cm|150|201|66|shelves=2,slides=2,n=2,of=wardrobe
 PAX / HASVIK|cabrow|Wardrobe, 200 × 66 × 201 cm|200|201|66|shelves=2,slides=2,n=2,of=wardrobe
@@ -955,6 +973,9 @@ PAX / MEHAMN/AULI|cabrow|Wardrobe with sliding doors, 150 × 43 × 201 cm|150|20
 PAX / MEHAMN/AULI|cabrow|Wardrobe with sliding doors, 150 × 66 × 201 cm|150|201|66|shelves=2,slides=2,n=2,of=wardrobe
 PAX / MEHAMN/AULI|cabrow|Wardrobe with sliding doors, 150 × 66 × 236 cm|150|236|66|shelves=2,slides=2,n=2,of=wardrobe||pax-mehamn-auli-wardrobe-sliding-doors-150-x-66-2
 PAX / MEHAMN/AULI|cabrow|Wardrobe with sliding doors, 200 × 66 × 236 cm|200|236|66|shelves=2,slides=2,n=2,of=wardrobe
+PAX / TONSTAD|cornerrobe|Corner wardrobe, 211/161 × 201 cm|211|201|161|shelves=2,u=100+75,v=75
+PAX / TONSTAD|cornerrobe|Corner wardrobe, 231/161 × 236 cm|231|236|161|shelves=2,u=100+75,v=50,cu=58
+PAX / TYSSEDAL|cornerrobe|Corner wardrobe, 161/111 × 236 cm|161|236|111|shelves=2,u=100,cu=58
 PERSBOL|armchair|Armchair|75|90|80
 PINNTORP|chair|Chair|44|88|50
 PINNTORP|dining|Table, 85 cm|85|74|85|round=1

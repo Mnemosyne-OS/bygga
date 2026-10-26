@@ -201,7 +201,18 @@ export interface ProductSpec {
   slug?: string;
   variants?: { label: string; slug: string }[];
   siblings?: { label: string; slug: string }[];
-  row?: { n: number; join?: boolean; of?: string; slide?: number }; // several identical units side by side, built one after another, with sliding doors across them all
+  row?: { n: number; join?: boolean; of?: string; slide?: number; units?: RowUnit[] }; // several identical units side by side, built one after another, with sliding doors across them all
+}
+
+/** One frame of a row whose frames aren't all alike, or of a corner: its own size and parameters, and where it stands. */
+export interface RowUnit {
+  w: number; // cm
+  d?: number; // cm, when it isn't as deep as the row
+  at?: [number, number]; // cm, the middle of its footprint (x, z); otherwise side by side from the left, backs in line
+  turn?: boolean; // stands with its back to the left-hand wall
+  corner?: boolean; // the add-on unit that fills the corner
+  cabinet?: Partial<CabinetParams>;
+  shelf?: Partial<ShelfParams>;
 }
 
 /* ---------- generated plan ---------- */

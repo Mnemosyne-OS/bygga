@@ -112,6 +112,9 @@ async function main() {
   // a row of frames when asked for, the single frame otherwise
   expect("billy bookcase combination", "billy-bookcase-160-x-28-x-202");
   expect("pax bergsbo", "pax-bergsbo-wardrobe");
+  // a corner wardrobe when asked for, the frame otherwise
+  expect("pax corner wardrobe", "pax-corner-wardrobe-161-188-x-201");
+  expect("pax wardrobe", "pax-frame");
   expect("vihals gateleg table", "vihals-gateleg-table-39-95-151-x-90");
   // a wash-stand when asked for, US words too, without taking the family's cabinets
   expect("hemnes wash-stand", "hemnes-wash-stand-2-drawers-60-x-47-x-83");

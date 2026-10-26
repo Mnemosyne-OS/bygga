@@ -87,6 +87,41 @@ const GATE_STORAGE = new Set(["VIHALS"]);
 const ROW_UNITS: Record<string, number> = { BILLY: 80, BESTÅ: 120, IVAR: 80, PAX: 100 };
 /** PAX frames under a pair of sliding doors: 150 is two 75s, 200 two 100s. */
 const PAX_SLIDE_UNITS = [100, 75];
+/** The frame widths a family's combinations are made of, widest first. */
+const FRAME_SIZES: Record<string, number[]> = { PAX: [100, 75, 50] };
+
+/** Frames for one leg of a corner wardrobe: the frames that come closest to `len` cm, and how far off they are. */
+function legFrames(len: number, sizes: number[], least: number): [number[], number] {
+  let best: [number[], number] = [[], Infinity];
+  const walk = (left: number[], from: number) => {
+    const off = Math.abs(left.reduce((a, v) => a + v, 0) - len);
+    if (left.length >= least && off < best[1]) best = [[...left], off];
+    if (left.length === 3) return;
+    for (let i = from; i < sizes.length; i++) walk([...left, sizes[i]], i);
+  };
+  walk([], 0);
+  return best;
+}
+
+/**
+ * How a PAX corner wardrobe of these two legs (cm) is laid out: frames along the back wall, an add-on corner unit 53 cm wide
+ * with its back to the side wall, tucked in beside the first frame, and frames along the side wall after it. The corner unit
+ * comes 35 or 58 cm deep. Picks the layout whose frames come closest to IKEA's legs, either way round.
+ */
+function cornerLayout(a: number, c: number, sizes: number[]) {
+  let best: { back: number; side: number; u: number[]; v: number[]; cu: number; off: number } | undefined;
+  for (const [back, side] of [[a, c], [c, a]])
+    for (const cu of [35, 58]) {
+      const [u, offU] = legFrames(back - cu - 0.5, sizes, 1);
+      const [v, offV] = legFrames(side - cu - 0.5 - 52.5, sizes, 0);
+      const start = back - u.reduce((s, x) => s + x, 0), zc = side - v.reduce((s, x) => s + x, 0) - 53;
+      // the corner unit must not run into the first frame along the back wall
+      if (zc < 0 || (start < cu - 1 && zc < 57)) continue;
+      const off = offU + offV;
+      if (!best || off < best.off - 0.01) best = { back, side, u, v, cu, off };
+    }
+  return best && best.off <= 8 ? best : undefined;
+}
 /** Wash-stands' own height in cm, to tell how thick a basin from the same box is; and the ones that stand on the floor. */
 const WASH_H: Record<string, number> = { HAVBÄCK: 63, ÄNGSJÖN: 63, TÄNNFORSEN: 63, HEMNES: 83, ENHET: 60, NYSJÖN: 65 };
 const WASH_FLOOR = new Set(["HEMNES", "NYSJÖN"]);
@@ -235,6 +270,10 @@ const RULES: Rule[] = [
   }],
   // a chaise longue sold alone as a section of a modular sofa: a one-seat section as long as a chaise
   [/^(chaise longue section|chaise longue module(?:, (?:left|right))?|chaise longue, add-on unit|modular chaise longue)$/, () => ({ kind: "section", x: { seats: 1, chaise: "right" } })],
+  // corner wardrobes: frames along both walls around an add-on corner unit, with doors when a door's name comes with them
+  [/^corner wardrobe$/, (_m, c) => ({ kind: "cornerrobe", x: c.multi ? {} : { doors: 0 } })],
+  // the add-on corner unit sold on its own: a cabinet of shelves
+  [/^add-on corner unit with (\d) shelves$/, (m) => ({ kind: "cabinet", x: { doors: 0, shelves: Number(m[1]) } })],
   [/corner|chaise|u-shaped|crnr/, () => "corner or chaise longue sofa"],
   // a straight sofa section sold alone: a seat frame with legs, a backrest and cushions, no armrests
   [/^(\d)-seat section( for modular sofa)?$/, (m) => ({ kind: "section", x: { seats: Number(m[1]) } })],
@@ -562,6 +601,16 @@ export function classify(f: Fact, hints: Hints): Verdict {
       d = Math.min(175, Math.max(140, d + 68));
       delete x.chaise;
     }
+  } else if (kind === "cornerrobe") {
+    // IKEA gives the two legs and the height: "211/161x201 cm"
+    const legs = f.size.replace(/\s+/g, "").match(/^(\d+(?:\.\d+)?)\/(\d+(?:\.\d+)?)x(\d+(?:\.\d+)?)cm$/);
+    if (!legs) return { skip: "corner wardrobe with a size we can't read" };
+    const lay = cornerLayout(Number(legs[1]), Number(legs[2]), FRAME_SIZES[family] ?? FRAME_SIZES.PAX);
+    if (!lay) return { skip: "corner wardrobe we can't split into frames" };
+    set(lay.back, Number(legs[3]), lay.side);
+    Object.assign(x, { u: lay.u.join("+"), ...(lay.v.length ? { v: lay.v.join("+") } : {}), ...(lay.cu !== 35 ? { cu: lay.cu } : {}) });
+    const robe = hints(family, "wardrobe");
+    if (robe?.x.shelves) x.shelves = robe.x.shelves;
   } else if (kind === "cornercab") {
     // an L is measured leg by leg ("88x88"), or as a frame with its leg's depth ("88x60x80"); a blind corner wide by deep;
     // a wall cabinet wide by high; some families wide by high with the worktop on top
