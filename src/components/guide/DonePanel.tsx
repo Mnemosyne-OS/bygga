@@ -15,6 +15,7 @@ import Thumb from "../Thumb";
 import { fmtMin } from "./CoverPanel";
 import { buildCard } from "./shareCard";
 import { encodeSpec } from "@/lib/scan/share";
+import { track } from "@vercel/analytics";
 
 export default function DonePanel({ plan, slug, finish, onReview }: { plan: Plan; slug: string; finish: { ms: number; full: boolean } | null; onReview: () => void }) {
   const t = totals(plan);
@@ -130,6 +131,7 @@ function ShareCard({ plan, slug, stat, spent }: { plan: Plan; slug: string; stat
     const url = `${location.origin}/build/${slug}` + (plan.spec.source === "scan" ? `#g=${await encodeSpec(plan.spec)}` : "");
     const text = spent ? `I just built ${plan.spec.name} in ${fmtMin(spent)}, one step at a time.` : `I just built ${plan.spec.name}, one step at a time.`;
     const file = card ? new File([card.blob], `${plan.spec.name.toLowerCase()}-built.png`, { type: "image/png" }) : null;
+    track("share", { product: plan.spec.name, image: !!file });
     try {
       if (file && navigator.canShare?.({ files: [file] })) await navigator.share({ files: [file], text: `${text} ${url}` });
       else if (navigator.share) await navigator.share({ title: "Bygga", text, url });

@@ -10,6 +10,7 @@
     "voice": "node --experimental-transform-types --no-warnings --import ./scripts/voice/register.mjs scripts/voice/record.ts"
   },
   "dependencies": {
+    "@vercel/analytics": "^1.6.1",
     "motion": "^14.4.0",
     "next": "16.4.2",
     "react": "19.3.0",

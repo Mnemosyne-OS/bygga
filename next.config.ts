@@ -3,6 +3,13 @@ import type { NextConfig } from "next";
 const nextConfig: NextConfig = {
   cacheComponents: true,
   partialPrefetching: true,
+  // the share cards read their fonts and drawings from disk
+  outputFileTracingIncludes: {
+    "/opengraph-image": ["./src/lib/og/*.woff", "./public/og/step-hero.png", "./public/og/kallax-2x2.png"],
+    "/twitter-image": ["./src/lib/og/*.woff", "./public/og/step-hero.png", "./public/og/kallax-2x2.png"],
+    "/build/*/opengraph-image*": ["./src/lib/og/*.woff", "./public/og/*.png"],
+    "/build/*/twitter-image*": ["./src/lib/og/*.woff", "./public/og/*.png"],
+  },
   async headers() {
     return [
       {

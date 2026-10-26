@@ -34,6 +34,7 @@ import { heardWords, parse, type Intent } from "@/lib/voice/commands";
 import { useMounted } from "@/lib/useMounted";
 import { getUserKey, keyHeaders } from "@/lib/userKey";
 import { decodeSpec } from "@/lib/scan/share";
+import { track } from "@vercel/analytics";
 import { SCAN_ENABLED } from "@/lib/site";
 
 type Via = "catalog" | "ai" | "guess" | "scan";
@@ -368,10 +369,11 @@ function Guide({ plan, slug, via, ai, startStep }: { plan: Plan; slug: string; v
         // skipping through doesn't earn a time: most of the steps have to have been on screen
         const full = new Set([...seen, step]).size >= Math.ceil(steps.length * 0.8);
         setFinish({ ms, full });
+        track("built", { product: plan.spec.name, slug, full, minutes: Math.round(ms / 60000) });
         setBuilt((b) => (!b ? { at: Date.now(), ms, full } : full && (!b.full || !b.ms || ms < b.ms) ? { ...b, ms, full } : b));
       }
     }
-  }, [phase, step, steps.length, go, showToast, seen]);
+  }, [phase, step, steps.length, go, showToast, seen, plan.spec.name, slug]);
 
   const back = useCallback(() => {
     if (phase === "tools") go("cover", undefined, -1);
@@ -447,6 +449,7 @@ function Guide({ plan, slug, via, ai, startStep }: { plan: Plan; slug: string; v
   // runs inside the tap or key press, so the browser lets it play sound
   const startVoice = useCallback(() => {
     voice.unlock();
+    track("voice_on", { product: plan.spec.name });
     setVoiceOn(true);
     setOffer(false);
     setPref("voice", true);
