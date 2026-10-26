@@ -31,6 +31,7 @@ const CATEGORY_WORDS: [Kind, string[]][] = [
   ["console", ["console", "console table", "hall table"]],
   ["trolley", ["trolley", "cart", "kitchen island"]],
   ["desk", ["desk"]],
+  ["dropleaf", ["drop leaf", "drop leaf table", "gateleg", "gateleg table"]],
   ["dining", ["dining", "table", "kitchen table"]],
   ["cot", ["cot", "crib", "baby bed"]],
   ["bunk", ["bunk", "bunk bed", "bunkbed"]],
@@ -119,6 +120,8 @@ export function searchCatalog(q: string, limit = 8): Hit[] {
   const kind = kindOf(q);
   const kw = kind ? KIND_WORDS.get(kind)! : null;
   const first = tokens[0];
+  // "crib" or "sectional" alone names the type, so it counts like a word in the product's own text
+  const firstIsKind = !!kw?.some((w) => w.split(" ").includes(first));
   const joined = f.replace(/\s+/g, "");
   // a real IKEA name we can't draw is not a typo of one we can
   const typos = !isGuardedName(first);
@@ -140,12 +143,10 @@ export function searchCatalog(q: string, limit = 8): Hit[] {
     const e = r.e;
     const ns = nameScore(r);
     let score = ns;
-    if (!ns && first.length >= 3 && r.words.some((w) => w.startsWith(first))) score += 20;
+    const kwHit = !!kw?.some((w) => r.padded.includes(` ${w} `) || r.padded.includes(` ${w}s `));
+    if (!ns && ((first.length >= 3 && r.words.some((w) => w.startsWith(first))) || (firstIsKind && kwHit))) score += 20;
     for (const t of tokens.slice(1)) if (t.length && r.words.some((w) => w.startsWith(t) || (t.length > 2 && w.includes(t)))) score += 12;
-    if (kw) {
-      if (kw.some((w) => r.padded.includes(` ${w} `) || r.padded.includes(` ${w}s `))) score += 14;
-      else score -= 30;
-    }
+    if (kw) score += kwHit ? 14 : -30;
     if (e.checked) score += 3;
     if (e.featured) score += 2;
     if (score > 15) hits.push({ entry: e, score, exact: ns >= 80 });
