@@ -1,6 +1,7 @@
 import type { ProductSpec, SeatParams, Vec3 } from "../types";
 import { HW, PlanBuilder, type FitOpts } from "./builder";
 import { clamp, rotate } from "./math";
+import { buildOffice } from "./office";
 
 export function defaultsSeat(s: ProductSpec): SeatParams {
   const p = s.seat ?? {};
@@ -16,6 +17,7 @@ export function defaultsSeat(s: ProductSpec): SeatParams {
 }
 
 export function buildSeat(b: PlanBuilder, s: ProductSpec) {
+  if (s.seat?.kind === "office") return buildOffice(b, s);
   const p = defaultsSeat(s);
   if (p.kind === "chair") return chair(b, s, p);
   return stool(b, s, p);

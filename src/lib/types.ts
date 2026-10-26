@@ -54,12 +54,13 @@ export interface CabinetParams {
 }
 
 export interface SeatParams {
-  kind: "stool" | "chair" | "bench";
+  kind: "stool" | "chair" | "bench" | "office";
   seat: "round" | "square";
   seatH: number; // cm
   backH: number; // cm (chair total height)
   stretchers: boolean;
   splay: boolean;
+  arms?: boolean; // office chairs: armrests
 }
 
 export interface SofaParams {
@@ -147,15 +148,25 @@ export interface ProductSpec {
 
 export type PartMaterial = "board" | "fiber" | "wood" | "metal" | "soft";
 
+/** One box or cylinder of a part made of several (a star base, a cot side with bars), in the part's own frame. */
+export interface PartPiece {
+  shape: "box" | "cyl";
+  size: Vec3; // mm, box extents or cylinder [dia, length, dia]
+  pos: Vec3; // mm, from the centre of the part
+  rot?: Vec3;
+  material?: PartMaterial;
+}
+
 export interface PartType {
   id: string;
   label: string; // letter
   name: string;
-  size: Vec3; // mm, box extents or cylinder [dia, length, dia]
+  size: Vec3; // mm, box extents or cylinder [dia, length, dia]; the bounding box when it has pieces
   shape: "box" | "cyl";
   material: PartMaterial;
   qty: number;
   extra?: boolean; // not in the box (e.g. mattress)
+  pieces?: PartPiece[]; // drawn as these boxes and cylinders instead of one
 }
 
 export type HwKind =
@@ -174,7 +185,9 @@ export type HwKind =
   | "handle"
   | "hinge"
   | "glide"
-  | "plug";
+  | "plug"
+  | "castor"
+  | "gasLift";
 
 export interface HwType {
   id: string;

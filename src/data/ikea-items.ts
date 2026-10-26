@@ -2,6 +2,7 @@
 // Article numbers per guide: slug|number number
 export const IKEA_ITEMS = `agen-armchair-cushion|99390774
 agen-chair|50058376
+alefjall-office-chair|90320224 00419984
 alex-desk-100-x-48|10473555 50473558 40588885
 alex-desk-132-x-58|80483438 60473529 80588888
 alex-drawer-unit|00473546 80473547 60588894
@@ -36,6 +37,7 @@ baggebo-shelving-unit-60-x-25-x-116|50481172
 baggebo-shelving-unit-60-x-30-x-80|30621480
 baggebo-sideboard-78-x-92|40553616
 barslov-3-seat-sofa-bed|90541584 40541591
+bastboll-gaming-chair|50586254
 bekvam-kitchen-trolley-58-x-50|70240351
 bekvam-step-stool|70569545 10225589 40178888 40463852
 bekvam-step-stool-63|90190411 90219829
@@ -92,11 +94,13 @@ billy-oxberg-bookcase-panel-glass-doors-80-x-41|69398837
 bingsta-armchair|10455655
 bissa-shoe-cabinet-2-compartments|70530218 70530256
 bissa-shoe-cabinet-3-compartments|10530259 10530221
+bjorkberget-swivel-chair|60487159 20487161
 bjorksnas-bed-frame-standard-king-150-x-200|79501725 09501724 69501721 49501722
 bjorksnas-bedside-table-48-x-38|70407360
 bjorksnas-chest-5-drawers-90-x-47-x-90|70407299
 blaliden-glass-door-cabinet-35-x-32-x-151|00501243 00520519
 blastasen-bedside-table-50-x-37-x-76|70617570 00595067
+bleckberget-swivel-chair|70564331 40573271
 boastad-high-cabinet-41-x-32-x-185|50507006
 boastad-sideboard-161-x-52-x-75|30507012
 boastad-wall-shelf-181-x-32-x-32|00507018
@@ -135,6 +139,7 @@ brytning-desk-110-x-53-x-75|80609744 50609750
 brytning-desk-135-x-53-x-75|50609745 30609751
 brytning-desk-85-x-53-x-75|20598531 70609749
 brytning-storage-unit-29-x-40-x-47|00598532 10609752
+brytning-swivel-chair|40644061 60611837
 burvik-side-table-38|60340389 70340384
 buskbo-armchair|49615399 70434311
 buslatt-chair|90601139
@@ -162,6 +167,7 @@ ekholma-3-seat-sofa|19537416 89537413 09537412 59537419
 ektorp-2-seat-sofa|59620729 49628684 09628681 09509027 99509018 59509015 89628677
 ektorp-3-seat-sofa|59619759 29509012 89509009 19509003 79509000 59628706 99628709
 ektorp-armchair|79628654 69628635 69628640 79552102 59552103 89552106 29552109
+eldberget-malskar-swivel-chair|59331847
 enhet-base-fr-w-shelves-40-x-60-x-75|00448953 20448952 10448976 30448975
 enhet-base-fr-w-shelves-60-x-40-x-60|60448974 80448973 40448951 60448950
 enhet-high-cabinet-door-30-x-32-x-180|10623036 30632054
@@ -194,6 +200,8 @@ fjallbo-shelving-unit-100-x-95|50339292
 fjallbo-shelving-unit-51-x-136|70342199
 fjallbo-sideboard-111-x-47-x-95|00502799
 fjallbo-tv-bench-150-x-36-x-54|90339290 90501309 40579032
+flintan-office-chair|50489031 30492204
+flintan-office-chair-armrests|49424470 79424464
 flisat-children-s-stool|30596536
 flisat-children-s-table-83-x-58|50298418
 flisat-open-storage-88-x-38-x-117|60620120
@@ -234,6 +242,8 @@ grafjallet-dressing-table-100-x-42|30570225
 grejsimojs-children-s-stool|60598973 50598959
 grejsimojs-children-s-table-84-x-42|70598963
 grillskar-side-table-outdoor-30-x-61|00523179
+gronfjall-office-chair-arm-headrest|89513921
+gronfjall-office-chair-armrests|20503477
 gronsta-bar-stool-64|30554635
 gronsta-chair|10637241 70637238 70519763 70554577
 grotan-chair|70617565
@@ -269,6 +279,7 @@ hagaan-open-cabinet-40-x-48-x-33|40535514 70534909 40535528 60535532
 hagernas-stool|80607014
 hakanskar-coffee-table-80-x-64|70597162
 hammarn-sofa-bed|00361493
+hattefjall-office-chair-armrests|20598159 60598162 40598163 00598160
 hattholmen-table-outdoor-75-x-75-x-74|40443048
 hauga-bedside-table-40-x-36|00488963
 hauga-cabinet-2-doors-70-x-116|00415052 40415050
@@ -310,6 +321,7 @@ holmerud-side-table-80-x-31|40541421 20538721
 holmsta-armchair|90508551
 holmsta-froknabo-armchair|99428809
 hornavan-trolley-26-x-48-x-77|70243873
+huvudspelare-gaming-chair|30507601
 huvudspelare-gaming-desk-140-x-80|90539166
 hyllis-shelf-unit-60-x-140|00278578
 hyllis-shelving-unit-60-x-27-x-74|30428326
@@ -367,6 +379,7 @@ ivar-shelving-unit-doors-89-x-30-x-179|89403461 19403474
 ivosjon-cabinet-doors-33-x-34-x-99|30569095 90609871
 jakobsfors-coffee-table-80|90500121 50515167
 janinge-chair|70246089
+jarvfjallet-office-chair-armrests|20510642 00521854
 jattebo-2-seat-modular-sofa|09471411 09617705 29471410 29617634 99617428 09618620 89510404 69617707 59617623 59510410 49621183 49618623
 jattebo-3-seat-modular-sofa|09485130 79485136 29617629 99617697 79618626 69617571
 jattesta-coffee-table-80-x-80|30538792
@@ -440,6 +453,7 @@ kronoren-bedside-table-39-x-32-x-55|00610807
 kronoren-chest-2-drawers-76-x-48-x-55|90610799
 kronoren-open-wardrobe-90-x-49-x-181|40610805
 krylbo-chair|10628208 40566751 40566746 90620581
+krylbo-swivel-chair|90573589
 kullen-chest-2-drawers|80309241
 kungsfors-kitchen-trolley-60-x-40|80334924
 kyrre-stool|60416925 10608130
@@ -513,10 +527,13 @@ lisabo-table-88-x-78|40563776
 listerby-coffee-table-140-x-60|90562246
 lixhult-cabinet-35-x-60|20476520
 lixhult-cabinet-60-x-35|70328669
+loberget-malskar-swivel-chair|19445469 29488571
+loberget-sibben-children-s-desk-chair|59337670
 lommarp-bookcase-65-x-199|40415465
 lommarp-cabinet-102-x-101|80415468 10436997
 lommarp-cabinet-glass-doors-86-x-199|40383737
 lommarp-tv-bench-159-x-45-x-81|30437000
+loparbana-gaming-chair|50586329 70586328
 loshult-trolley-38-x-38-x-82|40576279
 lovbacken-side-table-77-x-39|80270125
 lustebo-chair|00541164
@@ -544,6 +561,9 @@ mannarp-3-seat-sofa|59604041 09619158 49619161 89619164 59604036 09604048
 mariedamm-table-105|70492645
 mariedamm-table-180-x-100|20576124
 marius-stool|90184047 10135659
+markus-office-chair|30261152 50521861
+markus-office-chair-armrests|79628041 59628037
+matchspel-gaming-chair|50571530 20507606
 metod-base-cabinet-shelves-2-doors-80-x-60|49507125 89507133 79465812 69507129 09538039 89517491 89458750
 metod-base-cabinet-shelves-60-x-60|49589630 79507124 19507122 99487295 89507128 89473369 59466394
 metod-high-cabinet-60-x-60-x-200|60212565 90212559 90212564 70212560 10212558 50212561 50591694
@@ -567,6 +587,7 @@ metod-wall-cabinet-w-shelves-glass-door-30-x-80|09589076 09587647 49394977 99490
 micke-desk-105-x-50|80213074 10244743 09903014
 micke-desk-142-x-50|90214308 60244745
 micke-desk-73-x-50|30213076 20244747
+millberget-swivel-chair|20489396 50489390
 milsbo-glass-door-cabinet-73-x-175|30396448 00396416
 minnen-ext-bed-frame-slatted-bed-base-80-x-200|79418806 29123958 29580126
 mittplan-desk-80-x-60|10549428
@@ -583,6 +604,7 @@ mossjon-glass-door-cabinet-2-doors-60-x-34-x-146|30564333
 mossjon-wall-cabinet-glass-door-36-x-18-x-44|20621640
 mossjon-wall-cabinet-w-shelves-glass-door-36-x-1|60567778
 mullsjo-desk-135-x-70|30553240
+mullsjo-swivel-chair|70576584
 muskan-bench-58-x-38|50345957
 muskan-shelving-unit-37-x-140|50424327
 nackanas-table-140-x-76|40511056
@@ -659,6 +681,8 @@ omar-shelving-unit-92-x-36-x-94|10069763
 omar-shelving-unit-92-x-50-x-94|70483071
 ommjange-chair|50594678
 onnestad-armchair|09554473 49554471
+orfjall-children-s-desk-chair|30441771 90541433 60501886
+orfjall-swivel-chair|09416014 99501098
 orreslatt-armchair|30555098
 ortrask-coffee-table-110-x-68|10635845 30635849
 ortrask-coffee-table-75-x-48|70635847
@@ -721,6 +745,7 @@ relatera-desk-117-x-60|29552864
 relatera-desk-90-x-60|69552857
 relatera-desk-sit-stand-117-x-60|99552865
 relatera-desk-sit-stand-90-x-60|49552863
+renberget-swivel-chair|90503285
 rian-side-table-50-x-30|80343419
 ridspo-desk-140-x-70|00485224
 risholmen-wing-chair-in-outdoor|00503794
@@ -736,6 +761,7 @@ rosentorp-extendable-table-110-155|80568239 60568264
 rosentorp-extendable-table-155-215-x-87|60589902 80589901
 rosentorp-extendable-table-160-215-x-110|20568256 60568240
 rosentorp-stool|10618191
+rosentorp-swivel-chair|40576547
 rudsta-glass-door-cabinet-42-x-37-x-155|60434825 90601417
 rudsta-glass-door-cabinet-80-x-37-x-120|50450137
 sagesund-upholstered-bed-frame-standard-double-1|89496484 99496469 49496513 29496514
@@ -778,6 +804,7 @@ skruvby-cabinet-glass-doors-70-x-90|20508842 70520361
 skruvby-side-table-40-x-32|80532009 50531983
 skruvby-sideboard-120-x-38-x-90|60568725 70568720
 skruvby-tv-bench-156-x-38-x-60|10520364 80503549
+skruvsta-swivel-chair|70402999 10397788
 slakt-bed-frame-3-storage-boxes-90-x-200|89386070
 slakt-bed-frame-90-x-200|99608419 59612041
 slakt-bed-frame-slatted-bed-base-90-x-200|79227755
@@ -789,6 +816,7 @@ slattum-upholstered-bed-frame-standard-single-90|90578737
 smagora-desk-93-x-51|90489883
 smagora-shelf-unit-29-x-88|30465489
 smagora-wardrobe-80-x-50-x-187|10460888
+smallen-swivel-chair|00503435
 smastad-bench-90-x-50-x-48|80433542
 smastad-desk-90-x-79-x-100|29583224 59583227 99583193 69583217
 smastad-platsa-bookcase-60-x-57-x-123|49387806 09396346 69544669 29544671
@@ -803,6 +831,7 @@ smastad-wall-cabinet-60-x-32-x-60|39388444
 smastad-wardrobe-60-x-42-x-181|49390875
 smedstorp-2-seat-sofa|09477229
 smedstorp-3-seat-sofa|79477235 29477233
+smorkull-office-chair-armrests|90503450 80503455
 smyga-bed-frame-90-x-200|60480780
 smyga-bed-frame-storage-90-x-200|59444142
 smyga-desk-122-x-60|40480781
@@ -825,6 +854,7 @@ stein-chair|50403669
 stensele-bar-table-70|09288224
 stensele-table-70|79288230
 stig-bar-stool-backrest-63|80652431 30498418
+stigbygel-swivel-chair-armrests|50556431
 stjarno-bed-frame-standard-double-135-x-190|89563341 79563365 99563326 19563410 99563411 99563388 59563366
 stjarno-bed-frame-standard-single-90-x-190|39563367 99563331 59563390 79563412
 stockholm-2025-2-seat-sofa|60586121 60586116 50586112
@@ -859,6 +889,7 @@ storklinta-chest-6-drawers-140-x-50-x-75|70627550 00628223 30627547 80627559
 storklinta-chest-6-drawers-70-x-50-x-120|70627545 80628224 00627544 20627557
 strandmon-wing-chair|50628942 70359830 80613171 40613168 90613175 60613167 30359846 40494641 30392544
 strandon-folding-stool|30591100
+styrspel-gaming-chair|80522034 90613057
 sundso-cabinet-60-x-35-x-86|80586243 70584188 10584186
 sundso-folding-chair|50575887 40575883 90575890 10575889 30575888 90575885 70575891
 sundso-table-65|80575895 40575897
@@ -933,6 +964,7 @@ torparo-table-outdoor-130-x-74|60595724
 torsjo-coffee-table-88|50590406
 torsjo-side-table-45|60590415
 tossberg-chair|80584437 40582647 90551120
+tossberg-malskar-swivel-chair|59508228 69508223 09508235 89508203 69508242 59508209
 tranered-coffee-table-90-x-90|10608998
 tranno-stool|50546381
 travsport-desk-sit-stand-120-x-70|59620951
@@ -963,6 +995,7 @@ ugglerum-side-table-46-x-40|00627983
 ulriksberg-armchair|90434310
 uppakra-3-seat-modular-sofa|99620341 49620353 79620337 69620347 59620324 39620344 79620318 09620246 49620249 79620064 79620059 69620069 89620252 19620255 19619940 99619955 99619922 59619943 39619958 79619937 69619928 89619913 39619897 89620313 79619904 79619876 69620314 59619882 99619856 99619842 99619837 79619862 69619867 69619853 69619848 89619970 79619961 69619985 49619991 49619967 39619982 19619964
 utespelare-gaming-desk-160-x-80|10571532 80507627
+utklassning-gaming-chair|40629287 60629045
 utmaning-gaming-desk-160-x-80|89571732
 utmaning-gaming-desk-sit-stand-160-x-80|09571689
 utter-children-s-stool|50357785

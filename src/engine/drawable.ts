@@ -96,7 +96,17 @@ export function partDrawable(p: PartType, holes: Hole[]) {
   const d = new Drawable();
   const [sx, sy, sz] = p.size;
   const color = MAT_COLOR[p.material] ?? FACE.board;
-  if (p.shape === "cyl") {
+  if (p.pieces) {
+    for (const q of p.pieces) {
+      const [qx, qy, qz] = q.size;
+      const mat = q.material ?? p.material;
+      const c = MAT_COLOR[mat] ?? FACE.board;
+      const at = { position: q.pos, rotation: q.rot };
+      if (q.shape === "cyl") addSolid(d, `cyl:${qx}:${qy}`, () => new THREE.CylinderGeometry(qx / 2, qx / 2, qy, 32), c, { hull: "cyl", ...at });
+      else if (mat === "soft") addSolid(d, `soft:${qx}:${qy}:${qz}`, () => roundedBox(qx, qy, qz, Math.min(42, qy / 2.4, qx / 3, qz / 3)), c, { hull: "box", half: [qx / 2, qy / 2, qz / 2], edges: false, ...at });
+      else addSolid(d, `box:${qx}:${qy}:${qz}`, () => new THREE.BoxGeometry(qx, qy, qz), c, at);
+    }
+  } else if (p.shape === "cyl") {
     addSolid(d, `cyl:${sx}:${sy}`, () => new THREE.CylinderGeometry(sx / 2, sx / 2, sy, 32), color, { hull: "cyl" });
   } else if (p.material === "soft") {
     addSolid(d, `soft:${sx}:${sy}:${sz}`, () => roundedBox(sx, sy, sz, Math.min(42, sy / 2.4, sx / 3, sz / 3)), color, { hull: "box", half: [sx / 2, sy / 2, sz / 2], edges: false });
@@ -240,6 +250,23 @@ export function hwDrawable(kind: HwKind, len: number, dia: number) {
       addSolid(d, `plug:${len}`, cyl(r, len, 12), plastic, { hull: "cyl", position: [0, -len / 2, 0] });
       addSolid(d, "plug:lip", cyl(r + 1.5, 1.5, 14), plastic, { hull: "cyl", position: [0, 0.75, 0] });
       break;
+    case "castor": {
+      // a pin that pushes into the base, a hood and twin wheels trailing behind the pin
+      addSolid(d, "ca:pin", cyl(5.5, 22, 12), metal, { hull: "cyl", position: [0, -11, 0] });
+      addSolid(d, "ca:collar", cyl(9, 3, 16), plastic, { hull: "cyl", position: [0, 1.5, 0] });
+      addSolid(d, `ca:hood:${dia}`, () => new THREE.BoxGeometry(dia * 0.68, len - r - 2, dia * 0.9), plastic, { position: [0, 3 + (len - r - 2) / 2, -dia * 0.12] });
+      for (const x of [-1, 1])
+        addSolid(d, `ca:wheel:${dia}`, () => new THREE.CylinderGeometry(r, r, dia * 0.26, 24).rotateZ(Math.PI / 2), plastic, { hull: "radial", position: [x * dia * 0.21, len - r, -dia * 0.16] });
+      break;
+    }
+    case "gasLift": {
+      // the narrow end drops into the base; the rod at the top goes up into the seat
+      addSolid(d, "gl:foot", cyl(14, 60, 18), metal, { hull: "cyl", position: [0, -30, 0] });
+      addSolid(d, `gl:body:${len}:${dia}`, cyl(r, len - 40, 24), metal, { hull: "cyl", position: [0, (len - 40) / 2, 0] });
+      addSolid(d, "gl:ring", cyl(18, 6, 20), plastic, { hull: "cyl", position: [0, len - 37, 0] });
+      addSolid(d, "gl:rod", cyl(11, 36, 16), metal, { hull: "cyl", position: [0, len - 18, 0] });
+      break;
+    }
   }
   return d;
 }

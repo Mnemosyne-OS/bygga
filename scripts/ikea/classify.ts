@@ -76,6 +76,11 @@ export function measure(s: string): Size | null {
 const UPRIGHT = new Set<Kind>(["cube", "bookcase", "open", "chest", "nightstand", "wardrobe", "cabinet", "sideboard", "tv", "shoe", "wallcab", "wallshelf", "kitchen"]);
 const FLAT = new Set<Kind>(["desk", "coffee", "side", "dining", "bar", "console", "kidstable", "trolley", "bench"]);
 
+/** Office chairs IKEA sells with armrests although the type doesn't say so. */
+const OFFICE_ARMS = new Set(["MARKUS", "ALEFJÄLL"]);
+/** Office chairs with a tall back and a headrest. */
+const OFFICE_TALL = new Set(["MARKUS"]);
+
 type Pick = { kind: Kind; x?: X } | string;
 type Rule = [RegExp, (m: RegExpMatchArray, c: Ctx) => Pick];
 
@@ -105,6 +110,13 @@ const withDoors = (kind: Kind, t: string): Pick => {
 const RULES: Rule[] = [
   // things that are several products, or only part of one
   [/\b(and|set of \d|sets?)\b|\+|combination|\bcomb\b|\bchairs\b|armchairs|benches/, () => "set or combination"],
+  // office and swivel chairs: a star base on castors, a gas lift, the seat on top
+  [/^(office chair( with armrests| with arm\/headrest)?|swivel chair( with armrests)?|gaming chair|children's desk chair)$/, (m, c) => {
+    const family = c.f.name.split(" / ")[0].trim();
+    const arms = /arm/.test(m[0]) || /gaming/.test(m[0]) || OFFICE_ARMS.has(family);
+    const seatH = c.kids ? 42 : /gaming/.test(m[0]) ? 50 : undefined;
+    return { kind: "office", x: { arms: arms ? "slim" : "none", seatH } };
+  }],
   [/swivel|office chair|gaming chair|conference|desk chair|highchair|lounge|reclining|lounger|hammock|massage/, () => "office, swivel or lounge chair"],
   [/corner|chaise|u-shaped|crnr/, () => "corner or chaise longue sofa"],
   [/section|add-on|armrest|backrest for|seat sec|modular (easy chair|chaise)/, () => "sofa or storage section"],
@@ -179,7 +191,7 @@ export function classify(f: Fact, hints: Hints): Verdict {
   const outdoor = /(,|\s)\s*(in\/)?outdoor$/.test(t) || f.cats[0] === "od001";
   t = t.replace(/,?\s*(in\/)?outdoor$/, "").trim();
   const kids = /^(children's|junior) /.test(t) || f.cats[0] === "bc001";
-  const sz = measure(f.size);
+  let sz = measure(f.size);
   const multi = f.name.includes("/");
   let pick: Pick | null = null;
   for (const [re, fn] of RULES) {
@@ -191,6 +203,8 @@ export function classify(f: Fact, hints: Hints): Verdict {
   }
   if (!pick) return { skip: "not something we draw yet" };
   if (typeof pick === "string") return { skip: pick };
+  // office chairs come in "Medium" and "Large" rather than centimetres
+  if (!sz && pick.kind === "office" && /^(small|medium|large)$/i.test(f.size.trim())) sz = { n: [], ext: false, text: "" };
   if (!sz) return { skip: "size we can't read" };
   const kind = pick.kind;
   const family = f.name.split(" / ")[0].trim();
@@ -244,6 +258,14 @@ export function classify(f: Fact, hints: Hints): Verdict {
     } else if (hint?.kind === kind) set(hint.w, hint.h, hint.d);
     else if (kind !== "bench") return { skip: "no size given" };
     if (guessed.h && hint?.kind === kind) h = hint.h;
+  } else if (kind === "office") {
+    // IKEA gives no size for office chairs: a typical one, taller with a headrest, smaller for children
+    if (v.length === 3) set(v[0], v[2], v[1]);
+    else if (kids) [w, h, d] = [52, 86, 52];
+    else {
+      if (x.arms === "none") w = 60;
+      if (/headrest|gaming/.test(t) || OFFICE_TALL.has(family)) h = 128;
+    }
   } else {
     // seats: IKEA mostly gives no size, or the seat height for stools
     if (v.length === 3) set(v[0], v[2], v[1]);
