@@ -24,9 +24,18 @@ export type Kind =
   | "stool"
   | "bench"
   | "sofa"
-  | "armchair";
+  | "armchair"
+  // added with the IKEA product data: existing archetypes with other parameters
+  | "wallshelf"
+  | "wallcab"
+  | "kitchen"
+  | "trolley"
+  | "bar"
+  | "console"
+  | "kidstable"
+  | "kidschair";
 
-type X = {
+export type X = {
   rows?: number;
   cols?: 1 | 2;
   knobs?: "none" | "knob" | "bar";
@@ -43,9 +52,11 @@ type X = {
   attach?: "screw" | "plate" | "apron";
   shelf?: boolean;
   min?: number;
+  round?: boolean;
+  seatH?: number;
 };
 
-type Row = [name: string, kind: Kind, variant: string, w: number, h: number, d: number, x?: X, keywords?: string];
+export type Row = [name: string, kind: Kind, variant: string, w: number, h: number, d: number, x?: X, keywords?: string];
 
 export const ROWS: Row[] = [
   // shelving and bookcases
@@ -215,20 +226,25 @@ export const ROWS: Row[] = [
 const MIN: Record<Kind, number> = {
   cube: 40, bookcase: 50, open: 40, chest: 90, nightstand: 40, desk: 25, coffee: 20, side: 15, dining: 40,
   bed: 100, wardrobe: 120, cabinet: 60, sideboard: 80, tv: 60, shoe: 45, chair: 25, stool: 12, bench: 20, sofa: 40, armchair: 30,
+  wallshelf: 25, wallcab: 40, kitchen: 50, trolley: 25, bar: 35, console: 30, kidstable: 15, kidschair: 20,
 };
 
 const CATEGORY: Record<Kind, string> = {
   cube: "Shelving unit", bookcase: "Bookcase", open: "Shelving unit", chest: "Chest of drawers", nightstand: "Nightstand",
   desk: "Desk", coffee: "Coffee table", side: "Side table", dining: "Dining table", bed: "Bed frame", wardrobe: "Wardrobe",
   cabinet: "Cabinet", sideboard: "Sideboard", tv: "TV bench", shoe: "Shoe cabinet", chair: "Chair", stool: "Stool",
-  bench: "Bench", sofa: "Sofa", armchair: "Armchair",
+  bench: "Bench", sofa: "Sofa", armchair: "Armchair", wallshelf: "Wall shelf", wallcab: "Wall cabinet", kitchen: "Kitchen cabinet",
+  trolley: "Trolley", bar: "Bar table", console: "Console table", kidstable: "Children's table", kidschair: "Children's chair",
 };
 
 export const KIND_ARCH: Record<Kind, Archetype> = {
   cube: "shelf", bookcase: "shelf", open: "shelf", chest: "drawers", nightstand: "drawers", desk: "table", coffee: "table",
   side: "table", dining: "table", bed: "bed", wardrobe: "cabinet", cabinet: "cabinet", sideboard: "cabinet", tv: "cabinet",
-  shoe: "cabinet", chair: "seat", stool: "seat", bench: "seat", sofa: "sofa", armchair: "sofa",
+  shoe: "cabinet", chair: "seat", stool: "seat", bench: "seat", sofa: "sofa", armchair: "sofa", wallshelf: "shelf", wallcab: "cabinet",
+  kitchen: "cabinet", trolley: "table", bar: "table", console: "table", kidstable: "table", kidschair: "seat",
 };
+
+const round = (x: X) => (x.round ? { round: true } : {});
 
 /** Turn a kind and a size into a full product spec. */
 export function specFor(kind: Kind, name: string, variant: string, w: number, h: number, d: number, x: X = {}): Omit<ProductSpec, "source"> {
@@ -256,11 +272,11 @@ export function specFor(kind: Kind, name: string, variant: string, w: number, h:
     case "desk":
       return { ...base, table: { attach: x.attach ?? "plate", legs: x.legs ?? "round", legSize: x.legs === "square" ? 45 : 34, topThickness: 28, shelf: false } };
     case "coffee":
-      return { ...base, table: { attach: x.attach ?? "screw", legs: x.legs ?? "square", legSize: 48, topThickness: 40, shelf: x.shelf ?? true } };
+      return { ...base, table: { attach: x.attach ?? "screw", legs: x.legs ?? "square", legSize: 48, topThickness: 40, shelf: x.shelf ?? true, ...round(x) } };
     case "side":
-      return { ...base, table: { attach: x.attach ?? "screw", legs: "square", legSize: 40, topThickness: 30, shelf: false } };
+      return { ...base, table: { attach: x.attach ?? "screw", legs: "square", legSize: 40, topThickness: 30, shelf: false, ...round(x) } };
     case "dining":
-      return { ...base, people: w > 140 ? 2 : 1, table: { attach: "apron", legs: x.legs ?? "square", legSize: 55, topThickness: 25, shelf: false } };
+      return { ...base, people: w > 140 ? 2 : 1, table: { attach: "apron", legs: x.legs ?? "square", legSize: 55, topThickness: 25, shelf: false, ...round(x) } };
     case "bed":
       return { ...base, people: 2, bed: { mattressW: x.m ?? Math.max(80, w - 16), mattressL: x.l ?? 200, headH: h, footH: x.f ?? 38, slats: x.l && x.l < 190 ? 13 : 17, centerBeam: (x.m ?? w) >= 120 } };
     case "wardrobe":
@@ -274,7 +290,7 @@ export function specFor(kind: Kind, name: string, variant: string, w: number, h:
     case "shoe":
       return { ...base, cabinet: { fronts: "tilt", compartments: x.c ?? 2, doors: 0, shelves: 0, rail: false, plinth: false, handles: x.knobs ?? "knob", thickness: 16 } };
     case "chair":
-      return { ...base, seat: { kind: "chair", seat: "square", seatH: 45, backH: h } };
+      return { ...base, seat: { kind: "chair", seat: "square", seatH: x.seatH ?? 45, backH: h } };
     case "stool":
       return { ...base, seat: { kind: "stool", seat: "round", seatH: h, splay: true, stretchers: h > 60 } };
     case "bench":
@@ -282,6 +298,22 @@ export function specFor(kind: Kind, name: string, variant: string, w: number, h:
     case "sofa":
     case "armchair":
       return { ...base, people: kind === "sofa" ? 2 : 1, sofa: { seats: x.seats ?? (kind === "armchair" ? 1 : Math.max(1, Math.round((w - 30) / 62))), arms: x.arms ?? "wide", legs: "round" } };
+    case "wallshelf":
+      return { ...base, difficulty: 1, people: 1, shelf: { style: "bookcase", shelves: x.shelves ?? Math.max(0, Math.round(h / 35) - 1), fixedShelf: false, back: false, plinth: false, outer: 16, wall: true } };
+    case "wallcab":
+      return { ...base, people: w > 100 ? 2 : 1, cabinet: { doors: x.doors ?? (w > 50 ? 2 : 1), shelves: x.shelves ?? (h > 50 ? 1 : 0), rail: false, plinth: false, handles: x.knobs ?? "knob", thickness: 16, wall: true } };
+    case "kitchen":
+      return { ...base, cabinet: { doors: x.doors ?? (w > 50 ? 2 : 1), shelves: x.shelves ?? Math.max(1, Math.round(h / 45) - 1), rail: false, plinth: true, handles: x.knobs ?? "bar", thickness: 18 } };
+    case "trolley":
+      return { ...base, difficulty: 1, table: { attach: "plate", legs: "round", legSize: 25, topThickness: 20, shelf: true } };
+    case "bar":
+      return { ...base, people: 2, table: { attach: x.attach ?? "apron", legs: x.legs ?? "square", legSize: 50, topThickness: 25, shelf: false, ...round(x) } };
+    case "console":
+      return { ...base, difficulty: 1, table: { attach: "apron", legs: x.legs ?? "square", legSize: 40, topThickness: 22, shelf: x.shelf ?? false } };
+    case "kidstable":
+      return { ...base, difficulty: 1, people: 1, table: { attach: x.attach ?? "screw", legs: x.legs ?? "round", legSize: 40, topThickness: 22, shelf: false, ...round(x) } };
+    case "kidschair":
+      return { ...base, difficulty: 1, seat: { kind: "chair", seat: "square", seatH: x.seatH ?? 31, backH: h } };
   }
 }
 
@@ -308,5 +340,6 @@ export const KIND_DEFAULT_SIZE: Record<Kind, [number, number, number]> = {
   cube: [77, 77, 39], bookcase: [80, 190, 30], open: [80, 180, 35], chest: [80, 90, 48], nightstand: [42, 55, 40], desk: [120, 74, 60],
   coffee: [110, 45, 60], side: [50, 50, 50], dining: [140, 74, 80], bed: [156, 100, 209], wardrobe: [100, 200, 58], cabinet: [80, 120, 40],
   sideboard: [140, 85, 45], tv: [150, 50, 42], shoe: [60, 100, 28], chair: [44, 88, 50], stool: [35, 45, 35], bench: [100, 45, 38],
-  sofa: [210, 85, 92], armchair: [75, 90, 80],
+  sofa: [210, 85, 92], armchair: [75, 90, 80], wallshelf: [60, 60, 22], wallcab: [60, 60, 35], kitchen: [60, 80, 60], trolley: [50, 80, 40],
+  bar: [120, 105, 60], console: [100, 79, 35], kidstable: [77, 48, 55], kidschair: [34, 60, 34],
 };

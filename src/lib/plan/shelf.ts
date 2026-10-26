@@ -28,6 +28,7 @@ export function buildShelf(b: PlanBuilder, s: ProductSpec) {
 function bookcase(b: PlanBuilder, s: ProductSpec, p: ShelfParams) {
   const W = s.size.w * 10, H = s.size.h * 10, D = s.size.d * 10;
   const t = p.outer;
+  if (s.shelf?.wall) p.plinth = false;
   const base = p.plinth ? 60 : 0;
   const lying = H > 1100;
   const f = new FrameKit(b, {
@@ -47,7 +48,8 @@ function bookcase(b: PlanBuilder, s: ProductSpec, p: ShelfParams) {
   if (p.back) f.backSteps();
   if (p.back || lying) f.standUp();
   f.shelves(p.shelves);
-  if (H >= 900) f.anchor();
+  if (s.shelf?.wall) f.hang();
+  else if (H >= 900) f.anchor();
 }
 
 /** Cube shelving: full-width top and bottom, sides between, an inner grid on dowels. Built upright from the bottom. */

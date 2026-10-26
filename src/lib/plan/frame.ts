@@ -337,19 +337,26 @@ export class FrameKit {
   anchor(top = this.top, ySurface = this.o.H, tools: ToolId[] = ["drill", "screwdriver", "pencil"]) {
     anchorStep(this.b, { W: this.o.W, D: this.o.D, top, y: ySurface, backZ: -this.o.D / 2 - (this.backPanel ? 3 : 0), tools });
   }
+
+  /** Wall cabinets and wall shelves: the last step hangs them up. */
+  hang() {
+    anchorStep(this.b, { W: this.o.W, D: this.o.D, top: this.top, y: this.o.H, backZ: -this.o.D / 2 - (this.backPanel ? 3 : 0), tools: ["drill", "screwdriver", "pencil", "level"], hang: true });
+  }
 }
 
 export function anchorStep(
   b: PlanBuilder,
-  o: { W: number; D: number; top: string; y: number; backZ: number; tools?: ToolId[]; severe?: boolean },
+  o: { W: number; D: number; top: string; y: number; backZ: number; tools?: ToolId[]; severe?: boolean; hang?: boolean },
 ) {
   const xs = o.W > 1000 ? [-o.W / 3, o.W / 3] : [0];
   b.step(
     {
-      title: "Fix it to the wall",
-      detail: o.severe
-        ? "Furniture like this can tip over if it isn't fixed. Wall screws aren't included: pick ones made for your wall."
-        : "Wall screws aren't included. Pick ones made for your wall.",
+      title: o.hang ? "Hang it on the wall" : "Fix it to the wall",
+      detail: o.hang
+        ? "Mark the height with a level first. Wall screws aren't included: pick ones made for your wall."
+        : o.severe
+          ? "Furniture like this can tip over if it isn't fixed. Wall screws aren't included: pick ones made for your wall."
+          : "Wall screws aren't included. Pick ones made for your wall.",
       tools: o.tools ?? ["drill", "screwdriver", "pencil"],
       kind: "anchor",
       wall: true,

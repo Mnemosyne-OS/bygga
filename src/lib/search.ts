@@ -1,9 +1,14 @@
-import { PRODUCTS, toSpec, type CatalogEntry } from "./catalog";
+import { PRODUCTS, catalogEntry, toSpec, type CatalogEntry } from "./catalog";
 import { fold } from "./fold";
+import { articleNo, articleSlug, isGuardedName, loadArticles } from "./ikea";
 import { KIND_DEFAULT_SIZE, KIND_LABELS, specFor, type Kind } from "./products";
 import type { Archetype, ProductSpec } from "./types";
 
 export { fold };
+export { articleNo, articlesReady, ikeaType, ikeaTypes, isIkeaName, loadArticles } from "./ikea";
+
+// the server answers /api/guide with whatever is loaded, so it keeps the article numbers at hand
+if (typeof window === "undefined") loadArticles().catch(() => {});
 
 export function slugify(s: string) {
   return fold(s).replace(/\s+/g, "-").slice(0, 60) || "product";
@@ -14,9 +19,16 @@ const CATEGORY_WORDS: [Kind, string[]][] = [
   ["nightstand", ["nightstand", "bedside", "night stand"]],
   ["chest", ["drawer", "drawers", "chest", "dresser"]],
   ["cube", ["cube", "cubes"]],
+  ["wallshelf", ["wall shelf", "wall shelves", "wall shelf unit"]],
+  ["wallcab", ["wall cabinet", "wall cupboard", "mirror cabinet"]],
+  ["kitchen", ["kitchen cabinet", "base cabinet", "high cabinet", "kitchen unit"]],
   ["bookcase", ["bookcase", "bookshelf", "shelf", "shelving", "shelves"]],
   ["tv", ["tv", "media"]],
   ["coffee", ["coffee"]],
+  ["kidstable", ["children s table", "childrens table", "kids table", "kid table"]],
+  ["bar", ["bar table", "high table"]],
+  ["console", ["console", "console table", "hall table"]],
+  ["trolley", ["trolley", "cart", "kitchen island"]],
   ["desk", ["desk"]],
   ["dining", ["dining", "table", "kitchen table"]],
   ["bed", ["bed", "bedframe", "daybed", "bunk"]],
@@ -25,10 +37,12 @@ const CATEGORY_WORDS: [Kind, string[]][] = [
   ["cabinet", ["cabinet", "cupboard", "vitrine", "display"]],
   ["sofa", ["sofa", "couch", "loveseat", "sectional"]],
   ["armchair", ["armchair", "wing chair", "recliner"]],
+  ["kidschair", ["children s chair", "childrens chair", "kids chair", "kid chair"]],
   ["chair", ["chair", "chairs"]],
   ["stool", ["stool", "stools"]],
   ["bench", ["bench"]],
 ];
+const KIND_WORDS = new Map(CATEGORY_WORDS);
 
 export function kindOf(q: string): Kind | null {
   const f = " " + fold(q) + " ";
@@ -53,48 +67,93 @@ function lev(a: string, b: string) {
 export interface Hit {
   entry: CatalogEntry;
   score: number;
+  /** the query names this product (or its article number), not just something like it */
+  exact?: boolean;
+}
+
+/** Folded text per product, worked out once: search runs on every keystroke over a thousand or more rows. */
+interface Row {
+  e: CatalogEntry;
+  name: string;
+  nameKey: string;
+  nameWords: string[];
+  words: string[];
+  padded: string;
+}
+let rows: Row[] | null = null;
+const rowOf = new Map<CatalogEntry, Row>();
+function index(): Row[] {
+  if (rows) return rows;
+  rows = PRODUCTS.map((e) => {
+    const name = fold(e.name);
+    const hay = fold([e.name, e.variant, e.category, ...(e.keywords ?? [])].join(" "));
+    const r = { e, name, nameKey: name.replace(/\s+/g, ""), nameWords: name.split(" "), words: hay.split(" "), padded: ` ${fold(e.category)} ${hay} ` };
+    rowOf.set(e, r);
+    return r;
+  });
+  return rows;
+}
+
+/** Folded search text of a product (category, name, variant, keywords), for simple filters. */
+export function searchText(e: CatalogEntry) {
+  index();
+  return rowOf.get(e)?.padded ?? ` ${fold([e.category, e.name, e.variant].join(" "))} `;
 }
 
 export function searchCatalog(q: string, limit = 8): Hit[] {
   const f = fold(q);
   if (!f) return [];
+  const no = articleNo(q);
+  if (no) {
+    const slug = articleSlug(no);
+    const e = slug ? catalogEntry(slug) : null;
+    return e ? [{ entry: e, score: 200, exact: true }] : [];
+  }
   const tokens = f.split(" ");
   const kind = kindOf(q);
+  const kw = kind ? KIND_WORDS.get(kind)! : null;
+  const first = tokens[0];
+  const joined = f.replace(/\s+/g, "");
+  // a real IKEA name we can't draw is not a typo of one we can
+  const typos = !isGuardedName(first);
+  const byName = new Map<string, number>();
+  const nameScore = (r: Row) => {
+    let s = byName.get(r.name);
+    if (s !== undefined) return s;
+    if (r.name === f || r.nameKey === joined) s = 100;
+    else if (r.nameWords.includes(first) || r.nameKey === first) s = 80;
+    else if (first.length >= 2 && r.nameWords.some((w) => w.startsWith(first))) s = 60;
+    else if (typos && first.length >= 4 && lev(first, r.nameKey) === 1) s = 52;
+    else if (typos && first.length >= 6 && lev(first, r.nameKey) === 2) s = 42;
+    else s = 0;
+    byName.set(r.name, s);
+    return s;
+  };
   const hits: Hit[] = [];
-  for (const e of PRODUCTS) {
-    const name = fold(e.name);
-    const nameKey = name.replace(/\s+/g, "");
-    const hay = fold([e.name, e.variant, e.category, ...(e.keywords ?? [])].join(" "));
-    const words = hay.split(" ");
-    let score = 0;
-    const first = tokens[0];
-    const joined = f.replace(/\s+/g, "");
-    if (name === f || nameKey === joined) score += 100;
-    else if (name.split(" ").includes(first) || nameKey === first) score += 80;
-    else if (first.length >= 2 && name.split(" ").some((w) => w.startsWith(first))) score += 60;
-    else if (first.length >= 4 && lev(first, nameKey) === 1) score += 52;
-    else if (first.length >= 6 && lev(first, nameKey) === 2) score += 42;
-    else if (first.length >= 3 && words.some((w) => w.startsWith(first))) score += 20;
-    for (const t of tokens.slice(1)) if (t.length && words.some((w) => w.startsWith(t) || (t.length > 2 && w.includes(t)))) score += 12;
-    if (kind) {
-      const cat = fold(e.category);
-      const kw = CATEGORY_WORDS.find(([k]) => k === kind)![1];
-      const padded = ` ${cat} ${hay} `;
-      if (kw.some((w) => padded.includes(` ${w} `) || padded.includes(` ${w}s `))) score += 14;
+  for (const r of index()) {
+    const e = r.e;
+    const ns = nameScore(r);
+    let score = ns;
+    if (!ns && first.length >= 3 && r.words.some((w) => w.startsWith(first))) score += 20;
+    for (const t of tokens.slice(1)) if (t.length && r.words.some((w) => w.startsWith(t) || (t.length > 2 && w.includes(t)))) score += 12;
+    if (kw) {
+      if (kw.some((w) => r.padded.includes(` ${w} `) || r.padded.includes(` ${w}s `))) score += 14;
       else score -= 30;
     }
     if (e.checked) score += 3;
     if (e.featured) score += 2;
-    if (score > 15) hits.push({ entry: e, score });
+    if (score > 15) hits.push({ entry: e, score, exact: ns >= 80 });
   }
   hits.sort((a, b) => b.score - a.score);
   return hits.slice(0, limit);
 }
 
-/** Best confident match, or null. */
+/** Best confident match, or null. Article numbers work once loadArticles() has run (it always has on the server). */
 export function matchCatalog(q: string): ProductSpec | null {
   const [a, b] = searchCatalog(q, 2);
   if (!a || a.score < 50) return null;
+  // a real IKEA name we can't draw must not land on a different product
+  if (!a.exact && isGuardedName(fold(q).split(" ")[0] ?? "")) return null;
   // a typo match only counts when it is clearly the best one
   if (a.score < 60 && b && b.score >= a.score - 4 && fold(b.entry.name) !== fold(a.entry.name)) return null;
   return toSpec(a.entry);
@@ -103,8 +162,9 @@ export function matchCatalog(q: string): ProductSpec | null {
 /** A typical build for a product we don't know, from the kind of furniture it is. */
 export function specForKind(kind: Kind, name: string): ProductSpec {
   const [w, h, d] = KIND_DEFAULT_SIZE[kind];
-  const label = KIND_LABELS.find((k) => k.kind === kind)?.label ?? "Furniture";
-  return { ...specFor(kind, name.toUpperCase(), label, w, h, d), source: "guess" };
+  const label = KIND_LABELS.find((k) => k.kind === kind)?.label;
+  const spec = specFor(kind, name.toUpperCase(), label ?? "", w, h, d);
+  return { ...spec, variant: label ?? spec.category, source: "guess" };
 }
 
 export function guessSpec(q: string): ProductSpec | null {

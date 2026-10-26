@@ -4,24 +4,28 @@ import { clamp } from "./math";
 
 export function defaultsTable(s: ProductSpec): TableParams {
   const p = s.table ?? {};
-  return {
+  const out: TableParams = {
     topThickness: clamp(p.topThickness ?? 30, 15, 60),
     legs: p.legs === "round" ? "round" : "square",
     legSize: clamp(p.legSize ?? 50, 25, 90),
     shelf: p.shelf ?? false,
     attach: p.attach ?? "screw",
   };
+  // a round top sits on legs set in under it: no apron rails or lower shelf to square off
+  if (p.round) Object.assign(out, { round: true, shelf: false, attach: out.attach === "apron" ? "plate" : out.attach });
+  return out;
 }
 
 export function buildTable(b: PlanBuilder, s: ProductSpec) {
   const p = defaultsTable(s);
-  const W = s.size.w * 10, D = s.size.d * 10, H = s.size.h * 10;
+  const W = s.size.w * 10, H = s.size.h * 10;
+  const D = p.round ? W : s.size.d * 10;
   const tt = p.topThickness, ls = p.legSize;
-  const inset = p.attach === "screw" ? 0 : p.attach === "plate" ? 30 : 45;
+  const inset = p.round ? (W / 2) * (1 - 0.78 / Math.SQRT2) - ls / 2 : p.attach === "screw" ? 0 : p.attach === "plate" ? 30 : 45;
   const Lh = H - tt;
   const big = W > 1000;
 
-  const topT = b.part(s.category.toLowerCase().includes("desk") ? "Desk top" : "Table top", [W, tt, D]);
+  const topT = b.part(s.category.toLowerCase().includes("desk") ? "Desk top" : "Table top", [W, tt, D], p.round ? { shape: "cyl" } : undefined);
   const top = b.place(topT, [0, H - tt / 2, 0]);
   const legT = b.part("Leg", p.legs === "round" ? [ls, Lh, ls] : [ls, Lh, ls], { shape: p.legs === "round" ? "cyl" : "box", material: "wood" });
   const corners: [number, number][] = [

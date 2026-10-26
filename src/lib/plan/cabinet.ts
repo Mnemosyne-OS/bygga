@@ -23,6 +23,8 @@ export function buildCabinet(b: PlanBuilder, s: ProductSpec) {
   if (p.fronts === "tilt") return tiltCabinet(b, s, p);
   const W = s.size.w * 10, H = s.size.h * 10, D = s.size.d * 10;
   const t = p.thickness;
+  const wall = !!s.cabinet?.wall;
+  if (wall) p.plinth = false;
   const base = p.plinth ? 70 : 0;
   const lying = H > 1100;
   const f = new FrameKit(b, {
@@ -158,7 +160,8 @@ export function buildCabinet(b: PlanBuilder, s: ProductSpec) {
     }
   }
 
-  if (H >= 800) f.anchor();
+  if (wall) f.hang();
+  else if (H >= 800) f.anchor();
 }
 
 /** Shoe cabinets like BISSA or HEMNES: stacked compartments with fronts that tip open from the bottom. */

@@ -12,6 +12,7 @@ export interface ShelfParams {
   plinth: boolean;
   outer: number; // mm panel thickness of frame
   inner: number; // mm thickness of inner shelves/dividers
+  wall?: boolean; // hangs on the wall instead of standing on the floor
 }
 
 export interface DrawersParams {
@@ -28,6 +29,7 @@ export interface TableParams {
   legSize: number;
   shelf: boolean;
   attach: "screw" | "plate" | "apron";
+  round?: boolean; // round top, size.w is the diameter
 }
 
 export interface BedParams {
@@ -48,6 +50,7 @@ export interface CabinetParams {
   plinth: boolean;
   handles: "knob" | "bar" | "none";
   thickness: number;
+  wall?: boolean; // hangs on the wall instead of standing on the floor
 }
 
 export interface SeatParams {

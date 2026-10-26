@@ -22,6 +22,9 @@
 
 # misc
 .DS_Store
+
+# raw IKEA responses (scripts/ikea/fetch.ts)
+/scripts/ikea/cache/
 *.pem
 
 # debug

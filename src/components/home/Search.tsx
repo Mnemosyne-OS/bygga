@@ -3,8 +3,8 @@
 import { useEffect, useMemo, useRef, useState } from "react";
 import { useRouter } from "next/navigation";
 import { AnimatePresence, motion } from "motion/react";
-import { searchCatalog, slugify, matchCatalog } from "@/lib/search";
-import { CATALOG, toSpec } from "@/lib/catalog";
+import { articleNo, articlesReady, loadArticles, searchCatalog, slugify, matchCatalog } from "@/lib/search";
+import { catalogSpec } from "@/lib/catalog";
 import { buildPlan } from "@/lib/plan";
 import Thumb from "../Thumb";
 import { keyHeaders } from "@/lib/userKey";
@@ -55,17 +55,24 @@ export default function Search({ ai, autoFocus }: { ai: boolean; autoFocus?: boo
     return () => clearTimeout(t);
   }, [q]);
 
-  const hits = useMemo(() => (q.trim() ? searchCatalog(q, 6) : []), [q]);
-  const exact = useMemo(() => (q.trim() ? matchCatalog(q) : null), [q]);
+  // article numbers live in their own chunk: fetch it once someone types a few digits
+  const [articles, setArticles] = useState(articlesReady);
+  const digits = /\d{3}/.test(q);
+  useEffect(() => {
+    if (digits && !articles) loadArticles().then(() => setArticles(true));
+  }, [digits, articles]);
+  const hits = useMemo(() => (q.trim() ? searchCatalog(q, 6) : []), [q, articles]); // eslint-disable-line react-hooks/exhaustive-deps
+  const exact = useMemo(() => (q.trim() ? matchCatalog(q) : null), [q, articles]); // eslint-disable-line react-hooks/exhaustive-deps
   const showAi = q.trim().length >= 2 && !exact;
   const rows = hits.length + (showAi ? 1 : 0);
 
-  function go(target?: string) {
+  async function go(target?: string) {
     const text = (target ?? q).trim();
     if (!text) {
       input.current?.focus();
       return;
     }
+    if (articleNo(text)) await loadArticles().catch(() => {});
     const m = matchCatalog(text);
     if (m?.slug) router.push(`/build/${m.slug}`);
     else router.push(`/build/${slugify(text)}?q=${encodeURIComponent(text)}`);
@@ -198,8 +205,7 @@ function SuggestRow({ slug, name, variant, minutes, active, onPick, onHover }: {
 }
 
 function matchSlug(slug: string) {
-  const e = CATALOG.find((c) => c.slug === slug);
-  return e ? toSpec(e) : null;
+  return catalogSpec(slug);
 }
 
 async function shrink(file: File): Promise<string> {

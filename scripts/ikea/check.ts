@@ -1,0 +1,161 @@
+/**
+ * Checks the whole offline catalog and prints how much of IKEA's range it covers.
+ *
+ *   npm run ikea:check
+ *
+ * Fails when a product doesn't build a plan, has no steps, has an odd size or broken numbers,
+ * when two products share a slug or a name and variant, or when a slug in scripts/ikea/slugs.json
+ * (every slug ever handed out, hand made ones included) no longer opens the same product.
+ */
+import { existsSync, readFileSync } from "node:fs";
+import path from "node:path";
+import { BASE, PRODUCTS, toSpec } from "@/lib/catalog";
+import { fold } from "@/lib/fold";
+import { buildPlan } from "@/lib/plan";
+import { articleNo, articleSlug, ikeaType, loadArticles } from "@/lib/ikea";
+import { matchCatalog, searchCatalog } from "@/lib/search";
+import type { Plan } from "@/lib/types";
+import { classify, type Fact } from "./classify";
+
+const DIR = import.meta.dirname;
+const problems: string[] = [];
+const fail = (s: string) => problems.push(s);
+
+function finite(v: unknown): boolean {
+  if (typeof v === "number") return Number.isFinite(v);
+  if (Array.isArray(v)) return v.every(finite);
+  if (v && typeof v === "object") return Object.values(v).every(finite);
+  return true;
+}
+
+/** Every part's final position stays near the product's outer size. */
+function fits(plan: Plan) {
+  const { w, h, d } = plan.spec.size;
+  const sizeOf = new Map(plan.parts.map((p) => [p.id, p.size]));
+  for (const it of plan.items) {
+    if (it.kind !== "part") continue;
+    const s = sizeOf.get(it.ref);
+    if (!s || s.some((v) => !(v > 0))) return `part ${it.ref} has no size`;
+    const [x, y, z] = it.final.pos;
+    if (Math.abs(x) > w * 5 + 300 || y < -300 || y > h * 10 + 600 || Math.abs(z) > d * 5 + 600) return `part ${it.ref} sits outside the product`;
+  }
+  return null;
+}
+
+async function main() {
+  // plans
+  const t0 = performance.now();
+  for (const e of PRODUCTS) {
+    const label = `${e.slug} (${e.name} ${e.variant})`;
+    const { w, h, d } = e.size;
+    if (!(w >= 15 && w <= 320 && h >= 15 && h <= 260 && d >= 12 && d <= 240)) fail(`${label}: size ${w}x${h}x${d} cm is out of range`);
+    try {
+      const plan = buildPlan(toSpec(e));
+      if (!plan.steps.length) fail(`${label}: no steps`);
+      if (!plan.parts.length) fail(`${label}: no parts`);
+      if (!finite(plan.items) || !finite(plan.parts)) fail(`${label}: a number in the plan is not finite`);
+      const off = fits(plan);
+      if (off) fail(`${label}: ${off}`);
+    } catch (err) {
+      fail(`${label}: buildPlan threw ${(err as Error).message}`);
+    }
+  }
+  const ms = performance.now() - t0;
+
+  // slugs and names
+  const slugs = new Map<string, string>();
+  const keys = new Set<string>();
+  for (const e of PRODUCTS) {
+    const key = fold(e.name) + "|" + fold(e.variant);
+    if (slugs.has(e.slug)) fail(`slug ${e.slug} is used twice`);
+    if (keys.has(key)) fail(`${e.name} ${e.variant} is listed twice`);
+    slugs.set(e.slug, e.name + "|" + e.variant);
+    keys.add(key);
+    if (!/^[a-z0-9]+(-[a-z0-9]+)*$/.test(e.slug)) fail(`slug ${e.slug} has odd characters`);
+  }
+  const lockFile = path.join(DIR, "slugs.json");
+  const lock: Record<string, string> = existsSync(lockFile) ? JSON.parse(readFileSync(lockFile, "utf8")) : {};
+  const baseLock = path.join(DIR, "base-slugs.json");
+  const base: Record<string, string> = existsSync(baseLock) ? JSON.parse(readFileSync(baseLock, "utf8")) : {};
+  for (const [key, slug] of Object.entries(base)) if (slugs.get(slug) !== key) fail(`hand made slug ${slug} no longer opens ${key}`);
+  let gone = 0;
+  for (const [key, slug] of Object.entries(lock)) {
+    const now = slugs.get(slug);
+    if (now === undefined) gone++;
+    else if (now !== key) fail(`slug ${slug} was ${key}, now opens ${now}`);
+  }
+
+  // search
+  await loadArticles();
+  const expect = (q: string, slug: string | null) => {
+    const got = matchCatalog(q)?.slug ?? null;
+    if (got !== slug) fail(`search "${q}" gave ${got}, expected ${slug}`);
+  };
+  expect("kallax", "kallax-2x2");
+  expect("MALM 3 drawers", "malm-3-drawers");
+  expect("billy", "billy-80x202");
+  expect("markus", null);
+  expect("markus office chair", null);
+  expect("marius", "marius-stool");
+  if (articleNo("S292.975.72") !== "29297572") fail("article numbers with an S in front don't parse");
+  for (const [no, slug] of [["60324520", "kallax-2x2"]] as const) {
+    if (articleSlug(no) !== slug) fail(`article ${no} gave ${articleSlug(no)}, expected ${slug}`);
+    for (const q of [no, `${no.slice(0, 3)}.${no.slice(3, 6)}.${no.slice(6)}`, `${no.slice(0, 3)} ${no.slice(3, 6)} ${no.slice(6)}`]) expect(q, slug);
+  }
+  if ((await ikeaType("MARKUS")) !== "Office chair") fail(`ikeaType("MARKUS") gave ${await ikeaType("MARKUS")}`);
+  const s0 = performance.now();
+  const queries = ["kallax", "hemnes chest", "malm", "bed 160", "wardrobe", "billy bookcase", "lisabo table", "poang", "brimnes", "x"];
+  for (let i = 0; i < 20; i++) for (const q of queries) searchCatalog(q, 6);
+  const perQuery = (performance.now() - s0) / (20 * queries.length);
+
+  // coverage
+  const factsFile = path.join(DIR, "facts.json");
+  if (existsSync(factsFile)) {
+    const facts: Fact[] = JSON.parse(readFileSync(factsFile, "utf8")).products;
+    const skipType = new Map<string, number>();
+    const skipWhy = new Map<string, number>();
+    let drawn = 0;
+    for (const f of facts) {
+      const v = classify(f, () => undefined);
+      if ("draw" in v) {
+        drawn++;
+        continue;
+      }
+      if (["fb", "tl", "kt", "li", "pp", "de", "wt", "he", "hs", "lc", "pt", "sp"].includes(f.cats[0]?.slice(0, 2) ?? "")) {
+        skipWhy.set("not furniture (food, textiles, lamps, kitchenware, decor...)", (skipWhy.get("not furniture (food, textiles, lamps, kitchenware, decor...)") ?? 0) + 1);
+        continue;
+      }
+      skipWhy.set(v.skip, (skipWhy.get(v.skip) ?? 0) + 1);
+      skipType.set(f.type, (skipType.get(f.type) ?? 0) + 1);
+    }
+    console.log(`\nIKEA products seen: ${facts.length} (${drawn} drawable before merging colours)`);
+    console.log("\nskipped, by reason:");
+    for (const [k, n] of [...skipWhy].sort((a, b) => b[1] - a[1])) console.log(`  ${String(n).padStart(5)}  ${k}`);
+    console.log("\nskipped furniture, by IKEA type (top 60):");
+    for (const [k, n] of [...skipType].sort((a, b) => b[1] - a[1]).slice(0, 60)) console.log(`  ${String(n).padStart(5)}  ${k}`);
+  }
+  const perKind = new Map<string, [number, number]>();
+  const baseSet = new Set(BASE.map((e) => e.slug));
+  for (const e of PRODUCTS) {
+    const k = e.kind ?? e.category;
+    const [all, ikea] = perKind.get(k) ?? [0, 0];
+    perKind.set(k, [all + 1, ikea + (baseSet.has(e.slug) ? 0 : 1)]);
+  }
+  console.log(`\nguides: ${PRODUCTS.length} (${BASE.length} hand made, ${PRODUCTS.length - BASE.length} from IKEA data)`);
+  console.log("per kind (all / from IKEA data):");
+  for (const [k, [all, ikea]] of [...perKind].sort((a, b) => b[1][0] - a[1][0])) console.log(`  ${k.padEnd(18)} ${String(all).padStart(4)} / ${ikea}`);
+  console.log(`\nbuilt ${PRODUCTS.length} plans in ${Math.round(ms)} ms, search ${perQuery.toFixed(2)} ms a query`);
+  if (gone) console.log(`${gone} slugs in slugs.json belong to products IKEA no longer lists (kept reserved)`);
+
+  if (problems.length) {
+    console.log(`\n${problems.length} problems:`);
+    for (const p of problems.slice(0, 80)) console.log("  " + p);
+    process.exit(1);
+  }
+  console.log("\nall good");
+}
+
+main().catch((e) => {
+  console.error(e);
+  process.exit(1);
+});
