@@ -20,6 +20,7 @@ const CATEGORY_WORDS: [Kind, string[]][] = [
   ["cabrow", ["tv bench combination", "tv unit combination", "media unit combination", "cabinet combination", "wardrobe combination", "closet combination", "wall cabinet combination"]],
   ["washstand", ["wash stand", "washstand", "vanity", "vanity unit", "bathroom vanity", "basin unit", "basin cabinet", "wash basin cabinet", "washbasin cabinet", "bathroom cabinet", "sink vanity"]],
   ["sinkcab", ["sink cabinet", "sink base", "sink base cabinet", "sink unit", "kitchen sink cabinet", "under sink cabinet", "cabinet for sink", "sink cupboard"]],
+  ["appliance", ["appliance cabinet", "oven cabinet", "oven housing", "oven unit", "tall oven unit", "wall oven cabinet", "cabinet for oven", "fridge cabinet", "fridge housing", "refrigerator cabinet", "freezer cabinet", "cabinet for fridge", "microwave cabinet", "hob cabinet", "hob unit", "cooktop cabinet", "hood cabinet", "extractor hood cabinet"]],
   ["shoe", ["shoe", "shoes", "shoe cabinet", "shoe rack"]],
   ["nightstand", ["nightstand", "bedside", "night stand"]],
   ["mixed", ["doors and drawers", "cabinet with drawers", "cupboard with drawers", "wardrobe with drawers", "armoire with drawers"]],
@@ -60,7 +61,8 @@ const CATEGORY_WORDS: [Kind, string[]][] = [
   ["bench", ["bench"]],
 ];
 const KIND_WORDS = new Map(CATEGORY_WORDS);
-const LESSER = new Set<Kind>(["bookrow", "cabrow", "section"]);
+// rows, sections, and cabinets built around an appliance or a sink, which only come first when asked for
+const LESSER = new Set<Kind>(["bookrow", "cabrow", "section", "sinkcab", "appliance"]);
 
 export function kindOf(q: string): Kind | null {
   const f = " " + fold(q) + " ";
@@ -158,7 +160,7 @@ export function searchCatalog(q: string, limit = 8): Hit[] {
     if (!ns && ((first.length >= 3 && r.words.some((w) => w.startsWith(first))) || (firstIsKind && kwHit))) score += 20;
     for (const t of tokens.slice(1)) if (t.length && r.words.some((w) => w.startsWith(t) || (t.length > 2 && w.includes(t)))) score += 12;
     if (kw) score += kwHit ? 14 : -30;
-    // rows of several units and sofa sections come after the whole product, unless the query asks for them
+    // rows of several units, sofa sections and appliance cabinets come after the plain product, unless the query asks for them
     if (e.kind && LESSER.has(e.kind) && kind !== e.kind) score -= 1;
     if (e.checked) score += 3;
     if (e.featured) score += 2;

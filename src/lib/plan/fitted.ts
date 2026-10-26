@@ -414,7 +414,7 @@ export function buildFitted(b: PlanBuilder, s: ProductSpec) {
         const list: FitOpts[] = doors.map((d) => {
           const x = d.x - d.sgn * (d.dw / 2 - 40);
           // a wall cabinet opens from the bottom edge, a base cabinet from the top, a tall door at hand height
-          const y = wall && !fit.hangFirst ? d.lo + 80 : clamp(1000, d.lo + 80, d.lo + d.dh - 80);
+          const y = wall && !fit.hangFirst ? d.lo + 110 : clamp(1000, d.lo + 110, d.lo + d.dh - 110);
           return { on: d.key, at: [x, y, D / 2 + t], dir: [0, 0, -1], hole: false, twist: bar ? Math.PI / 2 : 0 };
         });
         for (const k of [...drawers.map((d) => d.front), ...fronts]) list.push({ on: k, at: [0, b.partItem(k).final.pos[1], D / 2 + t], dir: [0, 0, -1], hole: false });

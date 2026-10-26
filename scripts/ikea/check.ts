@@ -120,6 +120,9 @@ async function main() {
   // the same for a kitchen's sink cabinet
   expect("enhet sink cabinet", "enhet-base-cb-f-sink-60-x-60-x-75");
   expect("metod base cabinet", "metod-base-cabinet-shelves-60-x-60");
+  // and for appliance cabinets: a hob unit when asked for, the plain high cabinet otherwise
+  expect("metod hob unit", "metod-knivshult-base-cab-f-hob-2-fronts-3-drawer");
+  expect("metod high cabinet", "metod-high-cabinet-shelves-40-x-37-x-200");
   if (articleNo("S292.975.72") !== "29297572") fail("article numbers with an S in front don't parse");
   for (const [no, slug] of [["60324520", "kallax-2x2"]] as const) {
     if (articleSlug(no) !== slug) fail(`article ${no} gave ${articleSlug(no)}, expected ${slug}`);

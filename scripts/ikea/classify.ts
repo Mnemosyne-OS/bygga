@@ -73,7 +73,7 @@ export function measure(s: string): Size | null {
   return { n: parts.map((p) => Number(p.split("/")[0])), ext: parts.some((p) => p.includes("/")), text: parts.join(" × ") + " cm" };
 }
 
-const UPRIGHT = new Set<Kind>(["cube", "bookcase", "open", "chest", "nightstand", "wardrobe", "cabinet", "sideboard", "tv", "shoe", "wallcab", "wallshelf", "kitchen", "mixed", "sliding", "slidecab", "washstand", "sinkcab"]);
+const UPRIGHT = new Set<Kind>(["cube", "bookcase", "open", "chest", "nightstand", "wardrobe", "cabinet", "sideboard", "tv", "shoe", "wallcab", "wallshelf", "kitchen", "mixed", "sliding", "slidecab", "washstand", "sinkcab", "appliance"]);
 const FLAT = new Set<Kind>(["desk", "coffee", "side", "dining", "bar", "console", "kidstable", "trolley", "bench"]);
 
 /** Office chairs IKEA sells with armrests although the type doesn't say so. */
@@ -121,6 +121,11 @@ const withDoors = (kind: Kind, t: string): Pick => {
 /** METOD combinations whose second name is a drawer system: the fronts are drawers, not doors. */
 const DRAWER_SYSTEM = /\b(MAXIMERA|KNIVSHULT)\b/;
 const doorsFor = (c: Ctx) => ((c.sz.n[0] ?? 60) >= 80 ? 2 : 1);
+/** A high cabinet's front: what's under the appliance, a 60 cm opening, and a door over it when there's room. */
+function tallFront(c: Ctx, use: NonNullable<X["use"]>, low: string, top: string): Pick {
+  const h = c.sz.n[2] ?? 200;
+  return { kind: "appliance", x: { use, z: `${low}+g@60${h - 140 >= 20 ? `+${top}` : ""}` } };
+}
 
 /** Most specific first. A string result is the reason to skip. */
 const RULES: Rule[] = [
@@ -136,6 +141,29 @@ const RULES: Rule[] = [
   [/^(?:base cab f sink\/waste sorting|sink cabinet with (?:door|organiser))$/, (_m, c) => ({ kind: "sinkcab", x: { z: `d${doorsFor(c)}` } })],
   // frames sold without fronts
   [/^base cb f (?:built-in appliances\/)?sink$/, () => ({ kind: "sinkcab", x: { z: "o" } })],
+  // cabinets with room for an oven, a fridge or a microwave, and base cabinets under a hob: the appliance is fitted afterwards
+  [/^high cabinet f built-in appliances$/, (_m, c) =>
+    tallFront(c, "appliance", DRAWER_SYSTEM.test(c.f.name) ? "r2@80" : c.f.spr ? "d1@80" : "o@80", c.f.spr ? "d1" : "o")],
+  [/^high cab f oven w 2 doors\/shelves$/, (_m, c) => tallFront(c, "oven", "d1s1@80", "d1s1")],
+  [/^(?:high cab f oven w door|high cabinet f oven\+door)\/(\d) drawers$/, (m, c) => tallFront(c, "oven", `r${m[1]}@80`, "d1")],
+  [/^high cabinet w (\d) drawers for oven$/, (m, c) => tallFront(c, "oven", `r${m[1]}@80`, "d1")],
+  [/^hi cab f ov w dr\/(\d) frnts?\//, (m, c) => tallFront(c, "oven", `r${m[1]}@80`, "d1")],
+  [/^high cab f micro w 2 doors\/shelves$/, () => ({ kind: "appliance", x: { use: "microwave", z: "d1s2@100+g@40+d1s1" } })],
+  // fridges and freezers: the appliance's own door is fixed to the cabinet door, by its own instructions
+  [/^(?:hi|high) cab(?:inet)? f(?:or)? fridge(?:(?: or |\/)freezer)?(?: w(?:ith)? (?:(\d) )?(doors?|drs))?$/, (m, c) => {
+    const n = m[1] ? Number(m[1]) : m[2] === "door" ? 1 : m[2] ? 2 : c.f.spr ? ((c.sz.n[2] ?? 200) >= 140 ? 2 : 1) : 0;
+    if (n > 3) return "fridge cabinet with more than 3 doors";
+    return { kind: "appliance", x: { use: "fridge", z: ["g+o@40", "d1", "d1+d1@60", "d1+d1+d1@60"][n] } };
+  }],
+  [/^base cabinet f built-in appliances$/, (_m, c) => ({ kind: "appliance", x: { use: "appliance", z: DRAWER_SYSTEM.test(c.f.name) ? "r1@20+g@60" : "o@20+g@60" } })],
+  [/^base cabinet for oven with drawer$/, () => ({ kind: "appliance", x: { use: "oven", z: "r1@20+g@60" } })],
+  [/^base cab for hob\+oven w drawer$/, () => ({ kind: "appliance", x: { use: "ovenhob", z: "r1@20+g@60" } })],
+  [/^base cab f hob\/(\d) fronts\/\d drawers$/, (m) => ({ kind: "appliance", x: { use: "hob", z: `r${m[1]}` } })],
+  [/^base cab f hob\/.*(wire|extractor)/, (m) => (m[1] === "wire" ? "base cabinet for a hob with wire baskets" : "base cabinet for a hob with a built-in extractor")],
+  [/^wall cabinet for microwave oven$/, () => ({ kind: "appliance", x: { use: "microwave", z: "g@40+d1", hung: true } })],
+  [/^wall cb f extr hood w shlf\/door$/, () => ({ kind: "appliance", x: { use: "hood", z: "d1s1", hung: true } })],
+  [/^wall cabinet f b-in extractor hood$/, () => ({ kind: "appliance", x: { use: "hood", z: "o", hung: true } })],
+  [/^top cabinet for fridge\/freezer$/, () => ({ kind: "appliance", x: { use: "fridge", z: "d1", hung: true } })],
   // cabinets with doors and drawers: the drawers under the doors, or one drawer above the door of a kitchen base cabinet
   [/^(glass-door cabinet with|high cabinet w gls-drs and) (\d) drawers?$/, (m) => ({ kind: "mixed", x: { rows: Number(m[2]) } })],
   [/^wardrobe with (\d) doors and (\d) drawers$/, (m) => (Number(m[1]) > 2 ? "wardrobe with more than 2 doors and drawers" : { kind: "mixed", x: { doors: Number(m[1]) as 1 | 2, rows: Number(m[2]), rail: true } })],
@@ -210,7 +238,9 @@ const RULES: Rule[] = [
     ({ kind: "washstand", x: { z: `d${m[1] ? Math.min(2, Number(m[1])) : (c.sz.n[0] ?? 60) > 50 ? 2 : 1}`, basin: c.multi ? 6 : undefined } })],
   [/^base (?:cb|cabinet) f(?:or)? wash-?basin w(?:ith)? (\d) drawers$/, (m) => ({ kind: "washstand", x: { z: `r${m[1]}` } })],
   [/^base frame for wash-?basin$/, () => ({ kind: "washstand", x: { z: "o" } })],
-  [/sink|wash-?basin|wash-?st|hob\b|oven|fridge|freezer|dishwasher|microwave|extractor|appliances|kitchenette|outdoor kitchen/, () => "appliance or sink unit"],
+  // the appliances, sinks, basins, taps and hoods themselves, and the fronts that go on a dishwasher
+  [/sink|wash-?basin|wash-?st|hob\b|\boven|fridge|freezer|dishwasher|microwave|extractor|appliances|kitchenette|outdoor kitchen/, (_m, c) =>
+    c.f.cats[0] === "od001" ? "outdoor kitchen" : "appliance, sink, tap or hood"],
   [/^(door\/)?drawer front|^drawer (without |with (framed )?(glass )?)front|^(high|medium|low) drawer with front|^fitting for mounting/, () => "door or drawer front sold alone"],
   [/drawers?\b.*\b(doors?|fronts?|shelves|baskets?)\b|\b(doors?|fronts?|shelves|baskets?)\b.*\bdrawers?\b/, () => "mixed doors and drawers"],
 
@@ -343,7 +373,7 @@ export function classify(f: Fact, hints: Hints): Verdict {
     if (sz.ext) return { skip: "corner or extendable unit" };
     if (v.length === 3) set(v[0], v[2], v[1]);
     else if (v.length === 2) {
-      if ((kind === "kitchen" || kind === "mixed" || kind === "sinkcab") && /^base/.test(t)) set(v[0], 80, v[1]);
+      if ((kind === "kitchen" || kind === "mixed" || kind === "sinkcab" || kind === "appliance") && /^base/.test(t)) set(v[0], 80, v[1]);
       // bedside tables are measured from above, like tables
       else if (kind === "nightstand" && /bedside|nightstand/.test(t)) set(v[0], hint?.kind === kind ? hint.h : 55, v[1]);
       else set(v[0], v[1]);
@@ -363,6 +393,8 @@ export function classify(f: Fact, hints: Hints): Verdict {
       }
       if (h - (x.basin ?? 0) <= 70 && !WASH_FLOOR.has(family)) x.hung = true;
     }
+    // a METOD wall cabinet is 37 deep, except the one over a fridge, which is as deep as the fridge's cabinet
+    if (kind === "appliance" && guessed.d) d = x.hung && x.use !== "fridge" ? 37 : 60;
   } else if (FLAT.has(kind)) {
     if (v.length === 3) set(v[0], v[2], v[1]);
     else if (v.length === 2) set(v[0], undefined, v[1]);
@@ -466,7 +498,7 @@ export function classify(f: Fact, hints: Hints): Verdict {
   }
 
   // parameters from the type name, the size and the family's hand made rows
-  if (hint?.x.knobs && ["chest", "nightstand", "wardrobe", "cabinet", "sideboard", "tv", "shoe", "wallcab", "kitchen", "mixed", "washstand", "sinkcab"].includes(kind)) x.knobs = hint.x.knobs;
+  if (hint?.x.knobs && ["chest", "nightstand", "wardrobe", "cabinet", "sideboard", "tv", "shoe", "wallcab", "kitchen", "mixed", "washstand", "sinkcab", "appliance"].includes(kind)) x.knobs = hint.x.knobs;
   if (kind === "chest" || kind === "nightstand") {
     const total = x.rows ?? (kind === "nightstand" ? (h >= 60 ? 2 : 1) : Math.min(6, Math.max(2, Math.round(h / 14))));
     if (kind === "chest" && total === 2 && w <= 60 && h <= 65) return finish("nightstand");

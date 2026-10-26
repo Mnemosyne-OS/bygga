@@ -245,7 +245,7 @@ function chipLabels(labels: string[]) {
 
 /** IKEA's shorthand in its type names, as words. */
 const SHORTHAND: [RegExp, string][] = [
-  [/\s*\+\s*/g, " with "],
+  [/\s*\+\s*/g, " and "],
   [/\b(cab|cb)\b/gi, "cabinet"],
   [/\bhi\b/gi, "high"],
   [/\bf\b/g, "for"],
@@ -259,6 +259,9 @@ const SHORTHAND: [RegExp, string][] = [
   [/\bfrnt\b/g, "front"],
   [/\b(drws|drwrs)\b/g, "drawers"],
   [/\bdrw\b/g, "drawer"],
+  [/\bdr\b/g, "door"],
+  [/\b(\d) m\b/g, "$1 medium"],
+  [/\b(\d) h\b/g, "$1 high"],
   [/\bshlf\b/g, "shelf"],
   [/\bshlvs?\b/g, "shelves"],
 ];

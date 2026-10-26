@@ -174,6 +174,7 @@ EKTORP|chaise|3-seat sofa with chaise longue|218|88|156|seats=3,arms=wide,chaise
 EKTORP|corner|Corner sofa, 4-seat|228|88|166|seats=4,arms=wide,corner=left,sd=88
 EKTORP|sofa|2-seat sofa|170|85|92|seats=2
 ELDBERGET / MALSKÄR|office|Swivel chair|60|105|64|arms=none
+ENHET|appliance|High cabinet for fridge/freezer, 60 × 60 × 210 cm|60|210|60|use=fridge,z=g+o@40
 ENHET|cabinet|High cabinet with door, 30 × 32 × 180 cm|30|180|32|doors=1
 ENHET|kitchen|Base fr w shelves, 40 × 60 × 75 cm|40|75|60|doors=0
 ENHET|kitchen|Base fr w shelves, 60 × 40 × 60 cm|60|60|40|doors=0
@@ -601,6 +602,28 @@ MARIEDAMM|dining|Table, 180 × 100 cm|180|74|100
 MARKUS|office|Office chair|64|128|64|arms=slim
 MARKUS|office|Office chair with armrests|64|128|64|arms=slim
 MATCHSPEL|office|Gaming chair|64|128|64|arms=slim,seatH=50
+METOD|appliance|Top cabinet for fridge/freezer, 60 × 40 cm|60|40|60|use=fridge,z=d1,hung=1
+METOD|appliance|Wall cabinet f b-in extractor hood, 60 × 37 × 60 cm|60|60|37|use=hood,z=o,hung=1
+METOD|appliance|Wall cb f extr hood w shlf/door, 60 × 60 cm|60|60|37|use=hood,z=d1s1,hung=1
+METOD|appliance|Wall cabinet for microwave oven, 60 × 80 cm|60|80|37|use=microwave,z=g@40+d1,hung=1
+METOD|appliance|Wall cb f extr hood w shlf/door, 60 × 80 cm|60|80|37|use=hood,z=d1s1,hung=1
+METOD|appliance|Wall cabinet for microwave oven, 60 × 100 cm|60|100|37|use=microwave,z=g@40+d1,hung=1
+METOD|appliance|Wall cb f extr hood w shlf/door, 60 × 100 cm|60|100|37|use=hood,z=d1s1,hung=1
+METOD|appliance|High cabinet f built-in appliances, 60 × 60 × 140 cm|60|140|60|use=appliance,z=d1@80+g@60
+METOD|appliance|High cabinet for fridge/freezer, 60 × 60 × 140 cm|60|140|60|use=fridge,z=d1+d1@60
+METOD|appliance|Hi cab f fridge or freezer w 2 drs, 60 × 60 × 200 cm|60|200|60|use=fridge,z=d1+d1@60
+METOD|appliance|High cab f fridge or freezer w door, 60 × 60 × 200 cm|60|200|60|use=fridge,z=d1
+METOD|appliance|High cab f oven w 2 doors/shelves, 60 × 60 × 200 cm|60|200|60|use=oven,z=d1s1@80+g@60+d1s1
+METOD|appliance|High cabinet f built-in appliances, 60 × 60 × 200 cm|60|200|60|use=appliance,z=o@80+g@60+o||metod-high-cabinet-f-built-in-appliances-60-x-60-2
+METOD|appliance|High cabinet for fridge/freezer, 60 × 60 × 200 cm|60|200|60|use=fridge,z=d1+d1@60||metod-high-cabinet-for-fridge-freezer-60-x-60-x-2
+METOD|appliance|High cab f fridge/freezer w 3 doors, 60 × 60 × 220 cm|60|220|60|use=fridge,z=d1+d1+d1@60
+METOD|appliance|High cab f micro w 2 doors/shelves, 60 × 60 × 220 cm|60|220|60|use=microwave,z=d1s2@100+g@40+d1s1
+METOD|appliance|High cabinet f built-in appliances, 60 × 60 × 220 cm|60|220|60|use=appliance,z=d1@80+g@60+d1||metod-high-cabinet-f-built-in-appliances-60-x-60-3
+METOD|appliance|High cabinet for fridge w 2 doors, 60 × 60 × 220 cm|60|220|60|use=fridge,z=d1+d1@60
+METOD|appliance|High cab f fridge/freezer w 3 doors, 60 × 60 × 240 cm|60|240|60|use=fridge,z=d1+d1+d1@60||metod-high-cab-f-fridge-freezer-w-3-doors-60-x-6-2
+METOD|appliance|High cab for fridge with 3 doors, 60 × 60 × 240 cm|60|240|60|use=fridge,z=d1+d1+d1@60
+METOD|appliance|Wall cb f extr hood w shlf/door, 80 × 80 cm|80|80|37|use=hood,z=d1s1,hung=1
+METOD|appliance|Wall cb f extr hood w shlf/door, 80 × 100 cm|80|100|37|use=hood,z=d1s1,hung=1
 METOD|kitchen|High cabinet with shelves, 40 × 37 × 200 cm|40|200|37|doors=0
 METOD|kitchen|Base cabinet with shelves, 60 × 60 cm|60|80|60|doors=0
 METOD|kitchen|High cabinet with shelves, 60 × 60 × 140 cm|60|140|60|doors=0
@@ -632,6 +655,19 @@ METOD|wallcab|Wall cabinet with shelves, 60 × 80 cm|60|80|35|doors=0
 METOD|wallcab|Wall cabinet with 2 doors, 80 × 40 cm|80|40|35
 METOD|wallcab|Wall cabinet with 2 glass doors, 80 × 40 cm|80|40|35
 METOD|wallcab|Wall cabinet with shelves/2 doors, 80 × 80 cm|80|80|35
+METOD / KNIVSHULT|appliance|Base cab f hob/2 fronts/3 drawers, 60 × 60 cm|60|80|60|use=hob,z=r2
+METOD / KNIVSHULT|appliance|Base cab f hob/3 fronts/3 drawers, 60 × 60 cm|60|80|60|use=hob,z=r3
+METOD / KNIVSHULT|appliance|Base cabinet f built-in appliances, 60 × 60 cm|60|80|60|use=appliance,z=r1@20+g@60
+METOD / KNIVSHULT|appliance|Base cabinet for oven with drawer, 60 × 60 cm|60|80|60|use=oven,z=r1@20+g@60
+METOD / KNIVSHULT|appliance|High cabinet f built-in appliances, 60 × 60 × 140 cm|60|140|60|use=appliance,z=r2@80+g@60
+METOD / KNIVSHULT|appliance|High cabinet w 2 drawers for oven, 60 × 60 × 140 cm|60|140|60|use=oven,z=r2@80+g@60
+METOD / KNIVSHULT|appliance|Hi cab f ov w dr/2 frnt/1 m/1 h drw, 60 × 60 × 200 cm|60|200|60|use=oven,z=r2@80+g@60+d1
+METOD / KNIVSHULT|appliance|High cabinet f built-in appliances, 60 × 60 × 200 cm|60|200|60|use=appliance,z=r2@80+g@60+d1||metod-knivshult-high-cabinet-f-built-in-applianc-2
+METOD / KNIVSHULT|appliance|Hi cab f ov w dr/2 frnts/2 hi drwrs, 60 × 60 × 220 cm|60|220|60|use=oven,z=r2@80+g@60+d1
+METOD / KNIVSHULT|appliance|High cab f oven w door/3 drawers, 60 × 60 × 220 cm|60|220|60|use=oven,z=r3@80+g@60+d1
+METOD / KNIVSHULT|appliance|High cabinet f built-in appliances, 60 × 60 × 220 cm|60|220|60|use=appliance,z=r2@80+g@60+d1||metod-knivshult-high-cabinet-f-built-in-applianc-3
+METOD / KNIVSHULT|appliance|High cabinet f built-in appliances, 60 × 60 × 240 cm|60|240|60|use=appliance,z=r2@80+g@60+d1||metod-knivshult-high-cabinet-f-built-in-applianc-4
+METOD / KNIVSHULT|appliance|High cabinet f oven+door/2 drawers, 60 × 60 × 240 cm|60|240|60|use=oven,z=r2@80+g@60+d1
 METOD / KNIVSHULT|mixed|Base cabinet with drawer/door, 40 × 60 cm|40|80|60|rows=1,doors=1,dtop=1
 METOD / KNIVSHULT|mixed|Base cabinet with drawer/2 doors, 80 × 60 cm|80|80|60|rows=1,doors=2,dtop=1
 METOD / KNIVSHULT|sinkcab|Base cab f sink+2 fronts/2 drawers, 60 × 60 cm|60|80|60|z=r2
@@ -639,6 +675,23 @@ METOD / KNIVSHULT|sinkcab|Base cab f TALLSJÖN sink, 60 × 60 cm|60|80|60|z=r1@6
 METOD / KNIVSHULT|sinkcab|Base cb f HAVSEN snk/3 frnts/2 drws, 60 × 60 cm|60|80|60|z=r2@60+a@20
 METOD / KNIVSHULT|sinkcab|Base cab f sink+3 fronts/2 drawers, 80 × 60 cm|80|80|60|z=r2@60+f@20
 METOD / KNIVSHULT|sinkcab|Base cab f TALLSJÖN sink, 80 × 60 cm|80|80|60|z=r1@60+f@20
+METOD / MAXIMERA|appliance|Base cab f hob/2 fronts/2 drawers, 60 × 60 cm|60|80|60|use=hob,z=r2
+METOD / MAXIMERA|appliance|Base cab f hob/3 fronts/3 drawers, 60 × 60 cm|60|80|60|use=hob,z=r3
+METOD / MAXIMERA|appliance|Base cab for hob+oven w drawer, 60 × 60 cm|60|80|60|use=ovenhob,z=r1@20+g@60
+METOD / MAXIMERA|appliance|Base cabinet f built-in appliances, 60 × 60 cm|60|80|60|use=appliance,z=r1@20+g@60
+METOD / MAXIMERA|appliance|Base cabinet for oven with drawer, 60 × 60 cm|60|80|60|use=oven,z=r1@20+g@60
+METOD / MAXIMERA|appliance|High cabinet f built-in appliances, 60 × 60 × 140 cm|60|140|60|use=appliance,z=r2@80+g@60
+METOD / MAXIMERA|appliance|High cabinet w 2 drawers for oven, 60 × 60 × 140 cm|60|140|60|use=oven,z=r2@80+g@60
+METOD / MAXIMERA|appliance|High cabinet f built-in appliances, 60 × 60 × 200 cm|60|200|60|use=appliance,z=r2@80+g@60+d1||metod-maximera-high-cabinet-f-built-in-appliance-2
+METOD / MAXIMERA|appliance|High cabinet f oven+door/2 drawers, 60 × 60 × 200 cm|60|200|60|use=oven,z=r2@80+g@60+d1
+METOD / MAXIMERA|appliance|Hi cab f ov w dr/2 frnt/1 m/1 h drw, 60 × 60 × 220 cm|60|220|60|use=oven,z=r2@80+g@60+d1
+METOD / MAXIMERA|appliance|Hi cab f ov w dr/2 frnts/2 hi drwrs, 60 × 60 × 220 cm|60|220|60|use=oven,z=r2@80+g@60+d1
+METOD / MAXIMERA|appliance|High cabinet f built-in appliances, 60 × 60 × 220 cm|60|220|60|use=appliance,z=r2@80+g@60+d1||metod-maximera-high-cabinet-f-built-in-appliance-3
+METOD / MAXIMERA|appliance|High cab f oven w door/3 drawers, 60 × 60 × 240 cm|60|240|60|use=oven,z=r3@80+g@60+d1
+METOD / MAXIMERA|appliance|High cabinet f built-in appliances, 60 × 60 × 240 cm|60|240|60|use=appliance,z=r2@80+g@60+d1||metod-maximera-high-cabinet-f-built-in-appliance-4
+METOD / MAXIMERA|appliance|High cabinet f oven+door/2 drawers, 60 × 60 × 240 cm|60|240|60|use=oven,z=r2@80+g@60+d1||metod-maximera-high-cabinet-f-oven-door-2-drawer-2
+METOD / MAXIMERA|appliance|Base cab f hob/2 fronts/3 drawers, 80 × 60 cm|80|80|60|use=hob,z=r2
+METOD / MAXIMERA|appliance|Base cab f hob/3 fronts/3 drawers, 80 × 60 cm|80|80|60|use=hob,z=r3||metod-maximera-base-cab-f-hob-3-fronts-3-drawers-2
 METOD / MAXIMERA|mixed|Base cabinet with drawer/door, 60 × 60 cm|60|80|60|rows=1,doors=1,dtop=1
 METOD / MAXIMERA|mixed|Base cabinet with drawer/2 doors, 80 × 60 cm|80|80|60|rows=1,doors=2,dtop=1
 METOD / MAXIMERA|sinkcab|Base cab f sink+2 fronts/2 drawers, 60 × 60 cm|60|80|60|z=r2
