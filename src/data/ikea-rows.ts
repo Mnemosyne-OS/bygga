@@ -246,6 +246,7 @@ FÄRJKARL|cabinet|Glass-door cabinet, 87 × 45 × 161 cm|87|161|45
 FEJAN|chair|Chair, outdoor|44|88|50||outdoor garden
 FEJAN|dining|Table, outdoor, 50 × 44 cm|50|74|44||outdoor garden
 FJÄDERHARV|chest|Mini chest with 2 drawers, 32 × 25 cm|32|25|19|rows=2,min=30
+FJÄLLBERGET|conference|Conference chair|60|86|60
 FJÄLLBO|desk|Desk, 140 × 70 cm|140|74|70
 FJÄLLBO|open|Shelving unit, 51 × 136 cm|51|136|35
 FJÄLLBO|open|Shelving unit, 100 × 95 cm|100|95|35
@@ -596,6 +597,7 @@ LAGKAPTEN / OLOV|desk|Desk, 140 × 60 cm|140|73|60|legs=round,attach=plate
 LAGKAPTEN / SPÄND|desk|Desk, 120 × 60 cm|120|73|60|legs=round,attach=plate
 LAGKAPTEN / SPÄND|desk|Desk, 140 × 60 cm|140|73|60|legs=round,attach=plate
 LAGKAPTEN / SPÄND|desk|Desk, 200 × 60 cm|200|73|60|legs=round,attach=plate
+LÄKTARE|conference|Conference chair|60|86|60
 LANDSKRONA|armchair|Armchair|75|90|80
 LANDSKRONA|chaise|4-seat sofa with chaise longues|267|89|157|seats=4,arms=slim,chaise=both,sd=89
 LANDSKRONA|corner|Corner sofa, 5-seat|222|89|222|seats=5,arms=slim,corner=left,sd=89
@@ -608,6 +610,7 @@ LANESUND|bookcase|Bookcase, 121 × 37 × 152 cm|121|152|37
 LANESUND|cabinet|Glass-door cabinet, 121 × 37 × 152 cm|121|152|37
 LANESUND|sideboard|Sideboard, 161 × 47 × 81 cm|161|81|47
 LANESUND|tv|TV bench, 161 × 47 × 55 cm|161|55|47
+LÅNGFJÄLL|conference|Conference chair|60|86|60
 LASTARE|bench|Bench, 90 × 42 × 48 cm|90|48|42
 LASTARE|cabinet|Frame, 40 × 42 × 100 cm|40|100|42|doors=0
 LASTARE|cabinet|Frame, 60 × 30 × 100 cm|60|100|30|doors=0
@@ -1341,6 +1344,7 @@ TORPARÖ|dining|Table, outdoor, 130 × 74 cm|130|74|74||outdoor garden
 TORSJÖ|coffee|Coffee table, 88 cm|88|45|88|round=1
 TORSJÖ|side|Side table, 45 cm|45|50|45|round=1
 TOSSBERG|chair|Chair|44|88|50
+TOSSBERG / LÅNGFJÄLL|conference|Conference chair|60|86|60
 TOSSBERG / MALSKÄR|office|Swivel chair|60|105|64|arms=none
 TRANERED|coffee|Coffee table, 90 × 90 cm|90|45|90
 TRÄNNÖ|stool|Stool|35|45|35

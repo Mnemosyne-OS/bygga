@@ -274,6 +274,8 @@ const RULES: Rule[] = [
   [/^sun lounger$/, () => ({ kind: "lounger" })],
   // easy chairs in one piece on a swivel base (a shell without armrests in some families)
   [/^(children's )?swivel (easy chair|armchair)$/, (m, c) => ({ kind: "swivel", x: { ...(SWIVEL_SHELL.has(c.f.name) ? { arms: "none" } : {}), ...(m[1] ? { seatH: 30 } : {}) } })],
+  // conference chairs, built like office chairs
+  [/^conference chair$/, () => ({ kind: "conference" })],
   [/swivel|office chair|gaming chair|conference|desk chair|highchair|lounge|reclining|lounger|hammock|massage/, () => "office, swivel or lounge chair"],
   // sofas with a chaise longue at one or both ends, and corner sofas (an L of sections)
   [/^(?=.*\bsofa)(?=.*\b(corner|crnr|chaise))/, (m) => {
