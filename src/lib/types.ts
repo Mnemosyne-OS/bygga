@@ -3,7 +3,7 @@ export type Vec3 = [number, number, number];
 export type Archetype = "shelf" | "drawers" | "table" | "bed" | "cabinet" | "seat" | "sofa" | "custom";
 
 export interface ShelfParams {
-  style: "grid" | "bookcase";
+  style: "grid" | "bookcase" | "rack" | "screen"; // a rack: two uprights on feet with a rail across the top; a screen: hinged panels
   cols: number;
   rows: number;
   shelves: number; // adjustable shelves (bookcase)
@@ -13,6 +13,10 @@ export interface ShelfParams {
   outer: number; // mm panel thickness of frame
   inner: number; // mm thickness of inner shelves/dividers
   wall?: boolean; // hangs on the wall instead of standing on the floor
+  underframe?: number; // cm: a cube grid standing on an underframe this tall (size.h takes it in)
+  inserts?: number; // a cube grid sold with this many inserts with a door, from the bottom row up
+  shoes?: boolean; // a rack with a shoe shelf low down instead of a lower rail
+  changing?: boolean; // a changing table: a changing top goes on last (size.h takes it in)
 }
 
 export interface DrawersParams {
@@ -21,6 +25,7 @@ export interface DrawersParams {
   knobs: "none" | "knob" | "bar";
   plinth: boolean;
   thickness: number;
+  changing?: boolean; // a changing table: a changing top goes on last (size.h and size.d take it in)
 }
 
 export interface TableParams {
@@ -64,16 +69,39 @@ export interface CabinetParams {
   drawers?: number; // drawers as well as doors: full-width drawers, split from the doors by a fixed shelf
   drawerAt?: "top" | "bottom"; // where the drawers are; under the doors unless it says top
   slides?: number; // sliding doors: how many, running in two tracks
+  fit?: FitParams; // built around a basin, a sink or an appliance that is fitted afterwards
+}
+
+/** What a fitted cabinet is built around. The guide builds the cabinet only, and says so at the end. */
+export type FitUse = "basin" | "sink" | "hob" | "oven" | "ovenhob" | "fridge" | "microwave" | "hood" | "appliance" | "storage";
+
+/** One band of a fitted cabinet's front, from the bottom up. */
+export interface FitZone {
+  // drawers, doors, a fixed front that doesn't open (in front of a sink), an opening for an appliance,
+  // open shelves, or room at the top for a sink's own front
+  kind: "drawers" | "doors" | "front" | "gap" | "open" | "apron";
+  h: number; // cm of the front; 0 shares out what is left
+  n?: number; // drawers in the band, doors side by side (1 or 2), or shelves when open
+  shelves?: number; // shelves behind the doors
+}
+
+export interface FitParams {
+  use: FitUse;
+  zones: FitZone[]; // from the bottom up
+  basin?: number; // cm: a wash-basin that comes in the box, this thick; size includes it, and it goes on top last
+  rails?: boolean; // two rails across the top instead of a top panel
+  hangFirst?: boolean; // hung on the wall before the fronts go on (wash-stands)
 }
 
 export interface SeatParams {
-  kind: "stool" | "chair" | "bench" | "office";
+  kind: "stool" | "chair" | "bench" | "office" | "highchair";
   seat: "round" | "square";
   seatH: number; // cm
   backH: number; // cm (chair total height)
   stretchers: boolean;
   splay: boolean;
   arms?: boolean; // office chairs and chairs: armrests
+  tray?: boolean; // highchairs: false when it comes without a tray
 }
 
 export interface SofaParams {
