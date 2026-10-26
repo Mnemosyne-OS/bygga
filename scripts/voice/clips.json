@@ -8237,5 +8237,747 @@
   "heard": "And that's it, your talkening is built. Well done.",
   "ok": true,
   "takes": 1
+ },
+ "294p3bg4mco": {
+  "text": "Build the narrow bookcase the same way.",
+  "ms": 1809,
+  "heard": "Build the narrow bookcase the same way.",
+  "ok": true,
+  "takes": 1
+ },
+ "oqzr64zwc6": {
+  "text": "Build another wide shelving unit the same way.",
+  "ms": 2301,
+  "heard": "Build another wide shelving unit the same way.",
+  "ok": true,
+  "takes": 1
+ },
+ "136ufnx5urm": {
+  "text": "Every step as for the first one, just narrower.",
+  "ms": 2505,
+  "heard": "Every step as for the first one, just narrower.",
+  "ok": true,
+  "takes": 1
+ },
+ "ptypbm52q1": {
+  "text": "Build another wide bookcase the same way.",
+  "ms": 2103,
+  "heard": "Build another wide bookcase the same way.",
+  "ok": true,
+  "takes": 1
+ },
+ "50cq601hgh": {
+  "text": "Build the narrow shelving unit the same way.",
+  "ms": 2030,
+  "heard": "Build the narrow shelving unit the same way.",
+  "ok": true,
+  "takes": 1
+ },
+ "7y274jlwh2": {
+  "text": "Build two more shelving units the same way.",
+  "ms": 2224,
+  "heard": "Build two more shelving units the same way.",
+  "ok": true,
+  "takes": 1
+ },
+ "tmz3wc749a": {
+  "text": "Bolt the swivel plate under the seat.",
+  "ms": 1719,
+  "heard": "Bolt the swivel plate under the seat.",
+  "ok": true,
+  "takes": 1
+ },
+ "4b8v2un10t": {
+  "text": "Lower the chair onto the base.",
+  "ms": 1487,
+  "heard": "Lower the chair onto the base.",
+  "ok": true,
+  "takes": 1
+ },
+ "4ls29tuvq7": {
+  "text": "The zip faces the back.",
+  "ms": 1271,
+  "heard": "The zip faces the back.",
+  "ok": true,
+  "takes": 1
+ },
+ "31n6ybrvj0": {
+  "text": "Turn the chair upside down on a blanket first. Four bolts hold it.",
+  "ms": 3571,
+  "heard": "Turn the chair upside down on a blanket first. Four bolts hold it.",
+  "ok": true,
+  "takes": 1
+ },
+ "yps9wmaeki": {
+  "text": "Turn it the right way up and drop the plate over the post. Sit down on it once, firmly.",
+  "ms": 4715,
+  "heard": "Turn it the right way up and drop the plate over the post. Sit down on it once, firmly.",
+  "ok": true,
+  "takes": 1
+ },
+ "sih6xxm0ch": {
+  "text": "And that's it. Your Dyvlinge is built. Well done.",
+  "ms": 2491,
+  "heard": "And that's it, your divlenge is built. Well done.",
+  "ok": true,
+  "takes": 1
+ },
+ "21hxehn5qyi": {
+  "text": "Build two more cabinets the same way.",
+  "ms": 1862,
+  "heard": "Build two more cabinets the same way.",
+  "ok": true,
+  "takes": 1
+ },
+ "1h5wvudf0tf": {
+  "text": "And that's it. Your Fjällberget is built. Well done.",
+  "ms": 2690,
+  "heard": "And that's it, your Fjallberget is built. Well done.",
+  "ok": true,
+  "takes": 1
+ },
+ "21xhoe8ar5g": {
+  "text": "And that's it. Your Ikea Ps Lömsk is built. Well done.",
+  "ms": 3211,
+  "heard": "And that's it. Your IKEA PS Lermsk is built. Well done.",
+  "ok": true,
+  "takes": 1
+ },
+ "25dl35921am": {
+  "text": "Join the sections together.",
+  "ms": 1280,
+  "heard": "Join the sections together.",
+  "ok": true,
+  "takes": 1
+ },
+ "2ewm1kodwkh": {
+  "text": "Build another shelving unit the same way.",
+  "ms": 1981,
+  "heard": "Build another shelving unit the same way.",
+  "ok": true,
+  "takes": 1
+ },
+ "14gr6enfu0h": {
+  "text": "Build the narrow cabinet the same way.",
+  "ms": 1762,
+  "heard": "Build the narrow cabinet the same way.",
+  "ok": true,
+  "takes": 1
+ },
+ "tspgood825": {
+  "text": "Lay the section upside down.",
+  "ms": 1467,
+  "heard": "Lay the section upside down.",
+  "ok": true,
+  "takes": 1
+ },
+ "xm77izji6k": {
+  "text": "You'll need six connectors and twelve screws.",
+  "ms": 2210,
+  "heard": "You'll need six connectors and 12 screws.",
+  "ok": true,
+  "takes": 1
+ },
+ "1vo5wvi40ix": {
+  "text": "It runs along two sides. Slide it down behind the seat, then bolt it from the back.",
+  "ms": 4826,
+  "heard": "It runs along two sides. Slide it down behind the seat, then bolt it from the back.",
+  "ok": true,
+  "takes": 1
+ },
+ "1pscmxwjgnf": {
+  "text": "Screw on the leg plates.",
+  "ms": 1240,
+  "heard": "Screw on the leg plates.",
+  "ok": true,
+  "takes": 1
+ },
+ "88932zvzkm": {
+  "text": "One under the corner and two at the end of each side. Four screws per plate.",
+  "ms": 4070,
+  "heard": "one under the corner and two at the end of each side, four screws per plate.",
+  "ok": true,
+  "takes": 1
+ },
+ "b70o9odzhm": {
+  "text": "You'll need five leg plates and twenty screws.",
+  "ms": 2204,
+  "heard": "You'll need five leg plates and 20 screws.",
+  "ok": true,
+  "takes": 1
+ },
+ "26szy0s20ca": {
+  "text": "One against each side of the backrest. Plump them up first.",
+  "ms": 3169,
+  "heard": "one against each side of the backrest. Plump them up first.",
+  "ok": true,
+  "takes": 1
+ },
+ "rymwv5uqnv": {
+  "text": "Lift it by the top, not the legs, and stand it in the corner.",
+  "ms": 3203,
+  "heard": "Lift it by the top, not the legs, and stand it in the corner.",
+  "ok": true,
+  "takes": 1
+ },
+ "xut3vl29pu": {
+  "text": "And that's it. Your Kjellarne is built. Well done.",
+  "ms": 2489,
+  "heard": "And that's it, your Killern is built. Well done.",
+  "ok": true,
+  "takes": 1
+ },
+ "218ht7n6su9": {
+  "text": "Two small screws hold each one. They go on the edge by the end of the cabinet.",
+  "ms": 4212,
+  "heard": "Two small screws hold each one. They go on the edge by the end of the cabinet.",
+  "ok": true,
+  "takes": 1
+ },
+ "1bctxf8kn3e": {
+  "text": "Push it into the corner.",
+  "ms": 1154,
+  "heard": "Push it into the corner.",
+  "ok": true,
+  "takes": 1
+ },
+ "8nunp0nfb2": {
+  "text": "And that's it. Your Läktare is built. Well done.",
+  "ms": 2441,
+  "heard": "And that's it, your Lactare is built. Well done.",
+  "ok": true,
+  "takes": 1
+ },
+ "1hzqbg49gsc": {
+  "text": "The end without a door goes into the corner, behind the cabinet on the other wall.",
+  "ms": 4408,
+  "heard": "The end without a door goes into the corner, behind the cabinet on the other wall.",
+  "ok": true,
+  "takes": 1
+ },
+ "1u2hi9cvph0": {
+  "text": "And that's it. Your Långfjäll is built. Well done.",
+  "ms": 2562,
+  "heard": "And that's it, your Langfiel is built. Well done.",
+  "ok": true,
+  "takes": 1
+ },
+ "1sjjp7gz06e": {
+  "text": "Screw the back panels together at the corner.",
+  "ms": 2198,
+  "heard": "Screw the back panels together at the corner.",
+  "ok": true,
+  "takes": 1
+ },
+ "t2g3i54wso": {
+  "text": "Fit the dowels and bolts into the back panels and sides.",
+  "ms": 2882,
+  "heard": "Fit the dowels and bolts into the back panels and sides.",
+  "ok": true,
+  "takes": 1
+ },
+ "1zlwqaiyz2c": {
+  "text": "Stand them up at a right angle, then screw through the long one into the edge of the other.",
+  "ms": 4503,
+  "heard": "Stand them up at a right angle, then screw through the long one into the edge of the other.",
+  "ok": true,
+  "takes": 1
+ },
+ "1y01q7hhic0": {
+  "text": "Add the bottom and the top.",
+  "ms": 1269,
+  "heard": "Add the bottom and the top.",
+  "ok": true,
+  "takes": 1
+ },
+ "1qlab8noxk0": {
+  "text": "Add the side panels.",
+  "ms": 1098,
+  "heard": "Add the side panels.",
+  "ok": true,
+  "takes": 1
+ },
+ "1av9svbhipj": {
+  "text": "Push each one onto the dowels along both back panels.",
+  "ms": 3059,
+  "heard": "Push each one onto the dowels along both back panels.",
+  "ok": true,
+  "takes": 1
+ },
+ "n23i8wtkgt": {
+  "text": "One at the end of each leg. Line up the bolts with the holes and press them on evenly.",
+  "ms": 4646,
+  "heard": "one at the end of each leg. Line up the bolts with the holes and press them on evenly.",
+  "ok": true,
+  "takes": 1
+ },
+ "1v11uwdc5io": {
+  "text": "Click each one in at its height, one low down and one higher up.",
+  "ms": 3293,
+  "heard": "Click each one in at its height, one low down and one higher up.",
+  "ok": true,
+  "takes": 1
+ },
+ "25qq96roumo": {
+  "text": "Slide the shelf onto the carousel pole.",
+  "ms": 2075,
+  "heard": "Slide the shelf onto the carousel pole.",
+  "ok": true,
+  "takes": 1
+ },
+ "p0lt8681mn": {
+  "text": "Stand the carousel in the cabinet.",
+  "ms": 1605,
+  "heard": "Stand the carousel in the cabinet.",
+  "ok": true,
+  "takes": 1
+ },
+ "1yl7pgi394c": {
+  "text": "Tip it in through the opening, then screw its top and bottom plates to the cabinet.",
+  "ms": 4253,
+  "heard": "Tip it in through the opening, then screw its top and bottom plates to the cabinet.",
+  "ok": true,
+  "takes": 1
+ },
+ "1lgzf87d3ut": {
+  "text": "Press the hinges into the two halves of the door.",
+  "ms": 2511,
+  "heard": "Press the hinges into the two halves of the door.",
+  "ok": true,
+  "takes": 1
+ },
+ "pauu3ov9oz": {
+  "text": "The corner hinges join the halves. The others go on the outer edge, to hang it on the side panel.",
+  "ms": 5172,
+  "heard": "The corner hinges join the halves. The others go on the outer edge to hang it on the side panel.",
+  "ok": true,
+  "takes": 1
+ },
+ "1ycqcunk71n": {
+  "text": "It goes on the half that folds, near its free edge. Screw from the inside.",
+  "ms": 4011,
+  "heard": "It goes on the half that folds near its free edge. Screw from the inside.",
+  "ok": true,
+  "takes": 1
+ },
+ "23f5ivlgtwp": {
+  "text": "Turn the hinge screws a little until both halves close evenly.",
+  "ms": 3290,
+  "heard": "Turn the hinge screws a little until both halves close evenly.",
+  "ok": true,
+  "takes": 1
+ },
+ "iotjxkkqko": {
+  "text": "Clip the outer hinges onto the plates on the side panel, then fold the other half in at the corner.",
+  "ms": 5172,
+  "heard": "Clip the outer hinges onto the plates on the side panel, then fold the other half in at the corner.",
+  "ok": true,
+  "takes": 1
+ },
+ "2e2g0ryy7rz": {
+  "text": "Slide the shelves onto the carousel pole.",
+  "ms": 2120,
+  "heard": "Slide the shelves onto the carousel pole.",
+  "ok": true,
+  "takes": 1
+ },
+ "1rxlqh3s3z6": {
+  "text": "You'll need six shelf pins.",
+  "ms": 1454,
+  "heard": "You'll need six shelf pins.",
+  "ok": true,
+  "takes": 1
+ },
+ "2cfx1c6mom4": {
+  "text": "Six pins hold each shelf: two in each side, one in each back panel.",
+  "ms": 4342,
+  "heard": "Six pins hold each shelf, two in each side, one in each back panel.",
+  "ok": true,
+  "takes": 1
+ },
+ "mou63jv00m": {
+  "text": "Press it onto the dowels under the front, from one side to the other.",
+  "ms": 3431,
+  "heard": "Press it onto the dowels under the front, from one side to the other.",
+  "ok": true,
+  "takes": 1
+ },
+ "2csbor8itoj": {
+  "text": "Fit the pull-out fitting.",
+  "ms": 1106,
+  "heard": "Fit the pull-out fitting.",
+  "ok": true,
+  "takes": 1
+ },
+ "lj68cuk9i2": {
+  "text": "One end goes into the corner, behind the cabinet on the other wall.",
+  "ms": 3622,
+  "heard": "One end goes into the corner, behind the cabinet on the other wall.",
+  "ok": true,
+  "takes": 1
+ },
+ "1xfjtsw033z": {
+  "text": "Screw its rail to the bottom panel behind the door, then hook the baskets on.",
+  "ms": 4244,
+  "heard": "Screw its rail to the bottom panel behind the door, then hook the baskets on.",
+  "ok": true,
+  "takes": 1
+ },
+ "uoq41132p7": {
+  "text": "It hangs under the top, where the door begins. Screw down through the top into it.",
+  "ms": 4379,
+  "heard": "It hangs under the top, where the door begins. Screw down through the top into it.",
+  "ok": true,
+  "takes": 1
+ },
+ "1xaoeza12cc": {
+  "text": "Screw in the middle panel.",
+  "ms": 1173,
+  "heard": "Screw in the middle panel.",
+  "ok": true,
+  "takes": 1
+ },
+ "16ysjuqf5hz": {
+  "text": "Screw the drawer runners in.",
+  "ms": 1377,
+  "heard": "Screw the drawer runners in.",
+  "ok": true,
+  "takes": 1
+ },
+ "19y3bffzlsu": {
+  "text": "One on the side, one on the middle panel, just under the top. The open ends point to the front.",
+  "ms": 5217,
+  "heard": "one on the side, one on the middle panel, just under the top. The open ends point to the front.",
+  "ok": true,
+  "takes": 1
+ },
+ "1rvlih9ri0g": {
+  "text": "Bolt a leg to each end of the side rails.",
+  "ms": 2062,
+  "heard": "Bolt a leg to each end of the side rails.",
+  "ok": true,
+  "takes": 1
+ },
+ "boib1k4h3e": {
+  "text": "Screw the seat onto the rails.",
+  "ms": 1526,
+  "heard": "Screw the seat onto the rails.",
+  "ok": true,
+  "takes": 1
+ },
+ "1jijbxwhgdr": {
+  "text": "Join the sides with the cross rails.",
+  "ms": 1709,
+  "heard": "Join the sides with the cross rails.",
+  "ok": true,
+  "takes": 1
+ },
+ "1hrexe7o11x": {
+  "text": "The legs go on the inside of the rails. Two bolts each, hand tight for now.",
+  "ms": 4399,
+  "heard": "The legs go on the inside of the rails. Two bolts each, hand tight for now.",
+  "ok": true,
+  "takes": 1
+ },
+ "1nvfp9rwzls": {
+  "text": "Bolt them in, stand it on its legs, then tighten every bolt.",
+  "ms": 3336,
+  "heard": "Bolt them in, stand it on its legs, then tighten every bolt.",
+  "ok": true,
+  "takes": 1
+ },
+ "215m82rpxsv": {
+  "text": "Its slats run across, from the backrest end to the foot end.",
+  "ms": 3257,
+  "heard": "Its slats run across from the backrest end to the foot end.",
+  "ok": true,
+  "takes": 1
+ },
+ "qepftma9n0": {
+  "text": "Bolt on the backrest.",
+  "ms": 1144,
+  "heard": "Bolt on the backrest.",
+  "ok": true,
+  "takes": 1
+ },
+ "23fty891rzm": {
+  "text": "One bolt each side, at the end of the seat. It should tip up and down freely.",
+  "ms": 4131,
+  "heard": "one bolt each side at the end of the seat. It should tip up and down freely.",
+  "ok": true,
+  "takes": 1
+ },
+ "2aamxe11nnv": {
+  "text": "Prop the backrest up on its support.",
+  "ms": 1804,
+  "heard": "Prop the backrest up on its support.",
+  "ok": true,
+  "takes": 1
+ },
+ "2fzvtmp5006": {
+  "text": "And that's it. Your Nordkroken is built. Well done.",
+  "ms": 2734,
+  "heard": "And that's it, your Nordkroken is built. Well done.",
+  "ok": true,
+  "takes": 1
+ },
+ "2806wys7yu4": {
+  "text": "Bolt the rocking mechanism under the seat.",
+  "ms": 2074,
+  "heard": "Bolt the rocking mechanism under the seat.",
+  "ok": true,
+  "takes": 1
+ },
+ "2etris9su54": {
+  "text": "Lift the backrest and set the support in the notch you like. The lower the notch, the further it leans back.",
+  "ms": 5611,
+  "heard": "Lift the backrest and set the support in the notch you like. The lower the notch, the further it leans back.",
+  "ok": true,
+  "takes": 1
+ },
+ "1za9hh024yl": {
+  "text": "Turn it the right way up and set it on the base. Sit down on it once, firmly.",
+  "ms": 4182,
+  "heard": "Turn it the right way up and set it on the base. Sit down on it once firmly.",
+  "ok": true,
+  "takes": 1
+ },
+ "1926ykzgg9w": {
+  "text": "Build the narrow wardrobe the same way.",
+  "ms": 1834,
+  "heard": "Build the narrow wardrobe the same way.",
+  "ok": true,
+  "takes": 1
+ },
+ "1geoqrndx16": {
+  "text": "Build the corner unit.",
+  "ms": 1182,
+  "heard": "Build the corner unit.",
+  "ok": true,
+  "takes": 1
+ },
+ "1ba9uhm5dtf": {
+  "text": "The same way as a wardrobe, without a clothes rail. Its shelves go on pins.",
+  "ms": 4443,
+  "heard": "The same way as a wardrobe without a clothes rail, its shelves go on pins.",
+  "ok": true,
+  "takes": 1
+ },
+ "blapnrl22h": {
+  "text": "Every step as for the first one, just wider.",
+  "ms": 2387,
+  "heard": "Every step as for the first one, just wider.",
+  "ok": true,
+  "takes": 1
+ },
+ "x7c84ijdyx": {
+  "text": "Build the wide wardrobe the same way.",
+  "ms": 1737,
+  "heard": "Build the wide wardrobe the same way.",
+  "ok": true,
+  "takes": 1
+ },
+ "ggxu0kw2mw": {
+  "text": "Build another narrow wardrobe the same way.",
+  "ms": 2178,
+  "heard": "Build another narrow wardrobe the same way.",
+  "ok": true,
+  "takes": 1
+ },
+ "2b0plj88dc7": {
+  "text": "Stand them in the corner and screw them together.",
+  "ms": 2210,
+  "heard": "Stand them in the corner and screw them together.",
+  "ok": true,
+  "takes": 1
+ },
+ "iwklvonmm5": {
+  "text": "Build another medium wardrobe the same way.",
+  "ms": 2177,
+  "heard": "Build another medium wardrobe the same way.",
+  "ok": true,
+  "takes": 1
+ },
+ "l3wwly8bq6": {
+  "text": "Build another wide wardrobe the same way.",
+  "ms": 2127,
+  "heard": "Build another wide wardrobe the same way.",
+  "ok": true,
+  "takes": 1
+ },
+ "6owld0t9kq": {
+  "text": "You'll need five wall brackets and ten screws.",
+  "ms": 2246,
+  "heard": "You'll need five wall brackets and 10 screws.",
+  "ok": true,
+  "takes": 1
+ },
+ "45pbs00tuw": {
+  "text": "Stand them in the corner.",
+  "ms": 1105,
+  "heard": "Stand them in the corner.",
+  "ok": true,
+  "takes": 1
+ },
+ "8aj45k1a30": {
+  "text": "You're on step three of twenty-one.",
+  "ms": 1524,
+  "heard": "You're on step three of 21.",
+  "ok": true,
+  "takes": 1
+ },
+ "16hctcfh6xq": {
+  "text": "You're on step two of twenty-one.",
+  "ms": 1550,
+  "heard": "You're on step two of 21.",
+  "ok": true,
+  "takes": 1
+ },
+ "ulbnujq6pn": {
+  "text": "You're on step one of twenty-one.",
+  "ms": 1477,
+  "heard": "You're on step one of 21.",
+  "ok": true,
+  "takes": 1
+ },
+ "1kx92bh9row": {
+  "text": "You're on step four of twenty-one.",
+  "ms": 1479,
+  "heard": "You're on step four of 21.",
+  "ok": true,
+  "takes": 1
+ },
+ "fpd8mm28io": {
+  "text": "You're on step seven of twenty-one.",
+  "ms": 1654,
+  "heard": "You're on step seven of 21.",
+  "ok": true,
+  "takes": 1
+ },
+ "1v6zfvjcp6q": {
+  "text": "You're on step eight of twenty-one.",
+  "ms": 1452,
+  "heard": "You're on step 8 of 21.",
+  "ok": true,
+  "takes": 1
+ },
+ "1t1h8ps28yc": {
+  "text": "You're on step six of twenty-one.",
+  "ms": 1652,
+  "heard": "You're on step six of 21.",
+  "ok": true,
+  "takes": 1
+ },
+ "2g52q9vwlir": {
+  "text": "You're on step five of twenty-one.",
+  "ms": 1560,
+  "heard": "You're on step five of 21.",
+  "ok": true,
+  "takes": 1
+ },
+ "x9a3t7h709": {
+  "text": "You're on step nine of twenty-one.",
+  "ms": 1530,
+  "heard": "You're on step nine of 21.",
+  "ok": true,
+  "takes": 1
+ },
+ "1mlcbwssw1h": {
+  "text": "You're on step ten of twenty-one.",
+  "ms": 1477,
+  "heard": "You're on step 10 of 21.",
+  "ok": true,
+  "takes": 1
+ },
+ "yxd0bh0f8u": {
+  "text": "You're on step eleven of twenty-one.",
+  "ms": 1919,
+  "heard": "You're on step 11 of 21.",
+  "ok": true,
+  "takes": 1
+ },
+ "11bchdbxkf9": {
+  "text": "You're on step twelve of twenty-one.",
+  "ms": 1599,
+  "heard": "You're on step 12 of 21.",
+  "ok": true,
+  "takes": 1
+ },
+ "1bc57gdqrws": {
+  "text": "You're on step fifteen of twenty-one.",
+  "ms": 1701,
+  "heard": "You're on step 15 of 21.",
+  "ok": true,
+  "takes": 1
+ },
+ "1zh84051vf": {
+  "text": "You're on step sixteen of twenty-one.",
+  "ms": 1792,
+  "heard": "You're on step 16 of 21.",
+  "ok": true,
+  "takes": 1
+ },
+ "17yt3qdlazh": {
+  "text": "You're on step fourteen of twenty-one.",
+  "ms": 1757,
+  "heard": "You're on step 14 of 21.",
+  "ok": true,
+  "takes": 1
+ },
+ "1zola2liuw9": {
+  "text": "You're on step thirteen of twenty-one.",
+  "ms": 1687,
+  "heard": "You're on step 13 of 21.",
+  "ok": true,
+  "takes": 1
+ },
+ "8jdinnt7zh": {
+  "text": "You're on step eighteen of twenty-one.",
+  "ms": 1668,
+  "heard": "You're on step 18 of 21.",
+  "ok": true,
+  "takes": 1
+ },
+ "ua0x1xdkn6": {
+  "text": "You're on step nineteen of twenty-one.",
+  "ms": 1654,
+  "heard": "You're on step 19 of 21.",
+  "ok": true,
+  "takes": 1
+ },
+ "27d50b18dfc": {
+  "text": "You're on step seventeen of twenty-one.",
+  "ms": 1850,
+  "heard": "You're on step 17 of 21.",
+  "ok": true,
+  "takes": 1
+ },
+ "1jamhx5bb0x": {
+  "text": "You're on step twenty-one of twenty-one.",
+  "ms": 1804,
+  "heard": "You're on step 21 of 21.",
+  "ok": true,
+  "takes": 1
+ },
+ "1fr5ta2g7lj": {
+  "text": "Step twenty.",
+  "ms": 828,
+  "heard": "Step 20.",
+  "ok": true,
+  "takes": 1
+ },
+ "20zj145gf2q": {
+  "text": "You're on step twenty of twenty-one.",
+  "ms": 1576,
+  "heard": "You're on step 20 of 21.",
+  "ok": true,
+  "takes": 1
+ },
+ "24nyqjhhkwb": {
+  "text": "Build the medium wardrobe the same way.",
+  "ms": 1910,
+  "heard": "Build the medium wardrobe the same way.",
+  "ok": true,
+  "takes": 1
  }
 }
