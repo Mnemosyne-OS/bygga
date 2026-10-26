@@ -7586,5 +7586,656 @@
   "heard": "You're on step 11 of 19.",
   "ok": true,
   "takes": 1
+ },
+ "v5khcc4rg0": {
+  "text": "And that's it. Your Agam is built. Well done.",
+  "ms": 2440,
+  "heard": "And that's it, your Agam is built. Well done.",
+  "ok": true,
+  "takes": 1
+ },
+ "23utmoa09tq": {
+  "text": "Bolt an upright onto each foot.",
+  "ms": 1612,
+  "heard": "Bolt an upright onto each foot.",
+  "ok": true,
+  "takes": 1
+ },
+ "19zzuszj1y7": {
+  "text": "Fit the shoe shelf between the uprights.",
+  "ms": 1721,
+  "heard": "Fit the shoe shelf between the uprights.",
+  "ok": true,
+  "takes": 1
+ },
+ "1yeox38oi3l": {
+  "text": "Put the top rail on.",
+  "ms": 1125,
+  "heard": "Put the top rail on.",
+  "ok": true,
+  "takes": 1
+ },
+ "1uv1ik9m747": {
+  "text": "Low down, at the same height on both sides. Leave the bolts a little loose for now.",
+  "ms": 4222,
+  "heard": "Low down at the same height on both sides. Leave the bolts a little loose for now.",
+  "ok": true,
+  "takes": 1
+ },
+ "272tj99uczy": {
+  "text": "It slots into the top of both uprights. One bolt holds each end.",
+  "ms": 3724,
+  "heard": "It slots into the top of both uprights. One bolt holds each end.",
+  "ok": true,
+  "takes": 1
+ },
+ "13bhwnu70by": {
+  "text": "Check that it stands steady and doesn't lean, then tighten them all firmly.",
+  "ms": 3603,
+  "heard": "Check that it stands steady and doesn't lean, then tighten them all firmly.",
+  "ok": true,
+  "takes": 1
+ },
+ "2b4108mhksl": {
+  "text": "Screw on the changing top.",
+  "ms": 1356,
+  "heard": "Screw on the changing top.",
+  "ok": true,
+  "takes": 1
+ },
+ "1by4b1b31mp": {
+  "text": "Tighten every bolt.",
+  "ms": 1114,
+  "heard": "Tighten every bolt.",
+  "ok": true,
+  "takes": 1
+ },
+ "76rjfsrj4n": {
+  "text": "Stand each upright in the hole in the middle of its foot, then tighten the bolt from underneath.",
+  "ms": 4623,
+  "heard": "Stand each upright in the hole in the middle of its foot, then tighten the bolt from underneath.",
+  "ok": true,
+  "takes": 1
+ },
+ "bm92ytyi4r": {
+  "text": "Screw from the inside. Snug is enough.",
+  "ms": 2293,
+  "heard": "Screw from the inside. Snug is enough.",
+  "ok": true,
+  "takes": 1
+ },
+ "msclyf5u1g": {
+  "text": "Ready for the basin.",
+  "ms": 1085,
+  "heard": "Ready for the basin.",
+  "ok": true,
+  "takes": 1
+ },
+ "1965ul02csa": {
+  "text": "Raised edges at the back and the sides. Screw it down into the top, so it can't slide. Never leave a baby on it alone.",
+  "ms": 6905,
+  "heard": "Raised edges at the back and the sides. Screw it down into the top so it can't slide. Never leave a baby on it alone.",
+  "ok": true,
+  "takes": 1
+ },
+ "2fbs1y6aqff": {
+  "text": "Screw on the handle.",
+  "ms": 1037,
+  "heard": "Screw on the handle.",
+  "ok": true,
+  "takes": 1
+ },
+ "q9tkpnmizh": {
+  "text": "Fit the basin, the tap and the drain following their own instructions, or ask a plumber.",
+  "ms": 4788,
+  "heard": "Fit the basin, the tap and the drain following their own instructions, or ask a plumber.",
+  "ok": true,
+  "takes": 1
+ },
+ "2ec7r0smpin": {
+  "text": "And that's it. Your Älganäs is built. Well done.",
+  "ms": 2634,
+  "heard": "And that's it. Your Alganez is built. Well done.",
+  "ok": false,
+  "takes": 3
+ },
+ "dkdahp706b": {
+  "text": "Set the basin on top.",
+  "ms": 1288,
+  "heard": "Set the basin on top.",
+  "ok": true,
+  "takes": 1
+ },
+ "20xbus2xvt3": {
+  "text": "Lower it gently onto the frame and check that it sits level. Fit the tap and the drain following their own instructions, or ask a plumber.",
+  "ms": 7894,
+  "heard": "Lower it gently onto the frame and check that it sits level. Fit the tap and the drain following their own instructions or ask a plumber.",
+  "ok": true,
+  "takes": 1
+ },
+ "1ahuzgmnscb": {
+  "text": "Push the legs into the seat.",
+  "ms": 1419,
+  "heard": "Push the legs into the seat.",
+  "ok": true,
+  "takes": 1
+ },
+ "p1lac7db9x": {
+  "text": "Each one goes into its own socket. Push firmly until it clicks, and check it won't pull out.",
+  "ms": 5059,
+  "heard": "Each one goes into its own socket. Push firmly until it clicks and check it won't pull out.",
+  "ok": true,
+  "takes": 1
+ },
+ "146x3iovcfr": {
+  "text": "Stand it on a flat floor and check that it doesn't rock.",
+  "ms": 2796,
+  "heard": "Stand it on a flat floor and check that it doesn't rock.",
+  "ok": true,
+  "takes": 1
+ },
+ "1iz777g5ohh": {
+  "text": "Fit the safety belt.",
+  "ms": 1165,
+  "heard": "Fit the safety belt.",
+  "ok": true,
+  "takes": 1
+ },
+ "18nzucm31yq": {
+  "text": "Slide in both drawers.",
+  "ms": 1251,
+  "heard": "Slide in both drawers.",
+  "ok": true,
+  "takes": 1
+ },
+ "19ck6sb2zl1": {
+  "text": "Push it on until it clicks. Always use the safety belt, and never leave a child alone in it.",
+  "ms": 5032,
+  "heard": "Push it on until it clicks. Always use the safety belt and never leave a child alone in it.",
+  "ok": true,
+  "takes": 1
+ },
+ "1zrlhqjnjp3": {
+  "text": "Thread it through the slots in the seat and clip it shut. Always use it, and never leave a child alone in it.",
+  "ms": 5592,
+  "heard": "Thread it through the slots in the seat and clip it shut. Always use it and never leave a child alone in it.",
+  "ok": true,
+  "takes": 1
+ },
+ "gh62yycy8k": {
+  "text": "Slide the tray onto the armrests.",
+  "ms": 1827,
+  "heard": "Slide the tray onto the armrests.",
+  "ok": true,
+  "takes": 1
+ },
+ "wvuojlayu2": {
+  "text": "And that's it. Your Bläddra is built. Well done.",
+  "ms": 2411,
+  "heard": "And that's it, your Bledra is built. Well done.",
+  "ok": true,
+  "takes": 1
+ },
+ "136uir4jsn": {
+  "text": "And that's it. Your Blåmes is built. Well done.",
+  "ms": 2441,
+  "heard": "And that's it, your Blames is built. Well done.",
+  "ok": true,
+  "takes": 1
+ },
+ "246kw8ksxb0": {
+  "text": "And that's it. Your Byasjön is built. Well done.",
+  "ms": 2615,
+  "heard": "And that's it. Your Bioserne is built. Well done.",
+  "ok": true,
+  "takes": 1
+ },
+ "s7bty28wom": {
+  "text": "Fit the fridge or freezer following its own instructions.",
+  "ms": 3042,
+  "heard": "Fit the fridge or freezer following its own instructions.",
+  "ok": true,
+  "takes": 1
+ },
+ "1cn01wvq1da": {
+  "text": "Fit the sink, the tap and the drain following their own instructions, or ask a plumber.",
+  "ms": 4716,
+  "heard": "Fit the sink, the tap, and the drain following their own instructions, or ask a plumber.",
+  "ok": true,
+  "takes": 1
+ },
+ "c1bv1cwebn": {
+  "text": "Line up the door.",
+  "ms": 900,
+  "heard": "Line up the door.",
+  "ok": true,
+  "takes": 1
+ },
+ "2ddjz5mw271": {
+  "text": "Ready for the fridge.",
+  "ms": 1047,
+  "heard": "Ready for the fridge.",
+  "ok": true,
+  "takes": 1
+ },
+ "1xugp0bq5hd": {
+  "text": "And that's it. Your Antilop is built. Well done.",
+  "ms": 2588,
+  "heard": "And that's it, your antelope is built. Well done.",
+  "ok": true,
+  "takes": 1
+ },
+ "13ccyumdcnx": {
+  "text": "And that's it. Your Franklin is built. Well done.",
+  "ms": 2491,
+  "heard": "And that's it. Your Franklin is built. Well done.",
+  "ok": true,
+  "takes": 1
+ },
+ "1qttf81zf9s": {
+  "text": "Lay the panels face down, side by side.",
+  "ms": 2415,
+  "heard": "Lay the panels face down, side by side.",
+  "ok": true,
+  "takes": 1
+ },
+ "2bzd6nmp3re": {
+  "text": "On a soft floor or the flattened box, with their edges touching.",
+  "ms": 3266,
+  "heard": "on a soft floor or the flattened box with their edges touching.",
+  "ok": true,
+  "takes": 1
+ },
+ "2gj6f2o92rv": {
+  "text": "You'll need six flat hinges and twelve screws.",
+  "ms": 2268,
+  "heard": "You'll need six flat hinges and 12 screws.",
+  "ok": true,
+  "takes": 1
+ },
+ "1uvlxikuloy": {
+  "text": "Screw the hinges across each join.",
+  "ms": 1700,
+  "heard": "Screw the hinges across each join.",
+  "ok": true,
+  "takes": 1
+ },
+ "v5w1ju3qll": {
+  "text": "And that's it. Your Fjäderharv is built. Well done.",
+  "ms": 2789,
+  "heard": "And that's it, your F-Yeder Harv is built. Well done.",
+  "ok": true,
+  "takes": 1
+ },
+ "1eyie52j2l9": {
+  "text": "Three on each join: at the top, in the middle and at the bottom.",
+  "ms": 3237,
+  "heard": "three on each join, at the top, in the middle, and at the bottom.",
+  "ok": true,
+  "takes": 1
+ },
+ "3tzfz2bt37": {
+  "text": "Stand it up and open it out.",
+  "ms": 1396,
+  "heard": "Stand it up and open it out.",
+  "ok": true,
+  "takes": 1
+ },
+ "1e4pws7oqgs": {
+  "text": "Fold it into a zigzag, so it stands steady on its own.",
+  "ms": 2928,
+  "heard": "Fold it into a zigzag so it stands steady on its own.",
+  "ok": true,
+  "takes": 1
+ },
+ "143d8yxc1v0": {
+  "text": "Screw on the knob.",
+  "ms": 937,
+  "heard": "Screw on the knob.",
+  "ok": true,
+  "takes": 1
+ },
+ "1qxz9m6u4jb": {
+  "text": "Ready for the sink.",
+  "ms": 966,
+  "heard": "Ready for the sync.",
+  "ok": false,
+  "takes": 3
+ },
+ "oed3q4k8ec": {
+  "text": "Lay it on its back and screw on the underframe.",
+  "ms": 2315,
+  "heard": "Lay it on its back and screw on the underframe.",
+  "ok": true,
+  "takes": 1
+ },
+ "c417ehczeo": {
+  "text": "Stand it up together and open it out.",
+  "ms": 1938,
+  "heard": "Stand it up together and open it out.",
+  "ok": true,
+  "takes": 1
+ },
+ "gufpqyionb": {
+  "text": "Line the frame up with the bottom's edges, then screw it on through the rails.",
+  "ms": 3629,
+  "heard": "Line the frame up with the bottom's edges, then screw it on through the rails.",
+  "ok": true,
+  "takes": 1
+ },
+ "1p3hmkqovf3": {
+  "text": "Screw the top and bottom between the two sides.",
+  "ms": 2342,
+  "heard": "Screw the top and bottom between the two sides.",
+  "ok": true,
+  "takes": 1
+ },
+ "17w3hq5w1yh": {
+  "text": "Put the inserts together.",
+  "ms": 1270,
+  "heard": "Put the inserts together.",
+  "ok": true,
+  "takes": 1
+ },
+ "9n64zufytv": {
+  "text": "Two on each door, along its left edge.",
+  "ms": 2176,
+  "heard": "two on each door along its left edge.",
+  "ok": true,
+  "takes": 1
+ },
+ "193qrgrr2vw": {
+  "text": "Push the inserts into the cubes.",
+  "ms": 1668,
+  "heard": "Push the inserts into the cubes.",
+  "ok": true,
+  "takes": 1
+ },
+ "83x3o1xd8f": {
+  "text": "From the bottom row up. Slide each one in until it meets the back edge, then screw it to the shelf under it.",
+  "ms": 5690,
+  "heard": "From the bottom row up, slide each one in until it meets the back edge, then screw it to the shelf under it.",
+  "ok": true,
+  "takes": 1
+ },
+ "22fs13ly19q": {
+  "text": "You'll need twelve screws.",
+  "ms": 1227,
+  "heard": "You'll need 12 screws.",
+  "ok": true,
+  "takes": 1
+ },
+ "1i7but7jqoh": {
+  "text": "Tip it up onto the underframe on a flat floor, and check it doesn't rock.",
+  "ms": 3789,
+  "heard": "Tip it up onto the underframe on a flat floor and check it doesn't rock.",
+  "ok": true,
+  "takes": 1
+ },
+ "ktff5682cm": {
+  "text": "Do this for all eight of them. The counts are for one.",
+  "ms": 2722,
+  "heard": "Do this for all eight of them. The counts are for one.",
+  "ok": true,
+  "takes": 1
+ },
+ "13dnpkcvxuo": {
+  "text": "Do this for all four of them. The counts are for one.",
+  "ms": 2770,
+  "heard": "Do this for all four of them. The counts are for one.",
+  "ok": true,
+  "takes": 1
+ },
+ "1zvflyizn0y": {
+  "text": "Do this for all six of them. The counts are for one.",
+  "ms": 2735,
+  "heard": "Do this for all six of them. The counts are for one.",
+  "ok": true,
+  "takes": 1
+ },
+ "rd2q08j2dc": {
+  "text": "You'll need sixteen screws.",
+  "ms": 1365,
+  "heard": "You'll need 16 screws.",
+  "ok": true,
+  "takes": 1
+ },
+ "1k6if3kz2y7": {
+  "text": "Clip each hinge onto its plate inside the insert, then turn the screws until the gaps look even.",
+  "ms": 5576,
+  "heard": "Clip each hinge onto its plate inside the insert, then turn the screws until the gaps look even.",
+  "ok": true,
+  "takes": 1
+ },
+ "zmabo4sjf7": {
+  "text": "You'll need twenty screws.",
+  "ms": 1237,
+  "heard": "You'll need 20 screws.",
+  "ok": true,
+  "takes": 1
+ },
+ "1vrtpkxgf3z": {
+  "text": "Ready for the microwave.",
+  "ms": 1259,
+  "heard": "Ready for the microwave.",
+  "ok": true,
+  "takes": 1
+ },
+ "1vmmjvzojfc": {
+  "text": "Fit the hood following its own instructions. Have a qualified electrician connect it.",
+  "ms": 4645,
+  "heard": "Fit the hood following its own instructions. Have a qualified electrician connect it.",
+  "ok": true,
+  "takes": 1
+ },
+ "5ma74qyyd6": {
+  "text": "Ready for the appliances.",
+  "ms": 1334,
+  "heard": "Ready for the appliances.",
+  "ok": true,
+  "takes": 1
+ },
+ "153ewkotps4": {
+  "text": "Fit the microwave following its own instructions.",
+  "ms": 2599,
+  "heard": "Fit the microwave following its own instructions.",
+  "ok": true,
+  "takes": 1
+ },
+ "xpmx7kb83z": {
+  "text": "You'll need five hinges and ten screws.",
+  "ms": 1924,
+  "heard": "You'll need five hinges and ten screws.",
+  "ok": true,
+  "takes": 1
+ },
+ "ju4jjdykg2": {
+  "text": "You'll need eighteen wooden dowels and sixteen cam bolts.",
+  "ms": 3113,
+  "heard": "You'll need 18 wooden dowels and 16 cam bolts.",
+  "ok": true,
+  "takes": 1
+ },
+ "18ii0nksz4x": {
+  "text": "Ready for the oven.",
+  "ms": 1025,
+  "heard": "Ready for the oven.",
+  "ok": true,
+  "takes": 1
+ },
+ "1j3no9rapg": {
+  "text": "Do this for all ten of them. The counts are for one.",
+  "ms": 2736,
+  "heard": "Do this for all ten of them. The counts are for one.",
+  "ok": true,
+  "takes": 1
+ },
+ "u0fos5oede": {
+  "text": "Fit each one following its own instructions. Have a qualified electrician connect them.",
+  "ms": 4805,
+  "heard": "Fit each one following its own instructions. Have a qualified electrician connect them.",
+  "ok": true,
+  "takes": 1
+ },
+ "tzeubdtzd6": {
+  "text": "Ready for the extractor hood.",
+  "ms": 1494,
+  "heard": "Ready for the extractor hood.",
+  "ok": true,
+  "takes": 1
+ },
+ "25iy25pc01x": {
+  "text": "Fit the oven following its own instructions. Have a qualified electrician connect it.",
+  "ms": 4670,
+  "heard": "Fit the oven following its own instructions. Have a qualified electrician connect it.",
+  "ok": true,
+  "takes": 1
+ },
+ "5ajecdhwfe": {
+  "text": "The sink's own front fills the space at the top. Fit the sink, the tap and the drain following their own instructions, or ask a plumber.",
+  "ms": 7907,
+  "heard": "The sink's own front fills the space at the top. Fit the sink, the tap and the drain following their own instructions, or ask a plumber.",
+  "ok": true,
+  "takes": 1
+ },
+ "1nmh4pm6w0": {
+  "text": "Ready for the hob.",
+  "ms": 920,
+  "heard": "Ready for the hob.",
+  "ok": true,
+  "takes": 1
+ },
+ "1h1dfazhsn8": {
+  "text": "The hob goes in the worktop above. Have a qualified electrician connect it, or a gas engineer for gas.",
+  "ms": 5950,
+  "heard": "The hob goes in the worktop above. Have a qualified electrician connect it or a gas engineer for gas.",
+  "ok": true,
+  "takes": 1
+ },
+ "75vbnz9p12": {
+  "text": "Screw on the fixed front.",
+  "ms": 1226,
+  "heard": "Screw on the fixed front.",
+  "ok": true,
+  "takes": 1
+ },
+ "iqji1aqbbg": {
+  "text": "It doesn't open. Screw it on from the inside, just under the top rail.",
+  "ms": 3937,
+  "heard": "It doesn't open. Screw it on from the inside, just under the top rail.",
+  "ok": true,
+  "takes": 1
+ },
+ "16ol61rxc4e": {
+  "text": "Fit the lower rail between the uprights.",
+  "ms": 1916,
+  "heard": "Fit the lower rail between the uprights.",
+  "ok": true,
+  "takes": 1
+ },
+ "1p3kyok91x8": {
+  "text": "And that's it. Your Moppe is built. Well done.",
+  "ms": 2313,
+  "heard": "And that's it, your mop is built. Well done.",
+  "ok": true,
+  "takes": 1
+ },
+ "9pi5eikl1v": {
+  "text": "Fit them following their own instructions. Have a qualified electrician connect them.",
+  "ms": 4596,
+  "heard": "Fit them following their own instructions. Have a qualified electrician connect them.",
+  "ok": true,
+  "takes": 1
+ },
+ "11fgen90h18": {
+  "text": "Ready for the oven and hob.",
+  "ms": 1329,
+  "heard": "Ready for the oven and hob.",
+  "ok": true,
+  "takes": 1
+ },
+ "27z2szr9312": {
+  "text": "Build the other two wardrobes the same way.",
+  "ms": 2263,
+  "heard": "Build the other two wardrobes the same way.",
+  "ok": true,
+  "takes": 1
+ },
+ "15qtoarjpf8": {
+  "text": "And that's it. Your Mulig is built. Well done.",
+  "ms": 2341,
+  "heard": "And that's it. Your MOLIG is built. Well done.",
+  "ok": true,
+  "takes": 1
+ },
+ "didhm96tgk": {
+  "text": "You'll need four wall brackets and eight screws.",
+  "ms": 2105,
+  "heard": "You'll need four wall brackets and eight screws.",
+  "ok": true,
+  "takes": 1
+ },
+ "1dufkrcbwwm": {
+  "text": "And that's it. Your Päronholmen is built. Well done.",
+  "ms": 2686,
+  "heard": "And that's it, your parent home is built. Well done.",
+  "ok": true,
+  "takes": 1
+ },
+ "mpcls1orav": {
+  "text": "And that's it. Your Sandkatt is built. Well done.",
+  "ms": 2584,
+  "heard": "And that's it, your SandCat is built. Well done.",
+  "ok": true,
+  "takes": 1
+ },
+ "l4w8srev28": {
+  "text": "And that's it. Your Risör is built. Well done.",
+  "ms": 2366,
+  "heard": "And that's it. ERISA is built. Well done.",
+  "ok": true,
+  "takes": 1
+ },
+ "vhglqhvh90": {
+  "text": "You'll need nine flat hinges and eighteen screws.",
+  "ms": 2375,
+  "heard": "You'll need nine flat hinges and 18 screws.",
+  "ok": true,
+  "takes": 1
+ },
+ "1i77ficwptu": {
+  "text": "And that's it. Your Rigga is built. Well done.",
+  "ms": 2317,
+  "heard": "And that's it. Your riga is built. Well done.",
+  "ok": true,
+  "takes": 1
+ },
+ "18c0h2ojkcn": {
+  "text": "And that's it. Your Viggsö is built. Well done.",
+  "ms": 2440,
+  "heard": "And that's it, your Vixer is built. Well done.",
+  "ok": true,
+  "takes": 1
+ },
+ "jsqbvfto56": {
+  "text": "And that's it. Your Vildgås is built. Well done.",
+  "ms": 2564,
+  "heard": "And that's it, your Vildgas is built. Well done.",
+  "ok": true,
+  "takes": 1
+ },
+ "1fi0d52ntaw": {
+  "text": "And that's it. Your Urban is built. Well done.",
+  "ms": 2415,
+  "heard": "And that's it, your urban is built. Well done.",
+  "ok": true,
+  "takes": 1
+ },
+ "zulp4vavf8": {
+  "text": "And that's it. Your Tolkning is built. Well done.",
+  "ms": 2537,
+  "heard": "And that's it, your talkening is built. Well done.",
+  "ok": true,
+  "takes": 1
  }
 }
