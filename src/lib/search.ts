@@ -69,8 +69,8 @@ const CATEGORY_WORDS: [Kind, string[]][] = [
   ["bench", ["bench"]],
 ];
 const KIND_WORDS = new Map(CATEGORY_WORDS);
-// rows, sections, and cabinets built around an appliance or a sink, which only come first when asked for
-const LESSER = new Set<Kind>(["bookrow", "cabrow", "section", "sinkcab", "appliance"]);
+// rows, sections, and kinds drawn later than a family's other pieces, which only come first when asked for
+const LESSER = new Set<Kind>(["bookrow", "cabrow", "section", "sinkcab", "appliance", "washstand", "shoerack", "clothesrack", "changing", "divider", "backbench", "junior", "lounge", "highchair"]);
 
 export function kindOf(q: string): Kind | null {
   const f = " " + fold(q) + " ";
@@ -169,7 +169,7 @@ export function searchCatalog(q: string, limit = 8): Hit[] {
     for (const t of tokens.slice(1)) if (t.length && r.words.some((w) => w.startsWith(t) || (t.length > 2 && w.includes(t)))) score += 12;
     if (kw) score += kwHit ? 14 : -30;
     // rows of several units, sofa sections and appliance cabinets come after the plain product, unless the query asks for them
-    if (e.kind && LESSER.has(e.kind) && kind !== e.kind) score -= 1;
+    if (e.kind && (LESSER.has(e.kind) || e.cabinet?.fit) && kind !== e.kind) score -= 1;
     if (e.checked) score += 3;
     if (e.featured) score += 2;
     if (score > 15) hits.push({ entry: e, score, exact: ns >= 80 });
