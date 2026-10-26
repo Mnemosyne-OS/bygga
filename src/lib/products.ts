@@ -1,4 +1,4 @@
-import type { Archetype, ProductSpec } from "./types";
+import type { Archetype, FitUse, FitZone, ProductSpec } from "./types";
 
 /**
  * A wide offline index of real IKEA product names. Each row is a kind plus outer size (cm);
@@ -49,7 +49,8 @@ export type Kind =
   | "bookrow"
   | "cabrow"
   | "section"
-  | "gateleg";
+  | "gateleg"
+  | "washstand";
 
 export type X = {
   rows?: number;
@@ -85,6 +86,10 @@ export type X = {
   n?: number;
   of?: "bookcase" | "cabinet" | "tv" | "wardrobe" | "wallcab";
   hinge?: boolean;
+  use?: FitUse;
+  z?: string;
+  basin?: number;
+  hung?: boolean;
 };
 
 export type Row = [name: string, kind: Kind, variant: string, w: number, h: number, d: number, x?: X, keywords?: string];
@@ -258,7 +263,7 @@ const MIN: Record<Kind, number> = {
   cube: 40, bookcase: 50, open: 40, chest: 90, nightstand: 40, desk: 25, coffee: 20, side: 15, dining: 40,
   bed: 100, wardrobe: 120, cabinet: 60, sideboard: 80, tv: 60, shoe: 45, chair: 25, stool: 12, bench: 20, sofa: 40, armchair: 30,
   wallshelf: 25, wallcab: 40, kitchen: 50, trolley: 25, bar: 35, console: 30, kidstable: 15, kidschair: 20,
-  office: 20, chaise: 55, corner: 70, cot: 35, bunk: 90, loft: 75, dropleaf: 40, daybed: 60, mixed: 50, sliding: 110, slidecab: 60, bookrow: 120, cabrow: 120, section: 25, gateleg: 50,
+  office: 20, chaise: 55, corner: 70, cot: 35, bunk: 90, loft: 75, dropleaf: 40, daybed: 60, mixed: 50, sliding: 110, slidecab: 60, bookrow: 120, cabrow: 120, section: 25, gateleg: 50, washstand: 35,
 };
 
 const CATEGORY: Record<Kind, string> = {
@@ -267,7 +272,7 @@ const CATEGORY: Record<Kind, string> = {
   cabinet: "Cabinet", sideboard: "Sideboard", tv: "TV bench", shoe: "Shoe cabinet", chair: "Chair", stool: "Stool",
   bench: "Bench", sofa: "Sofa", armchair: "Armchair", wallshelf: "Wall shelf", wallcab: "Wall cabinet", kitchen: "Kitchen cabinet",
   trolley: "Trolley", bar: "Bar table", console: "Console table", kidstable: "Children's table", kidschair: "Children's chair",
-  office: "Office chair", chaise: "Sofa with chaise longue", corner: "Corner sofa", cot: "Cot", bunk: "Bunk bed", loft: "Loft bed", dropleaf: "Drop-leaf table", daybed: "Day-bed", mixed: "Cabinet with doors and drawers", sliding: "Wardrobe with sliding doors", slidecab: "Cabinet with sliding doors", bookrow: "Bookcase combination", cabrow: "Storage combination", section: "Sofa section", gateleg: "Gateleg table",
+  office: "Office chair", chaise: "Sofa with chaise longue", corner: "Corner sofa", cot: "Cot", bunk: "Bunk bed", loft: "Loft bed", dropleaf: "Drop-leaf table", daybed: "Day-bed", mixed: "Cabinet with doors and drawers", sliding: "Wardrobe with sliding doors", slidecab: "Cabinet with sliding doors", bookrow: "Bookcase combination", cabrow: "Storage combination", section: "Sofa section", gateleg: "Gateleg table", washstand: "Wash-stand",
 };
 
 export const KIND_ARCH: Record<Kind, Archetype> = {
@@ -275,7 +280,7 @@ export const KIND_ARCH: Record<Kind, Archetype> = {
   side: "table", dining: "table", bed: "bed", wardrobe: "cabinet", cabinet: "cabinet", sideboard: "cabinet", tv: "cabinet",
   shoe: "cabinet", chair: "seat", stool: "seat", bench: "seat", sofa: "sofa", armchair: "sofa", wallshelf: "shelf", wallcab: "cabinet",
   kitchen: "cabinet", trolley: "table", bar: "table", console: "table", kidstable: "table", kidschair: "seat",
-  office: "seat", chaise: "sofa", corner: "sofa", cot: "bed", bunk: "bed", loft: "bed", dropleaf: "table", daybed: "bed", mixed: "cabinet", sliding: "cabinet", slidecab: "cabinet", bookrow: "shelf", cabrow: "cabinet", section: "sofa", gateleg: "table",
+  office: "seat", chaise: "sofa", corner: "sofa", cot: "bed", bunk: "bed", loft: "bed", dropleaf: "table", daybed: "bed", mixed: "cabinet", sliding: "cabinet", slidecab: "cabinet", bookrow: "shelf", cabrow: "cabinet", section: "sofa", gateleg: "table", washstand: "cabinet",
 };
 
 const round = (x: X) => (x.round ? { round: true } : {});
@@ -287,6 +292,50 @@ const ROW_CATEGORY: Record<NonNullable<X["of"]>, string> = {
   wardrobe: "Wardrobe combination",
   wallcab: "Wall cabinet combination",
 };
+
+const ZONE_KIND = { r: "drawers", d: "doors", f: "front", g: "gap", o: "open", a: "apron" } as const;
+
+/**
+ * A fitted cabinet's front from the bottom up, as "r2@80+g@60+d1": r drawers, d doors, f a fixed front, g an opening for
+ * an appliance, o open shelves, a room for a sink's own front. The digit is how many (s1 adds a shelf behind doors),
+ * @ the band's height in cm; a band without one shares out what is left.
+ */
+export function parseZones(z: string): FitZone[] {
+  const out: FitZone[] = [];
+  for (const tok of z.split("+")) {
+    const m = tok.match(/^([rdfgoa])(\d)?(?:s(\d))?(?:@(\d+))?$/);
+    if (!m) continue;
+    out.push({ kind: ZONE_KIND[m[1] as keyof typeof ZONE_KIND], h: Number(m[4] ?? 0), ...(m[2] ? { n: Number(m[2]) } : {}), ...(m[3] ? { shelves: Number(m[3]) } : {}) });
+  }
+  return out;
+}
+
+const FIT_USE: Partial<Record<Kind, FitUse>> = { washstand: "basin" };
+const FIT_FRONT: Partial<Record<Kind, string>> = { washstand: "r2" };
+
+/** Cabinets built around a basin, a sink or an appliance: x.z is the front, x.use what goes in, x.basin a basin in the box. */
+function fitted(kind: Kind, base: Omit<ProductSpec, "source">, w: number, h: number, x: X): Omit<ProductSpec, "source"> {
+  const use = x.use ?? FIT_USE[kind] ?? "appliance";
+  const zones = parseZones(x.z ?? FIT_FRONT[kind] ?? "d1");
+  const count = (k: FitZone["kind"]) => zones.reduce((a, q) => a + (q.kind === k ? (q.n ?? 1) : 0), 0);
+  const drawers = count("drawers"), doors = count("doors");
+  const hung = !!x.hung;
+  const tall = h > 150;
+  const fit = {
+    use,
+    zones,
+    ...(x.basin ? { basin: x.basin } : {}),
+    ...(["basin", "sink", "hob", "ovenhob"].includes(use) ? { rails: true } : {}),
+    ...(hung && use === "basin" ? { hangFirst: true } : {}),
+  };
+  return {
+    ...base,
+    minutes: x.min ?? MIN[kind] + 20 * drawers + 8 * doors + (tall ? 30 : 0) + (x.basin ? 10 : 0),
+    people: tall || w > 90 ? 2 : 1,
+    difficulty: drawers ? 3 : 2,
+    cabinet: { doors: 0, shelves: 0, rail: false, plinth: !hung, handles: x.knobs ?? "bar", thickness: 18, ...(hung ? { wall: true } : {}), fit },
+  };
+}
 
 /** Turn a kind and a size into a full product spec. */
 export function specFor(kind: Kind, name: string, variant: string, w: number, h: number, d: number, x: X = {}): Omit<ProductSpec, "source"> {
@@ -400,6 +449,8 @@ export function specFor(kind: Kind, name: string, variant: string, w: number, h:
       const seats = x.seats ?? 1;
       return { ...base, minutes: x.min ?? MIN.section + 10 * seats, people: seats > 1 ? 2 : 1, sofa: { seats, arms: "none", legs: "round" } };
     }
+    case "washstand":
+      return fitted(kind, base, w, h, x);
     case "bookrow":
     case "cabrow": {
       // x.n units of kind x.of side by side, each drawn as its own guide would draw it
@@ -445,5 +496,5 @@ export const KIND_DEFAULT_SIZE: Record<Kind, [number, number, number]> = {
   sideboard: [140, 85, 45], tv: [150, 50, 42], shoe: [60, 100, 28], chair: [44, 88, 50], stool: [35, 45, 35], bench: [100, 45, 38],
   sofa: [210, 85, 92], armchair: [75, 90, 80], wallshelf: [60, 60, 22], wallcab: [60, 60, 35], kitchen: [60, 80, 60], trolley: [50, 80, 40],
   bar: [120, 105, 60], console: [100, 79, 35], kidstable: [77, 48, 55], kidschair: [34, 60, 34],
-  office: [64, 105, 64], chaise: [226, 85, 160], corner: [233, 85, 171], cot: [130, 84, 68], bunk: [211, 160, 100], loft: [211, 195, 100], dropleaf: [134, 75, 80], daybed: [207, 83, 91], mixed: [80, 120, 40], sliding: [118, 200, 60], slidecab: [80, 110, 45], bookrow: [160, 202, 28], cabrow: [240, 48, 42], section: [192, 83, 92], gateleg: [151, 75, 90],
+  office: [64, 105, 64], chaise: [226, 85, 160], corner: [233, 85, 171], cot: [130, 84, 68], bunk: [211, 160, 100], loft: [211, 195, 100], dropleaf: [134, 75, 80], daybed: [207, 83, 91], mixed: [80, 120, 40], sliding: [118, 200, 60], slidecab: [80, 110, 45], bookrow: [160, 202, 28], cabrow: [240, 48, 42], section: [192, 83, 92], gateleg: [151, 75, 90], washstand: [60, 83, 47],
 };

@@ -18,6 +18,7 @@ const CATEGORY_WORDS: [Kind, string[]][] = [
   ["office", ["office chair", "desk chair", "swivel chair", "gaming chair", "computer chair"]],
   ["bookrow", ["bookcase combination", "bookshelf combination"]],
   ["cabrow", ["tv bench combination", "tv unit combination", "media unit combination", "cabinet combination", "wardrobe combination", "closet combination", "wall cabinet combination"]],
+  ["washstand", ["wash stand", "washstand", "vanity", "vanity unit", "bathroom vanity", "basin unit", "basin cabinet", "wash basin cabinet", "washbasin cabinet", "bathroom cabinet", "sink vanity"]],
   ["shoe", ["shoe", "shoes", "shoe cabinet", "shoe rack"]],
   ["nightstand", ["nightstand", "bedside", "night stand"]],
   ["mixed", ["doors and drawers", "cabinet with drawers", "cupboard with drawers", "wardrobe with drawers", "armoire with drawers"]],

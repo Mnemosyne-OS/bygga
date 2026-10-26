@@ -73,7 +73,7 @@ export function measure(s: string): Size | null {
   return { n: parts.map((p) => Number(p.split("/")[0])), ext: parts.some((p) => p.includes("/")), text: parts.join(" × ") + " cm" };
 }
 
-const UPRIGHT = new Set<Kind>(["cube", "bookcase", "open", "chest", "nightstand", "wardrobe", "cabinet", "sideboard", "tv", "shoe", "wallcab", "wallshelf", "kitchen", "mixed", "sliding", "slidecab"]);
+const UPRIGHT = new Set<Kind>(["cube", "bookcase", "open", "chest", "nightstand", "wardrobe", "cabinet", "sideboard", "tv", "shoe", "wallcab", "wallshelf", "kitchen", "mixed", "sliding", "slidecab", "washstand"]);
 const FLAT = new Set<Kind>(["desk", "coffee", "side", "dining", "bar", "console", "kidstable", "trolley", "bench"]);
 
 /** Office chairs IKEA sells with armrests although the type doesn't say so. */
@@ -87,6 +87,9 @@ const GATE_STORAGE = new Set(["VIHALS"]);
 const ROW_UNITS: Record<string, number> = { BILLY: 80, BESTÅ: 120, IVAR: 80, PAX: 100 };
 /** PAX frames under a pair of sliding doors: 150 is two 75s, 200 two 100s. */
 const PAX_SLIDE_UNITS = [100, 75];
+/** Wash-stands' own height in cm, to tell how thick a basin from the same box is; and the ones that stand on the floor. */
+const WASH_H: Record<string, number> = { HAVBÄCK: 63, ÄNGSJÖN: 63, TÄNNFORSEN: 63, HEMNES: 83, ENHET: 60, NYSJÖN: 65 };
+const WASH_FLOOR = new Set(["HEMNES", "NYSJÖN"]);
 /** Day-beds' outer size (w, h, d) from IKEA's product pages: IKEA's measure is only the mattress size. */
 const DAYBED_SIZE: Record<string, [number, number, number]> = { HEMNES: [210, 83, 91], BRIMNES: [205, 58, 87], FLEKKE: [207, 86, 91], VIHALS: [206, 75, 86] };
 
@@ -172,6 +175,25 @@ const RULES: Rule[] = [
   [/^cabinet with (2 )?sliding (glass )?doors$/, (_m, c) =>
     c.f.spr ? "cabinet with sliding doors sold as a combination" : c.f.name === "IDÅSEN" ? "steel office cabinet" : { kind: "slidecab", x: { slides: 2 } }],
   [/sliding/, () => "sliding doors"],
+  // wash-stands: drawers or doors under a basin, on the wall or on the floor; a basin from the same box goes on top last
+  [/^(open )?(?:wash-?st(?:a)?n?d|wsh-stnd)(?: (?:w|with) (.+?))?(\/(?:deep )?wash-basin(?:\/tap)?)?$/, (m, c) => {
+    const fronts = m[2] ?? "";
+    const dr = fronts.match(/^(?:(\d) )?(drawers?|drw)$/);
+    const ds = fronts.match(/^(?:(\d) )?(doors?|drs)$/);
+    const sh = fronts.match(/^(\d) shelves$/);
+    const wide = (c.sz.n[0] ?? 60) > 45;
+    let z: string;
+    if (m[1]) z = sh ? `o${sh[1]}` : dr ? "o1+r1@18" : fronts ? "" : "o1";
+    else if (dr) z = `r${dr[1] ?? (/s$/.test(dr[2]) ? 2 : 1)}`;
+    else if (ds) z = `d${Number(ds[1] ?? (ds[2] === "door" ? 1 : 2)) > 1 && wide ? 2 : 1}`;
+    else z = fronts ? "" : "r2";
+    if (!z) return "wash-stand we can't read";
+    return { kind: "washstand", x: { z, basin: m[3] || c.multi ? 6 : undefined } };
+  }],
+  [/^wash-basin (?:base )?cabinet(?: w(?:ith)? (\d) doors)?$/, (m, c) =>
+    ({ kind: "washstand", x: { z: `d${m[1] ? Math.min(2, Number(m[1])) : (c.sz.n[0] ?? 60) > 50 ? 2 : 1}`, basin: c.multi ? 6 : undefined } })],
+  [/^base (?:cb|cabinet) f(?:or)? wash-?basin w(?:ith)? (\d) drawers$/, (m) => ({ kind: "washstand", x: { z: `r${m[1]}` } })],
+  [/^base frame for wash-?basin$/, () => ({ kind: "washstand", x: { z: "o" } })],
   [/sink|wash-?basin|wash-?st|hob\b|oven|fridge|freezer|dishwasher|microwave|extractor|appliances|kitchenette|outdoor kitchen/, () => "appliance or sink unit"],
   [/^(door\/)?drawer front|^drawer (without |with (framed )?(glass )?)front|^(high|medium|low) drawer with front|^fitting for mounting/, () => "door or drawer front sold alone"],
   [/drawers?\b.*\b(doors?|fronts?|shelves|baskets?)\b|\b(doors?|fronts?|shelves|baskets?)\b.*\bdrawers?\b/, () => "mixed doors and drawers"],
@@ -317,6 +339,14 @@ export function classify(f: Fact, hints: Hints): Verdict {
     const twin = kind === "mixed" || kind === "slidecab" ? "cabinet" : kind === "sliding" ? "wardrobe" : undefined;
     const cab = twin ? hints(family, twin) : undefined;
     if (guessed.d && cab && cab.kind === twin && Math.abs(cab.w - w) < 60) d = cab.d;
+    if (kind === "washstand") {
+      // the measure takes in a basin from the same box: whatever is above the wash-stand's own height is the basin
+      if (x.basin) {
+        const extra = WASH_H[family] ? h - WASH_H[family] : -1;
+        x.basin = extra >= 4 ? Math.min(16, extra) : 6;
+      }
+      if (h - (x.basin ?? 0) <= 70 && !WASH_FLOOR.has(family)) x.hung = true;
+    }
   } else if (FLAT.has(kind)) {
     if (v.length === 3) set(v[0], v[2], v[1]);
     else if (v.length === 2) set(v[0], undefined, v[1]);
@@ -420,7 +450,7 @@ export function classify(f: Fact, hints: Hints): Verdict {
   }
 
   // parameters from the type name, the size and the family's hand made rows
-  if (hint?.x.knobs && ["chest", "nightstand", "wardrobe", "cabinet", "sideboard", "tv", "shoe", "wallcab", "kitchen", "mixed"].includes(kind)) x.knobs = hint.x.knobs;
+  if (hint?.x.knobs && ["chest", "nightstand", "wardrobe", "cabinet", "sideboard", "tv", "shoe", "wallcab", "kitchen", "mixed", "washstand"].includes(kind)) x.knobs = hint.x.knobs;
   if (kind === "chest" || kind === "nightstand") {
     const total = x.rows ?? (kind === "nightstand" ? (h >= 60 ? 2 : 1) : Math.min(6, Math.max(2, Math.round(h / 14))));
     if (kind === "chest" && total === 2 && w <= 60 && h <= 65) return finish("nightstand");

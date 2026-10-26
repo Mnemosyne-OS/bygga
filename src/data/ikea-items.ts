@@ -20,8 +20,15 @@ alvdalen-3-seat-sofa-bed|10530650 10530645
 alvdalen-3-seat-sofa-bed-chaise-longue|70530666 70530671
 ammaryd-coffee-table-98-x-59|00609125 40609128
 ammaryd-side-table-59-x-40|80609126 70609122
+angsjon-backsjon-wash-stand-wash-basin-102-x-49|09629586 89629587 69629687 59629584
+angsjon-backsjon-wash-stnd-w-drawer-wash-basin-6|39629575 19629543 99629643 79629719 49629443 29629646
+angsjon-backsjon-wash-stnd-w-drawers-wash-basin|29629444 69629512 19629722 59629720 79629446 49629513 39629679
+angsjon-backsjon-wash-stnd-w-drawers-wash-basin-2|39629580 29629651 99629718 99629577 99629544 89629648 79629724
 angsjon-high-cabinet-door-40-x-35-x-195|80535079 40535081 60535080
+angsjon-orrsjon-wash-stnd-w-drawers-wash-basin-6|39629641 19629717 09629647 99629723 59629683 59629447 49629787
 angsjon-wall-cabinet-door-40-x-15-x-95|20535077 00535078 40535076
+angsjon-wash-stand-drawer-60-x-48-x-33|20535096 00535101 80535098 60535099 20535100 00535097
+angsjon-wash-stand-drawers-40-x-48-x-63|00535083 70535089 80535084 90535088 80531769 10535092 20535082
 ankarudden-chest-4-drawers-80-x-48-x-107|80627149
 ankarudden-chest-6-drawers-139-x-48-x-87|20627147
 ankarudden-wardrobe-sliding-doors-98-x-60-x-190|50626250
@@ -161,6 +168,7 @@ buskbo-armchair|49615399 70434311
 buslatt-chair|90601139
 busunge-extendable-bed-80-x-200|70305700
 byas-tv-bench-160-x-42-x-45|80227797
+byasjon-wash-basin-base-cabinet-66-x-37-x-59|40591519
 danderyd-dining-table-130-x-80|40568726 20568727 10463858
 danderyd-drop-leaf-table-74-134-x-80|10516121
 docksta-table-103|19324995
@@ -188,13 +196,22 @@ ektorp-3-seat-sofa-chaise-longue|29628736 59628730 99628733 99509042 89509033 49
 ektorp-armchair|79628654 69628635 69628640 79552102 59552103 89552106 29552109
 ektorp-corner-sofa-4-seat|69628664 19628666 29508994 89508986 89508991 39508984 59508997
 eldberget-malskar-swivel-chair|59331847
+enhet-base-cb-f-washbasin-w-2-drawers-60-x-40-x|80440509
 enhet-base-fr-w-shelves-40-x-60-x-75|00448953 20448952 10448976 30448975
 enhet-base-fr-w-shelves-60-x-40-x-60|60448974 80448973 40448951 60448950
+enhet-base-frame-for-washbasin-60-x-40-x-60|40464470 20464471
 enhet-high-cabinet-door-30-x-32-x-180|10623036 30632054
 enhet-mirror-cabinet-60-x-17-x-75|59336519 99336517 19336516 79336518
 enhet-mirror-cabinet-door-40-x-17-x-75|30623040
 enhet-mirror-cabinet-doors-60-x-17-x-75|50623044 80623047
+enhet-tvallen-open-wash-stand-2-shelves-64-x-43|99554671 09554661
+enhet-tvallen-wash-stnd-w-door-wash-basin-44-x-4|49613357
+enhet-tvallen-wash-stnd-w-doors-wash-basin-64-x|79613346 09613335 29623625
+enhet-tvallen-wash-stnd-w-drawers-wash-basin-64|49613343 19613354 99623622
 enhet-wall-cabinet-door-60-x-32-x-75|40623025
+enhet-wash-stand-door-40-x-42-x-60|80623146
+enhet-wash-stand-doors-60-x-42-x-60|70623057 10632050 60623053
+enhet-wash-stand-drawers-60-x-42-x-60|80632056 50623020 20623012
 enkroken-desk-85-x-56-x-75|50587079
 ensholm-chair|10543737
 fabrikor-glass-door-cabinet-57-x-150|00242278 50601424
@@ -324,7 +341,17 @@ hauga-tv-bench-206-x-46-x-54|80593385 50593382
 hauga-wardrobe-70-x-199|20415046 60415054
 hauga-wardrobe-sliding-doors-118-x-55-x-199|60456916 60407271
 havback-high-cabinet-door-40-x-35-x-195|40535000 20535063 40535062
+havback-orrsjon-wash-stnd-w-doors-wash-basin-82|99629252 79629291 09629416 99629308 89629380 79629267 59629428
+havback-orrsjon-wash-stnd-w-drawers-wash-basin-4|09629299 59629391
+havback-orrsjon-wash-stnd-w-drawers-wash-basin-8|69629300 29629420 39629245 99629346 89629281 89629276 69629319
+havback-orrsjon-wash-stnd-w-drawers-wash-basin-8-2|99629370 99629327 99629285 89629422 89629304 79629248 49629283
+havback-orrsjon-wash-stnd-w-drawers-wash-basin-t|79522563 19522486
+havback-orrsjon-wash-stnd-w-drs-deep-wash-basin|69515346
+havback-vindelalven-wash-stnd-w-drawers-wash-bas|99622458 89622454 89622449 79622464 79622459 69622450 59622460
 havback-wall-cabinet-door-40-x-15-x-95|60535056 40534996 40535057
+havback-wash-stand-doors-80-x-48-x-63|00535035 30535072 90535074 10535073 80535003 70535070
+havback-wash-stand-drawers-40-x-33-x-63|90591885 30591888
+havback-wash-stand-drawers-60-x-48-x-63|70535065 10535068 90535069 90531764 50535066 40535024 10535025
 havsta-cabinet-doors-81-x-123|50529249 30529245 60529263 40529259 00529261
 havsta-cabinet-plinth-81-x-37-x-134|29534667 39534662
 havsta-cabinet-plinth-81-x-47-x-89|00529242 80529238
@@ -346,8 +373,16 @@ hemnes-day-bed-w-3-drawers-2-mattresses-80-x-200|49521503 79610220 59521499 4952
 hemnes-desk-155-x-65|20535044
 hemnes-glass-door-cabinet-3-drawers-90-x-197|50452297 00596161 50413507
 hemnes-nightstand-2-drawers|50610739
+hemnes-open-wash-stand-1-drawer-82-x-48-x-76|30396698
+hemnes-orrsjon-wash-stnd-w-drawers-wash-basin-10|69654988 09654972 59654979
+hemnes-orrsjon-wash-stnd-w-drawers-wash-basin-ta|29546788 09546794 49546810
+hemnes-rutsjon-wash-stnd-w-drawers-wash-basin-62|69655006 49655007 09655014
+hemnes-rutsjon-wash-stnd-w-drawers-wash-basin-ta|49546853 79546837 29546830
 hemnes-sideboard-157-x-88|70476259 80628667
 hemnes-tv-bench-148-x-57|50413526
+hemnes-vastersjon-open-wash-stand-w-drawer-wash|19649391
+hemnes-vastersjon-open-wsh-stnd-w-drw-wash-basin|89568555
+hemnes-wash-stand-2-drawers-60-x-47-x-83|50217667 20217664 90217665
 herrakra-armchair|20544717 80535545 80535550
 hogved-chair|90606820
 hol-side-table-50-x-50|70161320
@@ -418,6 +453,7 @@ ivar-shelving-unit-doors-89-x-30-x-124|39403473 89507883 59508087 09507858
 ivar-shelving-unit-doors-89-x-30-x-179|89403461 19403474
 ivar-wall-cabinet-doors-160-x-30-x-83|09417382
 ivosjon-cabinet-doors-33-x-34-x-99|30569095 90609871
+ivosjon-wash-basin-base-cabinet-50-x-33-x-57|20597292
 jakobsfors-coffee-table-80|90500121 50515167
 janinge-chair|70246089
 jarvfjallet-office-chair-armrests|20510642 00521854
@@ -745,8 +781,12 @@ norrmanso-chair-outdoor|40511080
 norrmanso-table-outdoor-220-x-100|30500794
 norrmjole-table-105|90620562 00620566 50620564
 nyhamn-3-seat-sofa-bed|89494625 49555574 99555576 99494615 79555577 29494628 19555575
+nysjon-bjorkan-wash-basin-base-cabinet-w-2-doors|39556324
+nysjon-bjorkan-wash-stnd-w-door-wash-basin-tap-5|09556288
 nysjon-high-cabinet-30-x-190|20470815
 nysjon-mirror-cabinet-50-x-60|10470830
+nysjon-wash-basin-base-cabinet-w-2-doors-50-x-65|50470814
+nysjon-wash-basin-cabinet-50-x-83|60470408
 odger-chair|60359996 50457313 70516552
 olserod-side-table-53-x-50|20525356 40530917
 omar-shelving-unit-46-x-36-x-181|89297192
@@ -1032,7 +1072,18 @@ tallskar-chair-armrests-outdoor|20575148
 tanebro-side-table-46|60578970 60554988 60638182 70605162
 tannforsen-high-cabinet-door-40-x-35-x-195|90535111
 tannforsen-mirror-cabinet-doors-80-x-15-x-95|10535129 00555250 30535128
+tannforsen-orrsjon-wash-stand-wash-basin-102-x-4|89629827
+tannforsen-orrsjon-wash-stnd-w-doors-wash-basin|69629932 49629867
+tannforsen-orrsjon-wash-stnd-w-drawers-wash-basi|89629926 59629819 39629820 29629849 09629893
+tannforsen-orrsjon-wash-stnd-w-drawers-wash-basi-2|69629913 29629910 09629789
+tannforsen-orrsjon-wash-stnd-w-drs-deep-wash-bas|19515377
+tannforsen-rutsjon-wash-stnd-w-doors-wash-basin|29629892 39629801
+tannforsen-rutsjon-wash-stnd-w-drawers-wash-basi|49629891 09629850 99629817
+tannforsen-vastersjon-wash-stnd-w-doors-wash-bas|79629941 29629905
+tannforsen-vastersjon-wash-stnd-w-drawers-wash-b|99629940 39629844 29629811 09629845 09629812
 tannforsen-wall-cabinet-door-40-x-15-x-95|50535108
+tannforsen-wash-stand-doors-80-x-48-x-63|60535122 20535124
+tannforsen-wash-stand-drawers-80-x-48-x-63|60535117 60531770 80535116 00535115
 tarnkullen-upholstered-bed-frame-standard-double|69564351 79564355 39564376 19564377
 tarno-chair-outdoor|90095428 09576328 09576314
 tarno-stool-30-x-42|70603281

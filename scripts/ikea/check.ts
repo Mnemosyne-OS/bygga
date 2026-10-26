@@ -113,6 +113,10 @@ async function main() {
   expect("billy bookcase combination", "billy-bookcase-160-x-28-x-202");
   expect("pax bergsbo", "pax-bergsbo-wardrobe");
   expect("vihals gateleg table", "vihals-gateleg-table-39-95-151-x-90");
+  // a wash-stand when asked for, US words too, without taking the family's cabinets
+  expect("hemnes wash-stand", "hemnes-wash-stand-2-drawers-60-x-47-x-83");
+  expect("hemnes vanity", "hemnes-wash-stand-2-drawers-60-x-47-x-83");
+  expect("hemnes cabinet", "hemnes-glass-door-cabinet-90-x-197");
   if (articleNo("S292.975.72") !== "29297572") fail("article numbers with an S in front don't parse");
   for (const [no, slug] of [["60324520", "kallax-2x2"]] as const) {
     if (articleSlug(no) !== slug) fail(`article ${no} gave ${articleSlug(no)}, expected ${slug}`);

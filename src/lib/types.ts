@@ -64,6 +64,28 @@ export interface CabinetParams {
   drawers?: number; // drawers as well as doors: full-width drawers, split from the doors by a fixed shelf
   drawerAt?: "top" | "bottom"; // where the drawers are; under the doors unless it says top
   slides?: number; // sliding doors: how many, running in two tracks
+  fit?: FitParams; // built around a basin, a sink or an appliance that is fitted afterwards
+}
+
+/** What a fitted cabinet is built around. The guide builds the cabinet only, and says so at the end. */
+export type FitUse = "basin" | "sink" | "hob" | "oven" | "ovenhob" | "fridge" | "microwave" | "hood" | "appliance";
+
+/** One band of a fitted cabinet's front, from the bottom up. */
+export interface FitZone {
+  // drawers, doors, a fixed front that doesn't open (in front of a sink), an opening for an appliance,
+  // open shelves, or room at the top for a sink's own front
+  kind: "drawers" | "doors" | "front" | "gap" | "open" | "apron";
+  h: number; // cm of the front; 0 shares out what is left
+  n?: number; // drawers in the band, doors side by side (1 or 2), or shelves when open
+  shelves?: number; // shelves behind the doors
+}
+
+export interface FitParams {
+  use: FitUse;
+  zones: FitZone[]; // from the bottom up
+  basin?: number; // cm: a wash-basin that comes in the box, this thick; size includes it, and it goes on top last
+  rails?: boolean; // two rails across the top instead of a top panel
+  hangFirst?: boolean; // hung on the wall before the fronts go on (wash-stands)
 }
 
 export interface SeatParams {

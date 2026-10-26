@@ -21,6 +21,13 @@ ALEX|open|Storage unit, 36 × 70 cm|36|70|35
 ÄMMARYD|side|Side table, 59 × 40 cm|59|50|40
 ÄNGSJÖN|cabinet|High cabinet with door, 40 × 35 × 195 cm|40|195|35|doors=1
 ÄNGSJÖN|wallcab|Wall cabinet with door, 40 × 15 × 95 cm|40|95|15|doors=1
+ÄNGSJÖN|washstand|Wash-stand with drawers, 40 × 48 × 63 cm|40|63|48|z=r2,hung=1
+ÄNGSJÖN|washstand|Wash-stand with drawer, 60 × 48 × 33 cm|60|33|48|z=r1,hung=1
+ÄNGSJÖN / BACKSJÖN|washstand|Wash-stnd w drawer/wash-basin, 60 × 48 × 39 cm|60|39|48|z=r1,basin=6,hung=1
+ÄNGSJÖN / BACKSJÖN|washstand|Wash-stnd w drawers/wash-basin, 60 × 48 × 69 cm|60|69|48|z=r2,basin=6,hung=1
+ÄNGSJÖN / BACKSJÖN|washstand|Wash-stand/wash-basin, 102 × 49 × 71 cm|102|71|49|z=r2,basin=8,hung=1
+ÄNGSJÖN / BACKSJÖN|washstand|Wash-stnd w drawers/wash-basin, 102 × 49 × 71 cm|102|71|49|z=r2,basin=8,hung=1||angsjon-backsjon-wash-stnd-w-drawers-wash-basin-2
+ÄNGSJÖN / ORRSJÖN|washstand|Wash-stnd w drawers/wash-basin, 62 × 49 × 69 cm|62|69|49|z=r2,basin=6,hung=1
 ANKARUDDEN|chest|Chest of 4 drawers, 80 × 48 × 107 cm|80|107|48|rows=4
 ANKARUDDEN|chest|Chest of 6 drawers, 139 × 48 × 87 cm|139|87|48|rows=3,cols=2
 ANKARUDDEN|sliding|Wardrobe with sliding doors, 98 × 60 × 190 cm|98|190|60|slides=2
@@ -142,6 +149,7 @@ BUSKBO|armchair|Armchair|75|90|80
 BUSLÄTT|chair|Chair|44|88|50
 BUSUNGE|bed|Extendable bed, 80 × 200 cm|96|100|209|m=80
 BYÅS|tv|TV bench, 160 × 42 × 45 cm|160|45|42
+BYASJÖN|washstand|Wash-basin base cabinet, 66 × 37 × 59 cm|66|59|37|z=d2,hung=1
 DANDERYD|dining|Dining table, 130 × 80 cm|130|74|80
 DANDERYD|dropleaf|Drop-leaf table, 74/134 × 80 cm|134|75|80|leaves=2,leaf=30
 DOCKSTA|dining|Table, 103 cm|103|74|103|round=1
@@ -173,6 +181,15 @@ ENHET|wallcab|Mirror cabinet with door, 40 × 17 × 75 cm|40|75|17|doors=1
 ENHET|wallcab|Mirror cabinet with doors, 60 × 17 × 75 cm|60|75|17
 ENHET|wallcab|Mirror cabinet, 60 × 17 × 75 cm|60|75|17
 ENHET|wallcab|Wall cabinet with door, 60 × 32 × 75 cm|60|75|32|doors=1
+ENHET|washstand|Wash-stand with door, 40 × 42 × 60 cm|40|60|42|z=d1,hung=1
+ENHET|washstand|Base cb f washbasin w 2 drawers, 60 × 40 × 60 cm|60|60|40|z=r2,hung=1
+ENHET|washstand|Base frame for washbasin, 60 × 40 × 60 cm|60|60|40|z=o,hung=1
+ENHET|washstand|Wash-stand with doors, 60 × 42 × 60 cm|60|60|42|z=d2,hung=1
+ENHET|washstand|Wash-stand with drawers, 60 × 42 × 60 cm|60|60|42|z=r2,hung=1
+ENHET / TVÄLLEN|washstand|Wash-stnd w door/wash-basin, 44 × 43 × 65 cm|44|65|43|z=d1,basin=5,hung=1
+ENHET / TVÄLLEN|washstand|Wash-stnd w doors/wash-basin, 64 × 33 × 65 cm|64|65|33|z=d2,basin=5,hung=1
+ENHET / TVÄLLEN|washstand|Open wash-stand with 2 shelves, 64 × 43 × 65 cm|64|65|43|z=o2,basin=5,hung=1
+ENHET / TVÄLLEN|washstand|Wash-stnd w drawers/wash-basin, 64 × 43 × 65 cm|64|65|43|z=r2,basin=5,hung=1
 ENKROKEN|desk|Desk, 85 × 56 × 75 cm|85|75|56
 ENSHOLM|chair|Chair|44|88|50||outdoor garden
 FABRIKÖR|cabinet|Glass-door cabinet, 57 × 150 cm|57|150|41
@@ -298,6 +315,16 @@ HAUGA|sliding|Wardrobe with sliding doors, 118 × 55 × 199 cm|118|199|55|slides
 HAUGA|tv|TV bench, 206 × 46 × 54 cm|206|54|46|knobs=bar
 HAVBÄCK|cabinet|High cabinet with door, 40 × 35 × 195 cm|40|195|35|doors=1
 HAVBÄCK|wallcab|Wall cabinet with door, 40 × 15 × 95 cm|40|95|15|doors=1
+HAVBÄCK|washstand|Wash-stand with drawers, 40 × 33 × 63 cm|40|63|33|z=r2,hung=1
+HAVBÄCK|washstand|Wash-stand with drawers, 60 × 48 × 63 cm|60|63|48|z=r2,hung=1
+HAVBÄCK|washstand|Wash-stand with doors, 80 × 48 × 63 cm|80|63|48|z=d2,hung=1
+HAVBÄCK / ORRSJÖN|washstand|Wash-stnd w drawers/wash-basin, 42 × 34 × 69 cm|42|69|34|z=r2,basin=6,hung=1
+HAVBÄCK / ORRSJÖN|washstand|Wash-stnd w drs/deep wash-basin/tap, 62 × 49 × 72 cm|62|72|49|z=d2,basin=9,hung=1
+HAVBÄCK / ORRSJÖN|washstand|Wash-stnd w drawers/wash-basin, 82 × 49 × 69 cm|82|69|49|z=r2,basin=6,hung=1
+HAVBÄCK / ORRSJÖN|washstand|Wash-stnd w doors/wash-basin, 82 × 49 × 71 cm|82|71|49|z=d2,basin=8,hung=1
+HAVBÄCK / ORRSJÖN|washstand|Wash-stnd w drawers/wash-basin, 82 × 49 × 71 cm|82|71|49|z=r2,basin=8,hung=1||havback-orrsjon-wash-stnd-w-drawers-wash-basin-8-2
+HAVBÄCK / ORRSJÖN|washstand|Wash-stnd w drawers/wash-basin/tap, 82 × 49 × 71 cm|82|71|49|z=r2,basin=8,hung=1
+HAVBÄCK / VINDELÄLVEN|washstand|Wash-stnd w drawers/wash-basin, 82 × 49 × 77 cm|82|77|49|z=r2,basin=14,hung=1
 HAVSTA|cabinet|Cabinet with plinth, 81 × 47 × 89 cm|81|89|47
 HAVSTA|cabinet|Cabinet with plinth, 81 × 37 × 134 cm|81|134|37
 HAVSTA|cabinet|Glass-door cabinet with plinth, 81 × 37 × 134 cm|81|134|37
@@ -313,6 +340,14 @@ HEMNES|daybed|Day-bed frame with 3 drawers, 80 × 200 cm|210|83|91|rows=3,knobs=
 HEMNES|daybed|Day-bed w 3 drawers/2 mattresses, 80 × 200 cm|210|83|91|rows=3,knobs=knob,m=80,under=pullout,mats=2
 HEMNES|desk|Desk, 155 × 65 cm|155|74|65
 HEMNES|mixed|Glass-door cabinet with 3 drawers, 90 × 197 cm|90|197|37|rows=3,knobs=knob
+HEMNES|washstand|Wash-stand with 2 drawers, 60 × 47 × 83 cm|60|83|47|knobs=knob,z=r2
+HEMNES|washstand|Open wash-stand with 1 drawer, 82 × 48 × 76 cm|82|76|48|knobs=knob,z=o1+r1@18
+HEMNES / ORRSJÖN|washstand|Wash-stnd w drawers/wash-basin/tap, 62 × 49 × 89 cm|62|89|49|knobs=knob,z=r2,basin=6
+HEMNES / ORRSJÖN|washstand|Wash-stnd w drawers/wash-basin, 102 × 49 × 89 cm|102|89|49|knobs=knob,z=r2,basin=6
+HEMNES / RUTSJÖN|washstand|Wash-stnd w drawers/wash-basin, 62 × 49 × 95 cm|62|95|49|knobs=knob,z=r2,basin=12
+HEMNES / RUTSJÖN|washstand|Wash-stnd w drawers/wash-basin/tap, 82 × 49 × 95 cm|82|95|49|knobs=knob,z=r2,basin=12
+HEMNES / VÄSTERSJÖN|washstand|Open wash-stand w drawer/wash-basin, 82 × 48 × 90 cm|82|90|48|knobs=knob,z=o1+r1@18,basin=7
+HEMNES / VÄSTERSJÖN|washstand|Open wsh-stnd w drw/wash-basin/tap, 82 × 48 × 90 cm|82|90|48|knobs=knob,z=o1+r1@18,basin=7
 HERRÅKRA|armchair|Armchair|75|90|80
 HÖGVED|chair|Chair|44|88|50
 HOL|side|Side table, 50 × 50 cm|50|50|50
@@ -376,6 +411,7 @@ IVAR|open|Shelving unit, 89 × 30 × 226 cm|89|226|30
 IVAR|open|Shelving unit, 89 × 50 × 226 cm|89|226|50
 IVAR|slidecab|Cabinet with sliding doors, 80 × 30 × 60 cm|80|60|30|slides=2
 IVÖSJÖN|cabinet|Cabinet with doors, 33 × 34 × 99 cm|33|99|34
+IVÖSJÖN|washstand|Wash-basin base cabinet, 50 × 33 × 57 cm|50|57|33|z=d1,hung=1
 JAKOBSFORS|coffee|Coffee table, 80 cm|80|45|80|round=1
 JÄRVFJÄLLET|office|Office chair with armrests|64|105|64|arms=slim
 JÄTTEBO|chaise|2,5-seat mod sofa w chaise longue|226|85|160|seats=3,arms=wide,chaise=right,sd=92
@@ -676,6 +712,10 @@ NORRMJÖLE|dining|Table, 105 cm|105|74|105|round=1
 NYHAMN|sofa|3-seat sofa-bed|230|85|92|seats=3
 NYSJÖN|cabinet|High cabinet, 30 × 190 cm|30|190|40
 NYSJÖN|wallcab|Mirror cabinet, 50 × 60 cm|50|60|35
+NYSJÖN|washstand|Wash-basin base cabinet w 2 doors, 50 × 65 cm|50|65|47|z=d2
+NYSJÖN|washstand|Wash-basin cabinet, 50 × 83 cm|50|83|47|z=d1
+NYSJÖN / BJÖRKÅN|washstand|Wash-basin base cabinet w 2 doors, 54 × 40 × 80 cm|54|80|40|z=d2,basin=15
+NYSJÖN / BJÖRKÅN|washstand|Wash-stnd w door/wash-basin/tap, 54 × 40 × 88 cm|54|88|40|z=d1,basin=16
 OLSERÖD|side|Side table, 53 × 50 cm|53|50|50
 OMAR|open|Shelving unit, 46 × 36 × 94 cm|46|94|36
 OMAR|open|Shelving unit, 46 × 36 × 181 cm|46|181|36
@@ -950,6 +990,17 @@ TÅNEBRO|side|Side table, 46 cm|46|50|46|round=1
 TÄNNFORSEN|cabinet|High cabinet with door, 40 × 35 × 195 cm|40|195|35|doors=1
 TÄNNFORSEN|wallcab|Wall cabinet with door, 40 × 15 × 95 cm|40|95|15|doors=1
 TÄNNFORSEN|wallcab|Mirror cabinet with doors, 80 × 15 × 95 cm|80|95|15
+TÄNNFORSEN|washstand|Wash-stand with doors, 80 × 48 × 63 cm|80|63|48|z=d2,hung=1
+TÄNNFORSEN|washstand|Wash-stand with drawers, 80 × 48 × 63 cm|80|63|48|z=r2,hung=1
+TÄNNFORSEN / ORRSJÖN|washstand|Wash-stnd w drs/deep wash-basin/tap, 62 × 49 × 72 cm|62|72|49|z=d2,basin=9,hung=1
+TÄNNFORSEN / ORRSJÖN|washstand|Wash-stnd w doors/wash-basin, 82 × 49 × 71 cm|82|71|49|z=d2,basin=8,hung=1
+TÄNNFORSEN / ORRSJÖN|washstand|Wash-stnd w drawers/wash-basin, 82 × 49 × 71 cm|82|71|49|z=r2,basin=8,hung=1
+TÄNNFORSEN / ORRSJÖN|washstand|Wash-stnd w drawers/wash-basin, 102 × 49 × 69 cm|102|69|49|z=r2,basin=6,hung=1||tannforsen-orrsjon-wash-stnd-w-drawers-wash-basi-2
+TÄNNFORSEN / ORRSJÖN|washstand|Wash-stand/wash-basin, 102 × 49 × 71 cm|102|71|49|z=r2,basin=8,hung=1
+TÄNNFORSEN / RUTSJÖN|washstand|Wash-stnd w doors/wash-basin, 82 × 49 × 74 cm|82|74|49|z=d2,basin=11,hung=1
+TÄNNFORSEN / RUTSJÖN|washstand|Wash-stnd w drawers/wash-basin, 82 × 49 × 74 cm|82|74|49|z=r2,basin=11,hung=1
+TÄNNFORSEN / VÄSTERSJÖN|washstand|Wash-stnd w doors/wash-basin, 62 × 49 × 79 cm|62|79|49|z=d2,basin=16,hung=1
+TÄNNFORSEN / VÄSTERSJÖN|washstand|Wash-stnd w drawers/wash-basin, 102 × 49 × 79 cm|102|79|49|z=r2,basin=16,hung=1
 TÄRNKULLEN|bed|Upholstered bed frame, Standard Double, 135 × 190 cm|151|100|199|m=135,l=190
 TÄRNÖ|chair|Chair, outdoor|44|88|50||outdoor garden
 TÄRNÖ|dining|Table, outdoor, 55 × 54 cm|55|74|54||outdoor garden

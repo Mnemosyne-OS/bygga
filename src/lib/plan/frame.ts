@@ -18,6 +18,20 @@ export interface FrameOpts {
   pinRows: boolean;
   lying: boolean;
   names?: { side?: string; top?: string; bottom?: string; fixed?: string };
+  /** two rails across the top, front and back, instead of a top panel: room for a basin, a sink or a hob */
+  rails?: boolean;
+}
+
+/** A panel joined between the sides. Rails are narrow, so they say where their dowels and bolts go. */
+interface Joint {
+  key: string;
+  y: number;
+  camDir: 1 | -1;
+  face: number;
+  zd?: number[];
+  zb?: number[];
+  /** a front rail: the back panel isn't nailed to it */
+  front?: boolean;
 }
 
 export class FrameKit {
@@ -29,7 +43,9 @@ export class FrameKit {
   backPanel?: string;
   pose: Pose;
   innerW: number;
-  joints: { key: string; y: number; camDir: 1 | -1; face: number }[] = [];
+  joints: Joint[] = [];
+  /** the front rail, when there are rails instead of a top; `top` is then the back one */
+  frontRail?: string;
   pinYs: number[] = [];
 
   constructor(
@@ -58,11 +74,21 @@ export class FrameKit {
     this.sides = [b.place(sideT, [-sx, H / 2, 0]), b.place(sideT, [sx, H / 2, 0], [0, Math.PI, 0])];
 
     const iw = W - 2 * t;
-    const topT = b.part(o.names?.top ?? "Top panel", [iw, t, D]);
-    this.top = b.place(topT, [0, H - t / 2, 0]);
+    if (o.rails) {
+      const rd = 100;
+      const railT = b.part(o.names?.top ?? "Top rail", [iw, t, rd]);
+      const zr = -D / 2 + rd / 2, zf = D / 2 - rd / 2;
+      this.top = b.place(railT, [0, H - t / 2, zr]);
+      this.frontRail = b.place(railT, [0, H - t / 2, zf]);
+      this.joints.push({ key: this.top, y: H - t / 2, camDir: 1, face: H - t, zd: [zr - 22], zb: [zr + 22] });
+      this.joints.push({ key: this.frontRail, y: H - t / 2, camDir: 1, face: H - t, zd: [zf + 22], zb: [zf - 22], front: true });
+    } else {
+      const topT = b.part(o.names?.top ?? "Top panel", [iw, t, D]);
+      this.top = b.place(topT, [0, H - t / 2, 0]);
+    }
     const botT = b.part(o.names?.bottom ?? "Bottom panel", [iw, t, D]);
     this.bottom = b.place(botT, [0, base + t / 2, 0]);
-    this.joints.push({ key: this.top, y: H - t / 2, camDir: 1, face: H - t });
+    if (!o.rails) this.joints.push({ key: this.top, y: H - t / 2, camDir: 1, face: H - t });
     this.joints.push({ key: this.bottom, y: base + t / 2, camDir: -1, face: base + t });
     if (o.fixed.length) {
       const fxT = b.part(o.names?.fixed ?? "Fixed shelf", [iw, t, D - 4]);
@@ -121,8 +147,8 @@ export class FrameKit {
           const xi = i === 0 ? -W / 2 + t : W / 2 - t;
           const into: Vec3 = [i === 0 ? -1 : 1, 0, 0];
           for (const j of this.joints) {
-            for (const z of [-this.zd, this.zd]) dowels.push({ on: side, at: [xi, j.y, z], dir: into, mate: j.key });
-            for (const z of [-this.zb, this.zb]) bolts.push({ on: side, at: [xi, j.y, z], dir: into, mate: j.key, mateHole: 4 });
+            for (const z of j.zd ?? [-this.zd, this.zd]) dowels.push({ on: side, at: [xi, j.y, z], dir: into, mate: j.key });
+            for (const z of j.zb ?? [-this.zb, this.zb]) bolts.push({ on: side, at: [xi, j.y, z], dir: into, mate: j.key, mateHole: 4 });
           }
           if (this.plinth) dowels.push({ on: side, at: [xi, o.base / 2, D / 2 - t / 2 - 12], dir: into, mate: this.plinth });
         });
@@ -186,7 +212,7 @@ export class FrameKit {
         const list: Parameters<PlanBuilder["fits"]>[1] = [];
         for (const j of this.joints) {
           for (const x of [-W / 2 + t + 24, W / 2 - t - 24])
-            for (const z of [-this.zb, this.zb]) list.push({ on: j.key, at: [x, j.face, z], dir: [0, j.camDir, 0] });
+            for (const z of j.zb ?? [-this.zb, this.zb]) list.push({ on: j.key, at: [x, j.face, z], dir: [0, j.camDir, 0] });
         }
         b.fits(HW.cam, list, 0.07);
       },
@@ -257,6 +283,7 @@ export class FrameKit {
         }
         const nx = Math.max(2, Math.round((W - 2 * t) / 180));
         for (const j of this.joints) {
+          if (j.front) continue;
           for (const x of pts(-W / 2 + t + 40, W / 2 - t - 40, nx)) list.push({ on: j.key, at: [x, j.y, z], dir: [0, 0, 1], hole: false });
         }
         // corners first

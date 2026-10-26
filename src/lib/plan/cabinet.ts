@@ -2,6 +2,7 @@ import type { CabinetParams, ProductSpec, Vec3 } from "../types";
 import { HW, PlanBuilder, type FitOpts } from "./builder";
 import { FrameKit } from "./frame";
 import { clamp } from "./math";
+import { buildFitted } from "./fitted";
 import { buildMixed } from "./mixed";
 import { buildSliding } from "./sliding";
 
@@ -21,6 +22,7 @@ export function defaultsCabinet(s: ProductSpec): CabinetParams {
 }
 
 export function buildCabinet(b: PlanBuilder, s: ProductSpec) {
+  if (s.cabinet?.fit) return buildFitted(b, s);
   if (s.cabinet?.drawers) return buildMixed(b, s);
   if (s.cabinet?.fronts === "sliding") return buildSliding(b, s);
   const p = defaultsCabinet(s);
