@@ -186,6 +186,8 @@ const RULES: Rule[] = [
     const seatH = c.kids ? 42 : /gaming/.test(m[0]) ? 50 : undefined;
     return { kind: "office", x: { arms: arms ? "slim" : "none", seatH } };
   }],
+  // lounge and reclining chairs on a wooden frame: a low chair with armrests (IKEA gives no size: a typical one)
+  [/^(lounge chair|reclining chair)$/, (_m, c) => (c.f.spr ? "lounge chair sold with cushions" : { kind: "lounge" })],
   [/swivel|office chair|gaming chair|conference|desk chair|highchair|lounge|reclining|lounger|hammock|massage/, () => "office, swivel or lounge chair"],
   // sofas with a chaise longue at one or both ends, and corner sofas (an L of sections)
   [/^(?=.*\bsofa)(?=.*\b(corner|crnr|chaise))/, (m) => {
@@ -549,6 +551,7 @@ export function classify(f: Fact, hints: Hints): Verdict {
     else if (v.length === 2 && kind === "stool") set(v[0], v[1], v[0]);
     if (kind === "stool" && guessed.h) h = /bar/.test(t) ? 74 : /step/.test(t) ? 50 : kids ? 30 : 45;
     if (kind === "chair" && x.seatH && guessed.h) h = x.seatH + 32;
+    if (kind === "lounge" && guessed.h && /reclin/.test(t)) [w, h, d] = [66, 102, 84];
     if (kind === "sofa" && guessed.w) w = (x.seats ?? 3) * 60 + 50;
     if (kind === "armchair" && /wing|high-back/.test(t) && guessed.h) h = 104;
     if (kind === "armchair" && kids && guessed.w) [w, h, d] = [55, 68, 58];

@@ -124,6 +124,7 @@ BONDHOLMEN|armchair|Armchair, outdoor|75|90|80||outdoor garden
 BONDHOLMEN|backbench|Bench with backrest, outdoor|120|86|60||outdoor garden
 BONDHOLMEN|chair|Chair with armrests, outdoor|44|88|50|arms=slim|outdoor garden
 BONDHOLMEN|dining|Table, outdoor, 235 × 90 cm|235|74|90||outdoor garden
+BONDHOLMEN|lounge|Reclining chair, outdoor|66|102|84||outdoor garden
 BONDHOLMEN|sofa|2-seat sofa, outdoor, 139 × 81 × 73 cm|139|73|81|seats=2|outdoor garden
 BONDHOLMEN|sofa|2-seat sofa, outdoor|170|85|92|seats=2|outdoor garden
 BORGEBY|coffee|Coffee table, 70 cm|70|45|70|round=1
@@ -804,6 +805,8 @@ NÄMMARÖ|chair|Chair, outdoor|44|88|50||outdoor garden
 NÄMMARÖ|dining|Table, outdoor, 75 × 63 cm|75|74|63||outdoor garden
 NÄMMARÖ|dining|Table, outdoor, 130 cm|130|74|130|round=1|outdoor garden
 NÄMMARÖ|dining|Table, outdoor, 140 × 75 cm|140|74|75||outdoor garden
+NÄMMARÖ|lounge|Reclining chair, outdoor|66|102|84||outdoor garden
+NÄMMARÖ|lounge|Lounge chair, outdoor|72|88|80||outdoor garden
 NÄMMARÖ|sofa|2-seat sofa, 126 cm|126|85|92|seats=2|outdoor garden
 NÄMMARÖ|sofa|2-seat sofa, 147 cm|147|85|92|seats=2|outdoor garden
 NÄMMARÖ|sofa|3-seat sofa, 264 cm|264|85|92|seats=3|outdoor garden
@@ -1299,6 +1302,7 @@ VEVELSTAD|bed|Bed frame with 3 headboards, Standard Single, 90 × 190 cm|106|100
 VEVELSTAD|bed|Bed frame, Standard Single, 90 × 190 cm|106|100|199|m=90,l=190
 VEVELSTAD|bed|Bed frame with 2 headboards, Standard Double, 135 × 190 cm|151|100|199|m=135,l=190
 VEVELSTAD|bed|Bed frame, Standard Double, 135 × 190 cm|151|100|199|m=135,l=190
+VIGGSÖ|lounge|Lounge chair, outdoor|72|88|80||outdoor garden
 VIHALS|bar|Bar table, 125 × 74 × 92 cm|125|92|74
 VIHALS|bed|Bed frame with 2 storage boxes, Standard Single, 90 × 190 cm|106|100|199|m=90,l=190
 VIHALS|bed|Bed frame, Standard Single, 90 × 190 cm|106|100|199|m=90,l=190

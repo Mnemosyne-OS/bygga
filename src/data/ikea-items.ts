@@ -137,6 +137,7 @@ bondholmen-2-seat-sofa-outdoor-139-x-81-x-73|50558185
 bondholmen-armchair-outdoor|19583724 60558161
 bondholmen-bench-backrest-outdoor|50558166
 bondholmen-chair-armrests-outdoor|10558173
+bondholmen-reclining-chair-outdoor|80558179
 bondholmen-table-outdoor-235-x-90|20558196
 borgeby-coffee-table-70|70389356 30500355
 borgeby-side-table-46|40619882 80619880
@@ -874,6 +875,8 @@ nammaro-bench-outdoor-120|60510310
 nammaro-chair|39610260 19610256
 nammaro-chair-armrests-outdoor|90511105 59610264 69610268
 nammaro-chair-outdoor|50503353
+nammaro-lounge-chair-outdoor|40510306
+nammaro-reclining-chair-outdoor|50510301
 nammaro-stool-outdoor-37-x-45|70510300
 nammaro-table-outdoor-130|50586701
 nammaro-table-outdoor-140-x-75|20510307
@@ -1386,6 +1389,7 @@ vevelstad-bed-frame-2-headboards-standard-single|09441810
 vevelstad-bed-frame-3-headboards-standard-single|29441828
 vevelstad-bed-frame-standard-double-135-x-190|80506393 20506391
 vevelstad-bed-frame-standard-single-90-x-190|60518274
+viggso-lounge-chair-outdoor|20597070
 vihals-bar-table-125-x-74-x-92|89621789
 vihals-bed-frame-2-storage-boxes-standard-double|49581988 29581989
 vihals-bed-frame-2-storage-boxes-standard-single|09581990
