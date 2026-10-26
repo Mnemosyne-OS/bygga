@@ -406,6 +406,8 @@ export function specFor(kind: Kind, name: string, variant: string, w: number, h:
     case "wallcab":
       return { ...base, people: w > 100 ? 2 : 1, cabinet: { doors: x.doors ?? (w > 50 ? 2 : 1), shelves: x.shelves ?? (h > 50 ? 1 : 0), rail: false, plinth: false, handles: x.knobs ?? "knob", thickness: 16, wall: true } };
     case "kitchen":
+      // x.z: a front of drawers and doors, drawn like the cabinets built around an appliance
+      if (x.z) return fitted(kind, base, w, h, { use: "storage", ...x });
       return { ...base, cabinet: { doors: x.doors ?? (w > 50 ? 2 : 1), shelves: x.shelves ?? Math.max(1, Math.round(h / 45) - 1), rail: false, plinth: true, handles: x.knobs ?? "bar", thickness: 18 } };
     case "trolley":
       return { ...base, difficulty: 1, table: { attach: "plate", legs: "round", legSize: 25, topThickness: 20, shelf: true } };

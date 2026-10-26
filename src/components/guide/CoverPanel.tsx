@@ -261,6 +261,8 @@ const SHORTHAND: [RegExp, string][] = [
   [/\bdrw\b/g, "drawer"],
   [/\bdr\b/g, "door"],
   [/\b(\d) m\b/g, "$1 medium"],
+  [/\bmd\b/g, "medium"],
+  [/\bfr\b/g, "frame"],
   [/\b(\d) h\b/g, "$1 high"],
   [/\bshlf\b/g, "shelf"],
   [/\bshlvs?\b/g, "shelves"],

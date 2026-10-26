@@ -4,7 +4,7 @@ import { FrameKit } from "./frame";
 import { clamp } from "./math";
 
 /** The last step: what goes in afterwards, and who connects it. The guide never covers plumbing, gas or electrics. */
-const READY: Record<FitUse, [string, string]> = {
+const READY: Record<Exclude<FitUse, "storage">, [string, string]> = {
   basin: ["Ready for the basin", "Fit the basin, the tap and the drain following their own instructions, or ask a plumber."],
   sink: ["Ready for the sink", "Fit the sink, the tap and the drain following their own instructions, or ask a plumber."],
   hob: ["Ready for the hob", "The hob goes in the worktop above. Have a qualified electrician connect it, or a gas engineer for gas."],
@@ -439,7 +439,7 @@ export function buildFitted(b: PlanBuilder, s: ProductSpec) {
       },
       () => b.add(basin!, [0, 260, 0]),
     );
-  } else {
+  } else if (fit.use !== "storage") {
     const [title, detail] = READY[fit.use];
     const apron = bands.some((bd) => bd.z.kind === "apron");
     b.step({ title, detail: apron ? "The sink's own front fills the space at the top. " + detail : detail, kind: "general" }, () => {});

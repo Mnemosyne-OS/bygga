@@ -68,7 +68,7 @@ export interface CabinetParams {
 }
 
 /** What a fitted cabinet is built around. The guide builds the cabinet only, and says so at the end. */
-export type FitUse = "basin" | "sink" | "hob" | "oven" | "ovenhob" | "fridge" | "microwave" | "hood" | "appliance";
+export type FitUse = "basin" | "sink" | "hob" | "oven" | "ovenhob" | "fridge" | "microwave" | "hood" | "appliance" | "storage";
 
 /** One band of a fitted cabinet's front, from the bottom up. */
 export interface FitZone {

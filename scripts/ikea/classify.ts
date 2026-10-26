@@ -141,6 +141,13 @@ const RULES: Rule[] = [
   [/^(?:base cab f sink\/waste sorting|sink cabinet with (?:door|organiser))$/, (_m, c) => ({ kind: "sinkcab", x: { z: `d${doorsFor(c)}` } })],
   // frames sold without fronts
   [/^base cb f (?:built-in appliances\/)?sink$/, () => ({ kind: "sinkcab", x: { z: "o" } })],
+  // kitchen base cabinets full of drawers, one per front (a front can hide an inner drawer), and frames sold without fronts
+  [/^base cabinet with (\d) drawers$|^base cb w (\d) drawers$/, (m) => ({ kind: "kitchen", x: { z: `r${m[1] ?? m[2]}` } })],
+  [/^base (?:cab|cb) (\d) frnts\/.*\bdr(?:awers|wrs|w)$/, (m) => ({ kind: "kitchen", x: { z: `r${m[1]}` } })],
+  [/^hi cab w shlvs\/\d drawers\/dr\/(\d) frnts$/, (m) => ({ kind: "kitchen", x: { z: `r${m[1]}@80+d1s3` } })],
+  [/^base cabinet$/, () => ({ kind: "kitchen", x: { doors: 0 } })],
+  [/^base cb w shelf$/, () => ({ kind: "kitchen", x: { doors: 0, shelves: 1 } })],
+  [/^high fr w shelves$/, () => ({ kind: "kitchen", x: { doors: 0 } })],
   // cabinets with room for an oven, a fridge or a microwave, and base cabinets under a hob: the appliance is fitted afterwards
   [/^high cabinet f built-in appliances$/, (_m, c) =>
     tallFront(c, "appliance", DRAWER_SYSTEM.test(c.f.name) ? "r2@80" : c.f.spr ? "d1@80" : "o@80", c.f.spr ? "d1" : "o")],
