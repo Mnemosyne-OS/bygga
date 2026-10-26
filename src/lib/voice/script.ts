@@ -12,8 +12,10 @@ import { TTS } from "./tts";
 export const VOICE_DIR = `/voice/${TTS.name.toLowerCase()}`;
 
 export const LINES = {
-  on: "Voice is on. I'll read each step out loud. When you're done, just say next.",
-  onNoMic: "Voice is on. I'll read each step out loud. Tap done when you're ready for the next one.",
+  on: "Voice is on. I'll read each step out loud.",
+  // said once the first step has been read, when we know whether the mic is listening
+  sayNext: "When you're done, just say next.",
+  tapNext: "Tap done when you're ready for the next one.",
   off: "Okay, voice is off.",
   first: "This is the first step.",
   nothing: "Nothing extra for this one.",

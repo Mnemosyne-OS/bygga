@@ -106,7 +106,8 @@ export function useListener(enabled: boolean, onPhrase: (text: string, final: bo
         timer = setTimeout(start, Math.min(4000, 250 * 2 ** fails));
       };
       rec.onerror = (e) => {
-        if (e.error === "not-allowed" || e.error === "service-not-allowed" || e.error === "audio-capture") {
+        // a busy mic (a call, another app) is temporary: only a refusal, or a mic that stays busy, ends listening
+        if (e.error === "not-allowed" || e.error === "service-not-allowed" || (e.error === "audio-capture" && fails >= 4)) {
           stop = true;
           setMic("denied");
         } else if (e.error !== "no-speech" && e.error !== "aborted") fails++;

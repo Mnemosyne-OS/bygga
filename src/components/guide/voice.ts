@@ -1,6 +1,6 @@
 "use client";
 
-import { VOICE_DIR, clipId } from "@/lib/voice/script";
+import { VOICE_DIR, clipId, numWords } from "@/lib/voice/script";
 
 /**
  * Plays the hands-free voice. Lines with a pre-recorded clip play from
@@ -19,6 +19,18 @@ type Listener = (speaking: boolean) => void;
 
 const OPTIONAL = /^(You'll need|Grab |Do this for all)/;
 
+// how a recognizer may write back what the voice said: digits and sound-alikes
+const ALIKE: Record<string, string> = { won: "one", to: "two", too: "two", for: "four", fore: "four", ate: "eight" };
+
+function canon(text: string) {
+  return text
+    .toLowerCase()
+    .replace(/[’']/g, "")
+    .split(/[^a-z0-9]+/)
+    .filter(Boolean)
+    .flatMap((w) => (/^\d+$/.test(w) ? numWords(Number(w)).split("-") : [ALIKE[w] ?? w]));
+}
+
 class Voice {
   private el: HTMLAudioElement | null = null;
   private clips: Record<string, number> | null = null;
@@ -26,9 +38,11 @@ class Voice {
   private token = 0;
   private settle: ((ok: boolean) => void) | null = null;
   private listeners = new Set<Listener>();
-  /** Text being said right now, and when the last line ended, for the echo check. */
+  /** Text being said right now, and the line before it, for the echo check. */
   private now = "";
   private recent = { text: "", at: 0 };
+  /** Live lines, fetched whole so they can load ahead and play without gaps. */
+  private fetched = new Map<string, Promise<string | null>>();
   /** The server can record lines that have no clip. */
   live = false;
   rate = 1;
@@ -53,16 +67,50 @@ class Voice {
 
   load() {
     this.manifest ??= fetch(`${VOICE_DIR}/manifest.json`)
-      .then((r) => (r.ok ? r.json() : { clips: {} }))
+      .then((r) => (r.ok ? r.json() : Promise.reject(new Error(String(r.status)))))
       .then((j) => void (this.clips = j.clips ?? {}))
-      .catch(() => void (this.clips = {}));
+      .catch(() => {
+        // a flaky first tap shouldn't cost the clips for the whole visit
+        this.clips ??= {};
+        this.manifest = null;
+      });
     return this.manifest;
   }
 
-  private url(text: string) {
+  private clip(text: string) {
     const id = clipId(text);
-    if (this.clips?.[id]) return `${VOICE_DIR}/${id}.mp3`;
-    return this.live ? `/api/voice?t=${encodeURIComponent(text.trim())}` : null;
+    return this.clips?.[id] ? { src: `${VOICE_DIR}/${id}.mp3`, ms: this.clips[id] } : null;
+  }
+
+  private has(text: string) {
+    return !!this.clip(text) || this.live;
+  }
+
+  private liveSrc(text: string) {
+    const t = text.trim();
+    let p = this.fetched.get(t);
+    if (!p) {
+      p = fetch(`/api/voice?t=${encodeURIComponent(t)}`, { signal: AbortSignal.timeout(10_000) })
+        .then((r) => (r.ok ? r.blob() : null))
+        .then((b) => (b && b.size ? URL.createObjectURL(b) : null))
+        .catch(() => null)
+        .then((u) => {
+          if (!u) this.fetched.delete(t);
+          return u;
+        });
+      this.fetched.set(t, p);
+      if (this.fetched.size > 120) {
+        const [old, op] = this.fetched.entries().next().value!;
+        this.fetched.delete(old);
+        op.then((u) => u && URL.revokeObjectURL(u));
+      }
+    }
+    return p;
+  }
+
+  private src(text: string): Promise<string | null> {
+    const c = this.clip(text);
+    return c ? Promise.resolve(c.src) : this.live ? this.liveSrc(text) : Promise.resolve(null);
   }
 
   subscribe(fn: Listener) {
@@ -71,7 +119,7 @@ class Voice {
   }
 
   private set(text: string) {
-    if (this.now && !text) this.recent = { text: this.now, at: Date.now() };
+    if (this.now) this.recent = { text: this.now, at: Date.now() };
     this.now = text;
     this.listeners.forEach((fn) => fn(!!text));
   }
@@ -80,10 +128,11 @@ class Voice {
     return !!this.now;
   }
 
-  /** True when every word heard is something the voice is saying or just said. */
+  /** True when every word heard is something the voice is saying or has just said, as a recognizer might write it. */
   echo(words: string[]) {
-    const said = (this.now + " " + (Date.now() - this.recent.at < 1500 ? this.recent.text : "")).toLowerCase().replace(/[’']/g, "");
-    return words.length > 0 && words.every((w) => new RegExp(`\\b${w}\\b`).test(said));
+    const said = new Set(canon(this.now + " " + (Date.now() - this.recent.at < 1800 ? this.recent.text : "")));
+    const heard = words.flatMap(canon);
+    return heard.length > 0 && heard.every((w) => said.has(w));
   }
 
   stop() {
@@ -105,13 +154,16 @@ class Voice {
     await this.load();
     if (my !== this.token) return false;
     // counts and tools are on screen too, so skip them rather than change voice
-    lines = lines.filter((l) => this.url(l) || !OPTIONAL.test(l));
-    const urls = lines.map((l) => this.url(l));
-    if (!this.el || urls.some((u) => !u)) return this.device(lines, my);
+    lines = lines.filter((l) => this.has(l) || !OPTIONAL.test(l));
+    if (!this.el || lines.some((l) => !this.has(l))) return this.device(lines, my);
+    // live lines all start loading now, so the next one is ready when this one ends
+    const srcs = lines.map((l) => this.src(l));
     for (let i = 0; i < lines.length; i++) {
+      const src = await srcs[i];
       if (my !== this.token) return false;
+      if (!src) return this.device(lines.slice(i), my);
       this.set(lines[i]);
-      const ok = await this.play(urls[i]!);
+      const ok = await this.play(src, this.clip(lines[i])?.ms);
       if (my !== this.token) return false;
       if (!ok) return this.device(lines.slice(i), my);
       // a beat after "Step four." and between sentences, like a person would
@@ -121,20 +173,30 @@ class Voice {
     return my === this.token;
   }
 
-  private play(url: string) {
+  private play(src: string, ms?: number) {
     const el = this.el!;
     return new Promise<boolean>((resolve) => {
+      let settled = false;
+      const onEnd = () => done(true);
+      const onErr = () => done(false);
+      // runs once; a late rejection from an interrupted play() must not touch the next clip's handlers
       const done = (ok: boolean) => {
-        el.onended = el.onerror = null;
+        if (settled) return;
+        settled = true;
+        clearTimeout(timer);
+        if (el.onended === onEnd) el.onended = null;
+        if (el.onerror === onErr) el.onerror = null;
         if (this.settle === done) this.settle = null;
         resolve(ok);
       };
       this.settle = done;
-      el.onended = () => done(true);
-      el.onerror = () => done(false);
-      el.src = url;
+      el.onended = onEnd;
+      el.onerror = onErr;
+      el.src = src;
       el.defaultPlaybackRate = this.rate;
       el.playbackRate = this.rate;
+      // a stalled network or a phone call can leave a clip hanging: move on once it should have ended
+      const timer = setTimeout(() => done(el.currentTime > 0), (ms ?? 8000) / this.rate + 5000);
       el.play().catch(() => done(false));
     });
   }
@@ -168,8 +230,9 @@ class Voice {
   prefetch(lines: string[]) {
     this.load().then(() => {
       for (const l of lines) {
-        const u = this.url(l);
-        if (u?.startsWith(VOICE_DIR)) fetch(u, { priority: "low" } as RequestInit).catch(() => {});
+        const c = this.clip(l);
+        if (c) fetch(c.src, { priority: "low" } as RequestInit).catch(() => {});
+        else if (this.live) this.liveSrc(l);
       }
     });
   }

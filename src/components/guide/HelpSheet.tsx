@@ -60,6 +60,7 @@ export default function HelpSheet({
   onClose,
   focusMissing,
   ask: asked,
+  askId,
   onAnswer,
 }: {
   plan: Plan;
@@ -67,8 +68,9 @@ export default function HelpSheet({
   ai: boolean;
   onClose: () => void;
   focusMissing?: boolean;
-  /** A question already asked out loud. */
+  /** A question already asked out loud, and which time it was asked. */
   ask?: string;
+  askId?: number;
   /** Hears each finished answer, to read it aloud. */
   onAnswer?: (text: string) => void;
 }) {
@@ -88,24 +90,31 @@ export default function HelpSheet({
     return () => window.removeEventListener("keydown", onKey);
   }, [onClose]);
 
-  // a question asked by voice goes straight in
-  const sent = useRef(false);
+  // a question asked by voice goes straight in, every time one is asked
+  const sent = useRef<number | undefined>(undefined);
   useEffect(() => {
-    if (!asked || !ai || sent.current) return;
+    if (!asked || !ai || sent.current === askId) return;
     const t = setTimeout(() => {
-      sent.current = true;
-      ask(asked);
+      sent.current = askId;
+      ask(asked, undefined, true);
     }, 0);
     return () => clearTimeout(t);
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [asked, ai]);
+  }, [asked, askId, ai]);
+
+  // closing the sheet ends the answer too, so it never talks over the next step
+  const ctrl = useRef<AbortController | null>(null);
+  useEffect(() => () => ctrl.current?.abort(), []);
 
   useEffect(() => {
     scroller.current?.scrollTo({ top: scroller.current.scrollHeight, behavior: "smooth" });
   }, [msgs]);
 
-  async function ask(question: string, image?: string) {
-    if (busy || (!question.trim() && !image)) return;
+  async function ask(question: string, image?: string, spoken = false) {
+    if ((busy && !spoken) || (!question.trim() && !image)) return;
+    ctrl.current?.abort();
+    const c = new AbortController();
+    ctrl.current = c;
     const history = msgs.map((m) => ({ role: m.role, content: m.content }));
     const next: Msg[] = [...msgs, { role: "user", content: question || "Which part is this?", image }, { role: "assistant", content: "" }];
     setMsgs(next);
@@ -116,6 +125,7 @@ export default function HelpSheet({
         method: "POST",
         headers: { "Content-Type": "application/json", ...keyHeaders() },
         body: JSON.stringify({ context: helpContext(plan, index), question: question || "Which part is this? Match it to the parts list.", history, image }),
+        signal: c.signal,
       });
       if (!res.ok || !res.body) throw new Error(String(res.status));
       const reader = res.body.getReader();
@@ -132,15 +142,16 @@ export default function HelpSheet({
         });
       }
       if (!text.trim()) throw new Error("empty");
-      onAnswer?.(text);
+      if (!c.signal.aborted) onAnswer?.(text);
     } catch {
+      if (c.signal.aborted) return;
       setMsgs((m) => {
         const c = [...m];
         c[c.length - 1] = { role: "assistant", content: "I couldn't reach the helper just now. Try the quick answers above, or ask again in a moment." };
         return c;
       });
     } finally {
-      setBusy(false);
+      if (ctrl.current === c) setBusy(false);
     }
   }
 
