@@ -846,6 +846,11 @@ MILLBERGET|office|Swivel chair|60|105|64|arms=none
 MILSBO|cabinet|Glass-door cabinet, 73 × 175 cm|73|175|42
 MINNEN|bed|Ext bed frame with slatted bed base, 80 × 200 cm|96|100|209|m=80
 MITTPLAN|desk|Desk, 80 × 60 cm|80|74|60
+MITTZON|conftable|Conference table, 120 × 75 cm|120|75|120|round=1
+MITTZON|conftable|Conference table, 140 × 68 × 75 cm|140|75|68
+MITTZON|conftable|Conference table, 140 × 108 × 75 cm|140|75|108
+MITTZON|conftable|Conference table, 140 × 68 × 105 cm|140|105|68
+MITTZON|conftable|Conference table, 140 × 108 × 105 cm|140|105|108
 MITTZON|desk|Desk sit/stand, 120 × 80 cm|120|74|80
 MITTZON|desk|Desk, 120 × 80 cm|120|74|80
 MITTZON|desk|Desk, 140 × 60 cm|140|74|60

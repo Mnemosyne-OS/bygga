@@ -74,7 +74,7 @@ export function measure(s: string): Size | null {
 }
 
 const UPRIGHT = new Set<Kind>(["cube", "bookcase", "open", "chest", "nightstand", "wardrobe", "cabinet", "sideboard", "tv", "shoe", "wallcab", "wallshelf", "kitchen", "mixed", "sliding", "slidecab", "washstand", "sinkcab", "appliance", "shoerack", "clothesrack", "changing", "divider"]);
-const FLAT = new Set<Kind>(["desk", "coffee", "side", "dining", "bar", "console", "kidstable", "trolley", "bench"]);
+const FLAT = new Set<Kind>(["desk", "coffee", "side", "dining", "bar", "console", "kidstable", "trolley", "bench", "conftable"]);
 
 /** Office chairs IKEA sells with armrests although the type doesn't say so. */
 const OFFICE_ARMS = new Set(["MARKUS", "ALEFJÄLL"]);
@@ -276,6 +276,8 @@ const RULES: Rule[] = [
   [/^sun lounger$/, () => ({ kind: "lounger" })],
   // easy chairs in one piece on a swivel base (a shell without armrests in some families)
   [/^(children's )?swivel (easy chair|armchair)$/, (m, c) => ({ kind: "swivel", x: { ...(SWIVEL_SHELL.has(c.f.name) ? { arms: "none" } : {}), ...(m[1] ? { seatH: 30 } : {}) } })],
+  // conference tables, built like the family's desks
+  [/^conference table$/, () => ({ kind: "conftable" })],
   // conference chairs, built like office chairs
   [/^conference chair$/, () => ({ kind: "conference" })],
   [/swivel|office chair|gaming chair|conference|desk chair|highchair|lounge|reclining|lounger|hammock|massage/, () => "office, swivel or lounge chair"],
@@ -565,7 +567,11 @@ export function classify(f: Fact, hints: Hints): Verdict {
     if (kind === "appliance" && guessed.d) d = x.hung && x.use !== "fridge" ? 37 : 60;
   } else if (FLAT.has(kind)) {
     if (v.length === 3) set(v[0], v[2], v[1]);
-    else if (v.length === 2) set(v[0], undefined, v[1]);
+    // a conference table with two measures is a round one, across and high
+    else if (v.length === 2 && kind === "conftable") {
+      set(v[0], v[1], v[0]);
+      x.round = true;
+    } else if (v.length === 2) set(v[0], undefined, v[1]);
     else if (v.length === 1) {
       if (kind === "bench") set(v[0]);
       else if (kind === "trolley" || kind === "console") return { skip: "trolley or console with one size" };
