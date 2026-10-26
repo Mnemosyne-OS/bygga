@@ -37,8 +37,10 @@ const missing = args.includes("--missing");
 const name = (j) => j.out ?? j.slug ?? "kind-" + j.kind;
 const list = (only ? jobs.filter((j) => j.slug === only || j.kind === only) : jobs).filter((j) => !missing || !existsSync(path.join(OUT, `${name(j)}.png`)));
 let n = 0;
+const failed = [];
 for (const j of list) {
-  const url = await page.evaluate((o) => window.__draw(o), { ...j, w: 640, h: 560 });
+  // one plan that fails to draw shouldn't stop the rest
+  const url = await page.evaluate((o) => window.__draw(o), { ...j, w: 640, h: 560 }).catch((e) => void failed.push(`${name(j)}: ${e.message.split("\n")[0]}`));
   if (!url) continue;
   const file = path.join(OUT, `${name(j)}.png`);
   writeFileSync(file, Buffer.from(url.split(",")[1], "base64"));
@@ -49,4 +51,5 @@ for (const j of list) {
   if (++n % 20 === 0) console.log(`${n}/${list.length}`);
 }
 console.log(`drew ${n} pictures into public/og`);
+if (failed.length) console.log(`couldn't draw ${failed.length}:\n  ${failed.join("\n  ")}`);
 await browser.close();
