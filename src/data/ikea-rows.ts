@@ -689,6 +689,8 @@ OSKARSHAMN|armchair|Wing chair|75|104|80
 PÅHL|desk|Desk, 96 × 58 cm|96|74|58||kids children
 PAX|wardrobe|Wardrobe frame, 50 × 58 × 201 cm|50|201|58|doors=0,shelves=2
 PAX|wardrobe|Wardrobe frame, 75 × 58 × 201 cm|75|201|58|doors=0,shelves=2
+PAX / AULI|cabrow|Wardrobe with sliding doors, 150 × 43 × 201 cm|150|201|43|shelves=2,slides=2,n=2,of=wardrobe
+PAX / AULI|cabrow|Wardrobe with sliding doors, 150 × 66 × 201 cm|150|201|66|shelves=2,slides=2,n=2,of=wardrobe
 PAX / BERGSBO|cabrow|Wardrobe, 200 × 60 × 201 cm|200|201|60|n=2,of=wardrobe
 PAX / BERGSBO|cabrow|Wardrobe, 200 × 60 × 236 cm|200|236|60|n=2,of=wardrobe
 PAX / BERGSBO|wardrobe|Wardrobe|50|236|58
@@ -698,7 +700,27 @@ PAX / FLISBERGET|wardrobe|Wardrobe, 100 × 60 × 201 cm|100|201|60
 PAX / FORSAND|cabrow|Wardrobe, 200 × 60 × 201 cm|200|201|60|n=2,of=wardrobe
 PAX / FORSAND|wardrobe|Wardrobe, 100 × 60 × 201 cm|100|201|60
 PAX / FORSAND|wardrobe|Wardrobe, 100 × 60 × 236 cm|100|236|60
+PAX / GRIMO|cabrow|Wardrobe with sliding doors, 150 × 43 × 201 cm|150|201|43|shelves=2,slides=2,n=2,of=wardrobe
+PAX / GRIMO|cabrow|Wardrobe, 150 × 66 × 201 cm|150|201|66|shelves=2,slides=2,n=2,of=wardrobe
 PAX / GRIMO|wardrobe|Wardrobe, 100 × 60 × 201 cm|100|201|60
+PAX / HASVIK|cabrow|Wardrobe with sliding doors, 150 × 43 × 201 cm|150|201|43|shelves=2,slides=2,n=2,of=wardrobe
+PAX / HASVIK|cabrow|Wardrobe, 150 × 66 × 201 cm|150|201|66|shelves=2,slides=2,n=2,of=wardrobe
+PAX / HASVIK|cabrow|Wardrobe, 200 × 66 × 201 cm|200|201|66|shelves=2,slides=2,n=2,of=wardrobe
+PAX / LUNDBRÄSMA|cabrow|Wardrobe with sliding doors, 150 × 66 × 201 cm|150|201|66|shelves=2,slides=2,n=2,of=wardrobe
+PAX / LUNDBRÄSMA|cabrow|Wardrobe with sliding doors, 150 × 66 × 236 cm|150|236|66|shelves=2,slides=2,n=2,of=wardrobe||pax-lundbrasma-wardrobe-sliding-doors-150-x-66-x-2
+PAX / LUNDBRÄSMA|cabrow|Wardrobe with sliding doors, 200 × 66 × 201 cm|200|201|66|shelves=2,slides=2,n=2,of=wardrobe
+PAX / MEHAMN|cabrow|Wardrobe with sliding doors, 150 × 43 × 201 cm|150|201|43|shelves=2,slides=2,n=2,of=wardrobe
+PAX / MEHAMN|cabrow|Wardrobe with sliding doors, 150 × 66 × 201 cm|150|201|66|shelves=2,slides=2,n=2,of=wardrobe
+PAX / MEHAMN|cabrow|Wardrobe, 150 × 66 × 201 cm|150|201|66|shelves=2,slides=2,n=2,of=wardrobe
+PAX / MEHAMN|cabrow|Wardrobe with sliding doors, 150 × 43 × 236 cm|150|236|43|shelves=2,slides=2,n=2,of=wardrobe
+PAX / MEHAMN|cabrow|Wardrobe with sliding doors, 150 × 66 × 236 cm|150|236|66|shelves=2,slides=2,n=2,of=wardrobe
+PAX / MEHAMN|cabrow|Wardrobe with sliding doors, 200 × 66 × 201 cm|200|201|66|shelves=2,slides=2,n=2,of=wardrobe
+PAX / MEHAMN|cabrow|Wardrobe, 200 × 66 × 201 cm|200|201|66|shelves=2,slides=2,n=2,of=wardrobe
+PAX / MEHAMN|cabrow|Wardrobe with sliding doors, 200 × 66 × 236 cm|200|236|66|shelves=2,slides=2,n=2,of=wardrobe
+PAX / MEHAMN/AULI|cabrow|Wardrobe with sliding doors, 150 × 43 × 201 cm|150|201|43|shelves=2,slides=2,n=2,of=wardrobe
+PAX / MEHAMN/AULI|cabrow|Wardrobe with sliding doors, 150 × 66 × 201 cm|150|201|66|shelves=2,slides=2,n=2,of=wardrobe
+PAX / MEHAMN/AULI|cabrow|Wardrobe with sliding doors, 150 × 66 × 236 cm|150|236|66|shelves=2,slides=2,n=2,of=wardrobe||pax-mehamn-auli-wardrobe-sliding-doors-150-x-66-2
+PAX / MEHAMN/AULI|cabrow|Wardrobe with sliding doors, 200 × 66 × 236 cm|200|236|66|shelves=2,slides=2,n=2,of=wardrobe
 PERSBOL|armchair|Armchair|75|90|80
 PINNTORP|chair|Chair|44|88|50
 PINNTORP|dining|Table, 85 cm|85|74|85|round=1

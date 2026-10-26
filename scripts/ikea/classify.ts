@@ -85,6 +85,8 @@ const GATE_DRAWERS = new Set(["NORDEN"]);
 const GATE_STORAGE = new Set(["VIHALS"]);
 /** The frame a family's combinations are rows of, in cm: two BILLY 80s, two BESTÅ 120s, two PAX 100s. */
 const ROW_UNITS: Record<string, number> = { BILLY: 80, BESTÅ: 120, IVAR: 80, PAX: 100 };
+/** PAX frames under a pair of sliding doors: 150 is two 75s, 200 two 100s. */
+const PAX_SLIDE_UNITS = [100, 75];
 /** Day-beds' outer size (w, h, d) from IKEA's product pages: IKEA's measure is only the mattress size. */
 const DAYBED_SIZE: Record<string, [number, number, number]> = { HEMNES: [210, 83, 91], BRIMNES: [205, 58, 87], FLEKKE: [207, 86, 91], VIHALS: [206, 75, 86] };
 
@@ -439,10 +441,18 @@ export function classify(f: Fact, hints: Hints): Verdict {
         ? "several units side by side"
         : null;
   if (several) {
+    // PAX frames (58 or 35 deep) with a pair of sliding doors in front of them all: IKEA's depth includes the doors
+    const sliding = family === "PAX" && (kind === "sliding" || (kind === "wardrobe" && (d === 66 || d === 43)));
+    if (sliding) {
+      const unit = PAX_SLIDE_UNITS.find((u) => w % u === 0 && w / u >= 2 && w / u <= 3);
+      if (!unit) return { skip: "PAX with sliding doors over frames of different widths" };
+      Object.assign(x, { n: w / unit, of: "wardrobe", slides: 2, doors: undefined, shelves: hints(family, "wardrobe")?.x.shelves });
+      for (const k of Object.keys(x) as (keyof X)[]) if (x[k] === undefined) delete x[k];
+      return finish("cabrow");
+    }
     const unit = ROW_UNITS[family];
     const n = unit ? Math.round(w / unit) : 0;
     if (!unit || n < 2 || n > 4 || n * unit !== w || !["bookcase", "cabinet", "tv", "wardrobe", "wallcab"].includes(kind)) return { skip: several };
-    if (kind === "wardrobe" && d > 62) return { skip: "PAX with sliding doors across its frames" };
     x.n = n;
     x.of = kind as NonNullable<X["of"]>;
     return finish(kind === "bookcase" ? "bookrow" : "cabrow");

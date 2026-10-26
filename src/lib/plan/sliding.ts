@@ -15,29 +15,9 @@ export function buildSliding(b: PlanBuilder, s: ProductSpec) {
   const plinth = c.plinth ?? s.size.h > 120;
   const base = plinth ? 70 : 0;
   const lying = H > 1100;
-  const n = clamp(Math.round(c.slides ?? 2), 2, 3);
   const f = new FrameKit(b, { W, H, D, t, base, plinth, fixed: [], back: true, pinRows: false, lying });
   const inner = W - 2 * t;
-
-  /* ---------- tracks and doors ---------- */
-  const trackD = 56, trackZ = D / 2 - trackD / 2 - 2;
-  const lanes = [D / 2 - 44, D / 2 - 16]; // back lane, front lane: door centres
-  const topY = H - t, botY = base + t; // undersides of the top, top of the bottom panel
-  const topT = b.part("Top track", [inner, 24, trackD], { material: "metal" });
-  const botT = b.part("Bottom track", [inner, 10, trackD], { material: "metal" });
-  const topTrack = b.place(topT, [0, topY - 12, trackZ]);
-  const botTrack = b.place(botT, [0, botY + 5, trackZ]);
-  const ov = 40; // the doors overlap where they meet
-  const dW = (inner + (n - 1) * ov) / n, dT = 16;
-  const dLo = botY + 10 + 4, dHi = topY - 24 - 4;
-  const dH = dHi - dLo;
-  const doorT = b.part("Sliding door", [dW, dH, dT]);
-  // two doors: the left one at the back; three: the outer two at the back, the middle one in front
-  const doors = Array.from({ length: n }, (_, i) => {
-    const lane = n === 2 ? i : i === 1 ? 1 : 0;
-    return { lane, x: -inner / 2 + dW / 2 + i * (dW - ov), key: b.place(doorT, [-inner / 2 + dW / 2 + i * (dW - ov), dLo + dH / 2, lanes[lane]]) };
-  });
-  const back = doors.filter((d) => d.lane === 0), front = doors.filter((d) => d.lane === 1);
+  const topY = H - t, botY = base + t; // underside of the top, top of the bottom panel
 
   /* ---------- steps: the carcass ---------- */
   f.prepSides();
@@ -49,7 +29,7 @@ export function buildSliding(b: PlanBuilder, s: ProductSpec) {
   f.standUp();
 
   // shelves sit behind the tracks, so they're a little shallower than the carcass
-  const shD = D - 26 - trackD, shZ = -D / 2 + 13 + shD / 2;
+  const shD = D - 26 - TRACK_D, shZ = -D / 2 + 13 + shD / 2;
   const rail = !!c.rail;
   const nSh = clamp(Math.round(c.shelves ?? 1), 0, 4);
   const shelfYs: number[] = rail ? [topY - 320] : Array.from({ length: nSh }, (_, i) => Math.round((botY + ((topY - botY) * (i + 1)) / (nSh + 1)) / 32) * 32);
@@ -100,23 +80,70 @@ export function buildSliding(b: PlanBuilder, s: ProductSpec) {
     );
   }
 
-  /* ---------- steps: tracks and doors ---------- */
+  slidingDoors(b, { span: inner, n: clamp(Math.round(c.slides ?? 2), 2, 3), topY, botY, zFront: D / 2, front: false });
+  if (H >= 800) f.anchor();
+}
+
+const TRACK_D = 56;
+
+export interface SlideOpts {
+  /** mm the doors cover, centred on x = 0: between the sides, or across a whole row of frames */
+  span: number;
+  n: number;
+  /** the surface the top track hangs from, and the one the bottom track sits on */
+  topY: number;
+  botY: number;
+  /** the carcass's front edge; the tracks sit just inside it, or just in front of it */
+  zFront: number;
+  /** tracks in front of the frames (PAX) rather than inside the carcass */
+  front: boolean;
+}
+
+/** Tracks, rollers and doors, from fitting the tracks to lining up the doors. */
+export function slidingDoors(b: PlanBuilder, o: SlideOpts) {
+  const { span, n, topY, botY, zFront, front: ahead } = o;
+  const trackZ = ahead ? zFront + TRACK_D / 2 + 2 : zFront - TRACK_D / 2 - 2;
+  const lanes = ahead ? [zFront + 18, zFront + 46] : [zFront - 44, zFront - 16]; // back lane, front lane: door centres
+  const topT = b.part("Top track", [span, 24, TRACK_D], { material: "metal" });
+  const botT = b.part("Bottom track", [span, 10, TRACK_D], { material: "metal" });
+  const topTrack = b.place(topT, [0, topY - 12, trackZ]);
+  const botTrack = b.place(botT, [0, botY + 5, trackZ]);
+  const ov = 40; // the doors overlap where they meet
+  const dW = (span + (n - 1) * ov) / n, dT = 16;
+  const dLo = botY + 10 + 4, dHi = topY - 24 - 4;
+  const dH = dHi - dLo;
+  const doorT = b.part("Sliding door", [dW, dH, dT]);
+  // two doors: the left one at the back; three: the outer two at the back, the middle one in front
+  const doors = Array.from({ length: n }, (_, i) => {
+    const lane = n === 2 ? i : i === 1 ? 1 : 0;
+    const x = -span / 2 + dW / 2 + i * (dW - ov);
+    return { lane, x, key: b.place(doorT, [x, dLo + dH / 2, lanes[lane]]) };
+  });
+  const back = doors.filter((d) => d.lane === 0), front = doors.filter((d) => d.lane === 1);
+
   b.step(
     {
-      title: "Screw the tracks under the top and onto the bottom",
-      detail: "Push each one against the front edge, then screw it on.",
+      title: ahead ? "Screw the tracks across the top and the bottom" : "Screw the tracks under the top and onto the bottom",
+      detail: ahead ? "One along the top front edge of the frames, one on the floor right below it." : "Push each one against the front edge, then screw it on.",
       tools: ["screwdriver"],
       kind: "screws",
+      people: ahead && span > 1200 ? 2 : 1,
     },
     () => {
-      b.add(topTrack, [0, -220, 0]);
-      b.add(botTrack, [0, 220, 0]);
+      b.add(topTrack, ahead ? [0, 0, 300] : [0, -220, 0]);
+      b.add(botTrack, ahead ? [0, 0, 300] : [0, 220, 0]);
       b.then(0.1);
-      const xs = [-inner / 2 + 60, 0, inner / 2 - 60];
+      const nx = Math.max(3, Math.round(span / 450));
+      const xs = Array.from({ length: nx }, (_, i) => -span / 2 + 60 + (i * (span - 120)) / (nx - 1));
       const sc: FitOpts[] = [];
       for (const x of xs) {
-        sc.push({ on: topTrack, at: [x, topY - 24, trackZ], dir: [0, 1, 0], hole: false });
-        sc.push({ on: botTrack, at: [x, botY + 10, trackZ], dir: [0, -1, 0], hole: false });
+        if (ahead) {
+          sc.push({ on: topTrack, at: [x, topY - 12, trackZ + TRACK_D / 2], dir: [0, 0, -1], hole: false });
+          sc.push({ on: botTrack, at: [x, botY + 10, trackZ], dir: [0, -1, 0], hole: false });
+        } else {
+          sc.push({ on: topTrack, at: [x, topY - 24, trackZ], dir: [0, 1, 0], hole: false });
+          sc.push({ on: botTrack, at: [x, botY + 10, trackZ], dir: [0, -1, 0], hole: false });
+        }
       }
       b.fits(HW.screwS, sc, 0.06);
     },
@@ -177,6 +204,4 @@ export function buildSliding(b: PlanBuilder, s: ProductSpec) {
     },
     () => b.add(mover.key),
   );
-
-  if (H >= 800) f.anchor();
 }

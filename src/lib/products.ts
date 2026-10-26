@@ -408,8 +408,12 @@ export function specFor(kind: Kind, name: string, variant: string, w: number, h:
       const inner: X = { ...x };
       delete inner.n;
       delete inner.of;
-      const one = specFor(of, name, variant, Math.round((w / n) * 10) / 10, h, d, inner);
-      return { ...one, category: ROW_CATEGORY[of], size: { w, h, d }, minutes: x.min ?? one.minutes * n + 15, people: 2, row: { n, of, join: of !== "bookcase" } };
+      // with x.slides, a pair of sliding doors runs in front of all the frames, which have no doors of their own
+      const slide = x.slides ? { slide: x.slides } : {};
+      if (x.slides) Object.assign(inner, { doors: 0, slides: undefined });
+      const one = specFor(of, name, variant, Math.round((w / n) * 10) / 10, h, x.slides ? d - 8 : d, inner);
+      const category = x.slides ? CATEGORY.sliding : ROW_CATEGORY[of];
+      return { ...one, category, size: { w, h, d }, minutes: x.min ?? one.minutes * n + 15 + (x.slides ? 40 : 0), people: 2, row: { n, of, join: of !== "bookcase", ...slide } };
     }
   }
 }

@@ -159,7 +159,7 @@ export interface ProductSpec {
   slug?: string;
   variants?: { label: string; slug: string }[];
   siblings?: { label: string; slug: string }[];
-  row?: { n: number; join?: boolean; of?: string }; // several identical units side by side, built one after another
+  row?: { n: number; join?: boolean; of?: string; slide?: number }; // several identical units side by side, built one after another, with sliding doors across them all
 }
 
 /* ---------- generated plan ---------- */

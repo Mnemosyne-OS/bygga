@@ -1,6 +1,7 @@
 import type { HwItem, PartItem, ProductSpec, Step, Vec3 } from "../types";
 import { HW, PlanBuilder, type FitOpts } from "./builder";
 import { clamp, rotate, toWorld } from "./math";
+import { slidingDoors } from "./sliding";
 
 const UNIT: Record<string, [string, string]> = {
   bookcase: ["bookcase", "bookcases"],
@@ -20,11 +21,13 @@ const COUNT = ["", "", "two", "three", "four"];
 export function buildRow(b: PlanBuilder, s: ProductSpec, one: (b: PlanBuilder, s: ProductSpec) => void) {
   const n = clamp(Math.round(s.row?.n ?? 2), 2, 4);
   const join = !!s.row?.join;
-  const W = s.size.w * 10, H = s.size.h * 10, D = s.size.d * 10;
+  const W = s.size.w * 10, H = s.size.h * 10;
   const uw = W / n;
   const { row, ...rest } = s;
   void row;
-  const unit: ProductSpec = { ...rest, size: { ...s.size, w: s.size.w / n } };
+  // a pair of sliding doors runs in front of the frames, so the frames are that much shallower
+  const slide = s.row?.slide;
+  const unit: ProductSpec = { ...rest, size: { w: s.size.w / n, h: s.size.h, d: slide ? s.size.d - 8 : s.size.d } };
   one(b, unit);
   const [what, whats] = UNIT[s.row?.of ?? (s.archetype === "shelf" ? "bookcase" : "cabinet")] ?? ["one", "others"];
 
@@ -116,11 +119,14 @@ export function buildRow(b: PlanBuilder, s: ProductSpec, one: (b: PlanBuilder, s
       const list: FitOpts[] = [];
       for (let k = 0; k < n - 1; k++) {
         const x = -W / 2 + (k + 1) * uw - t;
-        for (const y of ys) list.push({ on: frameOf(right.key, k), at: [x, y, D / 2 - 60], dir: [1, 0, 0], mate: frameOf(left.key, k + 1) });
+        for (const y of ys) list.push({ on: frameOf(right.key, k), at: [x, y, (unit.size.d * 10) / 2 - 60], dir: [1, 0, 0], mate: frameOf(left.key, k + 1) });
       }
       b.fits(HW.screwM, list, 0.08);
     },
   );
+
+  /* ---------- sliding doors across the whole row ---------- */
+  if (slide) slidingDoors(b, { span: W, n: slide, topY: H, botY: 0, zFront: (unit.size.d * 10) / 2, front: true });
 
   /* ---------- every one fixed to the wall ---------- */
   if (anchor) {
