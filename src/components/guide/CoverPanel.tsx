@@ -4,7 +4,7 @@ import Link from "next/link";
 import type { Plan } from "@/lib/types";
 import type { Progress } from "@/lib/store";
 import { floorSpace, totals } from "@/lib/plan/contents";
-import { IArrowRight, IBox, ICheck, IClock, IExternal, IPeople, IPerson, IRuler, ISparkle, IWrench } from "../art/Icons";
+import { IArrowRight, IBox, ICheck, IClock, IExternal, IPeople, IPerson, IPrint, IRuler, ISparkle, IWrench } from "../art/Icons";
 import { Dots } from "./ui";
 import { TOOL_INFO } from "../art/Tools";
 import { SCAN_ENABLED } from "@/lib/site";
@@ -168,11 +168,16 @@ export default function CoverPanel({
             </div>
           )
         )}
-        {via !== "scan" && (
-          <a className="official" href={official} target="_blank" rel="noreferrer">
-            Official manual on ikea.com <IExternal size={15} />
-          </a>
-        )}
+        <div className="cover-links">
+          {via !== "scan" && (
+            <a className="official" href={official} target="_blank" rel="noreferrer">
+              Official manual on ikea.com <IExternal size={15} />
+            </a>
+          )}
+          <Link className="official" href={`/build/${s.slug}/print`}>
+            <IPrint size={15} /> Print this guide
+          </Link>
+        </div>
       </div>
       <div className="pane-foot">
         {resumable ? (

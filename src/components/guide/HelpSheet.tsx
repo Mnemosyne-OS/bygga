@@ -5,7 +5,7 @@ import { AnimatePresence, motion } from "motion/react";
 import type { Plan } from "@/lib/types";
 import { faqFor } from "@/lib/faq";
 import { stepContents } from "@/lib/plan/contents";
-import { ICamera, IChevronDown, IClose, ISend, ISparkle } from "../art/Icons";
+import { ICamera, IChevronDown, IClose, IFlag, ISend, ISparkle } from "../art/Icons";
 import { Figure } from "../art/Figure";
 import { keyHeaders } from "@/lib/userKey";
 
@@ -195,6 +195,7 @@ export default function HelpSheet({
               </div>
             ))}
           </div>
+          {index >= 0 && <Report plan={plan} index={index} />}
 
           {ai && (
             <>
@@ -205,7 +206,7 @@ export default function HelpSheet({
               </div>
               {msgs.length === 0 && (
                 <div className="ask-suggest">
-                  {["The panels don't line up", "Which screw goes where?", "Is it normal to have parts left over?"].map((s) => (
+                  {["Which way round does this go?", "Which screw goes where?", "Is it normal to have parts left over?"].map((s) => (
                     <button key={s} className="chip" onClick={() => ask(s)}>
                       {s}
                     </button>
@@ -257,5 +258,25 @@ export default function HelpSheet({
         )}
       </motion.aside>
     </motion.div>
+  );
+}
+
+/** "This step doesn't match my box": goes to /api/feedback so wrong steps get fixed. */
+function Report({ plan, index }: { plan: Plan; index: number }) {
+  const [sent, setSent] = useState(false);
+  const send = () => {
+    setSent(true);
+    fetch("/api/feedback", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ slug: plan.spec.slug, name: plan.spec.name, variant: plan.spec.variant, match: false, step: index + 1, via: "help" }),
+    }).catch(() => {});
+  };
+  return sent ? (
+    <p className="report-done">Thanks. We&apos;ll check step {index + 1} against the real box. Trust the paper manual for now.</p>
+  ) : (
+    <button className="report-btn" onClick={send}>
+      <IFlag size={16} /> This step doesn&apos;t match my box
+    </button>
   );
 }

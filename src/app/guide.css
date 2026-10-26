@@ -1052,6 +1052,11 @@
 .official:hover {
   color: var(--ink);
 }
+.cover-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0 22px;
+}
 
 /* ================= tools ================= */
 
@@ -1907,6 +1912,33 @@ input[type="range"] {
 
 /* ================= help ================= */
 
+.report-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin: 10px 0 4px;
+  padding: 8px 2px;
+  border: 0;
+  background: none;
+  color: var(--ink-2);
+  font: inherit;
+  font-size: 14px;
+  font-weight: 500;
+  text-decoration: underline;
+  text-underline-offset: 4px;
+  text-decoration-color: var(--line-2);
+  cursor: pointer;
+}
+.report-btn:hover {
+  color: var(--ink);
+  text-decoration-color: currentColor;
+}
+.report-done {
+  margin: 12px 0 4px;
+  font-size: 14px;
+  color: var(--ink-2);
+}
+
 .sheet-back {
   place-items: stretch end;
   padding: 12px;
@@ -2622,5 +2654,262 @@ input[type="range"] {
   }
   .stepper {
     justify-self: center;
+  }
+}
+
+/* ================= print: the whole guide on A4 ================= */
+
+.print-doc {
+  display: grid;
+  justify-items: center;
+  gap: 24px;
+  padding: 0 16px 48px;
+}
+.print-bar {
+  position: sticky;
+  top: 0;
+  z-index: 5;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  width: min(210mm, 100%);
+  padding: 14px 0;
+  background: color-mix(in srgb, var(--page) 92%, transparent);
+  backdrop-filter: blur(12px);
+}
+.print-status {
+  flex: 1;
+  color: var(--ink-2);
+  font-size: 15px;
+}
+.print-bar .btn.primary {
+  height: 44px;
+  padding: 0 20px;
+}
+.print-page {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  width: min(210mm, 100%);
+  min-height: 297mm;
+  padding: 14mm 14mm 10mm;
+  background: #fff;
+  border-radius: 6px;
+  box-shadow: var(--shadow-2);
+  color: var(--ink);
+}
+.pp-head {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--ink-2);
+}
+.cover-page h1 {
+  margin: 10mm 0 0;
+  font-family: var(--display);
+  font-weight: 800;
+  font-size: 64px;
+  line-height: 1;
+  letter-spacing: -0.04em;
+}
+.pp-variant {
+  margin: 8px 0 0;
+  font-size: 22px;
+  color: var(--ink-2);
+}
+.pp-facts {
+  margin: 10px 0 0;
+  font-size: 14px;
+  font-weight: 600;
+}
+.pp-hero {
+  margin: 6mm 0 2mm;
+}
+.pp-hero .thumb,
+.print-step .thumb {
+  display: block;
+  width: 100%;
+}
+.pp-hero .thumb img,
+.print-step .thumb img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+.cover-page h2 {
+  margin: 6mm 0 3mm;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--ink-2);
+}
+.pp-tools {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px 22px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  font-size: 14px;
+}
+.pp-tools li {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.pp-cols {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10mm;
+}
+.pp-parts,
+.pp-hw {
+  display: grid;
+  gap: 5px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  font-size: 13.5px;
+}
+.pp-parts li,
+.pp-hw li {
+  display: grid;
+  grid-template-columns: 28px minmax(0, 1fr) auto;
+  align-items: center;
+  gap: 8px;
+  padding-bottom: 5px;
+  border-bottom: 1px solid var(--line);
+}
+.pp-hw li {
+  grid-template-columns: 44px minmax(0, 1fr) auto;
+}
+.pp-label {
+  display: grid;
+  place-items: center;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  border: 1.6px solid var(--ink);
+  font-size: 12px;
+}
+.pp-hw-art {
+  display: grid;
+  place-items: center;
+}
+.pp-hw small {
+  color: var(--ink-3);
+}
+.pp-parts em,
+.pp-hw em {
+  font-style: normal;
+  font-weight: 800;
+}
+.pp-foot {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  margin-top: auto;
+  padding-top: 6mm;
+  font-size: 11px;
+  color: var(--ink-3);
+}
+.pp-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: repeat(3, minmax(0, 1fr));
+  gap: 6mm;
+  flex: 1;
+}
+.print-step {
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+  padding: 4mm;
+  border: 1.4px solid var(--line-2);
+  border-radius: 4mm;
+  break-inside: avoid;
+}
+.ps-top {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+}
+.ps-n {
+  font-family: var(--display);
+  font-weight: 800;
+  font-size: 40px;
+  line-height: 0.9;
+  letter-spacing: -0.04em;
+}
+.ps-hw {
+  display: flex;
+  gap: 6px;
+  padding: 3px 6px;
+  border: 1.4px solid var(--ink);
+  border-radius: 8px;
+}
+.ps-hw > span {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-size: 11px;
+}
+.ps-two {
+  margin-left: auto;
+}
+.ps-art {
+  flex: 1;
+  min-height: 0;
+}
+.ps-title {
+  margin: 2mm 0 0;
+  font-size: 13px;
+  font-weight: 600;
+  line-height: 1.3;
+}
+
+@media print {
+  @page {
+    size: A4;
+    margin: 0;
+  }
+  body {
+    background: #fff;
+  }
+  .print-bar,
+  nextjs-portal {
+    display: none !important;
+  }
+  .print-doc {
+    padding: 0;
+    gap: 0;
+  }
+  .print-page {
+    width: 210mm;
+    height: 297mm;
+    min-height: 0;
+    border-radius: 0;
+    box-shadow: none;
+    break-after: page;
+  }
+}
+
+@media (max-width: 640px) {
+  .print-page {
+    min-height: 0;
+    padding: 18px;
+  }
+  .cover-page h1 {
+    font-size: 44px;
+  }
+  .pp-cols,
+  .pp-grid {
+    grid-template-columns: 1fr;
+    grid-template-rows: none;
   }
 }
