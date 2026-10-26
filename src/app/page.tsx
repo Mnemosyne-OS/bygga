@@ -9,7 +9,8 @@ import Compare from "@/components/home/Compare";
 import { Figure } from "@/components/art/Figure";
 import { ToolArt } from "@/components/art/Tools";
 import { HwArt } from "@/components/art/Hardware";
-import { IArrowRight, IScan } from "@/components/art/Icons";
+import { IArrowOut, IArrowRight, IScan } from "@/components/art/Icons";
+import { TogetherMark } from "@/components/art/Together";
 import { PRODUCT_COUNT } from "@/lib/search";
 import { SCAN_ENABLED } from "@/lib/site";
 
@@ -28,6 +29,15 @@ export default function Home() {
 
       <section className="hero">
         <div className="hero-copy">
+          <a className="tg-pill" href="https://www.together.ai" target="_blank" rel="noreferrer">
+            <span className="tg-badge">
+              <TogetherMark size={16} />
+            </span>
+            <span className="tg-text">
+              Powered by <b>Together AI</b>
+            </span>
+            <IArrowOut size={14} className="tg-go" />
+          </a>
           <h1>
             IKEA assembly,
             <br />
@@ -35,7 +45,6 @@ export default function Home() {
           </h1>
           <p className="lead">Type the name from the box. Each step plays in 3D and is read out loud, with the exact parts, screws and tools.</p>
           <HeroSearch />
-          <Resume />
           <div className="quick">
             <span>Try</span>
             {QUICK.map((q) => (
@@ -44,6 +53,7 @@ export default function Home() {
               </Link>
             ))}
           </div>
+          <Resume />
           {SCAN_ENABLED && (
             <Link href="/scan" className="scan-link">
               <IScan size={17} />

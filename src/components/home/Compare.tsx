@@ -1,18 +1,16 @@
 "use client";
 
-import { useCallback, useEffect, useMemo, useRef, useState } from "react";
-import { animate, motion, useMotionValue, useMotionValueEvent, useReducedMotion, useTransform, type MotionValue } from "motion/react";
-import { catalogSpec } from "@/lib/catalog";
-import { buildPlan } from "@/lib/plan";
+import { useState } from "react";
+import Link from "next/link";
 import { PRODUCT_COUNT } from "@/lib/search";
-import { VOICE_DIR, clipId, stepLines } from "@/lib/voice/script";
 import { HwArt } from "../art/Hardware";
-import { IBox, ICheck, IPlay, ISound } from "../art/Icons";
+import { IArrowRight, IBox, ICheck, ISound } from "../art/Icons";
 
 /*
  * One real step (KALLAX 2 × 2, step 2: stand the divider on the dowels),
  * drawn twice from the same geometry: as the booklet in the box prints it,
- * and as Bygga shows it. A handle wipes between the two.
+ * and as Bygga shows it. Numbered pins pair each question the paper leaves
+ * open with the part of Bygga's drawing that answers it.
  */
 
 const C = Math.cos(Math.PI / 6);
@@ -55,228 +53,113 @@ const ZOOM = { cx: 790, cy: 168, r: 92 };
 const LETTER_A = P([96, 26, 30]);
 const LETTER_B = P([8, 200, 30]);
 
-/* where things sit, in the drawing's own units, for the wide and the narrow frame */
-const VB = { wide: { x: -110, y: 12, w: 1220, h: 588 }, narrow: { x: 214, y: -4, w: 700, h: 740 } };
-type Spot = { wide: [number, number]; narrow: [number, number] };
-const SPOTS = {
-  num: { wide: [-52, 66], narrow: [236, 50] },
-  hw: { wide: [-52, 186], narrow: [236, 152] },
-  // the voice bar sits on the Bygga side of the resting handle, so it can be tapped straight away
-  voice: { wide: [664, 556], narrow: [564, 690] },
-} satisfies Record<string, Spot>;
+/* each side's frame, in the drawing's own units: Bygga's is wider to fit the close-up */
+type Box = { x: number; y: number; w: number; h: number };
+const VB: Record<"paper" | "bygga", Box> = { paper: { x: 196, y: 16, w: 600, h: 524 }, bygga: { x: 206, y: 16, w: 712, h: 524 } };
+const PAPER_NUM = { x: 216, y: 40 };
+const PAPER_HW = { x: 216, y: 86 };
 
-type Note = { text: string; dot: [number, number] | Spot; at: Spot; side: "paper" | "bygga"; wideOnly?: boolean };
-const pick = (s: [number, number] | Spot, narrow: boolean): [number, number] => (Array.isArray(s) ? s : s[narrow ? "narrow" : "wide"]);
-const NOTES: Note[] = [
-  { side: "paper", text: "Two of which piece?", dot: { wide: [32, 138], narrow: [328, 161] }, at: { wide: [168, 96], narrow: [500, 600] } },
-  { side: "paper", text: "Which way round?", dot: P([0, 200, 40]), at: { wide: [190, 300], narrow: [640, 660] } },
-  { side: "paper", text: "Tapped in how far?", dot: P([0, 44, 48]), at: { wide: [230, 470], narrow: [0, 0] }, wideOnly: true },
-  { side: "bygga", text: "Exact parts, counted", dot: { wide: [14, 216], narrow: [352, 214] }, at: { wide: [96, 310], narrow: [420, 540] } },
-  { side: "bygga", text: "Every dowel, up close", dot: { wide: [ZOOM.cx + ZOOM.r * 0.72, ZOOM.cy + ZOOM.r * 0.7], narrow: [ZOOM.cx - ZOOM.r * 0.2, ZOOM.cy + ZOOM.r * 0.98] }, at: { wide: [948, 322], narrow: [700, 600] } },
-  { side: "bygga", text: "Drag to turn it around", dot: P([150, 0, 80]), at: { wide: [860, 470], narrow: [0, 0] }, wideOnly: true },
+/** The three questions, where they sit on each drawing, and Bygga's answer. */
+const QA: { q: string; a: string; paper: [number, number]; bygga: [number, number] | null }[] = [
+  { q: "Two of which piece?", a: "Every part is lettered and counted.", paper: [PAPER_HW.x + 92, PAPER_HW.y], bygga: null },
+  { q: "Which way round?", a: "Drag the step to see any side.", paper: [548, 132], bygga: [548, 132] },
+  { q: "Tapped in how far?", a: "A close-up shows how far it goes in.", paper: P([0, 30, 70]), bygga: [ZOOM.cx - ZOOM.r * 0.71, ZOOM.cy + ZOOM.r * 0.71] },
 ];
 
-function useNarrow() {
-  const [narrow, setNarrow] = useState(false);
-  useEffect(() => {
-    const mq = window.matchMedia("(max-width: 900px)");
-    const on = () => setNarrow(mq.matches);
-    on();
-    mq.addEventListener("change", on);
-    return () => mq.removeEventListener("change", on);
-  }, []);
-  return narrow;
-}
+const at = (vb: Box, [x, y]: [number, number]) => ({ left: `${((x - vb.x) / vb.w) * 100}%`, top: `${((y - vb.y) / vb.h) * 100}%` });
 
 export default function Compare() {
-  const narrow = useNarrow();
-  const vb = narrow ? VB.narrow : VB.wide;
-  const place = useCallback(([x, y]: [number, number]) => ({ left: `${((x - vb.x) / vb.w) * 100}%`, top: `${((y - vb.y) / vb.h) * 100}%` }), [vb]);
-  const pct = useCallback((x: number) => ((x - vb.x) / vb.w) * 100, [vb]);
-
-  // how much of the paper manual is showing, in percent from the left
-  const pos = useMotionValue(94);
-  const clip = useTransform(pos, (p) => `inset(0 ${100 - p}% 0 0)`);
-  const left = useTransform(pos, (p) => `${p}%`);
-  const pill = useTransform(pos, [0, 100], ["100%", "0%"]);
-  // the dividing line only while both sides show
-  const edge = useTransform(pos, (p) => (p < 1.5 || p > 98.5 ? 0 : 1));
-  const [now, setNow] = useState(94);
-  useMotionValueEvent(pos, "change", (p) => setNow(Math.round(p)));
-
-  const stage = useRef<HTMLDivElement>(null);
-  const still = useReducedMotion();
-  const touched = useRef(false);
-  const [used, setUsed] = useState(false);
-  const touch = () => {
-    touched.current = true;
-    setUsed(true);
-  };
-
-  // phones get the whole of one side at a time; wider screens a handle in between
-  const rest = narrow ? 0 : 40;
-  const show = (side: "paper" | "bygga") => {
-    touched.current = true;
-    animate(pos, side === "paper" ? 100 : 0, { duration: 0.9, ease: [0.65, 0, 0.35, 1] });
-  };
-
-  // the first time it scrolls into view, the Bygga side wipes in over the paper
-  useEffect(() => {
-    const el = stage.current;
-    if (!el) return;
-    if (still) {
-      pos.set(rest);
-      return;
-    }
-    const io = new IntersectionObserver(
-      ([e]) => {
-        if (!e.isIntersecting || touched.current) return;
-        io.disconnect();
-        animate(pos, rest, { duration: 1.5, delay: 0.6, ease: [0.65, 0, 0.35, 1] });
-      },
-      { threshold: 0.55 },
-    );
-    io.observe(el);
-    return () => io.disconnect();
-  }, [pos, still, rest]);
-
-  const drag = useRef(false);
-  const toPointer = (clientX: number) => {
-    const r = stage.current!.getBoundingClientRect();
-    pos.stop();
-    pos.set(Math.min(100, Math.max(0, ((clientX - r.left) / r.width) * 100)));
-  };
+  // a question and its answer light up together, from either side
+  const [lit, setLit] = useState<number | null>(null);
+  const hover = (i: number) => ({ onPointerEnter: () => setLit(i), onPointerLeave: () => setLit(null) });
+  const pin = (side: "paper" | "bygga", i: number) => (
+    <span className={"cmp-pin " + side + (lit === i ? " lit" : "")} aria-hidden="true">
+      {i + 1}
+    </span>
+  );
 
   return (
     <section className="compare" aria-labelledby="compare-title">
       <div className="cmp-head">
-        <p className="cmp-eyebrow">Why Bygga</p>
         <h2 className="sec-title" id="compare-title">
           The paper manual, explained
         </h2>
-        <p className="cmp-sub">The same steps as the booklet in the box, except you can turn them around, see every dowel up close and hear them read out loud.</p>
+        <p className="cmp-sub">One step from the KALLAX booklet, next to the same step on Bygga.</p>
       </div>
 
-      <div
-        ref={stage}
-        className="cmp-stage"
-        style={{ aspectRatio: `${vb.w} / ${vb.h}` }}
-        onPointerDown={(e) => {
-          if (narrow || (e.target as HTMLElement).closest("button")) return;
-          touch();
-          drag.current = true;
-          (e.currentTarget as HTMLElement).setPointerCapture(e.pointerId);
-          toPointer(e.clientX);
-        }}
-        onPointerMove={(e) => drag.current && toPointer(e.clientX)}
-        onPointerUp={() => (drag.current = false)}
-        onPointerCancel={() => (drag.current = false)}
-      >
-        {/* Bygga, underneath */}
-        <div className="cmp-layer cmp-bygga">
-          <svg viewBox={`${vb.x} ${vb.y} ${vb.w} ${vb.h}`} aria-hidden="true">
-            <Scene style="bygga" />
-            <Zoom />
-            {NOTES.filter((n) => n.side === "bygga" && (!narrow || !n.wideOnly)).map((n) => (
-              <Lead key={n.text} from={pick(n.dot, narrow)} to={n.at[narrow ? "narrow" : "wide"]} side="bygga" />
-            ))}
-          </svg>
-          <span className="cmp-tag bygga">Bygga</span>
-          <span className="cmp-num" style={place(SPOTS.num[narrow ? "narrow" : "wide"])}>
-            2
-          </span>
-          <span className="cmp-hw" style={place(SPOTS.hw[narrow ? "narrow" : "wide"])}>
-            <HwArt kind="dowel" len={30} dia={8} fit={40} />
-            <b>2&times;</b>
-          </span>
-          {NOTES.filter((n) => n.side === "bygga" && (!narrow || !n.wideOnly)).map((n) => (
-            <Chip key={n.text} note={n} style={place(n.at[narrow ? "narrow" : "wide"])} x={pct(n.at[narrow ? "narrow" : "wide"][0])} pos={pos} />
-          ))}
-          <Voice style={place(SPOTS.voice[narrow ? "narrow" : "wide"])} />
-        </div>
-
-        {/* the paper manual, on top, wiped away from the right */}
-        <motion.div className="cmp-layer cmp-paper" style={{ clipPath: clip }} aria-hidden="true">
-          <svg viewBox={`${vb.x} ${vb.y} ${vb.w} ${vb.h}`}>
-            <PaperPage vb={vb} narrow={narrow} />
-            <Scene style="paper" />
-            {NOTES.filter((n) => n.side === "paper" && (!narrow || !n.wideOnly)).map((n) => (
-              <Lead key={n.text} from={pick(n.dot, narrow)} to={n.at[narrow ? "narrow" : "wide"]} side="paper" />
-            ))}
-          </svg>
-          <span className="cmp-tag paper">The paper manual</span>
-          {NOTES.filter((n) => n.side === "paper" && (!narrow || !n.wideOnly)).map((n) => (
-            <Chip key={n.text} note={n} style={place(n.at[narrow ? "narrow" : "wide"])} x={pct(n.at[narrow ? "narrow" : "wide"][0])} pos={pos} />
-          ))}
-        </motion.div>
-
-        <motion.button
-          className="cmp-handle"
-          style={{ left, opacity: narrow ? edge : 1 }}
-          role="slider"
-          aria-label="Compare the paper manual with Bygga"
-          aria-valuemin={0}
-          aria-valuemax={100}
-          aria-valuenow={now}
-          aria-valuetext={now > 60 ? "Mostly the paper manual" : now < 40 ? "Mostly Bygga" : "Half and half"}
-          onPointerDown={(e) => {
-            touch();
-            drag.current = true;
-            stage.current?.setPointerCapture(e.pointerId);
-          }}
-          onKeyDown={(e) => {
-            const step = e.shiftKey ? 20 : 6;
-            const to = e.key === "ArrowLeft" ? pos.get() - step : e.key === "ArrowRight" ? pos.get() + step : e.key === "Home" ? 0 : e.key === "End" ? 100 : null;
-            if (to === null) return;
-            e.preventDefault();
-            touch();
-            animate(pos, Math.min(100, Math.max(0, to)), { type: "spring", stiffness: 420, damping: 40 });
-          }}
-        >
-          <span className="cmp-knob">
-            <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true">
-              <path d="M9 7l-5 5 5 5M15 7l5 5-5 5" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" />
+      <div className="cmp-pair" style={{ gridTemplateColumns: `${VB.paper.w}fr ${VB.bygga.w}fr` }}>
+        <figure className="cmp-card paper">
+          <figcaption className="cmp-tag paper">In the box</figcaption>
+          <div className="cmp-art" style={{ aspectRatio: `${VB.paper.w} / ${VB.paper.h}` }}>
+            <svg viewBox={`${VB.paper.x} ${VB.paper.y} ${VB.paper.w} ${VB.paper.h}`} aria-hidden="true">
+              <PaperPage vb={VB.paper} />
+              <Scene style="paper" />
             </svg>
-          </span>
-          {!narrow && <span className={"cmp-hint" + (used ? " gone" : "")}>Drag to compare</span>}
-        </motion.button>
+            {QA.map((n, i) => (
+              <span key={i} className="cmp-spot" style={at(VB.paper, n.paper)} {...hover(i)}>
+                {pin("paper", i)}
+              </span>
+            ))}
+          </div>
+        </figure>
+
+        <figure className="cmp-card bygga">
+          <figcaption className="cmp-tag bygga">On Bygga</figcaption>
+          <div className="cmp-art" style={{ aspectRatio: `${VB.bygga.w} / ${VB.bygga.h}` }}>
+            <svg viewBox={`${VB.bygga.x} ${VB.bygga.y} ${VB.bygga.w} ${VB.bygga.h}`} aria-hidden="true">
+              <Scene style="bygga" />
+              <Zoom />
+            </svg>
+            <span className="cmp-num" style={at(VB.bygga, [226, 44])} aria-hidden="true">
+              2
+            </span>
+            <span className="cmp-hw" style={at(VB.bygga, [226, 136])} {...hover(0)}>
+              <HwArt kind="dowel" len={30} dia={8} fit={36} />
+              <b>2&times;</b>
+              {pin("bygga", 0)}
+            </span>
+            {QA.map((n, i) =>
+              n.bygga ? (
+                <span key={i} className="cmp-spot" style={at(VB.bygga, n.bygga)} {...hover(i)}>
+                  {pin("bygga", i)}
+                </span>
+              ) : null,
+            )}
+          </div>
+        </figure>
       </div>
 
-      {narrow && (
-        <div className="cmp-switch" role="group" aria-label="Show">
-          <button className={now > 50 ? "on" : ""} onClick={() => show("paper")} aria-pressed={now > 50}>
-            The paper manual
-          </button>
-          <button className={now <= 50 ? "on" : ""} onClick={() => show("bygga")} aria-pressed={now <= 50}>
-            Bygga
-          </button>
-          <motion.i className="cmp-switch-bg" style={{ x: pill }} aria-hidden="true" />
-        </div>
-      )}
+      <ol className="cmp-qa">
+        {QA.map((n, i) => (
+          <li key={i} className={lit === i ? "lit" : undefined} {...hover(i)}>
+            <span className="cmp-qa-n" aria-hidden="true">
+              {i + 1}
+            </span>
+            <p className="cmp-q">&ldquo;{n.q}&rdquo;</p>
+            <p className="cmp-a">{n.a}</p>
+          </li>
+        ))}
+      </ol>
 
-      <ul className="cmp-facts">
-        <li>
-          <IBox size={20} />
-          <span>
-            <b>{PRODUCT_COUNT} IKEA products</b>
-            <span>Every size drawn, searchable by the number on the box</span>
-          </span>
-        </li>
-        <li>
-          <ISound size={20} />
-          <span>
-            <b>Read out loud</b>
-            <span>Say &ldquo;next&rdquo; and keep both hands on the panel</span>
-          </span>
-        </li>
-        <li>
-          <ICheck size={20} />
-          <span>
-            <b>Free, no app</b>
-            <span>No account, nothing to install. Works offline once open</span>
-          </span>
-        </li>
-      </ul>
+      <div className="cmp-foot">
+        <ul className="cmp-facts">
+          <li>
+            <IBox size={18} />
+            {PRODUCT_COUNT.toLocaleString("en-US")} IKEA products
+          </li>
+          <li>
+            <ISound size={18} />
+            Read out loud, hands free
+          </li>
+          <li>
+            <ICheck size={18} />
+            Free, no account
+          </li>
+        </ul>
+        <Link href="/build/kallax-2x2" className="cmp-cta">
+          Try it on KALLAX <IArrowRight size={18} />
+        </Link>
+      </div>
     </section>
   );
 }
@@ -386,10 +269,10 @@ function Zoom() {
   );
 }
 
-/** The paper side's page: cream stock, a fold, the small boxed step number and a part number nobody can find. */
-function PaperPage({ vb, narrow }: { vb: { x: number; y: number; w: number; h: number }; narrow: boolean }) {
-  const n = narrow ? { x: 236, y: 92 } : { x: -52, y: 72 };
-  const hw = narrow ? { x: 236, y: 138 } : { x: -52, y: 120 };
+/** The paper side's page: cream stock, the small boxed step number and a part number nobody can find. */
+function PaperPage({ vb }: { vb: Box }) {
+  const n = PAPER_NUM;
+  const hw = PAPER_HW;
   return (
     <g>
       <rect x={vb.x - 2} y={vb.y - 2} width={vb.w + 4} height={vb.h + 4} fill="url(#cmp-paper)" />
@@ -399,7 +282,6 @@ function PaperPage({ vb, narrow }: { vb: { x: number; y: number; w: number; h: n
           <stop offset="1" stopColor="#ece7da" />
         </linearGradient>
       </defs>
-      {!narrow && <path d={`M${vb.x + vb.w - 2} ${vb.y} V${vb.y + vb.h}`} stroke="#ddd6c6" strokeWidth={8} />}
       <rect x={n.x} y={n.y} width={30} height={30} fill="none" stroke="#5d5a53" strokeWidth={1.2} />
       <text x={n.x + 15} y={n.y + 21} fontSize={17} textAnchor="middle" fill="#5d5a53" fontFamily="var(--font)">
         2
@@ -414,95 +296,9 @@ function PaperPage({ vb, narrow }: { vb: { x: number; y: number; w: number; h: n
           101351
         </text>
       </g>
-      <text x={vb.x + vb.w - (narrow ? 26 : 34)} y={vb.y + vb.h - 18} fontSize={12} textAnchor="end" fill="#8a857a" fontFamily="var(--font)">
+      <text x={vb.x + vb.w - 26} y={vb.y + vb.h - 18} fontSize={12} textAnchor="end" fill="#8a857a" fontFamily="var(--font)">
         7
       </text>
     </g>
-  );
-}
-
-/** A thin line from a note to the thing it is about. */
-function Lead({ from, to, side }: { from: [number, number]; to: [number, number]; side: "paper" | "bygga" }) {
-  return (
-    <g className={"cmp-lead " + side}>
-      <path d={`M${from[0]} ${from[1]} L${to[0]} ${to[1]}`} />
-      <circle cx={from[0]} cy={from[1]} r={side === "paper" ? 2.5 : 3.5} />
-    </g>
-  );
-}
-
-/** A note on the drawing, faded out as the other side covers it. */
-function Chip({ note, style, x, pos }: { note: Note; style: React.CSSProperties; x: number; pos: MotionValue<number> }) {
-  // paper notes show while the paper covers them, Bygga notes once it has moved past
-  const opacity = useTransform(pos, (p) => Math.min(1, Math.max(0, (note.side === "paper" ? p - x - 4 : x - p - 4) / 8)));
-  const scale = useTransform(opacity, [0, 1], [0.92, 1]);
-  return (
-    <motion.span className={"cmp-chip " + note.side} style={{ ...style, opacity, scale }}>
-      {note.side === "paper" ? <i>?</i> : <ICheck size={13} strokeWidth={3} />}
-      {note.text}
-    </motion.span>
-  );
-}
-
-/** The step read out loud, with the real clips the guide plays. */
-function Voice({ style }: { style: React.CSSProperties }) {
-  const lines = useMemo(() => {
-    const spec = catalogSpec("kallax-2x2");
-    if (!spec) return [] as string[];
-    try {
-      return stepLines(buildPlan(spec), 1);
-    } catch {
-      return [] as string[];
-    }
-  }, []);
-  const [at, setAt] = useState<number | null>(null);
-  const el = useRef<HTMLAudioElement | null>(null);
-  const run = useRef(0);
-  useEffect(() => () => el.current?.pause(), []);
-
-  const play = async () => {
-    if (at !== null) {
-      run.current++;
-      el.current?.pause();
-      setAt(null);
-      return;
-    }
-    const my = ++run.current;
-    el.current ??= new Audio();
-    for (let i = 0; i < lines.length; i++) {
-      if (run.current !== my) return;
-      setAt(i);
-      const a = el.current;
-      a.src = `${VOICE_DIR}/${clipId(lines[i])}.mp3`;
-      const ok = await new Promise<boolean>((res) => {
-        a.onended = () => res(true);
-        a.onerror = () => res(false);
-        a.play().catch(() => res(false));
-      });
-      if (!ok) break;
-      await new Promise((r) => setTimeout(r, 260));
-    }
-    if (run.current === my) setAt(null);
-  };
-
-  const text = at !== null ? lines[at] : (lines[1] ?? "Stand the dividers on the dowels.");
-  return (
-    <div className="cmp-voice" style={style}>
-      <button className={"cmp-play" + (at !== null ? " on" : "")} onClick={play} aria-label={at !== null ? "Stop the voice" : "Hear this step read out loud"}>
-        {at !== null ? (
-          <span className="eq on" aria-hidden="true">
-            <i />
-            <i />
-            <i />
-          </span>
-        ) : (
-          <IPlay size={16} />
-        )}
-      </button>
-      <span className="cmp-line" aria-live="polite">
-        {text}
-      </span>
-      <span className="cmp-say">Say &ldquo;next&rdquo;</span>
-    </div>
   );
 }

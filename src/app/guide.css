@@ -871,22 +871,13 @@
 }
 .voice-offer {
   display: grid;
-  grid-template-columns: auto minmax(0, 1fr) auto auto;
+  grid-template-columns: minmax(0, 1fr) auto auto;
   align-items: center;
-  gap: 12px;
+  gap: 10px;
   margin: 0 0 22px;
-  padding: 12px 8px 12px 12px;
+  padding: 12px 8px 12px 18px;
   border-radius: 18px;
   background: var(--sunk);
-}
-.voice-offer-ico {
-  display: grid;
-  place-items: center;
-  width: 40px;
-  height: 40px;
-  border-radius: 999px;
-  background: var(--paper);
-  box-shadow: var(--ring);
 }
 .voice-offer-text {
   display: grid;
@@ -897,18 +888,20 @@
   font-weight: 500;
   font-size: 15.5px;
 }
-.voice-offer-text span {
+.voice-offer-text > span {
   color: var(--ink-2);
   font-size: 14px;
   line-height: 1.4;
 }
 .btn.voice-offer-go {
+  gap: 7px;
   height: 38px;
-  padding: 0 16px;
+  padding: 0 16px 0 13px;
   background: var(--ink);
   color: #fff;
   font-size: 14.5px;
   font-weight: 500;
+  white-space: nowrap;
 }
 .voice-offer-x {
   display: grid;
@@ -1086,9 +1079,10 @@
 .tcard {
   perspective: 900px;
 }
+/* both faces share one grid cell, so a card is as tall as its longer face and nothing spills */
 .tcard-inner {
   position: relative;
-  display: block;
+  display: grid;
   width: 100%;
   min-height: 168px;
   padding: 0;
@@ -1107,8 +1101,9 @@
   transform: rotateY(180deg);
 }
 .tface {
-  position: absolute;
-  inset: 0;
+  position: relative;
+  grid-area: 1 / 1;
+  min-width: 0;
   display: flex;
   flex-direction: column;
   border-radius: 18px;
@@ -1135,6 +1130,11 @@
   box-shadow: none;
   justify-content: center;
   gap: 6px;
+  padding: 16px 34px 16px 16px;
+}
+.tcard.small .tface.back {
+  justify-content: flex-end;
+  padding: 12px 12px 13px;
 }
 .tart {
   display: grid;
@@ -1189,19 +1189,30 @@
 .tback-title {
   font-weight: 800;
   font-size: 15.5px;
+  line-height: 1.25;
 }
 .tback-text {
   font-size: 13.5px;
   line-height: 1.4;
   color: rgba(255, 255, 255, 0.82);
+  overflow-wrap: anywhere;
+}
+.tcard.small .tback-text {
+  font-size: 13px;
+  line-height: 1.35;
+  font-weight: 500;
+  color: #fff;
 }
 .tback-flip {
-  display: inline-flex;
-  align-items: center;
-  gap: 5px;
-  margin-top: 6px;
-  font-size: 12px;
-  font-weight: 600;
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  display: grid;
+  place-items: center;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.12);
   color: var(--accent);
 }
 
@@ -1683,7 +1694,7 @@ input[type="range"] {
   background: #fff;
   box-shadow:
     0 0 0 1px var(--line),
-    0 10px 22px -12px rgba(18, 18, 18, 0.35);
+    0 6px 14px -10px rgba(18, 18, 18, 0.18);
   overflow: hidden;
   transform: rotate(-4deg);
   transition: transform 0.5s var(--spring);
@@ -2375,7 +2386,7 @@ input[type="range"] {
   transform: translateY(-3px);
   box-shadow:
     0 0 0 1.5px var(--ink),
-    0 10px 24px -10px rgba(18, 18, 18, 0.25);
+    0 8px 18px -14px rgba(18, 18, 18, 0.16);
 }
 .kind-thumb {
   width: 100%;
@@ -2413,7 +2424,7 @@ input[type="range"] {
     border-radius: 24px 24px 0 0;
     box-shadow:
       0 -1px 0 var(--line),
-      0 -8px 24px rgba(18, 18, 18, 0.05);
+      0 -6px 18px rgba(18, 18, 18, 0.035);
   }
   .guide .topbar {
     gap: 8px;
@@ -2559,18 +2570,12 @@ input[type="range"] {
 /* the voice invite stays one short row on phones so the step text is still in view */
 @media (max-width: 900px) {
   .voice-offer {
-    gap: 8px;
+    gap: 6px;
     margin: 0 0 16px;
-    padding: 6px 6px 6px 12px;
+    padding: 6px 4px 6px 16px;
     border-radius: 999px;
   }
-  .voice-offer-ico {
-    width: 30px;
-    height: 30px;
-    box-shadow: none;
-    background: transparent;
-  }
-  .voice-offer-text span {
+  .voice-offer-text > span {
     display: none;
   }
   .voice-offer-text b {
@@ -2581,13 +2586,20 @@ input[type="range"] {
   }
   .btn.voice-offer-go {
     height: 34px;
-    padding: 0 14px;
+    padding: 0 14px 0 11px;
     font-size: 14px;
   }
   /* 16px stops iOS zooming into the field */
   .guide input,
   .guide textarea {
     font-size: 16px;
+  }
+}
+
+/* the smallest phones keep the question and let the button say the rest */
+@media (max-width: 400px) {
+  .vo-more {
+    display: none;
   }
 }
 
@@ -2601,12 +2613,6 @@ input[type="range"] {
     justify-content: center;
   }
   .voice-btn span {
-    display: none;
-  }
-  .voice-offer {
-    grid-template-columns: minmax(0, 1fr) auto auto;
-  }
-  .voice-offer-ico {
     display: none;
   }
   .tgrid {

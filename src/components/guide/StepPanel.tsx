@@ -51,14 +51,20 @@ export default function StepPanel({
       <div className="pane-scroll">
         {offer && (
           <div className="voice-offer">
-            <span className="voice-offer-ico">
-              <IMic size={20} />
-            </span>
             <div className="voice-offer-text">
-              <b>{offer.again ? "Turn voice back on?" : "Hands full? Turn on voice"}</b>
+              <b>
+                {offer.again ? (
+                  "Turn voice back on?"
+                ) : (
+                  <>
+                    Hands full?<span className="vo-more"> Turn on voice</span>
+                  </>
+                )}
+              </b>
               <span>{offer.listen ? "Each step is read out loud. Say “next” to move on." : "Each step is read out loud. Tap done to move on."}</span>
             </div>
             <button className="btn voice-offer-go" onClick={offer.onStart}>
+              <IMic size={17} />
               Turn on
             </button>
             <button className="voice-offer-x" onClick={offer.onDismiss} aria-label="Not now">
@@ -94,7 +100,7 @@ export default function StepPanel({
               {w === "two" ? <TwoPeople size={36} /> : <WarnIcon id={w} size={36} />}
               <div>
                 <b>{w === "two" ? "Grab a second person" : w === "tip" ? "This stops it tipping over" : "You'll need to drill"}</b>
-                <span>{w === "two" ? "It's heavy or awkward for one." : w === "tip" ? "Kids climb. Always fix it to the wall." : "Fixings for your wall are not in the box."}</span>
+                <span>{w === "two" ? "It's heavy or awkward for one." : w === "tip" ? "Kids climb. Always fix it to the wall." : "The screws and plugs for your wall aren't in the box."}</span>
               </div>
             </div>
           ))}

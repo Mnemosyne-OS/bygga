@@ -3,14 +3,14 @@
 import { useEffect, useMemo, useState } from "react";
 import Link from "next/link";
 import { AnimatePresence, motion } from "motion/react";
-import { POPULAR, articleNo, fold, loadArticles, searchText } from "@/lib/search";
+import { POPULAR, articleNo, fold, loadArticles, searchText, slugify } from "@/lib/search";
 import { articleSlug } from "@/lib/ikea";
 import { PRODUCTS, type CatalogEntry } from "@/lib/catalog";
 import type { Kind } from "@/lib/products";
 import Drawing from "../Drawing";
 import { getUserKey } from "@/lib/userKey";
 import { Dots } from "../guide/ui";
-import { IArrowRight, IClock, ISearch } from "../art/Icons";
+import { IArrowRight, IClock, IClose, ISearch } from "../art/Icons";
 
 /** Tabs over the kinds of furniture. Kids and Outdoor cut across them, by keyword. */
 export const CATS: { id: string; label: string; kinds?: Kind[]; tag?: string }[] = [
@@ -103,6 +103,17 @@ export function Catalog({ limit, search }: { limit?: number; search?: boolean })
   return (
     <div className="catalog">
       <div className="cat-bar">
+        {search && (
+          <label className="cat-search">
+            <ISearch size={20} />
+            <input type="search" value={q} onChange={(e) => setQ(e.target.value)} placeholder="Name or article number" aria-label="Filter by name or article number" enterKeyHint="search" autoComplete="off" spellCheck={false} />
+            {q && (
+              <button type="button" className="cat-clear" onClick={() => setQ("")} aria-label="Clear filter">
+                <IClose size={16} />
+              </button>
+            )}
+          </label>
+        )}
         <div className="cat-tabs" role="tablist">
           {CATS.map((c) => (
             <button key={c.id} role="tab" aria-selected={cat === c.id} className={"cat-tab" + (cat === c.id ? " on" : "")} onClick={() => setCat(c.id)}>
@@ -112,12 +123,6 @@ export function Catalog({ limit, search }: { limit?: number; search?: boolean })
             </button>
           ))}
         </div>
-        {search && (
-          <label className="cat-search">
-            <ISearch size={18} />
-            <input value={q} onChange={(e) => setQ(e.target.value)} placeholder="Filter by name or article number" aria-label="Filter products" enterKeyHint="search" />
-          </label>
-        )}
       </div>
       <motion.div layout className="pgrid">
         <AnimatePresence mode="popLayout">
@@ -126,7 +131,22 @@ export function Catalog({ limit, search }: { limit?: number; search?: boolean })
           ))}
         </AnimatePresence>
       </motion.div>
-      {list.length === 0 && <p className="empty">{no && !articles ? "Looking up that article number" : no ? "We don't have a guide for that article number yet. Try the name on the box." : "Nothing matches. Try another name, or search for it on the home page."}</p>}
+      {list.length === 0 && (
+        <div className="empty">
+          {no && !articles ? (
+            <p>Looking up that article number</p>
+          ) : no ? (
+            <p>No guide for that article number yet. Try the name on the box.</p>
+          ) : (
+            <>
+              <p>Nothing here matches &ldquo;{q.trim()}&rdquo;.</p>
+              <Link href={`/build/${slugify(q)}?q=${encodeURIComponent(q.trim())}`} className="empty-go">
+                Make a guide for {q.trim()} <IArrowRight size={16} />
+              </Link>
+            </>
+          )}
+        </div>
+      )}
       {!limit && list.length > shown.length && (
         <div className="cat-more">
           <button type="button" className="cat-more-btn" onClick={() => setMore({ view, n: n + PAGE })}>

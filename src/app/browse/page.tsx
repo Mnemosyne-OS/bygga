@@ -14,7 +14,9 @@ export default function Page() {
       <main className="browse">
         <header className="page-head">
           <h1>All guides</h1>
-          <p className="lead">{PRODUCT_COUNT} IKEA products in {PRODUCTS.length} sizes, drawn and ready to build. Filter by name or by the article number on the box. Not listed? Search for it by name on the home page.</p>
+          <p className="lead">
+            {PRODUCT_COUNT.toLocaleString("en-US")} IKEA products in {PRODUCTS.length.toLocaleString("en-US")} sizes, drawn and ready to build.
+          </p>
         </header>
         <Catalog search />
       </main>

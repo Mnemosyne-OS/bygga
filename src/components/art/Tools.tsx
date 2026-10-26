@@ -1,14 +1,14 @@
 import type { ToolId } from "@/lib/types";
 
-const S = { stroke: "var(--ink)", strokeWidth: 2.2, strokeLinecap: "round", strokeLinejoin: "round" } as const;
+const S = { stroke: "var(--ink)", strokeWidth: 1.8, strokeLinecap: "round", strokeLinejoin: "round" } as const;
 const W = "#fff";
 const G = "#ecebe6";
 const A = "var(--accent-soft)";
 
-/** Hand drawn tool illustrations in the same line style as the 3D stage. viewBox 0 0 96 96. */
+/** Hand drawn tool illustrations in the same line style as the 3D stage. viewBox 0 0 96 96; strokes are in screen pixels, so lines weigh the same at any size. */
 export function ToolArt({ id, size = 96, className }: { id: ToolId; size?: number; className?: string }) {
   return (
-    <svg viewBox="0 0 96 96" width={size} height={size} className={className} aria-hidden="true">
+    <svg viewBox="0 0 96 96" width={size} height={size} className={"line-art " + (className ?? "")} aria-hidden="true">
       {ART[id]}
     </svg>
   );
@@ -59,7 +59,7 @@ const ART: Record<ToolId, React.ReactNode> = {
       <path d="M24 30 v16" fill="none" strokeWidth={1.4} />
       <path d="M28 30 v16" fill="none" strokeWidth={1.4} />
       <rect x="66" y="30" width="10" height="16" rx="3" fill={G} />
-      <path d="M76 38 h14" fill="none" strokeWidth={2.6} />
+      <path d="M76 38 h14" fill="none" strokeWidth={2} />
       <path d="M79 35.5 l2 5 M83 35.5 l2 5 M87 35.5 l2 5" fill="none" strokeWidth={1.1} />
       <rect x="40" y="50" width="6" height="8" rx="2" fill={A} />
     </g>
@@ -112,15 +112,15 @@ const ART: Record<ToolId, React.ReactNode> = {
   ),
 };
 
-export const TOOL_INFO: Record<ToolId, { name: string; hint: string; alt?: string }> = {
-  allen: { name: "Allen key", hint: "The small L-shaped key", alt: "It comes in the box. Keep it with the hardware bag." },
-  screwdriver: { name: "Phillips screwdriver", hint: "Cross-shaped tip", alt: "A drill on its lowest setting works, but hand-tighten the last turn." },
-  flathead: { name: "Flat screwdriver", hint: "Straight tip", alt: "A coin can turn cam locks in a pinch." },
-  hammer: { name: "Hammer", hint: "For dowels and nails", alt: "For dowels, a rubber mallet or a firm push works. Nails need a hammer." },
-  drill: { name: "Drill", hint: "Only for the wall", alt: "Ask your landlord or a neighbour. Never skip anchoring tall furniture." },
-  level: { name: "Spirit level", hint: "Handy, not essential", alt: "A level app on your phone does the job." },
-  tape: { name: "Tape measure", hint: "To check it is square", alt: "A piece of string works: compare both diagonals." },
-  pencil: { name: "Pencil", hint: "For marking the wall", alt: "Any pen will do." },
-  wrench: { name: "Spanner", hint: "Comes in the box", alt: "Adjustable pliers work too." },
-  knife: { name: "Box cutter", hint: "To open the box", alt: "Scissors work. Cut the tape, not the panels." },
+export const TOOL_INFO: Record<ToolId, { name: string; hint: string; alt?: string; short?: string }> = {
+  allen: { name: "Allen key", hint: "The small L-shaped key", alt: "It comes in the box, usually in the bag with the screws.", short: "It's in the box, with the screws." },
+  screwdriver: { name: "Phillips screwdriver", hint: "Cross-shaped tip", alt: "A drill on its lowest setting works. Do the last turn by hand so the screw doesn't strip.", short: "A drill on low. Finish by hand." },
+  flathead: { name: "Flat screwdriver", hint: "Straight tip", alt: "A coin works for turning the round metal locks.", short: "A coin turns the round locks." },
+  hammer: { name: "Hammer", hint: "For dowels and nails", alt: "Wooden dowels go in with a firm push or a rubber mallet. Nails for the back panel need a hammer.", short: "A firm push, or a rubber mallet." },
+  drill: { name: "Drill", hint: "Only to fix it to the wall", alt: "Borrow one from a neighbour. You only need it to screw this to the wall so it can't tip over.", short: "Borrow one. It's only for fixing this to the wall." },
+  level: { name: "Spirit level", hint: "Handy, not essential", alt: "A level app on your phone works just as well.", short: "A level app on your phone works." },
+  tape: { name: "Tape measure", hint: "To check the corners are straight", alt: "A piece of string works. Measure corner to corner both ways: if they match, it's straight.", short: "String works: corner to corner, both ways." },
+  pencil: { name: "Pencil", hint: "For marking the wall", alt: "Any pen will do.", short: "Any pen will do." },
+  wrench: { name: "Spanner", hint: "Comes in the box", alt: "Adjustable pliers work too.", short: "Adjustable pliers work too." },
+  knife: { name: "Box cutter", hint: "To open the box", alt: "Scissors work. Only cut through the tape, so the panels don't get scratched.", short: "Scissors work. Cut the tape only." },
 };

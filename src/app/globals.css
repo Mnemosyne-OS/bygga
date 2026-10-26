@@ -20,7 +20,7 @@
   --r-sm: 10px;
   --ring: 0 0 0 1px var(--line);
   --shadow-1: 0 0 0 1px var(--line), 0 1px 2px rgba(18, 18, 18, 0.03);
-  --shadow-2: 0 0 0 1px rgba(18, 18, 18, 0.04), 0 2px 6px rgba(18, 18, 18, 0.05), 0 24px 56px -12px rgba(18, 18, 18, 0.16);
+  --shadow-2: 0 0 0 1px rgba(18, 18, 18, 0.06), 0 1px 2px rgba(18, 18, 18, 0.03), 0 12px 28px -18px rgba(18, 18, 18, 0.12);
   --ease: cubic-bezier(0.22, 1, 0.36, 1);
   --spring: cubic-bezier(0.34, 1.56, 0.64, 1);
   --font: var(--font-noto), "Noto Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
@@ -61,8 +61,71 @@ a {
 }
 
 :focus-visible {
-  outline: 3px solid var(--blue);
-  outline-offset: 2px;
+  outline: 2px solid var(--ink);
+  outline-offset: 3px;
+}
+
+/*
+ * Words that are part of a picture or a control aren't text to copy: illustration labels,
+ * step numbers drawn on the stage, decorative overlays (all aria-hidden) and buttons.
+ * Dragging across a drawing or double tapping "Done, next step" no longer paints a selection,
+ * and drawings can't be dragged off as ghost images.
+ */
+svg text,
+svg tspan,
+[aria-hidden="true"],
+button,
+[role="tab"],
+[role="button"],
+.btn,
+.chip,
+.gh,
+.tg-pill,
+.nav-link,
+.resume,
+.cmp-cta,
+.cmp-hw,
+.empty-go,
+.no-select {
+  -webkit-user-select: none;
+  user-select: none;
+}
+img,
+svg {
+  -webkit-user-drag: none;
+}
+img[aria-hidden="true"],
+svg[aria-hidden="true"] {
+  -webkit-touch-callout: none;
+}
+html {
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* outbound arrow: on hover the arrow leaves up and to the right while its twin slides in behind it */
+.arrow-out {
+  display: inline-grid;
+  flex: none;
+  overflow: hidden;
+  vertical-align: middle;
+}
+.arrow-out svg {
+  grid-area: 1 / 1;
+  transition: transform 0.42s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+.arrow-out svg + svg {
+  transform: translate(-110%, 110%);
+}
+a:hover .arrow-out svg:first-child {
+  transform: translate(110%, -110%);
+}
+a:hover .arrow-out svg + svg {
+  transform: none;
+}
+
+/* tool and warning drawings keep one line weight at every size */
+.line-art * {
+  vector-effect: non-scaling-stroke;
 }
 
 ::selection {
@@ -192,7 +255,7 @@ a {
   border-radius: 50%;
   overflow: hidden;
   background: #fff;
-  box-shadow: 0 0 0 1.6px var(--ink), 0 10px 30px rgba(20, 20, 20, 0.12);
+  box-shadow: 0 0 0 1.6px var(--ink), 0 6px 16px -10px rgba(20, 20, 20, 0.12);
   pointer-events: none;
   transform-origin: 70% 30%;
 }

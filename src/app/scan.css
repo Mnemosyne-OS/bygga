@@ -412,7 +412,7 @@
   background: #fff;
   box-shadow:
     0 0 0 1px var(--line-2),
-    0 8px 22px -12px rgba(18, 18, 18, 0.3);
+    0 6px 14px -10px rgba(18, 18, 18, 0.16);
   transition: filter 0.4s;
 }
 .sw-page img {

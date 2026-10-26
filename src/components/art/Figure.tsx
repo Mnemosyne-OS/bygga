@@ -1,4 +1,4 @@
-export type Pose = "stand" | "cheer" | "think" | "point" | "wave" | "read" | "lift";
+export type Pose = "stand" | "cheer" | "think" | "point" | "wave" | "read" | "lift" | "hold";
 
 type Pt = [number, number];
 type Limb = [Pt, Pt, Pt];
@@ -14,6 +14,7 @@ const ARMS: Record<Pose, [Limb, Limb]> = {
   wave: [[[22.5, 33], [18.5, 45], [19.5, 56]], [[37.5, 32], [46, 27], [47, 13]]],
   read: [[[22.5, 33], [20, 44], [26.5, 46]], [[37.5, 33], [40, 44], [33.5, 46]]],
   lift: [[[22.5, 32], [14, 27], [13.5, 15]], [[37.5, 32], [46, 27], [46.5, 15]]],
+  hold: [[[22.5, 33], [16.5, 41], [19.5, 47]], [[37.5, 33], [43.5, 41], [40.5, 47]]],
 };
 const LEGS: [Limb, Limb] = [
   [[26.4, 60], [25.6, 75], [25.2, 89]],
@@ -131,6 +132,35 @@ export function TwoPeople({ size = 64, className }: { size?: number; className?:
         <Body pose="lift" />
       </g>
       <rect x={10} y={10} width={100} height={8} rx={2} fill="var(--accent-soft)" stroke={INK} strokeWidth={2.2} />
+    </svg>
+  );
+}
+
+/** The two of us, holding up a board with our names on it, the way the manual draws a two-person job. */
+export function Crew({ names, size = 120, className }: { names: string; size?: number; className?: string }) {
+  const hands: Pt[] = [
+    [19.5, 47],
+    [40.5, 47],
+    [85.5, 47],
+    [106.5, 47],
+  ];
+  return (
+    <svg viewBox="0 -2 126 98" width={(size * 126) / 98} height={size} className={className} aria-hidden="true" overflow="visible">
+      <g className="crew-a">
+        <Body pose="hold" />
+      </g>
+      <g className="crew-b" transform="translate(66 0)">
+        <Body pose="hold" />
+      </g>
+      <g className="crew-board">
+        <rect x={11} y={46} width={104} height={21} rx={2.5} fill="var(--accent)" stroke={INK} strokeWidth={2.2} />
+        <text x={63} y={60.2} textAnchor="middle" fontSize={10} fontWeight={800} letterSpacing={-0.2} fill={INK} fontFamily="var(--display)">
+          {names}
+        </text>
+        {hands.map(([x, y], i) => (
+          <circle key={i} cx={x} cy={y} r={3.3} fill="#fff" stroke={INK} strokeWidth={1.8} />
+        ))}
+      </g>
     </svg>
   );
 }

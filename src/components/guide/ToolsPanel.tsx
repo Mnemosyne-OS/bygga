@@ -63,11 +63,12 @@ export default function ToolsPanel({ plan, onNext, onBack }: { plan: Plan; onNex
               <ICheck size={16} strokeWidth={3} />
             </motion.span>
           </span>
+          {/* small cards skip the title: the tool was just tapped, so the tip says enough */}
           <span className="tface back">
-            <span className="tback-title">No {info.name.toLowerCase()}?</span>
-            <span className="tback-text">{info.alt}</span>
-            <span className="tback-flip">
-              <IRotate size={14} /> Tap to flip back
+            {!small && <span className="tback-title">No {info.name.toLowerCase()}?</span>}
+            <span className="tback-text">{small ? (info.short ?? info.alt) : info.alt}</span>
+            <span className="tback-flip" aria-hidden="true">
+              <IRotate size={13} strokeWidth={2.4} />
             </span>
           </span>
         </button>

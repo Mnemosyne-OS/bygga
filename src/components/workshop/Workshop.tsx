@@ -14,7 +14,7 @@ import { peekShot, shot, type Shot } from "@/engine/thumbs";
 import Thumb from "../Thumb";
 import Drawing from "../Drawing";
 import { Figure, ScaleFigure } from "../art/Figure";
-import { IArrowRight, IBox, ICheck, IClock, IClose, ILibrary, IPeople, WarnIcon } from "../art/Icons";
+import { IArrowRight, IBed, IBox, ICheck, IClock, IClose, ILibrary, IPeople, IWall } from "../art/Icons";
 
 interface Row {
   p: Progress;
@@ -372,20 +372,13 @@ function Empty() {
 
 /* ---------- badges ---------- */
 
-const BED = (
-  <svg viewBox="0 0 24 24" width={20} height={20} fill="none" stroke="currentColor" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-    <path d="M3 18V7M3 13h18v5M21 18v-5a3 3 0 0 0-3-3h-7v3" />
-    <circle cx="7" cy="10.5" r="1.6" />
-  </svg>
-);
-
 const BADGES: { id: string; name: string; hint: string; icon: React.ReactNode }[] = [
   { id: "first", name: "First build", hint: "Finish anything", icon: <ICheck size={19} strokeWidth={2.4} /> },
   { id: "drawers", name: "Drawer whisperer", hint: "Build something with drawers", icon: <IBox size={19} /> },
-  { id: "anchor", name: "Anchored", hint: "Fix a build to the wall", icon: <WarnIcon id="wall" size={24} /> },
-  { id: "team", name: "Team player", hint: "Finish a two person build", icon: <IPeople size={19} /> },
+  { id: "anchor", name: "Safe and sound", hint: "Fix a build to the wall", icon: <IWall size={19} /> },
+  { id: "team", name: "Team player", hint: "Finish a two-person build", icon: <IPeople size={19} /> },
   { id: "fast", name: "Quick hands", hint: "Beat the typical time", icon: <IClock size={19} /> },
-  { id: "bed", name: "Sweet dreams", hint: "Build a bed", icon: BED },
+  { id: "bed", name: "Sweet dreams", hint: "Build a bed", icon: <IBed size={19} /> },
   { id: "books", name: "Bookworm", hint: "Build a bookcase or shelf", icon: <ILibrary size={19} /> },
   { id: "five", name: "Regular", hint: "Finish five builds", icon: <span className="bi">5</span> },
 ];
