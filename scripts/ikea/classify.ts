@@ -213,6 +213,8 @@ const RULES: Rule[] = [
     if (both && seats < 3) return "chaise longues with no sofa between";
     return { kind: "chaise", x: { seats, chaise: both ? "both" : /\bleft\b/.test(t) ? "left" : "right" } };
   }],
+  // a chaise longue sold alone as a section of a modular sofa: a one-seat section as long as a chaise
+  [/^(chaise longue section|chaise longue module(?:, (?:left|right))?|chaise longue, add-on unit|modular chaise longue)$/, () => ({ kind: "section", x: { seats: 1, chaise: "right" } })],
   [/corner|chaise|u-shaped|crnr/, () => "corner or chaise longue sofa"],
   // a straight sofa section sold alone: a seat frame with legs, a backrest and cushions, no armrests
   [/^(\d)-seat section( for modular sofa)?$/, (m) => ({ kind: "section", x: { seats: Number(m[1]) } })],
@@ -535,6 +537,11 @@ export function classify(f: Fact, hints: Hints): Verdict {
     const per = sofa?.kind === "sofa" && sofa.x.seats ? Math.min(75, Math.max(55, (sofa.w - 2 * Math.min(armCm, sofa.w * 0.12)) / sofa.x.seats)) : 64;
     w = (x.seats ?? 1) * per;
     if (sofa?.kind === "sofa") [h, d] = [sofa.h, sofa.d <= 110 ? sofa.d : 92];
+    // a chaise longue section reaches forward as far as the family's chaise would
+    if (x.chaise) {
+      d = Math.min(175, Math.max(140, d + 68));
+      delete x.chaise;
+    }
   } else if (kind === "office") {
     // IKEA gives no size for office chairs: a typical one, taller with a headrest, smaller for children
     if (v.length === 3) set(v[0], v[2], v[1]);

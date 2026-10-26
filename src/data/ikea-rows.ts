@@ -39,6 +39,7 @@ ANTILOP|highchair|Highchair with safety belt|58|90|62|shelf=0
 ANTILOP|highchair|Highchair with tray|58|90|62
 ÄPPLARYD|chaise|3-seat sofa with chaise longue|226|85|160|seats=3,arms=wide,chaise=right,sd=92
 ÄPPLARYD|chaise|4-seat sofa with chaise longue|290|85|160|seats=4,arms=wide,chaise=right,sd=92
+ÄPPLARYD|section|Chaise longue section|64|83|160|seats=1
 ÄPPLARYD|sofa|2-seat sofa|170|85|92|seats=2
 ÄPPLARYD|sofa|3-seat sofa|230|85|92|seats=3
 ASKHOLMEN|chair|Chair with armrests, outdoor|44|88|50|arms=slim|outdoor garden
@@ -457,6 +458,8 @@ JÄTTEBO|chaise|3,5-seat mod sofa w chaise longues|290|85|160|seats=4,arms=wide,
 JÄTTEBO|chaise|4-seat mod sofa w chaise longue|290|85|160|seats=4,arms=wide,chaise=right,sd=92
 JÄTTEBO|corner|Mod crnr sofa 2,5-seat w chaise lng|173|85|156|seats=3,arms=wide,corner=left,open=1,sd=92
 JÄTTEBO|corner|Modular corner sofa, 6 seat|301|85|237|seats=6,arms=wide,corner=left,sd=92
+JÄTTEBO|section|Chaise longue module, left|64|83|160|seats=1
+JÄTTEBO|section|Chaise longue module, right|64|83|160|seats=1
 JÄTTEBO|sofa|2-seat modular sofa|170|85|92|seats=2
 JÄTTEBO|sofa|3-seat modular sofa|230|85|92|seats=3
 JÄTTESTA|coffee|Coffee table, 80 × 80 cm|80|45|80
@@ -573,6 +576,7 @@ LANDSKRONA|armchair|Armchair|75|90|80
 LANDSKRONA|chaise|4-seat sofa with chaise longues|267|89|157|seats=4,arms=slim,chaise=both,sd=89
 LANDSKRONA|corner|Corner sofa, 5-seat|222|89|222|seats=5,arms=slim,corner=left,sd=89
 LANDSKRONA|corner|Corner sofa, 6-seat|285|89|222|seats=6,arms=slim,corner=left,sd=89
+LANDSKRONA|section|Chaise longue, add-on unit|63|89|157|seats=1
 LANDSKRONA|sofa|2-seat sofa|170|85|92|seats=2,arms=slim
 LANDSKRONA|sofa|4-seat sofa|290|85|92|seats=4,arms=slim
 LANESUND|bookcase|Bookcase, 121 × 37 × 152 cm|121|152|37
@@ -1289,6 +1293,7 @@ ULRIKSBERG|armchair|Armchair|75|90|80
 ULVEVÄR|chair|Chair with armrests, outdoor|44|88|50|arms=slim|outdoor garden
 UPPÅKRA|corner|Modular corner sofa, 3-seat|173|85|173|seats=3,arms=wide,corner=left,sd=92
 UPPÅKRA|corner|Modular corner sofa, 6 seat|301|85|237|seats=6,arms=wide,corner=left,sd=92
+UPPÅKRA|section|Chaise longue module|64|83|160|seats=1
 UPPÅKRA|sofa|3-seat modular sofa|230|85|92|seats=3
 URBAN|junior|Junior chair|43|91|52||kids children
 UTESPELARE|desk|Gaming desk, 160 × 80 cm|160|74|80
@@ -1368,6 +1373,7 @@ VIMLE|corner|Corner sofa, 4-seat|253|83|184|seats=4,arms=wide,corner=left,sd=98
 VIMLE|corner|Corner sofa, 5-seat w chaise longue|253|83|236|seats=5,arms=wide,corner=left,open=1,sd=98
 VIMLE|corner|Crnr sofa-bed, 5-seat w chaise lng|253|83|236|seats=5,arms=wide,corner=left,open=1,sd=98
 VIMLE|section|1-seat section|69|83|98|seats=1
+VIMLE|section|Chaise longue section|69|83|166|seats=1
 VIMLE|section|2-seat section|138|83|98|seats=2
 VIMLE|section|3-seat section|207|83|98|seats=3
 VIMLE|sofa|2-seat sofa|170|85|92|seats=2
@@ -1390,6 +1396,7 @@ VITTSKÄR|corner|4-seat modular corner sofa|237|85|173|seats=4,arms=wide,corner=
 VITTSKÄR|corner|5-seat modular corner sofa|237|85|237|seats=5,arms=wide,corner=left,sd=92|outdoor garden
 VITTSKÄR|dining|Table, 264 × 96 cm|264|74|96||outdoor garden
 VITTSKÄR|section|1-seat section for modular sofa|64|83|92|seats=1|outdoor garden
+VITTSKÄR|section|Modular chaise longue|64|83|160|seats=1|outdoor garden
 VITTSKÄR|section|2-seat section for modular sofa|128|83|92|seats=2|outdoor garden
 VITTSKÄR|sofa|2-seat modular sofa|170|85|92|seats=2|outdoor garden
 VITTSKÄR|sofa|2-seat sofa|170|85|92|seats=2|outdoor garden
