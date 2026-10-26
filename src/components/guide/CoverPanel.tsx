@@ -49,12 +49,15 @@ export default function CoverPanel({
         </header>
 
         {s.variants && s.variants.length > 1 && (
-          <div className="chips" role="list" aria-label="Other sizes">
-            {s.variants.map((v) => (
-              <Link key={v.slug} href={`/build/${v.slug}`} className={"chip" + (v.slug === s.slug ? " on" : "")} role="listitem" replace>
-                {shortVariant(v.label)}
-              </Link>
-            ))}
+          <div className="chips sizes" role="list" aria-label="Other sizes">
+            {chipLabels(s.variants.map((v) => v.label)).map((label, i) => {
+              const v = s.variants![i];
+              return (
+                <Link key={v.slug} href={`/build/${v.slug}`} className={"chip" + (v.slug === s.slug ? " on" : "")} role="listitem" replace>
+                  {label}
+                </Link>
+              );
+            })}
           </div>
         )}
 
@@ -221,6 +224,34 @@ function shortVariant(l: string) {
     .replace(/^chest of /i, "")
     .replace(/^drawer unit, /i, "")
     .replace(/^shoe cabinet with /i, "");
+}
+
+/** Chip text per variant: the size, plus whatever sets a variant apart from a twin of the same size (sit/stand, 6 drawers, with storage). */
+function chipLabels(labels: string[]) {
+  const short = labels.map(shortVariant);
+  return labels.map((l, i) => {
+    const twins = labels.filter((_, j) => short[j] === short[i]).map((t) => t.split(",")[0].split(" "));
+    if (twins.length < 2) return tidy(short[i]);
+    const words = l.split(",")[0].split(" ");
+    let k = 0;
+    while (k < words.length && twins.every((t) => t[k] === words[k])) k++;
+    const extra = words
+      .slice(k)
+      .join(" ")
+      .replace(/\//g, " and ");
+    return tidy(extra && extra !== short[i] ? `${extra}, ${short[i]}` : short[i]);
+  });
+}
+
+/** IKEA's shorthand spelled out, first letter up. */
+function tidy(t: string) {
+  const s = t
+    .replace(/(^|\s)w (?=\S)/gi, "$1with ")
+    .replace(/\bdrs\b/g, "doors")
+    // a size never breaks across lines
+    .replace(/ × /g, "\u00a0×\u00a0")
+    .replace(/(\d) cm\b/g, "$1\u00a0cm");
+  return s.charAt(0).toUpperCase() + s.slice(1);
 }
 
 export function fmtMin(m: number) {

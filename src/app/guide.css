@@ -256,6 +256,14 @@
   flex-wrap: wrap;
   gap: 8px;
 }
+/* size chips can carry a long IKEA name: let them wrap into a rounded box instead of spilling out */
+.chips.sizes .chip {
+  height: auto;
+  min-height: 36px;
+  padding: 7px 14px;
+  line-height: 1.3;
+  border-radius: 18px;
+}
 .chips.center {
   justify-content: center;
   align-items: center;
