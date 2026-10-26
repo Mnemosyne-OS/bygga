@@ -4,8 +4,8 @@
  * voice clips: cache first, they never change under the same name.
  * The API is never cached here.
  */
-const PAGES = "bygga-pages-v2";
-const FILES = "bygga-files-v2";
+const PAGES = "bygga-pages-v3";
+const FILES = "bygga-files-v3";
 const KEEP = [PAGES, FILES];
 
 self.addEventListener("install", (e) => {
@@ -48,6 +48,22 @@ self.addEventListener("fetch", (e) => {
         })
         // offline: this page, the same guide at another step, or the home page
         .catch(async () => (await caches.match(req)) || (await caches.match(req, { ignoreSearch: true })) || caches.match("/")),
+    );
+    return;
+  }
+
+  // the clip list changes with every recording: network first, the last copy when offline
+  if (url.pathname.endsWith("/manifest.json")) {
+    e.respondWith(
+      fetch(req)
+        .then((res) => {
+          if (res.ok) {
+            const copy = res.clone();
+            caches.open(FILES).then((c) => c.put(req, copy));
+          }
+          return res;
+        })
+        .catch(() => caches.match(req)),
     );
     return;
   }
