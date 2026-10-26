@@ -11,10 +11,11 @@ export type Draft = { spec: ProductSpec; model: string } | { found: false; sugge
  * server instance and kept for good, so each name is only paid for once and
  * the second person to ask gets it instantly. Failures throw and aren't kept.
  */
-/** `q` is the folded name (lower case, no accents), so every spelling of a name shares one entry. */
-export async function draft(q: string): Promise<Draft | null> {
+/** `key` is the folded name (and IKEA's type for it), so every spelling of a name shares one entry; `q` is what the model reads. */
+export async function draft(key: string, q: string): Promise<Draft | null> {
   "use cache: remote";
   cacheLife("max");
+  void key;
   const { text, model } = await chatText({
     models: MODELS.text,
     json: true,

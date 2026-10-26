@@ -71,7 +71,7 @@ export default function GuideApp({ slug, query, step, kind }: { slug: string; qu
   useEffect(() => {
     if (mounted && local?.slug && local.slug !== slug) router.replace(`/build/${local.slug}` + (step ? `?step=${step}` : ""));
   }, [mounted, local, slug, step, router]);
-  const [fetched, setFetched] = useState<{ slug: string; spec?: ProductSpec; via?: Via; suggestions?: string[]; error?: boolean } | null>(null);
+  const [fetched, setFetched] = useState<{ slug: string; spec?: ProductSpec; via?: Via; suggestions?: string[]; ikea?: string; error?: boolean } | null>(null);
   const [ai, setAi] = useState(false);
   const result = fetched?.slug === slug ? fetched : null;
   const spec = initial ?? cached ?? result?.spec ?? null;
@@ -107,7 +107,7 @@ export default function GuideApp({ slug, query, step, kind }: { slug: string; qu
           sp.slug = slug;
           cacheSpec(slug, sp);
           setFetched({ slug, spec: sp, via: j.via });
-        } else setFetched({ slug, suggestions: j.suggestions ?? [] });
+        } else setFetched({ slug, suggestions: j.suggestions ?? [], ikea: j.ikea });
       })
       .catch(() => alive && setFetched({ slug, error: true }));
     return () => {
@@ -147,7 +147,7 @@ export default function GuideApp({ slug, query, step, kind }: { slug: string; qu
   if (status === "notfound" || status === "error" || !plan)
     return (
       <Shell title={q.toUpperCase()}>
-        <NotFound query={q} slug={slug} suggestions={suggestions} error={status === "error"} />
+        <NotFound query={q} slug={slug} suggestions={suggestions} ikea={result?.ikea} error={status === "error"} />
       </Shell>
     );
   return <Guide key={slug + (picked ?? "")} plan={plan} slug={slug} via={via} ai={ai} startStep={step} />;
@@ -169,8 +169,9 @@ function Shell({ title, children }: { title: string; children: React.ReactNode }
   );
 }
 
-function NotFound({ query, slug, suggestions, error }: { query: string; slug: string; suggestions: string[]; error: boolean }) {
+function NotFound({ query, slug, suggestions, ikea, error }: { query: string; slug: string; suggestions: string[]; ikea?: string; error: boolean }) {
   const name = query.split(" ")[0].toUpperCase();
+  const what = ikea?.toLowerCase();
   const kinds = useMemo(() => KIND_LABELS.map((k) => ({ ...k, plan: buildPlan({ ...specForKind(k.kind, "X"), slug: "kind-" + k.kind }) })), []);
   if (error)
     return (
@@ -188,8 +189,25 @@ function NotFound({ query, slug, suggestions, error }: { query: string; slug: st
       <div className="nf-head">
         <Figure pose="think" bubble="?" size={96} />
         <div>
-          <h1>What does {name} look like?</h1>
-          <p className="sub">We don&apos;t have {name} on file yet. Pick the closest shape and we&apos;ll walk you through a typical build.</p>
+          {what ? (
+            <>
+              <h1>
+                {name} is {/^[aeiou]/.test(what) ? "an" : "a"} {what}
+              </h1>
+              <p className="sub">
+                We can&apos;t draw {what.replace(/s$/, "")}s step by step yet, so trust the paper manual for this one.{" "}
+                <a href={`https://www.ikea.com/search/?q=${encodeURIComponent(name)}`} target="_blank" rel="noreferrer">
+                  Find it on ikea.com
+                </a>
+                . If it looks like one of these, a typical build can still help.
+              </p>
+            </>
+          ) : (
+            <>
+              <h1>What does {name} look like?</h1>
+              <p className="sub">We don&apos;t have {name} on file yet. Pick the closest shape and we&apos;ll walk you through a typical build.</p>
+            </>
+          )}
         </div>
       </div>
       <div className="kind-grid">

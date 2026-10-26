@@ -2,6 +2,7 @@ import { PRODUCTS, toSpec } from "@/lib/catalog";
 import { categoryOf, fold, guessSpec, matchCatalog, searchCatalog } from "@/lib/search";
 import { parseSpec, SPEC_PROMPT } from "@/lib/spec";
 import { draft, type Draft } from "@/lib/draft";
+import { ikeaType } from "@/lib/ikea";
 import { chatText, extractJson, hasKey, ipOf, MODELS, rateLimited, TogetherError, userKey } from "@/lib/together";
 import type { ProductSpec } from "@/lib/types";
 
@@ -19,15 +20,22 @@ export async function POST(req: Request) {
   const cached = cache.get(key);
   if (cached) return Response.json({ spec: cached.spec, via: "ai", model: cached.model });
 
-  const suggestions = () => [...new Set(searchCatalog(q, 8).filter((h) => h.score >= 40).map((h) => h.entry.name))].slice(0, 4);
+  const suggestions = (more: string[] = []) => [...new Set([...more, ...searchCatalog(q, 8).filter((h) => h.score >= 40).map((h) => h.entry.name)])].filter((x) => fold(x) !== key).slice(0, 4);
+
+  // IKEA's own word for what this is: steers the draft, and says plainly when it's something we can't draw
+  const type = await ikeaType(q);
+  if (type && !drawable(type)) return Response.json({ found: false, ikea: type, suggestions: suggestions(), via: "ikea" });
+  // one spelling per name, so the shared draft cache isn't split by upper and lower case
+  const said = q.replace(/\s+/g, " ").toUpperCase();
+  const hint = type ? `${said} (IKEA sells this as: ${type})` : said;
 
   const own = userKey(req);
   if (hasKey() || own) {
     if (rateLimited(ipOf(req) + ":guide", 12)) return Response.json({ error: "slow down" }, { status: 429 });
     try {
-      const d = await draftWith(own, key, q);
+      const d = await draftWith(own, type ? `${key}|${fold(type)}` : key, hint);
       if (d && "found" in d) {
-        return Response.json({ found: false, suggestions: d.suggestions.concat(suggestions()).slice(0, 4), via: "ai" });
+        return Response.json({ found: false, suggestions: suggestions(d.suggestions), via: "ai" });
       }
       if (d) {
         const { spec, model } = d;
@@ -44,14 +52,20 @@ export async function POST(req: Request) {
     }
   }
 
-  const g = guessSpec(q);
-  if (g && categoryOf(q)) return Response.json({ spec: g, via: "guess" });
-  return Response.json({ found: false, suggestions: suggestions(), via: hasKey() || own ? "ai" : "offline" });
+  const g = guessSpec(type ? `${q} ${type}` : q);
+  if (g && categoryOf(type ? `${q} ${type}` : q)) return Response.json({ spec: { ...g, variant: type ?? g.variant }, via: "guess" });
+  return Response.json({ found: false, ikea: type ?? undefined, suggestions: suggestions(), via: hasKey() || own ? "ai" : "offline" });
+}
+
+/** Types the plan generator can draw believably; office chairs, corner sofas, lamps and the like it can't yet. */
+function drawable(type: string) {
+  if (/office|swivel|gaming chair|corner|chaise|sectional|sliding door|cot\b|crib|bunk|loft|lamp|light|mattress|frame\b|mirror|rug|cushion|curtain|plant|pot\b|rail|hook/i.test(type)) return false;
+  return categoryOf(type) !== null;
 }
 
 /** The shared, cached draft on the server key; a visitor's own key is never cached under someone else's name. */
 async function draftWith(own: string | undefined, key: string, q: string): Promise<Draft | null> {
-  if (!own && hasKey()) return draft(key);
+  if (!own && hasKey()) return draft(key, q);
   const { text, model } = await chatText({
     key: own,
     models: MODELS.text,
