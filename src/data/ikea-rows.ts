@@ -110,6 +110,8 @@ BRÄNNBOLL|side|Side table on castors, 69 × 39 cm|69|50|39
 BRIMNES|bed|Bed frame with storage, Standard Double, 135 × 190 cm|151|102|199|m=135,l=190
 BRIMNES|cabinet|Cabinet with doors, 78 × 95 cm|78|95|34
 BRIMNES|chest|Chest of 4 drawers, 78 × 46 × 124 cm|78|124|46|rows=4,knobs=none
+BRIMNES|daybed|Day-bed frame with 2 drawers, 80 × 200 cm|205|58|87|rows=2,knobs=none,m=80,under=pullout
+BRIMNES|daybed|Day-bed w 2 drawers/2 mattresses, 80 × 200 cm|205|58|87|rows=2,knobs=none,m=80,under=pullout,mats=2
 BRIMNES|desk|Dressing table, 70 × 42 cm|70|74|42
 BRIMNES|nightstand|Bedside table, 39 × 41 × 53 cm|39|53|41|rows=1,knobs=none
 BRIMNES|tv|TV bench, 180 × 41 × 53 cm|180|53|41|knobs=none
@@ -187,6 +189,8 @@ FJÄLLBO|open|Shelving unit, 100 × 95 cm|100|95|35
 FJÄLLBO|open|Shelving unit, 100 × 136 cm|100|136|35
 FJÄLLBO|sideboard|Sideboard, 111 × 47 × 95 cm|111|95|47
 FJÄLLBO|tv|TV bench, 150 × 36 × 54 cm|150|54|36
+FLEKKE|daybed|Day-bed frame with 2 drawers, 80 × 200 cm|207|86|91|rows=2,m=80,under=pullout
+FLEKKE|daybed|Day-bed w 2 drawers/2 mattresses, 80 × 200 cm|207|86|91|rows=2,m=80,under=pullout,mats=2
 FLINTAN|office|Office chair|60|105|64|arms=none
 FLINTAN|office|Office chair with armrests|64|105|64|arms=slim
 FLISAT|kidstable|Children's table, 83 × 58 cm|83|48|58||kids
@@ -292,6 +296,8 @@ HAVSTA|open|Shelving unit, 81 × 35 × 123 cm|81|123|35
 HAVSTEN|armchair|Armchair, outdoor|75|90|80||outdoor garden
 HAVSTEN|sofa|2-seat sofa, outdoor|170|85|92|seats=2|outdoor garden
 HAVSTEN|sofa|2-seat sofa, outdoor, 179 × 92 × 76 cm|179|76|92|seats=2|outdoor garden
+HEMNES|daybed|Day-bed frame with 3 drawers, 80 × 200 cm|210|83|91|rows=3,knobs=knob,m=80,under=pullout
+HEMNES|daybed|Day-bed w 3 drawers/2 mattresses, 80 × 200 cm|210|83|91|rows=3,knobs=knob,m=80,under=pullout,mats=2
 HEMNES|desk|Desk, 155 × 65 cm|155|74|65
 HERRÅKRA|armchair|Armchair|75|90|80
 HÖGVED|chair|Chair|44|88|50
@@ -1006,6 +1012,12 @@ VIHALS|chair|Folding chair|44|88|50
 VIHALS|chest|Chest of 4 drawers, 70 × 47 × 90 cm|70|90|47|rows=4,knobs=bar
 VIHALS|chest|Chest of 6 drawers, 70 × 47 × 120 cm|70|120|47|rows=6,knobs=bar
 VIHALS|chest|Chest of 6 drawers, 140 × 47 × 75 cm|140|75|47|rows=3,cols=2,knobs=bar
+VIHALS|daybed|Day-bed frame with storage, 80 × 200 cm|206|75|86|m=80,under=boxes
+VIHALS|daybed|Day-bed frame with trundle bed, 80 × 200 cm|206|75|86|m=80,under=trundle
+VIHALS|daybed|Day-bed frame, 80 × 200 cm|206|75|86|m=80
+VIHALS|daybed|Day-bed w trundle bed/2 mattresses, 80 × 200 cm|206|75|86|m=80,under=trundle,mats=2
+VIHALS|daybed|Day-bed with 1 mattress, 80 × 200 cm|206|75|86|m=80,mats=1
+VIHALS|daybed|Day-bed with storage/1 mattress, 80 × 200 cm|206|75|86|m=80,under=boxes,mats=1
 VIHALS|dining|Table, 74 × 74 cm|74|74|74
 VIHALS|dining|Extendable table, 84/120 × 74 cm|84|74|74
 VIHALS|dining|Table, 107 cm|107|74|107|round=1

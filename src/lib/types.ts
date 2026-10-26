@@ -41,8 +41,12 @@ export interface BedParams {
   footH: number; // cm, 0 for none
   slats: number;
   centerBeam: boolean;
-  type?: "cot" | "bunk" | "loft"; // a cot with barred sides, two beds stacked on posts, or one bed up high
+  type?: "cot" | "bunk" | "loft" | "daybed"; // a cot with barred sides, two beds stacked on posts, one bed up high, or a day-bed
   drawer?: boolean; // a cot with a drawer under the base
+  under?: "pullout" | "trundle" | "boxes"; // day-beds: a bed that pulls out (with drawers), a trundle, or storage boxes on castors
+  drawers?: number; // day-beds: drawers in the pull-out bed
+  knobs?: "none" | "knob" | "bar"; // day-beds: on the drawer fronts
+  mattresses?: number; // day-beds: mattresses that come in the box
 }
 
 export interface CabinetParams {

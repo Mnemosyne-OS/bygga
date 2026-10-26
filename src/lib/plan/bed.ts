@@ -3,6 +3,7 @@ import { HW, PlanBuilder, type FitOpts } from "./builder";
 import { clamp } from "./math";
 import { buildBunk } from "./bunk";
 import { buildCot } from "./cot";
+import { buildDayBed } from "./daybed";
 
 export function defaultsBed(s: ProductSpec): BedParams {
   const p = s.bed ?? {};
@@ -20,6 +21,7 @@ export function defaultsBed(s: ProductSpec): BedParams {
 export function buildBed(b: PlanBuilder, s: ProductSpec) {
   if (s.bed?.type === "cot") return buildCot(b, s);
   if (s.bed?.type === "bunk" || s.bed?.type === "loft") return buildBunk(b, s);
+  if (s.bed?.type === "daybed") return buildDayBed(b, s);
   const p = defaultsBed(s);
   const Wm = p.mattressW * 10, Lm = p.mattressL * 10;
   const t = 22;

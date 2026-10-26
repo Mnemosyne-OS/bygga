@@ -125,6 +125,8 @@ brimnes-bookcase-60-x-190|40301223 90301225
 brimnes-cabinet-doors-78-x-95|00300664 50300666 80300660 40300662
 brimnes-chest-3-drawers|00392041
 brimnes-chest-4-drawers-78-x-46-x-124|90392046
+brimnes-day-bed-frame-2-drawers-80-x-200|00228705
+brimnes-day-bed-w-2-drawers-2-mattresses-80-x-20|59521159 09521152 29494497 59497338
 brimnes-dressing-table-70-x-42|70290459
 brimnes-tv-bench-120-x-53|40337694 50337698
 brimnes-tv-bench-180-x-41-x-53|70409873 50409874
@@ -209,6 +211,8 @@ fjallbo-shelving-unit-100-x-95|50339292
 fjallbo-shelving-unit-51-x-136|70342199
 fjallbo-sideboard-111-x-47-x-95|00502799
 fjallbo-tv-bench-150-x-36-x-54|90339290 90501309 40579032
+flekke-day-bed-frame-2-drawers-80-x-200|00320134
+flekke-day-bed-w-2-drawers-2-mattresses-80-x-200|39521457 49495943 29497349 09521449
 flintan-office-chair|50489031 30492204
 flintan-office-chair-armrests|49424470 79424464
 flisat-children-s-stool|30596536
@@ -324,6 +328,8 @@ helmer-drawer-unit-on-castors|00619902 70625023 20625025
 hemnes-3-drawers|80424745 70610738
 hemnes-bookcase-90-x-197|60413502 40596159 20452294
 hemnes-chest-8-drawers|10239280
+hemnes-day-bed-frame-3-drawers-80-x-200|90349326 80622892 60372276
+hemnes-day-bed-w-3-drawers-2-mattresses-80-x-200|49521503 79610220 59521499 49521485 19428120 19390952 59610235
 hemnes-desk-155-x-65|20535044
 hemnes-nightstand-2-drawers|50610739
 hemnes-sideboard-157-x-88|70476259 80628667
@@ -1093,6 +1099,12 @@ vihals-chair|10595123 60595125 50569103
 vihals-chest-4-drawers-70-x-47-x-90|00483239
 vihals-chest-6-drawers-140-x-47-x-75|80490113
 vihals-chest-6-drawers-70-x-47-x-120|30483247
+vihals-day-bed-1-mattress-80-x-200|59580568 89580562 99580547 69580558
+vihals-day-bed-frame-80-x-200|00595086
+vihals-day-bed-frame-storage-80-x-200|89571586
+vihals-day-bed-frame-trundle-bed-80-x-200|09580537
+vihals-day-bed-storage-1-mattress-80-x-200|59580592 39580588 69580582 89580576
+vihals-day-bed-w-trundle-bed-2-mattresses-80-x-2|79580633 59580629 19580626 09580636
 vihals-extendable-table-120-180-x-74|20589777 30592755
 vihals-extendable-table-84-120-x-74|90569097
 vihals-folding-chair|30569104 00592752 90651742

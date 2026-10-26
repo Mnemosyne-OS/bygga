@@ -100,6 +100,9 @@ async function main() {
   expect("laktare", null);
   expect("laktare chair", null);
   expect("marius", "marius-stool");
+  // a day-bed is its own kind, and doesn't take over the family's bed
+  expect("hemnes daybed", "hemnes-day-bed-frame-3-drawers-80-x-200");
+  expect("hemnes bed", "hemnes-bed-frame-160-x-200");
   if (articleNo("S292.975.72") !== "29297572") fail("article numbers with an S in front don't parse");
   for (const [no, slug] of [["60324520", "kallax-2x2"]] as const) {
     if (articleSlug(no) !== slug) fail(`article ${no} gave ${articleSlug(no)}, expected ${slug}`);

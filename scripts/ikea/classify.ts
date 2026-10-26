@@ -80,6 +80,8 @@ const FLAT = new Set<Kind>(["desk", "coffee", "side", "dining", "bar", "console"
 const OFFICE_ARMS = new Set(["MARKUS", "ALEFJÄLL"]);
 /** Office chairs with a tall back and a headrest. */
 const OFFICE_TALL = new Set(["MARKUS"]);
+/** Day-beds' outer size (w, h, d) from IKEA's product pages: IKEA's measure is only the mattress size. */
+const DAYBED_SIZE: Record<string, [number, number, number]> = { HEMNES: [210, 83, 91], BRIMNES: [205, 58, 87], FLEKKE: [207, 86, 91], VIHALS: [206, 75, 86] };
 
 type Pick = { kind: Kind; x?: X } | string;
 type Rule = [RegExp, (m: RegExpMatchArray, c: Ctx) => Pick];
@@ -146,7 +148,12 @@ const RULES: Rule[] = [
   [/\b(bunk|loft)\b/, () => "bunk or loft bed with a desk or underbed"],
   [/^cot( with drawer)?$/, (m) => ({ kind: "cot", x: m[1] ? { drawer: true } : {} })],
   [/\b(cot|crib)\b|cradle/, () => "cot bedding, mattress or cradle"],
-  [/day-?bed|divan/, () => "day-bed or divan"],
+  // day-beds: a bed that pulls out with drawers in it, a trundle, storage boxes or nothing underneath, with or without mattresses
+  [/^day-bed( frame)?(?: (?:with|w) (?:(\d) drawers|(trundle bed)|(storage)|(\d) mattress))?(?:\/(\d) mattress(?:es)?)?$/, (m) => {
+    const under: X = m[2] ? { under: "pullout", rows: Number(m[2]) } : m[3] ? { under: "trundle" } : m[4] ? { under: "boxes" } : {};
+    return { kind: "daybed", x: { ...under, mats: Number(m[6] ?? m[5] ?? 0) || undefined } };
+  }],
+  [/day-?bed|divan/, () => "divan, or bedding for a day-bed"],
   [/sliding/, () => "sliding doors"],
   [/sink|wash-?basin|wash-?st|hob\b|oven|fridge|freezer|dishwasher|microwave|extractor|appliances|kitchenette|outdoor kitchen/, () => "appliance or sink unit"],
   [/drawers?\b.*\b(doors?|fronts?|shelves|baskets?)\b|\b(doors?|fronts?|shelves|baskets?)\b.*\bdrawers?\b/, () => "mixed doors and drawers"],
@@ -303,6 +310,16 @@ export function classify(f: Fact, hints: Hints): Verdict {
     if (v[1] !== 200) x.l = v[1];
     set(v[1] + 11, undefined, v[0] + 10);
     h = kind === "bunk" ? 160 : /reversible/.test(t) ? 116 : 195;
+  } else if (kind === "daybed") {
+    // IKEA gives the mattress size; the outer size comes from IKEA's own pages where we have it
+    if (v.length !== 2 || v[1] < 180 || v[1] > 210) return { skip: "day-bed without a mattress size" };
+    x.m = v[0];
+    if (v[1] !== 200) x.l = v[1];
+    const known = DAYBED_SIZE[family];
+    if (known) set(...known);
+    else [w, h, d] = [v[1] + 7, 83, v[0] + 11];
+    const chest = hints(family, "chest");
+    if (x.rows && chest?.x.knobs) x.knobs = chest.x.knobs;
   } else if (kind === "cot") {
     // IKEA gives the mattress size: a cot is a little longer and wider, about 85 cm high
     if (v.length !== 2 || v[1] < 100 || v[1] > 150) return { skip: "cot without a mattress size" };
