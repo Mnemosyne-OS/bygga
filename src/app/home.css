@@ -469,6 +469,9 @@
   justify-content: space-between;
   gap: 12px;
 }
+.hero-cap-text {
+  min-width: 0;
+}
 .hero-cap-text b {
   display: block;
   font-family: var(--display);
@@ -481,6 +484,8 @@
   font-size: 14px;
 }
 .hero-go {
+  flex: none;
+  white-space: nowrap;
   display: inline-flex;
   align-items: center;
   gap: 6px;

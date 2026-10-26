@@ -134,6 +134,8 @@ export class Stage {
   private stack = new Map<string, Xf>();
   private layout = new Map<string, Xf>();
   private focus?: { local: THREE.Vector3; dir: THREE.Vector3; size: number; hw: HNode };
+  /** How many fittings the step's corner box lists (it sits over the top left of the drawing). */
+  private cornerItems = 0;
   margins?: { t: number; r: number; b: number; l: number };
 
   constructor(el: HTMLElement, opts: StageOptions = {}) {
@@ -472,6 +474,7 @@ export class Stage {
     if (!plan) return;
     this.focus = undefined;
     this.frameLocal = [];
+    this.cornerItems = 0;
     const m = this.mode;
     if (m.kind === "step") {
       const s = m.index;
@@ -491,6 +494,7 @@ export class Stage {
         if (h.item.travel > 0 && (!first || h.item.delay < first.item.delay)) first = h;
       }
       this.stepEnd = Math.max(end, 0.6);
+      this.cornerItems = Math.min(4, new Set(this.hws.filter((h) => h.item.step === s && !h.item.preset).map((h) => h.item.ref)).size);
       if (first && this.callout) {
         const loc = new THREE.Vector3(...first.item.pos);
         const dir = new THREE.Vector3(...first.item.dir).normalize();
@@ -886,11 +890,23 @@ export class Stage {
       const aw = Math.max(60, this.w - l - r), ah = Math.max(60, this.h - t - b);
       return { l, t, aw, ah, s: Math.max((maxR - minR) / aw, (maxU - minU) / ah, 0.05) };
     };
+    // the fittings box covers the top left: keep the drawing either below it or to its right
+    const starts: [number, number][] = [[mL, mT]];
+    if (k === "step" && this.cornerItems) {
+      const boxH = (mob ? 128 : 200) + m.t, boxW = (mob ? 34 + this.cornerItems * 48 : 46 + this.cornerItems * 62) + m.l;
+      starts.splice(0, 1, [mL, Math.max(mT, boxH)], [Math.max(mL, boxW), mT]);
+    }
     let best = fit(mL, mT, mR, mB);
-    if (k === "step" && this.callout && this.focus) {
-      // the circle only blocks the top right corner: try keeping the drawing below it instead
-      const below = fit(mL, Math.max(mT, this.callout.size + 34), (mob ? 18 : 36) + m.r, mB);
-      if (below.s < best.s) best = below;
+    let first = true;
+    for (const [l, t] of starts) {
+      const c = fit(l, t, mR, mB);
+      if (first || c.s < best.s) best = c;
+      first = false;
+      if (k === "step" && this.callout && this.focus) {
+        // the circle only blocks the top right corner: try keeping the drawing below it instead
+        const below = fit(l, Math.max(t, this.callout.size + 34), (mob ? 18 : 36) + m.r, mB);
+        if (below.s < best.s) best = below;
+      }
     }
     mL = best.l;
     mT = best.t;
