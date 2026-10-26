@@ -10,6 +10,7 @@
  */
 import { existsSync, mkdirSync, readFileSync, writeFileSync } from "node:fs";
 import path from "node:path";
+import type { Fact } from "./classify";
 
 const DIR = import.meta.dirname;
 const CACHE = path.join(DIR, "cache");
@@ -62,15 +63,6 @@ interface Raw {
   gprDescription?: { variants?: { itemNo: string; itemType?: string; itemMeasureReferenceText?: string; typeName?: string; name?: string }[] };
 }
 
-export interface Fact {
-  name: string;
-  type: string;
-  size: string;
-  /** article numbers of every colour, "ART" ones (printed on a box) first */
-  items: string[];
-  spr: boolean;
-  cats: string[];
-}
 
 async function main() {
   mkdirSync(CACHE, { recursive: true });

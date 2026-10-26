@@ -1,8 +1,17 @@
 import type { ProductSpec } from "./types";
-import { ROWS, specFor } from "./products";
+import { ROWS, specFor, type Kind } from "./products";
 import { fold } from "./fold";
+import { decodeRows } from "./ikea";
+import { IKEA_ROWS } from "@/data/ikea-rows";
 
-type Entry = Omit<ProductSpec, "source" | "slug" | "variants" | "siblings"> & { slug: string; family: string; keywords?: string[]; featured?: boolean; checked?: boolean };
+type Entry = Omit<ProductSpec, "source" | "slug" | "variants" | "siblings"> & {
+  slug: string;
+  family: string;
+  kind?: Kind;
+  keywords?: string[];
+  featured?: boolean;
+  checked?: boolean;
+};
 
 /** Hand-checked starting points for popular flat packs. Dimensions in cm. */
 export const CATALOG: Entry[] = [
@@ -400,13 +409,18 @@ export const CATALOG: Entry[] = [
   },
 ];
 
-function rowSlug(name: string, variant: string, used: Set<string>) {
-  const base = (fold(name) + " " + fold(variant).replace(/\b(cm|with|of)\b/g, " "))
+/** The slug a name and variant give before any "-2" suffix. Existing slugs depend on this staying the same. */
+export function baseSlug(name: string, variant: string) {
+  return (fold(name) + " " + fold(variant).replace(/\b(cm|with|of)\b/g, " "))
     .replace(/\s+/g, " ")
     .trim()
     .replace(/ /g, "-")
     .slice(0, 48)
     .replace(/-+$/, "");
+}
+
+function rowSlug(name: string, variant: string, used: Set<string>) {
+  const base = baseSlug(name, variant);
   let slug = base;
   let n = 2;
   while (used.has(slug)) slug = `${base}-${n++}`;
@@ -419,29 +433,63 @@ const GENERATED: Entry[] = ROWS.map(([name, kind, variant, w, h, d, x, kw]) => (
   ...specFor(kind, name, variant, w, h, d, x),
   slug: rowSlug(name, variant, used),
   family: fold(name),
+  kind,
   keywords: kw ? kw.split(" ") : undefined,
 }));
 
-/** Every product we can draw offline: hand-checked entries first, then the wider index. */
-export const PRODUCTS: Entry[] = [...CATALOG.map((c) => ({ ...c, checked: true })), ...GENERATED];
+/** The hand made part of the catalog. Its slugs never change: people have progress saved under them. */
+/** What kind of furniture each hand-checked entry is, for grouping (its archetype params stay as written). */
+const CATEGORY_KIND: Record<string, Kind> = {
+  "Shelving unit": "cube", Bookcase: "bookcase", "Chest of drawers": "chest", Nightstand: "nightstand", "Drawer unit": "chest", "Bed frame": "bed",
+  "Side table": "side", "Coffee table": "coffee", Desk: "desk", "Dining table": "dining", Wardrobe: "wardrobe", "Wardrobe frame": "wardrobe",
+  Cabinet: "cabinet", Stool: "stool", Chair: "chair", "TV bench": "tv",
+};
+
+export const BASE: Entry[] = [...CATALOG.map((c) => ({ ...c, checked: true, kind: CATEGORY_KIND[c.category] })), ...GENERATED];
+
+/** Rows generated from IKEA's product data (scripts/ikea/build.ts). Hand made entries always win. */
+const IKEA: Entry[] = [];
+for (const r of decodeRows(IKEA_ROWS)) {
+  const slug = r.slug ?? baseSlug(r.name, r.variant);
+  if (used.has(slug)) continue;
+  used.add(slug);
+  IKEA.push({ ...specFor(r.kind, r.name, r.variant, r.w, r.h, r.d, r.x), slug, family: fold(r.name), kind: r.kind, keywords: r.keywords });
+}
+
+/** Every product we can draw offline: hand-checked entries first, then the wider index, then IKEA's catalog. */
+export const PRODUCTS: Entry[] = [...BASE, ...IKEA];
+
+const BY_SLUG = new Map(PRODUCTS.map((e) => [e.slug, e]));
+const BY_FAMILY = new Map<string, Entry[]>();
+for (const e of PRODUCTS) {
+  const list = BY_FAMILY.get(e.family);
+  if (list) list.push(e);
+  else BY_FAMILY.set(e.family, [e]);
+}
+
+export function catalogEntry(slug: string): Entry | null {
+  return BY_SLUG.get(slug) ?? null;
+}
 
 export function catalogSpec(slug: string): ProductSpec | null {
-  const e = PRODUCTS.find((x) => x.slug === slug);
+  const e = BY_SLUG.get(slug);
   if (!e) return null;
   return toSpec(e);
 }
 
 export function toSpec(e: Entry): ProductSpec {
-  const { family, keywords, featured, checked, ...rest } = e;
+  const { family, kind, keywords, featured, checked, ...rest } = e;
+  void kind;
   void keywords;
   void featured;
   void checked;
-  const same = PRODUCTS.filter((x) => x.family === family && x.category === e.category);
+  const kin = BY_FAMILY.get(family) ?? [e];
+  const same = kin.filter((x) => x.category === e.category);
   const variants = same.map((x) => ({ label: x.variant, slug: x.slug }));
   const seen = new Set<string>([e.category]);
   const siblings: { label: string; slug: string }[] = [];
-  for (const x of PRODUCTS) {
-    if (x.family !== family || seen.has(x.category)) continue;
+  for (const x of kin) {
+    if (seen.has(x.category)) continue;
     seen.add(x.category);
     siblings.push({ label: x.category, slug: x.slug });
   }
