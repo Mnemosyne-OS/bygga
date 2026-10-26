@@ -5,7 +5,7 @@ import HeroStage from "@/components/home/HeroStage";
 import { HeroSearch } from "@/components/home/HomeClient";
 import Resume from "@/components/home/Resume";
 import { Catalog } from "@/components/home/Sections";
-import FloorFeatures from "@/components/home/FloorFeatures";
+import Compare from "@/components/home/Compare";
 import { Figure } from "@/components/art/Figure";
 import { ToolArt } from "@/components/art/Tools";
 import { HwArt } from "@/components/art/Hardware";
@@ -130,7 +130,7 @@ export default function Home() {
         <Catalog limit={9} />
       </section>
 
-      <FloorFeatures />
+      <Compare />
 
       <SiteFooter />
     </div>
