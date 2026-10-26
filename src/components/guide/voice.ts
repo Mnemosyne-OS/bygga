@@ -4,9 +4,10 @@ import { VOICE_DIR, clipId, numWords } from "@/lib/voice/script";
 
 /**
  * Plays the hands-free voice. Lines with a pre-recorded clip play from
- * /voice; other lines (scanned guides, spoken answers) are recorded live
- * when the server allows it, otherwise the whole sequence falls back to the
- * device's own voice so one step never mixes two voices.
+ * /voice; other lines (scanned guides, spoken answers) are recorded live in
+ * the same voice when the server allows it. A line that can't be played in
+ * that voice is skipped (it is on screen anyway): the device's own voice is
+ * never used, so the guide only ever has one voice.
  *
  * One audio element is reused for everything: iOS only lets a page play
  * sound without a tap on an element that was started by a tap.
@@ -57,12 +58,6 @@ class Voice {
     this.el.src = SILENT;
     this.el.play().catch(() => {});
     this.load();
-    // the device voice has to be woken inside a tap too
-    try {
-      window.speechSynthesis?.speak(new SpeechSynthesisUtterance(""));
-    } catch {
-      /* no speech synthesis */
-    }
   }
 
   load() {
@@ -139,11 +134,6 @@ class Voice {
     this.token++;
     this.settle?.(false);
     this.el?.pause();
-    try {
-      window.speechSynthesis?.cancel();
-    } catch {
-      /* ignore */
-    }
     this.set("");
   }
 
@@ -153,21 +143,27 @@ class Voice {
     const my = this.token;
     await this.load();
     if (my !== this.token) return false;
-    // counts and tools are on screen too, so skip them rather than change voice
+    // counts and tools are on screen too, so they're simply left out when there's no clip
     lines = lines.filter((l) => this.has(l) || !OPTIONAL.test(l));
-    if (!this.el || lines.some((l) => !this.has(l))) return this.device(lines, my);
+    this.el ??= new Audio();
     // live lines all start loading now, so the next one is ready when this one ends
     const srcs = lines.map((l) => this.src(l));
     for (let i = 0; i < lines.length; i++) {
       const src = await srcs[i];
       if (my !== this.token) return false;
-      if (!src) return this.device(lines.slice(i), my);
+      if (!src) continue;
       this.set(lines[i]);
-      const ok = await this.play(src, this.clip(lines[i])?.ms);
+      let ok = await this.play(src, this.clip(lines[i])?.ms);
       if (my !== this.token) return false;
-      if (!ok) return this.device(lines.slice(i), my);
+      // a clip that won't load gets one more go, recorded live in the same voice
+      if (!ok && this.live && this.clip(lines[i])) {
+        const again = await this.liveSrc(lines[i]);
+        if (my !== this.token) return false;
+        if (again) ok = await this.play(again);
+        if (my !== this.token) return false;
+      }
       // a beat after "Step four." and between sentences, like a person would
-      if (i < lines.length - 1) await wait(/^(Step \w+|Last step)\.$/.test(lines[i]) ? 320 : 240);
+      if (ok && i < lines.length - 1) await wait(/^(Step \w+|Last step)\.$/.test(lines[i]) ? 320 : 240);
     }
     this.set("");
     return my === this.token;
@@ -201,31 +197,6 @@ class Voice {
     });
   }
 
-  private device(lines: string[], my: number) {
-    const synth = typeof window !== "undefined" ? window.speechSynthesis : undefined;
-    if (!synth) {
-      this.set("");
-      return Promise.resolve(false);
-    }
-    const text = lines.join(" ");
-    this.set(text);
-    return new Promise<boolean>((resolve) => {
-      const u = new SpeechSynthesisUtterance(text);
-      u.rate = 0.95 * this.rate;
-      const v = pickVoice(synth.getVoices());
-      if (v) u.voice = v;
-      const done = (ok: boolean) => {
-        if (this.settle === done) this.settle = null;
-        if (my === this.token) this.set("");
-        resolve(ok && my === this.token);
-      };
-      this.settle = done;
-      u.onend = () => done(true);
-      u.onerror = () => done(false);
-      synth.speak(u);
-    });
-  }
-
   /** Warms the cache for lines coming up next. */
   prefetch(lines: string[]) {
     this.load().then(() => {
@@ -240,16 +211,6 @@ class Voice {
 
 function wait(ms: number) {
   return new Promise((r) => setTimeout(r, ms));
-}
-
-/** The calmest English voice the device has. */
-function pickVoice(voices: SpeechSynthesisVoice[]) {
-  const en = voices.filter((v) => /^en[-_]/i.test(v.lang));
-  const score = (v: SpeechSynthesisVoice) =>
-    (/natural|neural|premium|enhanced|online/i.test(v.name) ? 4 : 0) +
-    (/samantha|ava|zoe|allison|serena|karen|moira|aria|jenny|libby|sonia|female/i.test(v.name) ? 2 : 0) +
-    (/en[-_](US|GB)/i.test(v.lang) ? 1 : 0);
-  return en.sort((a, b) => score(b) - score(a))[0];
 }
 
 export const voice = new Voice();
