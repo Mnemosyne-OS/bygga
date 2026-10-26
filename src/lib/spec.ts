@@ -1,6 +1,9 @@
 import { z } from "zod";
 import type { ProductSpec } from "./types";
 
+// the site's CSP allows no eval, so zod shouldn't probe for it (the probe logs a violation on every guide)
+z.config({ jitless: true });
+
 const num = (lo: number, hi: number) => z.coerce.number().transform((n) => Math.min(hi, Math.max(lo, n)));
 const optNum = (lo: number, hi: number) => num(lo, hi).optional().catch(undefined);
 const optBool = z.coerce.boolean().optional().catch(undefined);
