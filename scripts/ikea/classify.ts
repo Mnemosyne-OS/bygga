@@ -390,6 +390,8 @@ const RULES: Rule[] = [
   [/^sideboard basic unit$/, () => ({ kind: "sideboard" })],
   [/^tv bench with plinth$/, () => ({ kind: "tv" })],
   [/^shelving unit\/bench$/, () => ({ kind: "open" })],
+  // a laptop table is a small desk
+  [/^laptop table$/, () => ({ kind: "desk" })],
   [/^bar stool with backrest, foldable$/, () => ({ kind: "chair", x: { seatH: 63 } })],
   [/^three-seat sofa$/, () => ({ kind: "sofa", x: { seats: 3 } })],
   [/^(modular )?chest of (\d+) drawers$/, (m) => ({ kind: "chest", x: { rows: Number(m[2]) } })],
@@ -461,6 +463,8 @@ const RULES: Rule[] = [
   [/^(bar stool with backrest|bar chair)$/, () => ({ kind: "chair", x: { seatH: 63 } })],
   [/^(stool|bar stool|step stool|folding stool|children's stool|stool, \d+ steps?)$/, () => ({ kind: "stool" })],
   [/^(bench|bench with shoe storage)$/, () => ({ kind: "bench" })],
+  // the same bench with a pad on it
+  [/^bench with pad$/, () => ({ kind: "bench" })],
   // a bench with a backrest and armrests, built like a wide chair (IKEA gives no size: a typical garden bench)
   [/^bench with backrest$/, (_m, c) => (c.f.spr ? "bench with backrest sold with cushions" : { kind: "backbench" })],
   [/^(armchair|easy chair|wing chair|high-back armchair|low-back armchair|rocking-chair|children's armchair|armchair with cushion)$/, () => ({ kind: "armchair" })],

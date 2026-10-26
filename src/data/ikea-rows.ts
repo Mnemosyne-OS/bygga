@@ -1223,6 +1223,7 @@ STOCKHOLM|coffee|Coffee table, 180 × 59 cm|180|45|59
 STOCKHOLM|sofa|Three-seat sofa|230|85|92|seats=3
 STOCKHOLM 2025|armchair|Armchair|75|90|80
 STOCKHOLM 2025|armchair|Easy chair|75|90|80
+STOCKHOLM 2025|bench|Bench with pad|100|45|38
 STOCKHOLM 2025|cabinet|Cabinet with 2 doors, 80 × 40 × 126 cm|80|126|40
 STOCKHOLM 2025|cabinet|Glass-door cabinet, 100 × 40 × 86 cm|100|86|40
 STOCKHOLM 2025|chair|Chair|44|88|50
@@ -1490,6 +1491,7 @@ VISKAFORS|sofa|2-seat sofa|170|85|92|seats=2
 VISKAFORS|sofa|3-seat sofa|230|85|92|seats=3
 VISTHUS|chest|Chest of 6 drawers, 63 × 49 × 126 cm|63|126|49|rows=6
 VITTSJÖ|coffee|Coffee table, 75 cm|75|40|75|legs=square,shelf=1,round=1
+VITTSJÖ|desk|Laptop table, 100 × 36 cm|100|74|36
 VITTSJÖ|open|Shelving unit, 100 × 93 cm|100|93|36
 VITTSJÖ|open|Shelving unit, 100 × 175 cm|100|175|36
 VITTSKÄR|chair|Chair with armrests|44|88|50|arms=slim|outdoor garden
