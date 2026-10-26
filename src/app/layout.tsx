@@ -5,6 +5,7 @@ import "./guide.css";
 import "./home.css";
 import "./scan.css";
 import { Analytics } from "@vercel/analytics/next";
+import Offline from "@/components/Offline";
 import { SITE_URL } from "@/lib/site";
 
 const noto = Noto_Sans({
@@ -46,6 +47,7 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
       <body>
         {children}
         <Analytics />
+        <Offline />
       </body>
     </html>
   );

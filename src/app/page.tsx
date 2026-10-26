@@ -3,6 +3,7 @@ import SiteHeader from "@/components/SiteHeader";
 import SiteFooter from "@/components/SiteFooter";
 import HeroStage from "@/components/home/HeroStage";
 import { HeroSearch } from "@/components/home/HomeClient";
+import Resume from "@/components/home/Resume";
 import { Catalog } from "@/components/home/Sections";
 import FloorFeatures from "@/components/home/FloorFeatures";
 import { Figure } from "@/components/art/Figure";
@@ -34,6 +35,7 @@ export default function Home() {
           </h1>
           <p className="lead">Type the product name from the box. Each step plays in 3D, with the exact parts, screws and tools.</p>
           <HeroSearch />
+          <Resume />
           <div className="quick">
             <span>Try</span>
             {QUICK.map((q) => (

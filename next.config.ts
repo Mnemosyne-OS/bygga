@@ -13,6 +13,11 @@ const nextConfig: NextConfig = {
   async headers() {
     return [
       {
+        // the service worker itself must never be stale
+        source: "/sw.js",
+        headers: [{ key: "Cache-Control", value: "no-cache" }],
+      },
+      {
         // clips are named after their text, so a file only changes when it is re-recorded
         source: "/voice/:path*",
         headers: [{ key: "Cache-Control", value: "public, max-age=604800, stale-while-revalidate=2592000" }],
