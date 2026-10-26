@@ -28,7 +28,7 @@ const page = await browser.newPage();
 await page.goto(`${base}/dev/og`);
 await page.waitForFunction(() => document.body.dataset.ready === "1", null, { timeout: 60_000 });
 
-// --step malm-3-drawers:6:step-hero draws one step of a product instead of the whole list
+// --step malm-3-drawers:6:malm-step draws one step of a product instead of the whole list
 const step = arg("--step");
 const jobs = step
   ? [{ slug: step.split(":")[0], mode: { kind: "step", index: Number(step.split(":")[1]) }, out: step.split(":")[2] }]

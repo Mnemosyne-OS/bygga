@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import { spellOut } from "@/lib/shorthand";
 import type { Plan } from "@/lib/types";
 import type { Progress } from "@/lib/store";
 import { floorSpace, totals } from "@/lib/plan/contents";
@@ -244,37 +245,10 @@ function chipLabels(labels: string[]) {
 }
 
 /** IKEA's shorthand in its type names, as words. */
-const SHORTHAND: [RegExp, string][] = [
-  [/\s*\+\s*/g, " and "],
-  [/\b(cab|cb)\b/gi, "cabinet"],
-  [/\bhi\b/gi, "high"],
-  [/\bf\b/g, "for"],
-  [/\bwsh-stnd\b/gi, "wash-stand"],
-  [/\bstnd\b/g, "stand"],
-  [/\bsnk\b/g, "sink"],
-  [/\bov\b/g, "oven"],
-  [/\bextr\b/g, "extractor"],
-  [/\bb-in\b/g, "built-in"],
-  [/\bfrnts\b/g, "fronts"],
-  [/\bfrnt\b/g, "front"],
-  [/\b(drws|drwrs)\b/g, "drawers"],
-  [/\bdrw\b/g, "drawer"],
-  [/\bdr\b/g, "door"],
-  [/\b(\d) m\b/g, "$1 medium"],
-  [/\bmd\b/g, "medium"],
-  [/\bfr\b/g, "frame"],
-  [/\b(\d) h\b/g, "$1 high"],
-  [/\bshlf\b/g, "shelf"],
-  [/\bshlvs?\b/g, "shelves"],
-  [/\bp-out\b/g, "pull-out"],
-];
 
 /** IKEA's shorthand spelled out, first letter up. */
 function tidy(t: string) {
-  const s = SHORTHAND.reduce((acc, [re, word]) => acc.replace(re, word), t)
-    .replace(/(^|\s)w (?=\S)/gi, "$1with ")
-    .replace(/\bdrs\b/g, "doors")
-    .replace(/(\d) seat\b/g, "$1-seat")
+  const s = spellOut(t)
     // a size never breaks across lines
     .replace(/ × /g, "\u00a0×\u00a0")
     .replace(/(\d) cm\b/g, "$1\u00a0cm");

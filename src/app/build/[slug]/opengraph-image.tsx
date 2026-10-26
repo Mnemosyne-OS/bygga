@@ -7,7 +7,7 @@ import { OG_SIZE, drawing, guideCard } from "@/lib/og/card";
 /** A drawing to fall back on for each archetype. */
 const BY_ARCH: Record<string, string> = { shelf: "bookcase", drawers: "chest", table: "dining", bed: "bed", cabinet: "cabinet", seat: "chair", sofa: "sofa", custom: "cabinet" };
 
-export const alt = "An IKEA assembly guide on Bygga, step by step in 3D";
+export const alt = "An IKEA assembly guide on Bygga: the product drawn in 3D, with every step read out loud";
 export const size = OG_SIZE;
 export const contentType = "image/png";
 
