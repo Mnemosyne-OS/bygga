@@ -112,6 +112,7 @@ async function main() {
   // a row of frames when asked for, the single frame otherwise
   expect("billy bookcase combination", "billy-bookcase-160-x-28-x-202");
   expect("pax bergsbo", "pax-bergsbo-wardrobe");
+  expect("vihals gateleg table", "vihals-gateleg-table-39-95-151-x-90");
   if (articleNo("S292.975.72") !== "29297572") fail("article numbers with an S in front don't parse");
   for (const [no, slug] of [["60324520", "kallax-2x2"]] as const) {
     if (articleSlug(no) !== slug) fail(`article ${no} gave ${articleSlug(no)}, expected ${slug}`);

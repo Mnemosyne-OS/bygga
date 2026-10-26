@@ -32,6 +32,8 @@ export interface TableParams {
   round?: boolean; // round top, size.w is the diameter
   leaves?: number; // a drop-leaf table: 1 or 2 hinged leaves; size.w is the width with them up
   leaf?: number; // cm, width of each leaf
+  gate?: boolean; // a gateleg table: each leaf rests on a gate leg that swings out from the frame
+  hinges?: boolean; // the leaves come loose and are screwed on with hinges
 }
 
 export interface BedParams {
@@ -205,7 +207,8 @@ export type HwKind =
   | "castor"
   | "gasLift"
   | "connector"
-  | "roller";
+  | "roller"
+  | "flatHinge";
 
 export interface HwType {
   id: string;

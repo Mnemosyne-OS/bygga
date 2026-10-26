@@ -80,6 +80,9 @@ const FLAT = new Set<Kind>(["desk", "coffee", "side", "dining", "bar", "console"
 const OFFICE_ARMS = new Set(["MARKUS", "ALEFJÄLL"]);
 /** Office chairs with a tall back and a headrest. */
 const OFFICE_TALL = new Set(["MARKUS"]);
+/** Gateleg tables with drawers in the middle, which we can't draw, and ones with a storage shelf and loose leaves. */
+const GATE_DRAWERS = new Set(["NORDEN"]);
+const GATE_STORAGE = new Set(["VIHALS"]);
 /** The frame a family's combinations are rows of, in cm: two BILLY 80s, two BESTÅ 120s, two PAX 100s. */
 const ROW_UNITS: Record<string, number> = { BILLY: 80, BESTÅ: 120, IVAR: 80, PAX: 100 };
 /** Day-beds' outer size (w, h, d) from IKEA's product pages: IKEA's measure is only the mattress size. */
@@ -201,6 +204,17 @@ const RULES: Rule[] = [
     const leaves = open2 !== undefined || extra >= 50 ? 2 : 1;
     return { kind: "dropleaf", x: { leaves, leaf: Math.round(extra / leaves) } };
   }],
+  // a gateleg table, measured like a drop-leaf one: "67/124x75 cm" with one leaf, "39/95/151x90 cm" with two
+  [/^gateleg table$/, (_m, c) => {
+    const s = c.f.size.match(/^(\d+)\/(\d+)(?:\/(\d+))?x\d+ cm$/);
+    if (!s) return "gateleg table with a size we can't read";
+    if (GATE_DRAWERS.has(c.f.name)) return "gateleg table with drawers";
+    const [closed, open1, open2] = [Number(s[1]), Number(s[2]), s[3] ? Number(s[3]) : undefined];
+    const leaves = open2 !== undefined ? 2 : 1;
+    const x: X = { leaves, leaf: Math.round(((open2 ?? open1) - closed) / leaves) };
+    if (GATE_STORAGE.has(c.f.name)) Object.assign(x, { shelf: true, hinge: true });
+    return { kind: "gateleg", x };
+  }],
   [/^(gateleg|folding) table$/, () => "gateleg or folding table"],
   [/^(table|dining table|extendable table|kitchen table)$/, (_m, c) => ({ kind: c.kids ? "kidstable" : "dining" })],
   [/^children's table$/, () => ({ kind: "kidstable" })],
@@ -315,7 +329,7 @@ export function classify(f: Fact, hints: Hints): Verdict {
     } else if (hint?.kind === kind) set(hint.w, hint.h, hint.d);
     else if (kind !== "bench") return { skip: "no size given" };
     if (guessed.h && hint?.kind === kind) h = hint.h;
-  } else if (kind === "dropleaf") {
+  } else if (kind === "dropleaf" || kind === "gateleg") {
     // drawn with the leaves up: as wide as it opens
     const open = Math.max(...f.size.replace(/x.*$/, "").split("/").map(Number));
     set(open, undefined, v[1]);

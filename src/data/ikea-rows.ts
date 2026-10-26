@@ -703,6 +703,7 @@ PERSBOL|armchair|Armchair|75|90|80
 PINNTORP|chair|Chair|44|88|50
 PINNTORP|dining|Table, 85 cm|85|74|85|round=1
 PINNTORP|dining|Table, 125 × 75 cm|125|74|75
+PINNTORP|gateleg|Gateleg table, 67/124 × 75 cm|124|75|75|leaves=1,leaf=57
 PIPLÄRKA|desk|Desk, 80 × 63 cm|80|74|63||kids children
 PLATSA|cabinet|Frame, 60 × 55 × 40 cm|60|40|55|doors=0
 PLATSA|cabinet|Frame, 60 × 55 × 60 cm|60|60|55|doors=0
@@ -1061,6 +1062,7 @@ VIHALS|dining|Extendable table, 84/120 × 74 cm|84|74|74
 VIHALS|dining|Table, 107 cm|107|74|107|round=1
 VIHALS|dining|Extendable table, 120/180 × 74 cm|120|74|74
 VIHALS|dining|Table, 125 × 74 cm|125|74|74
+VIHALS|gateleg|Gateleg table, 39/95/151 × 90 cm|151|75|90|shelf=1,leaves=2,leaf=56,hinge=1
 VIHALS|nightstand|Bedside table, 37 × 37 cm|37|55|37|rows=1,knobs=bar
 VIHALS|open|Shelving unit with 4 shelves, 95 × 37 × 90 cm|95|90|37|shelves=2
 VIHALS|open|Shelving unit with 10 shelves, 95 × 37 × 200 cm|95|200|37|shelves=6

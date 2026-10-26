@@ -59,7 +59,7 @@ function hints(family: string, kind: Kind): Hint | undefined {
 
 /* ---------- matching against hand made entries ---------- */
 
-const LATER_KINDS = new Set<Kind>(["office", "chaise", "corner", "cot", "bunk", "loft", "dropleaf", "daybed", "mixed", "sliding", "slidecab", "bookrow", "cabrow", "section"]);
+const LATER_KINDS = new Set<Kind>(["office", "chaise", "corner", "cot", "bunk", "loft", "dropleaf", "daybed", "mixed", "sliding", "slidecab", "bookrow", "cabrow", "section", "gateleg"]);
 
 function baseMatch(name: string, draw: Draw): CatalogEntry | undefined {
   const fam = fold(name);

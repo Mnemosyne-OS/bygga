@@ -265,6 +265,22 @@ function draw(kind: HwKind, len: number, dia: number): Drawn {
           </g>
         ),
       };
+    case "flatHinge":
+      // two leaves with screw holes, the pin between them
+      return {
+        w: len,
+        h: dia,
+        scalable: true,
+        node: (
+          <g>
+            {[0, len / 2 + 3].map((x) => (
+              <rect key={x} x={x} y={-dia / 2} width={len / 2 - 3} height={dia} rx={2} fill={METAL} {...stroke} />
+            ))}
+            <rect x={len / 2 - 4} y={-dia / 2 - 1} width={8} height={dia + 2} rx={4} fill={METAL} {...stroke} />
+            {[len * 0.17, len * 0.83].flatMap((x) => [-dia / 4, dia / 4].map((y) => <circle key={`${x}:${y}`} cx={x} cy={y} r={2.2} fill="#fff" {...stroke} />))}
+          </g>
+        ),
+      };
     case "roller":
       // a plate with two screw holes, an arm, and the wheel on top
       return {

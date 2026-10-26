@@ -259,6 +259,11 @@ export function hwDrawable(kind: HwKind, len: number, dia: number) {
         addSolid(d, `ca:wheel:${dia}`, () => new THREE.CylinderGeometry(r, r, dia * 0.26, 24).rotateZ(Math.PI / 2), plastic, { hull: "radial", position: [x * dia * 0.21, len - r, -dia * 0.16] });
       break;
     }
+    case "flatHinge":
+      // two leaves either side of a pin, lying flat across a joint
+      for (const x of [-1, 1]) addSolid(d, `fh:leaf:${len}:${dia}`, () => new THREE.BoxGeometry(len / 2 - 3, 1.6, dia), metal, { position: [x * (len / 4 + 1.5), 0.8, 0] });
+      addSolid(d, `fh:pin:${dia}`, () => new THREE.CylinderGeometry(3, 3, dia, 12).rotateX(Math.PI / 2), metal, { hull: "radial", position: [0, 2.2, 0] });
+      break;
     case "roller":
       // a sliding door's roller: a plate screwed to the door's edge, an arm, and a wheel that runs in the track
       addSolid(d, `ro:plate:${len}`, () => new THREE.BoxGeometry(len, 3, 14), metal, { position: [0, 1.5, 0] });
