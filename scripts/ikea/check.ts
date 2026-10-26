@@ -100,6 +100,19 @@ async function main() {
   expect("laktare", null);
   expect("laktare chair", null);
   expect("marius", "marius-stool");
+  // a day-bed is its own kind, and doesn't take over the family's bed
+  expect("hemnes daybed", "hemnes-day-bed-frame-3-drawers-80-x-200");
+  expect("hemnes bed", "hemnes-bed-frame-160-x-200");
+  // doors and drawers together, without taking the chests of drawers
+  expect("hemnes cabinet with drawers", "hemnes-glass-door-cabinet-3-drawers-90-x-197");
+  expect("hemnes chest of drawers", "hemnes-3-drawers");
+  // sliding doors only when the query says so
+  expect("hauga sliding wardrobe", "hauga-wardrobe-sliding-doors-118-x-55-x-199");
+  expect("hauga wardrobe", "hauga-wardrobe-70-x-199");
+  // a row of frames when asked for, the single frame otherwise
+  expect("billy bookcase combination", "billy-bookcase-160-x-28-x-202");
+  expect("pax bergsbo", "pax-bergsbo-wardrobe");
+  expect("vihals gateleg table", "vihals-gateleg-table-39-95-151-x-90");
   if (articleNo("S292.975.72") !== "29297572") fail("article numbers with an S in front don't parse");
   for (const [no, slug] of [["60324520", "kallax-2x2"]] as const) {
     if (articleSlug(no) !== slug) fail(`article ${no} gave ${articleSlug(no)}, expected ${slug}`);

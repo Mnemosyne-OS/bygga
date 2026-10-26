@@ -16,8 +16,11 @@ export function slugify(s: string) {
 
 const CATEGORY_WORDS: [Kind, string[]][] = [
   ["office", ["office chair", "desk chair", "swivel chair", "gaming chair", "computer chair"]],
+  ["bookrow", ["bookcase combination", "bookshelf combination"]],
+  ["cabrow", ["tv bench combination", "tv unit combination", "media unit combination", "cabinet combination", "wardrobe combination", "closet combination", "wall cabinet combination"]],
   ["shoe", ["shoe", "shoes", "shoe cabinet", "shoe rack"]],
   ["nightstand", ["nightstand", "bedside", "night stand"]],
+  ["mixed", ["doors and drawers", "cabinet with drawers", "cupboard with drawers", "wardrobe with drawers", "armoire with drawers"]],
   ["chest", ["drawer", "drawers", "chest", "dresser"]],
   ["cube", ["cube", "cubes"]],
   ["wallshelf", ["wall shelf", "wall shelves", "wall shelf unit"]],
@@ -31,16 +34,21 @@ const CATEGORY_WORDS: [Kind, string[]][] = [
   ["console", ["console", "console table", "hall table"]],
   ["trolley", ["trolley", "cart", "kitchen island"]],
   ["desk", ["desk"]],
-  ["dropleaf", ["drop leaf", "drop leaf table", "gateleg", "gateleg table"]],
+  ["gateleg", ["gateleg", "gateleg table", "gate leg", "gate leg table"]],
+  ["dropleaf", ["drop leaf", "drop leaf table"]],
   ["dining", ["dining", "table", "kitchen table"]],
   ["cot", ["cot", "crib", "baby bed"]],
   ["bunk", ["bunk", "bunk bed", "bunkbed"]],
   ["loft", ["loft bed", "high sleeper"]],
-  ["bed", ["bed", "bedframe", "daybed"]],
+  ["daybed", ["daybed", "day bed", "trundle bed"]],
+  ["bed", ["bed", "bedframe"]],
+  ["slidecab", ["cabinet with sliding doors", "sliding door cabinet", "cupboard with sliding doors", "sliding door cupboard"]],
+  ["sliding", ["wardrobe with sliding doors", "sliding wardrobe", "sliding door wardrobe", "sliding door closet", "sliding closet", "sliding doors"]],
   ["wardrobe", ["wardrobe", "closet", "armoire"]],
   ["sideboard", ["sideboard", "buffet"]],
   ["cabinet", ["cabinet", "cupboard", "vitrine", "display"]],
   ["chaise", ["chaise longue", "chaise lounge", "chaise"]],
+  ["section", ["sofa section", "seat section", "sofa module", "couch section", "sectional piece"]],
   ["corner", ["corner sofa", "corner couch", "sectional", "l shaped sofa"]],
   ["sofa", ["sofa", "couch", "loveseat"]],
   ["armchair", ["armchair", "wing chair", "recliner"]],
@@ -50,6 +58,7 @@ const CATEGORY_WORDS: [Kind, string[]][] = [
   ["bench", ["bench"]],
 ];
 const KIND_WORDS = new Map(CATEGORY_WORDS);
+const LESSER = new Set<Kind>(["bookrow", "cabrow", "section"]);
 
 export function kindOf(q: string): Kind | null {
   const f = " " + fold(q) + " ";
@@ -147,6 +156,8 @@ export function searchCatalog(q: string, limit = 8): Hit[] {
     if (!ns && ((first.length >= 3 && r.words.some((w) => w.startsWith(first))) || (firstIsKind && kwHit))) score += 20;
     for (const t of tokens.slice(1)) if (t.length && r.words.some((w) => w.startsWith(t) || (t.length > 2 && w.includes(t)))) score += 12;
     if (kw) score += kwHit ? 14 : -30;
+    // rows of several units and sofa sections come after the whole product, unless the query asks for them
+    if (e.kind && LESSER.has(e.kind) && kind !== e.kind) score -= 1;
     if (e.checked) score += 3;
     if (e.featured) score += 2;
     if (score > 15) hits.push({ entry: e, score, exact: ns >= 80 });

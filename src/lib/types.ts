@@ -32,6 +32,8 @@ export interface TableParams {
   round?: boolean; // round top, size.w is the diameter
   leaves?: number; // a drop-leaf table: 1 or 2 hinged leaves; size.w is the width with them up
   leaf?: number; // cm, width of each leaf
+  gate?: boolean; // a gateleg table: each leaf rests on a gate leg that swings out from the frame
+  hinges?: boolean; // the leaves come loose and are screwed on with hinges
 }
 
 export interface BedParams {
@@ -41,12 +43,16 @@ export interface BedParams {
   footH: number; // cm, 0 for none
   slats: number;
   centerBeam: boolean;
-  type?: "cot" | "bunk" | "loft"; // a cot with barred sides, two beds stacked on posts, or one bed up high
+  type?: "cot" | "bunk" | "loft" | "daybed"; // a cot with barred sides, two beds stacked on posts, one bed up high, or a day-bed
   drawer?: boolean; // a cot with a drawer under the base
+  under?: "pullout" | "trundle" | "boxes"; // day-beds: a bed that pulls out (with drawers), a trundle, or storage boxes on castors
+  drawers?: number; // day-beds: drawers in the pull-out bed
+  knobs?: "none" | "knob" | "bar"; // day-beds: on the drawer fronts
+  mattresses?: number; // day-beds: mattresses that come in the box
 }
 
 export interface CabinetParams {
-  fronts: "doors" | "tilt";
+  fronts: "doors" | "tilt" | "sliding";
   compartments: number;
   doors: 0 | 1 | 2;
   shelves: number;
@@ -55,6 +61,9 @@ export interface CabinetParams {
   handles: "knob" | "bar" | "none";
   thickness: number;
   wall?: boolean; // hangs on the wall instead of standing on the floor
+  drawers?: number; // drawers as well as doors: full-width drawers, split from the doors by a fixed shelf
+  drawerAt?: "top" | "bottom"; // where the drawers are; under the doors unless it says top
+  slides?: number; // sliding doors: how many, running in two tracks
 }
 
 export interface SeatParams {
@@ -150,6 +159,7 @@ export interface ProductSpec {
   slug?: string;
   variants?: { label: string; slug: string }[];
   siblings?: { label: string; slug: string }[];
+  row?: { n: number; join?: boolean; of?: string; slide?: number }; // several identical units side by side, built one after another, with sliding doors across them all
 }
 
 /* ---------- generated plan ---------- */
@@ -196,7 +206,9 @@ export type HwKind =
   | "plug"
   | "castor"
   | "gasLift"
-  | "connector";
+  | "connector"
+  | "roller"
+  | "flatHinge";
 
 export interface HwType {
   id: string;

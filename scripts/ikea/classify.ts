@@ -73,13 +73,22 @@ export function measure(s: string): Size | null {
   return { n: parts.map((p) => Number(p.split("/")[0])), ext: parts.some((p) => p.includes("/")), text: parts.join(" × ") + " cm" };
 }
 
-const UPRIGHT = new Set<Kind>(["cube", "bookcase", "open", "chest", "nightstand", "wardrobe", "cabinet", "sideboard", "tv", "shoe", "wallcab", "wallshelf", "kitchen"]);
+const UPRIGHT = new Set<Kind>(["cube", "bookcase", "open", "chest", "nightstand", "wardrobe", "cabinet", "sideboard", "tv", "shoe", "wallcab", "wallshelf", "kitchen", "mixed", "sliding", "slidecab"]);
 const FLAT = new Set<Kind>(["desk", "coffee", "side", "dining", "bar", "console", "kidstable", "trolley", "bench"]);
 
 /** Office chairs IKEA sells with armrests although the type doesn't say so. */
 const OFFICE_ARMS = new Set(["MARKUS", "ALEFJÄLL"]);
 /** Office chairs with a tall back and a headrest. */
 const OFFICE_TALL = new Set(["MARKUS"]);
+/** Gateleg tables with drawers in the middle, which we can't draw, and ones with a storage shelf and loose leaves. */
+const GATE_DRAWERS = new Set(["NORDEN"]);
+const GATE_STORAGE = new Set(["VIHALS"]);
+/** The frame a family's combinations are rows of, in cm: two BILLY 80s, two BESTÅ 120s, two PAX 100s. */
+const ROW_UNITS: Record<string, number> = { BILLY: 80, BESTÅ: 120, IVAR: 80, PAX: 100 };
+/** PAX frames under a pair of sliding doors: 150 is two 75s, 200 two 100s. */
+const PAX_SLIDE_UNITS = [100, 75];
+/** Day-beds' outer size (w, h, d) from IKEA's product pages: IKEA's measure is only the mattress size. */
+const DAYBED_SIZE: Record<string, [number, number, number]> = { HEMNES: [210, 83, 91], BRIMNES: [205, 58, 87], FLEKKE: [207, 86, 91], VIHALS: [206, 75, 86] };
 
 type Pick = { kind: Kind; x?: X } | string;
 type Rule = [RegExp, (m: RegExpMatchArray, c: Ctx) => Pick];
@@ -108,6 +117,10 @@ const withDoors = (kind: Kind, t: string): Pick => {
 
 /** Most specific first. A string result is the reason to skip. */
 const RULES: Rule[] = [
+  // cabinets with doors and drawers: the drawers under the doors, or one drawer above the door of a kitchen base cabinet
+  [/^(glass-door cabinet with|high cabinet w gls-drs and) (\d) drawers?$/, (m) => ({ kind: "mixed", x: { rows: Number(m[2]) } })],
+  [/^wardrobe with (\d) doors and (\d) drawers$/, (m) => (Number(m[1]) > 2 ? "wardrobe with more than 2 doors and drawers" : { kind: "mixed", x: { doors: Number(m[1]) as 1 | 2, rows: Number(m[2]), rail: true } })],
+  [/^base cabinet with drawer\/(2 )?doors?$/, (m) => ({ kind: "mixed", x: { doors: m[1] ? 2 : 1, rows: 1, dtop: true } })],
   // things that are several products, or only part of one
   [/\b(and|set of \d|sets?)\b|\+|combination|\bcomb\b|\bchairs\b|armchairs|benches/, () => "set or combination"],
   // office and swivel chairs: a star base on castors, a gas lift, the seat on top
@@ -137,6 +150,8 @@ const RULES: Rule[] = [
     return { kind: "chaise", x: { seats, chaise: both ? "both" : /\bleft\b/.test(t) ? "left" : "right" } };
   }],
   [/corner|chaise|u-shaped|crnr/, () => "corner or chaise longue sofa"],
+  // a straight sofa section sold alone: a seat frame with legs, a backrest and cushions, no armrests
+  [/^(\d)-seat section( for modular sofa)?$/, (m) => ({ kind: "section", x: { seats: Number(m[1]) } })],
   [/section|add-on|armrest|backrest for|seat sec|modular (easy chair|chaise)/, () => "sofa or storage section"],
   // bunk beds on four posts, and loft beds with room underneath (KURA turns over to be either)
   [/^(bunk bed frame|loft bed frame|loft bed|reversible bed)$/, (m, c) => {
@@ -146,9 +161,19 @@ const RULES: Rule[] = [
   [/\b(bunk|loft)\b/, () => "bunk or loft bed with a desk or underbed"],
   [/^cot( with drawer)?$/, (m) => ({ kind: "cot", x: m[1] ? { drawer: true } : {} })],
   [/\b(cot|crib)\b|cradle/, () => "cot bedding, mattress or cradle"],
-  [/day-?bed|divan/, () => "day-bed or divan"],
+  // day-beds: a bed that pulls out with drawers in it, a trundle, storage boxes or nothing underneath, with or without mattresses
+  [/^day-bed( frame)?(?: (?:with|w) (?:(\d) drawers|(trundle bed)|(storage)|(\d) mattress))?(?:\/(\d) mattress(?:es)?)?$/, (m) => {
+    const under: X = m[2] ? { under: "pullout", rows: Number(m[2]) } : m[3] ? { under: "trundle" } : m[4] ? { under: "boxes" } : {};
+    return { kind: "daybed", x: { ...under, mats: Number(m[6] ?? m[5] ?? 0) || undefined } };
+  }],
+  [/day-?bed|divan/, () => "divan, or bedding for a day-bed"],
+  // sliding doors on a wardrobe or a cabinet, running in tracks (doors sold alone stay skipped)
+  [/^wardrobe with (\d )?sliding doors$/, (m) => (Number(m[1] ?? 2) > 3 ? "more than 3 sliding doors" : { kind: "sliding", x: { slides: Number(m[1] ?? 2) } })],
+  [/^cabinet with (2 )?sliding (glass )?doors$/, (_m, c) =>
+    c.f.spr ? "cabinet with sliding doors sold as a combination" : c.f.name === "IDÅSEN" ? "steel office cabinet" : { kind: "slidecab", x: { slides: 2 } }],
   [/sliding/, () => "sliding doors"],
   [/sink|wash-?basin|wash-?st|hob\b|oven|fridge|freezer|dishwasher|microwave|extractor|appliances|kitchenette|outdoor kitchen/, () => "appliance or sink unit"],
+  [/^(door\/)?drawer front|^drawer (without |with (framed )?(glass )?)front|^(high|medium|low) drawer with front|^fitting for mounting/, () => "door or drawer front sold alone"],
   [/drawers?\b.*\b(doors?|fronts?|shelves|baskets?)\b|\b(doors?|fronts?|shelves|baskets?)\b.*\bdrawers?\b/, () => "mixed doors and drawers"],
 
   // storage
@@ -180,6 +205,17 @@ const RULES: Rule[] = [
     const extra = (open2 ?? open1) - closed;
     const leaves = open2 !== undefined || extra >= 50 ? 2 : 1;
     return { kind: "dropleaf", x: { leaves, leaf: Math.round(extra / leaves) } };
+  }],
+  // a gateleg table, measured like a drop-leaf one: "67/124x75 cm" with one leaf, "39/95/151x90 cm" with two
+  [/^gateleg table$/, (_m, c) => {
+    const s = c.f.size.match(/^(\d+)\/(\d+)(?:\/(\d+))?x\d+ cm$/);
+    if (!s) return "gateleg table with a size we can't read";
+    if (GATE_DRAWERS.has(c.f.name)) return "gateleg table with drawers";
+    const [closed, open1, open2] = [Number(s[1]), Number(s[2]), s[3] ? Number(s[3]) : undefined];
+    const leaves = open2 !== undefined ? 2 : 1;
+    const x: X = { leaves, leaf: Math.round(((open2 ?? open1) - closed) / leaves) };
+    if (GATE_STORAGE.has(c.f.name)) Object.assign(x, { shelf: true, hinge: true });
+    return { kind: "gateleg", x };
   }],
   [/^(gateleg|folding) table$/, () => "gateleg or folding table"],
   [/^(table|dining table|extendable table|kitchen table)$/, (_m, c) => ({ kind: c.kids ? "kidstable" : "dining" })],
@@ -269,7 +305,7 @@ export function classify(f: Fact, hints: Hints): Verdict {
     if (sz.ext) return { skip: "corner or extendable unit" };
     if (v.length === 3) set(v[0], v[2], v[1]);
     else if (v.length === 2) {
-      if (kind === "kitchen" && /^base/.test(t)) set(v[0], 80, v[1]);
+      if ((kind === "kitchen" || kind === "mixed") && /^base/.test(t)) set(v[0], 80, v[1]);
       // bedside tables are measured from above, like tables
       else if (kind === "nightstand" && /bedside|nightstand/.test(t)) set(v[0], hint?.kind === kind ? hint.h : 55, v[1]);
       else set(v[0], v[1]);
@@ -277,6 +313,10 @@ export function classify(f: Fact, hints: Hints): Verdict {
     else if (hint?.kind === kind) set(hint.w, hint.h, hint.d);
     else return { skip: "no size given" };
     if (guessed.d && hint?.kind === kind && Math.abs(hint.w - w) < 60) d = hint.d;
+    // a cabinet with drawers is as deep as the family's cabinet
+    const twin = kind === "mixed" || kind === "slidecab" ? "cabinet" : kind === "sliding" ? "wardrobe" : undefined;
+    const cab = twin ? hints(family, twin) : undefined;
+    if (guessed.d && cab && cab.kind === twin && Math.abs(cab.w - w) < 60) d = cab.d;
   } else if (FLAT.has(kind)) {
     if (v.length === 3) set(v[0], v[2], v[1]);
     else if (v.length === 2) set(v[0], undefined, v[1]);
@@ -291,7 +331,7 @@ export function classify(f: Fact, hints: Hints): Verdict {
     } else if (hint?.kind === kind) set(hint.w, hint.h, hint.d);
     else if (kind !== "bench") return { skip: "no size given" };
     if (guessed.h && hint?.kind === kind) h = hint.h;
-  } else if (kind === "dropleaf") {
+  } else if (kind === "dropleaf" || kind === "gateleg") {
     // drawn with the leaves up: as wide as it opens
     const open = Math.max(...f.size.replace(/x.*$/, "").split("/").map(Number));
     set(open, undefined, v[1]);
@@ -303,6 +343,16 @@ export function classify(f: Fact, hints: Hints): Verdict {
     if (v[1] !== 200) x.l = v[1];
     set(v[1] + 11, undefined, v[0] + 10);
     h = kind === "bunk" ? 160 : /reversible/.test(t) ? 116 : 195;
+  } else if (kind === "daybed") {
+    // IKEA gives the mattress size; the outer size comes from IKEA's own pages where we have it
+    if (v.length !== 2 || v[1] < 180 || v[1] > 210) return { skip: "day-bed without a mattress size" };
+    x.m = v[0];
+    if (v[1] !== 200) x.l = v[1];
+    const known = DAYBED_SIZE[family];
+    if (known) set(...known);
+    else [w, h, d] = [v[1] + 7, 83, v[0] + 11];
+    const chest = hints(family, "chest");
+    if (x.rows && chest?.x.knobs) x.knobs = chest.x.knobs;
   } else if (kind === "cot") {
     // IKEA gives the mattress size: a cot is a little longer and wider, about 85 cm high
     if (v.length !== 2 || v[1] < 100 || v[1] > 150) return { skip: "cot without a mattress size" };
@@ -331,6 +381,14 @@ export function classify(f: Fact, hints: Hints): Verdict {
       if (cw < 50) return { skip: "corner sofa too large" };
       [w, d] = [armCm + n1 * cw + sd, sd + n2 * cw + front];
     }
+  } else if (kind === "section") {
+    // IKEA gives no size: seat width, depth and height from a straight sofa of the same family, else a typical one
+    if (v.length) return { skip: "sofa section measured in a way we can't place" };
+    const sofa = hints(family, "sofa");
+    const armCm = sofa?.x.arms === "slim" ? 8 : sofa?.x.arms === "none" ? 0 : 17;
+    const per = sofa?.kind === "sofa" && sofa.x.seats ? Math.min(75, Math.max(55, (sofa.w - 2 * Math.min(armCm, sofa.w * 0.12)) / sofa.x.seats)) : 64;
+    w = (x.seats ?? 1) * per;
+    if (sofa?.kind === "sofa") [h, d] = [sofa.h, sofa.d <= 110 ? sofa.d : 92];
   } else if (kind === "office") {
     // IKEA gives no size for office chairs: a typical one, taller with a headrest, smaller for children
     if (v.length === 3) set(v[0], v[2], v[1]);
@@ -362,7 +420,7 @@ export function classify(f: Fact, hints: Hints): Verdict {
   }
 
   // parameters from the type name, the size and the family's hand made rows
-  if (hint?.x.knobs && ["chest", "nightstand", "wardrobe", "cabinet", "sideboard", "tv", "shoe", "wallcab", "kitchen"].includes(kind)) x.knobs = hint.x.knobs;
+  if (hint?.x.knobs && ["chest", "nightstand", "wardrobe", "cabinet", "sideboard", "tv", "shoe", "wallcab", "kitchen", "mixed"].includes(kind)) x.knobs = hint.x.knobs;
   if (kind === "chest" || kind === "nightstand") {
     const total = x.rows ?? (kind === "nightstand" ? (h >= 60 ? 2 : 1) : Math.min(6, Math.max(2, Math.round(h / 14))));
     if (kind === "chest" && total === 2 && w <= 60 && h <= 65) return finish("nightstand");
@@ -372,12 +430,33 @@ export function classify(f: Fact, hints: Hints): Verdict {
     if (shape.cols === 2) x.cols = 2;
     if (hint?.x.plinth) x.plinth = true;
   }
-  if (kind === "wardrobe" && multi && w > 100) return { skip: "several wardrobe frames" };
   if (kind === "wardrobe" && x.doors === 0 && hint?.x.shelves) x.shelves = hint.x.shelves;
-  if ((kind === "cabinet" || kind === "bookcase") && multi && w > 100) return { skip: "several units side by side" };
-  // a combination this wide is more than one frame, which one carcass can't show
-  if (f.spr && w > 125 && ["bookcase", "open", "cabinet", "wardrobe", "shoe", "wallcab", "wallshelf", "kitchen"].includes(kind)) return { skip: "several units side by side" };
-  if (kind === "tv" && f.spr && w > 200) return { skip: "several units side by side" };
+  // a combination this wide is more than one frame, which one carcass can't show: a row of them when the frames are all alike
+  const several =
+    (kind === "wardrobe" || kind === "sliding") && multi && w > 100
+      ? "several wardrobe frames"
+      : ((kind === "cabinet" || kind === "bookcase") && multi && w > 100) ||
+          (f.spr && w > 125 && ["bookcase", "open", "cabinet", "wardrobe", "shoe", "wallcab", "wallshelf", "kitchen", "sliding", "slidecab"].includes(kind)) ||
+          (kind === "tv" && f.spr && w > 200)
+        ? "several units side by side"
+        : null;
+  if (several) {
+    // PAX frames (58 or 35 deep) with a pair of sliding doors in front of them all: IKEA's depth includes the doors
+    const sliding = family === "PAX" && (kind === "sliding" || (kind === "wardrobe" && (d === 66 || d === 43)));
+    if (sliding) {
+      const unit = PAX_SLIDE_UNITS.find((u) => w % u === 0 && w / u >= 2 && w / u <= 3);
+      if (!unit) return { skip: "PAX with sliding doors over frames of different widths" };
+      Object.assign(x, { n: w / unit, of: "wardrobe", slides: 2, doors: undefined, shelves: hints(family, "wardrobe")?.x.shelves });
+      for (const k of Object.keys(x) as (keyof X)[]) if (x[k] === undefined) delete x[k];
+      return finish("cabrow");
+    }
+    const unit = ROW_UNITS[family];
+    const n = unit ? Math.round(w / unit) : 0;
+    if (!unit || n < 2 || n > 4 || n * unit !== w || !["bookcase", "cabinet", "tv", "wardrobe", "wallcab"].includes(kind)) return { skip: several };
+    x.n = n;
+    x.of = kind as NonNullable<X["of"]>;
+    return finish(kind === "bookcase" ? "bookrow" : "cabrow");
+  }
   if (kind === "tv" && h > 100) return { skip: "TV storage wall" };
   if (kind === "shoe" && x.c === undefined) x.c = h < 60 ? 1 : h < 115 ? 2 : 3;
   if (kind === "cube" && (Math.round((w - 6) / 35) > 5 || Math.round((h - 6) / 35) > 5)) return { skip: "cube grid larger than 5 x 5" };

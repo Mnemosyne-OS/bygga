@@ -51,6 +51,8 @@ export const HW = {
   castor: { kind: "castor", len: 58, dia: 50 },
   gasLift: { kind: "gasLift", len: 200, dia: 50 },
   connector: { kind: "connector", len: 120, dia: 30 },
+  roller: { kind: "roller", len: 44, dia: 26 },
+  flatHinge: { kind: "flatHinge", len: 60, dia: 34 },
 } satisfies Record<string, HwDef>;
 
 const HW_NAMES: Record<HwKind, string> = {
@@ -73,6 +75,8 @@ const HW_NAMES: Record<HwKind, string> = {
   castor: "Castor",
   gasLift: "Gas lift",
   connector: "Connector",
+  roller: "Door roller",
+  flatHinge: "Flat hinge",
 };
 
 export function hwSpecText(kind: HwKind, len: number, dia: number) {
