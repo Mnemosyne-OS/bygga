@@ -113,7 +113,7 @@ BJÖRKBERGET|office|Swivel chair|60|105|64|arms=none
 BJÖRKSNÄS|bed|Bed frame, Standard King, 150 × 200 cm|166|100|209|m=150
 BJÖRKSNÄS|chest|Chest of 5 drawers, 90 × 47 × 90 cm|90|90|47|rows=5
 BJÖRKSNÄS|nightstand|Bedside table, 48 × 38 cm|48|55|38|rows=1
-BLÄDDRA|chest|Mini chest with 3 drawers, 33 × 38 cm|33|38|20|rows=3
+BLÄDDRA|chest|Mini chest with 3 drawers, 33 × 38 cm|33|38|20|rows=3,min=35
 BLÅLIDEN|cabinet|Glass-door cabinet, 35 × 32 × 151 cm|35|151|32
 BLÅMES|highchair|Highchair with tray|58|90|62
 BLÄSTÅSEN|nightstand|Bedside table, 50 × 37 × 76 cm|50|76|37|rows=2
@@ -234,7 +234,7 @@ FÄRJKARL|cabinet|Cabinet, 77 × 45 × 116 cm|77|116|45
 FÄRJKARL|cabinet|Glass-door cabinet, 87 × 45 × 161 cm|87|161|45
 FEJAN|chair|Chair, outdoor|44|88|50||outdoor garden
 FEJAN|dining|Table, outdoor, 50 × 44 cm|50|74|44||outdoor garden
-FJÄDERHARV|chest|Mini chest with 2 drawers, 32 × 25 cm|32|25|19|rows=2
+FJÄDERHARV|chest|Mini chest with 2 drawers, 32 × 25 cm|32|25|19|rows=2,min=30
 FJÄLLBO|desk|Desk, 140 × 70 cm|140|74|70
 FJÄLLBO|open|Shelving unit, 51 × 136 cm|51|136|35
 FJÄLLBO|open|Shelving unit, 100 × 95 cm|100|95|35
@@ -800,8 +800,8 @@ MITTZON|desk|Desk sit/stand, 140 × 80 cm|140|74|80
 MITTZON|desk|Desk sit/stand, 160 × 80 cm|160|74|80
 MITTZON|desk|Desk, 160 × 80 cm|160|74|80
 MOFALLA|armchair|Easy chair|75|90|80
-MOPPE|chest|Mini chest of drawers, 31 × 18 × 32 cm|31|32|18|rows=3
-MOPPE|chest|Mini chest of drawers, 42 × 18 × 32 cm|42|32|18|rows=3
+MOPPE|chest|Mini chest of drawers, 31 × 18 × 32 cm|31|32|18|rows=3,min=35
+MOPPE|chest|Mini chest of drawers, 42 × 18 × 32 cm|42|32|18|rows=3,min=35
 MÖRBYLÅNGA|dining|Table, 140 × 85 cm|140|74|85
 MÖRBYLÅNGA|dining|Table, 145 cm|145|74|145|round=1
 MOSSJÖN|cabinet|Glass-door cabinet with 2 doors, 60 × 34 × 146 cm|60|146|34

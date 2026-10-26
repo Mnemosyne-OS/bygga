@@ -274,7 +274,7 @@ const RULES: Rule[] = [
   // KALLAX sold with inserts: drawn as inserts with a door, from the bottom row up
   [/^shelving unit with (\d+) inserts$/, (m, c) => (c.f.name === "KALLAX" ? { kind: "cube", x: { ins: Number(m[1]) } } : "shelving unit with inserts")],
   // the same pieces under other names
-  [/^mini chest (?:of drawers|with (\d) drawers)$/, (m) => ({ kind: "chest", x: { rows: Number(m[1] ?? 3) } })],
+  [/^mini chest (?:of drawers|with (\d) drawers)$/, (m) => ({ kind: "chest", x: { rows: Number(m[1] ?? 3), min: 20 + 5 * Number(m[1] ?? 3) } })],
   [/^(?:cabinet with (\d) drawers|drawer unit with drop-file storage|modular chest of drawers)$/, (m) =>
     ({ kind: "chest", x: m[1] ? { rows: Number(m[1]) } : /drop-file/.test(m[0]) ? { rows: 2 } : {} })],
   [/^cabinet with \d compartments$/, () => ({ kind: "cube" })],
