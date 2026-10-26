@@ -48,7 +48,7 @@ async function main() {
   for (const e of PRODUCTS) {
     const label = `${e.slug} (${e.name} ${e.variant})`;
     const { w, h, d } = e.size;
-    if (!(w >= 15 && w <= 320 && h >= 15 && h <= 260 && d >= 12 && d <= 240)) fail(`${label}: size ${w}x${h}x${d} cm is out of range`);
+    if (!(w >= 15 && w <= (e.archetype === "sofa" ? 400 : 320) && h >= 15 && h <= 260 && d >= 12 && d <= 240)) fail(`${label}: size ${w}x${h}x${d} cm is out of range`);
     try {
       const plan = buildPlan(toSpec(e));
       if (!plan.steps.length) fail(`${label}: no steps`);

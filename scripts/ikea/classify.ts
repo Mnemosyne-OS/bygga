@@ -270,6 +270,8 @@ const RULES: Rule[] = [
   }],
   // a chaise longue sold alone as a section of a modular sofa: a one-seat section as long as a chaise
   [/^(chaise longue section|chaise longue module(?:, (?:left|right))?|chaise longue, add-on unit|modular chaise longue)$/, () => ({ kind: "section", x: { seats: 1, chaise: "right" } })],
+  // U-shaped sofas: a corner sofa with a chaise longue at the other end of the back
+  [/^u-shaped sofa, (\d)(?:[.,](5))?[- ]seat$/, (m) => ({ kind: "usofa", x: { seats: Number(m[1]) + (m[2] ? 1 : 0) } })],
   // a corner section sold alone as a piece of a modular sofa: a square seat with a backrest along two sides
   [/^(corner section|corner section with cushion|corner module)$/, () => ({ kind: "section", x: { seats: 1, corner: "left" } })],
   // corner wardrobes: frames along both walls around an add-on corner unit, with doors when a door's name comes with them
@@ -568,7 +570,7 @@ export function classify(f: Fact, hints: Hints): Verdict {
     [x.m, x.l] = [v[0], v[1]];
     set(v[1] + 10, undefined, v[0] + 8);
     h = v[1] >= 140 ? 86 : 82;
-  } else if (kind === "chaise" || kind === "corner") {
+  } else if (kind === "chaise" || kind === "corner" || kind === "usofa") {
     // IKEA gives no size: seat width, depth and height from a straight sofa of the same family, else a typical one
     const sofa = hints(family, "sofa");
     const arms = sofa?.x.arms ?? "wide";
@@ -582,6 +584,14 @@ export function classify(f: Fact, hints: Hints): Verdict {
     if (v.length) return { skip: "corner sofa measured in a way we can't place" };
     if (kind === "chaise") {
       [w, d] = [n * per + 2 * armCm, Math.min(175, Math.max(140, sd + 68))];
+    } else if (kind === "usofa") {
+      // the chaise longue and the corner seat count among the seats; the back gets the extra seat, and seats shrink
+      // a little if the U would be too big to draw
+      const n1 = Math.ceil((n - 2) / 2), n2 = n - 2 - n1;
+      const front = n2 ? armCm : 0;
+      const cw = Math.min(per, (398 - armCm - sd) / (n1 + 1), n2 ? (238 - sd - front) / n2 : Infinity);
+      if (cw < 50) return { skip: "U-shaped sofa too large" };
+      [w, d] = [armCm + (n1 + 1) * cw + sd, Math.max(Math.min(175, Math.max(140, sd + 68)), sd + n2 * cw + front)];
     } else {
       // the long side gets the extra seat; seats shrink a little if the L would be too big to draw
       const n1 = Math.ceil((n - 1) / 2), n2 = n - 1 - n1;
@@ -712,7 +722,8 @@ export function classify(f: Fact, hints: Hints): Verdict {
 
   function finish(k: Kind): Verdict {
     const arch = KIND_ARCH[k];
-    if (w < 20 || w > 320 || h < 15 || h > 260 || d < 12 || d > 240) return { skip: "size out of range" };
+    // a long sofa is drawn as sections joined together, so it can be longer than anything else
+    if (w < 20 || w > (arch === "sofa" ? 400 : 320) || h < 15 || h > 260 || d < 12 || d > 240) return { skip: "size out of range" };
     if (arch === "table" && h < 30 && k !== "kidstable") return { skip: "size out of range" };
     if (arch === "shelf" && h < 25) return { skip: "size out of range" };
     const kw: string[] = [];

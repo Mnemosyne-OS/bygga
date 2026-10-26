@@ -58,6 +58,7 @@ const CATEGORY_WORDS: [Kind, string[]][] = [
   ["cabinet", ["cabinet", "cupboard", "vitrine", "display"]],
   ["chaise", ["chaise longue", "chaise lounge", "chaise"]],
   ["section", ["sofa section", "seat section", "sofa module", "couch section", "sectional piece"]],
+  ["usofa", ["u shaped sofa", "u shaped couch", "u shaped sectional", "u sofa", "u couch", "horseshoe sofa"]],
   ["corner", ["corner sofa", "corner couch", "sectional", "l shaped sofa"]],
   ["sofa", ["sofa", "couch", "loveseat"]],
   ["lounge", ["lounge chair", "reclining chair", "garden chair", "patio chair", "deck chair", "adirondack chair"]],
@@ -72,7 +73,7 @@ const CATEGORY_WORDS: [Kind, string[]][] = [
 ];
 const KIND_WORDS = new Map(CATEGORY_WORDS);
 // rows, sections, and kinds drawn later than a family's other pieces, which only come first when asked for
-const LESSER = new Set<Kind>(["bookrow", "cabrow", "section", "sinkcab", "appliance", "washstand", "shoerack", "clothesrack", "changing", "divider", "backbench", "junior", "lounge", "highchair", "cornercab", "cornerrobe"]);
+const LESSER = new Set<Kind>(["bookrow", "cabrow", "section", "sinkcab", "appliance", "washstand", "shoerack", "clothesrack", "changing", "divider", "backbench", "junior", "lounge", "highchair", "cornercab", "cornerrobe", "usofa"]);
 
 export function kindOf(q: string): Kind | null {
   const f = " " + fold(q) + " ";

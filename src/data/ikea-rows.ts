@@ -456,12 +456,14 @@ JÄRVFJÄLLET|office|Office chair with armrests|64|105|64|arms=slim
 JÄTTEBO|chaise|2,5-seat mod sofa w chaise longue|226|85|160|seats=3,arms=wide,chaise=right,sd=92
 JÄTTEBO|chaise|3,5-seat mod sofa w chaise longues|290|85|160|seats=4,arms=wide,chaise=both,sd=92
 JÄTTEBO|chaise|4-seat mod sofa w chaise longue|290|85|160|seats=4,arms=wide,chaise=right,sd=92
+JÄTTEBO|chaise|4,5-seat mod sofa w chaise longue|354|85|160|seats=5,arms=wide,chaise=right,sd=92
 JÄTTEBO|corner|Mod crnr sofa 2,5-seat w chaise lng|173|85|156|seats=3,arms=wide,corner=left,open=1,sd=92
 JÄTTEBO|corner|Modular corner sofa, 6 seat|301|85|237|seats=6,arms=wide,corner=left,sd=92
 JÄTTEBO|section|Chaise longue module, left|64|83|160|seats=1
 JÄTTEBO|section|Chaise longue module, right|64|83|160|seats=1
 JÄTTEBO|sofa|2-seat modular sofa|170|85|92|seats=2
 JÄTTEBO|sofa|3-seat modular sofa|230|85|92|seats=3
+JÄTTEBO|usofa|U-shaped sofa, 7-seat|365|83|237|seats=7,arms=wide,sd=92
 JÄTTESTA|coffee|Coffee table, 80 × 80 cm|80|45|80
 JÄTTESTA|side|Side table, 95 × 30 cm|95|50|30
 JÄTTESTA|tv|TV bench, 160 × 40 × 49 cm|160|49|40
@@ -519,6 +521,8 @@ KIVIK|section|Corner section|95|83|95|seats=1,corner=left
 KIVIK|sofa|1-seat sofa-bed|110|85|92|seats=1
 KIVIK|sofa|2-seat sofa|170|85|92|seats=2
 KIVIK|sofa|4-seat sofa|290|85|92|seats=4
+KIVIK|usofa|U-shaped sofa, 6 seat|301|83|238|seats=6,arms=wide,sd=95
+KIVIK|usofa|U-shaped sofa, 7-seat|364|83|238|seats=7,arms=wide,sd=95
 KLACKENÄS|sideboard|Sideboard, 120 × 97 cm|120|97|45
 KLEPPSTAD|bed|Bed frame, Standard Double, 135 × 190 cm|151|96|199|m=135,l=190
 KLEPPSTAD|sliding|Wardrobe with sliding doors, 117 × 55 × 176 cm|117|176|55|slides=2
@@ -1338,6 +1342,7 @@ UPPÅKRA|corner|Modular corner sofa, 6 seat|301|85|237|seats=6,arms=wide,corner=
 UPPÅKRA|section|Chaise longue module|64|83|160|seats=1
 UPPÅKRA|section|Corner module|92|83|92|seats=1,corner=left
 UPPÅKRA|sofa|3-seat modular sofa|230|85|92|seats=3
+UPPÅKRA|usofa|U-shaped sofa, 4,5-seat|301|83|173|seats=5,arms=wide,sd=92
 URBAN|junior|Junior chair|43|91|52||kids children
 UTESPELARE|desk|Gaming desk, 160 × 80 cm|160|74|80
 UTKLASSNING|office|Gaming chair|64|128|64|arms=slim,seatH=50
@@ -1423,6 +1428,7 @@ VIMLE|section|3-seat section|207|83|98|seats=3
 VIMLE|sofa|2-seat sofa|170|85|92|seats=2
 VIMLE|sofa|2-seat sofa-bed|170|85|92|seats=2
 VIMLE|sofa|4-seat sofa|290|85|92|seats=4
+VIMLE|usofa|U-shaped sofa, 6 seat|300|83|238|seats=6,arms=wide,sd=98
 VINGSÖN|armchair|Wing chair, in/outdoor|75|104|80||outdoor garden
 VISINGSÖ|chair|Chair with armrests|44|88|50|arms=slim|outdoor garden
 VISINGSÖ|dining|Table, 70 × 70 cm|70|74|70||outdoor garden

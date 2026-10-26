@@ -36,9 +36,11 @@ export function buildCornerSofa(b: PlanBuilder, s: ProductSpec) {
   const armH = Math.min(H - 60, 640);
   const hb = H - baseTop;
   const bh = Math.max(240, H - baseTop - seatT - 40);
-  const N = clamp(Math.round(p.seats ?? 3), 2, 6);
-  const back = -D / 2;
   const corner = p.corner !== undefined;
+  // a U: a corner sofa with a chaise longue at the far end of the back
+  const u = corner && !!p.chaise;
+  const N = clamp(Math.round(p.seats ?? 3), 2, u ? 8 : 6);
+  const back = -D / 2;
   // a corner on the left is the right one mirrored
   const sx = p.corner === "left" ? -1 : 1;
   const X = (x: number) => sx * x;
@@ -62,12 +64,22 @@ export function buildCornerSofa(b: PlanBuilder, s: ProductSpec) {
     x += nm * cw;
     if (side !== "left") chaise(1);
   } else {
-    const n1 = Math.ceil((N - 1) / 2);
-    const nRet = N - 1 - n1;
+    // the corner seat, and a U's chaise longue, count among the seats
+    const k = u ? 2 : 1;
+    const n1 = Math.ceil((N - k) / 2);
+    const nRet = N - k - n1;
     // a corner with no seats in front of it is open there: no armrest across the seat
     frontArm = !p.open && nRet > 0 && a > 0;
     const aFront = frontArm ? a : 0;
-    secs.push({ name: sectionName(n1), x0: -W / 2 + a, x1: W / 2 - sd, z0: back, z1: back + sd, seats: n1, along: "x", slide: [-300, 0, 0], legs: [] });
+    let x1 = -W / 2 + a;
+    if (u) {
+      // as wide as one of the back's seats, and as long as the sofa says
+      const cwU = (W - a - sd) / (n1 + 1);
+      const reach = clamp((p.reach ?? 160) * 10, sd + 300, D);
+      secs.push({ name: "Chaise longue", x0: x1, x1: x1 + cwU, z0: back, z1: back + reach, seats: 1, along: "x", slide: [-600, 0, 0], legs: [] });
+      x1 += cwU;
+    }
+    secs.push({ name: sectionName(n1), x0: x1, x1: W / 2 - sd, z0: back, z1: back + sd, seats: n1, along: "x", slide: [-300, 0, 0], legs: [] });
     secs.push({ name: "Corner section", x0: W / 2 - sd, x1: W / 2, z0: back, z1: back + sd, seats: 1, along: "x", legs: [] });
     if (nRet > 0) secs.push({ name: sectionName(nRet), x0: W / 2 - sd, x1: W / 2, z0: back + sd, z1: D / 2 - aFront, seats: nRet, along: "z", slide: [0, 0, 300], legs: [] });
   }
@@ -221,7 +233,7 @@ export function buildCornerSofa(b: PlanBuilder, s: ProductSpec) {
   const sliders = secs.filter((x) => x.slide);
   b.step(
     {
-      title: corner ? (sliders.length > 1 ? "Join the sections to the corner" : "Join the section to the corner") : sliders.length > 1 ? "Join the chaise longues to the sofa" : "Join the chaise longue to the sofa",
+      title: u ? "Join the sections together" : corner ? (sliders.length > 1 ? "Join the sections to the corner" : "Join the section to the corner") : sliders.length > 1 ? "Join the chaise longues to the sofa" : "Join the chaise longue to the sofa",
       detail: "Push them together, then screw a connector across each joint.",
       tools: ["screwdriver"],
       pose: "-y",
@@ -241,7 +253,8 @@ export function buildCornerSofa(b: PlanBuilder, s: ProductSpec) {
       const screws: FitOpts[] = [];
       const half = HW.connector.len / 4;
       for (const sec of sliders) {
-        const fixed = corner ? secs[1] : secs.find((x) => !x.slide);
+        // a U's chaise longue joins the back's seats, which join the corner
+        const fixed = u ? (sec.name === "Chaise longue" ? secs[1] : secs.find((x) => x.name === "Corner section")) : corner ? secs[1] : secs.find((x) => !x.slide);
         if (!fixed) continue;
         for (const f of [0.3, 0.7]) {
           if (sec.along === "z") {

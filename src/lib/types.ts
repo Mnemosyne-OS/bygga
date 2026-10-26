@@ -126,6 +126,7 @@ export interface SofaParams {
   corner?: "left" | "right"; // an L: the return runs forward on that side; size.d is its length
   open?: boolean; // corner sofas: no armrest at the front of the return
   depth?: number; // cm, depth of the seat sections of a corner or chaise sofa
+  reach?: number; // cm, how far a U-shaped sofa's chaise longue reaches forward (with both corner and chaise set)
 }
 
 /** A product read from someone's own manual: parts as boxes in the assembled product, steps that add them. */
