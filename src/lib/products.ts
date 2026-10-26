@@ -458,7 +458,13 @@ export function specFor(kind: Kind, name: string, variant: string, w: number, h:
       return { ...base, seat: { kind: "bench", seat: "square", seatH: h, splay: false } };
     case "sofa":
     case "armchair":
-      return { ...base, people: kind === "sofa" ? 2 : 1, sofa: { seats: x.seats ?? (kind === "armchair" ? 1 : Math.max(1, Math.round((w - 30) / 62))), arms: x.arms ?? "wide", legs: "round" } };
+      return {
+        ...base,
+        people: kind === "sofa" ? 2 : 1,
+        // more than four seats come as two sections joined together
+        ...(kind === "sofa" && (x.seats ?? 0) > 4 ? { minutes: x.min ?? MIN.sofa + 30, difficulty: 3 as const } : {}),
+        sofa: { seats: x.seats ?? (kind === "armchair" ? 1 : Math.max(1, Math.round((w - 30) / 62))), arms: x.arms ?? "wide", legs: "round" },
+      };
     case "wallshelf":
       return { ...base, difficulty: 1, people: 1, shelf: { style: "bookcase", shelves: x.shelves ?? Math.max(0, Math.round(h / 35) - 1), fixedShelf: false, back: false, plinth: false, outer: 16, wall: true } };
     case "wallcab":
@@ -528,7 +534,8 @@ export function specFor(kind: Kind, name: string, variant: string, w: number, h:
       const seats = x.seats ?? 1;
       // x.corner: a corner section, with a backrest along the back and down that side
       if (x.corner) return { ...base, minutes: x.min ?? MIN.section + 15, people: 1, sofa: { seats: 1, arms: "none", legs: "round", corner: x.corner } };
-      return { ...base, minutes: x.min ?? MIN.section + 10 * seats, people: seats > 1 ? 2 : 1, sofa: { seats, arms: "none", legs: "round" } };
+      // x.arms: a modular easy chair, a one-seat section with an armrest on each side
+      return { ...base, minutes: x.min ?? MIN.section + 10 * seats + (x.arms ? 10 : 0), people: seats > 1 ? 2 : 1, sofa: { seats, arms: x.arms ?? "none", legs: "round" } };
     }
     case "washstand":
     case "sinkcab":

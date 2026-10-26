@@ -280,7 +280,11 @@ const RULES: Rule[] = [
   [/^add-on corner unit with (\d) shelves$/, (m) => ({ kind: "cabinet", x: { doors: 0, shelves: Number(m[1]) } })],
   [/corner|chaise|u-shaped|crnr/, () => "corner or chaise longue sofa"],
   // a straight sofa section sold alone: a seat frame with legs, a backrest and cushions, no armrests
-  [/^(\d)-seat section( for modular sofa)?$/, (m) => ({ kind: "section", x: { seats: Number(m[1]) } })],
+  [/^(\d)-seat (?:sofa-bed )?section( for modular sofa)?$/, (m) => ({ kind: "section", x: { seats: Number(m[1]) } })],
+  // the same, as IKEA names them in other families: modules, half a seat wider for a "1.5-seat" one
+  [/^(\d)(?:[.,]5)?-seat module$|^one-seat section$/, (m) => ({ kind: "section", x: { seats: Number(m[1] ?? 1) } })],
+  // a modular easy chair: a one-seat section with an armrest on each side
+  [/^modular easy chair$/, () => ({ kind: "section", x: { seats: 1, arms: "wide" } })],
   [/section|add-on|(?<!with )armrest|backrest for|seat sec|modular (easy chair|chaise)/, () => "sofa or storage section"],
   // bunk beds on four posts, and loft beds with room underneath (KURA turns over to be either)
   [/^(bunk bed frame|loft bed frame|loft bed|reversible bed)$/, (m, c) => {
@@ -429,7 +433,7 @@ const RULES: Rule[] = [
   [/^(armchair|easy chair|wing chair|high-back armchair|low-back armchair|rocking-chair|children's armchair|armchair with cushion)$/, () => ({ kind: "armchair" })],
   [/^((\d)(,5)?-seat (modular )?sofa(-bed)?|sofa|sofa-bed|loveseat)$/, (m) => {
     const seats = m[2] ? Number(m[2]) + (m[3] ? 1 : 0) : 3;
-    return seats > 4 ? "sofa with more than 4 seats" : { kind: "sofa", x: { seats } };
+    return seats > 6 ? "sofa with more than 6 seats" : { kind: "sofa", x: { seats } };
   }],
 
   // beds
@@ -602,11 +606,14 @@ export function classify(f: Fact, hints: Hints): Verdict {
     }
   } else if (kind === "section") {
     // IKEA gives no size: seat width, depth and height from a straight sofa of the same family, else a typical one
-    if (v.length) return { skip: "sofa section measured in a way we can't place" };
+    // a modular easy chair may come measured across
+    if (v.length && !(x.arms && v.length === 1)) return { skip: "sofa section measured in a way we can't place" };
     const sofa = hints(family, "sofa");
     const armCm = sofa?.x.arms === "slim" ? 8 : sofa?.x.arms === "none" ? 0 : 17;
     const per = sofa?.kind === "sofa" && sofa.x.seats ? Math.min(75, Math.max(55, (sofa.w - 2 * Math.min(armCm, sofa.w * 0.12)) / sofa.x.seats)) : 64;
     w = (x.seats ?? 1) * per;
+    if (/^\d[.,]5-seat/.test(t)) w += per / 2;
+    if (x.arms) w = v.length ? v[0] : w + 2 * (sofa?.x.arms === "slim" ? 8 : 17);
     if (sofa?.kind === "sofa") [h, d] = [sofa.h, sofa.d <= 110 ? sofa.d : 92];
     // a chaise longue section reaches forward as far as the family's chaise would
     if (x.chaise) {
@@ -662,6 +669,13 @@ export function classify(f: Fact, hints: Hints): Verdict {
     if (kind === "chair" && x.seatH && guessed.h) h = x.seatH + 32;
     if (kind === "lounge" && guessed.h && /reclin/.test(t)) [w, h, d] = [66, 102, 84];
     if (kind === "sofa" && guessed.w) w = (x.seats ?? 3) * 60 + 50;
+    // more than four seats: two sections side by side, as wide as the family's own seats, or as wide as we draw
+    if (kind === "sofa" && guessed.w && (x.seats ?? 3) > 4) w = Math.min(398, w);
+    if (kind === "sofa" && guessed.w && (x.seats ?? 3) > 4 && hint?.kind === "sofa" && hint.x.seats) {
+      const armCm = hint.x.arms === "wide" ? 17 : hint.x.arms === "slim" ? 8 : hint.x.arms === "none" ? 0 : 17;
+      w = (x.seats ?? 3) * ((hint.w - 2 * armCm) / hint.x.seats) + 2 * armCm;
+      [h, d] = [hint.h, hint.d];
+    }
     if (kind === "armchair" && /wing|high-back/.test(t) && guessed.h) h = 104;
     if (kind === "armchair" && kids && guessed.w) [w, h, d] = [55, 68, 58];
     if (hint && guessed.w && guessed.h && hint.kind === kind && (kind !== "sofa" || hint.x.seats === x.seats)) {

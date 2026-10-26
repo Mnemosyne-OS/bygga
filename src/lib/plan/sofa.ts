@@ -14,7 +14,8 @@ export function defaultsSofa(s: ProductSpec): SofaParams {
 
 /** Upholstered sofas and armchairs: legs on the base, arms and back bolted on, cushions last. */
 export function buildSofa(b: PlanBuilder, s: ProductSpec) {
-  if (s.sofa?.chaise || s.sofa?.corner) return buildCornerSofa(b, s);
+  // more than four seats: two sections joined, like a corner sofa without the corner
+  if (s.sofa?.chaise || s.sofa?.corner || (s.sofa?.seats ?? 0) > 4) return buildCornerSofa(b, s);
   const p = defaultsSofa(s);
   const W = s.size.w * 10, H = s.size.h * 10, D = s.size.d * 10;
   const a = p.arms === "wide" ? Math.min(170, W * 0.12) : p.arms === "slim" ? 80 : 0;

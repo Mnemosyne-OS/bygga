@@ -29,7 +29,9 @@ export function buildCornerSofa(b: PlanBuilder, s: ProductSpec) {
   const W = s.size.w * 10, H = s.size.h * 10, D = s.size.d * 10;
   const arms = p.arms ?? "wide";
   const a = arms === "wide" ? Math.min(170, W * 0.12) : arms === "slim" ? 80 : 0;
-  const sd = clamp((p.depth ?? 92) * 10, 700, Math.min(1100, D - 300));
+  // a long straight sofa: two sections side by side, as deep as the sofa
+  const straight = p.corner === undefined && !p.chaise;
+  const sd = straight ? D : clamp((p.depth ?? 92) * 10, 700, Math.min(1100, D - 300));
   const legH = 110, baseTop = 300, seatT = 140;
   const fh = baseTop - legH;
   const backT = Math.min(200, sd * 0.22);
@@ -49,7 +51,13 @@ export function buildCornerSofa(b: PlanBuilder, s: ProductSpec) {
   const secs: Section[] = [];
   const sectionName = (n: number) => `${n}-seat section`;
   let frontArm = false;
-  if (!corner) {
+  if (straight) {
+    // the longer section first, the other pushed against its right-hand end
+    const cw = (W - 2 * a) / N;
+    const n0 = Math.ceil(N / 2);
+    secs.push({ name: sectionName(n0), x0: -W / 2 + a, x1: -W / 2 + a + n0 * cw, z0: back, z1: D / 2, seats: n0, along: "x", legs: [] });
+    secs.push({ name: sectionName(N - n0), x0: -W / 2 + a + n0 * cw, x1: W / 2 - a, z0: back, z1: D / 2, seats: N - n0, along: "x", slide: [300, 0, 0], legs: [] });
+  } else if (!corner) {
     const side = p.chaise ?? "right";
     const nCh = side === "both" ? 2 : 1;
     const cw = (W - 2 * a) / N;
@@ -233,7 +241,7 @@ export function buildCornerSofa(b: PlanBuilder, s: ProductSpec) {
   const sliders = secs.filter((x) => x.slide);
   b.step(
     {
-      title: u ? "Join the sections together" : corner ? (sliders.length > 1 ? "Join the sections to the corner" : "Join the section to the corner") : sliders.length > 1 ? "Join the chaise longues to the sofa" : "Join the chaise longue to the sofa",
+      title: u || straight ? "Join the sections together" : corner ? (sliders.length > 1 ? "Join the sections to the corner" : "Join the section to the corner") : sliders.length > 1 ? "Join the chaise longues to the sofa" : "Join the chaise longue to the sofa",
       detail: "Push them together, then screw a connector across each joint.",
       tools: ["screwdriver"],
       pose: "-y",
