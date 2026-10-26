@@ -50,7 +50,7 @@ export interface BedParams {
 }
 
 export interface CabinetParams {
-  fronts: "doors" | "tilt";
+  fronts: "doors" | "tilt" | "sliding";
   compartments: number;
   doors: 0 | 1 | 2;
   shelves: number;
@@ -61,6 +61,7 @@ export interface CabinetParams {
   wall?: boolean; // hangs on the wall instead of standing on the floor
   drawers?: number; // drawers as well as doors: full-width drawers, split from the doors by a fixed shelf
   drawerAt?: "top" | "bottom"; // where the drawers are; under the doors unless it says top
+  slides?: number; // sliding doors: how many, running in two tracks
 }
 
 export interface SeatParams {
@@ -202,7 +203,8 @@ export type HwKind =
   | "plug"
   | "castor"
   | "gasLift"
-  | "connector";
+  | "connector"
+  | "roller";
 
 export interface HwType {
   id: string;

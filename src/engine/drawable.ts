@@ -259,6 +259,12 @@ export function hwDrawable(kind: HwKind, len: number, dia: number) {
         addSolid(d, `ca:wheel:${dia}`, () => new THREE.CylinderGeometry(r, r, dia * 0.26, 24).rotateZ(Math.PI / 2), plastic, { hull: "radial", position: [x * dia * 0.21, len - r, -dia * 0.16] });
       break;
     }
+    case "roller":
+      // a sliding door's roller: a plate screwed to the door's edge, an arm, and a wheel that runs in the track
+      addSolid(d, `ro:plate:${len}`, () => new THREE.BoxGeometry(len, 3, 14), metal, { position: [0, 1.5, 0] });
+      addSolid(d, "ro:arm", () => new THREE.BoxGeometry(8, len * 0.45, 8), metal, { position: [0, 3 + len * 0.22, 0] });
+      addSolid(d, `ro:wheel:${dia}`, () => new THREE.CylinderGeometry(r, r, 7, 22).rotateX(Math.PI / 2), plastic, { hull: "radial", position: [0, 3 + len * 0.45 + r * 0.4, 0] });
+      break;
     case "connector":
       // a flat strip screwed across the joint between two sofa sections
       addSolid(d, `cn:${len}:${dia}`, () => new THREE.BoxGeometry(len, 2, dia), metal, { position: [0, 1, 0] });

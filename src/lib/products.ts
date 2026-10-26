@@ -43,7 +43,9 @@ export type Kind =
   | "loft"
   | "dropleaf"
   | "daybed"
-  | "mixed";
+  | "mixed"
+  | "sliding"
+  | "slidecab";
 
 export type X = {
   rows?: number;
@@ -75,6 +77,7 @@ export type X = {
   mats?: number;
   dtop?: boolean;
   rail?: boolean;
+  slides?: number;
 };
 
 export type Row = [name: string, kind: Kind, variant: string, w: number, h: number, d: number, x?: X, keywords?: string];
@@ -248,7 +251,7 @@ const MIN: Record<Kind, number> = {
   cube: 40, bookcase: 50, open: 40, chest: 90, nightstand: 40, desk: 25, coffee: 20, side: 15, dining: 40,
   bed: 100, wardrobe: 120, cabinet: 60, sideboard: 80, tv: 60, shoe: 45, chair: 25, stool: 12, bench: 20, sofa: 40, armchair: 30,
   wallshelf: 25, wallcab: 40, kitchen: 50, trolley: 25, bar: 35, console: 30, kidstable: 15, kidschair: 20,
-  office: 20, chaise: 55, corner: 70, cot: 35, bunk: 90, loft: 75, dropleaf: 40, daybed: 60, mixed: 50,
+  office: 20, chaise: 55, corner: 70, cot: 35, bunk: 90, loft: 75, dropleaf: 40, daybed: 60, mixed: 50, sliding: 110, slidecab: 60,
 };
 
 const CATEGORY: Record<Kind, string> = {
@@ -257,7 +260,7 @@ const CATEGORY: Record<Kind, string> = {
   cabinet: "Cabinet", sideboard: "Sideboard", tv: "TV bench", shoe: "Shoe cabinet", chair: "Chair", stool: "Stool",
   bench: "Bench", sofa: "Sofa", armchair: "Armchair", wallshelf: "Wall shelf", wallcab: "Wall cabinet", kitchen: "Kitchen cabinet",
   trolley: "Trolley", bar: "Bar table", console: "Console table", kidstable: "Children's table", kidschair: "Children's chair",
-  office: "Office chair", chaise: "Sofa with chaise longue", corner: "Corner sofa", cot: "Cot", bunk: "Bunk bed", loft: "Loft bed", dropleaf: "Drop-leaf table", daybed: "Day-bed", mixed: "Cabinet with doors and drawers",
+  office: "Office chair", chaise: "Sofa with chaise longue", corner: "Corner sofa", cot: "Cot", bunk: "Bunk bed", loft: "Loft bed", dropleaf: "Drop-leaf table", daybed: "Day-bed", mixed: "Cabinet with doors and drawers", sliding: "Wardrobe with sliding doors", slidecab: "Cabinet with sliding doors",
 };
 
 export const KIND_ARCH: Record<Kind, Archetype> = {
@@ -265,7 +268,7 @@ export const KIND_ARCH: Record<Kind, Archetype> = {
   side: "table", dining: "table", bed: "bed", wardrobe: "cabinet", cabinet: "cabinet", sideboard: "cabinet", tv: "cabinet",
   shoe: "cabinet", chair: "seat", stool: "seat", bench: "seat", sofa: "sofa", armchair: "sofa", wallshelf: "shelf", wallcab: "cabinet",
   kitchen: "cabinet", trolley: "table", bar: "table", console: "table", kidstable: "table", kidschair: "seat",
-  office: "seat", chaise: "sofa", corner: "sofa", cot: "bed", bunk: "bed", loft: "bed", dropleaf: "table", daybed: "bed", mixed: "cabinet",
+  office: "seat", chaise: "sofa", corner: "sofa", cot: "bed", bunk: "bed", loft: "bed", dropleaf: "table", daybed: "bed", mixed: "cabinet", sliding: "cabinet", slidecab: "cabinet",
 };
 
 const round = (x: X) => (x.round ? { round: true } : {});
@@ -368,6 +371,12 @@ export function specFor(kind: Kind, name: string, variant: string, w: number, h:
       const at = x.dtop ? { drawerAt: "top" as const } : {};
       return { ...base, category, minutes: x.min ?? MIN.mixed + 20 * rows + (h > 150 ? 30 : 0), people: h > 150 ? 2 : 1, difficulty: 3, cabinet: { doors: x.doors ?? (w > 50 ? 2 : 1), shelves: x.shelves ?? (h > 150 ? 2 : 1), rail: !!x.rail, plinth: x.plinth ?? (h > 100 || !!x.dtop), handles: x.knobs ?? (x.dtop ? "bar" : "knob"), thickness: 18, drawers: rows, ...at } };
     }
+    case "sliding":
+    case "slidecab": {
+      // x.slides: how many sliding doors; a wardrobe has a top shelf and a clothes rail
+      const robe = kind === "sliding";
+      return { ...base, people: robe || h > 150 ? 2 : 1, difficulty: robe ? 3 : 2, cabinet: { fronts: "sliding", slides: x.slides ?? 2, doors: 0, shelves: x.shelves ?? (robe ? 1 : h > 150 ? 3 : h > 100 ? 2 : 1), rail: robe, plinth: x.plinth ?? h > 120, handles: "none", thickness: robe ? 18 : 16 } };
+    }
   }
 }
 
@@ -398,5 +407,5 @@ export const KIND_DEFAULT_SIZE: Record<Kind, [number, number, number]> = {
   sideboard: [140, 85, 45], tv: [150, 50, 42], shoe: [60, 100, 28], chair: [44, 88, 50], stool: [35, 45, 35], bench: [100, 45, 38],
   sofa: [210, 85, 92], armchair: [75, 90, 80], wallshelf: [60, 60, 22], wallcab: [60, 60, 35], kitchen: [60, 80, 60], trolley: [50, 80, 40],
   bar: [120, 105, 60], console: [100, 79, 35], kidstable: [77, 48, 55], kidschair: [34, 60, 34],
-  office: [64, 105, 64], chaise: [226, 85, 160], corner: [233, 85, 171], cot: [130, 84, 68], bunk: [211, 160, 100], loft: [211, 195, 100], dropleaf: [134, 75, 80], daybed: [207, 83, 91], mixed: [80, 120, 40],
+  office: [64, 105, 64], chaise: [226, 85, 160], corner: [233, 85, 171], cot: [130, 84, 68], bunk: [211, 160, 100], loft: [211, 195, 100], dropleaf: [134, 75, 80], daybed: [207, 83, 91], mixed: [80, 120, 40], sliding: [118, 200, 60], slidecab: [80, 110, 45],
 };

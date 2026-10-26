@@ -39,6 +39,8 @@ const CATEGORY_WORDS: [Kind, string[]][] = [
   ["loft", ["loft bed", "high sleeper"]],
   ["daybed", ["daybed", "day bed", "trundle bed"]],
   ["bed", ["bed", "bedframe"]],
+  ["slidecab", ["cabinet with sliding doors", "sliding door cabinet", "cupboard with sliding doors", "sliding door cupboard"]],
+  ["sliding", ["wardrobe with sliding doors", "sliding wardrobe", "sliding door wardrobe", "sliding door closet", "sliding closet", "sliding doors"]],
   ["wardrobe", ["wardrobe", "closet", "armoire"]],
   ["sideboard", ["sideboard", "buffet"]],
   ["cabinet", ["cabinet", "cupboard", "vitrine", "display"]],

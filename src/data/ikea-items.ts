@@ -24,6 +24,7 @@ angsjon-high-cabinet-door-40-x-35-x-195|80535079 40535081 60535080
 angsjon-wall-cabinet-door-40-x-15-x-95|20535077 00535078 40535076
 ankarudden-chest-4-drawers-80-x-48-x-107|80627149
 ankarudden-chest-6-drawers-139-x-48-x-87|20627147
+ankarudden-wardrobe-sliding-doors-98-x-60-x-190|50626250
 applaryd-2-seat-sofa|00506231 20575073 60506233 60575066
 applaryd-3-seat-sofa|80506246 10506235 20575087 30575077
 applaryd-3-seat-sofa-chaise-longue|79418057 89418066 79528174 79528169
@@ -241,6 +242,7 @@ fryksas-cabinet-81-x-124|40574096
 fryksas-desk-110-x-54|60574104
 fryksas-tv-bench-157-x-41-x-49|80574099
 galant-cabinet-doors-80-x-120|10365141 50365139
+galant-cabinet-sliding-doors-160-x-120|30365135 20365131
 galant-drawer-unit-80-x-80|90365161 30365159
 galant-drawer-unit-on-castors-45-x-55|10365155 60365153
 garnanas-coffee-table-65-x-65|00556508
@@ -248,6 +250,7 @@ gavle-easy-chair|80588845 50588842
 gillersberg-bedside-table-39-x-39-x-56|30608983
 gladhojden-desk-sit-stand-100-x-60|30493939
 gladstad-upholstered-bed-frame-standard-king-150|40490469 60490468
+glamberget-wardrobe-3-sliding-doors-117-x-63-x-1|20564512
 glenn-bar-stool-66|60131734
 glostad-2-seat-sofa|90489010
 glostad-3-seat-sofa|80595940
@@ -310,6 +313,7 @@ hauga-sideboard-140-x-46-x-84|40621489 60621488
 hauga-table-118-x-74|00576709 50576716
 hauga-tv-bench-206-x-46-x-54|80593385 50593382
 hauga-wardrobe-70-x-199|20415046 60415054
+hauga-wardrobe-sliding-doors-118-x-55-x-199|60456916 60407271
 havback-high-cabinet-door-40-x-35-x-195|40535000 20535063 40535062
 havback-wall-cabinet-door-40-x-15-x-95|60535056 40534996 40535057
 havsta-cabinet-doors-81-x-123|50529249 30529245 60529263 40529259 00529261
@@ -392,6 +396,7 @@ invallning-trolley-68-x-39|10569398
 ismantorp-armchair|60598218 10598225
 ivar-cabinet-doors-80-x-83|50531252 00531240 40033763 70033766
 ivar-cabinet-doors-89-x-30-x-124|69508162 49508158
+ivar-cabinet-sliding-doors-80-x-30-x-60|00494394
 ivar-shelving-unit-80-x-30-x-166|69562823
 ivar-shelving-unit-80-x-30-x-83|00522330
 ivar-shelving-unit-89-x-179|49590577 99572571
@@ -463,6 +468,7 @@ klackenas-sideboard-120-x-97|90506750
 kleppstad-bed-frame-standard-double-135-x-190|40492675 20492681
 kleppstad-wardrobe-2-doors-79-x-176|80437234
 kleppstad-wardrobe-3-doors-117-x-55-x-176|00441758
+kleppstad-wardrobe-sliding-doors-117-x-55-x-176|90437238
 klippan-2-seat-sofa|49625204 89246862 89561667 90399316
 klippuggla-bed-frame-storage-90-x-200|19627346 09627827
 knarrevik-bedside-table-37-x-28-x-45|00576318 20569977
@@ -790,6 +796,7 @@ ragrund-shelving-unit-37-x-37-x-104|80549420
 ragrund-trolley-42-x-33-x-76|20549418
 rakkestad-wardrobe-2-doors-79-x-176|50453758
 rakkestad-wardrobe-3-doors-117-x-176|70453762
+rakkestad-wardrobe-sliding-doors-117-x-176|60453767
 ramnefjall-upholstered-bed-frame-standard-double|49560212 79560215 09560266 89627263 69627264 69560268 69627221
 ramnefjall-upholstered-bed-frame-standard-single|59560216 09560271
 raskog-trolley-28-x-38-x-61|00586789 50591769 10637203 20629716 80586790 00629717 40629715
@@ -928,6 +935,7 @@ stockholm-2025-3-seat-sofa|99574297 29574291 09574305 20586095
 stockholm-2025-4-seat-sofa|59574322 59574317 09574310
 stockholm-2025-armchair|10594755 09578266
 stockholm-2025-cabinet-2-doors-80-x-40-x-126|90586488 10586487 10586492
+stockholm-2025-cabinet-sliding-doors-125-x-47-x|70586639
 stockholm-2025-chair|40593783 80593781 20590139 40590138 90593785
 stockholm-2025-coffee-table-160-x-45|50594763
 stockholm-2025-easy-chair|80594785
@@ -1004,6 +1012,12 @@ tonstad-bookcase-81-x-37-x-201|10528464
 tonstad-bookcase-82-x-37-x-201|70528461
 tonstad-cabinet-doors-81-x-47-x-91|90488713
 tonstad-cabinet-doors-82-x-47-x-90|00489236
+tonstad-cabinet-sliding-doors-81-x-37-x-116|30488886
+tonstad-cabinet-sliding-doors-82-x-37-x-120|10489231
+tonstad-cabinet-sliding-glass-doors-120-x-37-x-1|20488896
+tonstad-cabinet-sliding-glass-doors-121-x-37-x-1|20489278
+tonstad-cabinet-sliding-glass-doors-81-x-37-x-11|40488895
+tonstad-cabinet-sliding-glass-doors-82-x-37-x-12|00489284
 tonstad-chair|69599685 59599657 89602173 39599682 29599654 49602170 09599688 79599661 19602176 80594035 10594029 20594038
 tonstad-chest-4-drawers-82-x-47-x-90|60614614 30614615
 tonstad-chest-4-drawers-82-x-47-x-91|70614618
@@ -1050,6 +1064,9 @@ trofast-storage-frame-99-x-94|10091453 10615395
 trones-shoe-cabinet-52-x-39|00397307 80397313
 trotten-cabinet-doors-70-x-35-x-110|80623962
 trotten-cabinet-doors-70-x-35-x-173|40474836 30474766
+trotten-cabinet-sliding-doors-80-x-55-x-110|20474837 60474760
+trotten-cabinet-sliding-doors-80-x-55-x-180|80474759 80474839
+trotten-cabinet-sliding-doors-80-x-55-x-75|00474838 40474761
 trotten-desk-120-x-70|49621885 09621873 59621917 19621919
 trotten-desk-160-x-80|79621921
 trotten-desk-sit-stand-160-x-80|59621899
@@ -1101,6 +1118,8 @@ vihals-bed-frame-4-storage-boxes-standard-double|69582005 49582006
 vihals-bed-frame-standard-double-135-x-190|39581842 59581841
 vihals-bed-frame-standard-single-90-x-190|30602429 89581854
 vihals-bedside-table-37-x-37|80488737
+vihals-cabinet-sliding-doors-95-x-47-x-90|20483262
+vihals-cabinet-sliding-glass-doors-95-x-37-x-90|80542876
 vihals-chair|10595123 60595125 50569103
 vihals-chest-4-drawers-70-x-47-x-90|00483239
 vihals-chest-6-drawers-140-x-47-x-75|80490113

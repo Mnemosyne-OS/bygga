@@ -23,6 +23,7 @@ ALEX|open|Storage unit, 36 × 70 cm|36|70|35
 ÄNGSJÖN|wallcab|Wall cabinet with door, 40 × 15 × 95 cm|40|95|15|doors=1
 ANKARUDDEN|chest|Chest of 4 drawers, 80 × 48 × 107 cm|80|107|48|rows=4
 ANKARUDDEN|chest|Chest of 6 drawers, 139 × 48 × 87 cm|139|87|48|rows=3,cols=2
+ANKARUDDEN|sliding|Wardrobe with sliding doors, 98 × 60 × 190 cm|98|190|60|slides=2
 ÄPPLARYD|chaise|3-seat sofa with chaise longue|226|85|160|seats=3,arms=wide,chaise=right,sd=92
 ÄPPLARYD|chaise|4-seat sofa with chaise longue|290|85|160|seats=4,arms=wide,chaise=right,sd=92
 ÄPPLARYD|sofa|2-seat sofa|170|85|92|seats=2
@@ -220,11 +221,13 @@ FRYKSÅS|tv|TV bench, 157 × 41 × 49 cm|157|49|41
 GALANT|cabinet|Cabinet with doors, 80 × 120 cm|80|120|40
 GALANT|chest|Drawer unit on castors, 45 × 55 cm|45|55|48|rows=4
 GALANT|chest|Drawer unit, 80 × 80 cm|80|80|48|rows=6
+GALANT|slidecab|Cabinet with sliding doors, 160 × 120 cm|160|120|45|slides=2
 GARNANÄS|coffee|Coffee table, 65 × 65 cm|65|45|65
 GÄVLE|armchair|Easy chair|75|90|80
 GILLERSBERG|nightstand|Bedside table, 39 × 39 × 56 cm|39|56|39|rows=1
 GLADHÖJDEN|desk|Desk sit/stand, 100 × 60 cm|100|74|60
 GLADSTAD|bed|Upholstered bed frame, Standard King, 150 × 200 cm|166|100|209|m=150
+GLAMBERGET|sliding|Wardrobe with 3 sliding doors, 117 × 63 × 150 cm|117|150|63|slides=3
 GLENN|stool|Bar stool, 66 cm|35|66|35
 GLOSTAD|chaise|3-seat sofa with chaise longue|201|78|150|seats=3,arms=wide,chaise=right,sd=82
 GLOSTAD|sofa|3-seat sofa|230|85|92|seats=3
@@ -282,6 +285,7 @@ HAUGA|dining|Table, 118 × 74 cm|118|74|74
 HAUGA|dropleaf|Drop-leaf table, 55/82/109 × 74 cm|109|75|74|leaves=2,leaf=27
 HAUGA|nightstand|Bedside table, 40 × 36 cm|40|55|36|rows=1,knobs=bar
 HAUGA|sideboard|Sideboard, 140 × 46 × 84 cm|140|84|46|knobs=bar
+HAUGA|sliding|Wardrobe with sliding doors, 118 × 55 × 199 cm|118|199|55|slides=2
 HAUGA|tv|TV bench, 206 × 46 × 54 cm|206|54|46|knobs=bar
 HAVBÄCK|cabinet|High cabinet with door, 40 × 35 × 195 cm|40|195|35|doors=1
 HAVBÄCK|wallcab|Wall cabinet with door, 40 × 15 × 95 cm|40|95|15|doors=1
@@ -359,6 +363,7 @@ IVAR|open|Shelving unit, 89 × 30 × 124 cm|89|124|30
 IVAR|open|Shelving unit, 89 × 50 × 179 cm|89|179|50
 IVAR|open|Shelving unit, 89 × 30 × 226 cm|89|226|30
 IVAR|open|Shelving unit, 89 × 50 × 226 cm|89|226|50
+IVAR|slidecab|Cabinet with sliding doors, 80 × 30 × 60 cm|80|60|30|slides=2
 IVÖSJÖN|cabinet|Cabinet with doors, 33 × 34 × 99 cm|33|99|34
 JAKOBSFORS|coffee|Coffee table, 80 cm|80|45|80|round=1
 JÄRVFJÄLLET|office|Office chair with armrests|64|105|64|arms=slim
@@ -412,6 +417,7 @@ KIVIK|sofa|2-seat sofa|170|85|92|seats=2
 KIVIK|sofa|4-seat sofa|290|85|92|seats=4
 KLACKENÄS|sideboard|Sideboard, 120 × 97 cm|120|97|45
 KLEPPSTAD|bed|Bed frame, Standard Double, 135 × 190 cm|151|96|199|m=135,l=190
+KLEPPSTAD|sliding|Wardrobe with sliding doors, 117 × 55 × 176 cm|117|176|55|slides=2
 KLEPPSTAD|wardrobe|Wardrobe with 3 doors, 117 × 55 × 176 cm|117|176|55|doors=2
 KLIPPUGGLA|bed|Bed frame with storage, 90 × 200 cm|106|100|209|m=90
 KNARREVIK|nightstand|Bedside table, 37 × 28 × 45 cm|37|45|28|rows=1
@@ -714,6 +720,7 @@ RAGGBERG|bench|Bench with shoe storage, 60 × 35 × 45 cm|60|45|35
 RÅGRUND|bench|Bench, 78 × 37 cm|78|45|37
 RÅGRUND|open|Shelving unit, 37 × 37 × 104 cm|37|104|37
 RÅGRUND|trolley|Trolley, 42 × 33 × 76 cm|42|76|33
+RAKKESTAD|sliding|Wardrobe with sliding doors, 117 × 176 cm|117|176|51|slides=2
 RAKKESTAD|wardrobe|Wardrobe with 3 doors, 117 × 176 cm|117|176|51|doors=2
 RAMNEFJÄLL|bed|Upholstered bed frame, Standard Single, 90 × 190 cm|106|100|199|m=90,l=190
 RAMNEFJÄLL|bed|Upholstered bed frame, Standard Double, 135 × 190 cm|151|100|199|m=135,l=190
@@ -855,6 +862,7 @@ STOCKHOLM 2025|open|Shelving unit, 120 × 40 × 188 cm|120|188|40
 STOCKHOLM 2025|side|Side table, 40 cm|40|50|40|round=1
 STOCKHOLM 2025|side|Side table, 55 cm|55|50|55|round=1
 STOCKHOLM 2025|sideboard|Sideboard, 161 × 42 × 83 cm|161|83|42
+STOCKHOLM 2025|slidecab|Cabinet with sliding doors, 125 × 47 × 110 cm|125|110|47|slides=2
 STOCKHOLM 2025|sofa|2-seat sofa|170|85|92|seats=2
 STOCKHOLM 2025|sofa|3-seat sofa|230|85|92|seats=3
 STOCKHOLM 2025|sofa|4-seat sofa|290|85|92|seats=4
@@ -939,6 +947,12 @@ TONSTAD|open|Shelving unit, 121 × 37 × 120 cm|121|120|37
 TONSTAD|side|Side table, 64 × 40 cm|64|50|40
 TONSTAD|sideboard|Sideboard, 120 × 47 × 91 cm|120|91|47
 TONSTAD|sideboard|Sideboard, 121 × 47 × 90 cm|121|90|47
+TONSTAD|slidecab|Cabinet with sliding doors, 81 × 37 × 116 cm|81|116|37|slides=2
+TONSTAD|slidecab|Cabinet with sliding glass doors, 81 × 37 × 116 cm|81|116|37|slides=2
+TONSTAD|slidecab|Cabinet with sliding doors, 82 × 37 × 120 cm|82|120|37|slides=2
+TONSTAD|slidecab|Cabinet with sliding glass doors, 82 × 37 × 120 cm|82|120|37|slides=2
+TONSTAD|slidecab|Cabinet with sliding glass doors, 120 × 37 × 116 cm|120|116|37|slides=2
+TONSTAD|slidecab|Cabinet with sliding glass doors, 121 × 37 × 120 cm|121|120|37|slides=2
 TONSTAD|tv|TV bench, 177 × 37 × 56 cm|177|56|37
 TONSTAD|tv|TV bench, 178 × 37 × 55 cm|178|55|37
 TORALD|desk|Desk, 65 × 40 cm|65|74|40
@@ -967,6 +981,9 @@ TROTTEN|cabinet|Cabinet with doors, 70 × 35 × 173 cm|70|173|35
 TROTTEN|chest|Drawer unit, 34 × 56 cm|34|56|48|rows=4
 TROTTEN|desk|Desk sit/stand, 160 × 80 cm|160|75|80|legs=square,attach=apron
 TROTTEN|desk|Desk, 160 × 80 cm|160|75|80|legs=square,attach=apron
+TROTTEN|slidecab|Cabinet with sliding doors, 80 × 55 × 75 cm|80|75|55|slides=2
+TROTTEN|slidecab|Cabinet with sliding doors, 80 × 55 × 110 cm|80|110|55|slides=2
+TROTTEN|slidecab|Cabinet with sliding doors, 80 × 55 × 180 cm|80|180|55|slides=2
 TUFFING|bunk|Bunk bed frame, 90 × 200 cm|211|160|100|m=90
 TUFFING|loft|Loft bed frame, 90 × 200 cm|211|195|100|m=90
 TUFJORD|bed|Upholstered bed frame, Standard King, 150 × 200 cm|166|100|209|m=150
@@ -1034,6 +1051,8 @@ VIHALS|open|Shelving unit with 4 shelves, 95 × 37 × 90 cm|95|90|37|shelves=2
 VIHALS|open|Shelving unit with 10 shelves, 95 × 37 × 200 cm|95|200|37|shelves=6
 VIHALS|open|Storage unit, 105 × 37 × 140 cm|105|140|37
 VIHALS|sideboard|Sideboard, 140 × 37 × 75 cm|140|75|37
+VIHALS|slidecab|Cabinet with sliding glass doors, 95 × 37 × 90 cm|95|90|37|slides=2
+VIHALS|slidecab|Cabinet with sliding doors, 95 × 47 × 90 cm|95|90|47|slides=2
 VIHALS|tv|TV bench, 146 × 37 × 50 cm|146|50|37
 VIHALS|tv|TV bench, 176 × 37 × 50 cm|176|50|37
 VIHALS|wardrobe|Wardrobe with 2 doors, 105 × 57 × 200 cm|105|200|57|doors=2

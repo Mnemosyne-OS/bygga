@@ -73,7 +73,7 @@ export function measure(s: string): Size | null {
   return { n: parts.map((p) => Number(p.split("/")[0])), ext: parts.some((p) => p.includes("/")), text: parts.join(" × ") + " cm" };
 }
 
-const UPRIGHT = new Set<Kind>(["cube", "bookcase", "open", "chest", "nightstand", "wardrobe", "cabinet", "sideboard", "tv", "shoe", "wallcab", "wallshelf", "kitchen", "mixed"]);
+const UPRIGHT = new Set<Kind>(["cube", "bookcase", "open", "chest", "nightstand", "wardrobe", "cabinet", "sideboard", "tv", "shoe", "wallcab", "wallshelf", "kitchen", "mixed", "sliding", "slidecab"]);
 const FLAT = new Set<Kind>(["desk", "coffee", "side", "dining", "bar", "console", "kidstable", "trolley", "bench"]);
 
 /** Office chairs IKEA sells with armrests although the type doesn't say so. */
@@ -158,6 +158,10 @@ const RULES: Rule[] = [
     return { kind: "daybed", x: { ...under, mats: Number(m[6] ?? m[5] ?? 0) || undefined } };
   }],
   [/day-?bed|divan/, () => "divan, or bedding for a day-bed"],
+  // sliding doors on a wardrobe or a cabinet, running in tracks (doors sold alone stay skipped)
+  [/^wardrobe with (\d )?sliding doors$/, (m) => (Number(m[1] ?? 2) > 3 ? "more than 3 sliding doors" : { kind: "sliding", x: { slides: Number(m[1] ?? 2) } })],
+  [/^cabinet with (2 )?sliding (glass )?doors$/, (_m, c) =>
+    c.f.spr ? "cabinet with sliding doors sold as a combination" : c.f.name === "IDÅSEN" ? "steel office cabinet" : { kind: "slidecab", x: { slides: 2 } }],
   [/sliding/, () => "sliding doors"],
   [/sink|wash-?basin|wash-?st|hob\b|oven|fridge|freezer|dishwasher|microwave|extractor|appliances|kitchenette|outdoor kitchen/, () => "appliance or sink unit"],
   [/^(door\/)?drawer front|^drawer (without |with (framed )?(glass )?)front|^(high|medium|low) drawer with front|^fitting for mounting/, () => "door or drawer front sold alone"],
@@ -290,8 +294,9 @@ export function classify(f: Fact, hints: Hints): Verdict {
     else return { skip: "no size given" };
     if (guessed.d && hint?.kind === kind && Math.abs(hint.w - w) < 60) d = hint.d;
     // a cabinet with drawers is as deep as the family's cabinet
-    const cab = kind === "mixed" ? hints(family, "cabinet") : undefined;
-    if (guessed.d && cab?.kind === "cabinet" && Math.abs(cab.w - w) < 60) d = cab.d;
+    const twin = kind === "mixed" || kind === "slidecab" ? "cabinet" : kind === "sliding" ? "wardrobe" : undefined;
+    const cab = twin ? hints(family, twin) : undefined;
+    if (guessed.d && cab && cab.kind === twin && Math.abs(cab.w - w) < 60) d = cab.d;
   } else if (FLAT.has(kind)) {
     if (v.length === 3) set(v[0], v[2], v[1]);
     else if (v.length === 2) set(v[0], undefined, v[1]);
@@ -397,11 +402,11 @@ export function classify(f: Fact, hints: Hints): Verdict {
     if (shape.cols === 2) x.cols = 2;
     if (hint?.x.plinth) x.plinth = true;
   }
-  if (kind === "wardrobe" && multi && w > 100) return { skip: "several wardrobe frames" };
+  if ((kind === "wardrobe" || kind === "sliding") && multi && w > 100) return { skip: "several wardrobe frames" };
   if (kind === "wardrobe" && x.doors === 0 && hint?.x.shelves) x.shelves = hint.x.shelves;
   if ((kind === "cabinet" || kind === "bookcase") && multi && w > 100) return { skip: "several units side by side" };
   // a combination this wide is more than one frame, which one carcass can't show
-  if (f.spr && w > 125 && ["bookcase", "open", "cabinet", "wardrobe", "shoe", "wallcab", "wallshelf", "kitchen"].includes(kind)) return { skip: "several units side by side" };
+  if (f.spr && w > 125 && ["bookcase", "open", "cabinet", "wardrobe", "shoe", "wallcab", "wallshelf", "kitchen", "sliding", "slidecab"].includes(kind)) return { skip: "several units side by side" };
   if (kind === "tv" && f.spr && w > 200) return { skip: "several units side by side" };
   if (kind === "tv" && h > 100) return { skip: "TV storage wall" };
   if (kind === "shoe" && x.c === undefined) x.c = h < 60 ? 1 : h < 115 ? 2 : 3;
