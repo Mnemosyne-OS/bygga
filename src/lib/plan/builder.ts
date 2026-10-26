@@ -363,11 +363,16 @@ export class PlanBuilder {
     const used = this.parts.filter((p) => counts.has(p.id));
     used.sort((a, b) => (firstStep.get(a.id)! - firstStep.get(b.id)!) || this.parts.indexOf(a) - this.parts.indexOf(b));
     let li = 0;
+    // past Z the letters double up (AA, AB...), and those parts keep the order they were lettered in
+    const late = new Map<string, number>();
     for (const p of used) {
       p.qty = counts.get(p.id)!;
-      p.label = p.extra ? "" : p.label || LETTERS[li++ % LETTERS.length];
+      if (!p.extra && !p.label && li >= LETTERS.length) late.set(p.id, li);
+      p.label = p.extra ? "" : p.label || (li < LETTERS.length ? LETTERS[li++] : LETTERS[Math.floor(li / LETTERS.length) - 1] + LETTERS[li++ % LETTERS.length]);
     }
-    used.sort((a, b) => (a.extra ? 1 : 0) - (b.extra ? 1 : 0) || a.label.localeCompare(b.label, undefined, { numeric: true }));
+    const byLabel = (a: PartType, b: PartType) =>
+      late.has(a.id) || late.has(b.id) ? (late.get(a.id) ?? -1) - (late.get(b.id) ?? -1) : a.label.localeCompare(b.label, undefined, { numeric: true });
+    used.sort((a, b) => (a.extra ? 1 : 0) - (b.extra ? 1 : 0) || byLabel(a, b));
 
     // step weights -> minutes
     const weights = this.steps.map((s) => {

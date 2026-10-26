@@ -48,7 +48,7 @@ async function main() {
   for (const e of PRODUCTS) {
     const label = `${e.slug} (${e.name} ${e.variant})`;
     const { w, h, d } = e.size;
-    if (!(w >= 15 && w <= 320 && h >= 15 && h <= 260 && d >= 12 && d <= 240)) fail(`${label}: size ${w}x${h}x${d} cm is out of range`);
+    if (!(w >= 15 && w <= (e.archetype === "sofa" ? 400 : 320) && h >= 15 && h <= 260 && d >= 12 && d <= 240)) fail(`${label}: size ${w}x${h}x${d} cm is out of range`);
     try {
       const plan = buildPlan(toSpec(e));
       if (!plan.steps.length) fail(`${label}: no steps`);
@@ -96,9 +96,12 @@ async function main() {
   expect("billy", "billy-80x202");
   expect("markus", "markus-office-chair");
   expect("markus office chair", "markus-office-chair");
-  // a real name we don't draw (a conference chair) must not land on a near miss
-  expect("laktare", null);
-  expect("laktare chair", null);
+  // a real name we don't draw (chair cushions) must not land on a near miss (FRÖSET)
+  expect("froson", null);
+  expect("froson chair", null);
+  // conference chairs and sun loungers are drawn now
+  expect("laktare", "laktare-conference-chair");
+  expect("nammaro sun lounger", "nammaro-sun-lounger");
   expect("marius", "marius-stool");
   // a day-bed is its own kind, and doesn't take over the family's bed
   expect("hemnes daybed", "hemnes-day-bed-frame-3-drawers-80-x-200");
@@ -112,6 +115,9 @@ async function main() {
   // a row of frames when asked for, the single frame otherwise
   expect("billy bookcase combination", "billy-bookcase-160-x-28-x-202");
   expect("pax bergsbo", "pax-bergsbo-wardrobe");
+  // a corner wardrobe when asked for, the frame otherwise
+  expect("pax corner wardrobe", "pax-corner-wardrobe-161-188-x-201");
+  expect("pax wardrobe", "pax-frame");
   expect("vihals gateleg table", "vihals-gateleg-table-39-95-151-x-90");
   // a wash-stand when asked for, US words too, without taking the family's cabinets
   expect("hemnes wash-stand", "hemnes-wash-stand-2-drawers-60-x-47-x-83");
@@ -123,6 +129,9 @@ async function main() {
   // and for appliance cabinets: a hob unit when asked for, the plain high cabinet otherwise
   expect("metod hob unit", "metod-knivshult-base-cab-f-hob-2-fronts-3-drawer");
   expect("metod high cabinet", "metod-high-cabinet-shelves-40-x-37-x-200");
+  // a corner cabinet when asked for, without taking the family's wall cabinets
+  expect("metod corner base cabinet", "metod-corner-base-cabinet-carousel-88-x-88");
+  expect("metod wall cabinet", "metod-wall-cabinet-w-shelves-glass-door-30-x-80");
   if (articleNo("S292.975.72") !== "29297572") fail("article numbers with an S in front don't parse");
   for (const [no, slug] of [["60324520", "kallax-2x2"]] as const) {
     if (articleSlug(no) !== slug) fail(`article ${no} gave ${articleSlug(no)}, expected ${slug}`);

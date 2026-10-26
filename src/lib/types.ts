@@ -39,6 +39,7 @@ export interface TableParams {
   leaf?: number; // cm, width of each leaf
   gate?: boolean; // a gateleg table: each leaf rests on a gate leg that swings out from the frame
   hinges?: boolean; // the leaves come loose and are screwed on with hinges
+  ell?: number; // cm: a corner desk, an L-shaped top this deep along each wall (size.w and size.d are its legs)
 }
 
 export interface BedParams {
@@ -70,6 +71,20 @@ export interface CabinetParams {
   drawerAt?: "top" | "bottom"; // where the drawers are; under the doors unless it says top
   slides?: number; // sliding doors: how many, running in two tracks
   fit?: FitParams; // built around a basin, a sink or an appliance that is fitted afterwards
+  corner?: CornerCab; // a kitchen corner cabinet
+}
+
+/**
+ * A kitchen corner cabinet. An L has a leg along each wall, `depth` deep, and a door in two halves that folds at the
+ * inner corner (size.w and size.d are the legs). A blind corner is one long carcass with a door at its open end;
+ * the rest of its front hides behind the cabinet on the other wall.
+ */
+export interface CornerCab {
+  shape: "l" | "blind";
+  depth?: number; // cm: how deep each leg of an L is
+  door?: number; // cm: how wide a blind corner's door is
+  inner?: "shelf" | "carousel" | "pullout"; // what goes inside, besides the shelves
+  drawer?: boolean; // a blind corner: a drawer over the door
 }
 
 /** What a fitted cabinet is built around. The guide builds the cabinet only, and says so at the end. */
@@ -94,7 +109,7 @@ export interface FitParams {
 }
 
 export interface SeatParams {
-  kind: "stool" | "chair" | "bench" | "office" | "highchair";
+  kind: "stool" | "chair" | "bench" | "office" | "highchair" | "lounger" | "swivel";
   seat: "round" | "square";
   seatH: number; // cm
   backH: number; // cm (chair total height)
@@ -102,6 +117,7 @@ export interface SeatParams {
   splay: boolean;
   arms?: boolean; // office chairs and chairs: armrests
   tray?: boolean; // highchairs: false when it comes without a tray
+  rock?: boolean; // swivel easy chairs: it rocks as well
 }
 
 export interface SofaParams {
@@ -112,6 +128,7 @@ export interface SofaParams {
   corner?: "left" | "right"; // an L: the return runs forward on that side; size.d is its length
   open?: boolean; // corner sofas: no armrest at the front of the return
   depth?: number; // cm, depth of the seat sections of a corner or chaise sofa
+  reach?: number; // cm, how far a U-shaped sofa's chaise longue reaches forward (with both corner and chaise set)
 }
 
 /** A product read from someone's own manual: parts as boxes in the assembled product, steps that add them. */
@@ -187,7 +204,18 @@ export interface ProductSpec {
   slug?: string;
   variants?: { label: string; slug: string }[];
   siblings?: { label: string; slug: string }[];
-  row?: { n: number; join?: boolean; of?: string; slide?: number }; // several identical units side by side, built one after another, with sliding doors across them all
+  row?: { n: number; join?: boolean; of?: string; slide?: number; units?: RowUnit[] }; // several identical units side by side, built one after another, with sliding doors across them all
+}
+
+/** One frame of a row whose frames aren't all alike, or of a corner: its own size and parameters, and where it stands. */
+export interface RowUnit {
+  w: number; // cm
+  d?: number; // cm, when it isn't as deep as the row
+  at?: [number, number]; // cm, the middle of its footprint (x, z); otherwise side by side from the left, backs in line
+  turn?: boolean; // stands with its back to the left-hand wall
+  corner?: boolean; // the add-on unit that fills the corner
+  cabinet?: Partial<CabinetParams>;
+  shelf?: Partial<ShelfParams>;
 }
 
 /* ---------- generated plan ---------- */

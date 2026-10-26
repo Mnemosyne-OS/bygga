@@ -16,11 +16,13 @@ export function slugify(s: string) {
 
 const CATEGORY_WORDS: [Kind, string[]][] = [
   ["office", ["office chair", "desk chair", "swivel chair", "gaming chair", "computer chair"]],
-  ["bookrow", ["bookcase combination", "bookshelf combination"]],
+  ["bookrow", ["bookcase combination", "bookshelf combination", "shelving combination", "shelving unit combination", "shelf combination"]],
   ["cabrow", ["tv bench combination", "tv unit combination", "media unit combination", "cabinet combination", "wardrobe combination", "closet combination", "wall cabinet combination"]],
   ["washstand", ["wash stand", "washstand", "vanity", "vanity unit", "bathroom vanity", "basin unit", "basin cabinet", "wash basin cabinet", "washbasin cabinet", "bathroom cabinet", "sink vanity"]],
   ["sinkcab", ["sink cabinet", "sink base", "sink base cabinet", "sink unit", "kitchen sink cabinet", "under sink cabinet", "cabinet for sink", "sink cupboard"]],
   ["appliance", ["appliance cabinet", "oven cabinet", "oven housing", "oven unit", "tall oven unit", "wall oven cabinet", "cabinet for oven", "fridge cabinet", "fridge housing", "refrigerator cabinet", "freezer cabinet", "cabinet for fridge", "microwave cabinet", "hob cabinet", "hob unit", "cooktop cabinet", "hood cabinet", "extractor hood cabinet"]],
+  ["cornerrobe", ["corner wardrobe", "corner closet", "corner armoire", "l shaped wardrobe", "l shaped closet", "corner wardrobe unit"]],
+  ["cornercab", ["corner cabinet", "corner base cabinet", "corner wall cabinet", "corner cupboard", "corner base unit", "corner wall unit", "corner kitchen cabinet", "corner kitchen unit", "blind corner", "blind corner cabinet", "lazy susan", "lazy susan cabinet", "carousel unit", "carousel cabinet"]],
   ["divider", ["room divider", "room dividers", "folding screen", "privacy screen", "partition screen", "room screen"]],
   ["changing", ["changing table", "changing unit", "baby changing table", "changing station", "diaper changing table", "nappy changing table"]],
   ["clothesrack", ["clothes rack", "clothes rail", "clothing rack", "clothing rail", "garment rack", "garment rail", "coat rack", "coat stand"]],
@@ -40,6 +42,8 @@ const CATEGORY_WORDS: [Kind, string[]][] = [
   ["bar", ["bar table", "high table"]],
   ["console", ["console", "console table", "hall table"]],
   ["trolley", ["trolley", "cart", "kitchen island"]],
+  ["conftable", ["conference table", "meeting table", "meeting room table", "boardroom table"]],
+  ["cornerdesk", ["corner desk", "l shaped desk", "corner workstation", "corner computer desk", "corner office desk", "l desk"]],
   ["desk", ["desk"]],
   ["gateleg", ["gateleg", "gateleg table", "gate leg", "gate leg table"]],
   ["dropleaf", ["drop leaf", "drop leaf table"]],
@@ -56,8 +60,12 @@ const CATEGORY_WORDS: [Kind, string[]][] = [
   ["cabinet", ["cabinet", "cupboard", "vitrine", "display"]],
   ["chaise", ["chaise longue", "chaise lounge", "chaise"]],
   ["section", ["sofa section", "seat section", "sofa module", "couch section", "sectional piece"]],
+  ["usofa", ["u shaped sofa", "u shaped couch", "u shaped sectional", "u sofa", "u couch", "horseshoe sofa"]],
   ["corner", ["corner sofa", "corner couch", "sectional", "l shaped sofa"]],
   ["sofa", ["sofa", "couch", "loveseat"]],
+  ["lounger", ["sun lounger", "sunlounger", "sun bed", "sunbed", "sun lounger chair", "pool lounger", "beach lounger", "garden lounger", "patio lounger"]],
+  ["swivel", ["swivel armchair", "swivel easy chair", "swivel lounge chair", "swivel accent chair", "swivel rocker", "rocking armchair", "rocker recliner"]],
+  ["conference", ["conference chair", "meeting chair", "meeting room chair", "boardroom chair"]],
   ["lounge", ["lounge chair", "reclining chair", "garden chair", "patio chair", "deck chair", "adirondack chair"]],
   ["armchair", ["armchair", "wing chair", "recliner"]],
   ["highchair", ["highchair", "high chair", "baby chair", "feeding chair"]],
@@ -70,7 +78,7 @@ const CATEGORY_WORDS: [Kind, string[]][] = [
 ];
 const KIND_WORDS = new Map(CATEGORY_WORDS);
 // rows, sections, and kinds drawn later than a family's other pieces, which only come first when asked for
-const LESSER = new Set<Kind>(["bookrow", "cabrow", "section", "sinkcab", "appliance", "washstand", "shoerack", "clothesrack", "changing", "divider", "backbench", "junior", "lounge", "highchair"]);
+const LESSER = new Set<Kind>(["bookrow", "cabrow", "section", "sinkcab", "appliance", "washstand", "shoerack", "clothesrack", "changing", "divider", "backbench", "junior", "lounge", "highchair", "cornercab", "cornerrobe", "usofa", "lounger", "swivel", "conference", "cornerdesk", "conftable"]);
 
 export function kindOf(q: string): Kind | null {
   const f = " " + fold(q) + " ";
@@ -178,6 +186,8 @@ export function searchCatalog(q: string, limit = 8): Hit[] {
     if (!ns && !kidsQ && r.kids) score -= 1;
     // rows of several units, sofa sections and appliance cabinets come after the plain product, unless the query asks for them
     if (e.kind && (LESSER.has(e.kind) || e.cabinet?.fit) && kind !== e.kind) score -= 1;
+    // and rows of frames that aren't all alike after the rows of frames that are
+    if (e.row?.units) score -= 0.5;
     if (e.checked) score += 3;
     if (e.featured) score += 2;
     if (score > 15) hits.push({ entry: e, score, exact: ns >= 80 });

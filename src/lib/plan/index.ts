@@ -9,6 +9,7 @@ import { buildSeat } from "./seat";
 import { buildSofa } from "./sofa";
 import { buildCustom } from "./custom";
 import { buildRow } from "./row";
+import { buildUnits } from "./units";
 
 const cache = new Map<string, Plan>();
 
@@ -17,7 +18,8 @@ export function buildPlan(spec: ProductSpec): Plan {
   const hit = cache.get(key);
   if (hit) return hit;
   const b = new PlanBuilder(spec);
-  if (spec.row) buildRow(b, spec, buildOne);
+  if (spec.row?.units) buildUnits(b, spec, buildOne);
+  else if (spec.row) buildRow(b, spec, buildOne);
   else buildOne(b, spec);
   const plan = b.build();
   cache.set(key, plan);

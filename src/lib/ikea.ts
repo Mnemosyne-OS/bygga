@@ -23,9 +23,9 @@ export interface IkeaRow {
   slug?: string;
 }
 
-const X_KEYS = ["rows", "cols", "knobs", "plinth", "doors", "shelves", "c", "m", "l", "f", "seats", "arms", "legs", "attach", "shelf", "min", "round", "seatH", "chaise", "corner", "open", "sd", "drawer", "leaves", "leaf", "under", "mats", "dtop", "rail", "slides", "n", "of", "hinge", "use", "z", "basin", "hung", "uf", "ins"] as const;
-const FLAGS = new Set<string>(["plinth", "shelf", "round", "open", "drawer", "dtop", "rail", "hinge", "hung"]);
-const WORDS = new Set<string>(["knobs", "arms", "legs", "attach", "chaise", "corner", "under", "of", "use", "z"]);
+const X_KEYS = ["rows", "cols", "knobs", "plinth", "doors", "shelves", "c", "m", "l", "f", "seats", "arms", "legs", "attach", "shelf", "min", "round", "seatH", "chaise", "corner", "open", "sd", "drawer", "leaves", "leaf", "under", "mats", "dtop", "rail", "slides", "n", "of", "hinge", "use", "z", "basin", "hung", "uf", "ins", "blind", "inner", "u", "v", "cu", "rock"] as const;
+const FLAGS = new Set<string>(["plinth", "shelf", "round", "open", "drawer", "dtop", "rail", "hinge", "hung", "rock"]);
+const WORDS = new Set<string>(["knobs", "arms", "legs", "attach", "chaise", "corner", "under", "of", "use", "z", "inner", "u", "v"]);
 
 export function encodeX(x: X): string {
   const out: string[] = [];
