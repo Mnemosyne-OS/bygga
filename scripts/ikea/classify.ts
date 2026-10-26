@@ -172,7 +172,16 @@ const RULES: Rule[] = [
   [/^(shoe cabinet|shoe cabinet\/storage|shoe cabinet with (\d) compartments)$/, (m) => ({ kind: "shoe", x: m[2] ? { c: Number(m[2]) } : {} })],
 
   // tables
-  [/^(gateleg|drop-leaf|folding) table$/, () => "folding or drop-leaf table"],
+  // a drop-leaf table is measured closed, then open: "74/134x80 cm", or "55/82/109x74 cm" with two leaves
+  [/^drop-leaf table$/, (_m, c) => {
+    const s = c.f.size.match(/^(\d+)\/(\d+)(?:\/(\d+))?x\d+ cm$/);
+    if (!s) return "drop-leaf table with a size we can't read";
+    const [closed, open1, open2] = [Number(s[1]), Number(s[2]), s[3] ? Number(s[3]) : undefined];
+    const extra = (open2 ?? open1) - closed;
+    const leaves = open2 !== undefined || extra >= 50 ? 2 : 1;
+    return { kind: "dropleaf", x: { leaves, leaf: Math.round(extra / leaves) } };
+  }],
+  [/^(gateleg|folding) table$/, () => "gateleg or folding table"],
   [/^(table|dining table|extendable table|kitchen table)$/, (_m, c) => ({ kind: c.kids ? "kidstable" : "dining" })],
   [/^children's table$/, () => ({ kind: "kidstable" })],
   [/^coffee table$/, () => ({ kind: "coffee" })],
@@ -282,6 +291,11 @@ export function classify(f: Fact, hints: Hints): Verdict {
     } else if (hint?.kind === kind) set(hint.w, hint.h, hint.d);
     else if (kind !== "bench") return { skip: "no size given" };
     if (guessed.h && hint?.kind === kind) h = hint.h;
+  } else if (kind === "dropleaf") {
+    // drawn with the leaves up: as wide as it opens
+    const open = Math.max(...f.size.replace(/x.*$/, "").split("/").map(Number));
+    set(open, undefined, v[1]);
+    h = hint?.kind === kind ? hint.h : 75;
   } else if (kind === "bunk" || kind === "loft") {
     // IKEA gives the mattress size; the height is a typical one (KURA, which turns over, is low)
     if (v.length !== 2 || v[1] < 180 || v[1] > 210) return { skip: "bunk or loft bed without a mattress size" };

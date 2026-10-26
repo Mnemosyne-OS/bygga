@@ -30,6 +30,8 @@ export interface TableParams {
   shelf: boolean;
   attach: "screw" | "plate" | "apron";
   round?: boolean; // round top, size.w is the diameter
+  leaves?: number; // a drop-leaf table: 1 or 2 hinged leaves; size.w is the width with them up
+  leaf?: number; // cm, width of each leaf
 }
 
 export interface BedParams {

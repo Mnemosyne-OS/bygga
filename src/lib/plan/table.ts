@@ -1,6 +1,7 @@
 import type { ProductSpec, TableParams, Vec3 } from "../types";
 import { HW, PlanBuilder, type FitOpts } from "./builder";
 import { clamp } from "./math";
+import { buildDropLeaf } from "./dropleaf";
 
 export function defaultsTable(s: ProductSpec): TableParams {
   const p = s.table ?? {};
@@ -17,6 +18,7 @@ export function defaultsTable(s: ProductSpec): TableParams {
 }
 
 export function buildTable(b: PlanBuilder, s: ProductSpec) {
+  if (s.table?.leaves) return buildDropLeaf(b, s);
   const p = defaultsTable(s);
   const W = s.size.w * 10, H = s.size.h * 10;
   const D = p.round ? W : s.size.d * 10;

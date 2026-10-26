@@ -23,7 +23,7 @@ export interface IkeaRow {
   slug?: string;
 }
 
-const X_KEYS = ["rows", "cols", "knobs", "plinth", "doors", "shelves", "c", "m", "l", "f", "seats", "arms", "legs", "attach", "shelf", "min", "round", "seatH", "chaise", "corner", "open", "sd", "drawer"] as const;
+const X_KEYS = ["rows", "cols", "knobs", "plinth", "doors", "shelves", "c", "m", "l", "f", "seats", "arms", "legs", "attach", "shelf", "min", "round", "seatH", "chaise", "corner", "open", "sd", "drawer", "leaves", "leaf"] as const;
 const FLAGS = new Set<string>(["plinth", "shelf", "round", "open", "drawer"]);
 const WORDS = new Set<string>(["knobs", "arms", "legs", "attach", "chaise", "corner"]);
 

@@ -132,6 +132,7 @@ BUSLÄTT|chair|Chair|44|88|50
 BUSUNGE|bed|Extendable bed, 80 × 200 cm|96|100|209|m=80
 BYÅS|tv|TV bench, 160 × 42 × 45 cm|160|45|42
 DANDERYD|dining|Dining table, 130 × 80 cm|130|74|80
+DANDERYD|dropleaf|Drop-leaf table, 74/134 × 80 cm|134|75|80|leaves=2,leaf=30
 DOCKSTA|dining|Table, 103 cm|103|74|103|round=1
 DOMSTEN|stool|Stool|35|45|35
 DUVSKÄR|chair|Chair, in/outdoor|44|88|50||outdoor garden
@@ -274,6 +275,7 @@ HAUGA|cabinet|Cabinet with 2 doors, 70 × 116 cm|70|116|40|knobs=bar
 HAUGA|cabinet|Glass-door cabinet, 105 × 116 cm|105|116|40|knobs=bar
 HAUGA|chair|Chair|44|88|50
 HAUGA|dining|Table, 118 × 74 cm|118|74|74
+HAUGA|dropleaf|Drop-leaf table, 55/82/109 × 74 cm|109|75|74|leaves=2,leaf=27
 HAUGA|nightstand|Bedside table, 40 × 36 cm|40|55|36|rows=1,knobs=bar
 HAUGA|sideboard|Sideboard, 140 × 46 × 84 cm|140|84|46|knobs=bar
 HAUGA|tv|TV bench, 206 × 46 × 54 cm|206|54|46|knobs=bar
@@ -634,6 +636,7 @@ NORDMANSSKÄR|chair|Chair|44|88|50
 NORDVIKEN|chair|Chair|44|88|50
 NORDVIKEN|chair|Bar stool with backrest, 62 cm|44|94|50|seatH=62
 NORDVIKEN|dining|Extendable table, 152/223 × 95 cm|152|74|95
+NORDVIKEN|dropleaf|Drop-leaf table, 74/104 × 74 cm|104|75|74|leaves=1,leaf=30
 NORRMANSÖ|bench|Bench, outdoor, 100 cm|100|45|38||outdoor garden
 NORRMANSÖ|bench|Bench, outdoor, 200 cm|200|45|38||outdoor garden
 NORRMANSÖ|chair|Chair, outdoor|44|88|50||outdoor garden

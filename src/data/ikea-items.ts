@@ -151,6 +151,7 @@ buslatt-chair|90601139
 busunge-extendable-bed-80-x-200|70305700
 byas-tv-bench-160-x-42-x-45|80227797
 danderyd-dining-table-130-x-80|40568726 20568727 10463858
+danderyd-drop-leaf-table-74-134-x-80|10516121
 docksta-table-103|19324995
 domsten-stool|60554380
 duvskar-chair-in-outdoor|70515760
@@ -299,6 +300,7 @@ hauga-cabinet-2-doors-70-x-116|00415052 40415050
 hauga-chair|10576718 30576717
 hauga-chest-3-drawers|20581521 80581518
 hauga-chest-6-drawers|00581536 70581533
+hauga-drop-leaf-table-55-82-109-x-74|20586000 80586002
 hauga-glass-door-cabinet-105-x-116|80415048 30415055
 hauga-sideboard-140-x-46-x-84|40621489 60621488
 hauga-table-118-x-74|00576709 50576716
@@ -704,6 +706,7 @@ nordli-modular-chest-3-drawers-80-x-68|40383469
 nordmansskar-chair|39618435 29618426 09618432
 nordviken-bar-stool-backrest-62|60424690 00424693 60369113
 nordviken-chair|40369109 30488546 00369111
+nordviken-drop-leaf-table-74-104-x-74|70368716 50368717
 nordviken-extendable-table-152-223-x-95|20368714 90368715 80488544
 norrmanso-bench-outdoor-100|70586696
 norrmanso-bench-outdoor-200|30586698
