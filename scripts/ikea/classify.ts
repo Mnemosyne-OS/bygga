@@ -80,6 +80,8 @@ const FLAT = new Set<Kind>(["desk", "coffee", "side", "dining", "bar", "console"
 const OFFICE_ARMS = new Set(["MARKUS", "ALEFJÄLL"]);
 /** Office chairs with a tall back and a headrest. */
 const OFFICE_TALL = new Set(["MARKUS"]);
+/** How deep the top of a family's corner desk is along each wall, when it isn't the usual 60 cm. */
+const DESK_DEPTH: Record<string, number> = { MICKE: 50 };
 /** Swivel easy chairs that are a shell with no armrests. */
 const SWIVEL_SHELL = new Set(["DYVLINGE", "IKEA PS LÖMSK"]);
 /** Gateleg tables with drawers in the middle, which we can't draw, and ones with a storage shelf and loose leaves. */
@@ -301,6 +303,8 @@ const RULES: Rule[] = [
   [/^u-shaped sofa, (\d)(?:[.,](5))?[- ]seat$/, (m) => ({ kind: "usofa", x: { seats: Number(m[1]) + (m[2] ? 1 : 0) } })],
   // a corner section sold alone as a piece of a modular sofa: a square seat with a backrest along two sides
   [/^(corner section|corner section with cushion|corner module)$/, () => ({ kind: "section", x: { seats: 1, corner: "left" } })],
+  // corner desks: an L-shaped top on five legs
+  [/^(corner desk|corner workstation|l-shaped desk)$/, () => ({ kind: "cornerdesk" })],
   // corner wardrobes: frames along both walls around an add-on corner unit, with doors when a door's name comes with them
   [/^corner wardrobe$/, (_m, c) => ({ kind: "cornerrobe", x: c.multi ? {} : { doors: 0 } })],
   // the add-on corner unit sold on its own: a cabinet of shelves
@@ -649,6 +653,12 @@ export function classify(f: Fact, hints: Hints): Verdict {
     }
     // a corner section is as wide as the family's seats are deep
     if (x.corner) w = d;
+  } else if (kind === "cornerdesk") {
+    // IKEA gives the two legs of the L, the longer one along the back
+    if (v.length !== 2) return { skip: "corner desk with a size we can't read" };
+    set(Math.max(v[0], v[1]), hint?.kind === "desk" ? hint.h : 74, Math.min(v[0], v[1]));
+    guessed.h = true;
+    if (DESK_DEPTH[family]) x.sd = DESK_DEPTH[family];
   } else if (kind === "cornerrobe") {
     // IKEA gives the two legs and the height: "211/161x201 cm"
     const legs = f.size.replace(/\s+/g, "").match(/^(\d+(?:\.\d+)?)\/(\d+(?:\.\d+)?)x(\d+(?:\.\d+)?)cm$/);

@@ -541,6 +541,7 @@ KIVIK|sofa|2-seat sofa|170|85|92|seats=2
 KIVIK|sofa|4-seat sofa|290|85|92|seats=4
 KIVIK|usofa|U-shaped sofa, 6 seat|301|83|238|seats=6,arms=wide,sd=95
 KIVIK|usofa|U-shaped sofa, 7-seat|364|83|238|seats=7,arms=wide,sd=95
+KJELLARNE|cornerdesk|Corner desk, 138 × 130 cm|138|74|130
 KLACKENÄS|sideboard|Sideboard, 120 × 97 cm|120|97|45
 KLEPPSTAD|bed|Bed frame, Standard Double, 135 × 190 cm|151|96|199|m=135,l=190
 KLEPPSTAD|sliding|Wardrobe with sliding doors, 117 × 55 × 176 cm|117|176|55|slides=2
@@ -591,6 +592,8 @@ LAGKAPTEN / ALEX|desk|Desk, 140 × 60 cm|140|73|60|legs=round,attach=plate
 LAGKAPTEN / ALEX|desk|Desk, 200 × 60 cm|200|73|60|legs=round,attach=plate
 LAGKAPTEN / KRILLE|desk|Desk, 120 × 60 cm|120|73|60|legs=round,attach=plate
 LAGKAPTEN / KRILLE|desk|Desk, 140 × 60 cm|140|73|60|legs=round,attach=plate
+LAGKAPTEN / LINNMON|cornerdesk|L-shaped desk, 120 × 160 cm|160|74|120
+LAGKAPTEN / LINNMON|cornerdesk|L-shaped desk, 140 × 160 cm|160|74|140
 LAGKAPTEN / MITTBACK|desk|Desk, 140 × 60 cm|140|73|60|legs=round,attach=plate
 LAGKAPTEN / OLOV|desk|Desk, 120 × 60 cm|120|73|60|legs=round,attach=plate
 LAGKAPTEN / OLOV|desk|Desk, 140 × 60 cm|140|73|60|legs=round,attach=plate
@@ -836,6 +839,7 @@ METOD / MAXIMERA|wallcab|Wall cab w 2 glass doors/2 drawers, 60 × 100 cm|60|100
 METOD / MAXIMERA|wallcab|Wall cab w 2 glass doors/2 drawers, 80 × 100 cm|80|100|35|z=r2@40+d2s1,hung=1||metod-maximera-wall-cab-w-2-glass-doors-2-drawer-2
 METOD / MAXIMERA|wallcab|Wall cabinet w 2 doors/2 drawers, 80 × 100 cm|80|100|35|z=r2@40+d2s1,hung=1
 MICKE|chest|Drawer unit with drop-file storage, 35 × 75 cm|35|75|48|rows=2
+MICKE|cornerdesk|Corner workstation, 100 × 142 cm|142|74|100|sd=50
 MICKE|desk|Desk, 73 × 50 cm|73|75|50|legs=square,attach=apron
 MICKE|desk|Desk, 142 × 50 cm|142|75|50|legs=square,attach=apron
 MILLBERGET|office|Swivel chair|60|105|64|arms=none

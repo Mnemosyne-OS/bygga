@@ -3,6 +3,7 @@ import { HW, PlanBuilder, type FitOpts } from "./builder";
 import { clamp } from "./math";
 import { buildDropLeaf } from "./dropleaf";
 import { buildGateleg } from "./gateleg";
+import { buildCornerDesk } from "./cornerdesk";
 
 export function defaultsTable(s: ProductSpec): TableParams {
   const p = s.table ?? {};
@@ -19,6 +20,7 @@ export function defaultsTable(s: ProductSpec): TableParams {
 }
 
 export function buildTable(b: PlanBuilder, s: ProductSpec) {
+  if (s.table?.ell) return buildCornerDesk(b, s);
   if (s.table?.gate) return buildGateleg(b, s);
   if (s.table?.leaves) return buildDropLeaf(b, s);
   const p = defaultsTable(s);
