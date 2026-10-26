@@ -113,14 +113,6 @@ export const IFilter = icon(ListFilter);
 export const IArrowUpRight = icon(ArrowUpRight);
 export const IStar = icon(Star);
 
-/** The X (Twitter) mark. */
-export function IX({ size = 14, className }: { size?: number; className?: string }) {
-  return (
-    <svg viewBox="0 0 24 24" width={size} height={size} className={className} fill="currentColor" aria-hidden="true">
-      <path d="M18.9 1.15h3.68l-8.04 9.19L24 22.85h-7.4l-5.8-7.59-6.64 7.59H.47l8.6-9.83L0 1.15h7.6l5.24 6.93zm-1.29 19.5h2.04L6.49 3.24H4.3z" />
-    </svg>
-  );
-}
 export const IScan = icon(ScanText);
 export const IKey = icon(KeyRound);
 export const IImage = icon(Image);

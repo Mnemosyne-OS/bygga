@@ -1,7 +1,7 @@
 import Link from "next/link";
 import Logo from "./Logo";
 import { Crew } from "./art/Figure";
-import { IArrowOut, IX } from "./art/Icons";
+import { IArrowOut } from "./art/Icons";
 import { TogetherWordmark } from "./art/Together";
 import { GITHUB_URL, SCAN_ENABLED } from "@/lib/site";
 
@@ -40,29 +40,16 @@ export default function SiteFooter() {
 
         <div className="foot-credit">
           <Crew names="Hassan & Youssef" size={128} className="foot-crew" />
-          <div className="foot-credit-text">
-            <p>
-              <b>
-                Built by{" "}
-                <a href={x(CREW[0].handle)} target="_blank" rel="noreferrer">
-                  {CREW[0].name}
-                </a>{" "}
-                and{" "}
-                <a href={x(CREW[1].handle)} target="_blank" rel="noreferrer">
-                  {CREW[1].name}
-                </a>
-                .
-              </b>
-              <span>A two-person job, just like the manual says.</span>
-            </p>
-            <div className="foot-handles">
-              {CREW.map((c) => (
-                <a key={c.handle} href={x(c.handle)} target="_blank" rel="noreferrer" aria-label={`${c.name} on X, @${c.handle}`}>
-                  <IX size={12} />@{c.handle}
-                </a>
-              ))}
-            </div>
-          </div>
+          <p className="foot-credit-text">
+            Built by{" "}
+            <a href={x(CREW[0].handle)} target="_blank" rel="noreferrer">
+              {CREW[0].name}
+            </a>{" "}
+            and{" "}
+            <a href={x(CREW[1].handle)} target="_blank" rel="noreferrer">
+              {CREW[1].name}
+            </a>
+          </p>
         </div>
       </div>
 

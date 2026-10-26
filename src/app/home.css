@@ -1451,25 +1451,18 @@
   flex: none;
   margin-bottom: -1px;
 }
+/* one line, as big as the footer's wordmark, level with the two of us */
 .foot-credit-text {
-  display: grid;
-  gap: 14px;
-  padding-bottom: 30px;
-}
-.foot-credit p {
-  display: grid;
-  gap: 2px;
+  align-self: center;
   margin: 0;
-}
-.foot-credit b {
   font-family: var(--display);
-  font-size: clamp(22px, 2.2vw, 28px);
+  font-size: 23px;
   font-weight: 800;
   letter-spacing: -0.03em;
   line-height: 1.15;
 }
 /* the names wear a yellow marker line that fills in behind them on hover */
-.foot-credit b a {
+.foot-credit-text a {
   color: inherit;
   text-decoration: none;
   padding: 0 2px;
@@ -1478,38 +1471,8 @@
   background: linear-gradient(var(--accent), var(--accent)) left 100% / 100% 0.22em no-repeat;
   transition: background-size 0.35s var(--ease);
 }
-.foot-credit b a:hover {
+.foot-credit-text a:hover {
   background-size: 100% 100%;
-}
-.foot-credit p > span {
-  color: var(--ink-2);
-  font-size: 15.5px;
-}
-.foot-handles {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 8px;
-}
-.foot-handles a {
-  display: inline-flex;
-  align-items: center;
-  gap: 7px;
-  height: 30px;
-  padding: 0 12px 0 11px;
-  border-radius: 999px;
-  background: #fff;
-  box-shadow: inset 0 0 0 1px var(--line-2);
-  color: var(--ink-2);
-  font-size: 13.5px;
-  font-weight: 500;
-  text-decoration: none;
-  transition:
-    box-shadow 0.25s var(--ease),
-    color 0.25s var(--ease);
-}
-.foot-handles a:hover {
-  box-shadow: inset 0 0 0 1px var(--ink-3);
-  color: var(--ink);
 }
 .crew-a,
 .crew-b,
@@ -1583,21 +1546,6 @@
   .foot-crew {
     width: auto;
     height: 88px;
-  }
-  .foot-credit-text {
-    gap: 10px;
-    padding-bottom: 20px;
-  }
-  .foot-credit b {
-    font-size: 19px;
-  }
-  .foot-credit p > span {
-    font-size: 14px;
-  }
-  .foot-handles a {
-    height: 28px;
-    padding: 0 10px 0 9px;
-    font-size: 12.5px;
   }
   .foot-base {
     padding: 18px 4px 0;
