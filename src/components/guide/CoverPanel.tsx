@@ -243,9 +243,29 @@ function chipLabels(labels: string[]) {
   });
 }
 
+/** IKEA's shorthand in its type names, as words. */
+const SHORTHAND: [RegExp, string][] = [
+  [/\s*\+\s*/g, " with "],
+  [/\b(cab|cb)\b/gi, "cabinet"],
+  [/\bhi\b/gi, "high"],
+  [/\bf\b/g, "for"],
+  [/\bwsh-stnd\b/gi, "wash-stand"],
+  [/\bstnd\b/g, "stand"],
+  [/\bsnk\b/g, "sink"],
+  [/\bov\b/g, "oven"],
+  [/\bextr\b/g, "extractor"],
+  [/\bb-in\b/g, "built-in"],
+  [/\bfrnts\b/g, "fronts"],
+  [/\bfrnt\b/g, "front"],
+  [/\b(drws|drwrs)\b/g, "drawers"],
+  [/\bdrw\b/g, "drawer"],
+  [/\bshlf\b/g, "shelf"],
+  [/\bshlvs?\b/g, "shelves"],
+];
+
 /** IKEA's shorthand spelled out, first letter up. */
 function tidy(t: string) {
-  const s = t
+  const s = SHORTHAND.reduce((acc, [re, word]) => acc.replace(re, word), t)
     .replace(/(^|\s)w (?=\S)/gi, "$1with ")
     .replace(/\bdrs\b/g, "doors")
     // a size never breaks across lines
