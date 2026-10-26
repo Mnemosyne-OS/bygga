@@ -871,9 +871,9 @@ export class Stage {
     } else if (k === "step") {
       const co = this.callout && this.focus ? this.callout.size + (mob ? 24 : 56) : 0;
       mT = (mob ? 70 : 96) + m.t;
-      mL = (mob ? 18 : 36) + m.l;
+      mL = (mob ? 24 : 36) + m.l;
       mB = (mob ? 56 : 72) + m.b;
-      mR = Math.max(mob ? 18 : 36, co * (mob ? 0.55 : 1)) + m.r;
+      mR = Math.max(mob ? 24 : 36, co * (mob ? 0.55 : 1)) + m.r;
     } else if (k === "part") {
       mT = mR = mB = mL = 4;
     } else if (k === "layout") {
@@ -904,7 +904,7 @@ export class Stage {
       first = false;
       if (k === "step" && this.callout && this.focus) {
         // the circle only blocks the top right corner: try keeping the drawing below it instead
-        const below = fit(l, Math.max(t, this.callout.size + 34), (mob ? 18 : 36) + m.r, mB);
+        const below = fit(l, Math.max(t, this.callout.size + 34), (mob ? 24 : 36) + m.r, mB);
         if (below.s < best.s) best = below;
       }
     }
