@@ -12,6 +12,7 @@ import type { Plan, ProductSpec } from "@/lib/types";
 import { useMounted } from "@/lib/useMounted";
 import { peekShot, shot, type Shot } from "@/engine/thumbs";
 import Thumb from "../Thumb";
+import Drawing from "../Drawing";
 import { Figure, ScaleFigure } from "../art/Figure";
 import { IArrowRight, IBox, ICheck, IClock, IClose, ILibrary, IPeople, WarnIcon } from "../art/Icons";
 
@@ -265,7 +266,7 @@ function GoingRow({ r, onRemove }: { r: Row; onRemove: () => void }) {
   return (
     <motion.div className="going" layout initial={{ opacity: 0, y: 8 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, height: 0, marginTop: 0 }} transition={{ duration: 0.3 }}>
       <Link href={href} className="going-link">
-        <Thumb id={"go-" + p.slug} plan={r.plan} mode={{ kind: "assembled" }} w={150} h={112} className="going-thumb" />
+        {r.spec.source === "catalog" ? <Drawing name={p.slug} w={150} h={112} className="going-thumb" /> : <Thumb id={"go-" + p.slug} plan={r.plan} mode={{ kind: "assembled" }} w={150} h={112} className="going-thumb" />}
         <span className="going-text">
           <b>{r.spec.name}</b>
           <span>{r.spec.variant}</span>
@@ -294,7 +295,7 @@ function BuiltCard({ r, onRemove }: { r: Row; onRemove: () => void }) {
   return (
     <motion.div className="built" layout initial={{ opacity: 0, y: 8 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, scale: 0.96 }} transition={{ duration: 0.3 }}>
       <Link href={`/build/${p.slug}${p.spec ? `?q=${encodeURIComponent(p.spec.name)}` : ""}`} className="built-link">
-        <Thumb id={"bt-" + p.slug} plan={r.plan} mode={{ kind: "assembled" }} w={360} h={270} className="built-thumb" />
+        {r.spec.source === "catalog" ? <Drawing name={p.slug} w={360} h={270} className="built-thumb" /> : <Thumb id={"bt-" + p.slug} plan={r.plan} mode={{ kind: "assembled" }} w={360} h={270} className="built-thumb" />}
         <span className="built-text">
           <b>{r.spec.name}</b>
           <span>{r.spec.variant}</span>

@@ -4,9 +4,7 @@ import { useEffect, useMemo, useRef, useState } from "react";
 import { useRouter } from "next/navigation";
 import { AnimatePresence, motion } from "motion/react";
 import { articleNo, articlesReady, loadArticles, searchCatalog, slugify, matchCatalog } from "@/lib/search";
-import { catalogSpec } from "@/lib/catalog";
-import { buildPlan } from "@/lib/plan";
-import Thumb from "../Thumb";
+import Drawing from "../Drawing";
 import { keyHeaders } from "@/lib/userKey";
 import { IArrowRight, ICamera, ISearch, ISparkle } from "../art/Icons";
 
@@ -188,13 +186,9 @@ export default function Search({ ai, autoFocus }: { ai: boolean; autoFocus?: boo
 }
 
 function SuggestRow({ slug, name, variant, minutes, active, onPick, onHover }: { slug: string; name: string; variant: string; minutes: number; active: boolean; onPick: () => void; onHover: () => void }) {
-  const plan = useMemo(() => {
-    const spec = matchSlug(slug);
-    return spec ? buildPlan(spec) : null;
-  }, [slug]);
   return (
     <li role="option" aria-selected={active} className={"suggest-row" + (active ? " active" : "")} onMouseDown={(e) => e.preventDefault()} onClick={onPick} onMouseEnter={onHover}>
-      <Thumb id={slug} plan={plan} mode={{ kind: "assembled" }} w={112} h={84} className="s-thumb" />
+      <Drawing name={slug} w={112} h={84} className="s-thumb" eager />
       <span className="s-text">
         <b>{name}</b>
         <span>{variant}</span>
@@ -202,10 +196,6 @@ function SuggestRow({ slug, name, variant, minutes, active, onPick, onHover }: {
       <span className="s-min">{minutes} min</span>
     </li>
   );
-}
-
-function matchSlug(slug: string) {
-  return catalogSpec(slug);
 }
 
 async function shrink(file: File): Promise<string> {

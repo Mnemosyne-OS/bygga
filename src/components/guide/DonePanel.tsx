@@ -5,13 +5,11 @@ import Link from "next/link";
 import { motion } from "motion/react";
 import type { Plan } from "@/lib/types";
 import { totals } from "@/lib/plan/contents";
-import { buildPlan } from "@/lib/plan";
-import { catalogSpec } from "@/lib/catalog";
 import { POPULAR } from "@/lib/search";
 import { getPref, setPref } from "@/lib/store";
 import { Figure } from "../art/Figure";
 import { IArrowLeft, IArrowRight, ICheck, ILibrary, IShare } from "../art/Icons";
-import Thumb from "../Thumb";
+import Drawing from "../Drawing";
 import { fmtMin } from "./CoverPanel";
 import { buildCard } from "./shareCard";
 import { encodeSpec } from "@/lib/scan/share";
@@ -185,18 +183,7 @@ function NextUp({ plan }: { plan: Plan }) {
       <div className="next-up">
         {picks.map((p) => (
           <Link key={p.slug} href={`/build/${p.slug}`} className="next-card">
-            <Thumb
-              id={"next-" + p.slug}
-              plan={() => {
-                const sp = catalogSpec(p.slug);
-                return buildPlan(sp!);
-              }}
-              mode={{ kind: "assembled" }}
-              w={200}
-              h={150}
-              lazy
-              className="next-thumb"
-            />
+            <Drawing name={p.slug} w={200} h={150} className="next-thumb" />
             <span>
               <b>{p.name}</b>
               <span>{p.label}</span>

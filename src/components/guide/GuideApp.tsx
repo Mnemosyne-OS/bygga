@@ -25,7 +25,7 @@ import DonePanel, { Confetti } from "./DonePanel";
 import HelpSheet from "./HelpSheet";
 import Overview from "./Overview";
 import Loader from "./Loader";
-import Thumb from "../Thumb";
+import Drawing from "../Drawing";
 import { haptic, speechSupported, useListener, useWakeLock, type Mic } from "./hooks";
 import { playDone, playStep, playTick, setSound, soundOn } from "./sound";
 import { mediaSession, voice } from "./voice";
@@ -172,7 +172,7 @@ function Shell({ title, children }: { title: string; children: React.ReactNode }
 function NotFound({ query, slug, suggestions, ikea, error }: { query: string; slug: string; suggestions: string[]; ikea?: string; error: boolean }) {
   const name = query.split(" ")[0].toUpperCase();
   const what = ikea?.toLowerCase();
-  const kinds = useMemo(() => KIND_LABELS.map((k) => ({ ...k, plan: buildPlan({ ...specForKind(k.kind, "X"), slug: "kind-" + k.kind }) })), []);
+  const kinds = KIND_LABELS;
   if (error)
     return (
       <div className="notfound">
@@ -214,7 +214,7 @@ function NotFound({ query, slug, suggestions, ikea, error }: { query: string; sl
         {kinds.map((k, i) => (
           <motion.div key={k.kind} initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: i * 0.025 }}>
             <Link className="kind-card" href={`/build/${slug}?q=${encodeURIComponent(query)}&kind=${k.kind}`}>
-              <Thumb id={"kind-" + k.kind} plan={k.plan} mode={{ kind: "assembled" }} w={200} h={150} className="kind-thumb" />
+              <Drawing name={"kind-" + k.kind} w={200} h={150} className="kind-thumb" eager />
               <span>{k.label}</span>
             </Link>
           </motion.div>

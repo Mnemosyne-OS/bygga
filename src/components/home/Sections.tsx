@@ -5,10 +5,9 @@ import Link from "next/link";
 import { AnimatePresence, motion } from "motion/react";
 import { POPULAR, articleNo, fold, loadArticles, searchText } from "@/lib/search";
 import { articleSlug } from "@/lib/ikea";
-import { PRODUCTS, toSpec, type CatalogEntry } from "@/lib/catalog";
-import { buildPlan } from "@/lib/plan";
+import { PRODUCTS, type CatalogEntry } from "@/lib/catalog";
 import type { Kind } from "@/lib/products";
-import Thumb from "../Thumb";
+import Drawing from "../Drawing";
 import { getUserKey } from "@/lib/userKey";
 import { Dots } from "../guide/ui";
 import { IArrowRight, IClock, ISearch } from "../art/Icons";
@@ -35,12 +34,11 @@ const inCat = (e: CatalogEntry, c: (typeof CATS)[number]) => (!c.kinds && !c.tag
 const PAGE = 24;
 
 export function ProductCard({ e, i = 0 }: { e: CatalogEntry; i?: number }) {
-  const lazyPlan = useMemo(() => () => buildPlan(toSpec(e)), [e]);
   return (
     <motion.div layout initial={{ opacity: 0, y: 14 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, scale: 0.97 }} transition={{ duration: 0.4, delay: Math.min(0.3, (i % 12) * 0.03), ease: [0.22, 1, 0.36, 1] }}>
       <Link href={`/build/${e.slug}`} className="pcard">
         <span className="pcard-art">
-          <Thumb id={e.slug} plan={lazyPlan} mode={{ kind: "assembled" }} w={420} h={320} className="pcard-thumb" alt={`${e.name} line drawing`} lazy />
+          <Drawing name={e.slug} fallback={e.kind ? `kind-${e.kind}` : undefined} w={420} h={320} className="pcard-thumb" alt={`${e.name} line drawing`} eager={i < 6} />
         </span>
         <span className="pcard-text">
           <span className="pcard-top">
