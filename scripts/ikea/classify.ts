@@ -321,6 +321,8 @@ const RULES: Rule[] = [
   [/^(bar stool with backrest|bar chair)$/, () => ({ kind: "chair", x: { seatH: 63 } })],
   [/^(stool|bar stool|step stool|folding stool|children's stool|stool, \d+ steps?)$/, () => ({ kind: "stool" })],
   [/^(bench|bench with shoe storage)$/, () => ({ kind: "bench" })],
+  // a bench with a backrest and armrests, built like a wide chair (IKEA gives no size: a typical garden bench)
+  [/^bench with backrest$/, (_m, c) => (c.f.spr ? "bench with backrest sold with cushions" : { kind: "backbench" })],
   [/^(armchair|easy chair|wing chair|high-back armchair|low-back armchair|rocking-chair|children's armchair|armchair with cushion)$/, () => ({ kind: "armchair" })],
   [/^((\d)(,5)?-seat (modular )?sofa(-bed)?|sofa|sofa-bed|loveseat)$/, (m) => {
     const seats = m[2] ? Number(m[2]) + (m[3] ? 1 : 0) : 3;

@@ -133,6 +133,7 @@ bolmen-step-stool|70574429
 bondholmen-2-seat-sofa-outdoor|49583732
 bondholmen-2-seat-sofa-outdoor-139-x-81-x-73|50558185
 bondholmen-armchair-outdoor|19583724 60558161
+bondholmen-bench-backrest-outdoor|50558166
 bondholmen-chair-armrests-outdoor|10558173
 bondholmen-table-outdoor-235-x-90|20558196
 borgeby-coffee-table-70|70389356 30500355
@@ -844,6 +845,7 @@ nammaro-2-seat-sofa-147|99579308 59611174 89610248 09607513 69621511 19575427
 nammaro-3-seat-sofa-264|79649114 59576024 39579311 19610440 09649688 09643605
 nammaro-bar-stool-outdoor|70510296
 nammaro-bar-table-outdoor-120-x-40|10510303
+nammaro-bench-backrest-outdoor|30510302
 nammaro-bench-outdoor-120|60510310
 nammaro-chair|39610260 19610256
 nammaro-chair-armrests-outdoor|90511105 59610264 69610268
@@ -926,6 +928,7 @@ ortrask-coffee-table-75-x-48|70635847
 oskarshamn-wing-chair|90523622 30521678 50521663
 ovning-trolley-54-x-33|00517003
 pahl-desk-96-x-58|49619340
+paronholmen-bench-backrest-outdoor|90503799
 pax-auli-wardrobe-sliding-doors-150-x-43-x-201|29561335 89561342 59561329 79561333 59561334 09561336
 pax-auli-wardrobe-sliding-doors-150-x-66-x-201|99561351 59561305 79561314 09561317
 pax-bergsbo-wardrobe|59502716

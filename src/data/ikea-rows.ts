@@ -119,6 +119,7 @@ BOAXEL|open|Shelving unit, 62 × 40 × 201 cm|62|201|40
 BOLLPOJKE|desk|Desk, 90 × 55 cm|90|74|55
 BOLMEN|stool|Step stool|35|50|35
 BONDHOLMEN|armchair|Armchair, outdoor|75|90|80||outdoor garden
+BONDHOLMEN|backbench|Bench with backrest, outdoor|120|86|60||outdoor garden
 BONDHOLMEN|chair|Chair with armrests, outdoor|44|88|50|arms=slim|outdoor garden
 BONDHOLMEN|dining|Table, outdoor, 235 × 90 cm|235|74|90||outdoor garden
 BONDHOLMEN|sofa|2-seat sofa, outdoor, 139 × 81 × 73 cm|139|73|81|seats=2|outdoor garden
@@ -770,6 +771,7 @@ MYDAL|bunk|Bunk bed frame, 90 × 200 cm|211|160|100|m=90
 MYLLRA|changing|Changing table with drawers, 85 × 79 × 97 cm|85|97|79|rows=3|kids children
 MYLLRA|cot|Cot with drawer, 70 × 140 cm|150|86|78|m=70,l=140,drawer=1
 NACKANÄS|dining|Table, 140 × 76 cm|140|74|76
+NÄMMARÖ|backbench|Bench with backrest, outdoor|120|86|60||outdoor garden
 NÄMMARÖ|bar|Bar table, outdoor, 120 × 40 cm|120|105|40||outdoor garden
 NÄMMARÖ|bench|Bench, outdoor, 120 cm|120|45|38||outdoor garden
 NÄMMARÖ|chair|Chair|44|88|50||outdoor garden
@@ -854,6 +856,7 @@ ORRESLÄTT|armchair|Armchair|75|90|80
 OSKARSHAMN|armchair|Wing chair|75|104|80
 ÖVNING|trolley|Trolley, 54 × 33 cm|54|80|33||kids children
 PÅHL|desk|Desk, 96 × 58 cm|96|74|58||kids children
+PÄRONHOLMEN|backbench|Bench with backrest, outdoor|120|86|60||outdoor garden
 PAX|wardrobe|Wardrobe frame, 50 × 58 × 201 cm|50|201|58|doors=0,shelves=2
 PAX|wardrobe|Wardrobe frame, 75 × 58 × 201 cm|75|201|58|doors=0,shelves=2
 PAX / AULI|cabrow|Wardrobe with sliding doors, 150 × 43 × 201 cm|150|201|43|shelves=2,slides=2,n=2,of=wardrobe

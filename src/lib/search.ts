@@ -62,6 +62,7 @@ const CATEGORY_WORDS: [Kind, string[]][] = [
   ["kidschair", ["children s chair", "childrens chair", "kids chair", "kid chair"]],
   ["chair", ["chair", "chairs"]],
   ["stool", ["stool", "stools"]],
+  ["backbench", ["bench with backrest", "garden bench", "bench with back", "outdoor bench", "park bench", "patio bench"]],
   ["bench", ["bench"]],
 ];
 const KIND_WORDS = new Map(CATEGORY_WORDS);
