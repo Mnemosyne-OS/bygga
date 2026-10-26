@@ -265,6 +265,21 @@ function draw(kind: HwKind, len: number, dia: number): Drawn {
           </g>
         ),
       };
+    case "connector":
+      // a flat strip with a screw hole at each end
+      return {
+        w: len,
+        h: dia,
+        scalable: true,
+        node: (
+          <g>
+            <rect x={0} y={-dia / 2} width={len} height={dia} rx={3} fill={METAL} {...stroke} />
+            {[len / 4, (3 * len) / 4].map((x) => (
+              <circle key={x} cx={x} cy={0} r={2.6} fill="#fff" {...stroke} />
+            ))}
+          </g>
+        ),
+      };
     case "gasLift":
       // lying down: the narrow end that drops into the base on the left, the rod for the seat on the right
       return {

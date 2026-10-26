@@ -216,24 +216,14 @@ export function buildCornerSofa(b: PlanBuilder, s: ProductSpec) {
       }
     },
   );
-  b.step(
-    {
-      title: "Turn them over together",
-      detail: "Lift them by the frame, never by the legs.",
-      pose: "+y",
-      kind: "flip",
-      people: 2,
-      warnings: ["two"],
-    },
-    () => {},
-  );
-
+  // still upside down: push the sections together and screw a connector across each joint underneath
   const sliders = secs.filter((x) => x.slide);
   b.step(
     {
       title: corner ? (sliders.length > 1 ? "Join the sections to the corner" : "Join the section to the corner") : sliders.length > 1 ? "Join the chaise longues to the sofa" : "Join the chaise longue to the sofa",
-      detail: "Push them together, then bolt them through the frames.",
-      tools: ["allen"],
+      detail: "Push them together, then screw a connector across each joint.",
+      tools: ["screwdriver"],
+      pose: "-y",
       people: 2,
       kind: "join",
       warnings: ["two"],
@@ -246,22 +236,41 @@ export function buildCornerSofa(b: PlanBuilder, s: ProductSpec) {
         b.stagger(0);
       }
       b.then(0.1);
-      const bolts: FitOpts[] = [];
+      const plates: FitOpts[] = [];
+      const screws: FitOpts[] = [];
+      const half = HW.connector.len / 4;
       for (const sec of sliders) {
         const fixed = corner ? secs[1] : secs.find((x) => !x.slide);
         if (!fixed) continue;
-        const y = legH + 90;
-        if (sec.along === "z") {
-          // the return meets the corner along its back edge
-          for (const f of [0.3, 0.7]) bolts.push({ on: sec.frame, at: [X(sec.x0 + (sec.x1 - sec.x0) * f), y, sec.z0], dir: [0, 0, 1], mate: fixed.frame });
-        } else {
-          const right = sec.x0 >= fixed.x1 - 1;
-          const jx = right ? sec.x0 : sec.x1;
-          for (const f of [0.3, 0.7]) bolts.push({ on: sec.frame, at: [X(jx), y, back + sd * f], dir: [X(right ? 1 : -1), 0, 0], mate: fixed.frame });
+        for (const f of [0.3, 0.7]) {
+          if (sec.along === "z") {
+            // the return meets the corner along its back edge: the connector runs front to back
+            const x = X(sec.x0 + (sec.x1 - sec.x0) * f);
+            plates.push({ on: sec.frame, at: [x, legH, sec.z0], dir: [0, 1, 0], twist: Math.PI / 2, hole: false });
+            for (const dz of [-half, half]) screws.push({ on: sec.frame, at: [x, legH - 2, sec.z0 + dz], dir: [0, 1, 0], hole: false });
+          } else {
+            const jx = X(sec.x0 >= fixed.x1 - 1 ? sec.x0 : sec.x1);
+            const z = back + sd * f;
+            plates.push({ on: sec.frame, at: [jx, legH, z], dir: [0, 1, 0], hole: false });
+            for (const dx of [-half, half]) screws.push({ on: sec.frame, at: [jx + dx, legH - 2, z], dir: [0, 1, 0], hole: false });
+          }
         }
       }
-      b.fits(HW.boltL, bolts, 0.1);
+      b.fits(HW.connector, plates, 0.12);
+      b.then(0.1);
+      b.fits(HW.screwM, screws, 0.06);
     },
+  );
+  b.step(
+    {
+      title: "Turn it over together",
+      detail: "Lift it by the frame, never by the legs.",
+      pose: "+y",
+      kind: "flip",
+      people: 2,
+      warnings: ["two"],
+    },
+    () => {},
   );
 
   if (armKeys.length) {

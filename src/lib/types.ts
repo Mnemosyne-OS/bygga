@@ -195,7 +195,8 @@ export type HwKind =
   | "glide"
   | "plug"
   | "castor"
-  | "gasLift";
+  | "gasLift"
+  | "connector";
 
 export interface HwType {
   id: string;

@@ -259,6 +259,10 @@ export function hwDrawable(kind: HwKind, len: number, dia: number) {
         addSolid(d, `ca:wheel:${dia}`, () => new THREE.CylinderGeometry(r, r, dia * 0.26, 24).rotateZ(Math.PI / 2), plastic, { hull: "radial", position: [x * dia * 0.21, len - r, -dia * 0.16] });
       break;
     }
+    case "connector":
+      // a flat strip screwed across the joint between two sofa sections
+      addSolid(d, `cn:${len}:${dia}`, () => new THREE.BoxGeometry(len, 2, dia), metal, { position: [0, 1, 0] });
+      break;
     case "gasLift": {
       // the narrow end drops into the base; the rod at the top goes up into the seat
       addSolid(d, "gl:foot", cyl(14, 60, 18), metal, { hull: "cyl", position: [0, -30, 0] });
