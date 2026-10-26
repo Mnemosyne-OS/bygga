@@ -1100,7 +1100,15 @@
 .scale-person {
   height: 100%;
   width: auto;
-  fill: #e6e3dc;
+}
+/* the floor the pieces stand on: a skirting line and a soft floor below it */
+.sr-floor {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(180deg, #f3f1ec, #faf9f6 70%);
+  box-shadow: inset 0 1.5px 0 var(--line-2);
 }
 .sr-person span {
   position: absolute;

@@ -12,7 +12,7 @@ import type { Plan, ProductSpec } from "@/lib/types";
 import { useMounted } from "@/lib/useMounted";
 import { peekShot, shot, type Shot } from "@/engine/thumbs";
 import Thumb from "../Thumb";
-import { Figure } from "../art/Figure";
+import { Figure, ScaleFigure } from "../art/Figure";
 import { IArrowRight, IBox, ICheck, IClock, IClose, ILibrary, IPeople, WarnIcon } from "../art/Icons";
 
 interface Row {
@@ -194,6 +194,8 @@ function Showroom({ rows }: { rows: Row[] }) {
         [personX - 300, 0, 0],
         [personX - 300, PERSON, 0],
         [line.span[1] + 300, 0, 0],
+        // room under the floor line for the name tags
+        [line.span[0], -420, 0],
       ] as [number, number, number][],
     }),
     [personX, line],
@@ -227,11 +229,12 @@ function Showroom({ rows }: { rows: Row[] }) {
       <div className="sr-stage" ref={wrap} style={{ height: h }}>
         {s && (
           <motion.div className="sr-img" initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.5 }}>
+            {feet && <div className="sr-floor" style={{ top: feet.y }} aria-hidden="true" />}
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img src={s.url} alt="" draggable={false} />
             {feet && figH > 20 && (
               <div className="sr-person" style={{ left: feet.x, top: feet.y, height: figH }}>
-                <ScalePerson />
+                <ScaleFigure className="scale-person" />
                 <span>You, about 175 cm</span>
               </div>
             )}
@@ -249,20 +252,6 @@ function Showroom({ rows }: { rows: Row[] }) {
         )}
       </div>
     </section>
-  );
-}
-
-/** A quiet scale figure, like the ones on architects' drawings. viewBox is 175 units tall, one per cm. */
-function ScalePerson() {
-  return (
-    <svg viewBox="0 0 60 175" className="scale-person" aria-hidden="true">
-      <circle cx="30" cy="11.5" r="10.5" />
-      <rect x="17" y="26" width="26" height="62" rx="11" />
-      <rect x="8.5" y="28" width="7.5" height="60" rx="3.75" transform="rotate(4 12 28)" />
-      <rect x="44" y="28" width="7.5" height="60" rx="3.75" transform="rotate(-4 48 28)" />
-      <rect x="19" y="78" width="10.5" height="96" rx="5.25" />
-      <rect x="30.5" y="78" width="10.5" height="96" rx="5.25" />
-    </svg>
   );
 }
 
