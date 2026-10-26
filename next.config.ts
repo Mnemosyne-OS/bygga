@@ -13,6 +13,15 @@ const nextConfig: NextConfig = {
   async headers() {
     return [
       {
+        // share cards only change on deploy: let the CDN keep them, so a viral link renders each card once
+        source: "/:path(opengraph-image|twitter-image)",
+        headers: [{ key: "Cache-Control", value: "public, max-age=3600, s-maxage=31536000, stale-while-revalidate=86400" }],
+      },
+      {
+        source: "/build/:slug/:img(opengraph-image|twitter-image)",
+        headers: [{ key: "Cache-Control", value: "public, max-age=3600, s-maxage=31536000, stale-while-revalidate=86400" }],
+      },
+      {
         // the service worker itself must never be stale
         source: "/sw.js",
         headers: [{ key: "Cache-Control", value: "no-cache" }],
@@ -21,6 +30,11 @@ const nextConfig: NextConfig = {
         // clips are named after their text, so a file only changes when it is re-recorded
         source: "/voice/:path*",
         headers: [{ key: "Cache-Control", value: "public, max-age=604800, stale-while-revalidate=2592000" }],
+      },
+      {
+        // the list of clips changes with every recording, so it is checked often
+        source: "/voice/:voice/manifest.json",
+        headers: [{ key: "Cache-Control", value: "public, max-age=300, stale-while-revalidate=3600" }],
       },
     ];
   },
