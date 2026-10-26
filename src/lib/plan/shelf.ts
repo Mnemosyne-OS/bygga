@@ -2,6 +2,7 @@ import type { PartPiece, ProductSpec, ShelfParams, Vec3 } from "../types";
 import { HW, PlanBuilder, type FitOpts } from "./builder";
 import { FrameKit, anchorStep } from "./frame";
 import { clamp } from "./math";
+import { buildChanging } from "./changing";
 import { buildRack } from "./rack";
 
 export function defaultsShelf(s: ProductSpec): ShelfParams {
@@ -21,6 +22,7 @@ export function defaultsShelf(s: ProductSpec): ShelfParams {
 }
 
 export function buildShelf(b: PlanBuilder, s: ProductSpec) {
+  if (s.shelf?.changing) return buildChanging(b, s, buildShelf);
   if (s.shelf?.style === "rack") return buildRack(b, s);
   const p = defaultsShelf(s);
   if (p.style === "grid") return s.shelf?.underframe ? onUnderframe(b, s, p) : s.shelf?.inserts ? withInserts(b, s, p) : grid(b, s, p);

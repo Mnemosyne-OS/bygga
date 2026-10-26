@@ -16,6 +16,7 @@ ALEX|open|Storage unit, 36 × 70 cm|36|70|35
 ÅLHULT|dining|Extendable table, 120/170 × 80 cm|120|74|80
 ÅLHULT|dining|Table, 120 × 80 cm|120|74|80
 ÅLHULT|dining|Extendable table, 170/220 × 80 cm|170|74|80
+ÄLSKVÄRD|changing|Changing table/chest of drawers, 94 × 77 × 106 cm|94|106|77|rows=3|kids children
 ÄLSKVÄRD|cot|Cot, 70 × 140 cm|150|86|78|m=70,l=140
 ÄLVDALEN|chaise|3-seat sofa-bed with chaise longue|226|85|160|seats=3,arms=wide,chaise=right,sd=92
 ÄLVDALEN|sofa|3-seat sofa-bed|230|85|92|seats=3
@@ -296,6 +297,7 @@ GULLABERG|nightstand|Bedside table, 53 × 43 × 69 cm|53|69|43|rows=2
 GULLABERG|shoe|Shoe cabinet with 2 compartments, 88 × 30 × 122 cm|88|122|30|c=2
 GULLABERG|shoe|Shoe cabinet with 4 compartments, 105 × 22 × 107 cm|105|107|22|c=4
 GULLABERG|wardrobe|Wardrobe, 128 × 64 × 201 cm|128|201|64
+GULLIVER|changing|Changing table, 82 × 54 × 93 cm|82|93|54|shelves=2|kids children
 GULLIVER|cot|Cot, 60 × 120 cm|130|82|68|m=60,l=120
 GULLVALLA|sofa|2-seat sofa|170|85|92|seats=2
 GULLVALLA|sofa|3-seat sofa|230|85|92|seats=3
@@ -763,6 +765,7 @@ MULLSJÖ|office|Swivel chair|60|105|64|arms=none
 MUSKAN|bench|Bench, 58 × 38 cm|58|45|38
 MUSKAN|open|Shelving unit, 37 × 140 cm|37|140|35
 MYDAL|bunk|Bunk bed frame, 90 × 200 cm|211|160|100|m=90
+MYLLRA|changing|Changing table with drawers, 85 × 79 × 97 cm|85|97|79|rows=3|kids children
 MYLLRA|cot|Cot with drawer, 70 × 140 cm|150|86|78|m=70,l=140,drawer=1
 NACKANÄS|dining|Table, 140 × 76 cm|140|74|76
 NÄMMARÖ|bar|Bar table, outdoor, 120 × 40 cm|120|105|40||outdoor garden
@@ -1005,12 +1008,14 @@ SLATORP|sofa|2-seat sofa|170|85|92|seats=2
 SLATORP|sofa|3-seat sofa|230|85|92|seats=3
 SLATTUM|bed|Upholstered bed frame, Standard Single, 90 × 190 cm|106|85|199|m=90,l=190,f=30
 SLATTUM|bed|Upholstered bed frame, Standard Double, 135 × 190 cm|151|85|199|m=135,l=190,f=30
+SMÅGÖRA|changing|Changing table/bookshelf, 60 × 81 × 103 cm|81|103|60|shelves=2|kids children
 SMÅGÖRA|cot|Cot, 70 × 140 cm|150|86|78|m=70,l=140
 SMÅGÖRA|desk|Desk, 93 × 51 cm|93|74|51||kids children
 SMÅGÖRA|open|Shelf unit, 29 × 88 cm|29|88|35||kids children
 SMÅGÖRA|wardrobe|Wardrobe, 80 × 50 × 187 cm|80|187|50
 SMÄLLEN|office|Swivel chair|60|105|64|arms=none
 SMÅSTAD|bench|Bench, 90 × 50 × 48 cm|90|48|50||kids children
+SMÅSTAD|changing|Changing table/desk, 90 × 79 × 100 cm|90|100|79|shelves=1|kids children
 SMÅSTAD|desk|Desk, 90 × 79 × 100 cm|90|100|79||kids children
 SMÅSTAD|wallcab|Wall cabinet, 60 × 32 × 60 cm|60|60|32||kids children
 SMÅSTAD|wardrobe|Wardrobe, 60 × 42 × 181 cm|60|181|42||kids children
@@ -1029,6 +1034,7 @@ SMYGA|bed|Bed frame with storage, 90 × 200 cm|106|100|209|m=90
 SMYGA|bed|Bed frame, 90 × 200 cm|106|100|209|m=90
 SMYGA|desk|Desk, 122 × 60 cm|122|74|60||kids children
 SNIGLAR|bed|Bed frame with slatted bed base, 70 × 160 cm|86|64|169|m=70,l=160,f=50
+SNIGLAR|changing|Changing table, 53 × 72 × 87 cm|72|87|53|shelves=2|kids children
 SNIGLAR|cot|Cot, 60 × 120 cm|130|82|68|m=60,l=120
 SÖDERHAMN|chaise|4-seat sofa with chaise longue|259|69|167|seats=4,arms=slim,chaise=right,sd=99
 SÖDERHAMN|corner|Corner sofa, 4-seat|228|69|168|seats=4,arms=slim,corner=left,sd=99
@@ -1092,6 +1098,7 @@ SUNDSÖ|chair|Folding chair|44|88|50||outdoor garden
 SUNDSÖ|dining|Table, 65 × 65 cm|65|74|65||outdoor garden
 SUNDSÖ|dining|Table, 65 cm|65|74|65|round=1|outdoor garden
 SUNDVIK|armchair|Rocking-chair|75|90|80
+SUNDVIK|changing|Changing table/chest of drawers, 78 × 79 × 99 cm|79|99|78|rows=3|kids children
 SUNDVIK|cot|Cot, 70 × 140 cm|150|86|78|m=70,l=140
 SUNDVIK|kidschair|Children's chair|34|60|34||kids
 SUNDVIK|kidstable|Children's table, 76 × 50 cm|76|48|50||kids

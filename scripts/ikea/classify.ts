@@ -73,7 +73,7 @@ export function measure(s: string): Size | null {
   return { n: parts.map((p) => Number(p.split("/")[0])), ext: parts.some((p) => p.includes("/")), text: parts.join(" × ") + " cm" };
 }
 
-const UPRIGHT = new Set<Kind>(["cube", "bookcase", "open", "chest", "nightstand", "wardrobe", "cabinet", "sideboard", "tv", "shoe", "wallcab", "wallshelf", "kitchen", "mixed", "sliding", "slidecab", "washstand", "sinkcab", "appliance", "shoerack", "clothesrack"]);
+const UPRIGHT = new Set<Kind>(["cube", "bookcase", "open", "chest", "nightstand", "wardrobe", "cabinet", "sideboard", "tv", "shoe", "wallcab", "wallshelf", "kitchen", "mixed", "sliding", "slidecab", "washstand", "sinkcab", "appliance", "shoerack", "clothesrack", "changing"]);
 const FLAT = new Set<Kind>(["desk", "coffee", "side", "dining", "bar", "console", "kidstable", "trolley", "bench"]);
 
 /** Office chairs IKEA sells with armrests although the type doesn't say so. */
@@ -276,6 +276,9 @@ const RULES: Rule[] = [
   [/^(tv bench|tv bench with (\d )?doors|tv unit|tv storage unit)$/, (m, c) =>
     c.f.name === "KALLAX" ? "cube shelf with door inserts" : { kind: "tv", x: m[0] === "tv bench" && /^(BESTÅ|LACK)$/.test(c.f.name) ? { doors: 0 } : {} }],
   [/^(shoe rack|open shoe storage unit)$/, () => ({ kind: "shoerack" })],
+  // changing tables: a chest of drawers or an open frame with shelves, and a changing top on it
+  [/^changing table(?: with drawers|\/chest of drawers|\/bookshelf|\/desk)?$/, (m, c) =>
+    c.f.spr ? "changing table sold as a combination" : { kind: "changing", x: /drawers/.test(m[0]) ? { rows: 3 } : { shelves: /desk/.test(m[0]) ? 1 : 2 } }],
   // freestanding clothes racks: two uprights on feet, a rail across the top, a shoe shelf or a lower rail
   [/^(clothes rack|clothes rack with shoe storage|coat rack with shoe storage unit)$/, (m) => ({ kind: "clothesrack", x: /shoe/.test(m[1]) ? { shelf: true } : {} })],
   [/^(shoe cabinet|shoe cabinet\/storage|shoe cabinet with (\d) compartments)$/, (m) => ({ kind: "shoe", x: m[2] ? { c: Number(m[2]) } : {} })],
@@ -398,6 +401,8 @@ export function classify(f: Fact, hints: Hints): Verdict {
     else if (kind === "clothesrack" && RACK_SIZE[family]) set(...RACK_SIZE[family]);
     else return { skip: "no size given" };
     if (kind === "clothesrack" && h < 100) return { skip: "clothes rack measured in a way we can't read" };
+    // a changing table is wider than it's deep, whichever way round IKEA writes it
+    if (kind === "changing" && d > w) [w, d] = [d, w];
     if (guessed.d && hint?.kind === kind && Math.abs(hint.w - w) < 60) d = hint.d;
     // a cabinet with drawers is as deep as the family's cabinet
     const twin = kind === "mixed" || kind === "slidecab" ? "cabinet" : kind === "sliding" ? "wardrobe" : undefined;

@@ -2,6 +2,7 @@ import type { DrawersParams, ProductSpec } from "../types";
 import { HW, PlanBuilder, type FitOpts } from "./builder";
 import { FrameKit } from "./frame";
 import { clamp } from "./math";
+import { buildChanging } from "./changing";
 
 export function defaultsDrawers(s: ProductSpec): DrawersParams {
   const p = s.drawers ?? {};
@@ -15,6 +16,7 @@ export function defaultsDrawers(s: ProductSpec): DrawersParams {
 }
 
 export function buildDrawers(b: PlanBuilder, s: ProductSpec) {
+  if (s.drawers?.changing) return buildChanging(b, s, buildDrawers);
   const p = defaultsDrawers(s);
   const W = s.size.w * 10, H = s.size.h * 10, D = s.size.d * 10;
   const t = p.thickness;

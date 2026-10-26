@@ -16,6 +16,7 @@ export interface ShelfParams {
   underframe?: number; // cm: a cube grid standing on an underframe this tall (size.h takes it in)
   inserts?: number; // a cube grid sold with this many inserts with a door, from the bottom row up
   shoes?: boolean; // a rack with a shoe shelf low down instead of a lower rail
+  changing?: boolean; // a changing table: a changing top goes on last (size.h takes it in)
 }
 
 export interface DrawersParams {
@@ -24,6 +25,7 @@ export interface DrawersParams {
   knobs: "none" | "knob" | "bar";
   plinth: boolean;
   thickness: number;
+  changing?: boolean; // a changing table: a changing top goes on last (size.h and size.d take it in)
 }
 
 export interface TableParams {
