@@ -4,6 +4,7 @@ import { FrameKit, anchorStep } from "./frame";
 import { clamp } from "./math";
 import { buildChanging } from "./changing";
 import { buildRack } from "./rack";
+import { buildScreen } from "./screen";
 
 export function defaultsShelf(s: ProductSpec): ShelfParams {
   const p = s.shelf ?? {};
@@ -24,6 +25,7 @@ export function defaultsShelf(s: ProductSpec): ShelfParams {
 export function buildShelf(b: PlanBuilder, s: ProductSpec) {
   if (s.shelf?.changing) return buildChanging(b, s, buildShelf);
   if (s.shelf?.style === "rack") return buildRack(b, s);
+  if (s.shelf?.style === "screen") return buildScreen(b, s);
   const p = defaultsShelf(s);
   if (p.style === "grid") return s.shelf?.underframe ? onUnderframe(b, s, p) : s.shelf?.inserts ? withInserts(b, s, p) : grid(b, s, p);
   return bookcase(b, s, p);

@@ -3,7 +3,7 @@ export type Vec3 = [number, number, number];
 export type Archetype = "shelf" | "drawers" | "table" | "bed" | "cabinet" | "seat" | "sofa" | "custom";
 
 export interface ShelfParams {
-  style: "grid" | "bookcase" | "rack"; // a rack: two uprights on feet with a rail across the top
+  style: "grid" | "bookcase" | "rack" | "screen"; // a rack: two uprights on feet with a rail across the top; a screen: hinged panels
   cols: number;
   rows: number;
   shelves: number; // adjustable shelves (bookcase)

@@ -73,7 +73,7 @@ export function measure(s: string): Size | null {
   return { n: parts.map((p) => Number(p.split("/")[0])), ext: parts.some((p) => p.includes("/")), text: parts.join(" × ") + " cm" };
 }
 
-const UPRIGHT = new Set<Kind>(["cube", "bookcase", "open", "chest", "nightstand", "wardrobe", "cabinet", "sideboard", "tv", "shoe", "wallcab", "wallshelf", "kitchen", "mixed", "sliding", "slidecab", "washstand", "sinkcab", "appliance", "shoerack", "clothesrack", "changing"]);
+const UPRIGHT = new Set<Kind>(["cube", "bookcase", "open", "chest", "nightstand", "wardrobe", "cabinet", "sideboard", "tv", "shoe", "wallcab", "wallshelf", "kitchen", "mixed", "sliding", "slidecab", "washstand", "sinkcab", "appliance", "shoerack", "clothesrack", "changing", "divider"]);
 const FLAT = new Set<Kind>(["desk", "coffee", "side", "dining", "bar", "console", "kidstable", "trolley", "bench"]);
 
 /** Office chairs IKEA sells with armrests although the type doesn't say so. */
@@ -276,6 +276,7 @@ const RULES: Rule[] = [
   [/^(tv bench|tv bench with (\d )?doors|tv unit|tv storage unit)$/, (m, c) =>
     c.f.name === "KALLAX" ? "cube shelf with door inserts" : { kind: "tv", x: m[0] === "tv bench" && /^(BESTÅ|LACK)$/.test(c.f.name) ? { doors: 0 } : {} }],
   [/^(shoe rack|open shoe storage unit)$/, () => ({ kind: "shoerack" })],
+  [/^room divider$/, () => ({ kind: "divider" })],
   // changing tables: a chest of drawers or an open frame with shelves, and a changing top on it
   [/^changing table(?: with drawers|\/chest of drawers|\/bookshelf|\/desk)?$/, (m, c) =>
     c.f.spr ? "changing table sold as a combination" : { kind: "changing", x: /drawers/.test(m[0]) ? { rows: 3 } : { shelves: /desk/.test(m[0]) ? 1 : 2 } }],

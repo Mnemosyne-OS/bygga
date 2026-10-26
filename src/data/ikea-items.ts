@@ -284,6 +284,7 @@ gavle-easy-chair|80588845 50588842
 gillersberg-bedside-table-39-x-39-x-56|30608983
 gladhojden-desk-sit-stand-100-x-60|30493939
 gladstad-upholstered-bed-frame-standard-king-150|40490469 60490468
+glamberget-room-divider-150-x-150|90564735
 glamberget-wardrobe-3-sliding-doors-117-x-63-x-1|20564512
 glenn-bar-stool-66|60131734
 glostad-2-seat-sofa|90489010
@@ -294,6 +295,7 @@ gonatt-cot-drawer-70-x-140|90467089
 grafjallet-bedside-table-45-x-36-x-59|20570221
 grafjallet-clothes-rack-shoe-storage-90-x-36-x-1|00570222
 grafjallet-dressing-table-100-x-42|30570225
+grafjallet-room-divider-150-x-175|10570226
 grejsimojs-children-s-stool|60598973 50598959
 grejsimojs-children-s-table-84-x-42|70598963
 grillskar-side-table-outdoor-30-x-61|00523179
@@ -1014,6 +1016,7 @@ rian-side-table-50-x-30|80343419
 ridspo-desk-140-x-70|00485224
 rigga-clothes-rack|50231630
 risholmen-wing-chair-in-outdoor|00503794
+risor-room-divider-216-x-185|70182191
 rocksjon-2-seat-sofa|19508862 59514696 59508855
 rocksjon-armchair|89508854 29514693 89508849
 ronninge-bar-table-75-x-75|50511230
@@ -1228,6 +1231,7 @@ tjarkil-extendable-table-180-235-290-x-100|70630454
 tjusig-bench-shoe-storage-108-x-34-x-50|70152702 50152703
 tjusig-shoe-rack-79-x-32-x-37|10152639 30152638
 tobias-chair|30635123 80349671 90532589
+tolkning-room-divider-150-x-170|60512663
 tonstad-bed-frame-standard-double-135-x-190|39577717 99577719 59577716 19577718 99577743 49577745 79577744
 tonstad-bed-frame-standard-single-90-x-190|10603547 90603609 59577721 79577720 29577746 09577747
 tonstad-bed-frame-storage-standard-king-150-x-20|49496674 69496673 69496654 39496655 29496613 89496592 89496587

@@ -261,6 +261,7 @@ GÄVLE|armchair|Easy chair|75|90|80
 GILLERSBERG|nightstand|Bedside table, 39 × 39 × 56 cm|39|56|39|rows=1
 GLADHÖJDEN|desk|Desk sit/stand, 100 × 60 cm|100|74|60
 GLADSTAD|bed|Upholstered bed frame, Standard King, 150 × 200 cm|166|100|209|m=150
+GLAMBERGET|divider|Room divider, 150 × 150 cm|150|150|25
 GLAMBERGET|sliding|Wardrobe with 3 sliding doors, 117 × 63 × 150 cm|117|150|63|slides=3
 GLENN|stool|Bar stool, 66 cm|35|66|35
 GLOSTAD|chaise|3-seat sofa with chaise longue|201|78|150|seats=3,arms=wide,chaise=right,sd=82
@@ -269,6 +270,7 @@ GODISHUS|chest|Chest of 3 drawers, 60 × 40 × 60 cm|60|60|40|rows=3
 GONATT|cot|Cot with drawer, 70 × 140 cm|150|86|78|m=70,l=140,drawer=1
 GRÅFJÄLLET|clothesrack|Clothes rack with shoe storage, 90 × 36 × 175 cm|90|175|36|shelf=1
 GRÅFJÄLLET|desk|Dressing table, 100 × 42 cm|100|74|42
+GRÅFJÄLLET|divider|Room divider, 150 × 175 cm|150|175|25
 GRÅFJÄLLET|nightstand|Bedside table, 45 × 36 × 59 cm|45|59|36|rows=1
 GREJSIMOJS|kidstable|Children's table, 84 × 42 cm|84|48|42||kids
 GREJSIMOJS|stool|Children's stool|35|30|35||kids
@@ -939,6 +941,7 @@ RIAN|side|Side table, 50 × 30 cm|50|50|30
 RIDSPÖ|desk|Desk, 140 × 70 cm|140|74|70
 RIGGA|clothesrack|Clothes rack|111|175|51
 RISHOLMEN|armchair|Wing chair, in/outdoor|75|104|80||outdoor garden
+RISÖR|divider|Room divider, 216 × 185 cm|216|185|25
 ROCKSJÖN|armchair|Armchair|75|90|80
 ROCKSJÖN|sofa|2-seat sofa|170|85|92|seats=2
 RÖNNINGE|bar|Bar table, 75 × 75 cm|75|105|75
@@ -1144,6 +1147,7 @@ TJÄRKIL|dining|Extendable table, 180/235/290 × 100 cm|180|74|100
 TJUSIG|bench|Bench with shoe storage, 108 × 34 × 50 cm|108|50|34
 TJUSIG|shoerack|Shoe rack, 79 × 32 × 37 cm|79|37|32
 TOBIAS|chair|Chair|44|88|50
+TOLKNING|divider|Room divider, 150 × 170 cm|150|170|25
 TONSTAD|bed|Bed frame with storage, Standard Single, 90 × 190 cm|106|100|199|m=90,l=190
 TONSTAD|bed|Bed frame, Standard Single, 90 × 190 cm|106|100|199|m=90,l=190
 TONSTAD|bed|Bed frame, Standard Double, 135 × 190 cm|151|100|199|m=135,l=190
