@@ -107,6 +107,7 @@ interface Row {
   nameWords: string[];
   words: string[];
   padded: string;
+  kids: boolean;
 }
 let rows: Row[] | null = null;
 const rowOf = new Map<CatalogEntry, Row>();
@@ -115,7 +116,9 @@ function index(): Row[] {
   rows = PRODUCTS.map((e) => {
     const name = fold(e.name);
     const hay = fold([e.name, e.variant, e.category, ...(e.keywords ?? [])].join(" "));
-    const r = { e, name, nameKey: name.replace(/\s+/g, ""), nameWords: name.split(" "), words: hay.split(" "), padded: ` ${fold(e.category)} ${hay} ` };
+    const padded = ` ${fold(e.category)} ${hay} `;
+    const kids = / (children s|childrens|kids|junior|baby|highchair|cot|changing) /.test(padded);
+    const r = { e, name, nameKey: name.replace(/\s+/g, ""), nameWords: name.split(" "), words: hay.split(" "), padded, kids };
     rowOf.set(e, r);
     return r;
   });
@@ -143,6 +146,7 @@ export function searchCatalog(q: string, limit = 8): Hit[] {
   const first = tokens[0];
   // "crib" or "sectional" alone names the type, so it counts like a word in the product's own text
   const firstIsKind = !!kw?.some((w) => w.split(" ").includes(first));
+  const kidsQ = /\b(child|children|kid|kids|junior|baby|toddler)/.test(f);
   const joined = f.replace(/\s+/g, "");
   // a real IKEA name we can't draw is not a typo of one we can
   const typos = !isGuardedName(first);
@@ -165,9 +169,13 @@ export function searchCatalog(q: string, limit = 8): Hit[] {
     const ns = nameScore(r);
     let score = ns;
     const kwHit = !!kw?.some((w) => r.padded.includes(` ${w} `) || r.padded.includes(` ${w}s `));
-    if (!ns && ((first.length >= 3 && r.words.some((w) => w.startsWith(first))) || (firstIsKind && kwHit))) score += 20;
+    const lit = first.length >= 3 && r.words.some((w) => w.startsWith(first));
+    // a type word counts for every product of that type, and a little more where the product says it ("oven cabinet")
+    if (!ns && (lit || (firstIsKind && kwHit))) score += firstIsKind && lit ? 20.5 : 20;
     for (const t of tokens.slice(1)) if (t.length && r.words.some((w) => w.startsWith(t) || (t.length > 2 && w.includes(t)))) score += 12;
     if (kw) score += kwHit ? 14 : -30;
+    // children's pieces come after the grown-up ones unless the search asks for them
+    if (!ns && !kidsQ && r.kids) score -= 1;
     // rows of several units, sofa sections and appliance cabinets come after the plain product, unless the query asks for them
     if (e.kind && (LESSER.has(e.kind) || e.cabinet?.fit) && kind !== e.kind) score -= 1;
     if (e.checked) score += 3;
