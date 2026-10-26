@@ -4,11 +4,15 @@
  * voice clips: cache first, they never change under the same name.
  * The API is never cached here.
  */
-const PAGES = "bygga-pages-v1";
-const FILES = "bygga-files-v1";
+const PAGES = "bygga-pages-v2";
+const FILES = "bygga-files-v2";
 const KEEP = [PAGES, FILES];
 
-self.addEventListener("install", () => self.skipWaiting());
+self.addEventListener("install", (e) => {
+  self.skipWaiting();
+  // the search is always there, even if the first visit was a guide
+  e.waitUntil(caches.open(PAGES).then((c) => c.add("/")).catch(() => {}));
+});
 self.addEventListener("activate", (e) => {
   e.waitUntil(
     caches
@@ -42,7 +46,8 @@ self.addEventListener("fetch", (e) => {
           }
           return res;
         })
-        .catch(() => caches.match(req).then((hit) => hit || caches.match("/"))),
+        // offline: this page, the same guide at another step, or the home page
+        .catch(async () => (await caches.match(req)) || (await caches.match(req, { ignoreSearch: true })) || caches.match("/")),
     );
     return;
   }

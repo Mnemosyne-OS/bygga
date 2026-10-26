@@ -477,6 +477,17 @@ export function catalogSpec(slug: string): ProductSpec | null {
   return toSpec(e);
 }
 
+/** One way of naming sizes per family: grids as columns × rows, shelves and cabinets as width × height (and depth when two share those). */
+function sizeLabel(x: Entry, same: Entry[]) {
+  const head = x.variant.split(",")[0];
+  if (x.shelf?.style === "grid" && x.shelf.cols && x.shelf.rows) return `${head}, ${x.shelf.cols} × ${x.shelf.rows}`;
+  if ((x.archetype === "shelf" || x.archetype === "cabinet") && /\d+ × \d+/.test(x.variant)) {
+    const twin = same.some((o) => o !== x && o.size.w === x.size.w && o.size.h === x.size.h);
+    return `${head}, ${x.size.w} × ${x.size.h} cm${twin ? `, ${x.size.d} deep` : ""}`;
+  }
+  return x.variant;
+}
+
 export function toSpec(e: Entry): ProductSpec {
   const { family, kind, keywords, featured, checked, ...rest } = e;
   void kind;
@@ -485,7 +496,11 @@ export function toSpec(e: Entry): ProductSpec {
   void checked;
   const kin = BY_FAMILY.get(family) ?? [e];
   const same = kin.filter((x) => x.category === e.category);
-  const variants = same.map((x) => ({ label: x.variant, slug: x.slug }));
+  // smallest first, and a cube grid always reads as columns × rows, like the labels on the box
+  const variants = [...same]
+    .sort((a, b) => a.size.w * a.size.h - b.size.w * b.size.h || a.size.d - b.size.d)
+    .map((x) => ({ label: sizeLabel(x, same), slug: x.slug }))
+    .filter((v, i, all) => all.findIndex((o) => o.label === v.label) === i || v.slug === e.slug);
   const seen = new Set<string>([e.category]);
   const siblings: { label: string; slug: string }[] = [];
   for (const x of kin) {

@@ -33,7 +33,7 @@ export default function Home() {
             <br />
             step by step.
           </h1>
-          <p className="lead">Type the name from the box. Each step plays in 3D, with the exact parts, screws and tools, read out loud if your hands are full.</p>
+          <p className="lead">Type the name from the box. Each step plays in 3D and is read out loud, with the exact parts, screws and tools.</p>
           <HeroSearch />
           <Resume />
           <div className="quick">
