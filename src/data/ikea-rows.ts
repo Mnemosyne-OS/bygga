@@ -446,12 +446,20 @@ KALLAX|cube|Shelving unit, 42 × 41 cm|42|41|39
 KALLAX|cube|Shelving unit, 77 × 41 cm|77|41|39
 KALLAX|cube|Shelving unit with underframe, 77 × 94 cm|77|94|39|uf=17
 KALLAX|cube|Shelving unit, 77 × 112 cm|77|112|39
+KALLAX|cube|Shelving unit with 2 inserts, 77 × 147 cm|77|147|39|ins=2
 KALLAX|cube|Shelving unit with underframe, 77 × 164 cm|77|164|39|uf=17
+KALLAX|cube|Shelving unit with 6 inserts, 112 × 147 cm|112|147|39|ins=6
 KALLAX|cube|Shelving unit, 112 × 147 cm|112|147|39
+KALLAX|cube|Shelving unit with 2 inserts, 147 × 42 cm|147|42|39|ins=2
 KALLAX|cube|Shelving unit with underframe, 147 × 59 cm|147|59|39|uf=17
+KALLAX|cube|Shelving unit with 4 inserts, 147 × 77 cm|147|77|39|ins=4
 KALLAX|cube|Shelving unit with underframe, 147 × 94 cm|147|94|39|uf=17
+KALLAX|cube|Shelving unit with 4 inserts, 147 × 112 cm|147|112|39|ins=4
 KALLAX|cube|Shelving unit with underframe, 147 × 129 cm|147|129|39|uf=17
+KALLAX|cube|Shelving unit with 4 inserts, 147 × 147 cm|147|147|39|ins=4
+KALLAX|cube|Shelving unit with 8 inserts, 147 × 147 cm|147|147|39|ins=8
 KALLAX|cube|Shelving unit with underframe, 147 × 164 cm|147|164|39|uf=17
+KALLAX|cube|Shelving unit with 10 inserts, 182 × 182 cm|182|182|39|ins=10
 KALLAX|cube|Shelving unit, 182 × 182 cm|182|182|39
 KALLAX|desk|Desk, 111 × 39 cm|111|74|39
 KALLSÖ|bench|Bench with shoe storage, 80 × 38 × 56 cm|80|56|38

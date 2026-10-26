@@ -259,6 +259,8 @@ const RULES: Rule[] = [
   [/^(wall shelf unit|wall shelf|wall-mounted shelving unit|wall storage unit)$/, (m, c) => (c.sz.n.length === 3 && c.sz.n[2] >= 25) || (m[1] === "wall shelf unit" && c.sz.n.length >= 2) ? { kind: "wallshelf" } : "single shelf board"],
   // KALLAX on an underframe 17 cm high, sold together: the shelf, then the frame screwed to its bottom
   [/^shelving unit with underframe$/, (_m, c) => (c.f.name === "KALLAX" ? { kind: "cube", x: { uf: 17 } } : "shelving unit on an underframe")],
+  // KALLAX sold with inserts: drawn as inserts with a door, from the bottom row up
+  [/^shelving unit with (\d+) inserts$/, (m, c) => (c.f.name === "KALLAX" ? { kind: "cube", x: { ins: Number(m[1]) } } : "shelving unit with inserts")],
   [/^(modular )?chest of (\d+) drawers$/, (m) => ({ kind: "chest", x: { rows: Number(m[2]) } })],
   [/^(drawer unit|drawer unit on castors|chest of drawers|dresser)$/, () => ({ kind: "chest" })],
   [/^(bedside table|nightstand|bedside table with (\d) drawers?)$/, (m) => ({ kind: "nightstand", x: m[2] ? { rows: Number(m[2]) } : {} })],

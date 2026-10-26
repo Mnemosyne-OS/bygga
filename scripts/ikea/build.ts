@@ -65,6 +65,8 @@ function baseMatch(name: string, draw: Draw): CatalogEntry | undefined {
   const fam = fold(name);
   const spec = specFor(draw.kind, name, "", draw.w, draw.h, draw.d, draw.x);
   const g = draw.guessed;
+  // a cube shelf with inserts or on an underframe is more than the hand made shelf of the same size
+  if (draw.x.ins || draw.x.uf) return undefined;
   for (const e of BASE) {
     if (fold(e.name) !== fam) continue;
     if (e.archetype !== spec.archetype && e.category !== spec.category) continue;
