@@ -430,6 +430,7 @@ KRONÖREN|wardrobe|Open wardrobe, 90 × 49 × 181 cm|90|181|49|doors=0
 KRYLBO|chair|Chair|44|88|50
 KRYLBO|office|Swivel chair|60|105|64|arms=none
 KUNGSFORS|trolley|Kitchen trolley, 60 × 40 cm|60|80|40
+KURA|loft|Reversible bed, 90 × 200 cm|211|116|100|m=90
 LACK|side|Side table, 35 × 35 cm|35|45|35|legs=square,attach=screw
 LACK|tv|TV bench, 90 × 36 × 45 cm|90|45|36|doors=0
 LACK|tv|TV bench, 120 × 35 × 36 cm|120|36|35|doors=0
@@ -576,6 +577,7 @@ MULLSJÖ|desk|Desk, 135 × 70 cm|135|74|70
 MULLSJÖ|office|Swivel chair|60|105|64|arms=none
 MUSKAN|bench|Bench, 58 × 38 cm|58|45|38
 MUSKAN|open|Shelving unit, 37 × 140 cm|37|140|35
+MYDAL|bunk|Bunk bed frame, 90 × 200 cm|211|160|100|m=90
 MYLLRA|cot|Cot with drawer, 70 × 140 cm|150|86|78|m=70,l=140,drawer=1
 NACKANÄS|dining|Table, 140 × 76 cm|140|74|76
 NÄMMARÖ|bar|Bar table, outdoor, 120 × 40 cm|120|105|40||outdoor garden
@@ -867,6 +869,8 @@ SUNDVIK|kidschair|Children's chair|34|60|34||kids
 SUNDVIK|kidstable|Children's table, 76 × 50 cm|76|48|50||kids
 SUNDVIK|wardrobe|Wardrobe, 80 × 50 × 171 cm|80|171|50
 SUNNERSTA|open|Storage unit, 56 × 38 cm|56|38|35
+SVÄRTA|bunk|Bunk bed frame, 90 × 200 cm|211|160|100|m=90
+SVÄRTA|loft|Loft bed frame, 90 × 200 cm|211|195|100|m=90
 SYNTORP|chair|Bar stool with backrest, 66 cm|44|98|50|seatH=66
 SYVDE|desk|Dressing table, 100 × 48 cm|100|74|48
 TÄLLÅSEN|bed|Upholstered bed frame, Standard Double, 135 × 190 cm|151|100|199|m=135,l=190
@@ -948,6 +952,8 @@ TROTTEN|cabinet|Cabinet with doors, 70 × 35 × 173 cm|70|173|35
 TROTTEN|chest|Drawer unit, 34 × 56 cm|34|56|48|rows=4
 TROTTEN|desk|Desk sit/stand, 160 × 80 cm|160|75|80|legs=square,attach=apron
 TROTTEN|desk|Desk, 160 × 80 cm|160|75|80|legs=square,attach=apron
+TUFFING|bunk|Bunk bed frame, 90 × 200 cm|211|160|100|m=90
+TUFFING|loft|Loft bed frame, 90 × 200 cm|211|195|100|m=90
 TUFJORD|bed|Upholstered bed frame, Standard King, 150 × 200 cm|166|100|209|m=150
 TULLSTA|armchair|Armchair|75|90|80
 TUNSTA|side|Side table, 70 × 50 cm|70|50|50
@@ -1043,6 +1049,8 @@ VITTSKÄR|sofa|2-seat modular sofa|170|85|92|seats=2|outdoor garden
 VITTSKÄR|sofa|2-seat sofa|170|85|92|seats=2|outdoor garden
 VITTSKÄR|sofa|3-seat modular sofa|230|85|92|seats=3|outdoor garden
 VITTSKÄR|sofa|3-seat sofa|230|85|92|seats=3|outdoor garden
+VITVAL|bunk|Bunk bed frame, 90 × 200 cm|211|160|100|m=90
+VITVAL|loft|Loft bed frame, 90 × 200 cm|211|195|100|m=90
 VRETSTORP|sofa|3-seat sofa-bed|230|85|92|seats=3
 YNGVAR|chair|Chair|44|88|50
 YNGVAR|stool|Bar stool, 75 cm|35|75|35`;

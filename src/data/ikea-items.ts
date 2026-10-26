@@ -485,6 +485,7 @@ krylbo-chair|10628208 40566751 40566746 90620581
 krylbo-swivel-chair|90573589
 kullen-chest-2-drawers|80309241
 kungsfors-kitchen-trolley-60-x-40|80334924
+kura-reversible-bed-90-x-200|80253809
 kyrre-stool|60416925 10608130
 lack-coffee-table|00104291 40431535 80449901
 lack-coffee-table-90-x-55|40104294 50319029 90449905
@@ -645,6 +646,7 @@ mullsjo-desk-135-x-70|30553240
 mullsjo-swivel-chair|70576584
 muskan-bench-58-x-38|50345957
 muskan-shelving-unit-37-x-140|50424327
+mydal-bunk-bed-frame-90-x-200|20467629 00102452
 myllra-cot-drawer-70-x-140|80597048 60483590
 nackanas-table-140-x-76|40511056
 nammaro-2-seat-sofa-126|59610240 39611170 19579307 49607511 09621509 09575423
@@ -950,6 +952,8 @@ sundvik-extendable-bed-80-x-200|49046068 49421508
 sundvik-rocking-chair|80201740
 sundvik-wardrobe-80-x-50-x-171|10269696
 sunnersta-storage-unit-56-x-38|70500278
+svarta-bunk-bed-frame-90-x-200|10247973
+svarta-loft-bed-frame-90-x-200|20247982
 syntorp-bar-stool-backrest-66|40615006
 syvde-dressing-table-100-x-48|80430746
 tallasen-upholstered-bed-frame-standard-double-1|39514763 79514780 19514778 19514764
@@ -1035,6 +1039,8 @@ trotten-desk-120-x-70|49621885 09621873 59621917 19621919
 trotten-desk-160-x-80|79621921
 trotten-desk-sit-stand-160-x-80|59621899
 trotten-drawer-unit-34-x-56|20474762 40474841
+tuffing-bunk-bed-frame-90-x-200|00239233
+tuffing-loft-bed-frame-90-x-200|90299449
 tufjord-upholstered-bed-frame-standard-king-150|29555358 69555356 19555330 99555331 89555317 69555318 49555357
 tullsta-armchair|89284665 19619695 89619692 69619688
 tunsta-side-table-70-x-50|50299502
@@ -1133,6 +1139,8 @@ vittskar-4-seat-modular-corner-sofa|09619672 79591231
 vittskar-5-seat-modular-corner-sofa|19591248 39619680
 vittskar-coffee-table-110-x-58|80575555
 vittskar-table-264-x-96|30575162
+vitval-bunk-bed-frame-90-x-200|80411272
+vitval-loft-bed-frame-90-x-200|10411242
 vretstorp-3-seat-sofa-bed|89491245 19491239 69491251 49491233 39491257
 yngvar-bar-stool-75|60400745
 yngvar-chair|80417636`;

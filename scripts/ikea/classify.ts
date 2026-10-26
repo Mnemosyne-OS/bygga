@@ -138,7 +138,12 @@ const RULES: Rule[] = [
   }],
   [/corner|chaise|u-shaped|crnr/, () => "corner or chaise longue sofa"],
   [/section|add-on|armrest|backrest for|seat sec|modular (easy chair|chaise)/, () => "sofa or storage section"],
-  [/\b(bunk|loft)\b/, () => "bunk or loft bed"],
+  // bunk beds on four posts, and loft beds with room underneath (KURA turns over to be either)
+  [/^(bunk bed frame|loft bed frame|loft bed|reversible bed)$/, (m, c) => {
+    if (m[1] === "loft bed" && c.f.spr) return "loft bed with a desk or storage";
+    return { kind: m[1] === "bunk bed frame" ? "bunk" : "loft" };
+  }],
+  [/\b(bunk|loft)\b/, () => "bunk or loft bed with a desk or underbed"],
   [/^cot( with drawer)?$/, (m) => ({ kind: "cot", x: m[1] ? { drawer: true } : {} })],
   [/\b(cot|crib)\b|cradle/, () => "cot bedding, mattress or cradle"],
   [/day-?bed|divan/, () => "day-bed or divan"],
@@ -277,6 +282,13 @@ export function classify(f: Fact, hints: Hints): Verdict {
     } else if (hint?.kind === kind) set(hint.w, hint.h, hint.d);
     else if (kind !== "bench") return { skip: "no size given" };
     if (guessed.h && hint?.kind === kind) h = hint.h;
+  } else if (kind === "bunk" || kind === "loft") {
+    // IKEA gives the mattress size; the height is a typical one (KURA, which turns over, is low)
+    if (v.length !== 2 || v[1] < 180 || v[1] > 210) return { skip: "bunk or loft bed without a mattress size" };
+    x.m = v[0];
+    if (v[1] !== 200) x.l = v[1];
+    set(v[1] + 11, undefined, v[0] + 10);
+    h = kind === "bunk" ? 160 : /reversible/.test(t) ? 116 : 195;
   } else if (kind === "cot") {
     // IKEA gives the mattress size: a cot is a little longer and wider, about 85 cm high
     if (v.length !== 2 || v[1] < 100 || v[1] > 150) return { skip: "cot without a mattress size" };
