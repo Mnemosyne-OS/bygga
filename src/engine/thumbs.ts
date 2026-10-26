@@ -64,6 +64,34 @@ export function thumbnail(key: string, plan: Plan, mode: StageMode, w = 360, h =
   return shot(key, plan, mode, w, h).then((s) => s.url);
 }
 
+/**
+ * Like thumbnail, but the returned function takes the request back: a drawing nobody waits for any more
+ * leaves the queue before it renders, so a long grid scrolled past quickly doesn't render every card.
+ */
+export function requestThumbnail(key: string, plan: Plan, mode: StageMode, w: number, h: number, done: (url: string) => void): () => void {
+  const hit = cache.get(key);
+  if (hit) {
+    done(hit.url);
+    return () => {};
+  }
+  const cb = (s: Shot) => done(s.url);
+  const list = waiting.get(key) ?? [];
+  list.push(cb);
+  waiting.set(key, list);
+  if (!queue.some((q) => q.key === key)) queue.push({ key, plan, mode, w, h });
+  pump();
+  return () => {
+    const left = waiting.get(key);
+    if (!left) return;
+    const i = left.indexOf(cb);
+    if (i >= 0) left.splice(i, 1);
+    if (left.length) return;
+    waiting.delete(key);
+    const j = queue.findIndex((q) => q.key === key);
+    if (j >= 0) queue.splice(j, 1);
+  };
+}
+
 export function peekThumbnail(key: string) {
   return cache.get(key)?.url;
 }
