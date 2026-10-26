@@ -73,7 +73,7 @@ export function measure(s: string): Size | null {
   return { n: parts.map((p) => Number(p.split("/")[0])), ext: parts.some((p) => p.includes("/")), text: parts.join(" × ") + " cm" };
 }
 
-const UPRIGHT = new Set<Kind>(["cube", "bookcase", "open", "chest", "nightstand", "wardrobe", "cabinet", "sideboard", "tv", "shoe", "wallcab", "wallshelf", "kitchen"]);
+const UPRIGHT = new Set<Kind>(["cube", "bookcase", "open", "chest", "nightstand", "wardrobe", "cabinet", "sideboard", "tv", "shoe", "wallcab", "wallshelf", "kitchen", "mixed"]);
 const FLAT = new Set<Kind>(["desk", "coffee", "side", "dining", "bar", "console", "kidstable", "trolley", "bench"]);
 
 /** Office chairs IKEA sells with armrests although the type doesn't say so. */
@@ -110,6 +110,10 @@ const withDoors = (kind: Kind, t: string): Pick => {
 
 /** Most specific first. A string result is the reason to skip. */
 const RULES: Rule[] = [
+  // cabinets with doors and drawers: the drawers under the doors, or one drawer above the door of a kitchen base cabinet
+  [/^(glass-door cabinet with|high cabinet w gls-drs and) (\d) drawers?$/, (m) => ({ kind: "mixed", x: { rows: Number(m[2]) } })],
+  [/^wardrobe with (\d) doors and (\d) drawers$/, (m) => (Number(m[1]) > 2 ? "wardrobe with more than 2 doors and drawers" : { kind: "mixed", x: { doors: Number(m[1]) as 1 | 2, rows: Number(m[2]), rail: true } })],
+  [/^base cabinet with drawer\/(2 )?doors?$/, (m) => ({ kind: "mixed", x: { doors: m[1] ? 2 : 1, rows: 1, dtop: true } })],
   // things that are several products, or only part of one
   [/\b(and|set of \d|sets?)\b|\+|combination|\bcomb\b|\bchairs\b|armchairs|benches/, () => "set or combination"],
   // office and swivel chairs: a star base on castors, a gas lift, the seat on top
@@ -156,6 +160,7 @@ const RULES: Rule[] = [
   [/day-?bed|divan/, () => "divan, or bedding for a day-bed"],
   [/sliding/, () => "sliding doors"],
   [/sink|wash-?basin|wash-?st|hob\b|oven|fridge|freezer|dishwasher|microwave|extractor|appliances|kitchenette|outdoor kitchen/, () => "appliance or sink unit"],
+  [/^(door\/)?drawer front|^drawer (without |with (framed )?(glass )?)front|^(high|medium|low) drawer with front|^fitting for mounting/, () => "door or drawer front sold alone"],
   [/drawers?\b.*\b(doors?|fronts?|shelves|baskets?)\b|\b(doors?|fronts?|shelves|baskets?)\b.*\bdrawers?\b/, () => "mixed doors and drawers"],
 
   // storage
@@ -276,7 +281,7 @@ export function classify(f: Fact, hints: Hints): Verdict {
     if (sz.ext) return { skip: "corner or extendable unit" };
     if (v.length === 3) set(v[0], v[2], v[1]);
     else if (v.length === 2) {
-      if (kind === "kitchen" && /^base/.test(t)) set(v[0], 80, v[1]);
+      if ((kind === "kitchen" || kind === "mixed") && /^base/.test(t)) set(v[0], 80, v[1]);
       // bedside tables are measured from above, like tables
       else if (kind === "nightstand" && /bedside|nightstand/.test(t)) set(v[0], hint?.kind === kind ? hint.h : 55, v[1]);
       else set(v[0], v[1]);
@@ -284,6 +289,9 @@ export function classify(f: Fact, hints: Hints): Verdict {
     else if (hint?.kind === kind) set(hint.w, hint.h, hint.d);
     else return { skip: "no size given" };
     if (guessed.d && hint?.kind === kind && Math.abs(hint.w - w) < 60) d = hint.d;
+    // a cabinet with drawers is as deep as the family's cabinet
+    const cab = kind === "mixed" ? hints(family, "cabinet") : undefined;
+    if (guessed.d && cab?.kind === "cabinet" && Math.abs(cab.w - w) < 60) d = cab.d;
   } else if (FLAT.has(kind)) {
     if (v.length === 3) set(v[0], v[2], v[1]);
     else if (v.length === 2) set(v[0], undefined, v[1]);
@@ -379,7 +387,7 @@ export function classify(f: Fact, hints: Hints): Verdict {
   }
 
   // parameters from the type name, the size and the family's hand made rows
-  if (hint?.x.knobs && ["chest", "nightstand", "wardrobe", "cabinet", "sideboard", "tv", "shoe", "wallcab", "kitchen"].includes(kind)) x.knobs = hint.x.knobs;
+  if (hint?.x.knobs && ["chest", "nightstand", "wardrobe", "cabinet", "sideboard", "tv", "shoe", "wallcab", "kitchen", "mixed"].includes(kind)) x.knobs = hint.x.knobs;
   if (kind === "chest" || kind === "nightstand") {
     const total = x.rows ?? (kind === "nightstand" ? (h >= 60 ? 2 : 1) : Math.min(6, Math.max(2, Math.round(h / 14))));
     if (kind === "chest" && total === 2 && w <= 60 && h <= 65) return finish("nightstand");

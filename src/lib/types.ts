@@ -59,6 +59,8 @@ export interface CabinetParams {
   handles: "knob" | "bar" | "none";
   thickness: number;
   wall?: boolean; // hangs on the wall instead of standing on the floor
+  drawers?: number; // drawers as well as doors: full-width drawers, split from the doors by a fixed shelf
+  drawerAt?: "top" | "bottom"; // where the drawers are; under the doors unless it says top
 }
 
 export interface SeatParams {

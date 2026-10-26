@@ -18,6 +18,7 @@ const CATEGORY_WORDS: [Kind, string[]][] = [
   ["office", ["office chair", "desk chair", "swivel chair", "gaming chair", "computer chair"]],
   ["shoe", ["shoe", "shoes", "shoe cabinet", "shoe rack"]],
   ["nightstand", ["nightstand", "bedside", "night stand"]],
+  ["mixed", ["doors and drawers", "cabinet with drawers", "cupboard with drawers", "wardrobe with drawers", "armoire with drawers"]],
   ["chest", ["drawer", "drawers", "chest", "dresser"]],
   ["cube", ["cube", "cubes"]],
   ["wallshelf", ["wall shelf", "wall shelves", "wall shelf unit"]],

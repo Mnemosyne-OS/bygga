@@ -2,6 +2,7 @@ import type { CabinetParams, ProductSpec, Vec3 } from "../types";
 import { HW, PlanBuilder, type FitOpts } from "./builder";
 import { FrameKit } from "./frame";
 import { clamp } from "./math";
+import { buildMixed } from "./mixed";
 
 export function defaultsCabinet(s: ProductSpec): CabinetParams {
   const p = s.cabinet ?? {};
@@ -19,6 +20,7 @@ export function defaultsCabinet(s: ProductSpec): CabinetParams {
 }
 
 export function buildCabinet(b: PlanBuilder, s: ProductSpec) {
+  if (s.cabinet?.drawers) return buildMixed(b, s);
   const p = defaultsCabinet(s);
   if (p.fronts === "tilt") return tiltCabinet(b, s, p);
   const W = s.size.w * 10, H = s.size.h * 10, D = s.size.d * 10;

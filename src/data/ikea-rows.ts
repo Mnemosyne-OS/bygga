@@ -299,6 +299,7 @@ HAVSTEN|sofa|2-seat sofa, outdoor, 179 × 92 × 76 cm|179|76|92|seats=2|outdoor 
 HEMNES|daybed|Day-bed frame with 3 drawers, 80 × 200 cm|210|83|91|rows=3,knobs=knob,m=80,under=pullout
 HEMNES|daybed|Day-bed w 3 drawers/2 mattresses, 80 × 200 cm|210|83|91|rows=3,knobs=knob,m=80,under=pullout,mats=2
 HEMNES|desk|Desk, 155 × 65 cm|155|74|65
+HEMNES|mixed|Glass-door cabinet with 3 drawers, 90 × 197 cm|90|197|37|rows=3,knobs=knob
 HERRÅKRA|armchair|Armchair|75|90|80
 HÖGVED|chair|Chair|44|88|50
 HOL|side|Side table, 50 × 50 cm|50|50|50
@@ -325,6 +326,7 @@ IDANÄS|coffee|Coffee table, 80 × 80 cm|80|45|80
 IDANÄS|coffee|Coffee table, 107 × 55 cm|107|45|55
 IDANÄS|console|Console table, 104 × 32 × 95 cm|104|95|32
 IDANÄS|desk|Desk, 152 × 70 cm|152|74|70
+IDANÄS|mixed|High cabinet w gls-drs and 1 drawer, 81 × 39 × 211 cm|81|211|39|rows=1
 IDANÄS|nightstand|Bedside table, 47 × 40 cm|47|55|40|rows=1,knobs=bar
 IDANÄS|side|Side table, 46 × 36 cm|46|50|36
 IDANÄS|sideboard|Sideboard, 124 × 50 × 95 cm|124|95|50
@@ -563,6 +565,10 @@ METOD|wallcab|Wall cabinet with shelves, 60 × 80 cm|60|80|35|doors=0
 METOD|wallcab|Wall cabinet with 2 doors, 80 × 40 cm|80|40|35
 METOD|wallcab|Wall cabinet with 2 glass doors, 80 × 40 cm|80|40|35
 METOD|wallcab|Wall cabinet with shelves/2 doors, 80 × 80 cm|80|80|35
+METOD / KNIVSHULT|mixed|Base cabinet with drawer/door, 40 × 60 cm|40|80|60|rows=1,doors=1,dtop=1
+METOD / KNIVSHULT|mixed|Base cabinet with drawer/2 doors, 80 × 60 cm|80|80|60|rows=1,doors=2,dtop=1
+METOD / MAXIMERA|mixed|Base cabinet with drawer/door, 60 × 60 cm|60|80|60|rows=1,doors=1,dtop=1
+METOD / MAXIMERA|mixed|Base cabinet with drawer/2 doors, 80 × 60 cm|80|80|60|rows=1,doors=2,dtop=1
 MICKE|desk|Desk, 73 × 50 cm|73|75|50|legs=square,attach=apron
 MICKE|desk|Desk, 142 × 50 cm|142|75|50|legs=square,attach=apron
 MILLBERGET|office|Swivel chair|60|105|64|arms=none
@@ -1032,6 +1038,7 @@ VIHALS|tv|TV bench, 146 × 37 × 50 cm|146|50|37
 VIHALS|tv|TV bench, 176 × 37 × 50 cm|176|50|37
 VIHALS|wardrobe|Wardrobe with 2 doors, 105 × 57 × 200 cm|105|200|57|doors=2
 VIKHAMMER|nightstand|Bedside table, 40 × 39 cm|40|55|39|rows=1
+VILHATTEN|mixed|Wardrobe with 2 doors and 2 drawers, 98 × 57 × 190 cm|98|190|57|rows=2,doors=2,rail=1
 VILTO|open|Shelving unit, 46 × 150 cm|46|150|35
 VILTO|stool|Step stool|35|50|35
 VIMLE|armchair|Armchair|75|90|80
