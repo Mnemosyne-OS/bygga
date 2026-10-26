@@ -110,6 +110,7 @@ BJÖRKBERGET|office|Swivel chair|60|105|64|arms=none
 BJÖRKSNÄS|bed|Bed frame, Standard King, 150 × 200 cm|166|100|209|m=150
 BJÖRKSNÄS|chest|Chest of 5 drawers, 90 × 47 × 90 cm|90|90|47|rows=5
 BJÖRKSNÄS|nightstand|Bedside table, 48 × 38 cm|48|55|38|rows=1
+BLÄDDRA|chest|Mini chest with 3 drawers, 33 × 38 cm|33|38|20|rows=3
 BLÅLIDEN|cabinet|Glass-door cabinet, 35 × 32 × 151 cm|35|151|32
 BLÄSTÅSEN|nightstand|Bedside table, 50 × 37 × 76 cm|50|76|37|rows=2
 BLECKBERGET|office|Swivel chair|60|105|64|arms=none
@@ -167,7 +168,11 @@ EKENÄSET|armchair|Armchair|75|90|80
 EKENÄSET|armchair|High-back armchair|75|104|80
 EKENÄSET|bench|Bench, 112 cm|112|45|38
 EKET|cabinet|Cabinet, 35 × 25 × 35 cm|35|35|25|knobs=none
+EKET|chest|Cabinet with 2 drawers, 70 × 35 × 35 cm|70|35|35|rows=2
+EKET|nightstand|Cabinet with 2 drawers, 35 × 35 × 35 cm|35|35|35|rows=2
 EKET|wallcab|Wall cabinet with glass door, 35 × 25 × 35 cm|35|35|25|knobs=none,doors=1
+EKET|wallcab|Wall cb w 1 shlf/door, 35 × 35 × 70 cm|35|70|35|knobs=none,doors=1,shelves=1
+EKET|wallcab|Wall cb with 2 doors, 70 × 35 × 70 cm|70|70|35|knobs=none,doors=2
 EKET|wallshelf|Wall-mounted shelving unit, 35 × 25 × 35 cm|35|35|25
 EKET|wallshelf|Wall-mounted shelving unit, 35 × 35 × 35 cm|35|35|35
 EKHOLMA|corner|Corner sofa, 4-seat with open end|237|85|156|seats=4,arms=wide,corner=left,open=1,sd=92
@@ -180,6 +185,7 @@ EKTORP|corner|Corner sofa, 4-seat|228|88|166|seats=4,arms=wide,corner=left,sd=88
 EKTORP|sofa|2-seat sofa|170|85|92|seats=2
 ELDBERGET / MALSKÄR|office|Swivel chair|60|105|64|arms=none
 ENHET|appliance|High cabinet for fridge/freezer, 60 × 60 × 210 cm|60|210|60|use=fridge,z=g+o@40
+ENHET|cabinet|High cb w 4 shelves, 30 × 30 × 180 cm|30|180|30|doors=0,shelves=4
 ENHET|cabinet|High cabinet with door, 30 × 32 × 180 cm|30|180|32|doors=1
 ENHET|kitchen|Base cb w 3 drawers, 40 × 60 × 75 cm|40|75|60|z=r3
 ENHET|kitchen|Base fr w shelves, 40 × 60 × 75 cm|40|75|60|doors=0
@@ -192,6 +198,9 @@ ENHET|wallcab|Mirror cabinet with door, 40 × 17 × 75 cm|40|75|17|doors=1
 ENHET|wallcab|Mirror cabinet with doors, 60 × 17 × 75 cm|60|75|17
 ENHET|wallcab|Mirror cabinet, 60 × 17 × 75 cm|60|75|17
 ENHET|wallcab|Wall cabinet with door, 60 × 32 × 75 cm|60|75|32|doors=1
+ENHET|wallcab|Wall cb w 2 shelves, 80 × 30 × 75 cm|80|75|30|doors=0,shelves=2
+ENHET|wallshelf|Wall frame with shelves, 40 × 15 × 75 cm|40|75|15
+ENHET|wallshelf|Wall shelf frame, 60 × 45 × 40 cm|60|40|45
 ENHET|washstand|Wash-stand with door, 40 × 42 × 60 cm|40|60|42|z=d1,hung=1
 ENHET|washstand|Base cb f washbasin w 2 drawers, 60 × 40 × 60 cm|60|60|40|z=r2,hung=1
 ENHET|washstand|Base frame for washbasin, 60 × 40 × 60 cm|60|60|40|z=o,hung=1
@@ -220,6 +229,7 @@ FÄRJKARL|cabinet|Cabinet, 77 × 45 × 116 cm|77|116|45
 FÄRJKARL|cabinet|Glass-door cabinet, 87 × 45 × 161 cm|87|161|45
 FEJAN|chair|Chair, outdoor|44|88|50||outdoor garden
 FEJAN|dining|Table, outdoor, 50 × 44 cm|50|74|44||outdoor garden
+FJÄDERHARV|chest|Mini chest with 2 drawers, 32 × 25 cm|32|25|19|rows=2
 FJÄLLBO|desk|Desk, 140 × 70 cm|140|74|70
 FJÄLLBO|open|Shelving unit, 51 × 136 cm|51|136|35
 FJÄLLBO|open|Shelving unit, 100 × 95 cm|100|95|35
@@ -236,6 +246,7 @@ FLISAT|stool|Children's stool|35|30|35||kids
 FÖRHÖJA|trolley|Kitchen trolley, 100 × 43 cm|100|80|43
 FÖRSÄLJARE|sideboard|Sideboard, 140 × 46 × 78 cm|140|78|46
 FÖRSIKTIG|stool|Children's stool|35|30|35||kids
+FRANKLIN|chair|Bar stool with backrest, foldable, 63 cm|44|95|50|seatH=63
 FRIDHULT|sofa|Sofa-bed|230|85|92|seats=3
 FRIHETEN|chaise|Corner sofa-bed with storage|230|66|160|seats=3,arms=slim,chaise=right,sd=92
 FRIHETEN / KLAGSHAMN|chaise|Corner sofa-bed with storage|230|66|160|seats=3,arms=slim,chaise=right,sd=92
@@ -274,6 +285,7 @@ GRÅFJÄLLET|clothesrack|Clothes rack with shoe storage, 90 × 36 × 175 cm|90|1
 GRÅFJÄLLET|desk|Dressing table, 100 × 42 cm|100|74|42
 GRÅFJÄLLET|divider|Room divider, 150 × 175 cm|150|175|25
 GRÅFJÄLLET|nightstand|Bedside table, 45 × 36 × 59 cm|45|59|36|rows=1
+GRÅFJÄLLET|wallshelf|Wall-mounted bedside table, 42 × 29 × 31 cm|42|31|29
 GREJSIMOJS|kidstable|Children's table, 84 × 42 cm|84|48|42||kids
 GREJSIMOJS|stool|Children's stool|35|30|35||kids
 GRILLSKÄR|side|Side table, outdoor, 30 × 61 cm|30|50|61||outdoor garden
@@ -314,6 +326,7 @@ GUTTANE|coffee|Coffee table, 116 × 39 cm|116|45|39
 GUTTANE|side|Side table, 58 × 39 cm|58|50|39
 HADDARP|stool|Step stool|35|50|35
 HAGAÅN|cabinet|Open cabinet, 40 × 48 × 33 cm|40|33|48|doors=0
+HAGAÅN|wallcab|Wall open cabinet, 40 × 15 × 95 cm|40|95|15|doors=0
 HÄGERNÄS|stool|Stool|35|45|35
 HÅKANSKÄR|coffee|Coffee table, 80 × 64 cm|80|45|64
 HAMMARN|sofa|Sofa-bed|230|85|92|seats=3
@@ -348,13 +361,18 @@ HAVSTA|cabinet|Glass-door cabinet with plinth, 121 × 37 × 134 cm|121|134|37
 HAVSTA|chest|Chest of 3 drawers, 81 × 47 × 89 cm|81|89|47|rows=3
 HAVSTA|chest|Chest of 6 drawers, 121 × 47 × 89 cm|121|89|47|rows=3,cols=2
 HAVSTA|open|Shelving unit, 81 × 35 × 123 cm|81|123|35
+HAVSTA|sideboard|Sideboard basic unit, 121 × 47 × 89 cm|121|89|47
+HAVSTA|tv|TV bench with plinth, 160 × 47 × 62 cm|160|62|47
 HAVSTEN|armchair|Armchair, outdoor|75|90|80||outdoor garden
 HAVSTEN|sofa|2-seat sofa, outdoor|170|85|92|seats=2|outdoor garden
 HAVSTEN|sofa|2-seat sofa, outdoor, 179 × 92 × 76 cm|179|76|92|seats=2|outdoor garden
+HEMNES|cabinet|High cabinet with mirror door, 49 × 31 × 200 cm|49|200|31|doors=1
 HEMNES|daybed|Day-bed frame with 3 drawers, 80 × 200 cm|210|83|91|rows=3,knobs=knob,m=80,under=pullout
 HEMNES|daybed|Day-bed w 3 drawers/2 mattresses, 80 × 200 cm|210|83|91|rows=3,knobs=knob,m=80,under=pullout,mats=2
 HEMNES|desk|Desk, 155 × 65 cm|155|74|65
 HEMNES|mixed|Glass-door cabinet with 3 drawers, 90 × 197 cm|90|197|37|rows=3,knobs=knob
+HEMNES|wallcab|Mirror cabinet with 1 door, 63 × 16 × 98 cm|63|98|16|knobs=knob,doors=1
+HEMNES|wallcab|Mirror cabinet with 2 doors, 83 × 16 × 98 cm|83|98|16|knobs=knob,doors=2
 HEMNES|washstand|Wash-stand with 2 drawers, 60 × 47 × 83 cm|60|83|47|knobs=knob,z=r2
 HEMNES|washstand|Open wash-stand with 1 drawer, 82 × 48 × 76 cm|82|76|48|knobs=knob,z=o1+r1@18
 HEMNES / ORRSJÖN|washstand|Wash-stnd w drawers/wash-basin/tap, 62 × 49 × 89 cm|62|89|49|knobs=knob,z=r2,basin=6
@@ -564,6 +582,7 @@ LASTARE|cabinet|Frame with doors, 60 × 42 × 100 cm|60|100|42
 LASTARE|cabinet|Frame with doors, 80 × 42 × 200 cm|80|200|42
 LASTARE|chest|Chest of 4 drawers, 80 × 42 × 100 cm|80|100|42|rows=4
 LASTARE|dining|Table, 100 × 42 × 74 cm|100|74|42
+LASTARE|wallcab|Wall mounted frame with doors, 60 × 32 × 60 cm|60|60|32
 LEDAMOT|cabinet|Cabinet, 150 × 42 × 75 cm|150|75|42
 LILLÅNÄS|chair|Chair|44|88|50
 LILLÅNÄS|stool|Bar stool, 63 cm|35|63|35
@@ -746,6 +765,7 @@ METOD / MAXIMERA|sinkcab|Base cab f TALLSJÖN sink, 60 × 60 cm|60|80|60|z=r1@60
 METOD / MAXIMERA|sinkcab|Base cb f HAVSEN snk/3 frnts/2 drws, 60 × 60 cm|60|80|60|z=r2@60+a@20
 METOD / MAXIMERA|sinkcab|Base cab f sink+3 fronts/2 drawers, 80 × 60 cm|80|80|60|z=r2@60+f@20||metod-maximera-base-cab-f-sink-3-fronts-2-drawer-2
 METOD / MAXIMERA|sinkcab|Base cab f TALLSJÖN sink, 80 × 60 cm|80|80|60|z=r1@60+f@20
+MICKE|chest|Drawer unit with drop-file storage, 35 × 75 cm|35|75|48|rows=2
 MICKE|desk|Desk, 73 × 50 cm|73|75|50|legs=square,attach=apron
 MICKE|desk|Desk, 142 × 50 cm|142|75|50|legs=square,attach=apron
 MILLBERGET|office|Swivel chair|60|105|64|arms=none
@@ -759,6 +779,8 @@ MITTZON|desk|Desk sit/stand, 140 × 80 cm|140|74|80
 MITTZON|desk|Desk sit/stand, 160 × 80 cm|160|74|80
 MITTZON|desk|Desk, 160 × 80 cm|160|74|80
 MOFALLA|armchair|Easy chair|75|90|80
+MOPPE|chest|Mini chest of drawers, 31 × 18 × 32 cm|31|32|18|rows=3
+MOPPE|chest|Mini chest of drawers, 42 × 18 × 32 cm|42|32|18|rows=3
 MÖRBYLÅNGA|dining|Table, 140 × 85 cm|140|74|85
 MÖRBYLÅNGA|dining|Table, 145 cm|145|74|145|round=1
 MOSSJÖN|cabinet|Glass-door cabinet with 2 doors, 60 × 34 × 146 cm|60|146|34
@@ -800,6 +822,7 @@ NISSAFORS|trolley|Trolley, 50.5 × 30 × 83 cm|51|83|30
 NORDKISA|desk|Dressing table, 76 × 47 cm|76|74|47
 NORDKISA|nightstand|Bedside table, 40 × 40 cm|40|55|40|rows=1
 NORDLI|bed|Bed frame with storage, 140 × 200 cm|156|64|209|m=140
+NORDLI|chest|Modular chest of drawers, 40 × 45 cm|40|45|48|rows=3,knobs=none
 NORDLI|chest|Chest of drawers, 40 × 54 cm|40|54|48|rows=4,knobs=none
 NORDLI|chest|Modular chest of 3 drawers, 40 × 68 cm|40|68|48|rows=3,knobs=none
 NORDLI|chest|Chest of 3 drawers, 40 × 76 cm|40|76|48|rows=3,knobs=none
@@ -1026,6 +1049,7 @@ SMÅSTAD|bench|Bench, 90 × 50 × 48 cm|90|48|50||kids children
 SMÅSTAD|changing|Changing table/desk, 90 × 79 × 100 cm|90|100|79|shelves=1|kids children
 SMÅSTAD|desk|Desk, 90 × 79 × 100 cm|90|100|79||kids children
 SMÅSTAD|wallcab|Wall cabinet, 60 × 32 × 60 cm|60|60|32||kids children
+SMÅSTAD|wallshelf|Wall storage, 60 × 30 × 60 cm|60|60|30||kids children
 SMÅSTAD|wardrobe|Wardrobe, 60 × 42 × 181 cm|60|181|42||kids children
 SMÅSTAD / PLATSA|bookcase|Bookcase, 60 × 57 × 123 cm|60|123|57||kids children
 SMÅSTAD / PLATSA|bookcase|Bookcase, 60 × 57 × 181 cm|60|181|57||kids children
@@ -1068,6 +1092,7 @@ STJÄRNÖ|bed|Bed frame, Standard Single, 90 × 190 cm|106|100|199|m=90,l=190
 STJÄRNÖ|bed|Bed frame, Standard Double, 135 × 190 cm|151|100|199|m=135,l=190
 STOCKHOLM|chair|Chair with armrests|44|88|50|arms=slim
 STOCKHOLM|coffee|Coffee table, 180 × 59 cm|180|45|59
+STOCKHOLM|sofa|Three-seat sofa|230|85|92|seats=3
 STOCKHOLM 2025|armchair|Armchair|75|90|80
 STOCKHOLM 2025|armchair|Easy chair|75|90|80
 STOCKHOLM 2025|cabinet|Cabinet with 2 doors, 80 × 40 × 126 cm|80|126|40
@@ -1077,6 +1102,7 @@ STOCKHOLM 2025|coffee|Coffee table, 160 × 45 cm|160|45|45
 STOCKHOLM 2025|dining|Table, 115 cm|115|74|115|round=1
 STOCKHOLM 2025|dining|Table, 230 × 90 cm|230|74|90
 STOCKHOLM 2025|open|Shelving unit, 120 × 40 × 188 cm|120|188|40
+STOCKHOLM 2025|open|Shelving unit/bench, 180 × 41 × 44 cm|180|44|41
 STOCKHOLM 2025|section|1-seat section|64|83|92|seats=1
 STOCKHOLM 2025|side|Side table, 40 cm|40|50|40|round=1
 STOCKHOLM 2025|side|Side table, 55 cm|55|50|55|round=1
@@ -1211,6 +1237,8 @@ TROFAST|open|Frame, 93 × 52 cm|93|52|35||kids children
 TROFAST|open|Frame, 93 × 44 × 91 cm|93|91|44||kids children
 TROFAST|open|Frame, 94 × 44 × 91 cm|94|91|44||kids children
 TROFAST|open|Frame, 99 × 44 × 56 cm|99|56|44||kids children
+TROFAST|wallshelf|Wall storage, 93 × 30 cm|93|30|22||kids children
+TROFAST|wallshelf|Wall storage, 99 × 30 cm|99|30|22||kids children
 TROTTEN|cabinet|Cabinet with doors, 70 × 35 × 110 cm|70|110|35
 TROTTEN|cabinet|Cabinet with doors, 70 × 35 × 173 cm|70|173|35
 TROTTEN|chest|Drawer unit, 34 × 56 cm|34|56|48|rows=4

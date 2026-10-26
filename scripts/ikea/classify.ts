@@ -263,6 +263,25 @@ const RULES: Rule[] = [
   [/^shelving unit with underframe$/, (_m, c) => (c.f.name === "KALLAX" ? { kind: "cube", x: { uf: 17 } } : "shelving unit on an underframe")],
   // KALLAX sold with inserts: drawn as inserts with a door, from the bottom row up
   [/^shelving unit with (\d+) inserts$/, (m, c) => (c.f.name === "KALLAX" ? { kind: "cube", x: { ins: Number(m[1]) } } : "shelving unit with inserts")],
+  // the same pieces under other names
+  [/^mini chest (?:of drawers|with (\d) drawers)$/, (m) => ({ kind: "chest", x: { rows: Number(m[1] ?? 3) } })],
+  [/^(?:cabinet with (\d) drawers|drawer unit with drop-file storage|modular chest of drawers)$/, (m) =>
+    ({ kind: "chest", x: m[1] ? { rows: Number(m[1]) } : /drop-file/.test(m[0]) ? { rows: 2 } : {} })],
+  [/^cabinet with \d compartments$/, () => ({ kind: "cube" })],
+  [/^wall cb (?:with (\d) doors?|w (\d) shlf\/door|w (\d) shelves)$/, (m) =>
+    ({ kind: "wallcab", x: m[3] ? { doors: 0, shelves: Number(m[3]) } : m[2] ? { doors: 1, shelves: Number(m[2]) } : { doors: Number(m[1]) > 1 ? 2 : 1 } })],
+  [/^(?:wall frame with shelves|wall shelf frame|wall-mounted bedside table)$/, () => ({ kind: "wallshelf" })],
+  [/^wall storage$/, (_m, c) => (c.f.spr ? "wall storage sold with boxes" : { kind: "wallshelf" })],
+  [/^wall open cabinet$/, () => ({ kind: "wallcab", x: { doors: 0 } })],
+  [/^wall mounted frame with doors$/, () => ({ kind: "wallcab" })],
+  [/^mirror cabinet with (\d) doors?$/, (m) => ({ kind: "wallcab", x: { doors: Number(m[1]) > 1 ? 2 : 1 } })],
+  [/^high cabinet with mirror door$/, () => ({ kind: "cabinet", x: { doors: 1 } })],
+  [/^high cb w (\d) shelves$/, (m) => ({ kind: "cabinet", x: { doors: 0, shelves: Math.min(5, Number(m[1])) } })],
+  [/^sideboard basic unit$/, () => ({ kind: "sideboard" })],
+  [/^tv bench with plinth$/, () => ({ kind: "tv" })],
+  [/^shelving unit\/bench$/, () => ({ kind: "open" })],
+  [/^bar stool with backrest, foldable$/, () => ({ kind: "chair", x: { seatH: 63 } })],
+  [/^three-seat sofa$/, () => ({ kind: "sofa", x: { seats: 3 } })],
   [/^(modular )?chest of (\d+) drawers$/, (m) => ({ kind: "chest", x: { rows: Number(m[2]) } })],
   [/^(drawer unit|drawer unit on castors|chest of drawers|dresser)$/, () => ({ kind: "chest" })],
   [/^(bedside table|nightstand|bedside table with (\d) drawers?)$/, (m) => ({ kind: "nightstand", x: m[2] ? { rows: Number(m[2]) } : {} })],
@@ -405,6 +424,8 @@ export function classify(f: Fact, hints: Hints): Verdict {
     else if (kind === "clothesrack" && RACK_SIZE[family]) set(...RACK_SIZE[family]);
     else return { skip: "no size given" };
     if (kind === "clothesrack" && h < 100) return { skip: "clothes rack measured in a way we can't read" };
+    // a mini chest measured from the front only is a small, shallow box
+    if (kind === "chest" && /^mini/.test(t) && guessed.d) d = Math.max(15, Math.round(w * 0.6));
     // a changing table is wider than it's deep, whichever way round IKEA writes it
     if (kind === "changing" && d > w) [w, d] = [d, w];
     if (guessed.d && hint?.kind === kind && Math.abs(hint.w - w) < 60) d = hint.d;
@@ -530,7 +551,7 @@ export function classify(f: Fact, hints: Hints): Verdict {
   if (hint?.x.knobs && ["chest", "nightstand", "wardrobe", "cabinet", "sideboard", "tv", "shoe", "wallcab", "kitchen", "mixed", "washstand", "sinkcab", "appliance"].includes(kind)) x.knobs = hint.x.knobs;
   if (kind === "chest" || kind === "nightstand") {
     const total = x.rows ?? (kind === "nightstand" ? (h >= 60 ? 2 : 1) : Math.min(6, Math.max(2, Math.round(h / 14))));
-    if (kind === "chest" && total === 2 && w <= 60 && h <= 65) return finish("nightstand");
+    if (kind === "chest" && total === 2 && w <= 60 && h <= 65 && !/^mini/.test(t)) return finish("nightstand");
     const shape = kind === "nightstand" ? { rows: Math.min(total, 3), cols: 1 as const } : chestShape(total, w, h);
     if (!shape) return { skip: "drawers we can't lay out (open sections or 3 columns)" };
     x.rows = shape.rows;
