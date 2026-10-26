@@ -323,7 +323,7 @@ export function buildFitted(b: PlanBuilder, s: ProductSpec) {
     b.step(
       {
         title: "Screw on the fixed front",
-        detail: "It doesn't open. Screw it on from the inside, through the front rail.",
+        detail: "It doesn't open. Screw it on from the inside, just under the top rail.",
         tools: ["screwdriver"],
         kind: "screws",
       },
@@ -333,10 +333,11 @@ export function buildFitted(b: PlanBuilder, s: ProductSpec) {
         b.then(0.1);
         const list: FitOpts[] = [];
         for (const k of fronts) {
-          const y = b.partItem(k).final.pos[1];
+          const p = b.partItem(k).final.pos;
+          const y = Math.min(p[1], H - t - 14);
           for (const x of [-W / 2 + t + 60, W / 2 - t - 60]) list.push({ on: k, at: [x, y, D / 2], dir: [0, 0, 1], hole: false });
         }
-        b.fits(HW.screwM, list, 0.12);
+        b.fits(HW.screwS, list, 0.12);
       },
     );
   }

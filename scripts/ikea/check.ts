@@ -117,6 +117,9 @@ async function main() {
   expect("hemnes wash-stand", "hemnes-wash-stand-2-drawers-60-x-47-x-83");
   expect("hemnes vanity", "hemnes-wash-stand-2-drawers-60-x-47-x-83");
   expect("hemnes cabinet", "hemnes-glass-door-cabinet-90-x-197");
+  // the same for a kitchen's sink cabinet
+  expect("enhet sink cabinet", "enhet-base-cb-f-sink-60-x-60-x-75");
+  expect("metod base cabinet", "metod-base-cabinet-shelves-60-x-60");
   if (articleNo("S292.975.72") !== "29297572") fail("article numbers with an S in front don't parse");
   for (const [no, slug] of [["60324520", "kallax-2x2"]] as const) {
     if (articleSlug(no) !== slug) fail(`article ${no} gave ${articleSlug(no)}, expected ${slug}`);

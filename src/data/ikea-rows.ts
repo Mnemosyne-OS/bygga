@@ -177,6 +177,8 @@ ELDBERGET / MALSKÄR|office|Swivel chair|60|105|64|arms=none
 ENHET|cabinet|High cabinet with door, 30 × 32 × 180 cm|30|180|32|doors=1
 ENHET|kitchen|Base fr w shelves, 40 × 60 × 75 cm|40|75|60|doors=0
 ENHET|kitchen|Base fr w shelves, 60 × 40 × 60 cm|60|60|40|doors=0
+ENHET|sinkcab|Base cb f sink, 60 × 60 × 75 cm|60|75|60|z=o
+ENHET|sinkcab|Sink cabinet with door, 60 × 62 × 75 cm|60|75|62|z=d1
 ENHET|wallcab|Mirror cabinet with door, 40 × 17 × 75 cm|40|75|17|doors=1
 ENHET|wallcab|Mirror cabinet with doors, 60 × 17 × 75 cm|60|75|17
 ENHET|wallcab|Mirror cabinet, 60 × 17 × 75 cm|60|75|17
@@ -605,6 +607,17 @@ METOD|kitchen|High cabinet with shelves, 60 × 60 × 140 cm|60|140|60|doors=0
 METOD|kitchen|High cabinet, 60 × 60 × 200 cm|60|200|60
 METOD|kitchen|High cabinet with shelves/2 doors, 60 × 60 × 220 cm|60|220|60
 METOD|kitchen|Base cabinet with shelves/2 doors, 80 × 60 cm|80|80|60
+METOD|sinkcab|Base cab f sink/waste sorting, 40 × 60 cm|40|80|60|z=d1
+METOD|sinkcab|Base cab f HAVSEN single bowl sink, 60 × 60 cm|60|80|60|z=d1@60+a@20
+METOD|sinkcab|Base cab f TALLSJÖN sink, 60 × 60 cm|60|80|60|z=d1@60+f@20
+METOD|sinkcab|Base cabinet f sink w door/front, 60 × 60 cm|60|80|60|z=d1@60+f@20
+METOD|sinkcab|Base cabinet for sink, 60 × 60 cm|60|80|60|z=d1
+METOD|sinkcab|Base cb f built-in appliances/sink, 60 × 60 × 80 cm|60|80|60|z=o
+METOD|sinkcab|Sink cabinet with organiser, 60 × 60 × 80 cm|60|80|60|z=d1
+METOD|sinkcab|Base cab f HAVSEN double bowl sink, 80 × 60 cm|80|80|60|z=d2@60+a@20
+METOD|sinkcab|Base cab f TALLSJÖN sink, 80 × 60 cm|80|80|60|z=d2@60+f@20
+METOD|sinkcab|Base cabinet f sink w 2 doors/front, 80 × 60 cm|80|80|60|z=d2@60+f@20
+METOD|sinkcab|Base cabinet for sink + 2 doors, 80 × 60 cm|80|80|60|z=d2
 METOD|wallcab|Wall cabinet w shelves/glass door, 30 × 80 cm|30|80|35|doors=1
 METOD|wallcab|Top cabinet, 40 × 40 cm|40|40|35
 METOD|wallcab|Wall cabinet with glass door, 40 × 40 cm|40|40|35|doors=1
@@ -621,8 +634,19 @@ METOD|wallcab|Wall cabinet with 2 glass doors, 80 × 40 cm|80|40|35
 METOD|wallcab|Wall cabinet with shelves/2 doors, 80 × 80 cm|80|80|35
 METOD / KNIVSHULT|mixed|Base cabinet with drawer/door, 40 × 60 cm|40|80|60|rows=1,doors=1,dtop=1
 METOD / KNIVSHULT|mixed|Base cabinet with drawer/2 doors, 80 × 60 cm|80|80|60|rows=1,doors=2,dtop=1
+METOD / KNIVSHULT|sinkcab|Base cab f sink+2 fronts/2 drawers, 60 × 60 cm|60|80|60|z=r2
+METOD / KNIVSHULT|sinkcab|Base cab f TALLSJÖN sink, 60 × 60 cm|60|80|60|z=r1@60+f@20
+METOD / KNIVSHULT|sinkcab|Base cb f HAVSEN snk/3 frnts/2 drws, 60 × 60 cm|60|80|60|z=r2@60+a@20
+METOD / KNIVSHULT|sinkcab|Base cab f sink+3 fronts/2 drawers, 80 × 60 cm|80|80|60|z=r2@60+f@20
+METOD / KNIVSHULT|sinkcab|Base cab f TALLSJÖN sink, 80 × 60 cm|80|80|60|z=r1@60+f@20
 METOD / MAXIMERA|mixed|Base cabinet with drawer/door, 60 × 60 cm|60|80|60|rows=1,doors=1,dtop=1
 METOD / MAXIMERA|mixed|Base cabinet with drawer/2 doors, 80 × 60 cm|80|80|60|rows=1,doors=2,dtop=1
+METOD / MAXIMERA|sinkcab|Base cab f sink+2 fronts/2 drawers, 60 × 60 cm|60|80|60|z=r2
+METOD / MAXIMERA|sinkcab|Base cab f sink+3 fronts/2 drawers, 60 × 60 cm|60|80|60|z=r2@60+f@20
+METOD / MAXIMERA|sinkcab|Base cab f TALLSJÖN sink, 60 × 60 cm|60|80|60|z=r1@60+f@20
+METOD / MAXIMERA|sinkcab|Base cb f HAVSEN snk/3 frnts/2 drws, 60 × 60 cm|60|80|60|z=r2@60+a@20
+METOD / MAXIMERA|sinkcab|Base cab f sink+3 fronts/2 drawers, 80 × 60 cm|80|80|60|z=r2@60+f@20||metod-maximera-base-cab-f-sink-3-fronts-2-drawer-2
+METOD / MAXIMERA|sinkcab|Base cab f TALLSJÖN sink, 80 × 60 cm|80|80|60|z=r1@60+f@20
 MICKE|desk|Desk, 73 × 50 cm|73|75|50|legs=square,attach=apron
 MICKE|desk|Desk, 142 × 50 cm|142|75|50|legs=square,attach=apron
 MILLBERGET|office|Swivel chair|60|105|64|arms=none
