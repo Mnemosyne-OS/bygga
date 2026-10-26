@@ -16,6 +16,8 @@ export function slugify(s: string) {
 
 const CATEGORY_WORDS: [Kind, string[]][] = [
   ["office", ["office chair", "desk chair", "swivel chair", "gaming chair", "computer chair"]],
+  ["bookrow", ["bookcase combination", "bookshelf combination"]],
+  ["cabrow", ["tv bench combination", "tv unit combination", "media unit combination", "cabinet combination", "wardrobe combination", "closet combination", "wall cabinet combination"]],
   ["shoe", ["shoe", "shoes", "shoe cabinet", "shoe rack"]],
   ["nightstand", ["nightstand", "bedside", "night stand"]],
   ["mixed", ["doors and drawers", "cabinet with drawers", "cupboard with drawers", "wardrobe with drawers", "armoire with drawers"]],
@@ -151,6 +153,8 @@ export function searchCatalog(q: string, limit = 8): Hit[] {
     if (!ns && ((first.length >= 3 && r.words.some((w) => w.startsWith(first))) || (firstIsKind && kwHit))) score += 20;
     for (const t of tokens.slice(1)) if (t.length && r.words.some((w) => w.startsWith(t) || (t.length > 2 && w.includes(t)))) score += 12;
     if (kw) score += kwHit ? 14 : -30;
+    // several units side by side come after the single one, unless the query asks for a combination
+    if ((e.kind === "bookrow" || e.kind === "cabrow") && kind !== e.kind) score -= 1;
     if (e.checked) score += 3;
     if (e.featured) score += 2;
     if (score > 15) hits.push({ entry: e, score, exact: ns >= 80 });

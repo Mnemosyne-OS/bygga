@@ -8,6 +8,7 @@ import { buildCabinet } from "./cabinet";
 import { buildSeat } from "./seat";
 import { buildSofa } from "./sofa";
 import { buildCustom } from "./custom";
+import { buildRow } from "./row";
 
 const cache = new Map<string, Plan>();
 
@@ -16,33 +17,30 @@ export function buildPlan(spec: ProductSpec): Plan {
   const hit = cache.get(key);
   if (hit) return hit;
   const b = new PlanBuilder(spec);
-  switch (spec.archetype) {
-    case "shelf":
-      buildShelf(b, spec);
-      break;
-    case "drawers":
-      buildDrawers(b, spec);
-      break;
-    case "table":
-      buildTable(b, spec);
-      break;
-    case "bed":
-      buildBed(b, spec);
-      break;
-    case "cabinet":
-      buildCabinet(b, spec);
-      break;
-    case "seat":
-      buildSeat(b, spec);
-      break;
-    case "sofa":
-      buildSofa(b, spec);
-      break;
-    case "custom":
-      buildCustom(b, spec);
-      break;
-  }
+  if (spec.row) buildRow(b, spec, buildOne);
+  else buildOne(b, spec);
   const plan = b.build();
   cache.set(key, plan);
   return plan;
+}
+
+function buildOne(b: PlanBuilder, spec: ProductSpec) {
+  switch (spec.archetype) {
+    case "shelf":
+      return buildShelf(b, spec);
+    case "drawers":
+      return buildDrawers(b, spec);
+    case "table":
+      return buildTable(b, spec);
+    case "bed":
+      return buildBed(b, spec);
+    case "cabinet":
+      return buildCabinet(b, spec);
+    case "seat":
+      return buildSeat(b, spec);
+    case "sofa":
+      return buildSofa(b, spec);
+    case "custom":
+      return buildCustom(b, spec);
+  }
 }

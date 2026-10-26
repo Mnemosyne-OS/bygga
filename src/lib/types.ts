@@ -157,6 +157,7 @@ export interface ProductSpec {
   slug?: string;
   variants?: { label: string; slug: string }[];
   siblings?: { label: string; slug: string }[];
+  row?: { n: number; join?: boolean; of?: string }; // several identical units side by side, built one after another
 }
 
 /* ---------- generated plan ---------- */

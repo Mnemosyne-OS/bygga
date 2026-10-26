@@ -109,6 +109,9 @@ async function main() {
   // sliding doors only when the query says so
   expect("hauga sliding wardrobe", "hauga-wardrobe-sliding-doors-118-x-55-x-199");
   expect("hauga wardrobe", "hauga-wardrobe-70-x-199");
+  // a row of frames when asked for, the single frame otherwise
+  expect("billy bookcase combination", "billy-bookcase-160-x-28-x-202");
+  expect("pax bergsbo", "pax-bergsbo-wardrobe");
   if (articleNo("S292.975.72") !== "29297572") fail("article numbers with an S in front don't parse");
   for (const [no, slug] of [["60324520", "kallax-2x2"]] as const) {
     if (articleSlug(no) !== slug) fail(`article ${no} gave ${articleSlug(no)}, expected ${slug}`);

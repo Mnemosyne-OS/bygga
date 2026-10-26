@@ -52,6 +52,9 @@ BESTÅ|cabinet|Frame, 60 × 40 × 192 cm|60|192|40|knobs=none,doors=0
 BESTÅ|cabinet|Shelf unit with doors, 60 × 42 × 193 cm|60|193|42|knobs=none
 BESTÅ|cabinet|Frame, 120 × 40 × 64 cm|120|64|40|knobs=none,doors=0
 BESTÅ|cabinet|Shelf unit with doors, 120 × 42 × 64 cm|120|64|42|knobs=none
+BESTÅ|cabrow|TV bench with doors, 240 × 42 × 38 cm|240|38|42|knobs=none,n=2,of=tv
+BESTÅ|cabrow|TV bench with doors, 240 × 42 × 40 cm|240|40|42|knobs=none,n=2,of=tv
+BESTÅ|cabrow|TV bench with doors, 240 × 42 × 76 cm|240|76|42|knobs=none,n=2,of=tv
 BESTÅ|open|Shelving unit, 60 × 40 × 193 cm|60|193|40
 BESTÅ|tv|TV bench, 120 × 40 × 48 cm|120|48|40|knobs=none,doors=0
 BESTÅ|tv|TV bench with doors, 120 × 42 × 48 cm|120|48|42|knobs=none
@@ -65,6 +68,8 @@ BILLY|bookcase|Bookcase, 40 × 28 × 237 cm|40|237|28
 BILLY|bookcase|Bookcase, 80 × 39 × 202 cm|80|202|39
 BILLY|bookcase|Bookcase, 80 × 28 × 237 cm|80|237|28
 BILLY|bookcase|Bookcase, 120 × 28 × 237 cm|120|237|28
+BILLY|bookrow|Bookcase, 160 × 28 × 202 cm|160|202|28|n=2,of=bookcase
+BILLY|bookrow|Bookcase, 240 × 28 × 106 cm|240|106|28|n=3,of=bookcase
 BILLY / HÖGADAL|cabinet|Bookcase with door, 40 × 30 × 106 cm|40|106|30|doors=1
 BILLY / HÖGADAL|cabinet|Bookcase with door, 40 × 30 × 202 cm|40|202|30|doors=1
 BILLY / HÖGADAL|cabinet|Bookcase with doors, 80 × 30 × 106 cm|80|106|30
@@ -87,6 +92,7 @@ BILLY / OXBERG|cabinet|Bookcase with doors, 80 × 41 × 202 cm|80|202|41
 BILLY / OXBERG|cabinet|Bookcase with glass-doors, 80 × 41 × 202 cm|80|202|41
 BILLY / OXBERG|cabinet|Bookcase with panel/glass doors, 80 × 41 × 202 cm|80|202|41
 BILLY / OXBERG|cabinet|Bookcase with glass doors, 80 × 30 × 237 cm|80|237|30
+BILLY / OXBERG|cabrow|Bookcase with panel/glass doors, 160 × 30 × 202 cm|160|202|30|n=2,of=cabinet
 BINGSTA|armchair|Armchair|75|90|80
 BJÖRKBERGET|office|Swivel chair|60|105|64|arms=none
 BJÖRKSNÄS|bed|Bed frame, Standard King, 150 × 200 cm|166|100|209|m=150
@@ -357,6 +363,8 @@ ISMANTORP|armchair|Armchair|75|90|80
 IVAR|cabinet|Cabinet with doors, 89 × 30 × 124 cm|89|124|30
 IVAR|cabinet|Shelving unit with doors, 89 × 30 × 124 cm|89|124|30
 IVAR|cabinet|Shelving unit with doors, 89 × 30 × 179 cm|89|179|30
+IVAR|cabrow|Cabinet with doors, 160 × 30 × 83 cm|160|83|30|n=2,of=cabinet
+IVAR|cabrow|Wall cabinet with doors, 160 × 30 × 83 cm|160|83|30|n=2,of=wallcab
 IVAR|open|Shelving unit, 80 × 30 × 83 cm|80|83|30
 IVAR|open|Shelving unit, 80 × 30 × 166 cm|80|166|30
 IVAR|open|Shelving unit, 89 × 30 × 124 cm|89|124|30
@@ -681,9 +689,13 @@ OSKARSHAMN|armchair|Wing chair|75|104|80
 PÅHL|desk|Desk, 96 × 58 cm|96|74|58||kids children
 PAX|wardrobe|Wardrobe frame, 50 × 58 × 201 cm|50|201|58|doors=0,shelves=2
 PAX|wardrobe|Wardrobe frame, 75 × 58 × 201 cm|75|201|58|doors=0,shelves=2
+PAX / BERGSBO|cabrow|Wardrobe, 200 × 60 × 201 cm|200|201|60|n=2,of=wardrobe
+PAX / BERGSBO|cabrow|Wardrobe, 200 × 60 × 236 cm|200|236|60|n=2,of=wardrobe
 PAX / BERGSBO|wardrobe|Wardrobe|50|236|58
 PAX / BERGSBO|wardrobe|Wardrobe, 100 × 60 × 201 cm|100|201|60
+PAX / FLISBERGET|cabrow|Wardrobe, 200 × 60 × 201 cm|200|201|60|n=2,of=wardrobe
 PAX / FLISBERGET|wardrobe|Wardrobe, 100 × 60 × 201 cm|100|201|60
+PAX / FORSAND|cabrow|Wardrobe, 200 × 60 × 201 cm|200|201|60|n=2,of=wardrobe
 PAX / FORSAND|wardrobe|Wardrobe, 100 × 60 × 201 cm|100|201|60
 PAX / FORSAND|wardrobe|Wardrobe, 100 × 60 × 236 cm|100|236|60
 PAX / GRIMO|wardrobe|Wardrobe, 100 × 60 × 201 cm|100|201|60

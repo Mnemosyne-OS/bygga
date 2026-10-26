@@ -80,6 +80,8 @@ const FLAT = new Set<Kind>(["desk", "coffee", "side", "dining", "bar", "console"
 const OFFICE_ARMS = new Set(["MARKUS", "ALEFJÄLL"]);
 /** Office chairs with a tall back and a headrest. */
 const OFFICE_TALL = new Set(["MARKUS"]);
+/** The frame a family's combinations are rows of, in cm: two BILLY 80s, two BESTÅ 120s, two PAX 100s. */
+const ROW_UNITS: Record<string, number> = { BILLY: 80, BESTÅ: 120, IVAR: 80, PAX: 100 };
 /** Day-beds' outer size (w, h, d) from IKEA's product pages: IKEA's measure is only the mattress size. */
 const DAYBED_SIZE: Record<string, [number, number, number]> = { HEMNES: [210, 83, 91], BRIMNES: [205, 58, 87], FLEKKE: [207, 86, 91], VIHALS: [206, 75, 86] };
 
@@ -402,12 +404,25 @@ export function classify(f: Fact, hints: Hints): Verdict {
     if (shape.cols === 2) x.cols = 2;
     if (hint?.x.plinth) x.plinth = true;
   }
-  if ((kind === "wardrobe" || kind === "sliding") && multi && w > 100) return { skip: "several wardrobe frames" };
   if (kind === "wardrobe" && x.doors === 0 && hint?.x.shelves) x.shelves = hint.x.shelves;
-  if ((kind === "cabinet" || kind === "bookcase") && multi && w > 100) return { skip: "several units side by side" };
-  // a combination this wide is more than one frame, which one carcass can't show
-  if (f.spr && w > 125 && ["bookcase", "open", "cabinet", "wardrobe", "shoe", "wallcab", "wallshelf", "kitchen", "sliding", "slidecab"].includes(kind)) return { skip: "several units side by side" };
-  if (kind === "tv" && f.spr && w > 200) return { skip: "several units side by side" };
+  // a combination this wide is more than one frame, which one carcass can't show: a row of them when the frames are all alike
+  const several =
+    (kind === "wardrobe" || kind === "sliding") && multi && w > 100
+      ? "several wardrobe frames"
+      : ((kind === "cabinet" || kind === "bookcase") && multi && w > 100) ||
+          (f.spr && w > 125 && ["bookcase", "open", "cabinet", "wardrobe", "shoe", "wallcab", "wallshelf", "kitchen", "sliding", "slidecab"].includes(kind)) ||
+          (kind === "tv" && f.spr && w > 200)
+        ? "several units side by side"
+        : null;
+  if (several) {
+    const unit = ROW_UNITS[family];
+    const n = unit ? Math.round(w / unit) : 0;
+    if (!unit || n < 2 || n > 4 || n * unit !== w || !["bookcase", "cabinet", "tv", "wardrobe", "wallcab"].includes(kind)) return { skip: several };
+    if (kind === "wardrobe" && d > 62) return { skip: "PAX with sliding doors across its frames" };
+    x.n = n;
+    x.of = kind as NonNullable<X["of"]>;
+    return finish(kind === "bookcase" ? "bookrow" : "cabrow");
+  }
   if (kind === "tv" && h > 100) return { skip: "TV storage wall" };
   if (kind === "shoe" && x.c === undefined) x.c = h < 60 ? 1 : h < 115 ? 2 : 3;
   if (kind === "cube" && (Math.round((w - 6) / 35) > 5 || Math.round((h - 6) / 35) > 5)) return { skip: "cube grid larger than 5 x 5" };
