@@ -274,6 +274,7 @@ function tidy(t: string) {
   const s = SHORTHAND.reduce((acc, [re, word]) => acc.replace(re, word), t)
     .replace(/(^|\s)w (?=\S)/gi, "$1with ")
     .replace(/\bdrs\b/g, "doors")
+    .replace(/(\d) seat\b/g, "$1-seat")
     // a size never breaks across lines
     .replace(/ × /g, "\u00a0×\u00a0")
     .replace(/(\d) cm\b/g, "$1\u00a0cm");
