@@ -116,7 +116,10 @@ export function stepLines(plan: Plan, i: number): string[] {
   out.push(stepOpener(plan, i));
   if (s.people === 2) out.push(LINES.two);
   out.push(sentence(s.title));
-  if (s.repeat && s.repeat > 1) out.push(`Do this for all ${numWords(s.repeat)} ${plan.spec.archetype === "drawers" ? "drawers" : "of them"}. The counts are for one.`);
+  if (s.repeat && s.repeat > 1) {
+    const drawers = plan.spec.archetype === "drawers";
+    out.push(s.repeat === 2 && !drawers ? "Do this for both of them. The counts are for one." : `Do this for all ${numWords(s.repeat)} ${drawers ? "drawers" : "of them"}. The counts are for one.`);
+  }
   const needs = needsLine(plan, i);
   if (needs) out.push(needs);
   const tools = toolsLine(plan, i);
