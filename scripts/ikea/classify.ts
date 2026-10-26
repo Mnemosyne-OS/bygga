@@ -87,8 +87,25 @@ const GATE_STORAGE = new Set(["VIHALS"]);
 const ROW_UNITS: Record<string, number> = { BILLY: 80, BESTÅ: 120, IVAR: 80, PAX: 100 };
 /** PAX frames under a pair of sliding doors: 150 is two 75s, 200 two 100s. */
 const PAX_SLIDE_UNITS = [100, 75];
-/** The frame widths a family's combinations are made of, widest first. */
-const FRAME_SIZES: Record<string, number[]> = { PAX: [100, 75, 50] };
+/** The frame widths a family's combinations are made of, widest first, and the post two IVAR sections share. */
+const FRAME_SIZES: Record<string, number[]> = { BILLY: [80, 40], PAX: [100, 75, 50], IVAR: [89, 48], BROR: [85, 65] };
+const SHARED_POST: Record<string, number> = { IVAR: 3 };
+
+/** Two to four frames of these widths that make up w, give or take 2 cm: the fewest frames, the widest first. */
+function framesFor(w: number, sizes: number[], post = 0, most = 4): number[] | null {
+  let best: number[] | null = null;
+  const walk = (left: number[], from: number) => {
+    const n = left.length;
+    if (n >= 2) {
+      const total = left.reduce((a, v) => a + v, 0) - post * (n - 1);
+      if (Math.abs(total - w) <= 2 && (!best || n < best.length)) best = [...left];
+    }
+    if (n === most) return;
+    for (let i = from; i < sizes.length; i++) walk([...left, sizes[i]], i);
+  };
+  walk([], 0);
+  return best;
+}
 
 /** Frames for one leg of a corner wardrobe: the frames that come closest to `len` cm, and how far off they are. */
 function legFrames(len: number, sizes: number[], least: number): [number[], number] {
@@ -709,15 +726,28 @@ export function classify(f: Fact, hints: Hints): Verdict {
     const sliding = family === "PAX" && (kind === "sliding" || (kind === "wardrobe" && (d === 66 || d === 43)));
     if (sliding) {
       const unit = PAX_SLIDE_UNITS.find((u) => w % u === 0 && w / u >= 2 && w / u <= 3);
-      if (!unit) return { skip: "PAX with sliding doors over frames of different widths" };
-      Object.assign(x, { n: w / unit, of: "wardrobe", slides: 2, doors: undefined, shelves: hints(family, "wardrobe")?.x.shelves });
+      // or frames of different widths under the doors
+      const mixed = unit ? null : framesFor(w, PAX_SLIDE_UNITS, 0, 3);
+      if (!unit && !mixed) return { skip: "PAX with sliding doors over frames of different widths" };
+      Object.assign(x, { ...(mixed ? { u: mixed.join("+") } : { n: w / unit! }), of: "wardrobe", slides: 2, doors: undefined, shelves: hints(family, "wardrobe")?.x.shelves });
       for (const k of Object.keys(x) as (keyof X)[]) if (x[k] === undefined) delete x[k];
       return finish("cabrow");
     }
     // the rule may already know how many frames there are (PLATSA)
     const unit = x.n ? w / x.n : ROW_UNITS[family];
     const n = unit ? Math.round(w / unit) : 0;
-    if (!unit || n < 2 || n > 4 || n * unit !== w || !["bookcase", "cabinet", "tv", "wardrobe", "wallcab"].includes(kind)) return { skip: several };
+    if (!unit || n < 2 || n > 4 || n * unit !== w || !["bookcase", "cabinet", "tv", "wardrobe", "wallcab"].includes(kind)) {
+      // frames of the family's widths that aren't all alike: a wide BILLY and a narrow one, PAX 100 and 50
+      const sizes = FRAME_SIZES[family];
+      const mixed = !x.n && sizes && ["bookcase", "open", "cabinet", "wardrobe"].includes(kind) ? framesFor(w, sizes, SHARED_POST[family]) : null;
+      if (!mixed) return { skip: several };
+      x.u = mixed.join("+");
+      // PAX frames on their own come without doors, with the shelves a PAX frame has
+      if (kind === "wardrobe" && !multi) Object.assign(x, { doors: 0, shelves: hints(family, "wardrobe")?.x.shelves });
+      for (const k of Object.keys(x) as (keyof X)[]) if (x[k] === undefined) delete x[k];
+      x.of = kind as NonNullable<X["of"]>;
+      return finish(kind === "bookcase" || kind === "open" ? "bookrow" : "cabrow");
+    }
     x.n = n;
     x.of = kind as NonNullable<X["of"]>;
     return finish(kind === "bookcase" ? "bookrow" : "cabrow");

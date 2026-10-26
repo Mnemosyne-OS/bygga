@@ -16,7 +16,7 @@ export function slugify(s: string) {
 
 const CATEGORY_WORDS: [Kind, string[]][] = [
   ["office", ["office chair", "desk chair", "swivel chair", "gaming chair", "computer chair"]],
-  ["bookrow", ["bookcase combination", "bookshelf combination"]],
+  ["bookrow", ["bookcase combination", "bookshelf combination", "shelving combination", "shelving unit combination", "shelf combination"]],
   ["cabrow", ["tv bench combination", "tv unit combination", "media unit combination", "cabinet combination", "wardrobe combination", "closet combination", "wall cabinet combination"]],
   ["washstand", ["wash stand", "washstand", "vanity", "vanity unit", "bathroom vanity", "basin unit", "basin cabinet", "wash basin cabinet", "washbasin cabinet", "bathroom cabinet", "sink vanity"]],
   ["sinkcab", ["sink cabinet", "sink base", "sink base cabinet", "sink unit", "kitchen sink cabinet", "under sink cabinet", "cabinet for sink", "sink cupboard"]],
@@ -181,6 +181,8 @@ export function searchCatalog(q: string, limit = 8): Hit[] {
     if (!ns && !kidsQ && r.kids) score -= 1;
     // rows of several units, sofa sections and appliance cabinets come after the plain product, unless the query asks for them
     if (e.kind && (LESSER.has(e.kind) || e.cabinet?.fit) && kind !== e.kind) score -= 1;
+    // and rows of frames that aren't all alike after the rows of frames that are
+    if (e.row?.units) score -= 0.5;
     if (e.checked) score += 3;
     if (e.featured) score += 2;
     if (score > 15) hits.push({ entry: e, score, exact: ns >= 80 });

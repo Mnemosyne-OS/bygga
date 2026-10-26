@@ -84,6 +84,7 @@ BILLY|bookcase|Bookcase, 80 × 39 × 202 cm|80|202|39
 BILLY|bookcase|Bookcase, 80 × 28 × 237 cm|80|237|28
 BILLY|bookcase|Bookcase, 120 × 28 × 237 cm|120|237|28
 BILLY|bookrow|Bookcase, 160 × 28 × 202 cm|160|202|28|n=2,of=bookcase
+BILLY|bookrow|Bookcase, 200 × 28 × 237 cm|200|237|28|of=bookcase,u=80+80+40
 BILLY|bookrow|Bookcase, 240 × 28 × 106 cm|240|106|28|n=3,of=bookcase
 BILLY / HÖGADAL|cabinet|Bookcase with door, 40 × 30 × 106 cm|40|106|30|doors=1
 BILLY / HÖGADAL|cabinet|Bookcase with door, 40 × 30 × 202 cm|40|202|30|doors=1
@@ -92,6 +93,8 @@ BILLY / HÖGADAL|cabinet|Bookcase with doors, 80 × 30 × 202 cm|80|202|30
 BILLY / HÖGBO|cabinet|Bookcase with glass doors, 80 × 30 × 202 cm|80|202|30
 BILLY / OXBERG|bookcase|Bookcase, 80 × 30 × 202 cm|80|202|30
 BILLY / OXBERG|bookcase|Bookcase, 80 × 30 × 237 cm|80|237|30
+BILLY / OXBERG|bookrow|Bookcase, 120 × 30 × 237 cm|120|237|30|of=bookcase,u=80+40
+BILLY / OXBERG|bookrow|Bookcase, 200 × 30 × 237 cm|200|237|30|of=bookcase,u=80+80+40
 BILLY / OXBERG|cabinet|Bookcase with door, 40 × 30 × 106 cm|40|106|30|doors=1
 BILLY / OXBERG|cabinet|Bookcase with doors, 40 × 30 × 202 cm|40|202|30
 BILLY / OXBERG|cabinet|Bookcase with glass door, 40 × 30 × 202 cm|40|202|30|doors=1
@@ -107,6 +110,8 @@ BILLY / OXBERG|cabinet|Bookcase with doors, 80 × 41 × 202 cm|80|202|41
 BILLY / OXBERG|cabinet|Bookcase with glass-doors, 80 × 41 × 202 cm|80|202|41
 BILLY / OXBERG|cabinet|Bookcase with panel/glass doors, 80 × 41 × 202 cm|80|202|41
 BILLY / OXBERG|cabinet|Bookcase with glass doors, 80 × 30 × 237 cm|80|237|30
+BILLY / OXBERG|cabrow|Bookcase with glass-doors, 120 × 30 × 202 cm|120|202|30|of=cabinet,u=80+40
+BILLY / OXBERG|cabrow|Bookcase with panel/glass doors, 120 × 30 × 202 cm|120|202|30|of=cabinet,u=80+40
 BILLY / OXBERG|cabrow|Bookcase with panel/glass doors, 160 × 30 × 202 cm|160|202|30|n=2,of=cabinet
 BINGSTA|armchair|Armchair|75|90|80
 BJÖRKBERGET|office|Swivel chair|60|105|64|arms=none
@@ -143,6 +148,11 @@ BRIMNES|desk|Dressing table, 70 × 42 cm|70|74|42
 BRIMNES|nightstand|Bedside table, 39 × 41 × 53 cm|39|53|41|rows=1,knobs=none
 BRIMNES|tv|TV bench, 180 × 41 × 53 cm|180|53|41|knobs=none
 BRIMNES|tv|TV bench, 216 × 41 × 54 cm|216|54|41|knobs=none
+BROR|bookrow|Shelving unit, 170 × 40 × 110 cm|170|110|40|of=open,u=85+85
+BROR|bookrow|Shelving unit, 234 × 55 × 110 cm|234|110|55|of=open,u=85+85+65
+BROR|bookrow|Shelving unit, 234 × 55 × 190 cm|234|190|55|of=open,u=85+85+65
+BROR|bookrow|Shelving unit, 254 × 40 × 190 cm|254|190|40|of=open,u=85+85+85
+BROR|bookrow|Shelving unit, 254 × 55 × 190 cm|254|190|55|of=open,u=85+85+85
 BROR|cabinet|Cabinet with 2 doors, 76 × 40 × 66 cm|76|66|40
 BROR|cabinet|Cabinet with doors, 85 × 40 × 191 cm|85|191|40
 BROR|open|Shelving unit, 65 × 40 × 190 cm|65|190|40
@@ -440,8 +450,11 @@ ISMANTORP|armchair|Armchair|75|90|80
 IVAR|cabinet|Cabinet with doors, 89 × 30 × 124 cm|89|124|30
 IVAR|cabinet|Shelving unit with doors, 89 × 30 × 124 cm|89|124|30
 IVAR|cabinet|Shelving unit with doors, 89 × 30 × 179 cm|89|179|30
+IVAR|cabrow|Shelving unit with doors, 134 × 30 × 179 cm|134|179|30|of=cabinet,u=89+48
 IVAR|cabrow|Cabinet with doors, 160 × 30 × 83 cm|160|83|30|n=2,of=cabinet
 IVAR|cabrow|Wall cabinet with doors, 160 × 30 × 83 cm|160|83|30|n=2,of=wallcab
+IVAR|cabrow|Shelving unit with doors, 259 × 30 × 124 cm|259|124|30|of=cabinet,u=89+89+89
+IVAR|cabrow|Shelving unit with doors, 259 × 30 × 226 cm|259|226|30|of=cabinet,u=89+89+89
 IVAR|open|Shelving unit, 80 × 30 × 83 cm|80|83|30
 IVAR|open|Shelving unit, 80 × 30 × 166 cm|80|166|30
 IVAR|open|Shelving unit, 89 × 30 × 124 cm|89|124|30
@@ -938,6 +951,8 @@ PÅHL|desk|Desk, 96 × 58 cm|96|74|58||kids children
 PÄRONHOLMEN|backbench|Bench with backrest, outdoor|120|86|60||outdoor garden
 PAX|cabinet|Add-on corner unit with 4 shelves, 53 × 58 × 201 cm|53|201|58|doors=0,shelves=4
 PAX|cabinet|Add-on corner unit with 4 shelves, 53 × 35 × 236 cm|53|236|35|doors=0,shelves=4
+PAX|cabrow|Wardrobe, 150 × 58 × 201 cm|150|201|58|doors=0,shelves=2,of=wardrobe,u=100+50
+PAX|cabrow|Wardrobe, 175 × 58 × 201 cm|175|201|58|doors=0,shelves=2,of=wardrobe,u=100+75
 PAX|cornerrobe|Corner wardrobe, 161/188 × 201 cm|161|201|188|doors=0,shelves=2,u=75+50,v=100
 PAX|cornerrobe|Corner wardrobe, 210/180 × 236 cm|180|236|210|doors=0,shelves=2,u=75+50,v=100,cu=58
 PAX|cornerrobe|Corner wardrobe, 211/161 × 201 cm|211|201|161|doors=0,shelves=2,u=100+75,v=75
@@ -946,19 +961,23 @@ PAX|wardrobe|Wardrobe frame, 50 × 58 × 201 cm|50|201|58|doors=0,shelves=2
 PAX|wardrobe|Wardrobe frame, 75 × 58 × 201 cm|75|201|58|doors=0,shelves=2
 PAX / AULI|cabrow|Wardrobe with sliding doors, 150 × 43 × 201 cm|150|201|43|shelves=2,slides=2,n=2,of=wardrobe
 PAX / AULI|cabrow|Wardrobe with sliding doors, 150 × 66 × 201 cm|150|201|66|shelves=2,slides=2,n=2,of=wardrobe
+PAX / BERGSBO|cabrow|Wardrobe, 150 × 60 × 201 cm|150|201|60|of=wardrobe,u=100+50
 PAX / BERGSBO|cabrow|Wardrobe, 200 × 60 × 201 cm|200|201|60|n=2,of=wardrobe
 PAX / BERGSBO|cabrow|Wardrobe, 200 × 60 × 236 cm|200|236|60|n=2,of=wardrobe
 PAX / BERGSBO|cornerrobe|Corner wardrobe, 111/88 × 201 cm|111|201|88|shelves=2,u=75
 PAX / BERGSBO|wardrobe|Wardrobe|50|236|58
 PAX / BERGSBO|wardrobe|Wardrobe, 100 × 60 × 201 cm|100|201|60
 PAX / BERGSBO/ÅHEIM|cornerrobe|Corner wardrobe, 211/161 × 236 cm|211|236|161|shelves=2,u=100+75,v=75
+PAX / FARDAL|cabrow|Wardrobe, 150 × 60 × 201 cm|150|201|60|of=wardrobe,u=100+50
 PAX / FARDAL/ÅHEIM|cornerrobe|Corner wardrobe, 111/88 × 201 cm|111|201|88|shelves=2,u=75
 PAX / FLISBERGET|cabrow|Wardrobe, 200 × 60 × 201 cm|200|201|60|n=2,of=wardrobe
 PAX / FLISBERGET|cornerrobe|Corner wardrobe, 111/88 × 201 cm|111|201|88|shelves=2,u=75
 PAX / FLISBERGET|cornerrobe|Corner wardrobe, 161/88 × 201 cm|161|201|88|shelves=2,u=75+50
 PAX / FLISBERGET|cornerrobe|Corner wardrobe, 161/111 × 201 cm|161|201|111|shelves=2,u=100,cu=58
 PAX / FLISBERGET|wardrobe|Wardrobe, 100 × 60 × 201 cm|100|201|60
+PAX / FORSAND|cabrow|Wardrobe, 150 × 60 × 201 cm|150|201|60|of=wardrobe,u=100+50
 PAX / FORSAND|cabrow|Wardrobe, 200 × 60 × 201 cm|200|201|60|n=2,of=wardrobe
+PAX / FORSAND|cabrow|Wardrobe, 250 × 60 × 201 cm|250|201|60|of=wardrobe,u=100+100+50
 PAX / FORSAND|cornerrobe|Corner wardrobe, 111/88 × 201 cm|111|201|88|shelves=2,u=75
 PAX / FORSAND|cornerrobe|Corner wardrobe, 111/88 × 236 cm|111|236|88|shelves=2,u=75
 PAX / FORSAND|wardrobe|Wardrobe, 100 × 60 × 201 cm|100|201|60
@@ -988,6 +1007,7 @@ PAX / MEHAMN/AULI|cabrow|Wardrobe with sliding doors, 150 × 43 × 201 cm|150|20
 PAX / MEHAMN/AULI|cabrow|Wardrobe with sliding doors, 150 × 66 × 201 cm|150|201|66|shelves=2,slides=2,n=2,of=wardrobe
 PAX / MEHAMN/AULI|cabrow|Wardrobe with sliding doors, 150 × 66 × 236 cm|150|236|66|shelves=2,slides=2,n=2,of=wardrobe||pax-mehamn-auli-wardrobe-sliding-doors-150-x-66-2
 PAX / MEHAMN/AULI|cabrow|Wardrobe with sliding doors, 200 × 66 × 236 cm|200|236|66|shelves=2,slides=2,n=2,of=wardrobe
+PAX / MEHAMN/AULI|cabrow|Wardrobe, 250 × 66 × 201 cm|250|201|66|shelves=2,slides=2,of=wardrobe,u=100+75+75
 PAX / TONSTAD|cornerrobe|Corner wardrobe, 211/161 × 201 cm|211|201|161|shelves=2,u=100+75,v=75
 PAX / TONSTAD|cornerrobe|Corner wardrobe, 231/161 × 236 cm|231|236|161|shelves=2,u=100+75,v=50,cu=58
 PAX / TYSSEDAL|cornerrobe|Corner wardrobe, 161/111 × 236 cm|161|236|111|shelves=2,u=100,cu=58
