@@ -73,7 +73,7 @@ export function measure(s: string): Size | null {
   return { n: parts.map((p) => Number(p.split("/")[0])), ext: parts.some((p) => p.includes("/")), text: parts.join(" × ") + " cm" };
 }
 
-const UPRIGHT = new Set<Kind>(["cube", "bookcase", "open", "chest", "nightstand", "wardrobe", "cabinet", "sideboard", "tv", "shoe", "wallcab", "wallshelf", "kitchen", "mixed", "sliding", "slidecab", "washstand", "sinkcab", "appliance", "shoerack"]);
+const UPRIGHT = new Set<Kind>(["cube", "bookcase", "open", "chest", "nightstand", "wardrobe", "cabinet", "sideboard", "tv", "shoe", "wallcab", "wallshelf", "kitchen", "mixed", "sliding", "slidecab", "washstand", "sinkcab", "appliance", "shoerack", "clothesrack"]);
 const FLAT = new Set<Kind>(["desk", "coffee", "side", "dining", "bar", "console", "kidstable", "trolley", "bench"]);
 
 /** Office chairs IKEA sells with armrests although the type doesn't say so. */
@@ -90,6 +90,8 @@ const PAX_SLIDE_UNITS = [100, 75];
 /** Wash-stands' own height in cm, to tell how thick a basin from the same box is; and the ones that stand on the floor. */
 const WASH_H: Record<string, number> = { HAVBÄCK: 63, ÄNGSJÖN: 63, TÄNNFORSEN: 63, HEMNES: 83, ENHET: 60, NYSJÖN: 65 };
 const WASH_FLOOR = new Set(["HEMNES", "NYSJÖN"]);
+/** Clothes racks IKEA lists without a size (w, h, d), from its product pages; RIGGA's height is set at its tallest. */
+const RACK_SIZE: Record<string, [number, number, number]> = { RIGGA: [111, 175, 51] };
 /** Day-beds' outer size (w, h, d) from IKEA's product pages: IKEA's measure is only the mattress size. */
 const DAYBED_SIZE: Record<string, [number, number, number]> = { HEMNES: [210, 83, 91], BRIMNES: [205, 58, 87], FLEKKE: [207, 86, 91], VIHALS: [206, 75, 86] };
 
@@ -274,6 +276,8 @@ const RULES: Rule[] = [
   [/^(tv bench|tv bench with (\d )?doors|tv unit|tv storage unit)$/, (m, c) =>
     c.f.name === "KALLAX" ? "cube shelf with door inserts" : { kind: "tv", x: m[0] === "tv bench" && /^(BESTÅ|LACK)$/.test(c.f.name) ? { doors: 0 } : {} }],
   [/^(shoe rack|open shoe storage unit)$/, () => ({ kind: "shoerack" })],
+  // freestanding clothes racks: two uprights on feet, a rail across the top, a shoe shelf or a lower rail
+  [/^(clothes rack|clothes rack with shoe storage|coat rack with shoe storage unit)$/, (m) => ({ kind: "clothesrack", x: /shoe/.test(m[1]) ? { shelf: true } : {} })],
   [/^(shoe cabinet|shoe cabinet\/storage|shoe cabinet with (\d) compartments)$/, (m) => ({ kind: "shoe", x: m[2] ? { c: Number(m[2]) } : {} })],
 
   // tables
@@ -391,7 +395,9 @@ export function classify(f: Fact, hints: Hints): Verdict {
       else set(v[0], v[1]);
     } else if (v.length === 1) return { skip: "upright piece with one size" };
     else if (hint?.kind === kind) set(hint.w, hint.h, hint.d);
+    else if (kind === "clothesrack" && RACK_SIZE[family]) set(...RACK_SIZE[family]);
     else return { skip: "no size given" };
+    if (kind === "clothesrack" && h < 100) return { skip: "clothes rack measured in a way we can't read" };
     if (guessed.d && hint?.kind === kind && Math.abs(hint.w - w) < 60) d = hint.d;
     // a cabinet with drawers is as deep as the family's cabinet
     const twin = kind === "mixed" || kind === "slidecab" ? "cabinet" : kind === "sliding" ? "wardrobe" : undefined;

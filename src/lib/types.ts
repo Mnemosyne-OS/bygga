@@ -3,7 +3,7 @@ export type Vec3 = [number, number, number];
 export type Archetype = "shelf" | "drawers" | "table" | "bed" | "cabinet" | "seat" | "sofa" | "custom";
 
 export interface ShelfParams {
-  style: "grid" | "bookcase";
+  style: "grid" | "bookcase" | "rack"; // a rack: two uprights on feet with a rail across the top
   cols: number;
   rows: number;
   shelves: number; // adjustable shelves (bookcase)
@@ -15,6 +15,7 @@ export interface ShelfParams {
   wall?: boolean; // hangs on the wall instead of standing on the floor
   underframe?: number; // cm: a cube grid standing on an underframe this tall (size.h takes it in)
   inserts?: number; // a cube grid sold with this many inserts with a door, from the bottom row up
+  shoes?: boolean; // a rack with a shoe shelf low down instead of a lower rail
 }
 
 export interface DrawersParams {

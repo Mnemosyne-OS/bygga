@@ -9,6 +9,7 @@ ALEX|chest|Drawer unit on castors, 67 × 66 cm|67|66|58|rows=5,knobs=none
 ALEX|desk|Desk, 100 × 48 cm|100|74|48
 ALEX|desk|Desk, 132 × 58 cm|132|74|58
 ALEX|open|Storage unit, 36 × 70 cm|36|70|35
+ÄLGANÄS|clothesrack|Clothes rack with shoe storage, 46 × 39 × 166 cm|46|166|39|shelf=1
 ÄLGANÄS|shoerack|Shoe rack, 76 × 24 × 59 cm|76|59|24
 ÅLHULT|bench|Bench, 103 × 36 cm|103|45|36
 ÅLHULT|chair|Chair|44|88|50
@@ -265,6 +266,7 @@ GLOSTAD|chaise|3-seat sofa with chaise longue|201|78|150|seats=3,arms=wide,chais
 GLOSTAD|sofa|3-seat sofa|230|85|92|seats=3
 GODISHUS|chest|Chest of 3 drawers, 60 × 40 × 60 cm|60|60|40|rows=3
 GONATT|cot|Cot with drawer, 70 × 140 cm|150|86|78|m=70,l=140,drawer=1
+GRÅFJÄLLET|clothesrack|Clothes rack with shoe storage, 90 × 36 × 175 cm|90|175|36|shelf=1
 GRÅFJÄLLET|desk|Dressing table, 100 × 42 cm|100|74|42
 GRÅFJÄLLET|nightstand|Bedside table, 45 × 36 × 59 cm|45|59|36|rows=1
 GREJSIMOJS|kidstable|Children's table, 84 × 42 cm|84|48|42||kids
@@ -596,6 +598,7 @@ LYCKAN|chair|Chair|44|88|50
 LYCKSELE LÖVÅS|sofa|2-seat sofa-bed|170|85|92|seats=2
 LYCKSELE MURBO|sofa|2-seat sofa-bed|170|85|92|seats=2
 MÅBÄRSSKÄR|coffee|Coffee table, 61 × 41 cm|61|45|41||outdoor garden
+MACKAPÄR|clothesrack|Coat rack with shoe storage unit, 78 × 32 × 200 cm|78|200|32|shelf=1
 MACKAPÄR|shoerack|Shoe rack, 78 × 32 × 40 cm|78|40|32
 MALM|bed|Bed frame, high, Standard Single, 90 × 190 cm|106|100|199|m=90,l=190
 MALM|bed|Bed frame, high, w 2 storage boxes, Standard Single, 90 × 190 cm|106|100|199|m=90,l=190
@@ -754,6 +757,7 @@ MÖRBYLÅNGA|dining|Table, 145 cm|145|74|145|round=1
 MOSSJÖN|cabinet|Glass-door cabinet with 2 doors, 60 × 34 × 146 cm|60|146|34
 MOSSJÖN|wallcab|Wall cabinet with glass door, 36 × 18 × 44 cm|36|44|18|doors=1
 MOSSJÖN|wallcab|Wall cabinet w shelves/glass door, 36 × 18 × 102 cm|36|102|18|doors=1
+MULIG|clothesrack|Clothes rack, 99 × 152 cm|99|152|46
 MULLSJÖ|desk|Desk, 135 × 70 cm|135|74|70
 MULLSJÖ|office|Swivel chair|60|105|64|arms=none
 MUSKAN|bench|Bench, 58 × 38 cm|58|45|38
@@ -930,6 +934,7 @@ RELATERA|desk|Desk, 117 × 60 cm|117|74|60
 RENBERGET|office|Swivel chair|60|105|64|arms=none
 RIAN|side|Side table, 50 × 30 cm|50|50|30
 RIDSPÖ|desk|Desk, 140 × 70 cm|140|74|70
+RIGGA|clothesrack|Clothes rack|111|175|51
 RISHOLMEN|armchair|Wing chair, in/outdoor|75|104|80||outdoor garden
 ROCKSJÖN|armchair|Armchair|75|90|80
 ROCKSJÖN|sofa|2-seat sofa|170|85|92|seats=2

@@ -10,6 +10,7 @@ alex-drawer-unit-on-castors-36-x-50|09582664 59582671 59582666
 alex-drawer-unit-on-castors-36-x-76|59422220 69582680 39422221 29628029
 alex-drawer-unit-on-castors-67-x-66|80485423 50473544 20588891
 alex-storage-unit-36-x-70|50563752 70588898 50563790
+alganas-clothes-rack-shoe-storage-46-x-39-x-166|10585888
 alganas-shoe-rack-76-x-24-x-59|20585883
 alhult-bench-103-x-36|60603093 40603094
 alhult-chair|50600801 40600774
@@ -290,6 +291,7 @@ glostad-3-seat-sofa-chaise-longue|89578601
 godishus-chest-3-drawers-60-x-40-x-60|80598095
 gonatt-cot-drawer-70-x-140|90467089
 grafjallet-bedside-table-45-x-36-x-59|20570221
+grafjallet-clothes-rack-shoe-storage-90-x-36-x-1|00570222
 grafjallet-dressing-table-100-x-42|30570225
 grejsimojs-children-s-stool|60598973 50598959
 grejsimojs-children-s-table-84-x-42|70598963
@@ -661,6 +663,7 @@ lyckan-chair|00569191 00569186
 lycksele-lovas-2-seat-sofa-bed|19387006 49387038 19387134 89563204 89561709
 lycksele-murbo-2-seat-sofa-bed|09387021 49387137 49387043 19561717 69563219
 mabarsskar-coffee-table-61-x-41|30597164
+mackapar-coat-rack-shoe-storage-unit-78-x-32-x-2|50530988
 mackapar-shoe-rack-78-x-32-x-40|50530993
 malm-2-drawers|50336552 90625319
 malm-4-drawers|50424054
@@ -823,6 +826,7 @@ morbylanga-table-145|60412885
 mossjon-glass-door-cabinet-2-doors-60-x-34-x-146|30564333
 mossjon-wall-cabinet-glass-door-36-x-18-x-44|20621640
 mossjon-wall-cabinet-w-shelves-glass-door-36-x-1|60567778
+mulig-clothes-rack-99-x-152|60179434
 mullsjo-desk-135-x-70|30553240
 mullsjo-swivel-chair|70576584
 muskan-bench-58-x-38|50345957
@@ -1005,6 +1009,7 @@ relatera-desk-sit-stand-90-x-60|49552863
 renberget-swivel-chair|90503285
 rian-side-table-50-x-30|80343419
 ridspo-desk-140-x-70|00485224
+rigga-clothes-rack|50231630
 risholmen-wing-chair-in-outdoor|00503794
 rocksjon-2-seat-sofa|19508862 59514696 59508855
 rocksjon-armchair|89508854 29514693 89508849
