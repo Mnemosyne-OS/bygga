@@ -12,6 +12,7 @@ export const NAMES: Record<string, string> = {
  "Ekedalen": "iːkədɑlɛn",
  "Eldberget": "ɛldbɛɹjɛt",
  "Fjälkinge": "fjælkɪŋɛ",
+ "Flekke": "flɛkɛ",
  "Frösjön": "fɜʃɜn",
  "Fågelfjället": "fOɡɛlfjælɛt",
  "Garnanäs": "ɡɑɹnɑnæs",
