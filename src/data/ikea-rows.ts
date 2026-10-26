@@ -870,6 +870,7 @@ NÄMMARÖ|dining|Table, outdoor, 130 cm|130|74|130|round=1|outdoor garden
 NÄMMARÖ|dining|Table, outdoor, 140 × 75 cm|140|74|75||outdoor garden
 NÄMMARÖ|lounge|Reclining chair, outdoor|66|102|84||outdoor garden
 NÄMMARÖ|lounge|Lounge chair, outdoor|72|88|80||outdoor garden
+NÄMMARÖ|lounger|Sun lounger|66|87|195||outdoor garden
 NÄMMARÖ|section|Modular easy chair, 63 cm|63|83|92|seats=1,arms=wide|outdoor garden
 NÄMMARÖ|sofa|2-seat sofa, 126 cm|126|85|92|seats=2|outdoor garden
 NÄMMARÖ|sofa|2-seat sofa, 147 cm|147|85|92|seats=2|outdoor garden
@@ -1110,6 +1111,7 @@ SEGERÖN|chair|Chair with armrests, outdoor|44|88|50|arms=slim|outdoor garden
 SEGERÖN|coffee|Coffee table, outdoor, 73 × 73 cm|73|45|73||outdoor garden
 SEGERÖN|corner|Corner sofa, 3-seat|173|85|173|seats=3,arms=wide,corner=left,sd=92|outdoor garden
 SEGERÖN|dining|Table, outdoor, 91 × 147 cm|91|74|147||outdoor garden
+SEGERÖN|lounger|Sun lounger|66|87|195||outdoor garden
 SEGERÖN|section|One-seat section, outdoor|64|83|92|seats=1|outdoor garden
 SEGERÖN|section|Corner section with cushion|92|83|92|seats=1,corner=left|outdoor garden
 SEGERÖN|section|Corner section, outdoor|92|83|92|seats=1,corner=left|outdoor garden
@@ -1234,6 +1236,7 @@ STORKLINTA|chest|Chest of 6 drawers, 70 × 50 × 120 cm|70|120|50|rows=6
 STORKLINTA|chest|Chest of 6 drawers, 140 × 50 × 75 cm|140|75|50|rows=3,cols=2
 STORKLINTA|nightstand|Chest of 2 drawers, 30 × 50 × 53 cm|30|53|50|rows=2
 STORKLINTA|nightstand|Chest of 2 drawers, 40 × 50 × 53 cm|40|53|50|rows=2
+STRANDÖN|lounger|Sun lounger|66|87|195||outdoor garden
 STRANDÖN|stool|Folding stool|35|45|35||outdoor garden
 STYRSPEL|office|Gaming chair|64|128|64|arms=slim,seatH=50
 SUNDSÖ|cabinet|Cabinet, 60 × 35 × 86 cm|60|86|35||outdoor garden

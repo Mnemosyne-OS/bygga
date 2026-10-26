@@ -108,7 +108,7 @@ export interface FitParams {
 }
 
 export interface SeatParams {
-  kind: "stool" | "chair" | "bench" | "office" | "highchair";
+  kind: "stool" | "chair" | "bench" | "office" | "highchair" | "lounger";
   seat: "round" | "square";
   seatH: number; // cm
   backH: number; // cm (chair total height)

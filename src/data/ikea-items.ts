@@ -942,6 +942,7 @@ nammaro-lounge-chair-outdoor|40510306
 nammaro-modular-easy-chair-63|79584363 39529156 49621507 19611166 99575414 79607473
 nammaro-reclining-chair-outdoor|50510301
 nammaro-stool-outdoor-37-x-45|70510300
+nammaro-sun-lounger|30503354 49534888 69576028
 nammaro-table-outdoor-130|50586701
 nammaro-table-outdoor-140-x-75|20510307
 nammaro-table-outdoor-75-x-63|00510308
@@ -1189,6 +1190,7 @@ segeron-corner-section-cushion|59584726
 segeron-corner-section-outdoor|70510809
 segeron-corner-sofa-3-seat|89584621
 segeron-one-seat-section-outdoor|50510805
+segeron-sun-lounger|79500863 20510798
 segeron-table-outdoor-91-x-147|10510812 90510813
 segrare-desk-sit-stand-110-x-60|40534703
 skalboda-armchair|40555309 90554388 20582035
@@ -1317,6 +1319,7 @@ storklinta-chest-6-drawers-140-x-50-x-75|70627550 00628223 30627547 80627559
 storklinta-chest-6-drawers-70-x-50-x-120|70627545 80628224 00627544 20627557
 strandmon-wing-chair|50628942 70359830 80613171 40613168 90613175 60613167 30359846 40494641 30392544
 strandon-folding-stool|30591100
+strandon-sun-lounger|80605944
 styrspel-gaming-chair|80522034 90613057
 sundso-cabinet-60-x-35-x-86|80586243 70584188 10584186
 sundso-folding-chair|50575887 40575883 90575890 10575889 30575888 90575885 70575891

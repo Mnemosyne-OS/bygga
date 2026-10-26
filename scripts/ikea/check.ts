@@ -99,6 +99,8 @@ async function main() {
   // a real name we don't draw (a conference chair) must not land on a near miss
   expect("laktare", null);
   expect("laktare chair", null);
+  // sun loungers are drawn now
+  expect("nammaro sun lounger", "nammaro-sun-lounger");
   expect("marius", "marius-stool");
   // a day-bed is its own kind, and doesn't take over the family's bed
   expect("hemnes daybed", "hemnes-day-bed-frame-3-drawers-80-x-200");

@@ -266,6 +266,8 @@ const RULES: Rule[] = [
   [/^(lounge chair|reclining chair)$/, (_m, c) => (c.f.spr ? "lounge chair sold with cushions" : { kind: "lounge" })],
   // highchairs: a seat shell on four legs, with a tray (the legs, trays and seat shells sold alone stay skipped)
   [/^highchair with (tray|safety belt)$/, (m) => ({ kind: "highchair", x: m[1] === "tray" ? {} : { shelf: false } })],
+  // sun loungers with a backrest that adjusts (their cushions, covers and pads sold alone stay skipped)
+  [/^sun lounger$/, () => ({ kind: "lounger" })],
   [/swivel|office chair|gaming chair|conference|desk chair|highchair|lounge|reclining|lounger|hammock|massage/, () => "office, swivel or lounge chair"],
   // sofas with a chaise longue at one or both ends, and corner sofas (an L of sections)
   [/^(?=.*\bsofa)(?=.*\b(corner|crnr|chaise))/, (m) => {
