@@ -249,6 +249,53 @@ function draw(kind: HwKind, len: number, dia: number): Drawn {
         ),
       };
     }
+    case "castor":
+      // standing up: the pin on top, the wheel underneath
+      return {
+        w: 52,
+        h: 80,
+        scalable: false,
+        node: (
+          <g>
+            <rect x={21.5} y={-40} width={9} height={21} rx={2} fill={METAL} {...stroke} />
+            <rect x={15} y={-20} width={22} height={4} rx={1.5} fill={PLASTIC} {...stroke} />
+            <circle cx={28} cy={14} r={25} fill={PLASTIC} {...stroke} />
+            <circle cx={28} cy={14} r={6} fill="#fff" {...stroke} />
+            <path d="M8 -16 H40 C46 -16 48 -12 48 -6 L46 4 H10 L6 -8 C6 -13 6 -16 8 -16 Z" fill={PLASTIC} {...stroke} />
+          </g>
+        ),
+      };
+    case "connector":
+      // a flat strip with a screw hole at each end
+      return {
+        w: len,
+        h: dia,
+        scalable: true,
+        node: (
+          <g>
+            <rect x={0} y={-dia / 2} width={len} height={dia} rx={3} fill={METAL} {...stroke} />
+            {[len / 4, (3 * len) / 4].map((x) => (
+              <circle key={x} cx={x} cy={0} r={2.6} fill="#fff" {...stroke} />
+            ))}
+          </g>
+        ),
+      };
+    case "gasLift":
+      // lying down: the narrow end that drops into the base on the left, the rod for the seat on the right
+      return {
+        w: 132,
+        h: 26,
+        scalable: false,
+        node: (
+          <g>
+            <rect x={0} y={-7} width={26} height={14} rx={2} fill={METAL} {...stroke} />
+            <rect x={24} y={-13} width={82} height={26} rx={3} fill={METAL} {...stroke} />
+            <path d="M34 -6 H96" {...fine} />
+            <rect x={104} y={-9} width={6} height={18} rx={1.5} fill={PLASTIC} {...stroke} />
+            <rect x={110} y={-5.5} width={22} height={11} rx={2} fill={METAL} {...stroke} />
+          </g>
+        ),
+      };
   }
 }
 
@@ -277,5 +324,5 @@ export function HwArt({ kind, len, dia, fit = 72, pxPerMm, className }: { kind: 
 }
 
 export function canActualSize(kind: HwKind) {
-  return kind !== "runner";
+  return kind !== "runner" && kind !== "castor" && kind !== "gasLift";
 }

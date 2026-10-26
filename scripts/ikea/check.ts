@@ -94,8 +94,11 @@ async function main() {
   expect("kallax", "kallax-2x2");
   expect("MALM 3 drawers", "malm-3-drawers");
   expect("billy", "billy-80x202");
-  expect("markus", null);
-  expect("markus office chair", null);
+  expect("markus", "markus-office-chair");
+  expect("markus office chair", "markus-office-chair");
+  // a real name we don't draw (a conference chair) must not land on a near miss
+  expect("laktare", null);
+  expect("laktare chair", null);
   expect("marius", "marius-stool");
   if (articleNo("S292.975.72") !== "29297572") fail("article numbers with an S in front don't parse");
   for (const [no, slug] of [["60324520", "kallax-2x2"]] as const) {

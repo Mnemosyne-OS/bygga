@@ -5,6 +5,7 @@ import type {
   Item,
   PartItem,
   PartMaterial,
+  PartPiece,
   PartType,
   Plan,
   Pose,
@@ -16,7 +17,7 @@ import type {
   Vec3,
   WarnId,
 } from "../types";
-import { toLocal, unrotate } from "./math";
+import { rotate, toLocal, unrotate } from "./math";
 
 const LETTERS = "ABCDEFGHJKLMNPRSTUVWXYZ";
 
@@ -47,6 +48,9 @@ export const HW = {
   glide: { kind: "glide", len: 4, dia: 20 },
   wallScrew: { kind: "screw", len: 50, dia: 5, notIncluded: true },
   plug: { kind: "plug", len: 35, dia: 8, notIncluded: true },
+  castor: { kind: "castor", len: 58, dia: 50 },
+  gasLift: { kind: "gasLift", len: 200, dia: 50 },
+  connector: { kind: "connector", len: 120, dia: 30 },
 } satisfies Record<string, HwDef>;
 
 const HW_NAMES: Record<HwKind, string> = {
@@ -66,6 +70,9 @@ const HW_NAMES: Record<HwKind, string> = {
   hinge: "Hinge",
   glide: "Felt pad",
   plug: "Wall plug",
+  castor: "Castor",
+  gasLift: "Gas lift",
+  connector: "Connector",
 };
 
 export function hwSpecText(kind: HwKind, len: number, dia: number) {
@@ -150,6 +157,32 @@ export class PlanBuilder {
       extra: o.extra,
     });
     return id;
+  }
+
+  /**
+   * A part made of several boxes and cylinders (a star base, a cot side with its bars). The part is
+   * centred on the bounding box of its pieces: `mid` is that centre in the frame the pieces were given
+   * in, so placing the part at `mid` (unturned) puts every piece where it was drawn.
+   */
+  compound(name: string, pieces: PartPiece[], o: { material?: PartMaterial; extra?: boolean } = {}) {
+    const lo: Vec3 = [Infinity, Infinity, Infinity], hi: Vec3 = [-Infinity, -Infinity, -Infinity];
+    for (const p of pieces) {
+      const [sx, sy, sz] = p.size;
+      for (const a of [-1, 1])
+        for (const b of [-1, 1])
+          for (const c of [-1, 1]) {
+            const v = rotate([(a * sx) / 2, (b * sy) / 2, (c * sz) / 2], p.rot ?? [0, 0, 0]);
+            for (let i = 0; i < 3; i++) {
+              lo[i] = Math.min(lo[i], p.pos[i] + v[i]);
+              hi[i] = Math.max(hi[i], p.pos[i] + v[i]);
+            }
+          }
+    }
+    const r = (n: number) => Math.round(n * 10) / 10;
+    const mid: Vec3 = [r((lo[0] + hi[0]) / 2), r((lo[1] + hi[1]) / 2), r((lo[2] + hi[2]) / 2)];
+    const type = this.part(name, [r(hi[0] - lo[0]), r(hi[1] - lo[1]), r(hi[2] - lo[2])], { material: o.material, extra: o.extra });
+    this.parts[this.parts.length - 1].pieces = pieces.map((p) => ({ ...p, pos: [r(p.pos[0] - mid[0]), r(p.pos[1] - mid[1]), r(p.pos[2] - mid[2])] }));
+    return { type, mid };
   }
 
   place(ref: string, pos: Vec3, rot: Vec3 = [0, 0, 0]) {

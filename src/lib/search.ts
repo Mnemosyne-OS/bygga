@@ -15,6 +15,7 @@ export function slugify(s: string) {
 }
 
 const CATEGORY_WORDS: [Kind, string[]][] = [
+  ["office", ["office chair", "desk chair", "swivel chair", "gaming chair", "computer chair"]],
   ["shoe", ["shoe", "shoes", "shoe cabinet", "shoe rack"]],
   ["nightstand", ["nightstand", "bedside", "night stand"]],
   ["chest", ["drawer", "drawers", "chest", "dresser"]],
@@ -31,11 +32,16 @@ const CATEGORY_WORDS: [Kind, string[]][] = [
   ["trolley", ["trolley", "cart", "kitchen island"]],
   ["desk", ["desk"]],
   ["dining", ["dining", "table", "kitchen table"]],
-  ["bed", ["bed", "bedframe", "daybed", "bunk"]],
+  ["cot", ["cot", "crib", "baby bed"]],
+  ["bunk", ["bunk", "bunk bed", "bunkbed"]],
+  ["loft", ["loft bed", "high sleeper"]],
+  ["bed", ["bed", "bedframe", "daybed"]],
   ["wardrobe", ["wardrobe", "closet", "armoire"]],
   ["sideboard", ["sideboard", "buffet"]],
   ["cabinet", ["cabinet", "cupboard", "vitrine", "display"]],
-  ["sofa", ["sofa", "couch", "loveseat", "sectional"]],
+  ["chaise", ["chaise longue", "chaise lounge", "chaise"]],
+  ["corner", ["corner sofa", "corner couch", "sectional", "l shaped sofa"]],
+  ["sofa", ["sofa", "couch", "loveseat"]],
   ["armchair", ["armchair", "wing chair", "recliner"]],
   ["kidschair", ["children s chair", "childrens chair", "kids chair", "kid chair"]],
   ["chair", ["chair", "chairs"]],

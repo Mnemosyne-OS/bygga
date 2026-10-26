@@ -30,6 +30,8 @@ export interface TableParams {
   shelf: boolean;
   attach: "screw" | "plate" | "apron";
   round?: boolean; // round top, size.w is the diameter
+  leaves?: number; // a drop-leaf table: 1 or 2 hinged leaves; size.w is the width with them up
+  leaf?: number; // cm, width of each leaf
 }
 
 export interface BedParams {
@@ -39,6 +41,8 @@ export interface BedParams {
   footH: number; // cm, 0 for none
   slats: number;
   centerBeam: boolean;
+  type?: "cot" | "bunk" | "loft"; // a cot with barred sides, two beds stacked on posts, or one bed up high
+  drawer?: boolean; // a cot with a drawer under the base
 }
 
 export interface CabinetParams {
@@ -54,18 +58,23 @@ export interface CabinetParams {
 }
 
 export interface SeatParams {
-  kind: "stool" | "chair" | "bench";
+  kind: "stool" | "chair" | "bench" | "office";
   seat: "round" | "square";
   seatH: number; // cm
   backH: number; // cm (chair total height)
   stretchers: boolean;
   splay: boolean;
+  arms?: boolean; // office chairs: armrests
 }
 
 export interface SofaParams {
   seats: number;
   arms: "wide" | "slim" | "none";
   legs: "round" | "block";
+  chaise?: "left" | "right" | "both"; // a chaise longue at that end, seen from the front; size.d is its length
+  corner?: "left" | "right"; // an L: the return runs forward on that side; size.d is its length
+  open?: boolean; // corner sofas: no armrest at the front of the return
+  depth?: number; // cm, depth of the seat sections of a corner or chaise sofa
 }
 
 /** A product read from someone's own manual: parts as boxes in the assembled product, steps that add them. */
@@ -147,15 +156,25 @@ export interface ProductSpec {
 
 export type PartMaterial = "board" | "fiber" | "wood" | "metal" | "soft";
 
+/** One box or cylinder of a part made of several (a star base, a cot side with bars), in the part's own frame. */
+export interface PartPiece {
+  shape: "box" | "cyl";
+  size: Vec3; // mm, box extents or cylinder [dia, length, dia]
+  pos: Vec3; // mm, from the centre of the part
+  rot?: Vec3;
+  material?: PartMaterial;
+}
+
 export interface PartType {
   id: string;
   label: string; // letter
   name: string;
-  size: Vec3; // mm, box extents or cylinder [dia, length, dia]
+  size: Vec3; // mm, box extents or cylinder [dia, length, dia]; the bounding box when it has pieces
   shape: "box" | "cyl";
   material: PartMaterial;
   qty: number;
   extra?: boolean; // not in the box (e.g. mattress)
+  pieces?: PartPiece[]; // drawn as these boxes and cylinders instead of one
 }
 
 export type HwKind =
@@ -174,7 +193,10 @@ export type HwKind =
   | "handle"
   | "hinge"
   | "glide"
-  | "plug";
+  | "plug"
+  | "castor"
+  | "gasLift"
+  | "connector";
 
 export interface HwType {
   id: string;
