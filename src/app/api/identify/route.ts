@@ -7,7 +7,7 @@ The name is the word in capitals (it may contain Å, Ä or Ö). If you can't rea
 export async function POST(req: Request) {
   const key = userKey(req);
   if (!hasKey() && !key) return Response.json({ error: "ai-off" }, { status: 503 });
-  if (rateLimited(ipOf(req), 8)) return Response.json({ error: "slow down" }, { status: 429 });
+  if (rateLimited(ipOf(req) + ":identify", 8)) return Response.json({ error: "slow down" }, { status: 429 });
   const { image } = (await req.json().catch(() => ({}))) as { image?: string };
   if (!image || !image.startsWith("data:image/") || image.length > 6_000_000) return Response.json({ error: "bad image" }, { status: 400 });
   try {

@@ -22,7 +22,7 @@ export async function POST(req: Request) {
 
   const own = userKey(req);
   if (hasKey() || own) {
-    if (rateLimited(ipOf(req), 12)) return Response.json({ error: "slow down" }, { status: 429 });
+    if (rateLimited(ipOf(req) + ":guide", 12)) return Response.json({ error: "slow down" }, { status: 429 });
     try {
       const { text, model } = await chatText({
         key: own,

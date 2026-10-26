@@ -15,7 +15,7 @@ export async function GET(req: Request) {
   if (site && site !== "same-origin") return Response.json({ error: "forbidden" }, { status: 403 });
   const text = (new URL(req.url).searchParams.get("t") ?? "").replace(/\s+/g, " ").trim();
   if (!text || text.length > 400) return Response.json({ error: "bad text" }, { status: 400 });
-  if (rateLimited(ipOf(req), 40)) return Response.json({ error: "slow down" }, { status: 429 });
+  if (rateLimited(ipOf(req) + ":voice", 90)) return Response.json({ error: "slow down" }, { status: 429 });
   try {
     const audio = await speak(text, process.env.TOGETHER_API_KEY!.trim());
     return new Response(audio, {

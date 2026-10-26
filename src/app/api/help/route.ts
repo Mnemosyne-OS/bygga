@@ -17,7 +17,7 @@ Never use em dashes or en dashes.`;
 export async function POST(req: Request) {
   const key = userKey(req);
   if (!hasKey() && !key) return Response.json({ error: "ai-off" }, { status: 503 });
-  if (rateLimited(ipOf(req), 20)) return Response.json({ error: "slow down" }, { status: 429 });
+  if (rateLimited(ipOf(req) + ":help", 20)) return Response.json({ error: "slow down" }, { status: 429 });
   const b = (await req.json().catch(() => ({}))) as Body;
   const question = (b.question ?? "").toString().slice(0, 600);
   const context = (b.context ?? "").toString().slice(0, 3000);

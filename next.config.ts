@@ -1,9 +1,21 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-  /* config options here */
   cacheComponents: true,
   partialPrefetching: true,
+  async headers() {
+    return [
+      {
+        // clips are named after their text, so a file only changes when it is re-recorded
+        source: "/voice/:path*",
+        headers: [{ key: "Cache-Control", value: "public, max-age=604800, stale-while-revalidate=2592000" }],
+      },
+    ];
+  },
+  async redirects() {
+    // the manual scanner is parked for v2: old links land on the search instead
+    return process.env.NEXT_PUBLIC_SCAN === "1" ? [] : [{ source: "/scan", destination: "/", permanent: false }];
+  },
 };
 
 export default nextConfig;

@@ -51,8 +51,22 @@ export class TogetherError extends Error {
 
 /** Calls Together's chat completions, falling back through the model list when one is unavailable. */
 export async function chat(o: ChatOpts): Promise<{ res: Response; model: string }> {
-  const key = o.key?.trim() || process.env.TOGETHER_API_KEY?.trim();
-  if (!key) throw new TogetherError("missing key", 401);
+  // a visitor's saved key can expire: the server key takes over when it is turned away
+  const keys = [...new Set([o.key?.trim(), process.env.TOGETHER_API_KEY?.trim()].filter((k): k is string => !!k))];
+  if (!keys.length) throw new TogetherError("missing key", 401);
+  let lastErr: TogetherError | null = null;
+  for (const key of keys) {
+    try {
+      return await chatWith(o, key);
+    } catch (e) {
+      lastErr = e as TogetherError;
+      if (!(e instanceof TogetherError) || (e.status !== 401 && e.status !== 403)) throw e;
+    }
+  }
+  throw lastErr!;
+}
+
+async function chatWith(o: ChatOpts, key: string): Promise<{ res: Response; model: string }> {
   let lastErr: TogetherError | null = null;
   for (const model of o.models.map((m) => m.trim()).filter(Boolean)) {
     const reasoning = model.includes("gpt-oss") ? { reasoning_effort: o.reasoning ?? "low" } : {};
@@ -110,15 +124,23 @@ export function extractJson(text: string): unknown {
   }
 }
 
-/** Tiny in-memory rate limiter per IP. */
+/**
+ * Tiny in-memory rate limiter. Pass a bucket per route ("1.2.3.4:voice") so a
+ * chatty route can't use up another's allowance; refused calls don't count.
+ */
 const hits = new Map<string, number[]>();
-export function rateLimited(ip: string, max = 20, windowMs = 60_000) {
+
+export function rateLimited(bucket: string, max = 20, windowMs = 60_000) {
   const now = Date.now();
-  const arr = (hits.get(ip) ?? []).filter((t) => now - t < windowMs);
+  const arr = (hits.get(bucket) ?? []).filter((t) => now - t < windowMs);
+  if (arr.length >= max) {
+    hits.set(bucket, arr);
+    return true;
+  }
   arr.push(now);
-  hits.set(ip, arr);
+  hits.set(bucket, arr);
   if (hits.size > 5000) hits.clear();
-  return arr.length > max;
+  return false;
 }
 
 /** A key the person pasted into the app, sent along with their request. Never stored or logged. */
