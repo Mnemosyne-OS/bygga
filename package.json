@@ -7,7 +7,10 @@
     "build": "next build",
     "start": "next start",
     "lint": "eslint",
-    "voice": "node --experimental-transform-types --no-warnings --import ./scripts/voice/register.mjs scripts/voice/record.ts"
+    "voice": "node --experimental-transform-types --no-warnings --import ./scripts/voice/register.mjs scripts/voice/record.ts",
+    "ikea:fetch": "node --experimental-transform-types --no-warnings scripts/ikea/fetch.ts",
+    "ikea:build": "node --experimental-transform-types --no-warnings --import ./scripts/voice/register.mjs scripts/ikea/build.ts",
+    "ikea:check": "node --experimental-transform-types --no-warnings --import ./scripts/voice/register.mjs scripts/ikea/check.ts"
   },
   "dependencies": {
     "motion": "^14.4.0",
