@@ -36,6 +36,8 @@ angsjon-wash-stand-drawers-40-x-48-x-63|00535083 70535089 80535084 90535088 8053
 ankarudden-chest-4-drawers-80-x-48-x-107|80627149
 ankarudden-chest-6-drawers-139-x-48-x-87|20627147
 ankarudden-wardrobe-sliding-doors-98-x-60-x-190|50626250
+antilop-highchair-safety-belt|09597887 49597512
+antilop-highchair-tray|79597515 69597889
 applaryd-2-seat-sofa|00506231 20575073 60506233 60575066
 applaryd-3-seat-sofa|80506246 10506235 20575087 30575077
 applaryd-3-seat-sofa-chaise-longue|79418057 89418066 79528174 79528169
@@ -124,6 +126,7 @@ bjorksnas-bedside-table-48-x-38|70407360
 bjorksnas-chest-5-drawers-90-x-47-x-90|70407299
 bladdra-mini-chest-3-drawers-33-x-38|10417055
 blaliden-glass-door-cabinet-35-x-32-x-151|00501243 00520519
+blames-highchair-tray|50165079
 blastasen-bedside-table-50-x-37-x-76|70617570 00595067
 bleckberget-swivel-chair|70564331 40573271
 boastad-high-cabinet-41-x-32-x-185|50507006
@@ -1087,6 +1090,7 @@ saltsjobaden-3-seat-sofa|99627663 09579195 69627508 69627532 29579199 39622767 7
 saltsjobaden-3-seat-sofa-chaise-longue|99602144 09627568 59579211 99627564 39579207 19627544 29579203
 saltsjobaden-armchair|29627647 79599581 59622733 39627623 19599602 19578572 99627639
 saltsjobaden-corner-sofa-4-seat|89627456 69622501 69627650 19578553 99627432 99622482 89578559
+sandkatt-highchair-tray|60616646
 sandsberg-chair|30605423 10605424 90605260
 sandsberg-table-110-x-67|29420393 59420400
 segeron-2-seat-sofa-outdoor|29584860 29584855

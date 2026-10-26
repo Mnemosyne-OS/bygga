@@ -94,13 +94,14 @@ export interface FitParams {
 }
 
 export interface SeatParams {
-  kind: "stool" | "chair" | "bench" | "office";
+  kind: "stool" | "chair" | "bench" | "office" | "highchair";
   seat: "round" | "square";
   seatH: number; // cm
   backH: number; // cm (chair total height)
   stretchers: boolean;
   splay: boolean;
   arms?: boolean; // office chairs and chairs: armrests
+  tray?: boolean; // highchairs: false when it comes without a tray
 }
 
 export interface SofaParams {

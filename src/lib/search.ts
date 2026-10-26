@@ -60,6 +60,7 @@ const CATEGORY_WORDS: [Kind, string[]][] = [
   ["sofa", ["sofa", "couch", "loveseat"]],
   ["lounge", ["lounge chair", "reclining chair", "garden chair", "patio chair", "deck chair", "adirondack chair"]],
   ["armchair", ["armchair", "wing chair", "recliner"]],
+  ["highchair", ["highchair", "high chair", "baby chair", "feeding chair"]],
   ["junior", ["junior chair", "youth chair", "child s dining chair", "toddler chair", "booster chair"]],
   ["kidschair", ["children s chair", "childrens chair", "kids chair", "kid chair"]],
   ["chair", ["chair", "chairs"]],

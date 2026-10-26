@@ -35,6 +35,8 @@ ALEX|open|Storage unit, 36 × 70 cm|36|70|35
 ANKARUDDEN|chest|Chest of 4 drawers, 80 × 48 × 107 cm|80|107|48|rows=4
 ANKARUDDEN|chest|Chest of 6 drawers, 139 × 48 × 87 cm|139|87|48|rows=3,cols=2
 ANKARUDDEN|sliding|Wardrobe with sliding doors, 98 × 60 × 190 cm|98|190|60|slides=2
+ANTILOP|highchair|Highchair with safety belt|58|90|62|shelf=0
+ANTILOP|highchair|Highchair with tray|58|90|62
 ÄPPLARYD|chaise|3-seat sofa with chaise longue|226|85|160|seats=3,arms=wide,chaise=right,sd=92
 ÄPPLARYD|chaise|4-seat sofa with chaise longue|290|85|160|seats=4,arms=wide,chaise=right,sd=92
 ÄPPLARYD|sofa|2-seat sofa|170|85|92|seats=2
@@ -112,6 +114,7 @@ BJÖRKSNÄS|chest|Chest of 5 drawers, 90 × 47 × 90 cm|90|90|47|rows=5
 BJÖRKSNÄS|nightstand|Bedside table, 48 × 38 cm|48|55|38|rows=1
 BLÄDDRA|chest|Mini chest with 3 drawers, 33 × 38 cm|33|38|20|rows=3
 BLÅLIDEN|cabinet|Glass-door cabinet, 35 × 32 × 151 cm|35|151|32
+BLÅMES|highchair|Highchair with tray|58|90|62
 BLÄSTÅSEN|nightstand|Bedside table, 50 × 37 × 76 cm|50|76|37|rows=2
 BLECKBERGET|office|Swivel chair|60|105|64|arms=none
 BOASTAD|cabinet|High cabinet, 41 × 32 × 185 cm|41|185|32
@@ -1012,6 +1015,7 @@ SALTSJÖBADEN|corner|Corner sofa, 4-seat|237|85|173|seats=4,arms=wide,corner=lef
 SALTSJÖBADEN|sofa|2-seat sofa|170|85|92|seats=2
 SALTSJÖBADEN|sofa|2-seat sofa-bed|170|85|92|seats=2
 SALTSJÖBADEN|sofa|3-seat sofa|230|85|92|seats=3
+SANDKATT|highchair|Highchair with tray|58|90|62
 SANDSBERG|chair|Chair|44|88|50
 SEGERÖN|chair|Chair with armrests, outdoor|44|88|50|arms=slim|outdoor garden
 SEGERÖN|coffee|Coffee table, outdoor, 73 × 73 cm|73|45|73||outdoor garden
