@@ -844,6 +844,8 @@ SNIGLAR|cot|Cot, 60 × 120 cm|130|82|68|m=60,l=120
 SÖDERHAMN|chaise|4-seat sofa with chaise longue|259|69|167|seats=4,arms=slim,chaise=right,sd=99
 SÖDERHAMN|corner|Corner sofa, 4-seat|228|69|168|seats=4,arms=slim,corner=left,sd=99
 SÖDERHAMN|corner|Corner sofa-bed, 6-seat|289|69|228|seats=6,arms=slim,corner=left,sd=99
+SÖDERHAMN|section|1-seat section|61|69|99|seats=1
+SÖDERHAMN|section|3-seat section|182|69|99|seats=3
 SÖDERHAMN|sofa|2-seat sofa|170|85|92|seats=2,arms=slim
 SÖDERHAMN|sofa|4-seat sofa-bed|290|85|92|seats=4,arms=slim
 SOLUPPGÅNG|stool|Stool, outdoor, 43 × 40 cm|43|40|43||outdoor garden
@@ -871,6 +873,7 @@ STOCKHOLM 2025|coffee|Coffee table, 160 × 45 cm|160|45|45
 STOCKHOLM 2025|dining|Table, 115 cm|115|74|115|round=1
 STOCKHOLM 2025|dining|Table, 230 × 90 cm|230|74|90
 STOCKHOLM 2025|open|Shelving unit, 120 × 40 × 188 cm|120|188|40
+STOCKHOLM 2025|section|1-seat section|64|83|92|seats=1
 STOCKHOLM 2025|side|Side table, 40 cm|40|50|40|round=1
 STOCKHOLM 2025|side|Side table, 55 cm|55|50|55|round=1
 STOCKHOLM 2025|sideboard|Sideboard, 161 × 42 × 83 cm|161|83|42
@@ -1081,6 +1084,9 @@ VIMLE|corner|Corner sofa, 5-seat|238|83|238|seats=5,arms=wide,corner=left,sd=98
 VIMLE|corner|Corner sofa, 4-seat|253|83|184|seats=4,arms=wide,corner=left,sd=98
 VIMLE|corner|Corner sofa, 5-seat w chaise longue|253|83|236|seats=5,arms=wide,corner=left,open=1,sd=98
 VIMLE|corner|Crnr sofa-bed, 5-seat w chaise lng|253|83|236|seats=5,arms=wide,corner=left,open=1,sd=98
+VIMLE|section|1-seat section|69|83|98|seats=1
+VIMLE|section|2-seat section|138|83|98|seats=2
+VIMLE|section|3-seat section|207|83|98|seats=3
 VIMLE|sofa|2-seat sofa|170|85|92|seats=2
 VIMLE|sofa|2-seat sofa-bed|170|85|92|seats=2
 VIMLE|sofa|4-seat sofa|290|85|92|seats=4
@@ -1098,6 +1104,8 @@ VITTSKÄR|corner|3-seat modular corner sofa|173|85|173|seats=3,arms=wide,corner=
 VITTSKÄR|corner|4-seat modular corner sofa|237|85|173|seats=4,arms=wide,corner=left,sd=92|outdoor garden
 VITTSKÄR|corner|5-seat modular corner sofa|237|85|237|seats=5,arms=wide,corner=left,sd=92|outdoor garden
 VITTSKÄR|dining|Table, 264 × 96 cm|264|74|96||outdoor garden
+VITTSKÄR|section|1-seat section for modular sofa|64|83|92|seats=1|outdoor garden
+VITTSKÄR|section|2-seat section for modular sofa|128|83|92|seats=2|outdoor garden
 VITTSKÄR|sofa|2-seat modular sofa|170|85|92|seats=2|outdoor garden
 VITTSKÄR|sofa|2-seat sofa|170|85|92|seats=2|outdoor garden
 VITTSKÄR|sofa|3-seat modular sofa|230|85|92|seats=3|outdoor garden

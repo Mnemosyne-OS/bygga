@@ -145,6 +145,8 @@ const RULES: Rule[] = [
     return { kind: "chaise", x: { seats, chaise: both ? "both" : /\bleft\b/.test(t) ? "left" : "right" } };
   }],
   [/corner|chaise|u-shaped|crnr/, () => "corner or chaise longue sofa"],
+  // a straight sofa section sold alone: a seat frame with legs, a backrest and cushions, no armrests
+  [/^(\d)-seat section( for modular sofa)?$/, (m) => ({ kind: "section", x: { seats: Number(m[1]) } })],
   [/section|add-on|armrest|backrest for|seat sec|modular (easy chair|chaise)/, () => "sofa or storage section"],
   // bunk beds on four posts, and loft beds with room underneath (KURA turns over to be either)
   [/^(bunk bed frame|loft bed frame|loft bed|reversible bed)$/, (m, c) => {
@@ -363,6 +365,14 @@ export function classify(f: Fact, hints: Hints): Verdict {
       if (cw < 50) return { skip: "corner sofa too large" };
       [w, d] = [armCm + n1 * cw + sd, sd + n2 * cw + front];
     }
+  } else if (kind === "section") {
+    // IKEA gives no size: seat width, depth and height from a straight sofa of the same family, else a typical one
+    if (v.length) return { skip: "sofa section measured in a way we can't place" };
+    const sofa = hints(family, "sofa");
+    const armCm = sofa?.x.arms === "slim" ? 8 : sofa?.x.arms === "none" ? 0 : 17;
+    const per = sofa?.kind === "sofa" && sofa.x.seats ? Math.min(75, Math.max(55, (sofa.w - 2 * Math.min(armCm, sofa.w * 0.12)) / sofa.x.seats)) : 64;
+    w = (x.seats ?? 1) * per;
+    if (sofa?.kind === "sofa") [h, d] = [sofa.h, sofa.d <= 110 ? sofa.d : 92];
   } else if (kind === "office") {
     // IKEA gives no size for office chairs: a typical one, taller with a headrest, smaller for children
     if (v.length === 3) set(v[0], v[2], v[1]);

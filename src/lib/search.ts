@@ -47,6 +47,7 @@ const CATEGORY_WORDS: [Kind, string[]][] = [
   ["sideboard", ["sideboard", "buffet"]],
   ["cabinet", ["cabinet", "cupboard", "vitrine", "display"]],
   ["chaise", ["chaise longue", "chaise lounge", "chaise"]],
+  ["section", ["sofa section", "seat section", "sofa module", "couch section", "sectional piece"]],
   ["corner", ["corner sofa", "corner couch", "sectional", "l shaped sofa"]],
   ["sofa", ["sofa", "couch", "loveseat"]],
   ["armchair", ["armchair", "wing chair", "recliner"]],
@@ -56,6 +57,7 @@ const CATEGORY_WORDS: [Kind, string[]][] = [
   ["bench", ["bench"]],
 ];
 const KIND_WORDS = new Map(CATEGORY_WORDS);
+const LESSER = new Set<Kind>(["bookrow", "cabrow", "section"]);
 
 export function kindOf(q: string): Kind | null {
   const f = " " + fold(q) + " ";
@@ -153,8 +155,8 @@ export function searchCatalog(q: string, limit = 8): Hit[] {
     if (!ns && ((first.length >= 3 && r.words.some((w) => w.startsWith(first))) || (firstIsKind && kwHit))) score += 20;
     for (const t of tokens.slice(1)) if (t.length && r.words.some((w) => w.startsWith(t) || (t.length > 2 && w.includes(t)))) score += 12;
     if (kw) score += kwHit ? 14 : -30;
-    // several units side by side come after the single one, unless the query asks for a combination
-    if ((e.kind === "bookrow" || e.kind === "cabrow") && kind !== e.kind) score -= 1;
+    // rows of several units and sofa sections come after the whole product, unless the query asks for them
+    if (e.kind && LESSER.has(e.kind) && kind !== e.kind) score -= 1;
     if (e.checked) score += 3;
     if (e.featured) score += 2;
     if (score > 15) hits.push({ entry: e, score, exact: ns >= 80 });
