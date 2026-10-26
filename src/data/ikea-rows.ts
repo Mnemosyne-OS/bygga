@@ -444,8 +444,14 @@ JUTHOLMEN|sofa|3-seat modular sofa, outdoor|230|85|92|seats=3|outdoor garden
 JUTTERSBO|trolley|Trolley, 36 × 36 cm|36|80|36
 KALLAX|cube|Shelving unit, 42 × 41 cm|42|41|39
 KALLAX|cube|Shelving unit, 77 × 41 cm|77|41|39
+KALLAX|cube|Shelving unit with underframe, 77 × 94 cm|77|94|39|uf=17
 KALLAX|cube|Shelving unit, 77 × 112 cm|77|112|39
+KALLAX|cube|Shelving unit with underframe, 77 × 164 cm|77|164|39|uf=17
 KALLAX|cube|Shelving unit, 112 × 147 cm|112|147|39
+KALLAX|cube|Shelving unit with underframe, 147 × 59 cm|147|59|39|uf=17
+KALLAX|cube|Shelving unit with underframe, 147 × 94 cm|147|94|39|uf=17
+KALLAX|cube|Shelving unit with underframe, 147 × 129 cm|147|129|39|uf=17
+KALLAX|cube|Shelving unit with underframe, 147 × 164 cm|147|164|39|uf=17
 KALLAX|cube|Shelving unit, 182 × 182 cm|182|182|39
 KALLAX|desk|Desk, 111 × 39 cm|111|74|39
 KALLSÖ|bench|Bench with shoe storage, 80 × 38 × 56 cm|80|56|38

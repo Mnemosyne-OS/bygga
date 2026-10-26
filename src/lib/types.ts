@@ -13,6 +13,7 @@ export interface ShelfParams {
   outer: number; // mm panel thickness of frame
   inner: number; // mm thickness of inner shelves/dividers
   wall?: boolean; // hangs on the wall instead of standing on the floor
+  underframe?: number; // cm: a cube grid standing on an underframe this tall (size.h takes it in)
 }
 
 export interface DrawersParams {

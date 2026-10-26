@@ -257,6 +257,8 @@ const RULES: Rule[] = [
   [/^(shelving unit|shelf unit|open shelving unit|open storage|storage unit|shelving unit in\/outdoor|shelf section|1 shelf section|shelving unit with (\d+) shelves)$/, (m, c) =>
     c.f.name === "KALLAX" ? { kind: "cube" } : { kind: "open", x: m[2] ? { shelves: Math.min(6, Number(m[2]) - 2) } : {} }],
   [/^(wall shelf unit|wall shelf|wall-mounted shelving unit|wall storage unit)$/, (m, c) => (c.sz.n.length === 3 && c.sz.n[2] >= 25) || (m[1] === "wall shelf unit" && c.sz.n.length >= 2) ? { kind: "wallshelf" } : "single shelf board"],
+  // KALLAX on an underframe 17 cm high, sold together: the shelf, then the frame screwed to its bottom
+  [/^shelving unit with underframe$/, (_m, c) => (c.f.name === "KALLAX" ? { kind: "cube", x: { uf: 17 } } : "shelving unit on an underframe")],
   [/^(modular )?chest of (\d+) drawers$/, (m) => ({ kind: "chest", x: { rows: Number(m[2]) } })],
   [/^(drawer unit|drawer unit on castors|chest of drawers|dresser)$/, () => ({ kind: "chest" })],
   [/^(bedside table|nightstand|bedside table with (\d) drawers?)$/, (m) => ({ kind: "nightstand", x: m[2] ? { rows: Number(m[2]) } : {} })],
@@ -400,6 +402,8 @@ export function classify(f: Fact, hints: Hints): Verdict {
       }
       if (h - (x.basin ?? 0) <= 70 && !WASH_FLOOR.has(family)) x.hung = true;
     }
+    // IKEA lists one KALLAX on an underframe with its depth and one without: the same thing, so the same row
+    if (kind === "cube" && x.uf && v.length === 3) sz = { ...sz, text: `${v[0]} × ${v[2]} cm` };
     // a METOD wall cabinet is 37 deep, except the one over a fridge, which is as deep as the fridge's cabinet
     if (kind === "appliance" && guessed.d) d = x.hung && x.use !== "fridge" ? 37 : 60;
   } else if (FLAT.has(kind)) {
@@ -544,7 +548,7 @@ export function classify(f: Fact, hints: Hints): Verdict {
   }
   if (kind === "tv" && h > 100) return { skip: "TV storage wall" };
   if (kind === "shoe" && x.c === undefined) x.c = h < 60 ? 1 : h < 115 ? 2 : 3;
-  if (kind === "cube" && (Math.round((w - 6) / 35) > 5 || Math.round((h - 6) / 35) > 5)) return { skip: "cube grid larger than 5 x 5" };
+  if (kind === "cube" && (Math.round((w - 6) / 35) > 5 || Math.round((h - (x.uf ?? 0) - 6) / 35) > 5)) return { skip: "cube grid larger than 5 x 5" };
   if (kind === "desk" || kind === "coffee" || kind === "side") {
     if (hint?.x.attach) x.attach = hint.x.attach;
     if (hint?.x.legs) x.legs = hint.x.legs;

@@ -92,6 +92,7 @@ export type X = {
   z?: string;
   basin?: number;
   hung?: boolean;
+  uf?: number;
 };
 
 export type Row = [name: string, kind: Kind, variant: string, w: number, h: number, d: number, x?: X, keywords?: string];
@@ -364,6 +365,11 @@ export function specFor(kind: Kind, name: string, variant: string, w: number, h:
   };
   switch (kind) {
     case "cube":
+      // x.uf: cm of an underframe the grid stands on
+      if (x.uf) {
+        const cols = Math.max(1, Math.round((w - 6) / 35)), rows = Math.max(1, Math.round((h - x.uf - 6) / 35));
+        return { ...base, minutes: x.min ?? 30 + 7 * cols * rows, people: cols * rows > 4 ? 2 : 1, shelf: { style: "grid", cols, rows, outer: 40, inner: 16, back: false, underframe: x.uf } };
+      }
       return { ...base, shelf: { style: "grid", cols: Math.max(1, Math.round((w - 6) / 35)), rows: Math.max(1, Math.round((h - 6) / 35)), outer: 40, inner: 16, back: false } };
     case "bookcase":
       return { ...base, shelf: { style: "bookcase", shelves: x.shelves ?? Math.max(1, Math.round(h / 45) - 1), fixedShelf: h > 150, back: true, plinth: h > 100, outer: 16 } };

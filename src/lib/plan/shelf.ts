@@ -1,4 +1,4 @@
-import type { ProductSpec, ShelfParams, Vec3 } from "../types";
+import type { PartPiece, ProductSpec, ShelfParams, Vec3 } from "../types";
 import { HW, PlanBuilder, type FitOpts } from "./builder";
 import { FrameKit, anchorStep } from "./frame";
 import { clamp } from "./math";
@@ -21,7 +21,7 @@ export function defaultsShelf(s: ProductSpec): ShelfParams {
 
 export function buildShelf(b: PlanBuilder, s: ProductSpec) {
   const p = defaultsShelf(s);
-  if (p.style === "grid") return grid(b, s, p);
+  if (p.style === "grid") return s.shelf?.underframe ? onUnderframe(b, s, p) : grid(b, s, p);
   return bookcase(b, s, p);
 }
 
@@ -53,7 +53,7 @@ function bookcase(b: PlanBuilder, s: ProductSpec, p: ShelfParams) {
 }
 
 /** Cube shelving: full-width top and bottom, sides between, an inner grid on dowels. Built upright from the bottom. */
-function grid(b: PlanBuilder, s: ProductSpec, p: ShelfParams) {
+function grid(b: PlanBuilder, s: ProductSpec, p: ShelfParams, beforeAnchor?: () => void) {
   const W = s.size.w * 10, H = s.size.h * 10, D = s.size.d * 10;
   const T = p.outer, ti = p.inner;
   const { cols, rows } = p;
@@ -223,7 +223,66 @@ function grid(b: PlanBuilder, s: ProductSpec, p: ShelfParams) {
     },
   );
 
+  beforeAnchor?.();
   if (H >= 700) anchorStep(b, { W, D, top, y: H, backZ: -D / 2, severe: H > 1200 });
+}
+
+/**
+ * A cube shelf on an underframe (KALLAX): the shelf is built exactly as it is on its own, then laid on its back
+ * for the underframe to be screwed to its bottom, and stood up on it. Built with its bottom at zero, then lifted.
+ */
+function onUnderframe(b: PlanBuilder, s: ProductSpec, p: ShelfParams) {
+  const U = clamp(s.shelf!.underframe! * 10, 80, 400);
+  const W = s.size.w * 10, D = s.size.d * 10;
+  const shelf: ProductSpec = { ...s, size: { ...s.size, h: s.size.h - U / 10 } };
+  const tall = shelf.size.h > 120;
+  const leg = 40, rail = 50;
+  grid(b, shelf, p, () => {
+    const xs = W / 2 - leg / 2, zs = D / 2 - leg / 2;
+    const pieces: PartPiece[] = [];
+    for (const x of [-xs, xs]) for (const z of [-zs, zs]) pieces.push({ shape: "box", size: [leg, U, leg], pos: [x, -U / 2, z] });
+    for (const z of [-zs, zs]) pieces.push({ shape: "box", size: [W - 2 * leg, rail, 22], pos: [0, -rail / 2, z] });
+    for (const x of [-xs, xs]) pieces.push({ shape: "box", size: [22, rail, D - 2 * leg], pos: [x, -rail / 2, 0] });
+    const c = b.compound("Underframe", pieces, { material: "wood" });
+    const frame = b.place(c.type, c.mid);
+    b.step(
+      {
+        title: "Lay it on its back and screw on the underframe",
+        detail: "Line the frame up with the bottom's edges, then screw it on through the rails.",
+        tools: ["screwdriver"],
+        pose: "+z",
+        kind: "legs",
+        people: tall ? 2 : 1,
+        warnings: tall ? ["two", "floor"] : ["floor"],
+      },
+      () => {
+        b.add(frame, [0, -320, 0]);
+        b.then(0.15);
+        const list: FitOpts[] = [];
+        for (const z of [-zs, zs]) for (const x of [-W / 4, W / 4]) list.push({ on: frame, at: [x, -rail, z], dir: [0, 1, 0], hole: false });
+        for (const x of [-xs, xs]) list.push({ on: frame, at: [x, -rail, 0], dir: [0, 1, 0], hole: false });
+        b.fits(HW.screwL, list, 0.08);
+      },
+    );
+    b.step(
+      {
+        title: tall ? "Stand it up together" : "Stand it up",
+        detail: "Tip it up onto the underframe on a flat floor, and check it doesn't rock.",
+        kind: "standup",
+        people: tall ? 2 : 1,
+        warnings: tall ? ["two"] : [],
+      },
+      () => {},
+    );
+  });
+  // everything was built with the shelf's bottom at zero: lift it all onto the underframe
+  for (const it of b.items) {
+    if (it.kind === "part") {
+      const old = it.final.pos;
+      it.final = { pos: [old[0], old[1] + U, old[2]], rot: it.final.rot };
+      for (const st of it.states) if (st.scene === "main") st.pos = st.pos === old ? it.final.pos : [st.pos[0], st.pos[1] + U, st.pos[2]];
+    } else if (!it.parent && it.scene === "main") it.pos = [it.pos[0], it.pos[1] + U, it.pos[2]];
+  }
 }
 
 export type { Vec3 };
