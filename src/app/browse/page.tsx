@@ -3,6 +3,7 @@ import SiteHeader from "@/components/SiteHeader";
 import SiteFooter from "@/components/SiteFooter";
 import { Catalog } from "@/components/home/Sections";
 import { PRODUCT_COUNT } from "@/lib/search";
+import { PRODUCTS } from "@/lib/catalog";
 
 export const metadata: Metadata = { title: "All guides | Bygga" };
 
@@ -13,7 +14,7 @@ export default function Page() {
       <main className="browse">
         <header className="page-head">
           <h1>All guides</h1>
-          <p className="lead">{PRODUCT_COUNT} IKEA products, drawn and ready to build. Not listed? Search for it by name on the home page.</p>
+          <p className="lead">{PRODUCT_COUNT} IKEA products in {PRODUCTS.length} sizes, drawn and ready to build. Filter by name or by the article number on the box. Not listed? Search for it by name on the home page.</p>
         </header>
         <Catalog search />
       </main>
