@@ -580,9 +580,11 @@ export function specFor(kind: Kind, name: string, variant: string, w: number, h:
     case "cornerrobe": {
       // an L of wardrobe frames: x.u along the back wall, ending at its far end, x.v along the left-hand wall, ending at its
       // front, and between them an add-on corner unit x.cu deep with its back to the left-hand wall (cm, "100+50")
-      const fd = 58, cuw = 53, cud = x.cu ?? 35;
+      // no layout given (a typed name, not an IKEA row): one frame along the back and a deep corner unit, like PAX 161/111
+      const plain = x.u === undefined && x.v === undefined;
+      const fd = 58, cuw = 53, cud = x.cu ?? (plain ? 58 : 35);
       const list = (s?: string) => (s ?? "").split("+").filter(Boolean).map(Number);
-      const back = list(x.u), side = list(x.v);
+      const back = plain ? [w - cud >= 100 ? 100 : 50] : list(x.u), side = list(x.v);
       const sum = (l: number[]) => l.reduce((a, v) => a + v, 0);
       const frame = (fw: number) => specFor("wardrobe", name, variant, fw, h, fd, { doors: x.doors, shelves: x.shelves, knobs: x.knobs });
       const r1 = (n: number) => Math.round(n * 10) / 10;
