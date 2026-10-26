@@ -1,4 +1,4 @@
-import { chat, hasKey, ipOf, MODELS, rateLimited, userKey, type Msg } from "@/lib/together";
+import { chat, fromApp, hasKey, ipOf, MODELS, rateLimited, userKey, type Msg } from "@/lib/together";
 
 interface Body {
   context?: string;
@@ -15,14 +15,19 @@ If they send a photo of a part, say which part from the list it most likely is a
 Never use em dashes or en dashes.`;
 
 export async function POST(req: Request) {
+  if (!fromApp(req)) return Response.json({ error: "forbidden" }, { status: 403 });
   const key = userKey(req);
   if (!hasKey() && !key) return Response.json({ error: "ai-off" }, { status: 503 });
   if (rateLimited(ipOf(req) + ":help", 20)) return Response.json({ error: "slow down" }, { status: 429 });
   const b = (await req.json().catch(() => ({}))) as Body;
   const question = (b.question ?? "").toString().slice(0, 600);
   const context = (b.context ?? "").toString().slice(0, 3000);
-  const history = (b.history ?? []).slice(-6).map((m) => ({ role: m.role, content: String(m.content).slice(0, 800) })) as Msg[];
-  const image = b.image && b.image.startsWith("data:image/") && b.image.length < 6_000_000 ? b.image : undefined;
+  const history = (Array.isArray(b.history) ? b.history : [])
+    .filter((m) => m && (m.role === "user" || m.role === "assistant"))
+    .slice(-6)
+    .map((m) => ({ role: m.role, content: String(m.content).slice(0, 800) })) as Msg[];
+  // the app sends photos at 1024px, well under this
+  const image = typeof b.image === "string" && b.image.startsWith("data:image/") && b.image.length < 3_000_000 ? b.image : undefined;
   const user: Msg = image
     ? { role: "user", content: [{ type: "text", text: question || "Which part is this?" }, { type: "image_url", image_url: { url: image } }] }
     : { role: "user", content: question };

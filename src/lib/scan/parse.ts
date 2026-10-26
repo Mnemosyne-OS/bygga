@@ -59,6 +59,7 @@ const Root = z.object({
 
 export function clean(s: string) {
   return s
+    .replace(/[<>]/g, "")
     .replace(/\s*[‒-―]\s*/g, ", ")
     .replace(/\s+,/g, ",")
     .replace(/\s+/g, " ")

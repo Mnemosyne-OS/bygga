@@ -1,15 +1,16 @@
-import { chatText, extractJson, hasKey, ipOf, MODELS, rateLimited, userKey } from "@/lib/together";
+import { chatText, extractJson, fromApp, hasKey, ipOf, MODELS, rateLimited, userKey } from "@/lib/together";
 
 const PROMPT = `This photo shows an IKEA product, its box, its label or its assembly manual cover. Read the product name.
 Reply with JSON only: {"name": "KALLAX", "variant": "2x4 shelving unit", "confidence": 0.0-1.0}.
 The name is the word in capitals (it may contain Å, Ä or Ö). If you can't read a name, guess the kind of furniture in "variant" and set name to "".`;
 
 export async function POST(req: Request) {
+  if (!fromApp(req)) return Response.json({ error: "forbidden" }, { status: 403 });
   const key = userKey(req);
   if (!hasKey() && !key) return Response.json({ error: "ai-off" }, { status: 503 });
   if (rateLimited(ipOf(req) + ":identify", 8)) return Response.json({ error: "slow down" }, { status: 429 });
   const { image } = (await req.json().catch(() => ({}))) as { image?: string };
-  if (!image || !image.startsWith("data:image/") || image.length > 6_000_000) return Response.json({ error: "bad image" }, { status: 400 });
+  if (typeof image !== "string" || !image.startsWith("data:image/") || image.length > 3_000_000) return Response.json({ error: "bad image" }, { status: 400 });
   try {
     const { text } = await chatText({
       key,

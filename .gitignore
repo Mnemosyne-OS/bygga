@@ -46,3 +46,6 @@ next-env.d.ts
 # keep the example env file
 !.env.example
 .env*.local
+
+# local agent sessions and worktrees
+.claude/

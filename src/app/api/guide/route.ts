@@ -3,12 +3,13 @@ import { categoryOf, fold, guessSpec, matchCatalog, searchCatalog } from "@/lib/
 import { parseSpec, SPEC_PROMPT } from "@/lib/spec";
 import { draft, type Draft } from "@/lib/draft";
 import { ikeaType } from "@/lib/ikea";
-import { chatText, extractJson, hasKey, ipOf, MODELS, rateLimited, TogetherError, userKey } from "@/lib/together";
+import { chatText, extractJson, fromApp, hasKey, ipOf, MODELS, rateLimited, TogetherError, userKey } from "@/lib/together";
 import type { ProductSpec } from "@/lib/types";
 
 const cache = new Map<string, { spec: ProductSpec; model: string }>();
 
 export async function POST(req: Request) {
+  if (!fromApp(req)) return Response.json({ error: "forbidden" }, { status: 403 });
   const body = (await req.json().catch(() => ({}))) as { q?: string };
   const q = (body.q ?? "").toString().slice(0, 80).trim();
   if (!q) return Response.json({ error: "empty" }, { status: 400 });
@@ -43,6 +44,7 @@ export async function POST(req: Request) {
         const known = PRODUCTS.find((c) => fold(c.name) === fold(spec.name) && c.archetype === spec.archetype && Math.abs(c.size.w - spec.size.w) < 6 && Math.abs(c.size.h - spec.size.h) < 6);
         if (known) return Response.json({ spec: { ...toSpec(known), slug: known.slug }, via: "catalog" });
         const out = { ...spec, slug: key.replace(/\s+/g, "-") };
+        if (cache.size > 1000) cache.clear();
         cache.set(key, { spec: out, model });
         return Response.json({ spec: out, via: "ai", model });
       }
@@ -66,8 +68,19 @@ function drawable(type: string) {
 /** The shared, cached draft on the server key; a visitor's own key is never cached under someone else's name. */
 async function draftWith(own: string | undefined, key: string, q: string): Promise<Draft | null> {
   if (!own && hasKey()) return draft(key, q);
+  try {
+    return await draftOwn(own!, q);
+  } catch (e) {
+    // a saved key that stopped working gets the shared, cached draft, not a fresh call on the server key
+    if (e instanceof TogetherError && (e.status === 401 || e.status === 403) && hasKey()) return draft(key, q);
+    throw e;
+  }
+}
+
+async function draftOwn(own: string, q: string): Promise<Draft | null> {
   const { text, model } = await chatText({
     key: own,
+    fallback: false,
     models: MODELS.text,
     json: true,
     maxTokens: 1800,

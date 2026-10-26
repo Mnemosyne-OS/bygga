@@ -4,6 +4,9 @@ import { POSE_EULER } from "@/lib/plan/math";
 import { Drawable, hwDrawable, partDrawable, wallDrawable } from "./drawable";
 import { INK, INK_OLD } from "./materials";
 
+/** Part names can come from a shared scan link: never let them through as markup. */
+const esc = (t: string) => String(t).replace(/[&<>"']/g, (c) => `&#${c.charCodeAt(0)};`);
+
 export type StageMode =
   | { kind: "intro"; dims?: boolean }
   | { kind: "assembled"; turntable?: boolean; dims?: boolean; view?: { az: number; el: number }; frame?: Vec3[] }
@@ -1087,7 +1090,7 @@ export class Stage {
           this.labelLayer.appendChild(el);
           this.labels.set(id, el);
         }
-        const html = `<b>${l.text}</b>${l.sub ? `<span>${l.sub}</span>` : ""}`;
+        const html = `<b>${esc(l.text)}</b>${l.sub ? `<span>${esc(l.sub)}</span>` : ""}`;
         if (el.innerHTML !== html) el.innerHTML = html;
         el.style.transform = `translate(${l.x}px, ${l.y}px) translate(-50%, -50%) scale(${0.7 + 0.3 * l.o})`;
         el.style.opacity = String(l.o);
@@ -1334,7 +1337,7 @@ export class Stage {
     if (this.tooltip) {
       const type = ref ? this.plan.parts.find((p) => p.id === ref) : null;
       if (type && !type.extra) {
-        this.tooltip.innerHTML = `<b>${type.label}</b>${type.name}`;
+        this.tooltip.innerHTML = `<b>${esc(type.label)}</b>${esc(type.name)}`;
         this.tooltip.style.transform = `translate(${x - r.left + 14}px, ${y - r.top + 16}px)`;
         this.tooltip.style.opacity = "1";
       } else this.tooltip.style.opacity = "0";

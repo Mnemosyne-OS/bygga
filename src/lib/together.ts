@@ -35,8 +35,10 @@ interface ChatOpts {
   temperature?: number;
   stream?: boolean;
   signal?: AbortSignal;
-  /** The person's own key. Falls back to the server key. */
+  /** The person's own key. Falls back to the server key, unless `fallback` is false. */
   key?: string;
+  /** False for calls that must only ever spend the person's own credit. */
+  fallback?: boolean;
   reasoning?: "low" | "medium" | "high";
 }
 
@@ -52,7 +54,7 @@ export class TogetherError extends Error {
 /** Calls Together's chat completions, falling back through the model list when one is unavailable. */
 export async function chat(o: ChatOpts): Promise<{ res: Response; model: string }> {
   // a visitor's saved key can expire: the server key takes over when it is turned away
-  const keys = [...new Set([o.key?.trim(), process.env.TOGETHER_API_KEY?.trim()].filter((k): k is string => !!k))];
+  const keys = [...new Set([o.key?.trim(), o.fallback === false ? undefined : process.env.TOGETHER_API_KEY?.trim()].filter((k): k is string => !!k))];
   if (!keys.length) throw new TogetherError("missing key", 401);
   let lastErr: TogetherError | null = null;
   for (const key of keys) {
@@ -147,6 +149,24 @@ export function rateLimited(bucket: string, max = 20, windowMs = 60_000) {
 export function userKey(req: Request) {
   const k = req.headers.get("x-together-key")?.trim() ?? "";
   return k.length >= 20 && k.length <= 200 && /^[\w.-]+$/.test(k) ? k : undefined;
+}
+
+/**
+ * True for requests from this site's own pages. Other sites can't make their visitors'
+ * browsers spend the key: browsers say where a request came from, and a JSON body
+ * can't be sent across sites without a preflight we never answer.
+ */
+export function fromApp(req: Request, json = true) {
+  if (json && !(req.headers.get("content-type") ?? "").includes("application/json")) return false;
+  const site = req.headers.get("sec-fetch-site");
+  if (site) return site === "same-origin";
+  const origin = req.headers.get("origin");
+  if (!origin) return true;
+  try {
+    return new URL(origin).host === req.headers.get("host");
+  } catch {
+    return false;
+  }
 }
 
 export function ipOf(req: Request) {

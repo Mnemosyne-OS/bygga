@@ -1,10 +1,11 @@
-import { ipOf, rateLimited } from "@/lib/together";
+import { fromApp, ipOf, rateLimited } from "@/lib/together";
 
 /**
  * "Did this match your box?" One line per answer in the server log
  * (grep for [feedback]), so wrong guides can be found and fixed.
  */
 export async function POST(req: Request) {
+  if (!fromApp(req)) return Response.json({ error: "forbidden" }, { status: 403 });
   if (rateLimited(ipOf(req) + ":feedback", 12, 10 * 60_000)) return Response.json({ error: "slow down" }, { status: 429 });
   const b = (await req.json().catch(() => ({}))) as Record<string, unknown>;
   const str = (v: unknown, n: number) => (typeof v === "string" ? v.replace(/\s+/g, " ").trim().slice(0, n) : undefined);
