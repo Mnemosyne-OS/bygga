@@ -5829,5 +5829,733 @@
   "heard": "And that's it, your Vretstorp is built. Well done.",
   "ok": true,
   "takes": 1
+ },
+ "ddrud2f5e2": {
+  "text": "You'll need a gas lift.",
+  "ms": 1118,
+  "heard": "You'll need a gas lift.",
+  "ok": true,
+  "takes": 1
+ },
+ "1ze2aw6vsi7": {
+  "text": "Push a castor into each leg of the base.",
+  "ms": 2123,
+  "heard": "Push a caster into each leg of the base.",
+  "ok": true,
+  "takes": 1
+ },
+ "4wa4yuc8sw": {
+  "text": "Stand the base up and drop in the gas lift.",
+  "ms": 2278,
+  "heard": "Stand the base up and drop in the gas lift.",
+  "ok": true,
+  "takes": 1
+ },
+ "fm9kx64f0k": {
+  "text": "The narrow end goes into the hole in the middle. No tools needed.",
+  "ms": 3459,
+  "heard": "The narrow end goes into the hole in the middle. No tools needed.",
+  "ok": true,
+  "takes": 1
+ },
+ "i2gah5n7nn": {
+  "text": "Lay it on its back and bolt on the backrest.",
+  "ms": 2250,
+  "heard": "Lay it on its back and bolt on the backrest.",
+  "ok": true,
+  "takes": 1
+ },
+ "264o92qe63o": {
+  "text": "Lay the seat upside down. The lever goes on its right-hand side.",
+  "ms": 3639,
+  "heard": "Lay the seat upside down. The lever goes on its right-hand side.",
+  "ok": true,
+  "takes": 1
+ },
+ "1m1ow293xpv": {
+  "text": "Still upside down. Two bolts each, into the seat.",
+  "ms": 2778,
+  "heard": "Still upside down, two bolts each into the seat.",
+  "ok": true,
+  "takes": 1
+ },
+ "1c6ri9ejeww": {
+  "text": "Lay the base upside down. Press each castor in until it clicks.",
+  "ms": 3601,
+  "heard": "Lay the base upside down. Press each caster in until it clicks.",
+  "ok": true,
+  "takes": 1
+ },
+ "qfbh8mgbrk": {
+  "text": "Bolt the mechanism under the seat.",
+  "ms": 1780,
+  "heard": "Bolt the mechanism under the seat.",
+  "ok": true,
+  "takes": 1
+ },
+ "2dplbv33shw": {
+  "text": "Lower the seat onto the gas lift.",
+  "ms": 1784,
+  "heard": "Lower the seat onto the gas lift.",
+  "ok": true,
+  "takes": 1
+ },
+ "1nsmechwasp": {
+  "text": "Then sit down on it once, firmly. Your weight locks it in place.",
+  "ms": 3366,
+  "heard": "Then sit down on it once firmly. Your weight locks it in place.",
+  "ok": true,
+  "takes": 1
+ },
+ "1ld3huo7cie": {
+  "text": "Bolt one side between the ends.",
+  "ms": 1633,
+  "heard": "Bolt one side between the ends.",
+  "ok": true,
+  "takes": 1
+ },
+ "1if8kxf3wn4": {
+  "text": "And that's it. Your Alefjäll is built. Well done.",
+  "ms": 2485,
+  "heard": "And that's it, your Alephiel is built. Well done.",
+  "ok": true,
+  "takes": 1
+ },
+ "igfrdplfw4": {
+  "text": "The bar goes under the seat, behind the mechanism. Two bolts hold it.",
+  "ms": 3797,
+  "heard": "The bar goes under the seat behind the mechanism. Two bolts hold it.",
+  "ok": true,
+  "takes": 1
+ },
+ "1579elasqbf": {
+  "text": "You'll need five castors.",
+  "ms": 1303,
+  "heard": "You'll need five casters.",
+  "ok": false,
+  "takes": 3
+ },
+ "1pwzhfs9t0y": {
+  "text": "Hand tight for now, so the rest lines up easily.",
+  "ms": 2667,
+  "heard": "Hand tight for now so the rest lines up easily.",
+  "ok": true,
+  "takes": 1
+ },
+ "48miuifi51": {
+  "text": "The top holes are for a newborn. Move the base down once your baby can sit up.",
+  "ms": 4239,
+  "heard": "The top holes are for a newborn. Move the base down once your baby can sit up.",
+  "ok": true,
+  "takes": 1
+ },
+ "1bvg81mo8ot": {
+  "text": "Then tighten every bolt firmly. Check none stick out on the inside.",
+  "ms": 3669,
+  "heard": "Then tighten every bolt firmly. Check none stick out on the inside.",
+  "ok": true,
+  "takes": 1
+ },
+ "1n77gesp97l": {
+  "text": "It should fit snugly, with no gap at the sides.",
+  "ms": 2532,
+  "heard": "It should fit snugly with no gap at the sides.",
+  "ok": true,
+  "takes": 1
+ },
+ "2cycr7dbihc": {
+  "text": "Bolt the base in at the top height.",
+  "ms": 1683,
+  "heard": "Bolt the base in at the top height.",
+  "ok": true,
+  "takes": 1
+ },
+ "vgnszslatc": {
+  "text": "Lay the sections upside down.",
+  "ms": 1537,
+  "heard": "Lay the sections upside down.",
+  "ok": true,
+  "takes": 1
+ },
+ "29k3hoqopmg": {
+  "text": "You're on step one of eight.",
+  "ms": 1185,
+  "heard": "You're on step one of eight.",
+  "ok": true,
+  "takes": 1
+ },
+ "1awdf712cw3": {
+  "text": "You're on step two of eight.",
+  "ms": 1204,
+  "heard": "You're on step two of eight.",
+  "ok": true,
+  "takes": 1
+ },
+ "27wr3h3a0hx": {
+  "text": "Put a blanket or the flattened box under them first.",
+  "ms": 2581,
+  "heard": "Put a blanket or the flattened box under them first.",
+  "ok": true,
+  "takes": 1
+ },
+ "sblw7m97tj": {
+  "text": "Join the chaise longue to the sofa.",
+  "ms": 1619,
+  "heard": "Join the chaise long to the sofa.",
+  "ok": true,
+  "takes": 1
+ },
+ "613z13wsxg": {
+  "text": "You'll need two connectors and four screws.",
+  "ms": 2079,
+  "heard": "You'll need two connectors and four screws.",
+  "ok": true,
+  "takes": 1
+ },
+ "2bglrkiik64": {
+  "text": "And that's it. Your Älskvärd is built. Well done.",
+  "ms": 2637,
+  "heard": "And that's it, your ElskVAD is built. Well done.",
+  "ok": false,
+  "takes": 3
+ },
+ "1v6h3wwkmgy": {
+  "text": "You're on step three of eight.",
+  "ms": 1272,
+  "heard": "You're on step three of eight.",
+  "ok": true,
+  "takes": 1
+ },
+ "sxmdcznjxj": {
+  "text": "Push them together, then screw a connector across each joint.",
+  "ms": 3183,
+  "heard": "Push them together, then screw a connector across each joint.",
+  "ok": true,
+  "takes": 1
+ },
+ "qddebstcmu": {
+  "text": "You're on step four of eight.",
+  "ms": 1239,
+  "heard": "You're on step four of eight.",
+  "ok": true,
+  "takes": 1
+ },
+ "bbcy3tsx58": {
+  "text": "You're on step five of eight.",
+  "ms": 1267,
+  "heard": "You're on step five of eight.",
+  "ok": true,
+  "takes": 1
+ },
+ "8gmw25bbh1": {
+  "text": "Attach the backrests.",
+  "ms": 1190,
+  "heard": "Attach the backrests.",
+  "ok": true,
+  "takes": 1
+ },
+ "292342rm5yg": {
+  "text": "You're on step eight of eight.",
+  "ms": 1189,
+  "heard": "You're on step eight of eight.",
+  "ok": true,
+  "takes": 1
+ },
+ "y50tjpc7zz": {
+  "text": "You're on step six of eight.",
+  "ms": 1245,
+  "heard": "You're on step six of eight.",
+  "ok": true,
+  "takes": 1
+ },
+ "1c629hl8m9f": {
+  "text": "You're on step seven of eight.",
+  "ms": 1308,
+  "heard": "You're on step seven of eight.",
+  "ok": true,
+  "takes": 1
+ },
+ "lvbtbc90y7": {
+  "text": "Slide each one down behind the seat, then bolt it from the back.",
+  "ms": 3551,
+  "heard": "Slide each one down behind the seat, then bolt it from the back.",
+  "ok": true,
+  "takes": 1
+ },
+ "w2gyk3btnu": {
+  "text": "And that's it. Your Björkberget is built. Well done.",
+  "ms": 2644,
+  "heard": "And that's it, your BjerkBrigida is built. Well done.",
+  "ok": true,
+  "takes": 1
+ },
+ "249pxm9my8w": {
+  "text": "The leaves come hinged on. Keep them flat on the box while you work.",
+  "ms": 3517,
+  "heard": "The leaves come hinged on. Keep them flat on the box while you work.",
+  "ok": true,
+  "takes": 1
+ },
+ "t58g6d2vy": {
+  "text": "And that's it. Your Bleckberget is built. Well done.",
+  "ms": 2668,
+  "heard": "And that's it, your BlackBrigid is built. Well done.",
+  "ok": true,
+  "takes": 1
+ },
+ "dczsjdsx1l": {
+  "text": "And that's it. Your Bästboll is built. Well done.",
+  "ms": 2488,
+  "heard": "And that's it, your best ball is built. Well done.",
+  "ok": true,
+  "takes": 1
+ },
+ "92yylb49dq": {
+  "text": "Screw on the leaf supports.",
+  "ms": 1350,
+  "heard": "Screw on the leaf supports.",
+  "ok": true,
+  "takes": 1
+ },
+ "2fb0qg3wc1w": {
+  "text": "They frame the fixed middle, set in from the edge.",
+  "ms": 2430,
+  "heard": "They frame the fixed middle, set in from the edge.",
+  "ok": true,
+  "takes": 1
+ },
+ "a0ef59jkw8": {
+  "text": "Fold them in along the rails for now.",
+  "ms": 1902,
+  "heard": "Fold them in along the rails for now.",
+  "ok": true,
+  "takes": 1
+ },
+ "1oqplghtmqf": {
+  "text": "Raise the leaves and swing out the supports.",
+  "ms": 2047,
+  "heard": "Raise the leaves and swing out the supports.",
+  "ok": true,
+  "takes": 1
+ },
+ "2d2qitdoqr2": {
+  "text": "You'll need four connectors and eight screws.",
+  "ms": 2005,
+  "heard": "You'll need four connectors and eight screws.",
+  "ok": true,
+  "takes": 1
+ },
+ "14my60u7ms6": {
+  "text": "Lift it by the top, not the legs. The leaves drop down.",
+  "ms": 2974,
+  "heard": "Lift it by the top, not the legs. The leaves drop down.",
+  "ok": true,
+  "takes": 1
+ },
+ "14bs0o14p6a": {
+  "text": "Each support turns out under its leaf. Fold them back in to drop the leaves.",
+  "ms": 3992,
+  "heard": "Each support turns out under its leaf. Fold them back in to drop the leaves.",
+  "ok": true,
+  "takes": 1
+ },
+ "2f7epk5qeyd": {
+  "text": "Bolt on the armrest.",
+  "ms": 1185,
+  "heard": "Bolt on the armrest.",
+  "ok": true,
+  "takes": 1
+ },
+ "12p1340rmk2": {
+  "text": "Line up the holes, then bolt it on firmly.",
+  "ms": 2351,
+  "heard": "Line up the holes, then bolt it on firmly.",
+  "ok": true,
+  "takes": 1
+ },
+ "fb87pzc7r5": {
+  "text": "Join the sections to the corner.",
+  "ms": 1506,
+  "heard": "Join the sections to the corner.",
+  "ok": true,
+  "takes": 1
+ },
+ "xsfvuwa7ps": {
+  "text": "And that's it. Your Flintan is built. Well done.",
+  "ms": 2466,
+  "heard": "And that's it, your flinten is built. Well done.",
+  "ok": true,
+  "takes": 1
+ },
+ "rddk4tl1lg": {
+  "text": "You'll need six Allen bolts.",
+  "ms": 1479,
+  "heard": "You'll need six Allen bolts.",
+  "ok": true,
+  "takes": 1
+ },
+ "1httjjp3oio": {
+  "text": "And that's it. Your Eldberget is built. Well done.",
+  "ms": 2565,
+  "heard": "And that's it. Your old barrier is built. Well done.",
+  "ok": true,
+  "takes": 1
+ },
+ "r579okdvfj": {
+  "text": "Slide the drawer in underneath.",
+  "ms": 1297,
+  "heard": "Slide the drawer in underneath.",
+  "ok": true,
+  "takes": 1
+ },
+ "yo2xna4n1q": {
+  "text": "And that's it. Your Grönfjäll is built. Well done.",
+  "ms": 2587,
+  "heard": "And that's it, your Grunfjell is built. Well done.",
+  "ok": true,
+  "takes": 1
+ },
+ "o6h0j58muk": {
+  "text": "And that's it. Your Gonatt is built. Well done.",
+  "ms": 2414,
+  "heard": "And that's it, your gonad is built. Well done.",
+  "ok": true,
+  "takes": 1
+ },
+ "23xxxgqd818": {
+  "text": "It sits under the base and pulls out from the front.",
+  "ms": 2451,
+  "heard": "It sits under the base and pulls out from the front.",
+  "ok": true,
+  "takes": 1
+ },
+ "1ycolw1trrr": {
+  "text": "And that's it. Your Gulliver is built. Well done.",
+  "ms": 2518,
+  "heard": "And that's it, your Gulliver is built. Well done.",
+  "ok": true,
+  "takes": 1
+ },
+ "34b62rwd1k": {
+  "text": "And that's it. Your Järvfjället is built. Well done.",
+  "ms": 2715,
+  "heard": "And that's it. Your Yafielet is built. Well done.",
+  "ok": true,
+  "takes": 1
+ },
+ "11nb2fjvv4b": {
+  "text": "And that's it. Your Hattefjäll is built. Well done.",
+  "ms": 2638,
+  "heard": "And that's it, your Hadafiel is built. Well done.",
+  "ok": true,
+  "takes": 1
+ },
+ "1l8e4sha7t7": {
+  "text": "Join the chaise longues to the sofa.",
+  "ms": 1812,
+  "heard": "Join the chaise longs to the sofa.",
+  "ok": true,
+  "takes": 1
+ },
+ "1fgc5ml32kd": {
+  "text": "And that's it. Your Kattunge is built. Well done.",
+  "ms": 2509,
+  "heard": "And that's it, your catongue is built. Well done.",
+  "ok": true,
+  "takes": 1
+ },
+ "bjjakpauyj": {
+  "text": "You'll need seven Allen bolts.",
+  "ms": 1548,
+  "heard": "you'll need seven Allen bolts.",
+  "ok": true,
+  "takes": 1
+ },
+ "9mq7qgyr1j": {
+  "text": "You'll need five Allen bolts.",
+  "ms": 1449,
+  "heard": "You'll need five Allen bolts.",
+  "ok": true,
+  "takes": 1
+ },
+ "8l1z4stgkn": {
+  "text": "You'll need ten Allen bolts.",
+  "ms": 1460,
+  "heard": "You'll need 10 Allen bolts.",
+  "ok": true,
+  "takes": 1
+ },
+ "27jchr9x282": {
+  "text": "Stand the ends up and bolt in the side rails.",
+  "ms": 2246,
+  "heard": "Stand the ends up and bolt in the side rails.",
+  "ok": true,
+  "takes": 1
+ },
+ "dahpxvz577": {
+  "text": "One holds the ends upright while the other bolts. Hand tight for now.",
+  "ms": 3649,
+  "heard": "One holds the ends upright while the other bolts. Hand tight for now.",
+  "ok": true,
+  "takes": 1
+ },
+ "13cdj7nfj1q": {
+  "text": "Lay in the slatted base.",
+  "ms": 1258,
+  "heard": "Lay in the slatted base.",
+  "ok": true,
+  "takes": 1
+ },
+ "204yziajn2d": {
+  "text": "Hook on the ladder and bolt it.",
+  "ms": 1436,
+  "heard": "Hook on the ladder and bolt it.",
+  "ok": true,
+  "takes": 1
+ },
+ "tmy4b8pibk": {
+  "text": "Fit the guard rails.",
+  "ms": 1010,
+  "heard": "Fit the guard rails.",
+  "ok": true,
+  "takes": 1
+ },
+ "x0sp4jjxo0": {
+  "text": "The gap in the front rail is for the ladder.",
+  "ms": 2107,
+  "heard": "The gap in the front rail is for the ladder.",
+  "ok": true,
+  "takes": 1
+ },
+ "a39pzhmveh": {
+  "text": "Unroll it onto the ledges, straps facing down.",
+  "ms": 2587,
+  "heard": "Unroll it onto the ledges, straps facing down.",
+  "ok": true,
+  "takes": 1
+ },
+ "pss28xm0p": {
+  "text": "Then tighten every bolt firmly, and check them again every few months.",
+  "ms": 3855,
+  "heard": "Then tighten every bolt firmly and check them again every few months.",
+  "ok": true,
+  "takes": 1
+ },
+ "5hcxcppabu": {
+  "text": "No thicker than the line on the guard rail, so the rail stays high enough.",
+  "ms": 3679,
+  "heard": "no thicker than the line on the guardrail, so the rail stays high enough.",
+  "ok": true,
+  "takes": 1
+ },
+ "1s2p4mk7kp4": {
+  "text": "Join the section to the corner.",
+  "ms": 1455,
+  "heard": "Join the section to the corner.",
+  "ok": true,
+  "takes": 1
+ },
+ "80xjk2emfo": {
+  "text": "And that's it. Your Kura is built. Well done.",
+  "ms": 2322,
+  "heard": "And that's it, your Cura is built. Well done.",
+  "ok": true,
+  "takes": 1
+ },
+ "22dexc9lvhc": {
+  "text": "And that's it. Your Loberget is built. Well done.",
+  "ms": 2538,
+  "heard": "And that's it. Your Loeberget is built. Well done.",
+  "ok": true,
+  "takes": 1
+ },
+ "1p1h0wavjig": {
+  "text": "And that's it. Your Löparbana is built. Well done.",
+  "ms": 2731,
+  "heard": "And that's it, your Lear Parbana is built. Well done.",
+  "ok": true,
+  "takes": 1
+ },
+ "1o1xw3wyai3": {
+  "text": "And that's it. Your Matchspel is built. Well done.",
+  "ms": 2588,
+  "heard": "And that's it, your match spell is built. Well done.",
+  "ok": true,
+  "takes": 1
+ },
+ "1o18csprr12": {
+  "text": "And that's it. Your Markus is built. Well done.",
+  "ms": 2514,
+  "heard": "And that's it, your Marcus is built. Well done.",
+  "ok": true,
+  "takes": 1
+ },
+ "1b32w05497u": {
+  "text": "And that's it. Your Millberget is built. Well done.",
+  "ms": 2590,
+  "heard": "And that's it. Your Milbridget is built. Well done.",
+  "ok": true,
+  "takes": 1
+ },
+ "23k4c9sscq8": {
+  "text": "Bolt in the upper rails.",
+  "ms": 1308,
+  "heard": "Bolt in the upper rails.",
+  "ok": true,
+  "takes": 1
+ },
+ "3qu2e1qf8w": {
+  "text": "Stand the ends up and bolt in the lower rails.",
+  "ms": 2301,
+  "heard": "Stand the ends up and bolt in the lower rails.",
+  "ok": true,
+  "takes": 1
+ },
+ "254cu5cqc49": {
+  "text": "Same as the lower ones, at the top holes.",
+  "ms": 2085,
+  "heard": "Same as the lower ones at the top holes.",
+  "ok": true,
+  "takes": 1
+ },
+ "uwjvx69v7n": {
+  "text": "Lay in the slatted bases.",
+  "ms": 1406,
+  "heard": "Lay in the slatted bases.",
+  "ok": true,
+  "takes": 1
+ },
+ "1u1x8urwwj0": {
+  "text": "Fit the guard rails to the top bed.",
+  "ms": 1725,
+  "heard": "Fit the guard rails to the top bed.",
+  "ok": true,
+  "takes": 1
+ },
+ "ae24qqjw8d": {
+  "text": "Unroll each one onto its ledges, straps facing down.",
+  "ms": 3009,
+  "heard": "Unroll each one onto its ledges, straps facing down.",
+  "ok": true,
+  "takes": 1
+ },
+ "1d3mittc23o": {
+  "text": "Add your mattresses.",
+  "ms": 1074,
+  "heard": "Add your mattresses.",
+  "ok": true,
+  "takes": 1
+ },
+ "rl64ajxnxx": {
+  "text": "And that's it. Your Mydal is built. Well done.",
+  "ms": 2415,
+  "heard": "And that's it, your MITLE is built. Well done.",
+  "ok": true,
+  "takes": 1
+ },
+ "1rcki717y9k": {
+  "text": "You'll need a screw.",
+  "ms": 863,
+  "heard": "You'll need a screw.",
+  "ok": true,
+  "takes": 1
+ },
+ "7zj2x4u06d": {
+  "text": "Raise the leaf and swing out the support.",
+  "ms": 1969,
+  "heard": "Raise the leaf and swing out the support.",
+  "ok": true,
+  "takes": 1
+ },
+ "1cu636qjlbm": {
+  "text": "And that's it. Your Renberget is built. Well done.",
+  "ms": 2614,
+  "heard": "And that's it. Your Ren Brigitte is built. Well done.",
+  "ok": true,
+  "takes": 1
+ },
+ "1bhe4q0rp53": {
+  "text": "And that's it. Your Myllra is built. Well done.",
+  "ms": 2412,
+  "heard": "And that's it, your Millera is built. Well done.",
+  "ok": true,
+  "takes": 1
+ },
+ "hvlwl6kt8a": {
+  "text": "Screw on the leaf support.",
+  "ms": 1277,
+  "heard": "Screw on the leaf support.",
+  "ok": true,
+  "takes": 1
+ },
+ "1q7559zmy2i": {
+  "text": "And that's it. Your Smällen is built. Well done.",
+  "ms": 2460,
+  "heard": "And that's it, your Smellin' is built. Well done.",
+  "ok": true,
+  "takes": 1
+ },
+ "1nz68i2xbvt": {
+  "text": "And that's it. Your Smörkull is built. Well done.",
+  "ms": 2416,
+  "heard": "And that's it, your smirkle is built. Well done.",
+  "ok": true,
+  "takes": 1
+ },
+ "235zei6zltb": {
+  "text": "And that's it. Your Skruvsta is built. Well done.",
+  "ms": 2516,
+  "heard": "And that's it, your Scruffstoo is built. Well done.",
+  "ok": true,
+  "takes": 1
+ },
+ "d48j8ikz50": {
+  "text": "And that's it. Your Styrspel is built. Well done.",
+  "ms": 2635,
+  "heard": "And that's it, your Staya spell is built. Well done.",
+  "ok": true,
+  "takes": 1
+ },
+ "ms5r2e4126": {
+  "text": "And that's it. Your Stigbygel is built. Well done.",
+  "ms": 2589,
+  "heard": "And that's it, your Stigvigil is built. Well done.",
+  "ok": true,
+  "takes": 1
+ },
+ "t1tawnxsis": {
+  "text": "And that's it. Your Svärta is built. Well done.",
+  "ms": 2638,
+  "heard": "And that's it, your SVATA is built. Well done.",
+  "ok": true,
+  "takes": 1
+ },
+ "19wbxxuyljx": {
+  "text": "And that's it. Your Tuffing is built. Well done.",
+  "ms": 2412,
+  "heard": "And that's it, your Tufing is built. Well done.",
+  "ok": true,
+  "takes": 1
+ },
+ "27o9byzbd8n": {
+  "text": "And that's it. Your Örfjäll is built. Well done.",
+  "ms": 2440,
+  "heard": "And that's it, your Urfiel is built. Well done.",
+  "ok": false,
+  "takes": 3
+ },
+ "2e6vhesi691": {
+  "text": "And that's it. Your Vitval is built. Well done.",
+  "ms": 2442,
+  "heard": "And that's it, your VITFUL is built. Well done.",
+  "ok": true,
+  "takes": 1
+ },
+ "2bzqub22iyi": {
+  "text": "And that's it. Your Utklassning is built. Well done.",
+  "ms": 2764,
+  "heard": "And that's it. Your ucklistening is built. Well done.",
+  "ok": true,
+  "takes": 1
  }
 }

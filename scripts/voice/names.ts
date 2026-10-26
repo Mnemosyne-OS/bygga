@@ -6,6 +6,7 @@
  *   npm run voice:names            spell every catalog name that has no spelling yet
  *   npm run voice:names -- --check say a sample both ways and score what Whisper hears
  *   npm run voice:names -- --prune keep a spelling only where Whisper hears the name clearly better with it
+ *   add --only MALM,KALLAX to any of these to work on just those names
  *
  * Spellings live in src/lib/voice/names.ts and are applied only when a line is
  * rendered (src/lib/voice/tts.ts), so clip names and the on-screen text don't change.
@@ -91,7 +92,8 @@ function sim(a: string, b: string) {
 }
 
 async function main() {
-  const all = [...new Set(PRODUCTS.map((p) => spokenName(p.name)))];
+  const only = args.includes("--only") ? new Set(args[args.indexOf("--only") + 1].split(",").map(fold)) : null;
+  const all = [...new Set(PRODUCTS.map((p) => spokenName(p.name)))].filter((n) => !only || only.has(fold(n)));
   if (args.includes("--prune")) {
     const queue = all.filter((n) => names[n]);
     let kept = 0, dropped = 0;
