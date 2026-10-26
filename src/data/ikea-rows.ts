@@ -14,6 +14,7 @@ ALEX|open|Storage unit, 36 × 70 cm|36|70|35
 ÅLHULT|dining|Extendable table, 120/170 × 80 cm|120|74|80
 ÅLHULT|dining|Table, 120 × 80 cm|120|74|80
 ÅLHULT|dining|Extendable table, 170/220 × 80 cm|170|74|80
+ÄLSKVÄRD|cot|Cot, 70 × 140 cm|150|86|78|m=70,l=140
 ÄLVDALEN|chaise|3-seat sofa-bed with chaise longue|226|85|160|seats=3,arms=wide,chaise=right,sd=92
 ÄLVDALEN|sofa|3-seat sofa-bed|230|85|92|seats=3
 ÄMMARYD|coffee|Coffee table, 98 × 59 cm|98|45|59
@@ -223,6 +224,7 @@ GLENN|stool|Bar stool, 66 cm|35|66|35
 GLOSTAD|chaise|3-seat sofa with chaise longue|201|78|150|seats=3,arms=wide,chaise=right,sd=82
 GLOSTAD|sofa|3-seat sofa|230|85|92|seats=3
 GODISHUS|chest|Chest of 3 drawers, 60 × 40 × 60 cm|60|60|40|rows=3
+GONATT|cot|Cot with drawer, 70 × 140 cm|150|86|78|m=70,l=140,drawer=1
 GRÅFJÄLLET|desk|Dressing table, 100 × 42 cm|100|74|42
 GRÅFJÄLLET|nightstand|Bedside table, 45 × 36 × 59 cm|45|59|36|rows=1
 GREJSIMOJS|kidstable|Children's table, 84 × 42 cm|84|48|42||kids
@@ -251,6 +253,7 @@ GULLABERG|nightstand|Bedside table, 53 × 43 × 69 cm|53|69|43|rows=2
 GULLABERG|shoe|Shoe cabinet with 2 compartments, 88 × 30 × 122 cm|88|122|30|c=2
 GULLABERG|shoe|Shoe cabinet with 4 compartments, 105 × 22 × 107 cm|105|107|22|c=4
 GULLABERG|wardrobe|Wardrobe, 128 × 64 × 201 cm|128|201|64
+GULLIVER|cot|Cot, 60 × 120 cm|130|82|68|m=60,l=120
 GULLVALLA|sofa|2-seat sofa|170|85|92|seats=2
 GULLVALLA|sofa|3-seat sofa|230|85|92|seats=3
 GULTARP|stool|Stool|35|45|35
@@ -382,6 +385,7 @@ KARSKÄR|chair|Chair|44|88|50
 KARSKÄR|dining|Extendable table, 160/220 × 90 cm|160|74|90
 KARSKÄR|dining|Extendable table, 240/300 × 100 cm|240|74|100
 KÄTTIL|chair|Chair|44|88|50
+KATTUNGE|cot|Cot, 70 × 140 cm|150|86|78|m=70,l=140
 KESNACKEN|stool|Bar stool, 66 cm|35|66|35
 KILBERGET|chest|Chest of 5 drawers, 76 × 102 cm|76|102|48|rows=5
 KILBERGET|chest|Chest of 3 drawers, 86 × 78 cm|86|78|48|rows=3
@@ -572,6 +576,7 @@ MULLSJÖ|desk|Desk, 135 × 70 cm|135|74|70
 MULLSJÖ|office|Swivel chair|60|105|64|arms=none
 MUSKAN|bench|Bench, 58 × 38 cm|58|45|38
 MUSKAN|open|Shelving unit, 37 × 140 cm|37|140|35
+MYLLRA|cot|Cot with drawer, 70 × 140 cm|150|86|78|m=70,l=140,drawer=1
 NACKANÄS|dining|Table, 140 × 76 cm|140|74|76
 NÄMMARÖ|bar|Bar table, outdoor, 120 × 40 cm|120|105|40||outdoor garden
 NÄMMARÖ|bench|Bench, outdoor, 120 cm|120|45|38||outdoor garden
@@ -775,6 +780,7 @@ SLATORP|sofa|2-seat sofa|170|85|92|seats=2
 SLATORP|sofa|3-seat sofa|230|85|92|seats=3
 SLATTUM|bed|Upholstered bed frame, Standard Single, 90 × 190 cm|106|85|199|m=90,l=190,f=30
 SLATTUM|bed|Upholstered bed frame, Standard Double, 135 × 190 cm|151|85|199|m=135,l=190,f=30
+SMÅGÖRA|cot|Cot, 70 × 140 cm|150|86|78|m=70,l=140
 SMÅGÖRA|desk|Desk, 93 × 51 cm|93|74|51||kids children
 SMÅGÖRA|open|Shelf unit, 29 × 88 cm|29|88|35||kids children
 SMÅGÖRA|wardrobe|Wardrobe, 80 × 50 × 187 cm|80|187|50
@@ -798,6 +804,7 @@ SMYGA|bed|Bed frame with storage, 90 × 200 cm|106|100|209|m=90
 SMYGA|bed|Bed frame, 90 × 200 cm|106|100|209|m=90
 SMYGA|desk|Desk, 122 × 60 cm|122|74|60||kids children
 SNIGLAR|bed|Bed frame with slatted bed base, 70 × 160 cm|86|64|169|m=70,l=160,f=50
+SNIGLAR|cot|Cot, 60 × 120 cm|130|82|68|m=60,l=120
 SÖDERHAMN|chaise|4-seat sofa with chaise longue|259|69|167|seats=4,arms=slim,chaise=right,sd=99
 SÖDERHAMN|corner|Corner sofa, 4-seat|228|69|168|seats=4,arms=slim,corner=left,sd=99
 SÖDERHAMN|corner|Corner sofa-bed, 6-seat|289|69|228|seats=6,arms=slim,corner=left,sd=99
@@ -855,6 +862,7 @@ SUNDSÖ|chair|Folding chair|44|88|50||outdoor garden
 SUNDSÖ|dining|Table, 65 × 65 cm|65|74|65||outdoor garden
 SUNDSÖ|dining|Table, 65 cm|65|74|65|round=1|outdoor garden
 SUNDVIK|armchair|Rocking-chair|75|90|80
+SUNDVIK|cot|Cot, 70 × 140 cm|150|86|78|m=70,l=140
 SUNDVIK|kidschair|Children's chair|34|60|34||kids
 SUNDVIK|kidstable|Children's table, 76 × 50 cm|76|48|50||kids
 SUNDVIK|wardrobe|Wardrobe, 80 × 50 × 171 cm|80|171|50

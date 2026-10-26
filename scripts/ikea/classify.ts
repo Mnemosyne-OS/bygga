@@ -139,7 +139,8 @@ const RULES: Rule[] = [
   [/corner|chaise|u-shaped|crnr/, () => "corner or chaise longue sofa"],
   [/section|add-on|armrest|backrest for|seat sec|modular (easy chair|chaise)/, () => "sofa or storage section"],
   [/\b(bunk|loft)\b/, () => "bunk or loft bed"],
-  [/\b(cot|crib)\b|cradle/, () => "cot"],
+  [/^cot( with drawer)?$/, (m) => ({ kind: "cot", x: m[1] ? { drawer: true } : {} })],
+  [/\b(cot|crib)\b|cradle/, () => "cot bedding, mattress or cradle"],
   [/day-?bed|divan/, () => "day-bed or divan"],
   [/sliding/, () => "sliding doors"],
   [/sink|wash-?basin|wash-?st|hob\b|oven|fridge|freezer|dishwasher|microwave|extractor|appliances|kitchenette|outdoor kitchen/, () => "appliance or sink unit"],
@@ -276,6 +277,12 @@ export function classify(f: Fact, hints: Hints): Verdict {
     } else if (hint?.kind === kind) set(hint.w, hint.h, hint.d);
     else if (kind !== "bench") return { skip: "no size given" };
     if (guessed.h && hint?.kind === kind) h = hint.h;
+  } else if (kind === "cot") {
+    // IKEA gives the mattress size: a cot is a little longer and wider, about 85 cm high
+    if (v.length !== 2 || v[1] < 100 || v[1] > 150) return { skip: "cot without a mattress size" };
+    [x.m, x.l] = [v[0], v[1]];
+    set(v[1] + 10, undefined, v[0] + 8);
+    h = v[1] >= 140 ? 86 : 82;
   } else if (kind === "chaise" || kind === "corner") {
     // IKEA gives no size: seat width, depth and height from a straight sofa of the same family, else a typical one
     const sofa = hints(family, "sofa");

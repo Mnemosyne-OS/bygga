@@ -1,6 +1,7 @@
 import type { BedParams, ProductSpec } from "../types";
 import { HW, PlanBuilder, type FitOpts } from "./builder";
 import { clamp } from "./math";
+import { buildCot } from "./cot";
 
 export function defaultsBed(s: ProductSpec): BedParams {
   const p = s.bed ?? {};
@@ -16,6 +17,7 @@ export function defaultsBed(s: ProductSpec): BedParams {
 }
 
 export function buildBed(b: PlanBuilder, s: ProductSpec) {
+  if (s.bed?.type === "cot") return buildCot(b, s);
   const p = defaultsBed(s);
   const Wm = p.mattressW * 10, Lm = p.mattressL * 10;
   const t = 22;

@@ -15,6 +15,7 @@ alhult-chair|50600801 40600774
 alhult-extendable-table-120-170-x-80|60597921 20600789
 alhult-extendable-table-170-220-x-80|50600783 40597922
 alhult-table-120-x-80|40600793 00597919
+alskvard-cot-70-x-140|40466704
 alvdalen-3-seat-sofa-bed|10530650 10530645
 alvdalen-3-seat-sofa-bed-chaise-longue|70530666 70530671
 ammaryd-coffee-table-98-x-59|00609125 40609128
@@ -247,6 +248,7 @@ glostad-2-seat-sofa|90489010
 glostad-3-seat-sofa|80595940
 glostad-3-seat-sofa-chaise-longue|89578601
 godishus-chest-3-drawers-60-x-40-x-60|80598095
+gonatt-cot-drawer-70-x-140|90467089
 grafjallet-bedside-table-45-x-36-x-59|20570221
 grafjallet-dressing-table-100-x-42|30570225
 grejsimojs-children-s-stool|60598973 50598959
@@ -275,6 +277,7 @@ gullaberg-desk-155-x-65-x-75|50601669
 gullaberg-shoe-cabinet-2-compartments-88-x-30-x|50587692 40587697
 gullaberg-shoe-cabinet-4-compartments-105-x-22-x|10587707 50587710
 gullaberg-wardrobe-128-x-64-x-201|00609903 80609904
+gulliver-cot-60-x-120|20589503 10248519
 gullvalla-2-seat-sofa|80618507 20618510
 gullvalla-3-seat-sofa|60618513 50618504
 gultarp-stool|80614585
@@ -430,6 +433,7 @@ karskar-chair|00611251
 karskar-extendable-table-160-220-x-90|50611263
 karskar-extendable-table-240-300-x-100|00611265
 kattil-chair|00500347 30500341
+kattunge-cot-70-x-140|30598291
 kesnacken-bar-stool-66|10614999
 kilberget-chest-3-drawers-86-x-78|70609914
 kilberget-chest-5-drawers-76-x-102|40609915
@@ -641,6 +645,7 @@ mullsjo-desk-135-x-70|30553240
 mullsjo-swivel-chair|70576584
 muskan-bench-58-x-38|50345957
 muskan-shelving-unit-37-x-140|50424327
+myllra-cot-drawer-70-x-140|80597048 60483590
 nackanas-table-140-x-76|40511056
 nammaro-2-seat-sofa-126|59610240 39611170 19579307 49607511 09621509 09575423
 nammaro-2-seat-sofa-147|99579308 59611174 89610248 09607513 69621511 19575427
@@ -852,6 +857,7 @@ slatorp-3-seat-sofa-chaise-longue|59577580 79577598 39577576
 slatorp-4-seat-sofa-chaise-longues|59577603
 slattum-upholstered-bed-frame-standard-double-13|50571257 30571258
 slattum-upholstered-bed-frame-standard-single-90|90578737
+smagora-cot-70-x-140|20461236
 smagora-desk-93-x-51|90489883
 smagora-shelf-unit-29-x-88|30465489
 smagora-wardrobe-80-x-50-x-187|10460888
@@ -875,6 +881,7 @@ smyga-bed-frame-90-x-200|60480780
 smyga-bed-frame-storage-90-x-200|59444142
 smyga-desk-122-x-60|40480781
 sniglar-bed-frame-slatted-bed-base-70-x-160|19185433
+sniglar-cot-60-x-120|30248537
 soderhamn-2-seat-sofa|29305755
 soderhamn-3-seat-sofa|39621635 09621632 69621629 79621638 09305704 29449693 39305694 19449698 59452108 69622110 39622102 29622107 09622113 19618672 49580069 99580062 39621386 79621389 19621392
 soderhamn-4-seat-sofa-bed|89616448 69621375 49621381 49616247 39621372 29618676 69618679 69621361 69616270 39621367 09621364 09616428
@@ -938,6 +945,7 @@ sundso-table-65|80575895 40575897
 sundso-table-65-x-65|60582585 10582583 90575507 50582581 80575560 30582577 90582579
 sundvik-children-s-chair|70628314 60196358 10494020
 sundvik-children-s-table-76-x-50|20628316 10201673
+sundvik-cot-70-x-140|60497587
 sundvik-extendable-bed-80-x-200|49046068 49421508
 sundvik-rocking-chair|80201740
 sundvik-wardrobe-80-x-50-x-171|10269696

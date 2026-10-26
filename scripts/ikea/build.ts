@@ -59,6 +59,8 @@ function hints(family: string, kind: Kind): Hint | undefined {
 
 /* ---------- matching against hand made entries ---------- */
 
+const LATER_KINDS = new Set<Kind>(["office", "chaise", "corner", "cot"]);
+
 function baseMatch(name: string, draw: Draw): CatalogEntry | undefined {
   const fam = fold(name);
   const spec = specFor(draw.kind, name, "", draw.w, draw.h, draw.d, draw.x);
@@ -66,6 +68,8 @@ function baseMatch(name: string, draw: Draw): CatalogEntry | undefined {
   for (const e of BASE) {
     if (fold(e.name) !== fam) continue;
     if (e.archetype !== spec.archetype && e.category !== spec.category) continue;
+    // the newer kinds draw a different shape from anything hand made in their archetype
+    if (LATER_KINDS.has(draw.kind) && e.category !== spec.category) continue;
     if (draw.kind === "bed") {
       if (e.bed?.mattressW === draw.x.m && (e.bed?.mattressL ?? 200) === (draw.x.l ?? 200)) return e;
       continue;

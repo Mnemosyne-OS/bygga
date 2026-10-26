@@ -39,6 +39,8 @@ export interface BedParams {
   footH: number; // cm, 0 for none
   slats: number;
   centerBeam: boolean;
+  type?: "cot" | "bunk" | "loft"; // a cot with barred sides, two beds stacked on posts, or one bed up high
+  drawer?: boolean; // a cot with a drawer under the base
 }
 
 export interface CabinetParams {

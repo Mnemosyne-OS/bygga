@@ -37,7 +37,8 @@ export type Kind =
   // added later: new shapes of an existing archetype
   | "office"
   | "chaise"
-  | "corner";
+  | "corner"
+  | "cot";
 
 export type X = {
   rows?: number;
@@ -62,6 +63,7 @@ export type X = {
   corner?: "left" | "right";
   open?: boolean;
   sd?: number;
+  drawer?: boolean;
 };
 
 export type Row = [name: string, kind: Kind, variant: string, w: number, h: number, d: number, x?: X, keywords?: string];
@@ -235,7 +237,7 @@ const MIN: Record<Kind, number> = {
   cube: 40, bookcase: 50, open: 40, chest: 90, nightstand: 40, desk: 25, coffee: 20, side: 15, dining: 40,
   bed: 100, wardrobe: 120, cabinet: 60, sideboard: 80, tv: 60, shoe: 45, chair: 25, stool: 12, bench: 20, sofa: 40, armchair: 30,
   wallshelf: 25, wallcab: 40, kitchen: 50, trolley: 25, bar: 35, console: 30, kidstable: 15, kidschair: 20,
-  office: 20, chaise: 55, corner: 70,
+  office: 20, chaise: 55, corner: 70, cot: 35,
 };
 
 const CATEGORY: Record<Kind, string> = {
@@ -244,7 +246,7 @@ const CATEGORY: Record<Kind, string> = {
   cabinet: "Cabinet", sideboard: "Sideboard", tv: "TV bench", shoe: "Shoe cabinet", chair: "Chair", stool: "Stool",
   bench: "Bench", sofa: "Sofa", armchair: "Armchair", wallshelf: "Wall shelf", wallcab: "Wall cabinet", kitchen: "Kitchen cabinet",
   trolley: "Trolley", bar: "Bar table", console: "Console table", kidstable: "Children's table", kidschair: "Children's chair",
-  office: "Office chair", chaise: "Sofa with chaise longue", corner: "Corner sofa",
+  office: "Office chair", chaise: "Sofa with chaise longue", corner: "Corner sofa", cot: "Cot",
 };
 
 export const KIND_ARCH: Record<Kind, Archetype> = {
@@ -252,7 +254,7 @@ export const KIND_ARCH: Record<Kind, Archetype> = {
   side: "table", dining: "table", bed: "bed", wardrobe: "cabinet", cabinet: "cabinet", sideboard: "cabinet", tv: "cabinet",
   shoe: "cabinet", chair: "seat", stool: "seat", bench: "seat", sofa: "sofa", armchair: "sofa", wallshelf: "shelf", wallcab: "cabinet",
   kitchen: "cabinet", trolley: "table", bar: "table", console: "table", kidstable: "table", kidschair: "seat",
-  office: "seat", chaise: "sofa", corner: "sofa",
+  office: "seat", chaise: "sofa", corner: "sofa", cot: "bed",
 };
 
 const round = (x: X) => (x.round ? { round: true } : {});
@@ -334,6 +336,8 @@ export function specFor(kind: Kind, name: string, variant: string, w: number, h:
       const shape = kind === "corner" ? { corner: x.corner ?? "left", ...(x.open ? { open: true } : {}) } : { chaise: x.chaise ?? "right" };
       return { ...base, people: 2, sofa: { ...sofa, ...shape } };
     }
+    case "cot":
+      return { ...base, people: 1, bed: { type: "cot", mattressW: x.m ?? 60, mattressL: x.l ?? 120, headH: h, footH: h, slats: 9, centerBeam: false, ...(x.drawer ? { drawer: true } : {}) } };
   }
 }
 
@@ -362,5 +366,5 @@ export const KIND_DEFAULT_SIZE: Record<Kind, [number, number, number]> = {
   sideboard: [140, 85, 45], tv: [150, 50, 42], shoe: [60, 100, 28], chair: [44, 88, 50], stool: [35, 45, 35], bench: [100, 45, 38],
   sofa: [210, 85, 92], armchair: [75, 90, 80], wallshelf: [60, 60, 22], wallcab: [60, 60, 35], kitchen: [60, 80, 60], trolley: [50, 80, 40],
   bar: [120, 105, 60], console: [100, 79, 35], kidstable: [77, 48, 55], kidschair: [34, 60, 34],
-  office: [64, 105, 64], chaise: [250, 85, 160], corner: [250, 85, 220],
+  office: [64, 105, 64], chaise: [250, 85, 160], corner: [250, 85, 220], cot: [130, 84, 68],
 };
