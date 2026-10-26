@@ -845,6 +845,17 @@
   right: 24px;
   transform: none;
 }
+.built-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  margin: 12px 0 0;
+  padding: 5px 12px 5px 9px;
+  border-radius: 999px;
+  background: var(--accent-soft);
+  font-size: 14px;
+  font-weight: 500;
+}
 .voice-offer {
   display: grid;
   grid-template-columns: auto minmax(0, 1fr) auto auto;
@@ -1636,6 +1647,233 @@ input[type="range"] {
   background: var(--accent);
   color: var(--ink);
 }
+/* share card: the picture people post */
+.share-card {
+  display: grid;
+  grid-template-columns: 92px minmax(0, 1fr);
+  gap: 16px;
+  align-items: center;
+  margin-top: 16px;
+  padding: 14px 16px 14px 14px;
+  border-radius: 20px;
+  background: var(--sunk);
+}
+.share-pic {
+  width: 92px;
+  aspect-ratio: 4 / 5;
+  border-radius: 12px;
+  background: #fff;
+  box-shadow:
+    0 0 0 1px var(--line),
+    0 10px 22px -12px rgba(18, 18, 18, 0.35);
+  overflow: hidden;
+  transform: rotate(-4deg);
+  transition: transform 0.5s var(--spring);
+}
+.share-pic::before {
+  content: "";
+  display: block;
+  height: 100%;
+  background: linear-gradient(100deg, transparent 20%, rgba(18, 18, 18, 0.05) 50%, transparent 80%) -100% 0 / 200% 100%;
+  animation: shimmer 1.2s linear infinite;
+}
+.share-pic.ready::before {
+  display: none;
+}
+.share-pic img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.share-card:hover .share-pic {
+  transform: rotate(-1deg) scale(1.04);
+}
+@keyframes shimmer {
+  to {
+    background-position: 100% 0;
+  }
+}
+.share-text {
+  display: grid;
+  gap: 2px;
+  min-width: 0;
+}
+.share-text b {
+  font-size: 16px;
+  font-weight: 600;
+}
+.share-text > span {
+  font-size: 14px;
+  color: var(--ink-2);
+}
+.share-actions {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 4px 12px;
+  margin-top: 8px;
+}
+.btn.share-go {
+  height: 40px;
+  padding: 0 16px 0 14px;
+  background: var(--ink);
+  color: #fff;
+  font-size: 15px;
+  font-weight: 500;
+}
+.btn.share-go:hover {
+  background: #2a2a2a;
+}
+.btn.link.small {
+  font-size: 14px;
+  padding: 4px 2px;
+}
+
+/* next up */
+.next-up {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 8px;
+}
+.next-card {
+  display: grid;
+  gap: 2px;
+  padding: 6px 6px 10px;
+  border-radius: 16px;
+  background: #fff;
+  box-shadow: inset 0 0 0 1px var(--line);
+  color: var(--ink);
+  text-decoration: none;
+  transition:
+    box-shadow 0.2s,
+    transform 0.2s var(--ease);
+}
+.next-card:hover {
+  box-shadow: inset 0 0 0 1.5px var(--ink);
+  transform: translateY(-1px);
+}
+.next-card:active {
+  transform: scale(0.98);
+}
+.next-thumb {
+  display: block;
+  width: 100%;
+  border-radius: 10px;
+  background: var(--sunk);
+}
+.next-card > span {
+  display: grid;
+  padding: 0 6px;
+  line-height: 1.25;
+  min-width: 0;
+}
+.next-card b {
+  font-family: var(--display);
+  font-weight: 800;
+  font-size: 15px;
+}
+.next-card span span {
+  font-size: 13px;
+  color: var(--ink-2);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* did it match the box */
+.match {
+  margin-top: 22px;
+  padding: 12px 12px 12px 16px;
+  border-radius: 18px;
+  box-shadow: inset 0 0 0 1px var(--line);
+}
+.match-q {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+.match-q b {
+  font-size: 15px;
+  font-weight: 600;
+}
+.match-btns {
+  display: flex;
+  gap: 6px;
+}
+.match-btns .pill-btn {
+  height: 36px;
+}
+.match-more {
+  display: grid;
+  gap: 10px;
+  margin-top: 12px;
+  overflow: hidden;
+  font-size: 14px;
+}
+.match-steps {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+.step-chip {
+  width: 36px;
+  height: 36px;
+  border: 0;
+  border-radius: 999px;
+  background: var(--sunk);
+  color: var(--ink);
+  font: inherit;
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+  cursor: pointer;
+  transition:
+    background 0.15s,
+    color 0.15s,
+    transform 0.15s var(--ease);
+}
+.step-chip:active {
+  transform: scale(0.94);
+}
+.step-chip.on {
+  background: var(--ink);
+  color: #fff;
+}
+.match textarea {
+  width: 100%;
+  resize: none;
+  border: 0;
+  border-radius: 12px;
+  padding: 10px 12px;
+  background: var(--sunk);
+  font: inherit;
+  font-size: 15px;
+  color: var(--ink);
+  outline: none;
+}
+.match textarea:focus {
+  box-shadow: inset 0 0 0 1.5px var(--ink);
+}
+.match .btn.primary.small {
+  justify-self: end;
+  height: 40px;
+  padding: 0 18px;
+  font-size: 15px;
+}
+.match-thanks {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin: 22px 0 0;
+  font-size: 14.5px;
+  color: var(--ink-2);
+}
+.match-thanks svg {
+  color: var(--ok);
+}
+
 .after {
   list-style: none;
   margin: 0;
@@ -2114,6 +2352,10 @@ input[type="range"] {
   .guide[data-phase="tools"] {
     grid-template-rows: 58px minmax(140px, 22dvh) minmax(0, 1fr);
   }
+  /* loading, not found and error screens have no drawing row */
+  .guide.shell {
+    grid-template-rows: 58px minmax(0, 1fr);
+  }
   .guide-main {
     display: contents;
   }
@@ -2241,6 +2483,69 @@ input[type="range"] {
   }
 }
 
+/* phones held sideways: drawing and steps side by side, like on a tablet */
+@media (max-width: 900px) and (max-height: 520px) and (orientation: landscape) {
+  .guide,
+  .guide[data-phase="tools"] {
+    grid-template-rows: 52px minmax(0, 1fr);
+  }
+  .guide-main {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(290px, 44vw);
+    gap: 8px;
+    padding: 0 8px 8px;
+  }
+  .sheet,
+  .panel {
+    margin: 0;
+    border-radius: 20px;
+  }
+  .pane-scroll {
+    padding: 16px 16px 12px;
+  }
+  .pane-foot {
+    padding: 8px 10px calc(8px + env(safe-area-inset-bottom));
+  }
+  .guide[data-voice] .step-title {
+    font-size: 24px !important;
+  }
+}
+
+/* the voice invite stays one short row on phones so the step text is still in view */
+@media (max-width: 900px) {
+  .voice-offer {
+    gap: 8px;
+    margin: 0 0 16px;
+    padding: 6px 6px 6px 12px;
+    border-radius: 999px;
+  }
+  .voice-offer-ico {
+    width: 30px;
+    height: 30px;
+    box-shadow: none;
+    background: transparent;
+  }
+  .voice-offer-text span {
+    display: none;
+  }
+  .voice-offer-text b {
+    font-size: 14.5px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  .btn.voice-offer-go {
+    height: 34px;
+    padding: 0 14px;
+    font-size: 14px;
+  }
+  /* 16px stops iOS zooming into the field */
+  .guide input,
+  .guide textarea {
+    font-size: 16px;
+  }
+}
+
 @media (max-width: 420px) {
   .stepper {
     gap: 12px;
@@ -2287,6 +2592,24 @@ input[type="range"] {
     animation-duration: 0.01ms !important;
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
+  }
+}
+
+/* the smallest phones: Done is never tappable, so it gives up its room */
+@media (max-width: 360px) {
+  .stepper {
+    gap: 10px;
+    margin-right: 0;
+  }
+  .stp {
+    font-size: 13px;
+  }
+  .stp.next:last-child {
+    display: none;
+  }
+  .guide .topbar {
+    gap: 6px;
+    padding: 0 6px 0 8px;
   }
 }
 

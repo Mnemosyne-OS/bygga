@@ -4,7 +4,7 @@ import Link from "next/link";
 import type { Plan } from "@/lib/types";
 import type { Progress } from "@/lib/store";
 import { floorSpace, totals } from "@/lib/plan/contents";
-import { IArrowRight, IBox, IClock, IExternal, IPeople, IPerson, IRuler, ISparkle, IWrench } from "../art/Icons";
+import { IArrowRight, IBox, ICheck, IClock, IExternal, IPeople, IPerson, IRuler, ISparkle, IWrench } from "../art/Icons";
 import { Dots } from "./ui";
 import { TOOL_INFO } from "../art/Tools";
 import { SCAN_ENABLED } from "@/lib/site";
@@ -13,14 +13,19 @@ export default function CoverPanel({
   plan,
   via,
   resume,
+  built,
   onStart,
   onResume,
+  onReview,
 }: {
   plan: Plan;
   via: "catalog" | "ai" | "guess" | "scan";
   resume: Progress | null;
+  /** Finished at least once on this device. */
+  built?: { at: number; ms?: number; full?: boolean } | null;
   onStart: () => void;
   onResume: () => void;
+  onReview: () => void;
 }) {
   const s = plan.spec;
   const t = totals(plan);
@@ -34,6 +39,13 @@ export default function CoverPanel({
           <p className="eyebrow">{s.brand ? `${s.brand}, ${s.category.toLowerCase()}` : s.category}</p>
           <h1 className="product-name">{s.name}</h1>
           <p className="product-variant">{s.variant}</p>
+          {built && (
+            <p className="built-pill">
+              <ICheck size={15} strokeWidth={2.6} />
+              Built {new Date(built.at).toLocaleDateString(undefined, { day: "numeric", month: "short" })}
+              {built.full && built.ms ? `, in ${fmtMin(Math.max(1, Math.round(built.ms / 60000)))}` : ""}
+            </p>
+          )}
         </header>
 
         {s.variants && s.variants.length > 1 && (
@@ -172,6 +184,18 @@ export default function CoverPanel({
             <div className="foot-row center">
               <button className="btn link" onClick={onStart}>
                 Start again from the beginning
+              </button>
+            </div>
+          </>
+        ) : built ? (
+          <>
+            <button className="btn primary big" onClick={onStart} autoFocus>
+              <span>Build another one</span>
+              <IArrowRight />
+            </button>
+            <div className="foot-row center">
+              <button className="btn link" onClick={onReview}>
+                Look through the steps
               </button>
             </div>
           </>

@@ -19,7 +19,21 @@ export interface Progress {
   doneAt?: number;
   updatedAt: number;
   spec?: ProductSpec;
+  /** Time actually spent building, with long breaks left out. */
+  activeMs?: number;
+  /** Steps that were on screen at least once. */
+  seen?: number[];
+  /** First time it was finished, and how: survives reviewing the steps or building it again. */
+  builtAt?: number;
+  builtMs?: number;
+  builtFull?: boolean;
 }
+
+/** Built at least once. Older saves only knew the phase. */
+export const isBuilt = (p: Progress) => !!p.builtAt || p.phase === "done";
+
+/** A gap longer than this between taps counts as a break, not building time. */
+export const BREAK_MS = 20 * 60_000;
 
 const KEY = "bygga:builds";
 

@@ -10,7 +10,7 @@ import { buildPlan } from "@/lib/plan";
 import { stepContents } from "@/lib/plan/contents";
 import { matchCatalog, specForKind } from "@/lib/search";
 import { KIND_LABELS, type Kind } from "@/lib/products";
-import { cacheSpec, cachedSpec, getPref, loadProgress, saveProgress, setPref, type Phase, type Progress } from "@/lib/store";
+import { BREAK_MS, cacheSpec, cachedSpec, getPref, isBuilt, loadProgress, saveProgress, setPref, type Phase, type Progress } from "@/lib/store";
 import StageView, { type StageHandle } from "../StageView";
 import type { StageMode } from "@/engine/stage";
 import { LogoMark } from "../Logo";
@@ -26,7 +26,7 @@ import HelpSheet from "./HelpSheet";
 import Overview from "./Overview";
 import Loader from "./Loader";
 import Thumb from "../Thumb";
-import { haptic, speechSupported, useListener, useWakeLock } from "./hooks";
+import { haptic, speechSupported, useListener, useWakeLock, type Mic } from "./hooks";
 import { playDone, playStep, playTick, setSound, soundOn } from "./sound";
 import { mediaSession, voice } from "./voice";
 import { LINES, builtLine, needsLine, spokenAnswer, stepLines, toolsLine, whereLine } from "@/lib/voice/script";
@@ -45,9 +45,11 @@ export default function GuideApp({ slug, query, step, kind }: { slug: string; qu
   const isScan = slug.startsWith("scan-");
   const q = query || slug.replace(/-/g, " ");
   const initial = useMemo(() => (isScan ? null : (catalogSpec(slug) ?? (picked ? { ...specForKind(picked, q.split(" ")[0] || q), slug } : null))), [isScan, slug, picked, q]);
-  const local = useMemo(() => (initial || isScan ? null : matchCatalog(q)), [initial, isScan, q]);
+  // a build saved under this name (an AI draft, a picked shape) wins over a near-miss in the catalog
+  const stored = useMemo(() => (mounted && !initial ? (cachedSpec(slug) ?? loadProgress(slug)?.spec ?? null) : null), [mounted, initial, slug]);
+  const match = useMemo(() => (initial || isScan ? null : matchCatalog(q)), [initial, isScan, q]);
+  const local = stored ? null : match;
   const [imported, setImported] = useState<{ slug: string; spec: ProductSpec | null } | null>(null);
-  const stored = useMemo(() => (mounted && !initial && !local ? cachedSpec(slug) : null), [mounted, initial, local, slug]);
   const cached = stored ?? (imported?.slug === slug ? imported.spec : null);
   const hash = useMemo(() => (mounted && isScan && location.hash.startsWith("#g=") ? location.hash.slice(3) : ""), [mounted, isScan]);
 
@@ -66,8 +68,8 @@ export default function GuideApp({ slug, query, step, kind }: { slug: string; qu
     };
   }, [hash, slug]);
   useEffect(() => {
-    if (local?.slug && local.slug !== slug) router.replace(`/build/${local.slug}`);
-  }, [local, slug, router]);
+    if (mounted && local?.slug && local.slug !== slug) router.replace(`/build/${local.slug}` + (step ? `?step=${step}` : ""));
+  }, [mounted, local, slug, step, router]);
   const [fetched, setFetched] = useState<{ slug: string; spec?: ProductSpec; via?: Via; suggestions?: string[]; error?: boolean } | null>(null);
   const [ai, setAi] = useState(false);
   const result = fetched?.slug === slug ? fetched : null;
@@ -98,7 +100,7 @@ export default function GuideApp({ slug, query, step, kind }: { slug: string; qu
         if (j.spec) {
           const sp = j.spec as ProductSpec;
           if (j.via === "catalog" && sp.slug && sp.slug !== slug) {
-            router.replace(`/build/${sp.slug}`);
+            router.replace(`/build/${sp.slug}` + (step ? `?step=${step}` : ""));
             return;
           }
           sp.slug = slug;
@@ -110,7 +112,7 @@ export default function GuideApp({ slug, query, step, kind }: { slug: string; qu
     return () => {
       alive = false;
     };
-  }, [mounted, initial, cached, local, isScan, slug, q, router]);
+  }, [mounted, initial, cached, local, isScan, slug, q, step, router]);
 
   const plan = useMemo(() => {
     if (!spec) return null;
@@ -236,7 +238,7 @@ function Guide({ plan, slug, via, ai, startStep }: { plan: Plan; slug: string; v
   const [resume, setResume] = useState<Progress | null>(null);
   const [maxStep, setMaxStep] = useState(0);
   const [reached, setReached] = useState(deep !== null ? 3 : 0);
-  const [help, setHelp] = useState<null | { missing?: boolean; ask?: string }>(null);
+  const [help, setHelp] = useState<null | { missing?: boolean; ask?: string; at?: number }>(null);
   const [overview, setOverview] = useState(false);
   const [voiceOn, setVoiceOn] = useState(false);
   const [speaking, setSpeaking] = useState(false);
@@ -251,6 +253,11 @@ function Guide({ plan, slug, via, ai, startStep }: { plan: Plan; slug: string; v
   const [stamp, setStamp] = useState(0);
   const [toast, setToast] = useState<{ id: number; text: string } | null>(null);
   const [sound, setSoundState] = useState(true);
+  const [seen, setSeen] = useState<number[]>(deep !== null ? [deep] : []);
+  const [built, setBuilt] = useState<{ at: number; ms?: number; full?: boolean } | null>(null);
+  const [finish, setFinish] = useState<{ ms: number; full: boolean } | null>(null);
+  // building time: gaps longer than a break are left out, and so is time on the cover or the done screen
+  const clock = useRef({ at: 0, ms: 0, live: false });
   const stage = useRef<StageHandle | null>(null);
   const mounted = useMounted();
   const canListen = mounted && speechSupported();
@@ -262,16 +269,25 @@ function Guide({ plan, slug, via, ai, startStep }: { plan: Plan; slug: string; v
     setSoundState(soundOn());
     setUsedVoice(getPref("voice", false));
     const p = loadProgress(slug);
-    if (p) {
+    // a save made with another shape picked under the same name doesn't fit this plan
+    const fits = p && (!p.spec || (p.spec.archetype === plan.spec.archetype && p.spec.variant === plan.spec.variant));
+    if (p && fits) {
       setResume(p);
       setTools(p.tools);
       setMissing(new Set(p.missing ?? []));
       setStartedAt(p.startedAt);
       setMaxStep(Math.min(p.step, steps.length - 1));
-      setReached(PHASES.indexOf(p.phase));
+      setReached(Math.max(deep !== null ? 3 : 0, PHASES.indexOf(p.phase)));
+      setSeen((x) => [...new Set([...(p.seen ?? []), ...x])]);
       if (p.doneAt) setDoneAt(p.doneAt);
+      if (isBuilt(p)) setBuilt({ at: p.builtAt ?? p.doneAt ?? p.updatedAt, ms: p.builtMs, full: p.builtFull });
     }
   }
+  useEffect(() => {
+    if (restored) clock.current = { at: Date.now(), ms: resume?.activeMs ?? 0, live: deep !== null };
+    // only once, when the save has been read
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [restored]);
 
   // persist
   useEffect(() => {
@@ -293,23 +309,35 @@ function Guide({ plan, slug, via, ai, startStep }: { plan: Plan; slug: string; v
       doneAt,
       updatedAt: Date.now(),
       spec: plan.spec.source === "catalog" ? undefined : plan.spec,
+      activeMs: clock.current.ms,
+      seen,
+      builtAt: built?.at,
+      builtMs: built?.ms,
+      builtFull: built?.full,
     });
-  }, [restored, slug, plan, phase, step, tools, missing, startedAt, doneAt, steps.length]);
+  }, [restored, slug, plan, phase, step, tools, missing, startedAt, doneAt, steps.length, seen, built]);
 
   useWakeLock(phase === "steps" || phase === "parts");
 
   const go = useCallback((p: Phase, s?: number, d = 1) => {
+    const c = clock.current, now = Date.now();
+    if (c.live && c.at) c.ms += Math.min(now - c.at, BREAK_MS);
+    c.at = now;
+    c.live = p !== "cover" && p !== "done";
     setDir(d);
     setPhase(p);
     setReached((r) => Math.max(r, PHASES.indexOf(p)));
     if (s !== undefined) {
       setStep(s);
       setMaxStep((m) => Math.max(m, s));
+      if (p === "steps") setSeen((x) => (x.includes(s) ? x : [...x, s]));
     }
     setHl(null);
     setMoved(false);
     if (p === "done") setDoneAt((x) => x ?? Date.now());
-  }, []);
+    // back on the cover, "Continue at step N" should name where you just were
+    if (p === "cover") setResume(loadProgress(slug));
+  }, [slug]);
 
   const showToast = useCallback((text: string) => {
     const id = Date.now();
@@ -336,9 +364,14 @@ function Guide({ plan, slug, via, ai, startStep }: { plan: Plan; slug: string; v
       } else {
         playDone();
         go("done");
+        const ms = clock.current.ms;
+        // skipping through doesn't earn a time: most of the steps have to have been on screen
+        const full = new Set([...seen, step]).size >= Math.ceil(steps.length * 0.8);
+        setFinish({ ms, full });
+        setBuilt((b) => (!b ? { at: Date.now(), ms, full } : full && (!b.full || !b.ms || ms < b.ms) ? { ...b, ms, full } : b));
       }
     }
-  }, [phase, step, steps.length, go, showToast]);
+  }, [phase, step, steps.length, go, showToast, seen]);
 
   const back = useCallback(() => {
     if (phase === "tools") go("cover", undefined, -1);
@@ -355,14 +388,16 @@ function Guide({ plan, slug, via, ai, startStep }: { plan: Plan; slug: string; v
       if (help || overview) return;
       const t = e.target as HTMLElement;
       if (t && (t.tagName === "INPUT" || t.tagName === "TEXTAREA")) return;
-      if (phase !== "steps") return;
+      if (phase !== "steps" || e.metaKey || e.ctrlKey || e.altKey) return;
       if (e.key === "ArrowRight" || e.key === " " || e.key === "Enter") {
-        if (t?.tagName === "BUTTON" && (e.key === " " || e.key === "Enter")) return;
+        // a focused button or link answers its own Enter; holding a key shouldn't race through steps
+        if ((t?.tagName === "BUTTON" || t?.tagName === "A") && (e.key === " " || e.key === "Enter")) return;
+        if (e.repeat) return;
         e.preventDefault();
         next();
       } else if (e.key === "ArrowLeft") {
         e.preventDefault();
-        back();
+        if (!e.repeat) back();
       } else if (e.key.toLowerCase() === "r") stage.current?.replay();
       else if (e.key === "?") setHelp({});
       else if (e.key.toLowerCase() === "o") setOverview(true);
@@ -371,9 +406,34 @@ function Guide({ plan, slug, via, ai, startStep }: { plan: Plan; slug: string; v
     return () => window.removeEventListener("keydown", onKey);
   }, [phase, next, back, help, overview]);
 
+  // the phone's back gesture steps back through the guide instead of leaving it
+  const nav = useRef({ phase, back });
+  useEffect(() => {
+    nav.current = { phase, back };
+  });
+  const guard = useRef(false);
+  const [pops, setPops] = useState(0);
+  useEffect(() => {
+    if (phase === "cover" || guard.current) return;
+    history.pushState({ bygga: "step" }, "");
+    guard.current = true;
+  }, [phase, pops]);
+  useEffect(() => {
+    const onPop = () => {
+      if (!guard.current) return;
+      guard.current = false;
+      if (nav.current.phase === "cover") return;
+      nav.current.back();
+      setPops((n) => n + 1);
+    };
+    window.addEventListener("popstate", onPop);
+    return () => window.removeEventListener("popstate", onPop);
+  }, []);
+
   /* ---------- voice ---------- */
 
   const said = useRef("");
+  const micRef = useRef<Mic>("off");
   const live = useRef({ next, back, step, voiceOn });
   useEffect(() => {
     live.current = { next, back, step, voiceOn };
@@ -391,7 +451,12 @@ function Guide({ plan, slug, via, ai, startStep }: { plan: Plan; slug: string; v
     setOffer(false);
     setPref("voice", true);
     said.current = String(step);
-    voice.say([canListen ? LINES.on : LINES.onNoMic, ...stepLines(plan, step)]);
+    voice.say([LINES.on, ...stepLines(plan, step)]).then((ok) => {
+      if (!ok) return;
+      // by now the mic has either started or been refused, so the tip matches what works
+      const m = micRef.current;
+      voice.say([canListen && m !== "denied" && m !== "unsupported" ? LINES.sayNext : LINES.tapNext]);
+    });
   }, [canListen, plan, step]);
 
   const stopVoice = useCallback((confirm = false) => {
@@ -481,7 +546,7 @@ function Guide({ plan, slug, via, ai, startStep }: { plan: Plan; slug: string; v
         if (!ai) voice.say([LINES.noAnswer]);
         else {
           voice.say([LINES.checking]);
-          setHelp({ ask: intent.text });
+          setHelp((h) => ({ ...h, ask: intent.text, at: Date.now() }));
         }
         break;
     }
@@ -490,13 +555,18 @@ function Guide({ plan, slug, via, ai, startStep }: { plan: Plan; slug: string; v
   const { mic, heard } = useListener(voiceOn && phase === "steps", (text, final) => {
     const intent = parse(text);
     if (!intent) return false;
-    // the mic can hear the voice itself: ignore anything she is saying
+    // the mic can hear the voice itself: ignore anything she is saying, and questions while she talks
     if (voice.echo(heardWords(text))) return false;
+    if (intent.kind === "ask" && voice.speaking) return false;
     // "stop" can't wait; everything else waits for the whole phrase
     if (!final && intent.kind !== "stop") return false;
     run(intent);
     return true;
   });
+
+  useEffect(() => {
+    micRef.current = mic;
+  }, [mic]);
 
   const speakAnswer = useCallback((text: string) => {
     if (live.current.voiceOn) voice.say(spokenAnswer(text));
@@ -505,13 +575,13 @@ function Guide({ plan, slug, via, ai, startStep }: { plan: Plan; slug: string; v
   useEffect(() => {
     const onKey = (e: KeyboardEvent) => {
       const t = e.target as HTMLElement;
-      if (e.key.toLowerCase() !== "v" || e.metaKey || e.ctrlKey || phase !== "steps" || help || t?.tagName === "INPUT" || t?.tagName === "TEXTAREA") return;
+      if (e.key.toLowerCase() !== "v" || e.metaKey || e.ctrlKey || e.repeat || phase !== "steps" || help || overview || t?.tagName === "INPUT" || t?.tagName === "TEXTAREA") return;
       if (voiceOn) stopVoice();
       else startVoice();
     };
     window.addEventListener("keydown", onKey);
     return () => window.removeEventListener("keydown", onKey);
-  }, [phase, help, voiceOn, startVoice, stopVoice]);
+  }, [phase, help, overview, voiceOn, startVoice, stopVoice]);
 
   // headphone buttons and the lock screen: next track, previous track
   useEffect(() => {
@@ -719,14 +789,19 @@ function Guide({ plan, slug, via, ai, startStep }: { plan: Plan; slug: string; v
                   plan={plan}
                   via={via}
                   resume={resume}
+                  built={built}
                   onStart={() => {
                     setMissing(new Set());
                     setStartedAt(Date.now());
                     setDoneAt(undefined);
                     setMaxStep(0);
                     setReached(0);
+                    setSeen([]);
+                    setFinish(null);
+                    clock.current = { at: Date.now(), ms: 0, live: true };
                     go("tools");
                   }}
+                  onReview={() => go("steps", 0)}
                   onResume={() => {
                     if (!resume) return;
                     if (resume.phase === "steps") go("steps", Math.min(resume.step, steps.length - 1));
@@ -767,7 +842,7 @@ function Guide({ plan, slug, via, ai, startStep }: { plan: Plan; slug: string; v
                   offer={!voiceOn && offer && (step === 0 || usedVoice) ? { again: usedVoice, listen: canListen, onStart: startVoice, onDismiss: () => setOffer(false) } : null}
                 />
               )}
-              {phase === "done" && <DonePanel plan={plan} slug={slug} startedAt={startedAt} doneAt={doneAt} onReview={back} />}
+              {phase === "done" && <DonePanel plan={plan} slug={slug} finish={finish} onReview={back} />}
             </motion.div>
           </AnimatePresence>
         </aside>
@@ -786,6 +861,7 @@ function Guide({ plan, slug, via, ai, startStep }: { plan: Plan; slug: string; v
             ai={ai}
             focusMissing={help.missing}
             ask={help.ask}
+            askId={help.at}
             onAnswer={voiceOn ? speakAnswer : undefined}
             onClose={() => setHelp(null)}
           />

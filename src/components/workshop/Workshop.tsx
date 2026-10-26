@@ -7,7 +7,7 @@ import { catalogSpec } from "@/lib/catalog";
 import { buildPlan } from "@/lib/plan";
 import { totals } from "@/lib/plan/contents";
 import { lineup } from "@/lib/plan/lineup";
-import { listProgress, removeProgress, type Progress } from "@/lib/store";
+import { isBuilt, listProgress, removeProgress, type Progress } from "@/lib/store";
 import type { Plan, ProductSpec } from "@/lib/types";
 import { useMounted } from "@/lib/useMounted";
 import { peekShot, shot, type Shot } from "@/engine/thumbs";
@@ -28,7 +28,14 @@ function fmtTime(min: number) {
   return r ? `${h} h ${r} min` : `${h} h`;
 }
 
-const spentOf = (r: Row) => (r.p.startedAt && r.p.doneAt && r.p.doneAt > r.p.startedAt ? Math.max(1, Math.round((r.p.doneAt - r.p.startedAt) / 60000)) : null);
+/** Building time, only when the steps were followed (older saves only had start and end). */
+function spentOf(r: Row) {
+  const p = r.p;
+  if (p.builtAt) return p.builtFull && p.builtMs ? Math.max(1, Math.round(p.builtMs / 60000)) : null;
+  const m = p.startedAt && p.doneAt && p.doneAt > p.startedAt ? Math.round((p.doneAt - p.startedAt) / 60000) : 0;
+  // a wall clock that ran overnight isn't a build time
+  return m > 0 && m < r.spec.minutes * 3 ? m : null;
+}
 
 export default function Workshop() {
   const mounted = useMounted();
@@ -41,7 +48,7 @@ export default function Workshop() {
         const spec = p.spec ?? catalogSpec(p.slug);
         if (!spec) return null;
         try {
-          return { p, spec, plan: buildPlan(spec), done: p.phase === "done" };
+          return { p, spec, plan: buildPlan(spec), done: isBuilt(p) };
         } catch {
           return null;
         }
@@ -49,8 +56,9 @@ export default function Workshop() {
       .filter(Boolean) as Row[];
   }, [mounted, removed]);
 
-  const built = rows.filter((r) => r.done).sort((a, b) => (a.p.doneAt ?? a.p.updatedAt) - (b.p.doneAt ?? b.p.updatedAt));
-  const going = rows.filter((r) => !r.done);
+  const built = rows.filter((r) => r.done).sort((a, b) => (a.p.builtAt ?? a.p.doneAt ?? a.p.updatedAt) - (b.p.builtAt ?? b.p.doneAt ?? b.p.updatedAt));
+  // a second one of something already built shows in both lists
+  const going = rows.filter((r) => r.p.phase !== "done" && (!r.done || (r.p.startedAt ?? 0) > (r.p.builtAt ?? Infinity)));
   const minutes = built.reduce((s, r) => s + (spentOf(r) ?? r.spec.minutes), 0);
   const fittings = built.reduce((s, r) => s + totals(r.plan).fittings, 0);
   const panels = built.reduce((s, r) => s + totals(r.plan).panels, 0);
@@ -262,9 +270,9 @@ function ScalePerson() {
 
 function GoingRow({ r, onRemove }: { r: Row; onRemove: () => void }) {
   const p = r.p;
-  const pct = p.phase === "steps" ? (p.step + 1) / Math.max(1, p.steps) : p.phase === "parts" ? 0.06 : 0.03;
+  const pct = p.phase === "steps" ? p.step / Math.max(1, p.steps) : p.phase === "parts" ? 0.06 : 0.03;
   const href = `/build/${p.slug}${p.spec ? `?q=${encodeURIComponent(p.spec.name)}` : ""}`;
-  const status = p.phase === "steps" ? `Step ${p.step + 1} of ${p.steps}` : p.phase === "parts" ? "Checking parts" : "Checking tools";
+  const status = p.phase === "steps" ? (p.step + 1 >= p.steps ? "On the last step" : `Step ${p.step + 1} of ${p.steps}`) : p.phase === "parts" ? "Checking parts" : "Checking tools";
   return (
     <motion.div className="going" layout initial={{ opacity: 0, y: 8 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, height: 0, marginTop: 0 }} transition={{ duration: 0.3 }}>
       <Link href={href} className="going-link">
@@ -292,7 +300,7 @@ function GoingRow({ r, onRemove }: { r: Row; onRemove: () => void }) {
 
 function BuiltCard({ r, onRemove }: { r: Row; onRemove: () => void }) {
   const p = r.p;
-  const when = new Date(p.doneAt ?? p.updatedAt);
+  const when = new Date(p.builtAt ?? p.doneAt ?? p.updatedAt);
   const spent = spentOf(r);
   return (
     <motion.div className="built" layout initial={{ opacity: 0, y: 8 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, scale: 0.96 }} transition={{ duration: 0.3 }}>
@@ -403,7 +411,7 @@ function earned(built: Row[]) {
     if (r.spec.archetype === "bed") s.add("bed");
     if (r.spec.archetype === "shelf") s.add("books");
     const spent = spentOf(r);
-    if (spent && spent < r.spec.minutes) s.add("fast");
+    if (spent && spent < r.spec.minutes && spent >= r.spec.minutes * 0.2) s.add("fast");
   }
   return s;
 }
