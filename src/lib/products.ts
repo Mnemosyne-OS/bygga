@@ -452,6 +452,8 @@ export function specFor(kind: Kind, name: string, variant: string, w: number, h:
     case "wallshelf":
       return { ...base, difficulty: 1, people: 1, shelf: { style: "bookcase", shelves: x.shelves ?? Math.max(0, Math.round(h / 35) - 1), fixedShelf: false, back: false, plinth: false, outer: 16, wall: true } };
     case "wallcab":
+      // x.z: doors over drawers, drawn like the cabinets built around an appliance
+      if (x.z) return fitted(kind, base, w, h, { use: "storage", hung: true, ...x });
       return { ...base, people: w > 100 ? 2 : 1, cabinet: { doors: x.doors ?? (w > 50 ? 2 : 1), shelves: x.shelves ?? (h > 50 ? 1 : 0), rail: false, plinth: false, handles: x.knobs ?? "knob", thickness: 16, wall: true } };
     case "kitchen":
       // x.z: a front of drawers and doors, drawn like the cabinets built around an appliance

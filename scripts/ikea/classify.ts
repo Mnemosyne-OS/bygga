@@ -145,7 +145,11 @@ const RULES: Rule[] = [
   [/^base cb f (?:built-in appliances\/)?sink$/, () => ({ kind: "sinkcab", x: { z: "o" } })],
   // kitchen base cabinets full of drawers, one per front (a front can hide an inner drawer), and frames sold without fronts
   [/^base cabinet with (\d) drawers$|^base cb w (\d) drawers$/, (m) => ({ kind: "kitchen", x: { z: `r${m[1] ?? m[2]}` } })],
-  [/^base (?:cab|cb) (\d) frnts\/.*\bdr(?:awers|wrs|w)$/, (m) => ({ kind: "kitchen", x: { z: `r${m[1]}` } })],
+  [/^base (?:cab|cb) (?:with )?(\d) (?:frnts|fronts)\/.*\bdr(?:awers|wrs|w)$/, (m) => ({ kind: "kitchen", x: { z: `r${m[1]}` } })],
+  // METOD cabinets with doors over drawers, standing or on the wall (a front can hide an inner drawer)
+  [/^hi cab w 2 doors\/(\d) drawers$/, (m) => ({ kind: "kitchen", x: { z: `r${m[1]}@80+d1s1@80+d1s1` } })],
+  [/^wall cab(?:inet)? (?:w|with) (?:(\d) )?(?:glass )?doors?\/(\d) drawers$/, (m) => ({ kind: "wallcab", x: { z: `r${m[2]}@40+d${m[1] ? 2 : 1}s1`, hung: true } })],
+  [/^hi cab f micro w door\/(\d) drawers$/, (m) => ({ kind: "appliance", x: { use: "microwave", z: `r${m[1]}@80+g@40+d1` } })],
   [/^hi cab w shlvs\/\d drawers\/dr\/(\d) frnts$/, (m) => ({ kind: "kitchen", x: { z: `r${m[1]}@80+d1s3` } })],
   [/^base cabinet$/, () => ({ kind: "kitchen", x: { doors: 0 } })],
   [/^base cb w shelf$/, () => ({ kind: "kitchen", x: { doors: 0, shelves: 1 } })],
