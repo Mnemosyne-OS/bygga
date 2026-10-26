@@ -13,6 +13,7 @@ export function defaultsSeat(s: ProductSpec): SeatParams {
     backH: clamp(p.backH ?? s.size.h, 60, 120),
     stretchers: p.stretchers ?? false,
     splay: p.splay ?? kind === "stool",
+    ...(p.arms ? { arms: true } : {}),
   };
 }
 
@@ -147,14 +148,17 @@ function chair(b: PlanBuilder, s: ProductSpec, p: SeatParams) {
   const H = p.seatH * 10, BH = p.backH * 10;
   const ls = 38, st = 28;
   const sx = W / 2 - ls / 2, sz = D / 2 - ls / 2;
+  // with armrests the front legs run up past the seat to carry them
+  const AH = p.arms ? Math.min(H + 220, BH - 140) : 0;
   const backT = b.part("Back leg", [ls, BH, ls], { material: "wood" });
-  const frontT = b.part("Front leg", [ls, H - st, ls], { material: "wood" });
+  const frontT = b.part("Front leg", [ls, p.arms ? AH : H - st, ls], { material: "wood" });
   const restT = b.part("Backrest", [W - 2 * ls, 130, 20], { material: "wood" });
-  const seatT = b.part("Seat", [W - 2 * ls, st, D - ls], { material: "wood" });
+  const seatT = b.part("Seat", p.arms ? [W - 2 * ls, st, D - 2 * ls] : [W - 2 * ls, st, D - ls], { material: "wood" });
   const bl = [b.place(backT, [-sx, BH / 2, -sz]), b.place(backT, [sx, BH / 2, -sz])];
-  const fl = [b.place(frontT, [-sx, (H - st) / 2, sz]), b.place(frontT, [sx, (H - st) / 2, sz])];
+  const fy = (p.arms ? AH : H - st) / 2;
+  const fl = [b.place(frontT, [-sx, fy, sz]), b.place(frontT, [sx, fy, sz])];
   const rest = b.place(restT, [0, BH - 110, -sz]);
-  const seat = b.place(seatT, [0, H - st / 2, ls / 2]);
+  const seat = b.place(seatT, [0, H - st / 2, p.arms ? 0 : ls / 2]);
   const lowT = b.part("Front rail", [W - 2 * ls, 50, 20], { material: "wood" });
   const low = b.place(lowT, [0, H - st - 25, sz]);
   const sideT = b.part("Side rail", [20, 50, D - 2 * ls], { material: "wood" });
@@ -218,8 +222,32 @@ function chair(b: PlanBuilder, s: ProductSpec, p: SeatParams) {
       b.add(seat, [0, 300, 0]);
       b.then(0.1);
       const sc: FitOpts[] = [];
-      for (const x of [-(W / 2 - ls - 30), W / 2 - ls - 30]) for (const z of [-(D / 2 - ls - 40), D / 2 - ls - 50]) sc.push({ on: seat, at: [x, H, z + ls / 2], dir: [0, -1, 0], hole: false });
+      for (const x of [-(W / 2 - ls - 30), W / 2 - ls - 30]) for (const z of [-(D / 2 - ls - 40), D / 2 - ls - 50]) sc.push({ on: seat, at: [x, H, z + (p.arms ? 0 : ls / 2)], dir: [0, -1, 0], hole: false });
       b.fits(HW.screwL, sc, 0.1);
+    },
+  );
+
+  if (!p.arms) return;
+  const armT = b.part("Armrest", [56, 24, D + 40], { material: "wood" });
+  const arms = [-1, 1].map((sgn) => b.place(armT, [sgn * sx, AH + 12, 20]));
+  b.step(
+    {
+      title: "Fit the armrests",
+      detail: "Each one sits on a front leg and bolts into the back leg.",
+      tools: ["allen"],
+      kind: "bolts",
+    },
+    () => {
+      b.stagger(0.25);
+      arms.forEach((k, i) => b.add(k, [i === 0 ? -160 : 160, 220, 0]));
+      b.then(0.1);
+      const bolts: FitOpts[] = [];
+      for (const [i, k] of arms.entries()) {
+        const x = (i === 0 ? -1 : 1) * sx;
+        bolts.push({ on: k, at: [x, AH + 24, sz], dir: [0, -1, 0], mate: fl[i] });
+        bolts.push({ on: k, at: [(i === 0 ? -1 : 1) * (W / 2), AH + 12, -sz], dir: [i === 0 ? 1 : -1, 0, 0], mate: bl[i] });
+      }
+      b.fits(HW.boltL, bolts, 0.08);
     },
   );
 }

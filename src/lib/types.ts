@@ -73,7 +73,7 @@ export interface SeatParams {
   backH: number; // cm (chair total height)
   stretchers: boolean;
   splay: boolean;
-  arms?: boolean; // office chairs: armrests
+  arms?: boolean; // office chairs and chairs: armrests
 }
 
 export interface SofaParams {

@@ -29,6 +29,7 @@ applaryd-2-seat-sofa|00506231 20575073 60506233 60575066
 applaryd-3-seat-sofa|80506246 10506235 20575087 30575077
 applaryd-3-seat-sofa-chaise-longue|79418057 89418066 79528174 79528169
 applaryd-4-seat-sofa-chaise-longue|49429533 69528179 39429538 09528182
+askholmen-chair-armrests-outdoor|50535684
 askholmen-chair-outdoor|89576046 59529221 39576256 20557502
 askholmen-table-outdoor-143-x-75|50535679
 askholmen-table-outdoor-60-x-62|30557498
@@ -122,6 +123,7 @@ bolmen-step-stool|70574429
 bondholmen-2-seat-sofa-outdoor|49583732
 bondholmen-2-seat-sofa-outdoor-139-x-81-x-73|50558185
 bondholmen-armchair-outdoor|19583724 60558161
+bondholmen-chair-armrests-outdoor|10558173
 bondholmen-table-outdoor-235-x-90|20558196
 borgeby-coffee-table-70|70389356 30500355
 borgeby-side-table-46|40619882 80619880
@@ -272,6 +274,7 @@ gronfjall-office-chair-arm-headrest|89513921
 gronfjall-office-chair-armrests|20503477
 gronsta-bar-stool-64|30554635
 gronsta-chair|10637241 70637238 70519763 70554577
+gronsta-chair-armrests-in-outdoor|20557875 90557886
 grotan-chair|70617565
 grotan-table-105|40610424
 grunnarp-3-seat-sofa-bed|70585084 90585078 30585081
@@ -621,6 +624,7 @@ mannarp-3-seat-sofa|59604041 09619158 49619161 89619164 59604036 09604048
 mannarp-3-seat-sofa-chaise-longue|59619170 89598675 19619167 79604064 99619173 89604068
 mannarp-4-seat-sofa-chaise-longue|39604080 69619179 09604072 29619176 19604076 09619182
 mannarp-4-seat-sofa-chaise-longues|89604092 99604096 79619188 69604088 39619185 19619191
+marenas-chair-armrests|89515128 09515132 49516083
 mariedamm-table-105|70492645
 mariedamm-table-180-x-100|20576124
 marius-stool|90184047 10135659
@@ -684,6 +688,7 @@ nammaro-bar-stool-outdoor|70510296
 nammaro-bar-table-outdoor-120-x-40|10510303
 nammaro-bench-outdoor-120|60510310
 nammaro-chair|39610260 19610256
+nammaro-chair-armrests-outdoor|90511105 59610264 69610268
 nammaro-chair-outdoor|50503353
 nammaro-stool-outdoor-37-x-45|70510300
 nammaro-table-outdoor-130|50586701
@@ -867,6 +872,7 @@ sagmastare-cabinet-83-x-36-x-128|90555364
 sagmastare-shelving-unit-83-x-36-x-128|30570249
 salno-armchair|60500778
 salno-bench|30551203
+salno-chair-armrests|50551202
 salno-gryttom-armchair-cushion|59534411
 saltmyran-2-seat-sofa|20618529 70618536
 saltmyran-3-seat-sofa|70618517 90618521
@@ -879,6 +885,7 @@ saltsjobaden-corner-sofa-4-seat|89627456 69622501 69627650 19578553 99627432 996
 sandsberg-chair|30605423 10605424 90605260
 sandsberg-table-110-x-67|29420393 59420400
 segeron-2-seat-sofa-outdoor|29584860 29584855
+segeron-chair-armrests-outdoor|29500813 89500805 50510810 10514754
 segeron-coffee-table-outdoor-73-x-73|40510797
 segeron-corner-sofa-3-seat|89584621
 segeron-table-outdoor-91-x-147|10510812 90510813
@@ -984,6 +991,7 @@ stockholm-2025-side-table-55|90586558
 stockholm-2025-sideboard-161-x-42-x-83|10586604
 stockholm-2025-table-115|49579985
 stockholm-2025-table-230-x-90|79579984
+stockholm-chair-armrests|00621212 10621216
 stockholm-coffee-table-180-x-59|70239710
 storedamm-bench-63-x-31|20576162
 storedamm-shelving-unit-60-x-141|10576167
@@ -1020,6 +1028,7 @@ syvde-dressing-table-100-x-48|80430746
 tallasen-upholstered-bed-frame-standard-double-1|39514763 79514780 19514778 19514764
 tallskar-2-seat-sofa-outdoor|40575152
 tallskar-armchair-outdoor|60575146
+tallskar-chair-armrests-outdoor|20575148
 tanebro-side-table-46|60578970 60554988 60638182 70605162
 tannforsen-high-cabinet-door-40-x-35-x-195|90535111
 tannforsen-mirror-cabinet-doors-80-x-15-x-95|10535129 00555250 30535128
@@ -1081,6 +1090,7 @@ torald-desk-65-x-40|90493955
 tornsborg-2-seat-sofa-bed|40586103
 tornviken-kitchen-island-126-x-77|40391657
 tornviken-open-cabinet-20-x-37-x-60|60358968 20358970 20358965
+torparo-chair-armrests-outdoor|60595408
 torparo-table-outdoor-130-x-74|60595724
 torsjo-coffee-table-88|50590406
 torsjo-side-table-45|60590415
@@ -1119,6 +1129,7 @@ tyssedal-bedside-table-51-x-40|70299959
 ugglerum-coffee-table-130-x-65|60627980
 ugglerum-side-table-46-x-40|00627983
 ulriksberg-armchair|90434310
+ulvevar-chair-armrests-outdoor|00608833
 uppakra-3-seat-modular-sofa|99620341 49620353 79620337 69620347 59620324 39620344 79620318 09620246 49620249 79620064 79620059 69620069 89620252 19620255 19619940 99619955 99619922 59619943 39619958 79619937 69619928 89619913 39619897 89620313 79619904 79619876 69620314 59619882 99619856 99619842 99619837 79619862 69619867 69619853 69619848 89619970 79619961 69619985 49619991 49619967 39619982 19619964
 uppakra-modular-corner-sofa-3-seat|99620553 89620558 79620573 69620564 49620579 29621358 29620556
 uppakra-modular-corner-sofa-6-seat|99620628 79620634 49620616 49620602 39620607 29620622 19620613 99620690 89620704 89620695 59620710 59620687 29620716 29620684 99620647 79620667 69620658 69620644 49620678 49620664 39620650
@@ -1137,6 +1148,7 @@ valnas-coffee-table-118-x-72|20628038
 valtorp-bench-103|40572785 30572781
 varmanso-chair-outdoor|00536389
 varmanso-table-outdoor-224-x-93|10515683
+vasman-chair-armrests-outdoor|70563402 40211637
 vasman-extendable-table-outdoor-135-190-x-74|30469034
 vassholmen-chair-in-outdoor|30503740
 vedbo-armchair|00423580 30424125
@@ -1203,6 +1215,7 @@ vimle-corner-sofa-5-seat|79399577 49399668 89399586 59399583 59401802 69401811 2
 vimle-corner-sofa-5-seat-w-chaise-longue|79501278 69401830 09401833
 vimle-crnr-sofa-bed-5-seat-w-chaise-lng|89545248 59545202 59501298 19477380 09545228 49545269
 vingson-wing-chair-in-outdoor|70503738
+visingso-chair-armrests|60575542
 visingso-table-70-x-70|40569467
 viskafors-2-seat-sofa|89443264 69443217 99443254 89443259 39443214 19443210
 viskafors-3-seat-sofa|99443329 59443374 99443334 89443339 69443364 59443369
@@ -1222,6 +1235,7 @@ vittskar-3-seat-sofa|69618900 99591131 89591136 89618904
 vittskar-3-seat-sofa-chaise-longue|39591252 89619324
 vittskar-4-seat-modular-corner-sofa|09619672 79591231
 vittskar-5-seat-modular-corner-sofa|19591248 39619680
+vittskar-chair-armrests|20575167
 vittskar-coffee-table-110-x-58|80575555
 vittskar-table-264-x-96|30575162
 vitval-bunk-bed-frame-90-x-200|80411272

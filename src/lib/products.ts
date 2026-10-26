@@ -332,7 +332,7 @@ export function specFor(kind: Kind, name: string, variant: string, w: number, h:
     case "shoe":
       return { ...base, cabinet: { fronts: "tilt", compartments: x.c ?? 2, doors: 0, shelves: 0, rail: false, plinth: false, handles: x.knobs ?? "knob", thickness: 16 } };
     case "chair":
-      return { ...base, seat: { kind: "chair", seat: "square", seatH: x.seatH ?? 45, backH: h } };
+      return { ...base, seat: { kind: "chair", seat: "square", seatH: x.seatH ?? 45, backH: h, ...((x.arms ?? "none") !== "none" ? { arms: true } : {}) } };
     case "stool":
       return { ...base, seat: { kind: "stool", seat: "round", seatH: h, splay: true, stretchers: h > 60 } };
     case "bench":

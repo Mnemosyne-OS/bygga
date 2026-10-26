@@ -152,7 +152,7 @@ const RULES: Rule[] = [
   [/corner|chaise|u-shaped|crnr/, () => "corner or chaise longue sofa"],
   // a straight sofa section sold alone: a seat frame with legs, a backrest and cushions, no armrests
   [/^(\d)-seat section( for modular sofa)?$/, (m) => ({ kind: "section", x: { seats: Number(m[1]) } })],
-  [/section|add-on|armrest|backrest for|seat sec|modular (easy chair|chaise)/, () => "sofa or storage section"],
+  [/section|add-on|(?<!with )armrest|backrest for|seat sec|modular (easy chair|chaise)/, () => "sofa or storage section"],
   // bunk beds on four posts, and loft beds with room underneath (KURA turns over to be either)
   [/^(bunk bed frame|loft bed frame|loft bed|reversible bed)$/, (m, c) => {
     if (m[1] === "loft bed" && c.f.spr) return "loft bed with a desk or storage";
@@ -228,7 +228,7 @@ const RULES: Rule[] = [
   [/^(trolley|kitchen trolley|kitchen island|trolley table|serving trolley)$/, () => ({ kind: "trolley" })],
 
   // seating
-  [/^(chair|dining chair|folding chair|chair with armrests)$/, (_m, c) => ({ kind: c.kids ? "kidschair" : "chair" })],
+  [/^(chair|dining chair|folding chair|chair with armrests)$/, (m, c) => (/arm/.test(m[0]) && !c.kids ? { kind: "chair", x: { arms: "slim" } } : { kind: c.kids ? "kidschair" : "chair" })],
   [/^children's chair$/, () => ({ kind: "kidschair" })],
   [/^(bar stool with backrest|bar chair)$/, () => ({ kind: "chair", x: { seatH: 63 } })],
   [/^(stool|bar stool|step stool|folding stool|children's stool|stool, \d+ steps?)$/, () => ({ kind: "stool" })],

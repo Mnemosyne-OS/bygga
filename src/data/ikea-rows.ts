@@ -28,6 +28,7 @@ ANKARUDDEN|sliding|Wardrobe with sliding doors, 98 × 60 × 190 cm|98|190|60|sli
 ÄPPLARYD|chaise|4-seat sofa with chaise longue|290|85|160|seats=4,arms=wide,chaise=right,sd=92
 ÄPPLARYD|sofa|2-seat sofa|170|85|92|seats=2
 ÄPPLARYD|sofa|3-seat sofa|230|85|92|seats=3
+ASKHOLMEN|chair|Chair with armrests, outdoor|44|88|50|arms=slim|outdoor garden
 ASKHOLMEN|chair|Chair, outdoor|44|88|50||outdoor garden
 ASKHOLMEN|dining|Table, outdoor, 60 × 62 cm|60|74|62||outdoor garden
 ASKHOLMEN|dining|Table, outdoor, 143 × 75 cm|143|74|75||outdoor garden
@@ -108,6 +109,7 @@ BOAXEL|open|Shelving unit, 62 × 40 × 201 cm|62|201|40
 BOLLPOJKE|desk|Desk, 90 × 55 cm|90|74|55
 BOLMEN|stool|Step stool|35|50|35
 BONDHOLMEN|armchair|Armchair, outdoor|75|90|80||outdoor garden
+BONDHOLMEN|chair|Chair with armrests, outdoor|44|88|50|arms=slim|outdoor garden
 BONDHOLMEN|dining|Table, outdoor, 235 × 90 cm|235|74|90||outdoor garden
 BONDHOLMEN|sofa|2-seat sofa, outdoor, 139 × 81 × 73 cm|139|73|81|seats=2|outdoor garden
 BONDHOLMEN|sofa|2-seat sofa, outdoor|170|85|92|seats=2|outdoor garden
@@ -247,6 +249,7 @@ GRILLSKÄR|side|Side table, outdoor, 30 × 61 cm|30|50|61||outdoor garden
 GRÖNFJÄLL|office|Office chair with armrests|64|105|64|arms=slim
 GRÖNFJÄLL|office|Office chair with arm/headrest|64|128|64|arms=slim
 GRÖNSTA|chair|Chair|44|88|50
+GRÖNSTA|chair|Chair with armrests, in/outdoor|44|88|50|arms=slim|outdoor garden
 GRÖNSTA|stool|Bar stool, 64 cm|35|64|35
 GRÖTÅN|chair|Chair|44|88|50
 GRÖTÅN|dining|Table, 105 cm|105|74|105|round=1
@@ -554,6 +557,7 @@ MANNARP|chaise|4-seat sofa with chaise longue|290|85|160|seats=4,arms=wide,chais
 MANNARP|chaise|4-seat sofa with chaise longues|290|85|160|seats=4,arms=wide,chaise=both,sd=92
 MANNARP|sofa|2-seat sofa|170|85|92|seats=2
 MANNARP|sofa|3-seat sofa|230|85|92|seats=3
+MÅRENÄS|chair|Chair with armrests|44|88|50|arms=slim
 MARIEDAMM|dining|Table, 105 cm|105|74|105|round=1
 MARIEDAMM|dining|Table, 180 × 100 cm|180|74|100
 MARKUS|office|Office chair|64|128|64|arms=slim
@@ -611,6 +615,7 @@ NACKANÄS|dining|Table, 140 × 76 cm|140|74|76
 NÄMMARÖ|bar|Bar table, outdoor, 120 × 40 cm|120|105|40||outdoor garden
 NÄMMARÖ|bench|Bench, outdoor, 120 cm|120|45|38||outdoor garden
 NÄMMARÖ|chair|Chair|44|88|50||outdoor garden
+NÄMMARÖ|chair|Chair with armrests, outdoor|44|88|50|arms=slim|outdoor garden
 NÄMMARÖ|chair|Chair, outdoor|44|88|50||outdoor garden
 NÄMMARÖ|dining|Table, outdoor, 75 × 63 cm|75|74|63||outdoor garden
 NÄMMARÖ|dining|Table, outdoor, 130 cm|130|74|130|round=1|outdoor garden
@@ -792,6 +797,7 @@ SÅGMÄSTARE|cabinet|Cabinet, 83 × 36 × 128 cm|83|128|36
 SÅGMÄSTARE|open|Shelving unit, 83 × 36 × 128 cm|83|128|36
 SALNÖ|armchair|Armchair|75|90|80
 SALNÖ|bench|Bench|100|45|38
+SALNÖ|chair|Chair with armrests|44|88|50|arms=slim
 SALNÖ / GRYTTOM|armchair|Armchair with cushion|75|90|80
 SALTMYRAN|sofa|2-seat sofa|170|85|92|seats=2
 SALTMYRAN|sofa|3-seat sofa|230|85|92|seats=3
@@ -802,6 +808,7 @@ SALTSJÖBADEN|sofa|2-seat sofa|170|85|92|seats=2
 SALTSJÖBADEN|sofa|2-seat sofa-bed|170|85|92|seats=2
 SALTSJÖBADEN|sofa|3-seat sofa|230|85|92|seats=3
 SANDSBERG|chair|Chair|44|88|50
+SEGERÖN|chair|Chair with armrests, outdoor|44|88|50|arms=slim|outdoor garden
 SEGERÖN|coffee|Coffee table, outdoor, 73 × 73 cm|73|45|73||outdoor garden
 SEGERÖN|corner|Corner sofa, 3-seat|173|85|173|seats=3,arms=wide,corner=left,sd=92|outdoor garden
 SEGERÖN|dining|Table, outdoor, 91 × 147 cm|91|74|147||outdoor garden
@@ -886,6 +893,7 @@ STIG|chair|Bar stool with backrest, 63 cm|44|95|50|seatH=63
 STIGBYGEL|office|Swivel chair with armrests|64|105|64|arms=slim
 STJÄRNÖ|bed|Bed frame, Standard Single, 90 × 190 cm|106|100|199|m=90,l=190
 STJÄRNÖ|bed|Bed frame, Standard Double, 135 × 190 cm|151|100|199|m=135,l=190
+STOCKHOLM|chair|Chair with armrests|44|88|50|arms=slim
 STOCKHOLM|coffee|Coffee table, 180 × 59 cm|180|45|59
 STOCKHOLM 2025|armchair|Armchair|75|90|80
 STOCKHOLM 2025|armchair|Easy chair|75|90|80
@@ -936,6 +944,7 @@ SYNTORP|chair|Bar stool with backrest, 66 cm|44|98|50|seatH=66
 SYVDE|desk|Dressing table, 100 × 48 cm|100|74|48
 TÄLLÅSEN|bed|Upholstered bed frame, Standard Double, 135 × 190 cm|151|100|199|m=135,l=190
 TALLSKÄR|armchair|Armchair, outdoor|75|90|80||outdoor garden
+TALLSKÄR|chair|Chair with armrests, outdoor|44|88|50|arms=slim|outdoor garden
 TALLSKÄR|sofa|2-seat sofa, outdoor|170|85|92|seats=2|outdoor garden
 TÅNEBRO|side|Side table, 46 cm|46|50|46|round=1
 TÄNNFORSEN|cabinet|High cabinet with door, 40 × 35 × 195 cm|40|195|35|doors=1
@@ -997,6 +1006,7 @@ TORALD|desk|Desk, 65 × 40 cm|65|74|40
 TORNSBORG|sofa|2-seat sofa-bed|170|85|92|seats=2
 TORNVIKEN|cabinet|Open cabinet, 20 × 37 × 60 cm|20|60|37|doors=0
 TORNVIKEN|trolley|Kitchen island, 126 × 77 cm|126|80|77
+TORPARÖ|chair|Chair with armrests, outdoor|44|88|50|arms=slim|outdoor garden
 TORPARÖ|dining|Table, outdoor, 130 × 74 cm|130|74|74||outdoor garden
 TORSJÖ|coffee|Coffee table, 88 cm|88|45|88|round=1
 TORSJÖ|side|Side table, 45 cm|45|50|45|round=1
@@ -1032,6 +1042,7 @@ TYSSEDAL|nightstand|Bedside table, 51 × 40 cm|51|55|40|rows=1
 UGGLERUM|coffee|Coffee table, 130 × 65 cm|130|45|65
 UGGLERUM|side|Side table, 46 × 40 cm|46|50|40
 ULRIKSBERG|armchair|Armchair|75|90|80
+ULVEVÄR|chair|Chair with armrests, outdoor|44|88|50|arms=slim|outdoor garden
 UPPÅKRA|corner|Modular corner sofa, 3-seat|173|85|173|seats=3,arms=wide,corner=left,sd=92
 UPPÅKRA|corner|Modular corner sofa, 6 seat|301|85|237|seats=6,arms=wide,corner=left,sd=92
 UPPÅKRA|sofa|3-seat modular sofa|230|85|92|seats=3
@@ -1050,6 +1061,7 @@ VALNÄS|sofa|3-seat sofa|230|85|92|seats=3
 VALTORP|bench|Bench, 103 cm|103|45|38
 VÄRMANSÖ|chair|Chair, outdoor|44|88|50||outdoor garden
 VÄRMANSÖ|dining|Table, outdoor, 224 × 93 cm|224|74|93||outdoor garden
+VÄSMAN|chair|Chair with armrests, outdoor|44|88|50|arms=slim|outdoor garden
 VÄSMAN|dining|Extendable table, outdoor, 135/190 × 74 cm|135|74|74||outdoor garden
 VASSHOLMEN|chair|Chair, in/outdoor|44|88|50||outdoor garden
 VEDBO|armchair|Armchair|75|90|80
@@ -1115,6 +1127,7 @@ VIMLE|sofa|2-seat sofa|170|85|92|seats=2
 VIMLE|sofa|2-seat sofa-bed|170|85|92|seats=2
 VIMLE|sofa|4-seat sofa|290|85|92|seats=4
 VINGSÖN|armchair|Wing chair, in/outdoor|75|104|80||outdoor garden
+VISINGSÖ|chair|Chair with armrests|44|88|50|arms=slim|outdoor garden
 VISINGSÖ|dining|Table, 70 × 70 cm|70|74|70||outdoor garden
 VISKAFORS|sofa|2-seat sofa|170|85|92|seats=2
 VISKAFORS|sofa|3-seat sofa|230|85|92|seats=3
@@ -1122,6 +1135,7 @@ VISTHUS|chest|Chest of 6 drawers, 63 × 49 × 126 cm|63|126|49|rows=6
 VITTSJÖ|coffee|Coffee table, 75 cm|75|40|75|legs=square,shelf=1,round=1
 VITTSJÖ|open|Shelving unit, 100 × 93 cm|100|93|36
 VITTSJÖ|open|Shelving unit, 100 × 175 cm|100|175|36
+VITTSKÄR|chair|Chair with armrests|44|88|50|arms=slim|outdoor garden
 VITTSKÄR|chaise|3-seat sofa with chaise longue|226|85|160|seats=3,arms=wide,chaise=right,sd=92
 VITTSKÄR|coffee|Coffee table, 110 × 58 cm|110|45|58||outdoor garden
 VITTSKÄR|corner|3-seat modular corner sofa|173|85|173|seats=3,arms=wide,corner=left,sd=92|outdoor garden
