@@ -9,6 +9,7 @@ ALEX|chest|Drawer unit on castors, 67 × 66 cm|67|66|58|rows=5,knobs=none
 ALEX|desk|Desk, 100 × 48 cm|100|74|48
 ALEX|desk|Desk, 132 × 58 cm|132|74|58
 ALEX|open|Storage unit, 36 × 70 cm|36|70|35
+ÄLGANÄS|shoerack|Shoe rack, 76 × 24 × 59 cm|76|59|24
 ÅLHULT|bench|Bench, 103 × 36 cm|103|45|36
 ÅLHULT|chair|Chair|44|88|50
 ÅLHULT|dining|Extendable table, 120/170 × 80 cm|120|74|80
@@ -595,6 +596,7 @@ LYCKAN|chair|Chair|44|88|50
 LYCKSELE LÖVÅS|sofa|2-seat sofa-bed|170|85|92|seats=2
 LYCKSELE MURBO|sofa|2-seat sofa-bed|170|85|92|seats=2
 MÅBÄRSSKÄR|coffee|Coffee table, 61 × 41 cm|61|45|41||outdoor garden
+MACKAPÄR|shoerack|Shoe rack, 78 × 32 × 40 cm|78|40|32
 MALM|bed|Bed frame, high, Standard Single, 90 × 190 cm|106|100|199|m=90,l=190
 MALM|bed|Bed frame, high, w 2 storage boxes, Standard Single, 90 × 190 cm|106|100|199|m=90,l=190
 MALM|bed|Ottoman bed, Standard Single, 90 × 190 cm|106|100|199|m=90,l=190
@@ -892,6 +894,7 @@ PLATSA|nightstand|Chest of 2 drawers, 60 × 57 × 53 cm|60|53|57|rows=2
 PLATSA|nightstand|Bedside table, 60 × 42 × 83 cm|60|83|42|rows=2
 PLATSA|open|Open shelving unit, 60 × 40 × 40 cm|60|40|40
 PLATSA|shoe|Shoe cabinet/storage, 120 × 42 × 123 cm|120|123|42|c=3
+PLATSA|shoerack|Open shoe storage unit, 80 × 40 × 60 cm|80|60|40
 PLATSA|wardrobe|Wardrobe with 2 doors, 60 × 57 × 251 cm|60|251|57|doors=2
 PLATSA|wardrobe|Open clothes hanging unit, 80 × 40 × 120 cm|80|120|40|doors=0
 PLATSA|wardrobe|Open clothes hanging unit, 80 × 40 × 180 cm|80|180|40|doors=0
@@ -1127,6 +1130,7 @@ TEGELÖN|dining|Table, outdoor, 216 × 86 cm|216|74|86||outdoor garden
 TINGBY|side|Side table on castors, 50 × 50 cm|50|50|50
 TJÄRKIL|dining|Extendable table, 180/235/290 × 100 cm|180|74|100
 TJUSIG|bench|Bench with shoe storage, 108 × 34 × 50 cm|108|50|34
+TJUSIG|shoerack|Shoe rack, 79 × 32 × 37 cm|79|37|32
 TOBIAS|chair|Chair|44|88|50
 TONSTAD|bed|Bed frame with storage, Standard Single, 90 × 190 cm|106|100|199|m=90,l=190
 TONSTAD|bed|Bed frame, Standard Single, 90 × 190 cm|106|100|199|m=90,l=190

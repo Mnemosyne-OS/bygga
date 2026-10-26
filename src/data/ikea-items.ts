@@ -10,6 +10,7 @@ alex-drawer-unit-on-castors-36-x-50|09582664 59582671 59582666
 alex-drawer-unit-on-castors-36-x-76|59422220 69582680 39422221 29628029
 alex-drawer-unit-on-castors-67-x-66|80485423 50473544 20588891
 alex-storage-unit-36-x-70|50563752 70588898 50563790
+alganas-shoe-rack-76-x-24-x-59|20585883
 alhult-bench-103-x-36|60603093 40603094
 alhult-chair|50600801 40600774
 alhult-extendable-table-120-170-x-80|60597921 20600789
@@ -660,6 +661,7 @@ lyckan-chair|00569191 00569186
 lycksele-lovas-2-seat-sofa-bed|19387006 49387038 19387134 89563204 89561709
 lycksele-murbo-2-seat-sofa-bed|09387021 49387137 49387043 19561717 69563219
 mabarsskar-coffee-table-61-x-41|30597164
+mackapar-shoe-rack-78-x-32-x-40|50530993
 malm-2-drawers|50336552 90625319
 malm-4-drawers|50424054
 malm-bed-frame-high-standard-double-135-x-190|29006978 79022565 89006980 19006974 59589998 99022569 79002435
@@ -966,6 +968,7 @@ platsa-frame-80-x-40-x-180|30330952
 platsa-open-clothes-hanging-unit-80-x-40-x-120|20603429 40452603
 platsa-open-clothes-hanging-unit-80-x-40-x-180|60452602
 platsa-open-shelving-unit-60-x-40-x-40|80452583
+platsa-open-shoe-storage-unit-80-x-40-x-60|00452544
 platsa-shoe-cabinet-storage-120-x-42-x-123|59615431
 platsa-wardrobe-2-doors-120-x-57-x-181|69615341
 platsa-wardrobe-2-doors-120-x-57-x-191|49624916
@@ -1211,6 +1214,7 @@ teodores-chair|99399835 19399839 90530627 20530621 90350937
 tingby-side-table-on-castors-50-x-50|20295930 00349444
 tjarkil-extendable-table-180-235-290-x-100|70630454
 tjusig-bench-shoe-storage-108-x-34-x-50|70152702 50152703
+tjusig-shoe-rack-79-x-32-x-37|10152639 30152638
 tobias-chair|30635123 80349671 90532589
 tonstad-bed-frame-standard-double-135-x-190|39577717 99577719 59577716 19577718 99577743 49577745 79577744
 tonstad-bed-frame-standard-single-90-x-190|10603547 90603609 59577721 79577720 29577746 09577747

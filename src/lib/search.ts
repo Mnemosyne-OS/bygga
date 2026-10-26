@@ -21,6 +21,7 @@ const CATEGORY_WORDS: [Kind, string[]][] = [
   ["washstand", ["wash stand", "washstand", "vanity", "vanity unit", "bathroom vanity", "basin unit", "basin cabinet", "wash basin cabinet", "washbasin cabinet", "bathroom cabinet", "sink vanity"]],
   ["sinkcab", ["sink cabinet", "sink base", "sink base cabinet", "sink unit", "kitchen sink cabinet", "under sink cabinet", "cabinet for sink", "sink cupboard"]],
   ["appliance", ["appliance cabinet", "oven cabinet", "oven housing", "oven unit", "tall oven unit", "wall oven cabinet", "cabinet for oven", "fridge cabinet", "fridge housing", "refrigerator cabinet", "freezer cabinet", "cabinet for fridge", "microwave cabinet", "hob cabinet", "hob unit", "cooktop cabinet", "hood cabinet", "extractor hood cabinet"]],
+  ["shoerack", ["shoe rack", "shoe shelf", "shoe stand", "shoe bench", "open shoe storage"]],
   ["shoe", ["shoe", "shoes", "shoe cabinet", "shoe rack"]],
   ["nightstand", ["nightstand", "bedside", "night stand"]],
   ["mixed", ["doors and drawers", "cabinet with drawers", "cupboard with drawers", "wardrobe with drawers", "armoire with drawers"]],
