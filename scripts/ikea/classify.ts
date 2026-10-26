@@ -270,6 +270,8 @@ const RULES: Rule[] = [
   }],
   // a chaise longue sold alone as a section of a modular sofa: a one-seat section as long as a chaise
   [/^(chaise longue section|chaise longue module(?:, (?:left|right))?|chaise longue, add-on unit|modular chaise longue)$/, () => ({ kind: "section", x: { seats: 1, chaise: "right" } })],
+  // a corner section sold alone as a piece of a modular sofa: a square seat with a backrest along two sides
+  [/^(corner section|corner section with cushion|corner module)$/, () => ({ kind: "section", x: { seats: 1, corner: "left" } })],
   // corner wardrobes: frames along both walls around an add-on corner unit, with doors when a door's name comes with them
   [/^corner wardrobe$/, (_m, c) => ({ kind: "cornerrobe", x: c.multi ? {} : { doors: 0 } })],
   // the add-on corner unit sold on its own: a cabinet of shelves
@@ -601,6 +603,8 @@ export function classify(f: Fact, hints: Hints): Verdict {
       d = Math.min(175, Math.max(140, d + 68));
       delete x.chaise;
     }
+    // a corner section is as wide as the family's seats are deep
+    if (x.corner) w = d;
   } else if (kind === "cornerrobe") {
     // IKEA gives the two legs and the height: "211/161x201 cm"
     const legs = f.size.replace(/\s+/g, "").match(/^(\d+(?:\.\d+)?)\/(\d+(?:\.\d+)?)x(\d+(?:\.\d+)?)cm$/);

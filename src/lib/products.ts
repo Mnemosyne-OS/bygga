@@ -520,6 +520,8 @@ export function specFor(kind: Kind, name: string, variant: string, w: number, h:
     case "section": {
       // a straight section of a modular sofa, sold alone: no armrests
       const seats = x.seats ?? 1;
+      // x.corner: a corner section, with a backrest along the back and down that side
+      if (x.corner) return { ...base, minutes: x.min ?? MIN.section + 15, people: 1, sofa: { seats: 1, arms: "none", legs: "round", corner: x.corner } };
       return { ...base, minutes: x.min ?? MIN.section + 10 * seats, people: seats > 1 ? 2 : 1, sofa: { seats, arms: "none", legs: "round" } };
     }
     case "washstand":

@@ -472,6 +472,7 @@ JUTEBODA|stool|Stool|35|45|35
 JUTHOLMEN|armchair|Easy chair, outdoor, 65 × 73 × 71 cm|65|71|73||outdoor garden
 JUTHOLMEN|armchair|Easy chair, outdoor, 65 × 73 × 83 cm|65|83|73||outdoor garden
 JUTHOLMEN|corner|Modular corner sofa 3-seat, outdoor|173|85|173|seats=3,arms=wide,corner=left,sd=92|outdoor garden
+JUTHOLMEN|section|Corner section, outdoor|92|83|92|seats=1,corner=left|outdoor garden
 JUTHOLMEN|sofa|2-seat modular sofa, outdoor, 146 × 73 cm|146|85|73|seats=2|outdoor garden
 JUTHOLMEN|sofa|2-seat modular sofa, outdoor|170|85|92|seats=2|outdoor garden
 JUTHOLMEN|sofa|3-seat modular sofa, outdoor, 210 × 73 cm|210|85|73|seats=3|outdoor garden
@@ -514,6 +515,7 @@ KIVIK|corner|Corner sofa, 4-seat|241|83|177|seats=4,arms=wide,corner=left,sd=95
 KIVIK|corner|Corner sofa, 5-seat w chaise longue|241|83|224|seats=5,arms=wide,corner=left,open=1,sd=95
 KIVIK|corner|Corner sofa, 6-seat|301|83|238|seats=6,arms=wide,corner=left,sd=95
 KIVIK|corner|Corner sofa, 6-seat w chaise longue|306|83|224|seats=6,arms=wide,corner=left,open=1,sd=95
+KIVIK|section|Corner section|95|83|95|seats=1,corner=left
 KIVIK|sofa|1-seat sofa-bed|110|85|92|seats=1
 KIVIK|sofa|2-seat sofa|170|85|92|seats=2
 KIVIK|sofa|4-seat sofa|290|85|92|seats=4
@@ -1075,6 +1077,8 @@ SEGERÖN|chair|Chair with armrests, outdoor|44|88|50|arms=slim|outdoor garden
 SEGERÖN|coffee|Coffee table, outdoor, 73 × 73 cm|73|45|73||outdoor garden
 SEGERÖN|corner|Corner sofa, 3-seat|173|85|173|seats=3,arms=wide,corner=left,sd=92|outdoor garden
 SEGERÖN|dining|Table, outdoor, 91 × 147 cm|91|74|147||outdoor garden
+SEGERÖN|section|Corner section with cushion|92|83|92|seats=1,corner=left|outdoor garden
+SEGERÖN|section|Corner section, outdoor|92|83|92|seats=1,corner=left|outdoor garden
 SEGERÖN|sofa|2-seat sofa, outdoor|170|85|92|seats=2|outdoor garden
 SEGRARE|desk|Desk sit/stand, 110 × 60 cm|110|74|60
 SKÅLBODA|armchair|Armchair|75|90|80
@@ -1142,6 +1146,7 @@ SÖDERHAMN|chaise|4-seat sofa with chaise longue|259|69|167|seats=4,arms=slim,ch
 SÖDERHAMN|corner|Corner sofa, 4-seat|228|69|168|seats=4,arms=slim,corner=left,sd=99
 SÖDERHAMN|corner|Corner sofa-bed, 6-seat|289|69|228|seats=6,arms=slim,corner=left,sd=99
 SÖDERHAMN|section|1-seat section|61|69|99|seats=1
+SÖDERHAMN|section|Corner section|99|69|99|seats=1,corner=left
 SÖDERHAMN|section|3-seat section|182|69|99|seats=3
 SÖDERHAMN|sofa|2-seat sofa|170|85|92|seats=2,arms=slim
 SÖDERHAMN|sofa|4-seat sofa-bed|290|85|92|seats=4,arms=slim
@@ -1331,6 +1336,7 @@ ULVEVÄR|chair|Chair with armrests, outdoor|44|88|50|arms=slim|outdoor garden
 UPPÅKRA|corner|Modular corner sofa, 3-seat|173|85|173|seats=3,arms=wide,corner=left,sd=92
 UPPÅKRA|corner|Modular corner sofa, 6 seat|301|85|237|seats=6,arms=wide,corner=left,sd=92
 UPPÅKRA|section|Chaise longue module|64|83|160|seats=1
+UPPÅKRA|section|Corner module|92|83|92|seats=1,corner=left
 UPPÅKRA|sofa|3-seat modular sofa|230|85|92|seats=3
 URBAN|junior|Junior chair|43|91|52||kids children
 UTESPELARE|desk|Gaming desk, 160 × 80 cm|160|74|80
@@ -1411,6 +1417,7 @@ VIMLE|corner|Corner sofa, 5-seat w chaise longue|253|83|236|seats=5,arms=wide,co
 VIMLE|corner|Crnr sofa-bed, 5-seat w chaise lng|253|83|236|seats=5,arms=wide,corner=left,open=1,sd=98
 VIMLE|section|1-seat section|69|83|98|seats=1
 VIMLE|section|Chaise longue section|69|83|166|seats=1
+VIMLE|section|Corner section|98|83|98|seats=1,corner=left
 VIMLE|section|2-seat section|138|83|98|seats=2
 VIMLE|section|3-seat section|207|83|98|seats=3
 VIMLE|sofa|2-seat sofa|170|85|92|seats=2

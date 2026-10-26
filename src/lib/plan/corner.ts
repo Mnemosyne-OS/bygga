@@ -24,6 +24,7 @@ interface Section {
  * and bolted, armrests, backrests, and the cushions last.
  */
 export function buildCornerSofa(b: PlanBuilder, s: ProductSpec) {
+  if (s.sofa?.corner && (s.sofa.seats ?? 3) <= 1) return cornerSection(b, s);
   const p = s.sofa ?? {};
   const W = s.size.w * 10, H = s.size.h * 10, D = s.size.d * 10;
   const arms = p.arms ?? "wide";
@@ -346,6 +347,101 @@ export function buildCornerSofa(b: PlanBuilder, s: ProductSpec) {
     () => {
       b.stagger(0.14);
       backCs.forEach((k) => b.add(k, at(k).rot[2] !== 0 ? [X(-360), 160, 0] : [0, 160, 360]));
+    },
+  );
+}
+
+/**
+ * A corner section sold on its own, a square piece of a modular sofa: a seat frame on legs with a backrest along two sides,
+ * one seat cushion and a back cushion against each side of the backrest.
+ */
+function cornerSection(b: PlanBuilder, s: ProductSpec) {
+  const p = s.sofa ?? {};
+  const W = s.size.w * 10, H = s.size.h * 10, D = s.size.d * 10;
+  const legH = 110, baseTop = 300, seatT = 140;
+  const fh = baseTop - legH;
+  const backT = Math.min(200, D * 0.22);
+  const hb = H - baseTop;
+  const bh = Math.max(240, H - baseTop - seatT - 40);
+  const back = -D / 2;
+  // the backrest runs along the back and down one side, the left unless the sofa says right
+  const sx = p.corner === "right" ? 1 : -1;
+  const X = (x: number) => sx * x;
+  const frame = b.place(b.part("Corner section", [W, fh, D], { material: "soft" }), [0, legH + fh / 2, 0]);
+  const legT = b.part("Leg", [42, legH, 42], { shape: "cyl", material: "wood" });
+  const ix = Math.min(60, W / 4), iz = Math.min(70, D / 4);
+  const legs = [-1, 1].flatMap((a) => [-1, 1].map((c) => b.place(legT, [a * (W / 2 - ix), legH / 2, c * (D / 2 - iz)])));
+  const by = baseTop + hb / 2;
+  const rest = b.compound(
+    "Corner backrest",
+    [
+      { shape: "box", size: [W, hb, backT], pos: [0, by, back + backT / 2] },
+      { shape: "box", size: [backT, hb, D - backT], pos: [X(W / 2 - backT / 2), by, back + backT + (D - backT) / 2] },
+    ],
+    { material: "soft" },
+  );
+  const backrest = b.place(rest.type, rest.mid);
+  const cs = Math.min(W, D) - backT - 16;
+  const seat = b.place(b.part("Seat cushion", [cs, seatT, cs], { material: "soft" }), [X(W / 2 - backT - 8 - cs / 2), baseTop + seatT / 2, back + backT + 8 + cs / 2]);
+  const bcT = b.part("Back cushion", [cs - 6, bh, 170], { material: "soft" });
+  const cushions = [
+    b.place(bcT, [X(W / 2 - backT - 8 - cs / 2), baseTop + seatT + bh / 2 - 6, back + backT + 80], [-0.16, 0, 0]),
+    b.place(b.part("Back cushion", [170, bh, cs - 6], { material: "soft" }), [X(W / 2 - backT - 80), baseTop + seatT + bh / 2 - 6, back + backT + 8 + cs / 2], [0, 0, X(-0.16)]),
+  ];
+
+  b.step(
+    {
+      title: "Lay the section upside down",
+      detail: "Put a blanket or the flattened box under it first.",
+      pose: "-y",
+      kind: "general",
+      warnings: ["floor"],
+    },
+    () => b.add(frame, [0, 220, 0]),
+  );
+  b.step(
+    {
+      title: "Screw in the legs",
+      detail: "Clockwise by hand until each one is snug.",
+      pose: "-y",
+      kind: "legs",
+      warnings: ["hand"],
+    },
+    () => {
+      b.stagger(0.22);
+      legs.forEach((l) => b.add(l, [0, -260, 0], { spin: 2 }));
+    },
+  );
+  b.step({ title: "Turn it over", detail: "Lift it by the frame, never by the legs.", pose: "+y", kind: "flip" }, () => {});
+  b.step(
+    {
+      title: "Attach the backrest",
+      detail: "It runs along two sides. Slide it down behind the seat, then bolt it from the back.",
+      tools: ["allen"],
+      kind: "bolts",
+    },
+    () => {
+      b.add(backrest, [X(260), 120, -300]);
+      b.then(0.1);
+      const boltY = baseTop + 60;
+      const bolts: FitOpts[] = [
+        ...[-0.25, 0.25].map((f) => ({ on: backrest, at: [f * W, boltY, back] as Vec3, dir: [0, 0, 1] as Vec3, mate: frame })),
+        ...[0.35, 0.65].map((f) => ({ on: backrest, at: [X(W / 2), boltY, back + D * f] as Vec3, dir: [X(-1), 0, 0] as Vec3, mate: frame })),
+      ];
+      b.fits(HW.boltL, bolts, 0.1);
+    },
+  );
+  b.step({ title: "Drop in the seat cushion", detail: "The zip faces the back.", kind: "cushions" }, () => b.add(seat, [0, 320, 0]));
+  b.step(
+    {
+      title: "Add the back cushions",
+      detail: "One against each side of the backrest. Plump them up first.",
+      kind: "cushions",
+    },
+    () => {
+      b.stagger(0.2);
+      b.add(cushions[0], [0, 160, 360]);
+      b.add(cushions[1], [X(-360), 160, 0]);
     },
   );
 }
