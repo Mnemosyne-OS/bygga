@@ -67,6 +67,10 @@ export interface SofaParams {
   seats: number;
   arms: "wide" | "slim" | "none";
   legs: "round" | "block";
+  chaise?: "left" | "right" | "both"; // a chaise longue at that end, seen from the front; size.d is its length
+  corner?: "left" | "right"; // an L: the return runs forward on that side; size.d is its length
+  open?: boolean; // corner sofas: no armrest at the front of the return
+  depth?: number; // cm, depth of the seat sections of a corner or chaise sofa
 }
 
 /** A product read from someone's own manual: parts as boxes in the assembled product, steps that add them. */

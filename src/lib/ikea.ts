@@ -23,9 +23,9 @@ export interface IkeaRow {
   slug?: string;
 }
 
-const X_KEYS = ["rows", "cols", "knobs", "plinth", "doors", "shelves", "c", "m", "l", "f", "seats", "arms", "legs", "attach", "shelf", "min", "round", "seatH"] as const;
-const FLAGS = new Set<string>(["plinth", "shelf", "round"]);
-const WORDS = new Set<string>(["knobs", "arms", "legs", "attach"]);
+const X_KEYS = ["rows", "cols", "knobs", "plinth", "doors", "shelves", "c", "m", "l", "f", "seats", "arms", "legs", "attach", "shelf", "min", "round", "seatH", "chaise", "corner", "open", "sd"] as const;
+const FLAGS = new Set<string>(["plinth", "shelf", "round", "open"]);
+const WORDS = new Set<string>(["knobs", "arms", "legs", "attach", "chaise", "corner"]);
 
 export function encodeX(x: X): string {
   const out: string[] = [];

@@ -14,6 +14,7 @@ ALEX|open|Storage unit, 36 × 70 cm|36|70|35
 ÅLHULT|dining|Extendable table, 120/170 × 80 cm|120|74|80
 ÅLHULT|dining|Table, 120 × 80 cm|120|74|80
 ÅLHULT|dining|Extendable table, 170/220 × 80 cm|170|74|80
+ÄLVDALEN|chaise|3-seat sofa-bed with chaise longue|226|85|160|seats=3,arms=wide,chaise=right,sd=92
 ÄLVDALEN|sofa|3-seat sofa-bed|230|85|92|seats=3
 ÄMMARYD|coffee|Coffee table, 98 × 59 cm|98|45|59
 ÄMMARYD|side|Side table, 59 × 40 cm|59|50|40
@@ -21,6 +22,8 @@ ALEX|open|Storage unit, 36 × 70 cm|36|70|35
 ÄNGSJÖN|wallcab|Wall cabinet with door, 40 × 15 × 95 cm|40|95|15|doors=1
 ANKARUDDEN|chest|Chest of 4 drawers, 80 × 48 × 107 cm|80|107|48|rows=4
 ANKARUDDEN|chest|Chest of 6 drawers, 139 × 48 × 87 cm|139|87|48|rows=3,cols=2
+ÄPPLARYD|chaise|3-seat sofa with chaise longue|226|85|160|seats=3,arms=wide,chaise=right,sd=92
+ÄPPLARYD|chaise|4-seat sofa with chaise longue|290|85|160|seats=4,arms=wide,chaise=right,sd=92
 ÄPPLARYD|sofa|2-seat sofa|170|85|92|seats=2
 ÄPPLARYD|sofa|3-seat sofa|230|85|92|seats=3
 ASKHOLMEN|chair|Chair, outdoor|44|88|50||outdoor garden
@@ -34,6 +37,7 @@ BAGGEBO|cabinet|Cabinet with door, 50 × 30 × 80 cm|50|80|30|doors=1
 BAGGEBO|open|Shelving unit, 60 × 30 × 80 cm|60|80|30
 BAGGEBO|open|Shelving unit, 60 × 25 × 116 cm|60|116|25
 BAGGEBO|sideboard|Sideboard, 78 × 92 cm|78|92|45
+BÅRSLÖV|chaise|3-seat sofa-bed with chaise longue|226|85|160|seats=3,arms=wide,chaise=right,sd=92
 BÅRSLÖV|sofa|3-seat sofa-bed|230|85|92|seats=3
 BÄSTBOLL|office|Gaming chair|64|128|64|arms=slim,seatH=50
 BEKVÄM|stool|Step stool, 63 cm|35|63|35
@@ -140,10 +144,13 @@ EKET|cabinet|Cabinet, 35 × 25 × 35 cm|35|35|25|knobs=none
 EKET|wallcab|Wall cabinet with glass door, 35 × 25 × 35 cm|35|35|25|knobs=none,doors=1
 EKET|wallshelf|Wall-mounted shelving unit, 35 × 25 × 35 cm|35|35|25
 EKET|wallshelf|Wall-mounted shelving unit, 35 × 35 × 35 cm|35|35|35
+EKHOLMA|corner|Corner sofa, 4-seat with open end|237|85|156|seats=4,arms=wide,corner=left,open=1,sd=92
 EKHOLMA|sofa|2-seat sofa|170|85|92|seats=2
 EKHOLMA|sofa|2-seat sofa-bed|170|85|92|seats=2
 EKHOLMA|sofa|3-seat sofa|230|85|92|seats=3
 EKTORP|armchair|Armchair|75|90|80
+EKTORP|chaise|3-seat sofa with chaise longue|218|88|156|seats=3,arms=wide,chaise=right,sd=88
+EKTORP|corner|Corner sofa, 4-seat|228|88|166|seats=4,arms=wide,corner=left,sd=88
 EKTORP|sofa|2-seat sofa|170|85|92|seats=2
 ELDBERGET / MALSKÄR|office|Swivel chair|60|105|64|arms=none
 ENHET|cabinet|High cabinet with door, 30 × 32 × 180 cm|30|180|32|doors=1
@@ -187,6 +194,8 @@ FÖRHÖJA|trolley|Kitchen trolley, 100 × 43 cm|100|80|43
 FÖRSÄLJARE|sideboard|Sideboard, 140 × 46 × 78 cm|140|78|46
 FÖRSIKTIG|stool|Children's stool|35|30|35||kids
 FRIDHULT|sofa|Sofa-bed|230|85|92|seats=3
+FRIHETEN|chaise|Corner sofa-bed with storage|230|66|160|seats=3,arms=slim,chaise=right,sd=92
+FRIHETEN / KLAGSHAMN|chaise|Corner sofa-bed with storage|230|66|160|seats=3,arms=slim,chaise=right,sd=92
 FRIIDROTT|chest|Drawer unit on castors, 35 × 56 cm|35|56|48|rows=4
 FRÖSET|armchair|Easy chair|75|90|80
 FRÖSJÖN|open|Shelving unit, 40 × 96 cm|40|96|35
@@ -211,6 +220,7 @@ GILLERSBERG|nightstand|Bedside table, 39 × 39 × 56 cm|39|56|39|rows=1
 GLADHÖJDEN|desk|Desk sit/stand, 100 × 60 cm|100|74|60
 GLADSTAD|bed|Upholstered bed frame, Standard King, 150 × 200 cm|166|100|209|m=150
 GLENN|stool|Bar stool, 66 cm|35|66|35
+GLOSTAD|chaise|3-seat sofa with chaise longue|201|78|150|seats=3,arms=wide,chaise=right,sd=82
 GLOSTAD|sofa|3-seat sofa|230|85|92|seats=3
 GODISHUS|chest|Chest of 3 drawers, 60 × 40 × 60 cm|60|60|40|rows=3
 GRÅFJÄLLET|desk|Dressing table, 100 × 42 cm|100|74|42
@@ -288,6 +298,8 @@ HORNAVAN|trolley|Trolley, 26 × 48 × 77 cm|26|77|48
 HUVUDSPELARE|desk|Gaming desk, 140 × 80 cm|140|74|80
 HUVUDSPELARE|office|Gaming chair|64|128|64|arms=slim,seatH=50
 HYLLIS|open|Shelving unit, 60 × 27 × 74 cm|60|74|27||outdoor garden
+HYLTARP|chaise|3-seat sofa w chaise longue, left|226|85|160|seats=3,arms=wide,chaise=left,sd=92
+HYLTARP|chaise|3-seat sofa w chaise longue, right|226|85|160|seats=3,arms=wide,chaise=right,sd=92
 HYLTARP|sofa|2-seat sofa|170|85|92|seats=2
 HYLTARP|sofa|2-seat sofa-bed|170|85|92|seats=2
 HYLTARP|sofa|3-seat sofa|230|85|92|seats=3
@@ -337,6 +349,11 @@ IVAR|open|Shelving unit, 89 × 50 × 226 cm|89|226|50
 IVÖSJÖN|cabinet|Cabinet with doors, 33 × 34 × 99 cm|33|99|34
 JAKOBSFORS|coffee|Coffee table, 80 cm|80|45|80|round=1
 JÄRVFJÄLLET|office|Office chair with armrests|64|105|64|arms=slim
+JÄTTEBO|chaise|2,5-seat mod sofa w chaise longue|226|85|160|seats=3,arms=wide,chaise=right,sd=92
+JÄTTEBO|chaise|3,5-seat mod sofa w chaise longues|290|85|160|seats=4,arms=wide,chaise=both,sd=92
+JÄTTEBO|chaise|4-seat mod sofa w chaise longue|290|85|160|seats=4,arms=wide,chaise=right,sd=92
+JÄTTEBO|corner|Mod crnr sofa 2,5-seat w chaise lng|173|85|156|seats=3,arms=wide,corner=left,open=1,sd=92
+JÄTTEBO|corner|Modular corner sofa, 6 seat|301|85|237|seats=6,arms=wide,corner=left,sd=92
 JÄTTEBO|sofa|2-seat modular sofa|170|85|92|seats=2
 JÄTTEBO|sofa|3-seat modular sofa|230|85|92|seats=3
 JÄTTESTA|coffee|Coffee table, 80 × 80 cm|80|45|80
@@ -348,6 +365,7 @@ JONAXEL|cabinet|Frame, 50 × 51 × 70 cm|50|70|51|doors=0
 JUTEBODA|stool|Stool|35|45|35
 JUTHOLMEN|armchair|Easy chair, outdoor, 65 × 73 × 71 cm|65|71|73||outdoor garden
 JUTHOLMEN|armchair|Easy chair, outdoor, 65 × 73 × 83 cm|65|83|73||outdoor garden
+JUTHOLMEN|corner|Modular corner sofa 3-seat, outdoor|173|85|173|seats=3,arms=wide,corner=left,sd=92|outdoor garden
 JUTHOLMEN|sofa|2-seat modular sofa, outdoor, 146 × 73 cm|146|85|73|seats=2|outdoor garden
 JUTHOLMEN|sofa|2-seat modular sofa, outdoor|170|85|92|seats=2|outdoor garden
 JUTHOLMEN|sofa|3-seat modular sofa, outdoor, 210 × 73 cm|210|85|73|seats=3|outdoor garden
@@ -368,6 +386,13 @@ KESNACKEN|stool|Bar stool, 66 cm|35|66|35
 KILBERGET|chest|Chest of 5 drawers, 76 × 102 cm|76|102|48|rows=5
 KILBERGET|chest|Chest of 3 drawers, 86 × 78 cm|86|78|48|rows=3
 KILBERGET|chest|Chest of 6 drawers, 144 × 78 cm|144|78|48|rows=3,cols=2
+KIVIK|chaise|3-seat sofa with chaise longue|228|83|163|seats=3,arms=wide,chaise=right,sd=95
+KIVIK|chaise|4-seat sofa with chaise longue|293|83|163|seats=4,arms=wide,chaise=right,sd=95
+KIVIK|corner|Corner sofa, 5-seat|238|83|238|seats=5,arms=wide,corner=left,sd=95
+KIVIK|corner|Corner sofa, 4-seat|241|83|177|seats=4,arms=wide,corner=left,sd=95
+KIVIK|corner|Corner sofa, 5-seat w chaise longue|241|83|224|seats=5,arms=wide,corner=left,open=1,sd=95
+KIVIK|corner|Corner sofa, 6-seat|301|83|238|seats=6,arms=wide,corner=left,sd=95
+KIVIK|corner|Corner sofa, 6-seat w chaise longue|306|83|224|seats=6,arms=wide,corner=left,open=1,sd=95
 KIVIK|sofa|1-seat sofa-bed|110|85|92|seats=1
 KIVIK|sofa|2-seat sofa|170|85|92|seats=2
 KIVIK|sofa|4-seat sofa|290|85|92|seats=4
@@ -425,6 +450,9 @@ LAGKAPTEN / SPÄND|desk|Desk, 120 × 60 cm|120|73|60|legs=round,attach=plate
 LAGKAPTEN / SPÄND|desk|Desk, 140 × 60 cm|140|73|60|legs=round,attach=plate
 LAGKAPTEN / SPÄND|desk|Desk, 200 × 60 cm|200|73|60|legs=round,attach=plate
 LANDSKRONA|armchair|Armchair|75|90|80
+LANDSKRONA|chaise|4-seat sofa with chaise longues|267|89|157|seats=4,arms=slim,chaise=both,sd=89
+LANDSKRONA|corner|Corner sofa, 5-seat|222|89|222|seats=5,arms=slim,corner=left,sd=89
+LANDSKRONA|corner|Corner sofa, 6-seat|285|89|222|seats=6,arms=slim,corner=left,sd=89
 LANDSKRONA|sofa|2-seat sofa|170|85|92|seats=2,arms=slim
 LANDSKRONA|sofa|4-seat sofa|290|85|92|seats=4,arms=slim
 LANESUND|bookcase|Bookcase, 121 × 37 × 152 cm|121|152|37
@@ -445,6 +473,9 @@ LILLBERGET|chest|Chest of 3 drawers, 70 × 43 × 68 cm|70|68|43|rows=3
 LILLBERGET|chest|Chest of 5 drawers, 70 × 43 × 108 cm|70|108|43|rows=5
 LILLBERGET|chest|Chest of 6 drawers, 140 × 43 × 68 cm|140|68|43|rows=3,cols=2
 LILLEHEM|armchair|Armchair|75|90|80
+LILLEHEM|chaise|3-seat modular sofa w chaise longue|226|85|160|seats=3,arms=wide,chaise=right,sd=92
+LILLEHEM|corner|Modular corner sofa, 2-seat|173|85|92|seats=2,arms=wide,corner=left,sd=92
+LILLEHEM|corner|Modular corner sofa, 4 seat|237|85|173|seats=4,arms=wide,corner=left,sd=92
 LILLEHEM|sofa|2-seat modular sofa|170|85|92|seats=2
 LILLEHEM|sofa|3-seat modular sofa|230|85|92|seats=3
 LILLEHEM|sofa|4-seat modular sofa|290|85|92|seats=4
@@ -489,6 +520,9 @@ MAMMUT|kidschair|Children's chair|34|60|34||kids
 MAMMUT|kidstable|Children's table, 77 × 55 cm|77|48|55||kids
 MAMMUT|stool|Children's stool|35|30|35||kids
 MANDAL|bed|Bed frame with storage, 120 × 200 cm|136|100|209|m=120
+MANNARP|chaise|3-seat sofa with chaise longue|226|85|160|seats=3,arms=wide,chaise=right,sd=92
+MANNARP|chaise|4-seat sofa with chaise longue|290|85|160|seats=4,arms=wide,chaise=right,sd=92
+MANNARP|chaise|4-seat sofa with chaise longues|290|85|160|seats=4,arms=wide,chaise=both,sd=92
 MANNARP|sofa|2-seat sofa|170|85|92|seats=2
 MANNARP|sofa|3-seat sofa|230|85|92|seats=3
 MARIEDAMM|dining|Table, 105 cm|105|74|105|round=1
@@ -698,11 +732,14 @@ SALNÖ / GRYTTOM|armchair|Armchair with cushion|75|90|80
 SALTMYRAN|sofa|2-seat sofa|170|85|92|seats=2
 SALTMYRAN|sofa|3-seat sofa|230|85|92|seats=3
 SALTSJÖBADEN|armchair|Armchair|75|90|80
+SALTSJÖBADEN|chaise|3-seat sofa with chaise longue|226|85|160|seats=3,arms=wide,chaise=right,sd=92
+SALTSJÖBADEN|corner|Corner sofa, 4-seat|237|85|173|seats=4,arms=wide,corner=left,sd=92
 SALTSJÖBADEN|sofa|2-seat sofa|170|85|92|seats=2
 SALTSJÖBADEN|sofa|2-seat sofa-bed|170|85|92|seats=2
 SALTSJÖBADEN|sofa|3-seat sofa|230|85|92|seats=3
 SANDSBERG|chair|Chair|44|88|50
 SEGERÖN|coffee|Coffee table, outdoor, 73 × 73 cm|73|45|73||outdoor garden
+SEGERÖN|corner|Corner sofa, 3-seat|173|85|173|seats=3,arms=wide,corner=left,sd=92|outdoor garden
 SEGERÖN|dining|Table, outdoor, 91 × 147 cm|91|74|147||outdoor garden
 SEGERÖN|sofa|2-seat sofa, outdoor|170|85|92|seats=2|outdoor garden
 SEGRARE|desk|Desk sit/stand, 110 × 60 cm|110|74|60
@@ -732,6 +769,8 @@ SLÄKT|bed|Bed frame with 3 storage boxes, 90 × 200 cm|106|100|209|m=90
 SLÄKT|bed|Bed frame with slatted bed base, 90 × 200 cm|106|100|209|m=90
 SLÄKT|bed|Bed frame with storage, 90 × 200 cm|106|100|209|m=90
 SLÄKT|bed|Bed frame, 90 × 200 cm|106|100|209|m=90
+SLATORP|chaise|3-seat sofa with chaise longue|226|85|160|seats=3,arms=wide,chaise=right,sd=92
+SLATORP|chaise|4-seat sofa with chaise longues|290|85|160|seats=4,arms=wide,chaise=both,sd=92
 SLATORP|sofa|2-seat sofa|170|85|92|seats=2
 SLATORP|sofa|3-seat sofa|230|85|92|seats=3
 SLATTUM|bed|Upholstered bed frame, Standard Single, 90 × 190 cm|106|85|199|m=90,l=190,f=30
@@ -759,6 +798,9 @@ SMYGA|bed|Bed frame with storage, 90 × 200 cm|106|100|209|m=90
 SMYGA|bed|Bed frame, 90 × 200 cm|106|100|209|m=90
 SMYGA|desk|Desk, 122 × 60 cm|122|74|60||kids children
 SNIGLAR|bed|Bed frame with slatted bed base, 70 × 160 cm|86|64|169|m=70,l=160,f=50
+SÖDERHAMN|chaise|4-seat sofa with chaise longue|259|69|167|seats=4,arms=slim,chaise=right,sd=99
+SÖDERHAMN|corner|Corner sofa, 4-seat|228|69|168|seats=4,arms=slim,corner=left,sd=99
+SÖDERHAMN|corner|Corner sofa-bed, 6-seat|289|69|228|seats=6,arms=slim,corner=left,sd=99
 SÖDERHAMN|sofa|2-seat sofa|170|85|92|seats=2,arms=slim
 SÖDERHAMN|sofa|4-seat sofa-bed|290|85|92|seats=4,arms=slim
 SOLUPPGÅNG|stool|Stool, outdoor, 43 × 40 cm|43|40|43||outdoor garden
@@ -906,6 +948,8 @@ TYSSEDAL|nightstand|Bedside table, 51 × 40 cm|51|55|40|rows=1
 UGGLERUM|coffee|Coffee table, 130 × 65 cm|130|45|65
 UGGLERUM|side|Side table, 46 × 40 cm|46|50|40
 ULRIKSBERG|armchair|Armchair|75|90|80
+UPPÅKRA|corner|Modular corner sofa, 3-seat|173|85|173|seats=3,arms=wide,corner=left,sd=92
+UPPÅKRA|corner|Modular corner sofa, 6 seat|301|85|237|seats=6,arms=wide,corner=left,sd=92
 UPPÅKRA|sofa|3-seat modular sofa|230|85|92|seats=3
 UTESPELARE|desk|Gaming desk, 160 × 80 cm|160|74|80
 UTKLASSNING|office|Gaming chair|64|128|64|arms=slim,seatH=50
@@ -962,6 +1006,14 @@ VIKHAMMER|nightstand|Bedside table, 40 × 39 cm|40|55|39|rows=1
 VILTO|open|Shelving unit, 46 × 150 cm|46|150|35
 VILTO|stool|Step stool|35|50|35
 VIMLE|armchair|Armchair|75|90|80
+VIMLE|chaise|3-seat sofa with chaise longue|241|83|166|seats=3,arms=wide,chaise=right,sd=98
+VIMLE|chaise|3-seat sofa-bed with chaise longue|241|83|166|seats=3,arms=wide,chaise=right,sd=98
+VIMLE|chaise|4-seat sofa with chaise longue|310|83|166|seats=4,arms=wide,chaise=right,sd=98
+VIMLE|corner|Corner sofa, 3-seat|184|83|184|seats=3,arms=wide,corner=left,sd=98
+VIMLE|corner|Corner sofa, 5-seat|238|83|238|seats=5,arms=wide,corner=left,sd=98
+VIMLE|corner|Corner sofa, 4-seat|253|83|184|seats=4,arms=wide,corner=left,sd=98
+VIMLE|corner|Corner sofa, 5-seat w chaise longue|253|83|236|seats=5,arms=wide,corner=left,open=1,sd=98
+VIMLE|corner|Crnr sofa-bed, 5-seat w chaise lng|253|83|236|seats=5,arms=wide,corner=left,open=1,sd=98
 VIMLE|sofa|2-seat sofa|170|85|92|seats=2
 VIMLE|sofa|2-seat sofa-bed|170|85|92|seats=2
 VIMLE|sofa|4-seat sofa|290|85|92|seats=4
@@ -973,7 +1025,11 @@ VISTHUS|chest|Chest of 6 drawers, 63 × 49 × 126 cm|63|126|49|rows=6
 VITTSJÖ|coffee|Coffee table, 75 cm|75|40|75|legs=square,shelf=1,round=1
 VITTSJÖ|open|Shelving unit, 100 × 93 cm|100|93|36
 VITTSJÖ|open|Shelving unit, 100 × 175 cm|100|175|36
+VITTSKÄR|chaise|3-seat sofa with chaise longue|226|85|160|seats=3,arms=wide,chaise=right,sd=92
 VITTSKÄR|coffee|Coffee table, 110 × 58 cm|110|45|58||outdoor garden
+VITTSKÄR|corner|3-seat modular corner sofa|173|85|173|seats=3,arms=wide,corner=left,sd=92|outdoor garden
+VITTSKÄR|corner|4-seat modular corner sofa|237|85|173|seats=4,arms=wide,corner=left,sd=92|outdoor garden
+VITTSKÄR|corner|5-seat modular corner sofa|237|85|237|seats=5,arms=wide,corner=left,sd=92|outdoor garden
 VITTSKÄR|dining|Table, 264 × 96 cm|264|74|96||outdoor garden
 VITTSKÄR|sofa|2-seat modular sofa|170|85|92|seats=2|outdoor garden
 VITTSKÄR|sofa|2-seat sofa|170|85|92|seats=2|outdoor garden

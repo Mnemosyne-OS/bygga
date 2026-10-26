@@ -118,6 +118,24 @@ const RULES: Rule[] = [
     return { kind: "office", x: { arms: arms ? "slim" : "none", seatH } };
   }],
   [/swivel|office chair|gaming chair|conference|desk chair|highchair|lounge|reclining|lounger|hammock|massage/, () => "office, swivel or lounge chair"],
+  // sofas with a chaise longue at one or both ends, and corner sofas (an L of sections)
+  [/^(?=.*\bsofa)(?=.*\b(corner|crnr|chaise))/, (m) => {
+    const t = m.input ?? "";
+    if (/u-shaped/.test(t)) return "U-shaped sofa";
+    const count = t.match(/(\d)(,5)?[- ]seat/);
+    const n = count ? Number(count[1]) + (count[2] ? 1 : 0) : undefined;
+    if (/corner|crnr/.test(t) && n !== undefined) {
+      if (n > 6) return "corner sofa with more than 6 seats";
+      // IKEA's corner sofas go either way round: draw the return on the left, where the view looks into the L
+      return { kind: "corner", x: { seats: n, corner: "left", open: /chaise|open end/.test(t) || undefined } };
+    }
+    // a corner sofa-bed with no seat count is three seats and a chaise longue (FRIHETEN)
+    const seats = n ?? 3;
+    const both = /chaise (longue|lng)s\b/.test(t);
+    if (seats > 5) return "sofa with more than 5 seats";
+    if (both && seats < 3) return "chaise longues with no sofa between";
+    return { kind: "chaise", x: { seats, chaise: both ? "both" : /\bleft\b/.test(t) ? "left" : "right" } };
+  }],
   [/corner|chaise|u-shaped|crnr/, () => "corner or chaise longue sofa"],
   [/section|add-on|armrest|backrest for|seat sec|modular (easy chair|chaise)/, () => "sofa or storage section"],
   [/\b(bunk|loft)\b/, () => "bunk or loft bed"],
@@ -258,6 +276,28 @@ export function classify(f: Fact, hints: Hints): Verdict {
     } else if (hint?.kind === kind) set(hint.w, hint.h, hint.d);
     else if (kind !== "bench") return { skip: "no size given" };
     if (guessed.h && hint?.kind === kind) h = hint.h;
+  } else if (kind === "chaise" || kind === "corner") {
+    // IKEA gives no size: seat width, depth and height from a straight sofa of the same family, else a typical one
+    const sofa = hints(family, "sofa");
+    const arms = sofa?.x.arms ?? "wide";
+    const armCm = arms === "wide" ? 17 : arms === "slim" ? 8 : 0;
+    const per = sofa?.kind === "sofa" && sofa.x.seats ? Math.min(75, Math.max(55, (sofa.w - 2 * Math.min(armCm, sofa.w * 0.12)) / sofa.x.seats)) : 64;
+    const sd = sofa?.kind === "sofa" && sofa.d <= 110 ? sofa.d : 92;
+    if (sofa?.kind === "sofa") h = sofa.h;
+    x.arms = arms;
+    x.sd = sd;
+    const n = x.seats ?? 3;
+    if (v.length) return { skip: "corner sofa measured in a way we can't place" };
+    if (kind === "chaise") {
+      [w, d] = [n * per + 2 * armCm, Math.min(175, Math.max(140, sd + 68))];
+    } else {
+      // the long side gets the extra seat; seats shrink a little if the L would be too big to draw
+      const n1 = Math.ceil((n - 1) / 2), n2 = n - 1 - n1;
+      const front = x.open || !n2 ? 0 : armCm;
+      const cw = Math.min(per, (318 - armCm - sd) / n1, n2 ? (238 - sd - front) / n2 : Infinity);
+      if (cw < 50) return { skip: "corner sofa too large" };
+      [w, d] = [armCm + n1 * cw + sd, sd + n2 * cw + front];
+    }
   } else if (kind === "office") {
     // IKEA gives no size for office chairs: a typical one, taller with a headrest, smaller for children
     if (v.length === 3) set(v[0], v[2], v[1]);
