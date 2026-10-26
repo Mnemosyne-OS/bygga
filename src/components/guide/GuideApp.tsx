@@ -34,6 +34,7 @@ import { heardWords, parse, type Intent } from "@/lib/voice/commands";
 import { useMounted } from "@/lib/useMounted";
 import { getUserKey, keyHeaders } from "@/lib/userKey";
 import { decodeSpec } from "@/lib/scan/share";
+import { SCAN_ENABLED } from "@/lib/site";
 
 type Via = "catalog" | "ai" | "guess" | "scan";
 
@@ -127,9 +128,9 @@ export default function GuideApp({ slug, query, step, kind }: { slug: string; qu
         <div className="notfound">
           <Figure pose="think" bubble="?" size={120} />
           <h1>This guide lives on another device</h1>
-          <p className="sub">Scanned guides are saved in the browser that made them. Ask for a share link from the done screen, or scan the manual again.</p>
-          <Link href="/scan" className="btn primary">
-            Scan a manual
+          <p className="sub">Scanned guides are saved in the browser that made them. Ask for a share link from the done screen{SCAN_ENABLED ? ", or scan the manual again" : ""}.</p>
+          <Link href={SCAN_ENABLED ? "/scan" : "/"} className="btn primary">
+            {SCAN_ENABLED ? "Scan a manual" : "Back to search"}
           </Link>
         </div>
       </Shell>
@@ -208,12 +209,14 @@ function NotFound({ query, slug, suggestions, error }: { query: string; slug: st
           ))}
         </div>
       )}
-      <Link href="/scan" className="scan-link nf-scan">
-        <IScan size={17} />
-        <span>
-          Not from IKEA? <u>Scan its paper manual</u>
-        </span>
-      </Link>
+      {SCAN_ENABLED && (
+        <Link href="/scan" className="scan-link nf-scan">
+          <IScan size={17} />
+          <span>
+            Not from IKEA? <u>Scan its paper manual</u>
+          </span>
+        </Link>
+      )}
     </div>
   );
 }

@@ -1,6 +1,6 @@
 import Link from "next/link";
 import Logo from "./Logo";
-import { GITHUB_URL } from "@/lib/site";
+import { GITHUB_URL, SCAN_ENABLED } from "@/lib/site";
 
 const MARKS = [0, 50, 100];
 
@@ -19,7 +19,7 @@ export default function SiteFooter() {
         <nav className="foot-nav" aria-label="Footer">
           <Link href="/browse">All guides</Link>
           <Link href="/builds">Workshop</Link>
-          <Link href="/scan">Scan a manual</Link>
+          {SCAN_ENABLED && <Link href="/scan">Scan a manual</Link>}
           <a href={GITHUB_URL} target="_blank" rel="noreferrer">
             GitHub
           </a>

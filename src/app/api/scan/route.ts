@@ -4,6 +4,7 @@ import { PAGE_PROMPT, PLAN_PROMPT, planInput, repairInput } from "@/lib/scan/pro
 import { SAMPLE_SCAN } from "@/lib/scan/sample";
 import { chatText, extractJson, ipOf, MODELS, rateLimited, TogetherError, userKey, type Msg } from "@/lib/together";
 import type { ProductSpec } from "@/lib/types";
+import { SCAN_ENABLED } from "@/lib/site";
 
 export const maxDuration = 300;
 
@@ -13,6 +14,7 @@ const DEV_MOCK_KEY = "bygga-dev-mock-key-000000";
 type Note = { kind?: string; product?: { name?: string; brand?: string; type?: string }; parts?: unknown[]; hardware?: unknown[]; steps?: { n?: number }[] };
 
 export async function POST(req: Request) {
+  if (!SCAN_ENABLED) return Response.json({ error: "off" }, { status: 404 });
   const key = userKey(req);
   if (!key) return Response.json({ error: "key" }, { status: 401 });
   if (rateLimited(ipOf(req) + ":scan", 6, 10 * 60_000)) return Response.json({ error: "busy" }, { status: 429 });

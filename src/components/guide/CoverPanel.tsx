@@ -7,6 +7,7 @@ import { floorSpace, totals } from "@/lib/plan/contents";
 import { IArrowRight, IBox, IClock, IExternal, IPeople, IPerson, IRuler, ISparkle, IWrench } from "../art/Icons";
 import { Dots } from "./ui";
 import { TOOL_INFO } from "../art/Tools";
+import { SCAN_ENABLED } from "@/lib/site";
 
 export default function CoverPanel({
   plan,
@@ -133,7 +134,7 @@ export default function CoverPanel({
                   ? "Together AI only saw the cover, so this is a typical build for this product. Scan the inside pages for an exact match."
                   : "Together AI read your pages and drew each step. Check every step against the paper manual before you fix anything."}
               </span>
-              {s.custom?.fromCover && (
+              {s.custom?.fromCover && SCAN_ENABLED && (
                 <Link href="/scan" className="callout-link">
                   Scan the pages
                 </Link>

@@ -10,6 +10,7 @@ import { ToolArt } from "@/components/art/Tools";
 import { HwArt } from "@/components/art/Hardware";
 import { IArrowRight, IScan } from "@/components/art/Icons";
 import { PRODUCT_COUNT } from "@/lib/search";
+import { SCAN_ENABLED } from "@/lib/site";
 
 const QUICK = [
   { slug: "kallax-2x2", label: "KALLAX" },
@@ -41,12 +42,14 @@ export default function Home() {
               </Link>
             ))}
           </div>
-          <Link href="/scan" className="scan-link">
-            <IScan size={17} />
-            <span>
-              Not from IKEA? <u>Scan its paper manual</u>
-            </span>
-          </Link>
+          {SCAN_ENABLED && (
+            <Link href="/scan" className="scan-link">
+              <IScan size={17} />
+              <span>
+                Not from IKEA? <u>Scan its paper manual</u>
+              </span>
+            </Link>
+          )}
         </div>
         <HeroStage />
       </section>
