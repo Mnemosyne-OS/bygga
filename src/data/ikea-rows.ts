@@ -177,6 +177,7 @@ DOCKSTA|dining|Table, 103 cm|103|74|103|round=1
 DOMSTEN|stool|Stool|35|45|35
 DUVSKÄR|chair|Chair, in/outdoor|44|88|50||outdoor garden
 DUVSKÄR|dining|Table, outdoor, 76 × 63 cm|76|74|63||outdoor garden
+DYVLINGE|swivel|Swivel easy chair|78|98|80|arms=none
 EKENABBEN|cabinet|Cabinet, 70 × 35 × 51 cm|70|51|35
 EKENABBEN|open|Open shelving unit, 70 × 34 × 154 cm|70|154|34
 EKENÄSET|armchair|Armchair|75|90|80
@@ -444,6 +445,7 @@ IKEA PS 2026|side|Side table, 50 × 40 cm|50|50|40
 IKEA PS 2026|sofa|3-seat sofa-bed|230|85|92|seats=3
 IKEA PS 2026|stool|Stool|35|45|35
 IKEA PS 2026|trolley|Trolley, 89 × 48 cm|89|80|48
+IKEA PS LÖMSK|swivel|Children's swivel armchair|59|70|64|arms=none,seatH=30|kids
 INGOLF|junior|Junior chair|43|91|52||kids children
 INVALLNING|trolley|Trolley, 68 × 39 cm|68|80|39
 ISMANTORP|armchair|Armchair|75|90|80
@@ -634,6 +636,7 @@ LILLESÄTER|sofa|3-seat sofa|230|85|92|seats=3
 LILLESÄTER|sofa|4-seat sofa|290|85|92|seats=4
 LILLESÄTER|sofa|5-seat sofa|350|85|92|seats=5
 LILLESÄTER|sofa|6-seat sofa|398|85|92|seats=6
+LILLESÄTER|swivel|Swivel easy chair|78|98|80
 LINDÅKRA|sofa|2-seat sofa-bed|170|85|92|seats=2
 LINNEBÄCK|armchair|Easy chair|75|90|80
 LINNMON / ADILS|dining|Table, 100 × 45 cm|100|74|45
@@ -889,6 +892,7 @@ NISSAFORS|trolley|Trolley, 50.5 × 19 × 67 cm|51|67|19
 NISSAFORS|trolley|Trolley, 50.5 × 30 × 83 cm|51|83|30
 NORDKISA|desk|Dressing table, 76 × 47 cm|76|74|47
 NORDKISA|nightstand|Bedside table, 40 × 40 cm|40|55|40|rows=1
+NORDKROKEN|swivel|Rocking and swivel armchair|78|98|80|rock=1
 NORDLI|bed|Bed frame with storage, 140 × 200 cm|156|64|209|m=140
 NORDLI|chest|Modular chest of drawers, 40 × 45 cm|40|45|48|rows=3,knobs=none
 NORDLI|chest|Chest of drawers, 40 × 54 cm|40|54|48|rows=4,knobs=none
@@ -1105,6 +1109,7 @@ SALTSJÖBADEN|corner|Corner sofa, 4-seat|237|85|173|seats=4,arms=wide,corner=lef
 SALTSJÖBADEN|sofa|2-seat sofa|170|85|92|seats=2
 SALTSJÖBADEN|sofa|2-seat sofa-bed|170|85|92|seats=2
 SALTSJÖBADEN|sofa|3-seat sofa|230|85|92|seats=3
+SALTSJÖBADEN|swivel|Rocking and swivel armchair|78|98|80|rock=1
 SANDKATT|highchair|Highchair with tray|58|90|62
 SANDSBERG|chair|Chair|44|88|50
 SEGERÖN|chair|Chair with armrests, outdoor|44|88|50|arms=slim|outdoor garden

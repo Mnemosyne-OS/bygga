@@ -80,6 +80,8 @@ const FLAT = new Set<Kind>(["desk", "coffee", "side", "dining", "bar", "console"
 const OFFICE_ARMS = new Set(["MARKUS", "ALEFJÄLL"]);
 /** Office chairs with a tall back and a headrest. */
 const OFFICE_TALL = new Set(["MARKUS"]);
+/** Swivel easy chairs that are a shell with no armrests. */
+const SWIVEL_SHELL = new Set(["DYVLINGE", "IKEA PS LÖMSK"]);
 /** Gateleg tables with drawers in the middle, which we can't draw, and ones with a storage shelf and loose leaves. */
 const GATE_DRAWERS = new Set(["NORDEN"]);
 const GATE_STORAGE = new Set(["VIHALS"]);
@@ -254,6 +256,8 @@ const RULES: Rule[] = [
     return { kind: "cornercab", x };
   }],
   // things that are several products, or only part of one
+  // an armchair that rocks as it swivels is one chair, whatever its name says
+  [/^rocking and swivel armchair$/, () => ({ kind: "swivel", x: { rock: true } })],
   [/\b(and|set of \d|sets?)\b|\+|combination|\bcomb\b|\bchairs\b|armchairs|benches/, () => "set or combination"],
   // office and swivel chairs: a star base on castors, a gas lift, the seat on top
   [/^(office chair( with armrests| with arm\/headrest)?|swivel chair( with armrests)?|gaming chair|children's desk chair)$/, (m, c) => {
@@ -268,6 +272,8 @@ const RULES: Rule[] = [
   [/^highchair with (tray|safety belt)$/, (m) => ({ kind: "highchair", x: m[1] === "tray" ? {} : { shelf: false } })],
   // sun loungers with a backrest that adjusts (their cushions, covers and pads sold alone stay skipped)
   [/^sun lounger$/, () => ({ kind: "lounger" })],
+  // easy chairs in one piece on a swivel base (a shell without armrests in some families)
+  [/^(children's )?swivel (easy chair|armchair)$/, (m, c) => ({ kind: "swivel", x: { ...(SWIVEL_SHELL.has(c.f.name) ? { arms: "none" } : {}), ...(m[1] ? { seatH: 30 } : {}) } })],
   [/swivel|office chair|gaming chair|conference|desk chair|highchair|lounge|reclining|lounger|hammock|massage/, () => "office, swivel or lounge chair"],
   // sofas with a chaise longue at one or both ends, and corner sofas (an L of sections)
   [/^(?=.*\bsofa)(?=.*\b(corner|crnr|chaise))/, (m) => {
@@ -697,6 +703,7 @@ export function classify(f: Fact, hints: Hints): Verdict {
     }
     if (kind === "armchair" && /wing|high-back/.test(t) && guessed.h) h = 104;
     if (kind === "armchair" && kids && guessed.w) [w, h, d] = [55, 68, 58];
+    if (kind === "swivel" && kids && guessed.w) [w, h, d] = [59, 70, 64];
     if (hint && guessed.w && guessed.h && hint.kind === kind && (kind !== "sofa" || hint.x.seats === x.seats)) {
       [w, h, d] = [hint.w, hint.h, hint.d];
     }

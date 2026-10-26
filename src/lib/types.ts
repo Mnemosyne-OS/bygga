@@ -108,7 +108,7 @@ export interface FitParams {
 }
 
 export interface SeatParams {
-  kind: "stool" | "chair" | "bench" | "office" | "highchair" | "lounger";
+  kind: "stool" | "chair" | "bench" | "office" | "highchair" | "lounger" | "swivel";
   seat: "round" | "square";
   seatH: number; // cm
   backH: number; // cm (chair total height)
@@ -116,6 +116,7 @@ export interface SeatParams {
   splay: boolean;
   arms?: boolean; // office chairs and chairs: armrests
   tray?: boolean; // highchairs: false when it comes without a tray
+  rock?: boolean; // swivel easy chairs: it rocks as well
 }
 
 export interface SofaParams {

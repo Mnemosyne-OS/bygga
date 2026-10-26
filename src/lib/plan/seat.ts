@@ -4,6 +4,7 @@ import { clamp, rotate } from "./math";
 import { buildOffice } from "./office";
 import { buildHighchair } from "./highchair";
 import { buildLounger } from "./lounger";
+import { buildSwivel } from "./swivel";
 
 export function defaultsSeat(s: ProductSpec): SeatParams {
   const p = s.seat ?? {};
@@ -23,6 +24,7 @@ export function buildSeat(b: PlanBuilder, s: ProductSpec) {
   if (s.seat?.kind === "office") return buildOffice(b, s);
   if (s.seat?.kind === "highchair") return buildHighchair(b, s);
   if (s.seat?.kind === "lounger") return buildLounger(b, s);
+  if (s.seat?.kind === "swivel") return buildSwivel(b, s);
   const p = defaultsSeat(s);
   if (p.kind === "chair") return chair(b, s, p);
   return stool(b, s, p);
