@@ -10,7 +10,7 @@ import Thumb from "../Thumb";
 import { keyHeaders } from "@/lib/userKey";
 import { IArrowRight, ICamera, ISearch, ISparkle } from "../art/Icons";
 
-const EXAMPLES = ["KALLAX", "MALM 3 drawers", "BILLY bookcase", "LACK side table", "HEMNES chest", "BRIMNES wardrobe"];
+const EXAMPLES = ["KALLAX", "MALM 3 drawers", "802.758.87", "BILLY bookcase", "LACK side table", "HEMNES chest", "IDÅSEN desk"];
 
 export default function Search({ ai, autoFocus }: { ai: boolean; autoFocus?: boolean }) {
   const router = useRouter();

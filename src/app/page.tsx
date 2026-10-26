@@ -33,7 +33,7 @@ export default function Home() {
             <br />
             step by step.
           </h1>
-          <p className="lead">Type the product name from the box. Each step plays in 3D, with the exact parts, screws and tools.</p>
+          <p className="lead">Type the name from the box. Each step plays in 3D, with the exact parts, screws and tools, read out loud if your hands are full.</p>
           <HeroSearch />
           <Resume />
           <div className="quick">
@@ -78,7 +78,7 @@ export default function Home() {
               </span>
             </div>
             <h3>Type the name</h3>
-            <p>It&apos;s the big word on the box label, like KALLAX. You can also snap a photo of it.</p>
+            <p>It&apos;s the big word on the box label, like KALLAX, or the number under it, like 802.758.87. Or snap a photo of it.</p>
           </li>
           <li>
             <span className="how-n">2</span>
