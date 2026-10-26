@@ -286,6 +286,16 @@ const RULES: Rule[] = [
   [/^(drawer unit|drawer unit on castors|chest of drawers|dresser)$/, () => ({ kind: "chest" })],
   [/^(bedside table|nightstand|bedside table with (\d) drawers?)$/, (m) => ({ kind: "nightstand", x: m[2] ? { rows: Number(m[2]) } : {} })],
   [/^(wardrobe frame|open wardrobe|open clothes hanging unit)$/, () => ({ kind: "wardrobe", x: { doors: 0 } })],
+  // PLATSA wardrobes are a row of identical frames: one or two doors on each, as many frames as that takes
+  [/^wardrobe w(?:ith)? (\d+) doors$/, (m, c) => {
+    const doors = Number(m[1]), w = c.sz.n[0] ?? 0;
+    if (c.f.name === "PLATSA" && c.f.spr && doors > 2) {
+      const per = doors % 2 === 0 && w / (doors / 2) >= 60 ? 2 : 1;
+      return doors / per > 4 ? "row of more than 4 wardrobe frames" : { kind: "wardrobe", x: { doors: per as 1 | 2, n: doors / per } };
+    }
+    if (/ w /.test(m[0])) return "not something we draw yet";
+    return doors > 3 ? "more than 3 doors" : { kind: "wardrobe", x: { doors: Math.min(2, doors) as 1 | 2 } };
+  }],
   [/^(wardrobe|hinged wardrobe|wardrobe with (door|(\d) doors))$/, (m) => (n(m[3], 2) > 3 ? "more than 3 doors" : { kind: "wardrobe", x: m[2] ? { doors: m[2] === "door" ? 1 : (Math.min(2, Number(m[3])) as 1 | 2) } : {} })],
   [/^(wall(-mounted)? cabinet|wall cabinet frame|top cabinet|mirror cabinet( with doors?)?|wall cabinet with (\d )?(glass )?doors?|wall cabinet with shelves(\/(\d )?(glass )?doors?)?|wall cab(inet)? w shelves\/(\d )?glass (drs?|doors?)|wall cabinet w shelves\/glass door)$/, (m) => withDoors("wallcab", m[0])],
   [/^(base cabinet frame|base cabinet with shelves|base fr w shelves|base cabinet with (\d )?doors?|base cabinet with shelves\/(\d )?doors?|high cabinet frame|high cabinet with shelves(\/(\d )?doors?)?|high cabinet( with (\d )?doors?)?)$/, (m, c) =>
@@ -578,7 +588,8 @@ export function classify(f: Fact, hints: Hints): Verdict {
       for (const k of Object.keys(x) as (keyof X)[]) if (x[k] === undefined) delete x[k];
       return finish("cabrow");
     }
-    const unit = ROW_UNITS[family];
+    // the rule may already know how many frames there are (PLATSA)
+    const unit = x.n ? w / x.n : ROW_UNITS[family];
     const n = unit ? Math.round(w / unit) : 0;
     if (!unit || n < 2 || n > 4 || n * unit !== w || !["bookcase", "cabinet", "tv", "wardrobe", "wallcab"].includes(kind)) return { skip: several };
     x.n = n;

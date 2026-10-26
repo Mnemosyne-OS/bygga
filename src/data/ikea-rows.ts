@@ -927,6 +927,15 @@ PLATSA|cabinet|Frame, 60 × 55 × 60 cm|60|60|55|doors=0
 PLATSA|cabinet|Frame, 60 × 55 × 120 cm|60|120|55|doors=0
 PLATSA|cabinet|Frame, 60 × 55 × 180 cm|60|180|55|doors=0
 PLATSA|cabinet|Frame, 80 × 40 × 180 cm|80|180|40|doors=0
+PLATSA|cabrow|Wardrobe with 3 doors, 180 × 57 × 133 cm|180|133|57|doors=1,n=3,of=wardrobe
+PLATSA|cabrow|Wardrobe with 3 doors, 180 × 57 × 181 cm|180|181|57|doors=1,n=3,of=wardrobe
+PLATSA|cabrow|Wardrobe with 3 doors, 180 × 42 × 191 cm|180|191|42|doors=1,n=3,of=wardrobe
+PLATSA|cabrow|Wardrobe with 3 doors, 180 × 57 × 191 cm|180|191|57|doors=1,n=3,of=wardrobe
+PLATSA|cabrow|Wardrobe w 6 doors, 180 × 57 × 241 cm|180|241|57|doors=2,n=3,of=wardrobe
+PLATSA|cabrow|Wardrobe with 4 doors, 240 × 57 × 191 cm|240|191|57|doors=2,n=2,of=wardrobe
+PLATSA|cabrow|Wardrobe w 6 doors, 240 × 57 × 221 cm|240|221|57|doors=2,n=3,of=wardrobe
+PLATSA|cabrow|Wardrobe w 6 doors, 240 × 57 × 231 cm|240|231|57|doors=2,n=3,of=wardrobe
+PLATSA|cabrow|Wardrobe w 6 doors, 300 × 42 × 241 cm|300|241|42|doors=2,n=3,of=wardrobe
 PLATSA|nightstand|Chest of 2 drawers, 60 × 57 × 53 cm|60|53|57|rows=2
 PLATSA|nightstand|Bedside table, 60 × 42 × 83 cm|60|83|42|rows=2
 PLATSA|open|Open shelving unit, 60 × 40 × 40 cm|60|40|40
