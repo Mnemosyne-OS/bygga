@@ -1,6 +1,6 @@
 import { connection } from "next/server";
 import { hasKey, ipOf, rateLimited } from "@/lib/together";
-import { speak } from "@/lib/voice/tts";
+import { forTTS, speak } from "@/lib/voice/tts";
 
 /**
  * Records a line live in the same voice as the pre-recorded clips, for text
@@ -17,7 +17,7 @@ export async function GET(req: Request) {
   if (!text || text.length > 400) return Response.json({ error: "bad text" }, { status: 400 });
   if (rateLimited(ipOf(req) + ":voice", 90)) return Response.json({ error: "slow down" }, { status: 429 });
   try {
-    const audio = await speak(text, process.env.TOGETHER_API_KEY!.trim());
+    const audio = await speak(forTTS(text), process.env.TOGETHER_API_KEY!.trim());
     return new Response(audio, {
       headers: { "Content-Type": "audio/mpeg", "Cache-Control": "public, max-age=31536000, immutable" },
     });

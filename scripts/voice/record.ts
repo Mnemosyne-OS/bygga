@@ -22,7 +22,7 @@ import { specForKind } from "@/lib/search";
 import { SAMPLE_SCAN } from "@/lib/scan/sample";
 import type { Plan } from "@/lib/types";
 import { LINES, VOICE_DIR, builtLine, clipId, numWords, stepLines, whereLine } from "@/lib/voice/script";
-import { TTS, speak } from "@/lib/voice/tts";
+import { TTS, forTTS, speak } from "@/lib/voice/tts";
 
 const ROOT = path.resolve(import.meta.dirname, "../..");
 const OUT = path.join(ROOT, "public", VOICE_DIR);
@@ -68,7 +68,7 @@ const env = (k: string) => {
 };
 
 async function render(text: string): Promise<Buffer> {
-  return Buffer.from(await speak(DIRECTION + text, env("TOGETHER_API_KEY")));
+  return Buffer.from(await speak(DIRECTION + forTTS(text), env("TOGETHER_API_KEY")));
 }
 
 /** Trim silence, fade the edges, match loudness (two passes), mono 64 kbps mp3. */
