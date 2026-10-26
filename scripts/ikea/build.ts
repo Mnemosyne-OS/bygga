@@ -128,14 +128,25 @@ function namesIndex(facts: Fact[]) {
       add(plain(words[0]).toUpperCase(), type, 0.5);
     }
   }
-  const lines = [...fam.values()]
-    .sort((a, b) => fold(a.name).localeCompare(fold(b.name)))
-    .map((e) => {
-      // the main type, and a second one when the family is about as often something else
-      const [first, second] = [...e.types.entries()].sort((a, b) => b[1] - a[1]);
-      const top = [first, second && second[1] >= 2 && second[1] * 2 >= first[1] ? second : undefined].filter((t) => t !== undefined).map((t) => t[0]);
-      return top.length ? `${e.name}|${top.join(";")}` : e.name;
-    });
+  const out = [...fam.values()].map((e) => {
+    // the main type, and a second one when the family is about as often something else
+    const [first, second] = [...e.types.entries()].sort((a, b) => b[1] - a[1]);
+    const top = [first, second && second[1] >= 2 && second[1] * 2 >= first[1] ? second : undefined].filter((t) => t !== undefined).map((t) => t[0]);
+    return { name: e.name, line: top.length ? `${e.name}|${top.join(";")}` : e.name };
+  });
+  // without the US sitemaps in the cache, keep the US-only names the last build found
+  const known = path.join(DATA, "ikea-names.ts");
+  if (!files.length && existsSync(known)) {
+    const text = readFileSync(known, "utf8");
+    const body = text.slice(text.indexOf("`") + 1, text.lastIndexOf("`"));
+    for (const line of body.split("\n")) {
+      const name = line.split("|")[0];
+      if (!name || fam.has(fold(name))) continue;
+      fam.set(fold(name), { name, types: new Map() });
+      out.push({ name, line });
+    }
+  }
+  const lines = out.sort((a, b) => fold(a.name).localeCompare(fold(b.name))).map((e) => e.line);
   return { lines, keys: [...fam.keys()], gb: gb.size, all: fam.size };
 }
 
