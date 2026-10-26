@@ -365,7 +365,9 @@ export const KIND_LABELS: { kind: Kind; label: string }[] = [
   { kind: "coffee", label: "Coffee table" },
   { kind: "bed", label: "Bed frame" },
   { kind: "sofa", label: "Sofa" },
+  { kind: "corner", label: "Corner sofa" },
   { kind: "chair", label: "Chair" },
+  { kind: "office", label: "Office chair" },
   { kind: "stool", label: "Stool" },
   { kind: "bench", label: "Bench" },
 ];
@@ -376,5 +378,5 @@ export const KIND_DEFAULT_SIZE: Record<Kind, [number, number, number]> = {
   sideboard: [140, 85, 45], tv: [150, 50, 42], shoe: [60, 100, 28], chair: [44, 88, 50], stool: [35, 45, 35], bench: [100, 45, 38],
   sofa: [210, 85, 92], armchair: [75, 90, 80], wallshelf: [60, 60, 22], wallcab: [60, 60, 35], kitchen: [60, 80, 60], trolley: [50, 80, 40],
   bar: [120, 105, 60], console: [100, 79, 35], kidstable: [77, 48, 55], kidschair: [34, 60, 34],
-  office: [64, 105, 64], chaise: [250, 85, 160], corner: [250, 85, 220], cot: [130, 84, 68], bunk: [211, 160, 100], loft: [211, 195, 100], dropleaf: [134, 75, 80],
+  office: [64, 105, 64], chaise: [226, 85, 160], corner: [233, 85, 171], cot: [130, 84, 68], bunk: [211, 160, 100], loft: [211, 195, 100], dropleaf: [134, 75, 80],
 };
