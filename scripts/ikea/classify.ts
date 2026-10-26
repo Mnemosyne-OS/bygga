@@ -318,6 +318,7 @@ const RULES: Rule[] = [
   // seating
   [/^(chair|dining chair|folding chair|chair with armrests)$/, (m, c) => (/arm/.test(m[0]) && !c.kids ? { kind: "chair", x: { arms: "slim" } } : { kind: c.kids ? "kidschair" : "chair" })],
   [/^children's chair$/, () => ({ kind: "kidschair" })],
+  [/^junior chair$/, () => ({ kind: "junior" })],
   [/^(bar stool with backrest|bar chair)$/, () => ({ kind: "chair", x: { seatH: 63 } })],
   [/^(stool|bar stool|step stool|folding stool|children's stool|stool, \d+ steps?)$/, () => ({ kind: "stool" })],
   [/^(bench|bench with shoe storage)$/, () => ({ kind: "bench" })],
