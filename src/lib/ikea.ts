@@ -68,7 +68,7 @@ export function decodeRows(text: string): IkeaRow[] {
 
 const guard = new Set(IKEA_GUARD.split(" "));
 
-/** A real IKEA name we can't draw, which search must not read as a typo of one we can (MARKUS is not MARIUS). */
+/** A real IKEA name we can't draw, which search must not read as a typo of one we can (FRÖSÖN is not FRÖSET). */
 export function isGuardedName(word: string) {
   return guard.has(fold(word).replace(/\s+/g, ""));
 }

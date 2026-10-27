@@ -4,7 +4,7 @@
  *   npm run dev, then: node scripts/og/render.mjs [--base http://localhost:3000] [--only kallax-2x2] [--missing]
  *
  * Needs Playwright from any project that has it: PLAYWRIGHT_FROM=/path/to/project.
- * Writes public/og/{slug}.png for the hand-picked catalog and public/og/kind-{kind}.png
+ * Writes public/og/{slug}.png for every catalog product and public/og/kind-{kind}.png
  * for every furniture kind (the fallback for everything else).
  */
 import { createRequire } from "node:module";

@@ -30,6 +30,8 @@ const SECURITY = [
 ];
 
 const nextConfig: NextConfig = {
+  // AGENTS.md is ours (it keeps the same advice, without the dashes the managed block brings)
+  agentRules: false,
   cacheComponents: true,
   partialPrefetching: true,
   // the share cards read their fonts and drawings from disk
