@@ -4,7 +4,8 @@
  *   npm run ikea:fetch           fetch what is not cached yet, then write facts.json
  *   npm run ikea:fetch -- --us   also read the US product sitemaps (extra names for the names index)
  *
- * Every raw response is cached under scripts/ikea/cache/ (git ignored), so a re-run never refetches.
+ * Every raw response is cached under scripts/ikea/cache/, so a re-run never refetches. Both the cache and
+ * facts.json are git ignored: IKEA's listings are not ours to republish, only the catalog rows built from them ship.
  * Requests go one at a time, at most about two a second. Only facts are kept in facts.json:
  * name, type, size text, article numbers and category keys. No images, prices, descriptions or PDFs.
  */
