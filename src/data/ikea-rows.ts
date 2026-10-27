@@ -16,23 +16,42 @@ ALEX|open|Storage unit, 36 × 70 cm|36|70|35
 ÄLGANÄS|shoerack|Shoe rack, 76 × 24 × 59 cm|76|59|24
 ÅLHULT|bench|Bench, 103 × 36 cm|103|45|36
 ÅLHULT|chair|Chair|44|88|50
+ÅLHULT|dining|Table, 80 × 74 cm|80|74|74|us=1
 ÅLHULT|dining|Extendable table, 120/170 × 80 cm|120|74|80
 ÅLHULT|dining|Table, 120 × 80 cm|120|74|80
 ÅLHULT|dining|Extendable table, 170/220 × 80 cm|170|74|80
+ALSEDA|stool|Stool|35|45|35|us=1
 ÄLSKVÄRD|changing|Changing table/chest of drawers, 94 × 77 × 106 cm|94|106|77|rows=3|kids children
+ÄLSKVÄRD|cot|Crib, 70 × 132 cm|142|82|78|m=70,l=132,us=1
 ÄLSKVÄRD|cot|Cot, 70 × 140 cm|150|86|78|m=70,l=140
 ÄLVDALEN|chaise|3-seat sofa-bed with chaise longue|226|85|160|seats=3,arms=wide,chaise=right,sd=92
 ÄLVDALEN|sofa|3-seat sofa-bed|230|85|92|seats=3
+ÄLVSTA|chair|Chair|44|88|50|us=1
 ÄMMARYD|coffee|Coffee table, 98 × 59 cm|98|45|59
 ÄMMARYD|side|Side table, 59 × 40 cm|59|50|40
+ANFALLARE / ADILS|desk|Desk, 140 × 65 cm|140|74|65|us=1
+ANFALLARE / ALEX|desk|Desk, 140 × 65 cm|140|74|65|us=1
+ANFALLARE / HILVER|desk|Desk, 140 × 65 cm|140|74|65|us=1
+ANFALLARE / KRILLE|desk|Desk, 140 × 65 cm|140|74|65|us=1
+ANFALLARE / OLOV|desk|Desk, 140 × 65 cm|140|74|65|us=1
 ÄNGSJÖN|cabinet|High cabinet with door, 40 × 35 × 195 cm|40|195|35|doors=1
+ÄNGSJÖN|cabinet|High cabinet with doors, 45.5 × 38 × 195.5 cm|46|196|38|us=1
 ÄNGSJÖN|wallcab|Wall cabinet with door, 40 × 15 × 95 cm|40|95|15|doors=1
+ÄNGSJÖN|wallcab|Wall cabinet with door, 45.5 × 15 × 94 cm|46|94|15|doors=1,us=1
 ÄNGSJÖN|washstand|Wash-stand with drawers, 40 × 48 × 63 cm|40|63|48|z=r2,hung=1
+ÄNGSJÖN|washstand|Bathroom vanity with drawers, 45.5 × 53.5 × 64 cm|46|64|54|z=r2,hung=1,us=1
 ÄNGSJÖN|washstand|Wash-stand with drawer, 60 × 48 × 33 cm|60|33|48|z=r1,hung=1
+ÄNGSJÖN|washstand|Bathroom vanity with drawer, 76 × 53.5 × 33.5 cm|76|34|54|z=r1,hung=1,us=1
 ÄNGSJÖN / BACKSJÖN|washstand|Wash-stnd w drawer/wash-basin, 60 × 48 × 39 cm|60|39|48|z=r1,basin=6,hung=1
 ÄNGSJÖN / BACKSJÖN|washstand|Wash-stnd w drawers/wash-basin, 60 × 48 × 69 cm|60|69|48|z=r2,basin=6,hung=1
+ÄNGSJÖN / BACKSJÖN|washstand|Wash-stnd w drawer/wash-basin, 61.5 × 53.5 × 39.5 cm|62|40|54|z=r1,basin=6,hung=1,us=1||angsjon-backsjon-wash-stnd-w-drawer-wash-basin-6-2
 ÄNGSJÖN / BACKSJÖN|washstand|Wash-stand/wash-basin, 102 × 49 × 71 cm|102|71|49|z=r2,basin=8,hung=1
 ÄNGSJÖN / BACKSJÖN|washstand|Wash-stnd w drawers/wash-basin, 102 × 49 × 71 cm|102|71|49|z=r2,basin=8,hung=1||angsjon-backsjon-wash-stnd-w-drawers-wash-basin-2
+ÄNGSJÖN / BACKSJÖN|washstand|Wash-stand/wash-basin, 122 × 53.5 × 70 cm|122|70|54|z=r2,basin=7,hung=1,us=1
+ÄNGSJÖN / BACKSJÖN|washstand|Wash-stand/wash-basin, 124.5 × 54.5 × 41.5 cm|125|42|55|z=r2,basin=6,hung=1,us=1
+ÄNGSJÖN / BACKSJÖN|washstand|Wash-stand/wash-basin, 124.5 × 54.5 × 72 cm|125|72|55|z=r2,basin=9,hung=1,us=1||angsjon-backsjon-wash-stand-wash-basin-124-5-x-5-2
+ÄNGSJÖN / BACKSJÖN|washstand|Wash-stand/wash-basin, 155 × 54.5 × 72 cm|155|72|55|z=r2,basin=9,hung=1,us=1
+ÄNGSJÖN / BACKSJÖN|washstand|Wash-stand/wash-basin, 170 × 54.5 × 41.5 cm|170|42|55|z=r2,basin=6,hung=1,us=1
 ÄNGSJÖN / ORRSJÖN|washstand|Wash-stnd w drawers/wash-basin, 62 × 49 × 69 cm|62|69|49|z=r2,basin=6,hung=1
 ANKARUDDEN|chest|Chest of 4 drawers, 80 × 48 × 107 cm|80|107|48|rows=4
 ANKARUDDEN|chest|Chest of 6 drawers, 139 × 48 × 87 cm|139|87|48|rows=3,cols=2
@@ -44,11 +63,14 @@ ANTILOP|highchair|Highchair with tray|58|90|62
 ÄPPLARYD|section|Chaise longue section|64|83|160|seats=1
 ÄPPLARYD|sofa|2-seat sofa|170|85|92|seats=2
 ÄPPLARYD|sofa|3-seat sofa|230|85|92|seats=3
+ÅRSUNDA|armchair|Armchair|75|90|80|us=1
 ASKHOLMEN|chair|Chair with armrests, outdoor|44|88|50|arms=slim|outdoor garden
 ASKHOLMEN|chair|Chair, outdoor|44|88|50||outdoor garden
 ASKHOLMEN|dining|Table, outdoor, 60 × 62 cm|60|74|62||outdoor garden
 ASKHOLMEN|dining|Table, outdoor, 143 × 75 cm|143|74|75||outdoor garden
+ÄSPERÖD|console|Console table, 140 × 40 × 65 cm|140|65|40|us=1
 ÄSPERÖD|side|Side table, 45 cm|45|50|45|round=1
+ÅTERLÖGA|pouffe|Pouf|45|42|45|us=1
 BAGGBODA|side|Side table, 71 × 50 cm|71|50|50
 BAGGEBO|bookcase|Bookcase, 50 × 30 × 80 cm|50|80|30
 BAGGEBO|cabinet|Glass-door cabinet, 34 × 30 × 116 cm|34|116|30
@@ -56,9 +78,14 @@ BAGGEBO|cabinet|Cabinet with door, 50 × 30 × 80 cm|50|80|30|doors=1
 BAGGEBO|open|Shelving unit, 60 × 30 × 80 cm|60|80|30
 BAGGEBO|open|Shelving unit, 60 × 25 × 116 cm|60|116|25
 BAGGEBO|sideboard|Sideboard, 78 × 92 cm|78|92|45
+BALKARP|sofa|Sleeper sofa|230|85|92|seats=3,us=1
+BALTSAR|chair|Chair|44|88|50|us=1
+BALTSAR|office|Swivel chair|60|105|64|arms=none,us=1
 BÅRSLÖV|chaise|3-seat sofa-bed with chaise longue|226|85|160|seats=3,arms=wide,chaise=right,sd=92
 BÅRSLÖV|sofa|3-seat sofa-bed|230|85|92|seats=3
 BÄSTBOLL|office|Gaming chair|64|128|64|arms=slim,seatH=50
+BÅTSKÄR|bar|Bar table, 120 × 40 cm|120|105|40|us=1|outdoor garden
+BÅTSKÄR|kitchen|Open kitchen unit, 60 × 60 cm|60|90|60|doors=0,shelves=1,cat=Outdoor kitchen unit,us=1|outdoor garden
 BÅTSKÄR|kitchen|Closed kitchen unit, 120 × 60 cm|120|90|60|doors=2,cat=Outdoor kitchen unit|outdoor garden
 BÅTSKÄR|kitchen|Add-on unit with shelves, 120 × 70 cm|120|90|70|doors=0,shelves=1,cat=Outdoor kitchen unit|outdoor garden
 BEKANT|cabinet|Storage unit on castors, 41 × 101 cm|41|101|40|doors=0,shelves=2,cat=Storage unit on castors,cast=1
@@ -79,6 +106,7 @@ BESTÅ|open|Shelving unit, 60 × 40 × 193 cm|60|193|40
 BESTÅ|tv|TV bench, 120 × 40 × 48 cm|120|48|40|knobs=none,doors=0
 BESTÅ|tv|TV bench with doors, 120 × 42 × 48 cm|120|48|42|knobs=none
 BESTÅ|tv|TV bench with drawers, 120 × 42 × 48 cm|120|48|42|rows=1,knobs=none,cat=TV bench with drawers
+BESTÅ|tv|TV unit, 120 × 40 × 64 cm|120|64|40|knobs=none,doors=0,us=1
 BESTÅ|tv|TV bench with doors, 120 × 42 × 74 cm|120|74|42|knobs=none
 BESTÅ|tv|TV bench, 180 × 40 × 64 cm|180|64|40|knobs=none,doors=0
 BESTÅ BURS|tv|TV bench, 180 × 41 × 49 cm|180|49|41
@@ -92,6 +120,8 @@ BILLY|bookcase|Bookcase, 120 × 28 × 237 cm|120|237|28
 BILLY|bookrow|Bookcase, 160 × 28 × 202 cm|160|202|28|n=2,of=bookcase
 BILLY|bookrow|Bookcase, 200 × 28 × 237 cm|200|237|28|of=bookcase,u=80+80+40
 BILLY|bookrow|Bookcase, 240 × 28 × 106 cm|240|106|28|n=3,of=bookcase
+BILLY|cabinet|Bookcase with glass doors, 80 × 30 × 202 cm|80|202|30|us=1
+BILLY|cabinet|Bookcase w hght ext ut/pnl/glss drs, 80 × 30 × 237 cm|80|237|30|us=1
 BILLY|extension|Height extension unit, 40 × 28 × 35 cm|40|35|28
 BILLY|extension|Height extension unit, 80 × 28 × 35 cm|80|35|28
 BILLY|mixed|Bookcase with drawer, 80 × 30 × 106 cm|80|106|30|rows=1,doors=0,shelves=1
@@ -104,6 +134,7 @@ BILLY / HÖGBO|cabinet|Bookcase with glass doors, 80 × 30 × 202 cm|80|202|30
 BILLY / OXBERG|bookcase|Bookcase, 80 × 30 × 202 cm|80|202|30
 BILLY / OXBERG|bookcase|Bookcase, 80 × 30 × 237 cm|80|237|30
 BILLY / OXBERG|bookrow|Bookcase, 120 × 30 × 237 cm|120|237|30|of=bookcase,u=80+40
+BILLY / OXBERG|bookrow|Bookcase, 160 × 30 × 202 cm|160|202|30|n=2,of=bookcase,us=1
 BILLY / OXBERG|bookrow|Bookcase, 200 × 30 × 237 cm|200|237|30|of=bookcase,u=80+80+40
 BILLY / OXBERG|cabinet|Bookcase with door, 40 × 30 × 106 cm|40|106|30|doors=1
 BILLY / OXBERG|cabinet|Bookcase with doors, 40 × 30 × 202 cm|40|202|30
@@ -126,6 +157,7 @@ BILLY / OXBERG|cabrow|Bookcase with glass-doors, 120 × 30 × 202 cm|120|202|30|
 BILLY / OXBERG|cabrow|Bookcase with panel/glass doors, 120 × 30 × 202 cm|120|202|30|of=cabinet,u=80+40
 BILLY / OXBERG|cabrow|Bookcase with panel/glass doors, 160 × 30 × 202 cm|160|202|30|n=2,of=cabinet
 BILLY / OXBERG|cabrow|Bookcase w height extension ut/drs, 160 × 30 × 237 cm|160|237|30|n=2,of=cabinet
+BILLY / OXBERG|cabrow|Bookcase with doors, 200 × 30 × 106 cm|200|106|30|of=cabinet,u=80+80+40,us=1
 BINGSTA|armchair|Armchair|75|90|80
 BJÖRKÅSEN|riser|Laptop stand|40|15|26
 BJÖRKBERGET|office|Swivel chair|60|105|64|arms=none
@@ -140,14 +172,19 @@ BLÄSTÅSEN|nightstand|Bedside table, 50 × 37 × 76 cm|50|76|37|rows=2
 BLECKBERGET|office|Swivel chair|60|105|64|arms=none
 BOASTAD|cabinet|High cabinet, 41 × 32 × 185 cm|41|185|32
 BOASTAD|sideboard|Sideboard, 161 × 52 × 75 cm|161|75|52
+BOASTAD|tv|TV unit, 121.5 × 42 × 45 cm|122|45|42|us=1
+BOASTAD|tv|TV unit, 181.5 × 42 × 45 cm|182|45|42|us=1
+BOASTAD|wallshelf|Wall shelf, 121.5 × 32 × 32 cm|122|32|32|us=1
 BOASTAD|wallshelf|Wall shelf, 181 × 32 × 32 cm|181|32|32
 BOAXEL|open|Shelving unit, 62 × 40 × 201 cm|62|201|40
 BOLLPOJKE|desk|Desk, 90 × 55 cm|90|74|55
+BOLLSIDAN|desk|Desk sit/stand, 120 × 70 cm|120|74|70|us=1
 BOLLSIDAN|riser|Laptop stand, 68 × 36 cm|68|15|36
 BOLMEN|stool|Step stool|35|50|35
 BONDHOLMEN|armchair|Armchair, outdoor|75|90|80||outdoor garden
 BONDHOLMEN|backbench|Bench with backrest, outdoor|120|86|60||outdoor garden
 BONDHOLMEN|chair|Chair with armrests, outdoor|44|88|50|arms=slim|outdoor garden
+BONDHOLMEN|dining|Table, outdoor, 108 cm|108|74|108|round=1,us=1|outdoor garden
 BONDHOLMEN|dining|Table, outdoor, 235 × 90 cm|235|74|90||outdoor garden
 BONDHOLMEN|lounge|Reclining chair, outdoor|66|102|84||outdoor garden
 BONDHOLMEN|sofa|2-seat sofa, outdoor, 139 × 81 × 73 cm|139|73|81|seats=2|outdoor garden
@@ -171,6 +208,7 @@ BROR|bookrow|Shelving unit, 234 × 55 × 190 cm|234|190|55|of=open,u=85+85+65
 BROR|bookrow|Shelving unit, 254 × 40 × 190 cm|254|190|40|of=open,u=85+85+85
 BROR|bookrow|Shelving unit, 254 × 55 × 190 cm|254|190|55|of=open,u=85+85+85
 BROR|cabinet|Cabinet with 2 doors, 76 × 40 × 66 cm|76|66|40
+BROR|cabinet|Shelving unit with cabinet, 85 × 40 × 110 cm|85|110|40|cat=Shelving unit with cabinet,low=72,us=1
 BROR|cabinet|Shelving unit with cabinet, 85 × 40 × 190 cm|85|190|40|cat=Shelving unit with cabinet,low=72
 BROR|cabinet|Cabinet with doors, 85 × 40 × 191 cm|85|191|40
 BROR|cabrow|Shelving unit with cabinets, 170 × 40 × 190 cm|170|190|40|of=cabinet,u=85+85,cat=Shelving unit with cabinet,low=72
@@ -190,9 +228,13 @@ BURVIK|side|Side table, 38 cm|38|50|38|round=1
 BUSKBO|armchair|Armchair|75|90|80
 BUSLÄTT|chair|Chair|44|88|50
 BUSUNGE|bed|Extendable bed, 80 × 200 cm|96|100|209|m=80
+BUSUNGE|bed|Extendable bed, 97 × 190 cm|113|100|199|m=97,l=190,us=1
 BYÅS|tv|TV bench, 160 × 42 × 45 cm|160|45|42
 BYASJÖN|washstand|Wash-basin base cabinet, 66 × 37 × 59 cm|66|59|37|z=d2,hung=1
+CENTERHALV|office|Office chair|60|105|64|arms=none,us=1
+DAGNAR|office|Child's desk chair|52|86|52|arms=none,seatH=42,us=1|kids
 DANDERYD|dining|Dining table, 130 × 80 cm|130|74|80
+DANDERYD|dining|Dining table, 180 × 90 cm|180|74|90|us=1
 DANDERYD|dropleaf|Drop-leaf table, 74/134 × 80 cm|134|75|80|leaves=2,leaf=30
 DOCKSTA|dining|Table, 103 cm|103|74|103|round=1
 DOMSTEN|stool|Stool|35|45|35
@@ -228,17 +270,25 @@ EKTORP|chaise|3-seat sofa with chaise longue|218|88|156|seats=3,arms=wide,chaise
 EKTORP|corner|Corner sofa, 4-seat|228|88|166|seats=4,arms=wide,corner=left,sd=88
 EKTORP|sofa|2-seat sofa|170|85|92|seats=2
 ELDBERGET / MALSKÄR|office|Swivel chair|60|105|64|arms=none
+EMMISLÖV|pouffe|Pouf|45|42|45|us=1
 ENHET|appliance|High cabinet for fridge/freezer, 60 × 60 × 210 cm|60|210|60|use=fridge,z=g+o@40
 ENHET|cabinet|High cb w 4 shelves, 30 × 30 × 180 cm|30|180|30|doors=0,shelves=4
 ENHET|cabinet|High cabinet with door, 30 × 32 × 180 cm|30|180|32|doors=1
+ENHET|kitchen|High fr w shelves, 30.5 × 30.5 × 183 cm|31|183|31|doors=0,us=1
 ENHET|kitchen|Base cb w 3 drawers, 40 × 60 × 75 cm|40|75|60|z=r3
 ENHET|kitchen|Base fr w shelves, 40 × 60 × 75 cm|40|75|60|doors=0
+ENHET|kitchen|Base fr w shelves, 45.5 × 45.5 × 61 cm|46|61|46|doors=0,us=1
+ENHET|kitchen|Base fr w shelves, 45.5 × 61 × 76 cm|46|76|61|doors=0,us=1
 ENHET|kitchen|Base fr w shelves, 60 × 40 × 60 cm|60|60|40|doors=0
 ENHET|kitchen|High fr w shelves, 60 × 30 × 180 cm|60|180|30|doors=0
+ENHET|kitchen|High fr w shelves, 61 × 30.5 × 203 cm|61|203|31|doors=0,us=1
 ENHET|kitchen|Base cb w shelf, 80 × 60 × 75 cm|80|75|60|doors=0,shelves=1
 ENHET|sinkcab|Base cb f sink, 60 × 60 × 75 cm|60|75|60|z=o
 ENHET|sinkcab|Sink cabinet with door, 60 × 62 × 75 cm|60|75|62|z=d1
 ENHET|wallcab|Mirror cabinet with door, 40 × 17 × 75 cm|40|75|17|doors=1
+ENHET|wallcab|Wall cb w 2 shelves, 45.5 × 15 × 76 cm|46|76|15|doors=0,shelves=2,us=1
+ENHET|wallcab|Mirror cabinet with door, 45.5 × 17 × 76 cm|46|76|17|doors=1,us=1
+ENHET|wallcab|Wall cabinet with door, 45.5 × 32 × 76 cm|46|76|32|doors=1,us=1
 ENHET|wallcab|Mirror cabinet with doors, 60 × 17 × 75 cm|60|75|17
 ENHET|wallcab|Mirror cabinet, 60 × 17 × 75 cm|60|75|17
 ENHET|wallcab|Wall cabinet with door, 60 × 32 × 75 cm|60|75|32|doors=1
@@ -246,17 +296,24 @@ ENHET|wallcab|Wall cb w 2 shelves, 80 × 30 × 75 cm|80|75|30|doors=0,shelves=2
 ENHET|wallshelf|Wall frame with shelves, 40 × 15 × 75 cm|40|75|15
 ENHET|wallshelf|Wall shelf frame, 60 × 45 × 40 cm|60|40|45
 ENHET|washstand|Wash-stand with door, 40 × 42 × 60 cm|40|60|42|z=d1,hung=1
+ENHET|washstand|Wash-stand with door, 45.5 × 47.5 × 61 cm|46|61|48|z=d1,hung=1,us=1
 ENHET|washstand|Base cb f washbasin w 2 drawers, 60 × 40 × 60 cm|60|60|40|z=r2,hung=1
 ENHET|washstand|Base frame for washbasin, 60 × 40 × 60 cm|60|60|40|z=o,hung=1
 ENHET|washstand|Wash-stand with doors, 60 × 42 × 60 cm|60|60|42|z=d2,hung=1
 ENHET|washstand|Wash-stand with drawers, 60 × 42 × 60 cm|60|60|42|z=r2,hung=1
+ENHET|washstand|Bathroom vanity with 2 drawers, 61 × 47.5 × 61 cm|61|61|48|z=r2,hung=1,us=1
+ENHET|washstand|Bathroom vanity with doors, 61 × 47.5 × 61 cm|61|61|48|z=d2,hung=1,us=1
 ENHET / TVÄLLEN|washstand|Wash-stnd w door/wash-basin, 44 × 43 × 65 cm|44|65|43|z=d1,basin=5,hung=1
 ENHET / TVÄLLEN|washstand|Wash-stnd w doors/wash-basin, 64 × 33 × 65 cm|64|65|33|z=d2,basin=5,hung=1
 ENHET / TVÄLLEN|washstand|Open wash-stand with 2 shelves, 64 × 43 × 65 cm|64|65|43|z=o2,basin=5,hung=1
 ENHET / TVÄLLEN|washstand|Wash-stnd w drawers/wash-basin, 64 × 43 × 65 cm|64|65|43|z=r2,basin=5,hung=1
 ENKROKEN|desk|Desk, 85 × 56 × 75 cm|85|75|56
 ENSHOLM|chair|Chair|44|88|50||outdoor garden
+ESSEBODA|pouffe|Ottoman|45|42|45|us=1
+ESSEBODA|sofa|Loveseat|170|85|92|seats=2,us=1
+ESSEBODA|sofa|3-seat sofa|230|85|92|seats=3,us=1
 FABRIKÖR|cabinet|Glass-door cabinet, 57 × 150 cm|57|150|41
+FÅGELFJÄLLET|bed|Bed frame with 2 storage boxes, Twin, 97 × 191 cm|113|100|200|m=97,l=191,us=1
 FÅGELFJÄLLET|bed|Bed frame with 2 storage boxes, Standard King, 150 × 200 cm|166|100|209|m=150
 FÅGELFJÄLLET|bed|Bed frame with 4 storage boxes, Standard King, 150 × 200 cm|166|100|209|m=150
 FÅGELFJÄLLET|bed|Bed frame, Standard King, 150 × 200 cm|166|100|209|m=150
@@ -264,7 +321,9 @@ FÅGELFJÄLLET|chest|Chest of 3 drawers, 82 × 51 × 78 cm|82|78|51|rows=3
 FÅGELFJÄLLET|chest|Chest of 4 drawers, 82 × 51 × 101 cm|82|101|51|rows=4
 FÅGELFJÄLLET|chest|Chest of 6 drawers, 82 × 51 × 123 cm|82|123|51|rows=6
 FÅGELFJÄLLET|chest|Chest of 6 drawers, 160 × 51 × 78 cm|160|78|51|rows=3,cols=2
+FÅGELFJÄLLET|chest|8-drawer dresser, 160 × 51 × 101 cm|160|101|51|rows=4,cols=2,us=1
 FÅGELFJÄLLET|nightstand|Bedside table, 32 × 41 × 56 cm|32|56|41|rows=1
+FÅGELFJÄLLET|nightstand|Nightstand, 52 × 46 × 66 cm|52|66|46|rows=2,us=1
 FÅGELFJÄLLET|wardrobe|Wardrobe with 2 doors, 82 × 60 × 194 cm|82|194|60|doors=2
 FAGERBACKEN|armchair|Armchair|75|90|80
 FÄRGSÄTTARE|wallshelf|Wall shelf, 60 × 16 × 74 cm|60|74|16
@@ -273,6 +332,17 @@ FÄRJKARL|cabinet|Cabinet, 77 × 45 × 116 cm|77|116|45
 FÄRJKARL|cabinet|Glass-door cabinet, 87 × 45 × 161 cm|87|161|45
 FEJAN|chair|Chair, outdoor|44|88|50||outdoor garden
 FEJAN|dining|Table, outdoor, 50 × 44 cm|50|74|44||outdoor garden
+FINNALA|armchair|Armchair|75|90|80|us=1
+FINNALA|chaise|3-seat sleeper sofa with chaise|226|85|160|seats=3,arms=wide,chaise=right,sd=92,us=1
+FINNALA|corner|Sectional, 4-seat with chaise|237|85|156|seats=4,arms=wide,corner=left,open=1,sd=92,us=1
+FINNALA|corner|Sectional, 4-seat corner|237|85|173|seats=4,arms=wide,corner=left,sd=92,us=1
+FINNALA|corner|Crnr sleeper sofa, 5-seat w chaise|237|85|220|seats=5,arms=wide,corner=left,open=1,sd=92,us=1
+FINNALA|corner|Corner sleeper sofa, 5-seat|237|85|237|seats=5,arms=wide,corner=left,sd=92,us=1
+FINNALA|lidbox|Ottoman with storage|62|42|42|cat=Footstool with storage,us=1
+FINNALA|section|Chaise section|64|83|160|seats=1,us=1
+FINNALA|section|Corner section|92|83|92|seats=1,corner=left,us=1
+FINNALA|sofa|Loveseat|170|85|92|seats=2,us=1
+FINNALA|sofa|Sleeper sofa|230|85|92|seats=3,us=1
 FJÄDERHARV|chest|Mini chest with 2 drawers, 32 × 25 cm|32|25|19|rows=2,min=30
 FJÄLLBERGET|conference|Conference chair|60|86|60
 FJÄLLBO|desk|Desk, 140 × 70 cm|140|74|70
@@ -281,8 +351,10 @@ FJÄLLBO|open|Shelving unit, 100 × 95 cm|100|95|35
 FJÄLLBO|open|Shelving unit, 100 × 136 cm|100|136|35
 FJÄLLBO|sideboard|Sideboard, 111 × 47 × 95 cm|111|95|47
 FJÄLLBO|tv|TV bench, 150 × 36 × 54 cm|150|54|36
+FJÄLLBO|tv|TV unit, 198 × 45 × 54 cm|198|54|45|us=1
 FLEKKE|daybed|Day-bed frame with 2 drawers, 80 × 200 cm|207|86|91|rows=2,m=80,under=pullout
 FLEKKE|daybed|Day-bed w 2 drawers/2 mattresses, 80 × 200 cm|207|86|91|rows=2,m=80,under=pullout,mats=2
+FLINSHULT|armchair|Armchair|75|90|80|us=1
 FLINTAN|office|Office chair|60|105|64|arms=none
 FLINTAN|office|Office chair with armrests|64|105|64|arms=slim
 FLISAT|kidstable|Children's table, 83 × 58 cm|83|48|58||kids
@@ -314,15 +386,19 @@ FRYKSÅS|cabinet|Storage unit on castors, 37 × 53 cm|37|53|40|doors=0,shelves=1
 FRYKSÅS|cabinet|Cabinet, 81 × 124 cm|81|124|40
 FRYKSÅS|desk|Desk, 110 × 54 cm|110|74|54
 FRYKSÅS|tv|TV bench, 157 × 41 × 49 cm|157|49|41
+FYRESDAL|daybed|Daybed frame, Twin, 97 × 191 cm|198|83|108|m=97,l=191,us=1
 GALANT|cabinet|Cabinet with doors, 80 × 120 cm|80|120|40
 GALANT|chest|Drawer unit on castors, 45 × 55 cm|45|55|48|rows=4
 GALANT|chest|Drawer unit, 80 × 80 cm|80|80|48|rows=6
+GALANT|nightstand|Drawer unit/drop file storage, 45 × 55 cm|45|55|48|rows=2,us=1
 GALANT|slidecab|Cabinet with sliding doors, 160 × 120 cm|160|120|45|slides=2
 GAMLEHULT|lidbox|Footstool with storage|62|42|42|cat=Footstool with storage
 GARNANÄS|coffee|Coffee table, 65 × 65 cm|65|45|65
 GÄVLE|armchair|Easy chair|75|90|80
 GILLERSBERG|nightstand|Bedside table, 39 × 39 × 56 cm|39|56|39|rows=1
 GLADHÖJDEN|desk|Desk sit/stand, 100 × 60 cm|100|74|60
+GLADSTAD|bed|Upholstered bed frame, Twin, 97 × 191 cm|113|100|200|m=97,l=191,us=1
+GLADSTAD|bed|Upholstered bed, 2 storage boxes, Twin, 97 × 191 cm|113|100|200|m=97,l=191,cat=Bed frame,us=1
 GLADSTAD|bed|Upholstered bed, 2 storage boxes, Standard Double, 135 × 190 cm|151|100|199|m=135,l=190,cat=Bed frame
 GLADSTAD|bed|Upholstered bed, 4 storage boxes, Standard Double, 135 × 190 cm|151|100|199|m=135,l=190,cat=Bed frame
 GLADSTAD|bed|Upholstered bed frame, Standard King, 150 × 200 cm|166|100|209|m=150
@@ -330,8 +406,11 @@ GLAMBERGET|divider|Room divider, 150 × 150 cm|150|150|25
 GLAMBERGET|sliding|Wardrobe with 3 sliding doors, 117 × 63 × 150 cm|117|150|63|slides=3
 GLENN|stool|Bar stool, 66 cm|35|66|35
 GLOSTAD|chaise|3-seat sofa with chaise longue|201|78|150|seats=3,arms=wide,chaise=right,sd=82
+GLOSTAD|pouffe|Ottoman|45|42|45|us=1
 GLOSTAD|sofa|3-seat sofa|230|85|92|seats=3
 GODISHUS|chest|Chest of 3 drawers, 60 × 40 × 60 cm|60|60|40|rows=3
+GODISHUS|wardrobe|Wardrobe, 60 × 54 × 178 cm|60|178|54|us=1
+GONATT|cot|Crib with drawer, 70 × 132 cm|142|82|78|m=70,l=132,drawer=1,us=1
 GONATT|cot|Cot with drawer, 70 × 140 cm|150|86|78|m=70,l=140,drawer=1
 GRÅFJÄLLET|clothesrack|Clothes rack with shoe storage, 90 × 36 × 175 cm|90|175|36|shelf=1
 GRÅFJÄLLET|desk|Dressing table, 100 × 42 cm|100|74|42
@@ -347,17 +426,21 @@ GRILLSKÄR|kitchen|Open kitchen unit, 61 × 61 cm|61|90|61|doors=0,shelves=1,cat
 GRILLSKÄR|kitchen|Kitchen island shelf unit, 86 × 61 cm|86|90|61|doors=0,shelves=1,cat=Outdoor kitchen unit|outdoor garden
 GRILLSKÄR|kitchen|Kitchen island w back panel, 86 × 61 × 176 cm|86|176|61|doors=0,shelves=1,cat=Outdoor kitchen unit,up=86|outdoor garden
 GRILLSKÄR|side|Side table, outdoor, 30 × 61 cm|30|50|61||outdoor garden
+GROERYD|trolley|Utility cart, 72 × 37 × 80 cm|72|80|37|us=1
 GRÖNFJÄLL|office|Office chair with armrests|64|105|64|arms=slim
 GRÖNFJÄLL|office|Office chair with arm/headrest|64|128|64|arms=slim
 GRÖNSTA|chair|Chair|44|88|50
 GRÖNSTA|chair|Chair with armrests, in/outdoor|44|88|50|arms=slim|outdoor garden
 GRÖNSTA|stool|Bar stool, 64 cm|35|64|35
 GRÖTÅN|chair|Chair|44|88|50
+GRÖTÅN|dining|Table, 80 cm|80|74|80|round=1,us=1
 GRÖTÅN|dining|Table, 105 cm|105|74|105|round=1
 GRUNNARP|sofa|3-seat sofa-bed|230|85|92|seats=3
 GRYSNA|bed|Upholstered bed frame, 90 × 200 cm|106|100|209|m=90
+GRYSNA|bed|Upholstered bed frame, Twin, 97 × 191 cm|113|100|200|m=97,l=191,us=1
 GULLABERG|bed|Bed frame with 2 storage boxes, Standard Single, 90 × 190 cm|106|100|199|m=90,l=190
 GULLABERG|bed|Bed frame, Standard Single, 90 × 190 cm|106|100|199|m=90,l=190
+GULLABERG|bed|Bed frame with 2 storage boxes, Twin, 97 × 191 cm|113|100|200|m=97,l=191,us=1
 GULLABERG|bed|Bed frame with 2 storage boxes, Standard Double, 135 × 190 cm|151|100|199|m=135,l=190
 GULLABERG|bed|Bed frame, Standard Double, 135 × 190 cm|151|100|199|m=135,l=190
 GULLABERG|bed|Bed frame with 4 storage boxes, Standard King, 150 × 200 cm|166|100|209|m=150
@@ -374,18 +457,23 @@ GULLABERG|shoe|Shoe cabinet with 4 compartments, 105 × 22 × 107 cm|105|107|22|
 GULLABERG|wardrobe|Wardrobe, 128 × 64 × 201 cm|128|201|64
 GULLIVER|changing|Changing table, 82 × 54 × 93 cm|82|93|54|shelves=2|kids children
 GULLIVER|cot|Cot, 60 × 120 cm|130|82|68|m=60,l=120
+GULLIVER|cot|Crib, 70 × 132 cm|142|82|78|m=70,l=132,us=1
 GULLVALLA|sofa|2-seat sofa|170|85|92|seats=2
 GULLVALLA|sofa|3-seat sofa|230|85|92|seats=3
 GULTARP|stool|Stool|35|45|35
 GUNDE|chair|Folding chair|44|88|50
 GUNDE|stool|Folding stool|35|45|35
+GUNRIK|office|Child's desk chair|52|86|52|arms=none,seatH=42,us=1|kids
 GURSKEN|chest|Chest of 3 drawers, 69 × 67 cm|69|67|39|rows=3,knobs=knob
 GURSKEN|wardrobe|Wardrobe, 49 × 55 × 186 cm|49|186|55
+GURSKEN|wardrobe|Wardrobe with 2 doors, 59.5 × 55 × 185.5 cm|60|186|55|doors=2,us=1
 GUTTANE|coffee|Coffee table, 116 × 39 cm|116|45|39
 GUTTANE|side|Side table, 58 × 39 cm|58|50|39
 HADDARP|stool|Step stool|35|50|35
 HAGAÅN|cabinet|Open cabinet, 40 × 48 × 33 cm|40|33|48|doors=0
+HAGAÅN|cabinet|Open cabinet, 45.5 × 53.5 × 33.5 cm|46|34|54|doors=0,us=1
 HAGAÅN|wallcab|Wall open cabinet, 40 × 15 × 95 cm|40|95|15|doors=0
+HAGAÅN|wallcab|Wall open cabinet, 45.5 × 15 × 94 cm|46|94|15|doors=0,us=1
 HÄGERNÄS|stool|Stool|35|45|35
 HÅKANSKÄR|coffee|Coffee table, 80 × 64 cm|80|45|64
 HAMMARN|sofa|Sofa-bed|230|85|92|seats=3
@@ -394,7 +482,12 @@ HATTHOLMEN|dining|Table, outdoor, 75 × 75 × 74 cm|75|74|75||outdoor garden
 HAUGA|cabinet|Cabinet with 2 doors, 70 × 116 cm|70|116|40|knobs=bar
 HAUGA|cabinet|Glass-door cabinet, 105 × 116 cm|105|116|40|knobs=bar
 HAUGA|chair|Chair|44|88|50
+HAUGA|chest|2-drawer chest, 50 × 46 × 68 cm|50|68|46|rows=2,knobs=bar,us=1
+HAUGA|chest|4-drawer dresser, 70 × 104 cm|70|104|48|rows=4,knobs=bar,us=1
+HAUGA|chest|8-drawer dresser, 138 × 104 cm|138|104|46|rows=4,cols=2,knobs=bar,us=1
+HAUGA|dining|Table, 74 × 74 cm|74|74|74|us=1
 HAUGA|dining|Table, 118 × 74 cm|118|74|74
+HAUGA|dining|Table, 168 × 74 cm|168|74|74|us=1
 HAUGA|dropleaf|Drop-leaf table, 55/82/109 × 74 cm|109|75|74|leaves=2,leaf=27
 HAUGA|mixed|Chest of 3 drawers with shelf, 70 × 46 × 116 cm|70|116|46|rows=3,knobs=bar,doors=0,shelves=1,cat=Chest of drawers
 HAUGA|nightstand|Bedside table, 40 × 36 cm|40|55|36|rows=1,knobs=bar
@@ -402,17 +495,27 @@ HAUGA|sideboard|Sideboard, 140 × 46 × 84 cm|140|84|46|knobs=bar
 HAUGA|sliding|Wardrobe with sliding doors, 118 × 55 × 199 cm|118|199|55|slides=2
 HAUGA|tv|TV bench, 206 × 46 × 54 cm|206|54|46|knobs=bar
 HAVBÄCK|cabinet|High cabinet with door, 40 × 35 × 195 cm|40|195|35|doors=1
+HAVBÄCK|cabinet|High cabinet with doors, 45.5 × 38 × 195.5 cm|46|196|38|us=1
 HAVBÄCK|wallcab|Wall cabinet with door, 40 × 15 × 95 cm|40|95|15|doors=1
+HAVBÄCK|wallcab|Wall cabinet with door, 45.5 × 15 × 94 cm|46|94|15|doors=1,us=1
 HAVBÄCK|washstand|Wash-stand with drawers, 40 × 33 × 63 cm|40|63|33|z=r2,hung=1
 HAVBÄCK|washstand|Wash-stand with drawers, 60 × 48 × 63 cm|60|63|48|z=r2,hung=1
+HAVBÄCK|washstand|Bathroom vanity with doors, 76 × 53.5 × 64 cm|76|64|54|z=d2,hung=1,us=1
+HAVBÄCK|washstand|Bathroom vanity with drawers, 76 × 53.5 × 64 cm|76|64|54|z=r2,hung=1,us=1
 HAVBÄCK|washstand|Wash-stand with doors, 80 × 48 × 63 cm|80|63|48|z=d2,hung=1
 HAVBÄCK / ORRSJÖN|washstand|Wash-stnd w drawers/wash-basin, 42 × 34 × 69 cm|42|69|34|z=r2,basin=6,hung=1
 HAVBÄCK / ORRSJÖN|washstand|Wash-stnd w drs/deep wash-basin/tap, 62 × 49 × 72 cm|62|72|49|z=d2,basin=9,hung=1
+HAVBÄCK / ORRSJÖN|washstand|Wash-stnd w drs/deep wash-basin, 63.5 × 55 × 73 cm|64|73|55|z=d2,basin=10,hung=1,us=1||havback-orrsjon-wash-stnd-w-drs-deep-wash-basin-2
 HAVBÄCK / ORRSJÖN|washstand|Wash-stnd w drawers/wash-basin, 82 × 49 × 69 cm|82|69|49|z=r2,basin=6,hung=1
 HAVBÄCK / ORRSJÖN|washstand|Wash-stnd w doors/wash-basin, 82 × 49 × 71 cm|82|71|49|z=d2,basin=8,hung=1
 HAVBÄCK / ORRSJÖN|washstand|Wash-stnd w drawers/wash-basin, 82 × 49 × 71 cm|82|71|49|z=r2,basin=8,hung=1||havback-orrsjon-wash-stnd-w-drawers-wash-basin-8-2
 HAVBÄCK / ORRSJÖN|washstand|Wash-stnd w drawers/wash-basin/tap, 82 × 49 × 71 cm|82|71|49|z=r2,basin=8,hung=1
+HAVBÄCK / ORRSJÖN|washstand|Wash-stand/wash-basin, 124.5 × 55 × 70 cm|125|70|55|z=r2,basin=7,hung=1,us=1
+HAVBÄCK / ORRSJÖN|washstand|Wash-stand/wash-basin, 124.5 × 54.5 × 72 cm|125|72|55|z=r2,basin=9,hung=1,us=1
+HAVBÄCK / ORRSJÖN|washstand|Wash-stand/wash-basin, 155 × 54.5 × 72 cm|155|72|55|z=r2,basin=9,hung=1,us=1
 HAVBÄCK / VINDELÄLVEN|washstand|Wash-stnd w drawers/wash-basin, 82 × 49 × 77 cm|82|77|49|z=r2,basin=14,hung=1
+HAVBERG|office|Swivel chair|60|105|64|arms=none,us=1
+HAVBERG|pouffe|Ottoman|45|42|45|us=1
 HAVSTA|cabinet|Cabinet with plinth, 81 × 47 × 89 cm|81|89|47
 HAVSTA|cabinet|Cabinet with plinth, 81 × 37 × 134 cm|81|134|37
 HAVSTA|cabinet|Glass-door cabinet with plinth, 81 × 37 × 134 cm|81|134|37
@@ -420,6 +523,7 @@ HAVSTA|cabinet|Glass-door cabinet, 121 × 35 × 123 cm|121|123|35
 HAVSTA|cabinet|Glass-door cabinet with plinth, 121 × 37 × 134 cm|121|134|37
 HAVSTA|chest|Chest of 3 drawers, 81 × 47 × 89 cm|81|89|47|rows=3
 HAVSTA|chest|Chest of 6 drawers, 121 × 47 × 89 cm|121|89|47|rows=3,cols=2
+HAVSTA|console|Console table, 100 × 35 × 63 cm|100|63|35|us=1
 HAVSTA|open|Shelving unit, 81 × 35 × 123 cm|81|123|35
 HAVSTA|open|Shelving unit with plinth, 81 × 37 × 134 cm|81|134|37|plinth=1
 HAVSTA|sideboard|Sideboard basic unit, 121 × 47 × 89 cm|121|89|47
@@ -427,19 +531,30 @@ HAVSTA|tv|TV bench with plinth, 160 × 47 × 62 cm|160|62|47
 HAVSTEN|armchair|Armchair, outdoor|75|90|80||outdoor garden
 HAVSTEN|sofa|2-seat sofa, outdoor|170|85|92|seats=2|outdoor garden
 HAVSTEN|sofa|2-seat sofa, outdoor, 179 × 92 × 76 cm|179|76|92|seats=2|outdoor garden
+HEJNE|open|Shelf unit, 78 × 50 × 171 cm|78|171|50|us=1
+HEMNES|bench|Bench, 83 cm|83|45|38|us=1
 HEMNES|cabinet|High cabinet with mirror door, 49 × 31 × 200 cm|49|200|31|doors=1
+HEMNES|chest|2-drawer chest, 54 × 66 cm|54|66|48|rows=2,knobs=knob,plinth=1,us=1
 HEMNES|daybed|Day-bed frame with 3 drawers, 80 × 200 cm|210|83|91|rows=3,knobs=knob,m=80,under=pullout
 HEMNES|daybed|Day-bed w 3 drawers/2 mattresses, 80 × 200 cm|210|83|91|rows=3,knobs=knob,m=80,under=pullout,mats=2
 HEMNES|desk|Desk, 155 × 65 cm|155|74|65
 HEMNES|deskdraw|Dressing table with mirror, 100 × 50 cm|100|160|50|rows=2,cat=Dressing table,mirror=1
+HEMNES|deskdraw|Dressing table with mirror, 110 × 45 cm|110|160|45|rows=2,cat=Dressing table,mirror=1,us=1
 HEMNES|deskdraw|Desk with 2 drawers, 120 × 47 cm|120|75|47|rows=2
+HEMNES|hatrack|Hat rack, 85 cm|85|26|32|us=1
 HEMNES|mixed|Glass-door cabinet with 3 drawers, 90 × 197 cm|90|197|37|rows=3,knobs=knob
+HEMNES|open|Shelf unit, 42 × 172 cm|42|172|35|us=1
 HEMNES|wallcab|Mirror cabinet with 1 door, 63 × 16 × 98 cm|63|98|16|knobs=knob,doors=1
 HEMNES|wallcab|Mirror cabinet with 2 doors, 83 × 16 × 98 cm|83|98|16|knobs=knob,doors=2
+HEMNES|wallcab|Mirror cabinet with 2 doors, 120 × 98 cm|120|98|35|knobs=knob,doors=2,us=1
 HEMNES|washstand|Wash-stand with 2 drawers, 60 × 47 × 83 cm|60|83|47|knobs=knob,z=r2
 HEMNES|washstand|Open wash-stand with 1 drawer, 82 × 48 × 76 cm|82|76|48|knobs=knob,z=o1+r1@18
+HEMNES|washstand|Bathroom vanity with drawers, 122 × 82 cm|122|82|47|knobs=knob,z=r2,us=1
 HEMNES / ORRSJÖN|washstand|Wash-stnd w drawers/wash-basin/tap, 62 × 49 × 89 cm|62|89|49|knobs=knob,z=r2,basin=6
+HEMNES / ORRSJÖN|washstand|Open wash-stand w drawer/wash-basin, 78.5 × 55 × 88.5 cm|79|89|55|knobs=knob,z=o1+r1@18,basin=5.5,us=1
+HEMNES / ORRSJÖN|washstand|Open wash-stand w drawer/wash-basin, 94 × 55 × 88.5 cm|94|89|55|knobs=knob,z=o1+r1@18,basin=5.5,us=1||hemnes-orrsjon-open-wash-stand-w-drawer-wash-bas-2
 HEMNES / ORRSJÖN|washstand|Wash-stnd w drawers/wash-basin, 102 × 49 × 89 cm|102|89|49|knobs=knob,z=r2,basin=6
+HEMNES / ORRSJÖN|washstand|Open wash-stand w drawer/wash-basin, 124.5 × 55 × 88.5 cm|125|89|55|knobs=knob,z=o1+r1@18,basin=5.5,us=1||hemnes-orrsjon-open-wash-stand-w-drawer-wash-bas-3
 HEMNES / RUTSJÖN|washstand|Wash-stnd w drawers/wash-basin, 62 × 49 × 95 cm|62|95|49|knobs=knob,z=r2,basin=12
 HEMNES / RUTSJÖN|washstand|Wash-stnd w drawers/wash-basin/tap, 82 × 49 × 95 cm|82|95|49|knobs=knob,z=r2,basin=12
 HEMNES / VÄSTERSJÖN|washstand|Open wash-stand w drawer/wash-basin, 82 × 48 × 90 cm|82|90|48|knobs=knob,z=o1+r1@18,basin=7
@@ -451,16 +566,19 @@ HOL|side|Side table, 50 × 50 cm|50|50|50
 HOLMERUD|side|Side table, 80 × 31 cm|80|50|31
 HOLMSTA|armchair|Armchair|75|90|80
 HOLMSTA / FRÖKNABO|armchair|Armchair|75|90|80
+HOLMSUND|corner|Sleeper sectional, 3-seat|173|85|173|seats=3,arms=wide,corner=left,sd=92,us=1
 HORNAVAN|trolley|Trolley, 26 × 48 × 77 cm|26|77|48
 HUVUDSPELARE|desk|Gaming desk, 140 × 80 cm|140|74|80
 HUVUDSPELARE|office|Gaming chair|64|128|64|arms=slim,seatH=50
 HYLLIS|open|Shelving unit, 60 × 27 × 74 cm|60|74|27||outdoor garden
 HYLTARP|chaise|3-seat sofa w chaise longue, left|226|85|160|seats=3,arms=wide,chaise=left,sd=92
 HYLTARP|chaise|3-seat sofa w chaise longue, right|226|85|160|seats=3,arms=wide,chaise=right,sd=92
+HYLTARP|corner|Sectional, 4-seat corner|237|85|173|seats=4,arms=wide,corner=left,sd=92,us=1
 HYLTARP|sofa|2-seat sofa|170|85|92|seats=2
 HYLTARP|sofa|2-seat sofa-bed|170|85|92|seats=2
 HYLTARP|sofa|3-seat sofa|230|85|92|seats=3
 IBBARBO|stool|Stool|35|45|35
+IDANÄS|bed|Upholstered bed frame, Twin, 97 × 191 cm|113|101|200|m=97,l=191,us=1
 IDANÄS|bed|Bed frame, Standard Double, 135 × 190 cm|151|101|199|m=135,l=190
 IDANÄS|bed|Bed frame with storage, Standard King, 150 × 200 cm|166|101|209|m=150
 IDANÄS|bed|Upholstered bed frame, Standard King, 150 × 200 cm|166|101|209|m=150
@@ -491,6 +609,7 @@ IKEA PS 2026|chairbed|Chair-bed|80|87|98
 IKEA PS 2026|deskdraw|Table with drawer, 70 × 70 cm|70|75|70|rows=1,cat=Table
 IKEA PS 2026|dining|Table, 96 cm|96|74|96|round=1
 IKEA PS 2026|dining|Table, 156 × 75 cm|156|74|75
+IKEA PS 2026|lidbox|Ottoman with storage|62|42|42|cat=Footstool with storage,us=1
 IKEA PS 2026|nightstand|Bedside table, 30 × 30 × 50 cm|30|50|30|rows=1
 IKEA PS 2026|open|Shelving unit, 160 × 35 × 161 cm|160|161|35
 IKEA PS 2026|side|Side table, 50 × 40 cm|50|50|40
@@ -499,6 +618,7 @@ IKEA PS 2026|stool|Stool|35|45|35
 IKEA PS 2026|trolley|Trolley, 89 × 48 cm|89|80|48
 IKEA PS LÖMSK|swivel|Children's swivel armchair|59|70|64|arms=none,seatH=30|kids
 INGOLF|junior|Junior chair|43|91|52||kids children
+INNDYR|lidbox|Storage bench|100|48|42|us=1
 INVALLNING|trolley|Trolley, 68 × 39 cm|68|80|39
 ISMANTORP|armchair|Armchair|75|90|80
 IVAR|bookrow|2 sections/shelves, 134 × 30 × 179 cm|134|179|30|of=open,u=89+48,cat=Shelving combination
@@ -532,6 +652,7 @@ IVÖSJÖN|cabinet|Cabinet with doors, 33 × 34 × 99 cm|33|99|34
 IVÖSJÖN|washstand|Wash-basin base cabinet, 50 × 33 × 57 cm|50|57|33|z=d1,hung=1
 JAKOBSFORS|coffee|Coffee table, 80 cm|80|45|80|round=1
 JÄLL|airer|Drying rack, in/outdoor|140|95|55|cat=Drying rack|outdoor garden
+JÄRRESTAD|pouffe|Pouf|45|42|45|us=1
 JÄRVFJÄLLET|office|Office chair with armrests|64|105|64|arms=slim
 JÄTTEBO|chaise|2,5-seat mod sofa w chaise longue|226|85|160|seats=3,arms=wide,chaise=right,sd=92
 JÄTTEBO|chaise|3,5-seat mod sofa w chaise longues|290|85|160|seats=4,arms=wide,chaise=both,sd=92
@@ -551,9 +672,12 @@ JÄTTESTA|tv|TV bench, 160 × 40 × 49 cm|160|49|40
 JOLPEN|sofa|2-seat sofa, outdoor, 100 × 59 × 67 cm|100|67|59|seats=2|outdoor garden
 JONAXEL|cabinet|Frame, 25 × 51 × 70 cm|25|70|51|doors=0
 JONAXEL|cabinet|Frame, 50 × 51 × 70 cm|50|70|51|doors=0
+JONAXEL|open|Shelf unit, 80 × 38 × 160 cm|80|160|38|us=1
 JUTEBODA|stool|Stool|35|45|35
 JUTHOLMEN|armchair|Easy chair, outdoor, 65 × 73 × 71 cm|65|71|73||outdoor garden
 JUTHOLMEN|armchair|Easy chair, outdoor, 65 × 73 × 83 cm|65|83|73||outdoor garden
+JUTHOLMEN|chair|Chair, outdoor, 65 × 73 × 71 cm|65|71|73|us=1|outdoor garden
+JUTHOLMEN|chair|Chair, outdoor, 65 × 73 × 83 cm|65|83|73|us=1|outdoor garden
 JUTHOLMEN|corner|Modular corner sofa 3-seat, outdoor|173|85|173|seats=3,arms=wide,corner=left,sd=92|outdoor garden
 JUTHOLMEN|section|One-seat section, outdoor|64|83|92|seats=1|outdoor garden
 JUTHOLMEN|section|Corner section, outdoor|92|83|92|seats=1,corner=left|outdoor garden
@@ -601,6 +725,7 @@ KIVIK|corner|Corner sofa, 4-seat|241|83|177|seats=4,arms=wide,corner=left,sd=95
 KIVIK|corner|Corner sofa, 5-seat w chaise longue|241|83|224|seats=5,arms=wide,corner=left,open=1,sd=95
 KIVIK|corner|Corner sofa, 6-seat|301|83|238|seats=6,arms=wide,corner=left,sd=95
 KIVIK|corner|Corner sofa, 6-seat w chaise longue|306|83|224|seats=6,arms=wide,corner=left,open=1,sd=95
+KIVIK|lidbox|Ottoman with storage|62|42|42|cat=Footstool with storage,us=1
 KIVIK|section|Corner section|95|83|95|seats=1,corner=left
 KIVIK|sofa|1-seat sofa-bed|110|85|92|seats=1
 KIVIK|sofa|2-seat sofa|170|85|92|seats=2
@@ -608,11 +733,14 @@ KIVIK|sofa|4-seat sofa|290|85|92|seats=4
 KIVIK|usofa|U-shaped sofa, 6 seat|301|83|238|seats=6,arms=wide,sd=95
 KIVIK|usofa|U-shaped sofa, 7-seat|364|83|238|seats=7,arms=wide,sd=95
 KJELLARNE|cornerdesk|Corner desk, 138 × 130 cm|138|74|130
+KJUGE|lidbox|Pouf with storage|38|38|38|cat=Pouffe with storage,us=1
 KLACKENÄS|sideboard|Sideboard, 120 × 97 cm|120|97|45
 KLEPPSTAD|bed|Bed frame, Standard Double, 135 × 190 cm|151|96|199|m=135,l=190
+KLEPPSTAD|bed|Bed frame, Queen, 152 × 203 cm|168|96|212|m=152,l=203,us=1
 KLEPPSTAD|sliding|Wardrobe with sliding doors, 117 × 55 × 176 cm|117|176|55|slides=2
 KLEPPSTAD|wardrobe|Wardrobe with 3 doors, 117 × 55 × 176 cm|117|176|55|doors=2
 KLIPPUGGLA|bed|Bed frame with storage, 90 × 200 cm|106|100|209|m=90
+KLIPPUGGLA|bed|Bed frame with storage, Twin, 97 × 191 cm|113|100|200|m=97,l=191,us=1
 KNARREVIK|nightstand|Bedside table, 37 × 28 × 45 cm|37|45|28|rows=1
 KNOXHULT|cornercab|Corner base cabinet, 100 × 91 cm|100|91|61|shelves=1,blind=50
 KNOXHULT|kitchen|High cabinet with door, 60 × 31 × 153 cm|60|153|31|doors=1
@@ -620,6 +748,7 @@ KNOXHULT|kitchen|High cabinet with doors, 60 × 31 × 228 cm|60|228|31
 KNOXHULT|wallcab|Wall cabinet with door, 40 × 75 cm|40|75|35|doors=1
 KNOXHULT|wallcab|Wall cabinet with door, 60 × 60 cm|60|60|35|doors=1
 KNOXHULT|wallcab|Wall cabinet with door, 60 × 75 cm|60|75|35|doors=1
+KNOXHULT|wallcab|Wall cabinet with doors, 76 × 30.5 × 32 cm|76|32|31|us=1
 KNOXHULT|wallcab|Wall cabinet with doors, 120 × 75 cm|120|75|35
 KOLBJÖRN|cabinet|Shelving unit with cabinet, 80 × 37 × 161 cm|80|161|37|cat=Shelving unit with cabinet,low=81|outdoor garden
 KOLBJÖRN|cabinet|Cabinet, 90 × 161 cm|90|161|37||outdoor garden
@@ -641,7 +770,9 @@ KRONÖREN|wardrobe|Open wardrobe, 90 × 49 × 181 cm|90|181|49|doors=0
 KRYLBO|chair|Chair|44|88|50
 KRYLBO|office|Swivel chair|60|105|64|arms=none
 KUNGSFORS|trolley|Kitchen trolley, 60 × 40 cm|60|80|40
+KURA|loft|Reversible bed, Twin, 97 × 191 cm|202|116|107|m=97,l=191,us=1
 KURA|loft|Reversible bed, 90 × 200 cm|211|116|100|m=90
+LACK|console|Console table, 140 × 39 cm|140|79|39|us=1
 LACK|side|Side table, 35 × 35 cm|35|45|35|legs=square,attach=screw
 LACK|tv|TV bench, 90 × 36 × 45 cm|90|45|36|doors=0
 LACK|tv|TV bench, 120 × 35 × 36 cm|120|36|35|doors=0
@@ -681,6 +812,10 @@ LANESUND|bookcase|Bookcase, 121 × 37 × 152 cm|121|152|37
 LANESUND|cabinet|Glass-door cabinet, 121 × 37 × 152 cm|121|152|37
 LANESUND|sideboard|Sideboard, 161 × 47 × 81 cm|161|81|47
 LANESUND|tv|TV bench, 161 × 47 × 55 cm|161|55|47
+LÅNGARYD|chaise|Sofa w chaise, left|226|85|160|seats=3,arms=wide,chaise=left,sd=92,us=1
+LÅNGARYD|chaise|Sofa w chaise, right|226|85|160|seats=3,arms=wide,chaise=right,sd=92,us=1
+LÅNGARYD|sofa|Loveseat|170|85|92|seats=2,us=1
+LÅNGARYD|sofa|Sofa|230|85|92|seats=3,us=1
 LÅNGFJÄLL|conference|Conference chair|60|86|60
 LASTARE|bench|Bench, 90 × 42 × 48 cm|90|48|42
 LASTARE|cabinet|Frame, 40 × 42 × 100 cm|40|100|42|doors=0
@@ -698,6 +833,7 @@ LILLÅNÄS|stool|Bar stool, 63 cm|35|63|35
 LILLBERGET|chest|Chest of 3 drawers, 70 × 43 × 68 cm|70|68|43|rows=3
 LILLBERGET|chest|Chest of 5 drawers, 70 × 43 × 108 cm|70|108|43|rows=5
 LILLBERGET|chest|Chest of 6 drawers, 140 × 43 × 68 cm|140|68|43|rows=3,cols=2
+LILLBERGET|nightstand|Nightstand, 40 × 42 × 49 cm|40|49|42|rows=1,us=1
 LILLEHEM|armchair|Armchair|75|90|80
 LILLEHEM|armchair|Armchair with side table|120|90|80|cat=Armchair with side table,st=45
 LILLEHEM|chaise|3-seat modular sofa w chaise longue|226|85|160|seats=3,arms=wide,chaise=right,sd=92
@@ -720,6 +856,7 @@ LILLESÄTER|sofa|5-seat sofa|350|85|92|seats=5
 LILLESÄTER|sofa|6-seat sofa|398|85|92|seats=6
 LILLESÄTER|swivel|Swivel easy chair|78|98|80
 LINDÅKRA|sofa|2-seat sofa-bed|170|85|92|seats=2
+LINDÅKRA|sofa|Sleeper sofa|230|85|92|seats=3,us=1
 LINNEBÄCK|armchair|Easy chair|75|90|80
 LINNMON / ADILS|dining|Table, 100 × 45 cm|100|74|45
 LINNMON / KRILLE|desk|Desk, 100 × 60 cm|100|74|60|legs=round,attach=plate
@@ -727,8 +864,11 @@ LINNMON / OLOV|desk|Desk, 100 × 45 cm|100|74|45|legs=round,attach=plate
 LINNMON / OLOV|desk|Desk, 100 × 60 cm|100|74|60|legs=round,attach=plate
 LINNMON / SPÄND|desk|Desk, 100 × 60 cm|100|74|60|legs=round,attach=plate
 LISABO|coffee|Coffee table, 118 × 50 cm|118|45|50
+LISABO|desk|Desk, 128 × 65 cm|128|74|65|us=1
 LISABO|dining|Table, 88 × 78 cm|88|74|78
 LISABO|dining|Table, 105 cm|105|74|105|round=1
+LISABO|dining|Table, 200 × 78 cm|200|74|78|us=1
+LISTERBY|console|Console table, 92 × 38 × 71 cm|92|71|38|us=1
 LIXHULT|cabinet|Cabinet, 35 × 60 cm|35|60|40
 LIXHULT|cabinet|Cabinet, 60 × 35 cm|60|35|40
 LOBERGET / MALSKÄR|office|Swivel chair|60|105|64|arms=none
@@ -739,12 +879,14 @@ LOMMARP|cabinet|Cabinet, 102 × 101 cm|102|101|40
 LOMMARP|tv|TV bench, 159 × 45 × 81 cm|159|81|45
 LÖPARBANA|office|Gaming chair|64|128|64|arms=slim,seatH=50
 LOSHULT|trolley|Trolley, 38 × 38 × 82 cm|38|82|38
+LOTE|chest|3-drawer dresser, 55 × 36 × 62 cm|55|62|36|rows=3,us=1
 LÖVBACKEN|side|Side table, 77 × 39 cm|77|50|39
 LUBBAN|trolley|Trolley table with storage|50|52|50
 LUSTEBO|chair|Chair|44|88|50
 LYCKAN|chair|Chair|44|88|50
 LYCKSELE LÖVÅS|chairbed|Chair-bed|80|87|98
 LYCKSELE LÖVÅS|sofa|2-seat sofa-bed|170|85|92|seats=2
+LYCKSELE LÖVÅS|sofa|Sleeper sofa|230|85|92|seats=3,us=1
 LYCKSELE MURBO|chairbed|Chair-bed|80|87|98
 LYCKSELE MURBO|sofa|2-seat sofa-bed|170|85|92|seats=2
 MÅBÄRSSKÄR|coffee|Coffee table, 61 × 41 cm|61|45|41||outdoor garden
@@ -753,17 +895,24 @@ MACKAPÄR|shoerack|Shoe rack, 78 × 32 × 40 cm|78|40|32
 MALM|bed|Bed frame, high, Standard Single, 90 × 190 cm|106|100|199|m=90,l=190
 MALM|bed|Bed frame, high, w 2 storage boxes, Standard Single, 90 × 190 cm|106|100|199|m=90,l=190
 MALM|bed|Ottoman bed, Standard Single, 90 × 190 cm|106|100|199|m=90,l=190
+MALM|bed|Bed frame, Twin, 97 × 191 cm|113|100|200|m=97,l=191,us=1
 MALM|bed|Bed frame with mattress, Standard Double, 135 × 190 cm|151|100|199|m=135,l=190,cat=Bed frame
 MALM|bed|Bed frame, high, Standard Double, 135 × 190 cm|151|100|199|m=135,l=190
 MALM|bed|Bed frame, high, w 2 storage boxes, Standard Double, 135 × 190 cm|151|100|199|m=135,l=190
 MALM|bed|Ottoman bed, Standard Double, 135 × 190 cm|151|100|199|m=135,l=190
 MALM|bed|Bed frame, high, w 4 storage boxes, Standard King, 150 × 200 cm|166|100|209|m=150
 MALM|desk|Dressing table, 120 × 41 cm|120|74|41
+MALMKÖPING|armchair|Armchair|75|90|80|us=1
+MALMKÖPING|corner|Sectional, 4-seat|237|85|173|seats=4,arms=wide,corner=left,sd=92,us=1
+MALMKÖPING|sofa|Loveseat|170|85|92|seats=2,us=1
+MALMKÖPING|sofa|3-seat sofa|230|85|92|seats=3,us=1
 MÅLOMRÅDE|desk|Gaming desk sit/stand, 180 × 80 cm|180|74|80
 MAMMUT|kidschair|Children's chair|34|60|34||kids
 MAMMUT|kidstable|Children's table, 77 × 55 cm|77|48|55||kids
 MAMMUT|stool|Children's stool|35|30|35||kids
 MANDAL|bed|Bed frame with storage, 120 × 200 cm|136|100|209|m=120
+MANDAL|bed|Bed frame with storage, Queen, 152 × 203 cm|168|100|212|m=152,l=203,us=1
+MANDAL|bed|Bed frame with headboard, 160 × 200 cm|176|100|209|m=160,us=1
 MANNARP|chaise|3-seat sofa with chaise longue|226|85|160|seats=3,arms=wide,chaise=right,sd=92
 MANNARP|chaise|4-seat sofa with chaise longue|290|85|160|seats=4,arms=wide,chaise=right,sd=92
 MANNARP|chaise|4-seat sofa with chaise longues|290|85|160|seats=4,arms=wide,chaise=both,sd=92
@@ -775,6 +924,8 @@ MARIEDAMM|dining|Table, 180 × 100 cm|180|74|100
 MARKUS|office|Office chair|64|128|64|arms=slim
 MARKUS|office|Office chair with armrests|64|128|64|arms=slim
 MATCHSPEL|office|Gaming chair|64|128|64|arms=slim,seatH=50
+MELLGRUND|bed|Bed frame, Twin, 97 × 191 cm|113|100|200|m=97,l=191,us=1
+MELLGRUND|bed|Bed frame, Queen, 152 × 203 cm|168|100|212|m=152,l=203,us=1
 METOD|appliance|Top cabinet for fridge/freezer, 60 × 40 cm|60|40|60|use=fridge,z=d1,hung=1
 METOD|appliance|Wall cabinet f b-in extractor hood, 60 × 37 × 60 cm|60|60|37|use=hood,z=o,hung=1
 METOD|appliance|Wall cb f extr hood w shlf/door, 60 × 60 cm|60|60|37|use=hood,z=d1s1,hung=1
@@ -926,13 +1077,20 @@ MICKE|desk|Desk, 73 × 50 cm|73|75|50|legs=square,attach=apron
 MICKE|desk|Desk, 142 × 50 cm|142|75|50|legs=square,attach=apron
 MILLBERGET|office|Swivel chair|60|105|64|arms=none
 MILSBO|cabinet|Glass-door cabinet, 73 × 175 cm|73|175|42
+MILSBO|cabinet|Glass-door cabinet, 101 × 100 cm|101|100|42|us=1
 MINNEN|bed|Ext bed frame with slatted bed base, 80 × 200 cm|96|100|209|m=80
+MINNEN|bed|Ext bed frame with slatted bed base, 97 × 190 cm|113|100|199|m=97,l=190,us=1
 MITTPLAN|desk|Desk, 80 × 60 cm|80|74|60
+MITTZON|conftable|Conference table, 120 × 68 × 75 cm|120|75|68|us=1
+MITTZON|conftable|Conference table, 120 × 108 × 75 cm|120|75|108|us=1
 MITTZON|conftable|Conference table, 120 × 75 cm|120|75|120|round=1
+MITTZON|conftable|Conference table, 120 × 68 × 105 cm|120|105|68|us=1
+MITTZON|conftable|Conference table, 120 × 108 × 105 cm|120|105|108|us=1
 MITTZON|conftable|Conference table, 140 × 68 × 75 cm|140|75|68
 MITTZON|conftable|Conference table, 140 × 108 × 75 cm|140|75|108
 MITTZON|conftable|Conference table, 140 × 68 × 105 cm|140|105|68
 MITTZON|conftable|Conference table, 140 × 108 × 105 cm|140|105|108
+MITTZON|desk|Desk sit/stand, 120 × 60 cm|120|74|60|us=1
 MITTZON|desk|Desk sit/stand, 120 × 80 cm|120|74|80
 MITTZON|desk|Desk, 120 × 80 cm|120|74|80
 MITTZON|desk|Desk, 140 × 60 cm|140|74|60
@@ -942,6 +1100,17 @@ MITTZON|desk|Desk, 160 × 80 cm|160|74|80
 MOFALLA|armchair|Easy chair|75|90|80
 MOPPE|chest|Mini chest of drawers, 31 × 18 × 32 cm|31|32|18|rows=3,min=35
 MOPPE|chest|Mini chest of drawers, 42 × 18 × 32 cm|42|32|18|rows=3,min=35
+MORABO|armchair|Armchair|75|90|80|us=1
+MORABO|chaise|Sofa with chaise|226|85|160|seats=3,arms=wide,chaise=right,sd=92,us=1
+MORABO|chaise|5-seat sofa with chaises|354|85|160|seats=5,arms=wide,chaise=right,sd=92,us=1
+MORABO|corner|Sectional, 4-seat with chaise|237|85|156|seats=4,arms=wide,corner=left,open=1,sd=92,us=1
+MORABO|corner|Sectional, 4-seat|237|85|173|seats=4,arms=wide,corner=left,sd=92,us=1
+MORABO|corner|Sectional, 5-seat corner|237|85|237|seats=5,arms=wide,corner=left,sd=92,us=1
+MORABO|corner|Sectional 6-seat crn/chaise|301|85|220|seats=6,arms=wide,corner=left,open=1,sd=92,us=1
+MORABO|section|Chaise, add-on unit|64|83|160|seats=1,us=1
+MORABO|sofa|Loveseat|170|85|92|seats=2,us=1
+MORABO|sofa|Sleeper sofa|230|85|92|seats=3,us=1
+MÖRBYLÅNGA|bench|Bench, 180 cm|180|45|38|us=1
 MÖRBYLÅNGA|dining|Table, 140 × 85 cm|140|74|85
 MÖRBYLÅNGA|dining|Table, 145 cm|145|74|145|round=1
 MÖRTFORS|pouffe|Pouffe, 47 × 47 cm|47|42|47
@@ -955,8 +1124,10 @@ MULLSJÖ|office|Swivel chair|60|105|64|arms=none
 MUSKAN|bench|Bench, 58 × 38 cm|58|45|38
 MUSKAN|lidbox|Storage stool, 50 cm|36|50|36|cat=Storage stool
 MUSKAN|open|Shelving unit, 37 × 140 cm|37|140|35
+MYDAL|bunk|Bunk bed frame, Twin, 97 × 191 cm|202|160|107|m=97,l=191,us=1
 MYDAL|bunk|Bunk bed frame, 90 × 200 cm|211|160|100|m=90
 MYLLRA|changing|Changing table with drawers, 85 × 79 × 97 cm|85|97|79|rows=3|kids children
+MYLLRA|cot|Crib with drawer, 70 × 132 cm|142|82|78|m=70,l=132,drawer=1,us=1
 MYLLRA|cot|Cot with drawer, 70 × 140 cm|150|86|78|m=70,l=140,drawer=1
 NACKANÄS|dining|Table, 140 × 76 cm|140|74|76
 NÅLMAKARE|cabinet|Cabinet on castors, 79 × 44 × 88 cm|79|88|44|cat=Cabinet on castors,cast=1
@@ -969,10 +1140,12 @@ NÄMMARÖ|chair|Chair, outdoor|44|88|50||outdoor garden
 NÄMMARÖ|dining|Table, outdoor, 75 × 63 cm|75|74|63||outdoor garden
 NÄMMARÖ|dining|Table, outdoor, 130 cm|130|74|130|round=1|outdoor garden
 NÄMMARÖ|dining|Table, outdoor, 140 × 75 cm|140|74|75||outdoor garden
+NÄMMARÖ|dining|Table, outdoor, 200 × 75 cm|200|74|75|us=1|outdoor garden
 NÄMMARÖ|kitchen|Open kitchen unit, 80 × 62 cm|80|90|62|doors=0,shelves=1,cat=Outdoor kitchen unit|outdoor garden
 NÄMMARÖ|lounge|Reclining chair, outdoor|66|102|84||outdoor garden
 NÄMMARÖ|lounge|Lounge chair, outdoor|72|88|80||outdoor garden
 NÄMMARÖ|lounger|Sun lounger|66|87|195||outdoor garden
+NÄMMARÖ|open|Shelving unit, outdoor, 83.5 × 75 cm|84|75|35|us=1|outdoor garden
 NÄMMARÖ|section|Modular easy chair, 63 cm|63|83|92|seats=1,arms=wide|outdoor garden
 NÄMMARÖ|sofa|2-seat sofa, 126 cm|126|85|92|seats=2|outdoor garden
 NÄMMARÖ|sofa|2-seat sofa, 147 cm|147|85|92|seats=2|outdoor garden
@@ -985,6 +1158,7 @@ NÄSINGE|dining|Table, 120 cm|120|74|120|round=1
 NÄSINGE|dining|Extendable table, 130/190 × 80 cm|130|74|80
 NÄSINGE|dining|Table, 130 × 80 cm|130|74|80
 NEIDEN|bed|Bed frame, Standard Single, 90 × 190 cm|106|72|199|m=90,l=190,f=46
+NEIDEN|bed|Bed frame, Twin, 97 × 191 cm|113|72|200|m=97,l=191,f=46,us=1
 NEIDEN|bed|Bed frame, Standard Double, 135 × 190 cm|151|72|199|m=135,l=190,f=46
 NIPÅSEN|bench|Bench with shoe storage, 79 × 35 × 52 cm|79|52|35
 NIPÅSEN|coatstand|Hat and coat stand, 181 cm|45|181|45
@@ -994,6 +1168,7 @@ NORDKISA|desk|Dressing table, 76 × 47 cm|76|74|47
 NORDKISA|nightstand|Bedside table, 40 × 40 cm|40|55|40|rows=1
 NORDKROKEN|swivel|Rocking and swivel armchair|78|98|80|rock=1
 NORDLI|bed|Bed frame with storage, 140 × 200 cm|156|64|209|m=140
+NORDLI|bed|Bed frame with storage, Queen, 152 × 203 cm|168|64|212|m=152,l=203,us=1
 NORDLI|chest|Modular chest of drawers, 40 × 45 cm|40|45|48|rows=3,knobs=none
 NORDLI|chest|Chest of drawers, 40 × 54 cm|40|54|48|rows=4,knobs=none
 NORDLI|chest|Modular chest of 3 drawers, 40 × 68 cm|40|68|48|rows=3,knobs=none
@@ -1033,15 +1208,18 @@ NORDLI|chest|Chest of 8 drawers, 160 × 192 cm|160|192|47|rows=8,knobs=none,mods
 NORDLI|nightstand|Modular chest of 2 drawers, 40 × 45 cm|40|45|48|rows=2,knobs=none
 NORDLI|nightstand|Chest of 2 drawers, 40 × 54 cm|40|54|48|rows=2,knobs=none
 NORDMANSSKÄR|chair|Chair|44|88|50
+NORDVIKEN|bar|Bar table, 140 × 80 × 105 cm|140|105|80|us=1
 NORDVIKEN|chair|Chair|44|88|50
 NORDVIKEN|chair|Bar stool with backrest, 62 cm|44|94|50|seatH=62
 NORDVIKEN|dining|Extendable table, 152/223 × 95 cm|152|74|95
+NORDVIKEN|dining|Extendable table, 210/289 × 105 cm|210|74|105|us=1
 NORDVIKEN|dropleaf|Drop-leaf table, 74/104 × 74 cm|104|75|74|leaves=1,leaf=30
 NORRMANSÖ|bench|Bench, outdoor, 100 cm|100|45|38||outdoor garden
 NORRMANSÖ|bench|Bench, outdoor, 200 cm|200|45|38||outdoor garden
 NORRMANSÖ|chair|Chair, outdoor|44|88|50||outdoor garden
 NORRMANSÖ|dining|Table, outdoor, 220 × 100 cm|220|74|100||outdoor garden
 NORRMJÖLE|dining|Table, 105 cm|105|74|105|round=1
+NORRMJÖLE|dining|Table, 170 × 97 cm|170|74|97|us=1
 NYHAMN|sofa|3-seat sofa-bed|230|85|92|seats=3
 NYSJÖN|cabinet|High cabinet, 30 × 190 cm|30|190|40
 NYSJÖN|wallcab|Mirror cabinet, 50 × 60 cm|50|60|35
@@ -1066,9 +1244,11 @@ ORRESLÄTT|armchair|Armchair|75|90|80
 ÖRTRÄSK|coffee|Coffee table, 110 × 68 cm|110|45|68
 OSKARSHAMN|armchair|Wing chair|75|104|80
 OSKARSHAMN|armchair|Wing chair with footstool|75|104|80|cat=Armchair with footstool,foot=1
+OSKARSHAMN|lidbox|Ottoman with storage|62|42|42|cat=Footstool with storage,us=1
 ÖSTAVALL|coffee|Adjustable coffee table, 90 cm|90|45|90|round=1
 ÖVNING|trolley|Trolley, 54 × 33 cm|54|80|33||kids children
 PÅHL|desk|Desk, 96 × 58 cm|96|74|58||kids children
+PANGET|clothesrack|Coat rack with shoe storage unit, 59.5 × 40.5 × 190.5 cm|60|191|41|shelf=1,us=1
 PÄRONHOLMEN|backbench|Bench with backrest, outdoor|120|86|60||outdoor garden
 PAX|cabinet|Add-on corner unit with 4 shelves, 53 × 58 × 201 cm|53|201|58|doors=0,shelves=4
 PAX|cabinet|Add-on corner unit with 4 shelves, 53 × 35 × 236 cm|53|236|35|doors=0,shelves=4
@@ -1076,14 +1256,20 @@ PAX|cabrow|Wardrobe, 150 × 58 × 201 cm|150|201|58|doors=0,shelves=2,of=wardrob
 PAX|cabrow|Wardrobe, 175 × 58 × 201 cm|175|201|58|doors=0,shelves=2,of=wardrobe,u=100+75
 PAX|cabrow|2 wardrobe frames, 200 × 58 × 201 cm|200|201|58|doors=0,shelves=2,n=2,of=wardrobe,cat=Wardrobe combination
 PAX|cabrow|3 wardrobe frames, 200 × 58 × 201 cm|200|201|58|doors=0,shelves=2,of=wardrobe,u=100+50+50,cat=Wardrobe combination
+PAX|cabrow|2 wardrobe frames, 199.5 × 58 × 236.5 cm|200|237|58|doors=0,shelves=2,of=wardrobe,u=100+100,cat=Wardrobe combination,us=1
+PAX|cabrow|3 wardrobe frames, 199.5 × 58 × 236.5 cm|200|237|58|doors=0,shelves=2,of=wardrobe,u=100+50+50,cat=Wardrobe combination,us=1
 PAX|cornerrobe|Corner wardrobe, 161/188 × 201 cm|161|201|188|doors=0,shelves=2,u=75+50,v=100
+PAX|cornerrobe|Corner wardrobe, 160.5/110.5 × 201.5 cm|161|202|111|doors=0,shelves=2,u=100,cu=58,us=1
+PAX|cornerrobe|Corner wardrobe, 160.5/187.5 × 236.5 cm|161|237|188|doors=0,shelves=2,u=75+50,v=100,us=1
 PAX|cornerrobe|Corner wardrobe, 210/180 × 236 cm|180|236|210|doors=0,shelves=2,u=75+50,v=100,cu=58
 PAX|cornerrobe|Corner wardrobe, 211/161 × 201 cm|211|201|161|doors=0,shelves=2,u=100+75,v=75
 PAX|cornerrobe|Corner wardrobe, 211/213 × 236 cm|211|236|213|doors=0,shelves=2,u=100+75,v=75+50
+PAX|cornerrobe|Corner wardrobe, 210.5/160.5 × 236.5 cm|211|237|161|doors=0,shelves=2,u=100+75,v=75,us=1
 PAX|wardrobe|Wardrobe frame, 50 × 58 × 201 cm|50|201|58|doors=0,shelves=2
 PAX|wardrobe|Wardrobe frame, 75 × 58 × 201 cm|75|201|58|doors=0,shelves=2
 PAX / AULI|cabrow|Wardrobe with sliding doors, 150 × 43 × 201 cm|150|201|43|shelves=2,slides=2,n=2,of=wardrobe
 PAX / AULI|cabrow|Wardrobe with sliding doors, 150 × 66 × 201 cm|150|201|66|shelves=2,slides=2,n=2,of=wardrobe
+PAX / AULI|cabrow|Wardrobe with sliding doors, 150 × 66 × 236.5 cm|150|237|66|shelves=2,slides=2,n=2,of=wardrobe,us=1
 PAX / BERGSBO|cabrow|Wardrobe, 150 × 60 × 201 cm|150|201|60|of=wardrobe,u=100+50
 PAX / BERGSBO|cabrow|Wardrobe, 200 × 60 × 201 cm|200|201|60|n=2,of=wardrobe
 PAX / BERGSBO|cabrow|Wardrobe, 200 × 60 × 236 cm|200|236|60|n=2,of=wardrobe
@@ -1093,6 +1279,7 @@ PAX / BERGSBO|wardrobe|Wardrobe, 100 × 60 × 201 cm|100|201|60
 PAX / BERGSBO/ÅHEIM|cornerrobe|Corner wardrobe, 211/161 × 236 cm|211|236|161|shelves=2,u=100+75,v=75
 PAX / FARDAL|cabrow|Wardrobe, 150 × 60 × 201 cm|150|201|60|of=wardrobe,u=100+50
 PAX / FARDAL/ÅHEIM|cornerrobe|Corner wardrobe, 111/88 × 201 cm|111|201|88|shelves=2,u=75
+PAX / FARDAL/ÅHEIM|cornerrobe|Corner wardrobe, 110.5/88 × 236.5 cm|111|237|88|shelves=2,u=75,us=1
 PAX / FLISBERGET|cabrow|Wardrobe, 200 × 60 × 201 cm|200|201|60|n=2,of=wardrobe
 PAX / FLISBERGET|cornerrobe|Corner wardrobe, 111/88 × 201 cm|111|201|88|shelves=2,u=75
 PAX / FLISBERGET|cornerrobe|Corner wardrobe, 161/88 × 201 cm|161|201|88|shelves=2,u=75+50
@@ -1108,16 +1295,25 @@ PAX / FORSAND|wardrobe|Wardrobe, 100 × 60 × 236 cm|100|236|60
 PAX / FYRUDDEN|cornerrobe|Corner wardrobe, 161/111 × 236 cm|161|236|111|shelves=2,u=100,cu=58
 PAX / GRIMO|cabrow|Wardrobe with sliding doors, 150 × 43 × 201 cm|150|201|43|shelves=2,slides=2,n=2,of=wardrobe
 PAX / GRIMO|cabrow|Wardrobe, 150 × 66 × 201 cm|150|201|66|shelves=2,slides=2,n=2,of=wardrobe
+PAX / GRIMO|cabrow|Wardrobe with sliding doors, 150 × 43 × 236.5 cm|150|237|43|shelves=2,slides=2,n=2,of=wardrobe,us=1
+PAX / GRIMO|cabrow|Wardrobe with sliding doors, 150 × 66 × 236.5 cm|150|237|66|shelves=2,slides=2,n=2,of=wardrobe,us=1
+PAX / GRIMO|cabrow|Wardrobe with sliding doors, 200 × 66 × 201.5 cm|200|202|66|shelves=2,slides=2,n=2,of=wardrobe,us=1
+PAX / GRIMO|cabrow|Wardrobe with sliding doors, 200 × 66 × 236.5 cm|200|237|66|shelves=2,slides=2,n=2,of=wardrobe,us=1
 PAX / GRIMO|cornerrobe|Corner wardrobe, 110/110 × 201 cm|110|201|110|shelves=2,u=50,cu=58
+PAX / GRIMO|cornerrobe|Corner wardrobe, 110/110 × 236.5 cm|110|237|110|shelves=2,u=50,cu=58,us=1
 PAX / GRIMO|wardrobe|Wardrobe, 100 × 60 × 201 cm|100|201|60
 PAX / GRIMO/ÅHEIM|cornerrobe|Corner wardrobe, 211/161 × 201 cm|211|201|161|shelves=2,u=100+75,v=75
 PAX / GULLABERG|cornerrobe|Corner wardrobe, 161/111 × 201 cm|161|201|111|shelves=2,u=100,cu=58
+PAX / GULLABERG|cornerrobe|Corner wardrobe, 160.5/110.5 × 236.5 cm|161|237|111|shelves=2,u=100,cu=58,us=1
 PAX / HASVIK|cabrow|Wardrobe with sliding doors, 150 × 43 × 201 cm|150|201|43|shelves=2,slides=2,n=2,of=wardrobe
 PAX / HASVIK|cabrow|Wardrobe, 150 × 66 × 201 cm|150|201|66|shelves=2,slides=2,n=2,of=wardrobe
+PAX / HASVIK|cabrow|Wardrobe with sliding doors, 150 × 66 × 236.5 cm|150|237|66|shelves=2,slides=2,n=2,of=wardrobe,us=1
 PAX / HASVIK|cabrow|Wardrobe, 200 × 66 × 201 cm|200|201|66|shelves=2,slides=2,n=2,of=wardrobe
+PAX / HASVIK|cabrow|Wardrobe with sliding doors, 200 × 66 × 236.5 cm|200|237|66|shelves=2,slides=2,n=2,of=wardrobe,us=1
 PAX / LUNDBRÄSMA|cabrow|Wardrobe with sliding doors, 150 × 66 × 201 cm|150|201|66|shelves=2,slides=2,n=2,of=wardrobe
 PAX / LUNDBRÄSMA|cabrow|Wardrobe with sliding doors, 150 × 66 × 236 cm|150|236|66|shelves=2,slides=2,n=2,of=wardrobe||pax-lundbrasma-wardrobe-sliding-doors-150-x-66-x-2
 PAX / LUNDBRÄSMA|cabrow|Wardrobe with sliding doors, 200 × 66 × 201 cm|200|201|66|shelves=2,slides=2,n=2,of=wardrobe
+PAX / LUNDBRÄSMA|cabrow|Wardrobe with sliding doors, 200 × 66 × 236.5 cm|200|237|66|shelves=2,slides=2,n=2,of=wardrobe,us=1||pax-lundbrasma-wardrobe-sliding-doors-200-x-66-x-2
 PAX / MEHAMN|cabrow|Wardrobe with sliding doors, 150 × 43 × 201 cm|150|201|43|shelves=2,slides=2,n=2,of=wardrobe
 PAX / MEHAMN|cabrow|Wardrobe with sliding doors, 150 × 66 × 201 cm|150|201|66|shelves=2,slides=2,n=2,of=wardrobe
 PAX / MEHAMN|cabrow|Wardrobe, 150 × 66 × 201 cm|150|201|66|shelves=2,slides=2,n=2,of=wardrobe
@@ -1126,13 +1322,17 @@ PAX / MEHAMN|cabrow|Wardrobe with sliding doors, 150 × 66 × 236 cm|150|236|66|
 PAX / MEHAMN|cabrow|Wardrobe with sliding doors, 200 × 66 × 201 cm|200|201|66|shelves=2,slides=2,n=2,of=wardrobe
 PAX / MEHAMN|cabrow|Wardrobe, 200 × 66 × 201 cm|200|201|66|shelves=2,slides=2,n=2,of=wardrobe
 PAX / MEHAMN|cabrow|Wardrobe with sliding doors, 200 × 66 × 236 cm|200|236|66|shelves=2,slides=2,n=2,of=wardrobe
+PAX / MEHAMN|cabrow|Wardrobe with sliding doors, 250 × 66 × 236.5 cm|250|237|66|shelves=2,slides=2,of=wardrobe,u=100+75+75,us=1
 PAX / MEHAMN/AULI|cabrow|Wardrobe with sliding doors, 150 × 43 × 201 cm|150|201|43|shelves=2,slides=2,n=2,of=wardrobe
 PAX / MEHAMN/AULI|cabrow|Wardrobe with sliding doors, 150 × 66 × 201 cm|150|201|66|shelves=2,slides=2,n=2,of=wardrobe
 PAX / MEHAMN/AULI|cabrow|Wardrobe with sliding doors, 150 × 66 × 236 cm|150|236|66|shelves=2,slides=2,n=2,of=wardrobe||pax-mehamn-auli-wardrobe-sliding-doors-150-x-66-2
 PAX / MEHAMN/AULI|cabrow|Wardrobe with sliding doors, 200 × 66 × 236 cm|200|236|66|shelves=2,slides=2,n=2,of=wardrobe
 PAX / MEHAMN/AULI|cabrow|Wardrobe, 250 × 66 × 201 cm|250|201|66|shelves=2,slides=2,of=wardrobe,u=100+75+75
+PAX / SVARTISDAL|cabrow|Wardrobe with sliding doors, 200 × 66 × 236.5 cm|200|237|66|shelves=2,slides=2,n=2,of=wardrobe,us=1
 PAX / TONSTAD|cornerrobe|Corner wardrobe, 211/161 × 201 cm|211|201|161|shelves=2,u=100+75,v=75
 PAX / TONSTAD|cornerrobe|Corner wardrobe, 231/161 × 236 cm|231|236|161|shelves=2,u=100+75,v=50,cu=58
+PAX / TYSSEDAL|cabrow|Wardrobe, 175 × 60 × 236.5 cm|175|237|60|of=wardrobe,u=100+75,us=1
+PAX / TYSSEDAL|cornerrobe|Corner wardrobe, 160.5/110.5 × 201.5 cm|161|202|111|shelves=2,u=100,cu=58,us=1
 PAX / TYSSEDAL|cornerrobe|Corner wardrobe, 161/111 × 236 cm|161|236|111|shelves=2,u=100,cu=58
 PERJOHAN|shelfbench|Stool with storage|44|46|36|cat=Stool with storage
 PERJOHAN|shelfbench|Bench with storage, 100 cm|100|46|38
@@ -1169,6 +1369,7 @@ PLATSA|wardrobe|Wardrobe with 2 doors, 120 × 57 × 191 cm|120|191|57|doors=2
 PLÖJKER|nightstand|Bedside table, 41 × 41 × 50 cm|41|50|41|rows=1
 POÄNG|armchair|Armchair and footstool|68|100|82|arms=slim,cat=Armchair with footstool,foot=1
 RACKNÄS|chest|Chest of 3 drawers, 69 × 78 cm|69|78|48|rows=3
+RÅDMANSÖ|bed|Bed frame, Twin, 97 × 191 cm|113|100|200|m=97,l=191,us=1
 RÅDMANSÖ|bed|Bed frame, Standard King, 150 × 200 cm|166|100|209|m=150
 RÅDMANSÖ|cabinet|Cabinet, 118 × 49 × 103 cm|118|103|49
 RÅDMANSÖ|chest|Chest of 5 drawers, 70 × 48 × 132 cm|70|132|48|rows=5
@@ -1184,13 +1385,18 @@ RÅGRUND|trolley|Trolley, 42 × 33 × 76 cm|42|76|33
 RAKKESTAD|sliding|Wardrobe with sliding doors, 117 × 176 cm|117|176|51|slides=2
 RAKKESTAD|wardrobe|Wardrobe with 3 doors, 117 × 176 cm|117|176|51|doors=2
 RAMNEFJÄLL|bed|Upholstered bed frame, Standard Single, 90 × 190 cm|106|100|199|m=90,l=190
+RAMNEFJÄLL|bed|Upholstered bed frame, Twin, 97 × 191 cm|113|100|200|m=97,l=191,us=1
 RAMNEFJÄLL|bed|Upholstered bed frame, Standard Double, 135 × 190 cm|151|100|199|m=135,l=190
+RAMNEFJÄLL|bed|Upholstered bed frame, King, 193 × 203 cm|209|100|212|m=193,l=203,us=1
+RAMSNÄS|chair|Chair|44|88|50|us=1
 RÅSKOG|trolley|Trolley, 28 × 38 × 61 cm|28|61|38
 RÅSKOG|trolley|Trolley, 35 × 45 × 77 cm|35|77|45
 RÅSKOG / NORRÅVA|trolley|Trolley with lid, 28 × 38 × 61 cm|28|61|38
 RÅSKOG / NORRÅVA|trolley|Trolley with lid, 35 × 45 × 77 cm|35|77|45
 RAST|chest|Chest of 3 drawers, 60 × 35 × 59 cm|60|59|35|rows=3,knobs=knob
+RAST|chest|6-drawer dresser, 124 × 68 cm|124|68|48|rows=3,cols=2,knobs=knob,us=1
 RÄVSTEN|bench|Bench, 93 cm|93|45|38
+RÄVSTEN|dining|Table, 75 cm|75|74|75|round=1,us=1
 RÄVSTEN|stool|Bar stool, 62 cm|35|62|35
 RELATERA|desk|Desk sit/stand, 90 × 60 cm|90|74|60
 RELATERA|desk|Desk, 90 × 60 cm|90|74|60
@@ -1220,6 +1426,7 @@ ROSENTORP|stool|Stool|35|45|35
 RUDSTA|cabinet|Glass-door cabinet, 42 × 37 × 155 cm|42|155|37
 RUDSTA|cabinet|Glass-door cabinet, 80 × 37 × 120 cm|80|120|37
 SAGESUND|bed|Upholstered bed frame, Standard Double, 135 × 190 cm|151|100|199|m=135,l=190
+SAGESUND|bed|Upholstered bed frame, King, 193 × 203 cm|209|100|212|m=193,l=203,us=1
 SÅGMÄSTARE|cabinet|Cabinet, 83 × 36 × 128 cm|83|128|36
 SÅGMÄSTARE|open|Shelving unit, 83 × 36 × 128 cm|83|128|36
 SALNÖ|armchair|Armchair|75|90|80
@@ -1247,15 +1454,63 @@ SEGERÖN|section|Corner section with cushion|92|83|92|seats=1,corner=left|outdoo
 SEGERÖN|section|Corner section, outdoor|92|83|92|seats=1,corner=left|outdoor garden
 SEGERÖN|sofa|2-seat sofa, outdoor|170|85|92|seats=2|outdoor garden
 SEGRARE|desk|Desk sit/stand, 110 × 60 cm|110|74|60
+SEKTION|appliance|High cabinet for fridge/freezer, 61 × 61 × 203 cm|61|203|61|use=fridge,z=d1+d1@60,us=1
+SEKTION|appliance|High cabinet f built-in appliances, 61 × 61 × 228.5 cm|61|229|61|use=appliance,z=o@80+g@60+o,us=1
+SEKTION|appliance|High cabinet for fridge/freezer, 61 × 61 × 228.5 cm|61|229|61|use=fridge,z=d1+d1@60,us=1||sektion-high-cabinet-for-fridge-freezer-61-x-61-2
+SEKTION|appliance|Top cabinet for fridge/freezer, 76 × 61 × 38 cm|76|38|61|use=fridge,z=d1,hung=1,us=1
+SEKTION|cornercab|Corner wall cabinet, 66 × 38 × 51 cm|66|51|66|sd=38,hung=1,us=1
+SEKTION|cornercab|Corner wall cab w carousel/glass dr, 66 × 38 × 76 cm|66|76|66|sd=38,hung=1,inner=carousel,us=1
+SEKTION|cornercab|Corner wall cab w shelves/glass dr, 66 × 38 × 76 cm|66|76|66|shelves=1,sd=38,hung=1,us=1
+SEKTION|cornercab|Corner wall cabinet with carousel, 66 × 38 × 101.5 cm|66|102|66|sd=38,hung=1,inner=carousel,us=1
+SEKTION|cornercab|Corner wall cabinet, 66 × 37.5 × 101.5 cm|66|102|66|sd=37.5,hung=1,us=1
+SEKTION|cornercab|Corner base cabinet with carousel, 96.5 × 61 × 76 cm|97|76|97|sd=61,inner=carousel,us=1
+SEKTION|cornercab|Corner base cabinet with shelf, 96.5 × 61 × 76 cm|97|76|97|shelves=1,sd=61,us=1
+SEKTION|cornercab|Corner base cab w drawer and shelf, 127 × 61 × 76 cm|127|76|61|rows=1,shelves=1,blind=60,us=1
+SEKTION|cornercab|Corner base cab w pull-out fitting, 127 × 61 × 76 cm|127|76|61|blind=60,inner=pullout,us=1
+SEKTION|cornercab|Corner base cabinet, 127 × 61 × 76 cm|127|76|61|shelves=1,blind=60,us=1
+SEKTION|kitchen|Base cabinet with shelves, 30.5 × 61 × 76 cm|31|76|61|doors=0,us=1
+SEKTION|kitchen|Base cabinet, 61 × 61 × 76 cm|61|76|61|doors=0,us=1
+SEKTION|kitchen|High cabinet with shelves/2 doors, 61 × 38 × 203 cm|61|203|38|us=1
+SEKTION|kitchen|High cabinet, 61 × 61 × 228.5 cm|61|229|61|us=1
+SEKTION|kitchen|Base cabinet with shelves/2 doors, 91.5 × 61 × 76 cm|92|76|61|us=1
+SEKTION|sinkcab|Base cab f HAVSEN single bowl sink, 61 × 61 × 76 cm|61|76|61|z=d1@60+a@20,us=1
+SEKTION|sinkcab|Base cab f TALLSJÖN sink, 61 × 61 × 76 cm|61|76|61|z=d1@60+f@20,us=1
+SEKTION|sinkcab|Base cabinet for sink, 61 × 61 × 76 cm|61|76|61|z=d1,us=1
+SEKTION|sinkcab|Base cab f TALLSJÖN sink, 76 × 61 × 76 cm|76|76|61|z=d1@60+f@20,us=1
+SEKTION|sinkcab|Base cab f HAVSEN double bowl sink, 91.5 × 61 × 76 cm|92|76|61|z=d2@60+a@20,us=1
+SEKTION|sinkcab|Base cabinet for sink + 2 doors, 91.5 × 61 × 76 cm|92|76|61|z=d2,us=1
+SEKTION|wallcab|Wall cabinet, 45.5 × 38 × 51 cm|46|51|38|us=1
+SEKTION|wallcab|Wall cabinet with glass door, 45.5 × 38 × 101.5 cm|46|102|38|doors=1,us=1
+SEKTION|wallcab|Wall cabinet with 2 glass doors, 76 × 38 × 76 cm|76|76|38|us=1
+SEKTION|wallcab|Wall cabinet, 76 × 37.5 × 101.5 cm|76|102|38|us=1
+SEKTION|wallcab|Wall cabinet with 2 doors, 91.5 × 38 × 38 cm|92|38|38|us=1
+SEKTION|wallcab|Wall cabinet w 2 doors/2 drawers, 91.5 × 38 × 101.5 cm|92|102|38|z=r2@40+d2s1,hung=1,us=1
+SEKTION / MAXIMERA|appliance|Base cab f cktp/2 fronts/3 drawers, 91.5 × 61 × 76 cm|92|76|61|use=hob,z=r2,us=1
+SEKTION / MAXIMERA|appliance|Base cab f cktp/3 fronts/3 drawers, 91.5 × 61 × 76 cm|92|76|61|use=hob,z=r3,us=1
+SEKTION / MAXIMERA|appliance|Base cab f cktp/4 fronts/3 drawers, 91.5 × 61 × 76 cm|92|76|61|use=hob,z=r4,us=1
+SEKTION / MAXIMERA|kitchen|Base cabinet with 3 drawers, 38 × 38 × 76 cm|38|76|38|z=r3,us=1
+SEKTION / MAXIMERA|kitchen|Base cabinet with 2 drawers, 76 × 38 × 76 cm|76|76|38|z=r2,us=1
+SEKTION / MAXIMERA|kitchen|Base cab with 2 fronts/3 drawers, 91.5 × 61 × 76 cm|92|76|61|z=r2,us=1
+SEKTION / MAXIMERA|kitchen|Base cabinet with 3 drawers, 91.5 × 61 × 76 cm|92|76|61|z=r3,us=1
+SEKTION / MAXIMERA|kitchen|Base cabinet with 4 drawers, 91.5 × 61 × 76 cm|92|76|61|z=r4,us=1
+SEKTION / MAXIMERA|mixed|Base cabinet with drawer/door, 45.5 × 61 × 76 cm|46|76|61|rows=1,doors=1,dtop=1,us=1
+SEKTION / MAXIMERA|mixed|Base cabinet with drawer/2 doors, 91.5 × 61 × 76 cm|92|76|61|rows=1,doors=2,dtop=1,us=1
+SEKTION / MAXIMERA|wallcab|Wall cabinet with door/2 drawers, 38 × 38 × 101.5 cm|38|102|38|z=r2@40+d1s1,hung=1,us=1
+SEKTION / MAXIMERA|wallcab|Wall cabinet w glass door/2 drawers, 45.5 × 38 × 101.5 cm|46|102|38|z=r2@40+d1s1,hung=1,us=1
+SEKTION / MAXIMERA|wallcab|Wall cab w 2 glass doors/2 drawers, 76 × 38 × 101.5 cm|76|102|38|z=r2@40+d2s1,hung=1,us=1
+SIDSJÖ|pouffe|Pouf|45|42|45|us=1
 SIGFINN|riser|Monitor stand, fixed height|55|15|24|cat=Monitor stand
+SJÄLSÖ|armchair|Armchair|75|90|80|us=1
 SKÅLBODA|armchair|Armchair|75|90|80
 SKÅLSTA|chair|Chair|44|88|50
 SKÅLSTA|dining|Table, 140 × 80 cm|140|74|80
 SKANSNÄS|chair|Chair|44|88|50
 SKANSNÄS|dining|Extendable table, 115/170 cm|115|74|115|round=1
 SKANSNÄS|dining|Extendable table, 150/205 × 90 cm|150|74|90
+SKÅPAFORS|chair|Chair|44|88|50|us=1
 SKARPÖ|armchair|Armchair, outdoor|75|90|80||outdoor garden
 SKOGSÖN|armchair|Easy chair|75|90|80||outdoor garden
+SKOGSTA|bench|Bench, 235 cm|235|45|38|us=1
 SKOGSTA|chair|Chair|44|88|50
 SKOGSTA|chair|Bar stool with backrest, 62 cm|44|94|50|seatH=62
 SKOGSTA|dining|Table, 74 × 74 cm|74|74|74
@@ -1264,6 +1519,7 @@ SKOGSTA|dining|Table, 150 × 74 cm|150|74|74
 SKOGSTA|dining|Table, 160 × 81 × 74 cm|160|74|81
 SKOGSTA|shelfbench|Bench with storage, 120 cm|120|46|38
 SKÖNABÄCK|sofa|2-seat sofa-bed|170|85|92|seats=2
+SKÖNABÄCK|sofa|Sleeper sofa|230|85|92|seats=3,us=1
 SKRUVBY|bookcase|Bookcase, 60 × 140 cm|60|140|30
 SKRUVBY|cabinet|Cabinet with doors, 70 × 90 cm|70|90|40
 SKRUVBY|cabinet|Cabinet with glass doors, 70 × 90 cm|70|90|40
@@ -1275,13 +1531,18 @@ SLÄKT|bed|Bed frame with 3 storage boxes, 90 × 200 cm|106|100|209|m=90
 SLÄKT|bed|Bed frame with slatted bed base, 90 × 200 cm|106|100|209|m=90
 SLÄKT|bed|Bed frame with storage, 90 × 200 cm|106|100|209|m=90
 SLÄKT|bed|Bed frame, 90 × 200 cm|106|100|209|m=90
+SLÄKT|bed|Ext bed frame with slatted bed base, 97 × 190 cm|113|100|199|m=97,l=190,us=1
+SLÄKT|bed|Bed frame with storage, Twin, 97 × 191 cm|113|100|200|m=97,l=191,us=1
 SLATORP|chaise|3-seat sofa with chaise longue|226|85|160|seats=3,arms=wide,chaise=right,sd=92
 SLATORP|chaise|4-seat sofa with chaise longues|290|85|160|seats=4,arms=wide,chaise=both,sd=92
 SLATORP|sofa|2-seat sofa|170|85|92|seats=2
 SLATORP|sofa|3-seat sofa|230|85|92|seats=3
 SLATTUM|bed|Upholstered bed frame, Standard Single, 90 × 190 cm|106|85|199|m=90,l=190,f=30
+SLATTUM|bed|Upholstered bed frame, Twin, 97 × 191 cm|113|85|200|m=97,l=191,f=30,us=1
 SLATTUM|bed|Upholstered bed frame, Standard Double, 135 × 190 cm|151|85|199|m=135,l=190,f=30
+SLATTUM|bed|Upholstered bed frame, Queen, 152 × 203 cm|168|85|212|m=152,l=203,f=30,us=1
 SMÅGÖRA|changing|Changing table/bookshelf, 60 × 81 × 103 cm|81|103|60|shelves=2|kids children
+SMÅGÖRA|cot|Crib, 70 × 132 cm|142|82|78|m=70,l=132,us=1
 SMÅGÖRA|cot|Cot, 70 × 140 cm|150|86|78|m=70,l=140
 SMÅGÖRA|desk|Desk, 93 × 51 cm|93|74|51||kids children
 SMÅGÖRA|open|Shelf unit, 29 × 88 cm|29|88|35||kids children
@@ -1301,17 +1562,29 @@ SMÅSTAD / PLATSA|chest|Chest of 6 drawers, 60 × 57 × 123 cm|60|123|57|rows=6|
 SMÅSTAD / PLATSA|wardrobe|Wardrobe, 60 × 57 × 123 cm|60|123|57||kids children
 SMÅSTAD / PLATSA|wardrobe|Wardrobe, 60 × 42 × 181 cm|60|181|42||kids children
 SMÅSTAD / PLATSA|wardrobe|Wardrobe, 60 × 57 × 181 cm|60|181|57||kids children
+SMÅSTAD / UPPFÖRA|bookcase|Bookcase, 60 × 65 × 136 cm|60|136|65|us=1|kids children
+SMÅSTAD / UPPFÖRA|bookcase|Bookcase, 60 × 65 × 196 cm|60|196|65|us=1|kids children
+SMÅSTAD / UPPFÖRA|cabinet|Cabinet, 60 × 65 × 76 cm|60|76|65|us=1|kids children
+SMÅSTAD / UPPFÖRA|chest|3-drawer dresser, 60 × 65 × 76 cm|60|76|65|rows=3,us=1|kids children
+SMÅSTAD / UPPFÖRA|chest|6-drawer dresser, 60 × 65 × 136 cm|60|136|65|rows=6,us=1|kids children
+SMÅSTAD / UPPFÖRA|wardrobe|Wardrobe, 60 × 65 × 136 cm|60|136|65|us=1|kids children
+SMÅSTAD / UPPFÖRA|wardrobe|Wardrobe, 60 × 65 × 196 cm|60|196|65|us=1|kids children
+SMEDSTORP|corner|Sectional, 4-seat with chaise|237|85|156|seats=4,arms=wide,corner=left,open=1,sd=92,us=1
 SMEDSTORP|sofa|2-seat sofa|170|85|92|seats=2
 SMEDSTORP|sofa|3-seat sofa|230|85|92|seats=3
 SMÖRKULL|office|Office chair with armrests|64|105|64|arms=slim
 SMYGA|bed|Bed frame with storage, 90 × 200 cm|106|100|209|m=90
 SMYGA|bed|Bed frame, 90 × 200 cm|106|100|209|m=90
+SMYGA|bed|Bed frame with storage, Twin, 97 × 191 cm|113|100|200|m=97,l=191,us=1
 SMYGA|desk|Desk, 122 × 60 cm|122|74|60||kids children
 SNIGLAR|bed|Bed frame with slatted bed base, 70 × 160 cm|86|64|169|m=70,l=160,f=50
+SNIGLAR|changing|Changing table, 72 × 53 cm|72|53|55|shelves=2,us=1|kids children
 SNIGLAR|changing|Changing table, 53 × 72 × 87 cm|72|87|53|shelves=2|kids children
 SNIGLAR|cot|Cot, 60 × 120 cm|130|82|68|m=60,l=120
+SNIGLAR|cot|Crib, 70 × 132 cm|142|82|78|m=70,l=132,us=1
 SÖDERHAMN|chaise|4-seat sofa with chaise longue|259|69|167|seats=4,arms=slim,chaise=right,sd=99
 SÖDERHAMN|corner|Corner sofa, 4-seat|228|69|168|seats=4,arms=slim,corner=left,sd=99
+SÖDERHAMN|corner|Sectional, 5-seat|228|69|228|seats=5,arms=slim,corner=left,sd=99,us=1
 SÖDERHAMN|corner|Corner sofa-bed, 6-seat|289|69|228|seats=6,arms=slim,corner=left,sd=99
 SÖDERHAMN|section|1-seat section|61|69|99|seats=1
 SÖDERHAMN|section|Corner section|99|69|99|seats=1,corner=left
@@ -1319,7 +1592,12 @@ SÖDERHAMN|section|3-seat section|182|69|99|seats=3
 SÖDERHAMN|sofa|2-seat sofa|170|85|92|seats=2,arms=slim
 SÖDERHAMN|sofa|4-seat sofa-bed|290|85|92|seats=4,arms=slim
 SOLUPPGÅNG|stool|Stool, outdoor, 43 × 40 cm|43|40|43||outdoor garden
+SONGESAND|bed|Bed frame with 2 storage boxes, Twin, 97 × 191 cm|113|95|200|m=97,l=191,f=59,us=1
+SONGESAND|bed|Bed frame, Queen, 152 × 203 cm|168|95|212|m=152,l=203,f=59,us=1
 SOTENÄS|armchair|Armchair|75|90|80
+SPIKSMED|cabinet|Cabinet, 59.5 × 96 cm|60|96|40|us=1
+SPIKSMED|sideboard|Sideboard, 97 × 40 × 79.5 cm|97|80|40|us=1
+SPIKSMED|wallcab|Media shelf, 117 × 32 cm|117|32|35|doors=0,shelves=0,cat=Media shelf,us=1
 STACKHOLMEN|stool|Stool, outdoor, 48 × 35 × 43 cm|48|43|35||outdoor garden
 STÄLL|shoe|Shoe cabinet with 4 compartments, 96 × 17 × 90 cm|96|90|17|knobs=knob,c=4
 STEGESUND|bench|Bench, 79 × 34 cm|79|45|34
@@ -1332,7 +1610,9 @@ STENSELE|dining|Table, 70 cm|70|74|70|round=1
 STIG|chair|Bar stool with backrest, 63 cm|44|95|50|seatH=63
 STIGBYGEL|office|Swivel chair with armrests|64|105|64|arms=slim
 STJÄRNÖ|bed|Bed frame, Standard Single, 90 × 190 cm|106|100|199|m=90,l=190
+STJÄRNÖ|bed|Bed frame, Twin, 97 × 191 cm|113|100|200|m=97,l=191,us=1
 STJÄRNÖ|bed|Bed frame, Standard Double, 135 × 190 cm|151|100|199|m=135,l=190
+STJÄRNÖ|bed|Bed frame, Queen, 152 × 203 cm|168|100|212|m=152,l=203,us=1
 STOCKHOLM|chair|Chair with armrests|44|88|50|arms=slim
 STOCKHOLM|coffee|Coffee table, 180 × 59 cm|180|45|59
 STOCKHOLM|sofa|Three-seat sofa|230|85|92|seats=3
@@ -1355,8 +1635,14 @@ STOCKHOLM 2025|slidecab|Cabinet with sliding doors, 125 × 47 × 110 cm|125|110|
 STOCKHOLM 2025|sofa|2-seat sofa|170|85|92|seats=2
 STOCKHOLM 2025|sofa|3-seat sofa|230|85|92|seats=3
 STOCKHOLM 2025|sofa|4-seat sofa|290|85|92|seats=4
+STORÅ|loft|Loft bed frame, Full/Double, 137 × 191 cm|202|195|147|m=137,l=191,us=1
 STOREDAMM|bench|Bench, 63 × 31 cm|63|45|31
+STOREDAMM|open|Shelf unit, 60 × 71 cm|60|71|35|us=1
 STOREDAMM|open|Shelving unit, 60 × 141 cm|60|141|35
+STOREMOLLA|chest|5-drawer dresser, 63 × 50 × 131 cm|63|131|50|rows=5,us=1
+STOREMOLLA|chest|3-drawer dresser, 93 × 50 × 91 cm|93|91|50|rows=3,us=1
+STOREMOLLA|chest|8-drawer dresser, 171 × 50 × 91 cm|171|91|50|rows=4,cols=2,us=1
+STOREMOLLA|nightstand|Nightstand, 50 × 50 × 72 cm|50|72|50|rows=2,us=1
 STORKLINTA|bed|Bed frame with 2 storage boxes, Standard Single, 90 × 190 cm|106|100|199|m=90,l=190
 STORKLINTA|bed|Bed frame, Standard Single, 90 × 190 cm|106|100|199|m=90,l=190
 STORKLINTA|bed|Bed frame with 2 storage boxes, Standard Double, 135 × 190 cm|151|100|199|m=135,l=190
@@ -1370,16 +1656,23 @@ STORKLINTA|chest|Chest of 6 drawers, 140 × 50 × 75 cm|140|75|50|rows=3,cols=2
 STORKLINTA|nightstand|Chest of 2 drawers, 30 × 50 × 53 cm|30|53|50|rows=2
 STORKLINTA|nightstand|Bedside table with glass top, 40 × 50 × 53 cm|40|53|50|rows=1
 STORKLINTA|nightstand|Chest of 2 drawers, 40 × 50 × 53 cm|40|53|50|rows=2
+STORKLINTA|nightstand|2-drawer chest, 50 × 48 × 53 cm|50|53|48|rows=2,us=1
+STORKLINTA|nightstand|Nightstand, 50 × 48 × 53 cm|50|53|48|rows=1,us=1
 STRANDMON|armchair|Wing chair with footstool|82|101|96|arms=wide,cat=Armchair with footstool,foot=1
+STRANDMON|lidbox|Ottoman with storage|62|42|42|cat=Footstool with storage,us=1
 STRANDÖN|lounger|Sun lounger|66|87|195||outdoor garden
 STRANDÖN|stool|Folding stool|35|45|35||outdoor garden
 STYRSPEL|office|Gaming chair|64|128|64|arms=slim,seatH=50
+SUNDBRON|sofa|Loveseat|170|85|92|seats=2,us=1
+SUNDBRON|sofa|Sofa|230|85|92|seats=3,us=1
 SUNDSÖ|cabinet|Cabinet, 60 × 35 × 86 cm|60|86|35||outdoor garden
 SUNDSÖ|chair|Folding chair|44|88|50||outdoor garden
 SUNDSÖ|dining|Table, 65 × 65 cm|65|74|65||outdoor garden
 SUNDSÖ|dining|Table, 65 cm|65|74|65|round=1|outdoor garden
 SUNDVIK|armchair|Rocking-chair|75|90|80
+SUNDVIK|bed|Ext bed frame with slatted bed base, 97 × 190 cm|113|80|199|m=97,l=190,f=60,us=1
 SUNDVIK|changing|Changing table/chest of drawers, 78 × 79 × 99 cm|79|99|78|rows=3|kids children
+SUNDVIK|cot|Crib, 70 × 132 cm|142|82|78|m=70,l=132,us=1
 SUNDVIK|cot|Cot, 70 × 140 cm|150|86|78|m=70,l=140
 SUNDVIK|kidschair|Children's chair|34|60|34||kids
 SUNDVIK|kidstable|Children's table, 76 × 50 cm|76|48|50||kids
@@ -1391,13 +1684,20 @@ SYNTORP|chair|Bar stool with backrest, 66 cm|44|98|50|seatH=66
 SYVDE|desk|Dressing table, 100 × 48 cm|100|74|48
 TÄLLÅSEN|bed|Upholstered bed frame with mattress, Standard Double, 135 × 190 cm|151|100|199|m=135,l=190,cat=Bed frame
 TÄLLÅSEN|bed|Upholstered bed frame, Standard Double, 135 × 190 cm|151|100|199|m=135,l=190
+TÄLLÅSEN|bed|Upholstered bed frame with mattress, Queen, 152 × 203 cm|168|100|212|m=152,l=203,cat=Bed frame,us=1
+TÄLLÅSEN|bed|Upholstered bed frame, Queen, 152 × 203 cm|168|100|212|m=152,l=203,us=1
 TALLSKÄR|armchair|Armchair, outdoor|75|90|80||outdoor garden
 TALLSKÄR|chair|Chair with armrests, outdoor|44|88|50|arms=slim|outdoor garden
 TALLSKÄR|sofa|2-seat sofa, outdoor|170|85|92|seats=2|outdoor garden
 TÅNEBRO|side|Side table, 46 cm|46|50|46|round=1
 TÄNNFORSEN|cabinet|High cabinet with door, 40 × 35 × 195 cm|40|195|35|doors=1
+TÄNNFORSEN|cabinet|High cabinet with doors, 45.5 × 38 × 195.5 cm|46|196|38|us=1
 TÄNNFORSEN|wallcab|Wall cabinet with door, 40 × 15 × 95 cm|40|95|15|doors=1
+TÄNNFORSEN|wallcab|Wall cabinet with door, 45.5 × 15 × 94 cm|46|94|15|doors=1,us=1
+TÄNNFORSEN|wallcab|Mirror cabinet with doors, 76 × 15 × 94 cm|76|94|15|us=1
 TÄNNFORSEN|wallcab|Mirror cabinet with doors, 80 × 15 × 95 cm|80|95|15
+TÄNNFORSEN|washstand|Bathroom vanity with doors, 61 × 53.5 × 64 cm|61|64|54|z=d2,hung=1,us=1
+TÄNNFORSEN|washstand|Bathroom vanity with drawers, 76 × 53.5 × 64 cm|76|64|54|z=r2,hung=1,us=1
 TÄNNFORSEN|washstand|Wash-stand with doors, 80 × 48 × 63 cm|80|63|48|z=d2,hung=1
 TÄNNFORSEN|washstand|Wash-stand with drawers, 80 × 48 × 63 cm|80|63|48|z=r2,hung=1
 TÄNNFORSEN / ORRSJÖN|washstand|Wash-stnd w drs/deep wash-basin/tap, 62 × 49 × 72 cm|62|72|49|z=d2,basin=9,hung=1
@@ -1405,11 +1705,17 @@ TÄNNFORSEN / ORRSJÖN|washstand|Wash-stnd w doors/wash-basin, 82 × 49 × 71 cm
 TÄNNFORSEN / ORRSJÖN|washstand|Wash-stnd w drawers/wash-basin, 82 × 49 × 71 cm|82|71|49|z=r2,basin=8,hung=1
 TÄNNFORSEN / ORRSJÖN|washstand|Wash-stnd w drawers/wash-basin, 102 × 49 × 69 cm|102|69|49|z=r2,basin=6,hung=1||tannforsen-orrsjon-wash-stnd-w-drawers-wash-basi-2
 TÄNNFORSEN / ORRSJÖN|washstand|Wash-stand/wash-basin, 102 × 49 × 71 cm|102|71|49|z=r2,basin=8,hung=1
+TÄNNFORSEN / ORRSJÖN|washstand|Wash-stand/wash-basin, 124.5 × 54.5 × 90 cm|125|90|55|z=r2,basin=16,us=1
+TÄNNFORSEN / ORRSJÖN|washstand|Wash-stand/wash-basin, 155 × 54.5 × 72 cm|155|72|55|z=r2,basin=9,hung=1,us=1
 TÄNNFORSEN / RUTSJÖN|washstand|Wash-stnd w doors/wash-basin, 82 × 49 × 74 cm|82|74|49|z=d2,basin=11,hung=1
 TÄNNFORSEN / RUTSJÖN|washstand|Wash-stnd w drawers/wash-basin, 82 × 49 × 74 cm|82|74|49|z=r2,basin=11,hung=1
+TÄNNFORSEN / RUTSJÖN|washstand|Wash-stand/wash-basin, 124.5 × 54.5 × 94.5 cm|125|95|55|z=r2,basin=16,us=1
+TÄNNFORSEN / RUTSJÖN|washstand|Wash-stand/wash-basin, 155 × 54.5 × 94.5 cm|155|95|55|z=r2,basin=16,us=1
 TÄNNFORSEN / VÄSTERSJÖN|washstand|Wash-stnd w doors/wash-basin, 62 × 49 × 79 cm|62|79|49|z=d2,basin=16,hung=1
 TÄNNFORSEN / VÄSTERSJÖN|washstand|Wash-stnd w drawers/wash-basin, 102 × 49 × 79 cm|102|79|49|z=r2,basin=16,hung=1
+TÄRNKULLEN|bed|Upholstered bed frame, Twin, 97 × 191 cm|113|100|200|m=97,l=191,us=1
 TÄRNKULLEN|bed|Upholstered bed frame, Standard Double, 135 × 190 cm|151|100|199|m=135,l=190
+TÄRNKULLEN|bed|Upholstered bed frame, Queen, 152 × 203 cm|168|100|212|m=152,l=203,us=1
 TÄRNÖ|chair|Chair, outdoor|44|88|50||outdoor garden
 TÄRNÖ|dining|Table, outdoor, 55 × 54 cm|55|74|54||outdoor garden
 TÄRNÖ|stool|Stool, 30 × 42 cm|30|42|30||outdoor garden
@@ -1417,7 +1723,12 @@ TÄRNÖ|stool|Stool, outdoor|35|45|35||outdoor garden
 TARSELE|coffee|Coffee table, 114 × 72 cm|114|45|72
 TARSELE|dining|Extendable table, 150/200 × 80 cm|150|74|80
 TARVA|bed|Bed frame, Standard Single, 90 × 190 cm|106|92|199|m=90,l=190,f=40
+TARVA|bed|Bed frame, Twin, 97 × 191 cm|113|92|200|m=97,l=191,f=40,us=1
 TARVA|bed|Bed frame, Standard Double, 135 × 190 cm|151|92|199|m=135,l=190,f=40
+TARVA|bed|Bed frame, Queen, 152 × 203 cm|168|92|212|m=152,l=203,f=40,us=1
+TARVA|chest|3-drawer dresser, 76 × 92 cm|76|92|48|rows=3,knobs=knob,us=1
+TARVA|chest|6-drawer dresser, 151 × 92 cm|151|92|48|rows=3,cols=2,knobs=knob,us=1
+TARVA|nightstand|Nightstand, 48 × 39 × 62 cm|48|62|39|rows=2,knobs=knob,us=1
 TAXÅSKLINT|bed|Bed frame, Standard Double, 135 × 190 cm|151|100|199|m=135,l=190
 TEGELÖN|chair|Chair, in/outdoor|44|88|50||outdoor garden
 TEGELÖN|dining|Table, outdoor, 216 × 86 cm|216|74|86||outdoor garden
@@ -1428,9 +1739,11 @@ TJUSIG|hatrack|Hat rack, 79 cm|79|26|32
 TJUSIG|shoerack|Shoe rack, 79 × 32 × 37 cm|79|37|32
 TOBIAS|chair|Chair|44|88|50
 TOLKNING|divider|Room divider, 150 × 170 cm|150|170|25
+TOLKNING|lidbox|Pouf with storage|38|38|38|cat=Pouffe with storage,us=1
 TOLKNING|shelfbench|Bench with storage, 120 cm|120|46|38
 TONSTAD|bed|Bed frame with storage, Standard Single, 90 × 190 cm|106|100|199|m=90,l=190
 TONSTAD|bed|Bed frame, Standard Single, 90 × 190 cm|106|100|199|m=90,l=190
+TONSTAD|bed|Bed frame, Twin, 97 × 191 cm|113|100|200|m=97,l=191,us=1
 TONSTAD|bed|Bed frame, Standard Double, 135 × 190 cm|151|100|199|m=135,l=190
 TONSTAD|bed|Bed frame with storage, Standard King, 150 × 200 cm|166|100|209|m=150
 TONSTAD|bookcase|Bookcase, 81 × 37 × 201 cm|81|201|37
@@ -1469,6 +1782,7 @@ TORALD|desk|Desk, 65 × 40 cm|65|74|40
 TORNSBORG|chairbed|Armchair-bed|80|87|98|arms=slim
 TORNSBORG|sofa|2-seat sofa-bed|170|85|92|seats=2
 TORNVIKEN|cabinet|Open cabinet, 20 × 37 × 60 cm|20|60|37|doors=0
+TORNVIKEN|cabinet|Open cabinet, 23 × 37 × 76 cm|23|76|37|doors=0,us=1
 TORNVIKEN|trolley|Kitchen island, 126 × 77 cm|126|80|77
 TORPARÖ|chair|Chair with armrests, outdoor|44|88|50|arms=slim|outdoor garden
 TORPARÖ|dining|Table, outdoor, 130 × 74 cm|130|74|74||outdoor garden
@@ -1506,7 +1820,9 @@ TROTTEN|desk|Desk, 160 × 80 cm|160|75|80|legs=square,attach=apron
 TROTTEN|slidecab|Cabinet with sliding doors, 80 × 55 × 75 cm|80|75|55|slides=2
 TROTTEN|slidecab|Cabinet with sliding doors, 80 × 55 × 110 cm|80|110|55|slides=2
 TROTTEN|slidecab|Cabinet with sliding doors, 80 × 55 × 180 cm|80|180|55|slides=2
+TUFFING|bunk|Bunk bed frame, Twin, 97 × 191 cm|202|160|107|m=97,l=191,us=1
 TUFFING|bunk|Bunk bed frame, 90 × 200 cm|211|160|100|m=90
+TUFFING|loft|Loft bed frame, Twin, 97 × 191 cm|202|195|107|m=97,l=191,us=1
 TUFFING|loft|Loft bed frame, 90 × 200 cm|211|195|100|m=90
 TUFJORD|bed|Upholstered bed frame, Standard King, 150 × 200 cm|166|100|209|m=150
 TULLSTA|armchair|Armchair|75|90|80
@@ -1525,15 +1841,26 @@ UPPÅKRA|section|1.5-seat module|96|83|92|seats=1
 UPPÅKRA|sofa|3-seat modular sofa|230|85|92|seats=3
 UPPÅKRA|sofa|4,5-seat modular sofa|350|85|92|seats=5
 UPPÅKRA|usofa|U-shaped sofa, 4,5-seat|301|83|173|seats=5,arms=wide,sd=92
+UPPFÖRA|cabinet|Frame, 60 × 55 × 76 cm|60|76|55|doors=0,us=1|kids children
+UPPFÖRA|cabinet|Frame, 60 × 55 × 136 cm|60|136|55|doors=0,us=1|kids children
+UPPFÖRA|cabinet|Frame, 60 × 55 × 196 cm|60|196|55|doors=0,us=1|kids children
+UPPLAND|armchair|Armchair|75|90|80|us=1
+UPPLAND|armchair|Armchair and ottoman|75|90|80|cat=Armchair with footstool,foot=1,us=1
+UPPLAND|chaise|Sofa with chaise|231|89|166|seats=3,arms=wide,chaise=right,sd=98,us=1
+UPPLAND|corner|Sectional, 4-seat corner|246|89|181|seats=4,arms=wide,corner=left,sd=98,us=1
+UPPLAND|sofa|Loveseat|170|85|92|seats=2,us=1
 URBAN|junior|Junior chair|43|91|52||kids children
 UTÅKER|bed|Stackable bed, 80 × 200 cm|96|46|209|m=80,f=46
+UTÅKER|bed|Stackable bed, Twin, 97 × 191 cm|113|46|200|m=97,l=191,f=46,us=1
 UTESPELARE|desk|Gaming desk, 160 × 80 cm|160|74|80
 UTKLASSNING|office|Gaming chair|64|128|64|arms=slim,seatH=50
+UTMANING|desk|Gaming desk, 120 × 80 cm|120|74|80|us=1
 UTMANING|desk|Gaming desk sit/stand, 160 × 80 cm|160|74|80
 UTMANING|desk|Gaming desk, 160 × 80 cm|160|74|80
 UTTER|stool|Children's stool|35|30|35||kids
 VADHOLMA|chest|Drawer unit, 40 × 37 × 40 cm|40|40|37|rows=3
 VADHOLMA|open|Open storage, 20 × 37 × 60 cm|20|60|37
+VADHOLMA|open|Open storage, 23 × 36.5 × 76 cm|23|76|37|us=1
 VADHOLMA|trolley|Kitchen island, 79 × 63 × 90 cm|79|90|63
 VADHOLMA|trolley|Kitchen island, 126 × 79 × 90 cm|126|90|79
 VADHOLMA|trolley|Kitchen island with rack, 126 × 79 × 193 cm|126|193|79|cat=Kitchen island,up=103
@@ -1552,21 +1879,27 @@ VATTENKAR|riser|Laptop/monitor stand, 52 × 26 cm|52|15|26
 VEDBO|armchair|Armchair|75|90|80
 VEDBO|armchair|High-back armchair|75|104|80
 VEINGE|armchair|Easy chair|75|90|80
+VENNGARN|sofa|Loveseat|170|85|92|seats=2,us=1
+VENNGARN|sofa|Sofa|230|85|92|seats=3,us=1
 VESKEN|open|Shelf unit, 37 × 23 × 101 cm|37|101|23
 VESKEN|trolley|Trolley, 54 × 18 × 71 cm|54|71|18
 VEVELSTAD|bed|Bed frame with 1 headboard, Standard Single, 90 × 190 cm|106|100|199|m=90,l=190,cat=Bed frame
 VEVELSTAD|bed|Bed frame with 2 headboards, Standard Single, 90 × 190 cm|106|100|199|m=90,l=190
 VEVELSTAD|bed|Bed frame with 3 headboards, Standard Single, 90 × 190 cm|106|100|199|m=90,l=190
 VEVELSTAD|bed|Bed frame, Standard Single, 90 × 190 cm|106|100|199|m=90,l=190
+VEVELSTAD|bed|Bed frame with 1 headboard, Twin, 97 × 191 cm|113|100|200|m=97,l=191,cat=Bed frame,us=1
+VEVELSTAD|bed|Bed frame, Twin, 97 × 191 cm|113|100|200|m=97,l=191,us=1
 VEVELSTAD|bed|Bed frame with 2 headboards, Standard Double, 135 × 190 cm|151|100|199|m=135,l=190
 VEVELSTAD|bed|Bed frame, Standard Double, 135 × 190 cm|151|100|199|m=135,l=190
 VIGGSÖ|lounge|Lounge chair, outdoor|72|88|80||outdoor garden
 VIHALS|bar|Bar table, 125 × 74 × 92 cm|125|92|74
 VIHALS|bed|Bed frame with 2 storage boxes, Standard Single, 90 × 190 cm|106|100|199|m=90,l=190
 VIHALS|bed|Bed frame, Standard Single, 90 × 190 cm|106|100|199|m=90,l=190
+VIHALS|bed|Bed frame with 2 storage boxes, Twin, 97 × 191 cm|113|100|200|m=97,l=191,us=1
 VIHALS|bed|Bed frame with 2 storage boxes, Standard Double, 135 × 190 cm|151|100|199|m=135,l=190
 VIHALS|bed|Bed frame with 4 storage boxes, Standard Double, 135 × 190 cm|151|100|199|m=135,l=190
 VIHALS|bed|Bed frame, Standard Double, 135 × 190 cm|151|100|199|m=135,l=190
+VIHALS|bed|Bed frame with 4 storage boxes, Queen, 152 × 203 cm|168|100|212|m=152,l=203,us=1
 VIHALS|chair|Chair|44|88|50
 VIHALS|chair|Folding chair|44|88|50
 VIHALS|chest|Chest of 4 drawers, 70 × 47 × 90 cm|70|90|47|rows=4,knobs=bar
@@ -1583,18 +1916,22 @@ VIHALS|dining|Extendable table, 84/120 × 74 cm|84|74|74
 VIHALS|dining|Table, 107 cm|107|74|107|round=1
 VIHALS|dining|Extendable table, 120/180 × 74 cm|120|74|74
 VIHALS|dining|Table, 125 × 74 cm|125|74|74
+VIHALS|dining|Table, 180 × 74 cm|180|74|74|us=1
 VIHALS|gateleg|Gateleg table, 39/95/151 × 90 cm|151|75|90|shelf=1,leaves=2,leaf=56,hinge=1
 VIHALS|nightstand|Bedside table, 37 × 37 cm|37|55|37|rows=1,knobs=bar
 VIHALS|open|Shelving unit with 4 shelves, 95 × 37 × 90 cm|95|90|37|shelves=2
+VIHALS|open|Shelving unit with 6 shelves, 95 × 37 × 140 cm|95|140|37|shelves=4,us=1
 VIHALS|open|Shelving unit with 10 shelves, 95 × 37 × 200 cm|95|200|37|shelves=6
 VIHALS|open|Storage unit, 105 × 37 × 140 cm|105|140|37
 VIHALS|sideboard|Sideboard, 140 × 37 × 75 cm|140|75|37
+VIHALS|sideboard|Sideboard, 140 × 47 × 75 cm|140|75|47|us=1
 VIHALS|slidecab|Cabinet with sliding glass doors, 95 × 37 × 90 cm|95|90|37|slides=2
 VIHALS|slidecab|Cabinet with sliding doors, 95 × 47 × 90 cm|95|90|47|slides=2
 VIHALS|tv|TV bench, 146 × 37 × 50 cm|146|50|37
 VIHALS|tv|TV bench, 176 × 37 × 50 cm|176|50|37
 VIHALS|wardrobe|Wardrobe with 2 doors, 105 × 57 × 200 cm|105|200|57|doors=2
 VIKHAMMER|nightstand|Bedside table, 40 × 39 cm|40|55|39|rows=1
+VIKHAMMER|nightstand|Nightstand, 60 × 39 cm|60|55|39|rows=1,us=1
 VILDGÅS|junior|Junior chair|43|91|52||kids children
 VILHATTEN|mixed|Wardrobe with 2 doors and 2 drawers, 98 × 57 × 190 cm|98|190|57|rows=2,doors=2,rail=1
 VILTO|open|Shelving unit, 46 × 150 cm|46|150|35
@@ -1608,6 +1945,7 @@ VIMLE|corner|Corner sofa, 5-seat|238|83|238|seats=5,arms=wide,corner=left,sd=98
 VIMLE|corner|Corner sofa, 4-seat|253|83|184|seats=4,arms=wide,corner=left,sd=98
 VIMLE|corner|Corner sofa, 5-seat w chaise longue|253|83|236|seats=5,arms=wide,corner=left,open=1,sd=98
 VIMLE|corner|Crnr sofa-bed, 5-seat w chaise lng|253|83|236|seats=5,arms=wide,corner=left,open=1,sd=98
+VIMLE|lidbox|Ottoman with storage|62|42|42|cat=Footstool with storage,us=1
 VIMLE|section|1-seat section|69|83|98|seats=1
 VIMLE|section|Chaise longue section|69|83|166|seats=1
 VIMLE|section|Corner section|98|83|98|seats=1,corner=left
@@ -1618,7 +1956,9 @@ VIMLE|sofa|2-seat sofa|170|85|92|seats=2
 VIMLE|sofa|2-seat sofa-bed|170|85|92|seats=2
 VIMLE|sofa|4-seat sofa|290|85|92|seats=4
 VIMLE|usofa|U-shaped sofa, 6 seat|300|83|238|seats=6,arms=wide,sd=98
+VIMUND|office|Child's desk chair|52|86|52|arms=none,seatH=42,us=1|kids
 VINGSÖN|armchair|Wing chair, in/outdoor|75|104|80||outdoor garden
+VINLIDEN|chaise|Sofa with chaise|226|85|160|seats=3,arms=wide,chaise=right,sd=92,us=1
 VISINGSÖ|chair|Chair with armrests|44|88|50|arms=slim|outdoor garden
 VISINGSÖ|dining|Table, 70 × 70 cm|70|74|70||outdoor garden
 VISKAFORS|armchair|1,5-seat armchair|105|90|80|cat=Armchair
@@ -1628,6 +1968,7 @@ VISTHUS|chest|Chest of 6 drawers, 63 × 49 × 126 cm|63|126|49|rows=6
 VITTERYD|coffee|Adjustable coffee table, 97 cm|97|45|97|round=1
 VITTSJÖ|coffee|Coffee table, 75 cm|75|40|75|legs=square,shelf=1,round=1
 VITTSJÖ|desk|Laptop table, 100 × 36 cm|100|74|36
+VITTSJÖ|desk|Desk, 110 × 60 cm|110|74|60|us=1
 VITTSJÖ|open|Shelving unit, 100 × 93 cm|100|93|36
 VITTSJÖ|open|Shelving unit, 100 × 175 cm|100|175|36
 VITTSJÖ|riser|Laptop stand, 35 × 65 cm|35|65|50
@@ -1646,9 +1987,14 @@ VITTSKÄR|sofa|2-seat modular sofa|170|85|92|seats=2|outdoor garden
 VITTSKÄR|sofa|2-seat sofa|170|85|92|seats=2|outdoor garden
 VITTSKÄR|sofa|3-seat modular sofa|230|85|92|seats=3|outdoor garden
 VITTSKÄR|sofa|3-seat sofa|230|85|92|seats=3|outdoor garden
+VITVAL|bunk|Bunk bed frame, Twin, 97 × 191 cm|202|160|107|m=97,l=191,us=1
 VITVAL|bunk|Bunk bed frame, 90 × 200 cm|211|160|100|m=90
+VITVAL|loft|Loft bed frame, Twin, 97 × 191 cm|202|195|107|m=97,l=191,us=1
 VITVAL|loft|Loft bed frame, 90 × 200 cm|211|195|100|m=90
+VOXLÖV|chair|Chair|44|88|50|us=1
+VOXLÖV|dining|Dining table, 180 × 90 cm|180|74|90|us=1
 VRETSTORP|sofa|3-seat sofa-bed|230|85|92|seats=3
+VUKU|wardrobe|Wardrobe, 74 × 51 × 149 cm|74|149|51|us=1
 YNGVAR|chair|Chair|44|88|50
 YNGVAR|stool|Bar stool, 75 cm|35|75|35
 YXSTABY|riser|Gaming monitor stand, 98 × 27 × 16 cm|98|16|27|cat=Monitor stand`;

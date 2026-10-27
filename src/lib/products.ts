@@ -153,6 +153,8 @@ export type X = {
   mirror?: boolean;
   /** cm: a rack or a back panel rising from the back of the top (size.h takes it in) */
   up?: number;
+  /** sold in the US and not in the UK: comes after the family's UK pieces in search */
+  us?: boolean;
 };
 
 export type Row = [name: string, kind: Kind, variant: string, w: number, h: number, d: number, x?: X, keywords?: string];

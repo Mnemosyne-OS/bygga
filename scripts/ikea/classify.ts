@@ -3,6 +3,7 @@
  * or a reason we can't draw it believably yet. Used by build.ts and check.ts.
  */
 import { KIND_ARCH, KIND_DEFAULT_SIZE, type Kind, type X } from "@/lib/products";
+import { metric } from "./us";
 
 /** One IKEA product (all its colours) as fetch.ts keeps it. */
 export interface Fact {
@@ -60,8 +61,15 @@ interface Size {
   text: string;
 }
 
-/** IKEA's measure text: "77x147 cm", "80x28x202 cm" (w x d x h), "150/200x80 cm", "Standard Double". */
+/**
+ * IKEA's measure text: "77x147 cm", "80x28x202 cm" (w x d x h), "150/200x80 cm", "Standard Double". The US range's
+ * inches ("30 3/8x15 3/8 \"", "29 ½ \"") and inches given with cm are read in cm.
+ */
 export function measure(s: string): Size | null {
+  if (/"/.test(s)) {
+    const cm = metric(s);
+    return cm === null || /"/.test(cm) ? null : measure(cm);
+  }
   const t = s.replace(/\s+/g, " ").trim();
   if (!t) return { n: [], ext: false, text: "" };
   const bed = BEDS[t.toLowerCase()];

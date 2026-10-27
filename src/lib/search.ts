@@ -202,6 +202,8 @@ export function searchCatalog(q: string, limit = 8): Hit[] {
     if (e.row?.units) score -= 0.5;
     // and pieces drawn later under IKEA's own name for them after the family's older ones of the same kind
     if (e.late) score -= kind === e.kind ? 0.5 : 1;
+    // and the US range's own pieces after the UK ones of a family, as much as a word of the query is worth
+    if (e.us) score -= 13;
     if (e.checked) score += 3;
     if (e.featured) score += 2;
     if (score > 15) hits.push({ entry: e, score, exact: ns >= 80 });

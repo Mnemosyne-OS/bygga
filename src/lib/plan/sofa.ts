@@ -209,7 +209,7 @@ function withSideTable(b: PlanBuilder, s: ProductSpec) {
       b.then(0.1);
       const sc: FitOpts[] = [];
       for (const [i, k] of ends.entries()) for (const z of [-td / 4, td / 4]) sc.push({ on: k, at: [at(k)[0] + (i === 0 ? -t / 2 : t / 2), 160, z], dir: [i === 0 ? 1 : -1, 0, 0], mate: shelf });
-      for (const [i, k] of ends.entries()) for (const z of [-td / 4, td / 4]) sc.push({ on: top, at: [at(k)[0], th, z], dir: [0, -1, 0], mate: k });
+      for (const k of ends) for (const z of [-td / 4, td / 4]) sc.push({ on: top, at: [at(k)[0], th, z], dir: [0, -1, 0], mate: k });
       b.fits(HW.screwM, sc, 0.06);
     },
   );

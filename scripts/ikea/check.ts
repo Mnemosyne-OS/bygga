@@ -15,7 +15,7 @@ import { buildPlan } from "@/lib/plan";
 import { articleNo, articleSlug, ikeaType, loadArticles } from "@/lib/ikea";
 import { matchCatalog, searchCatalog } from "@/lib/search";
 import type { Plan } from "@/lib/types";
-import { classify, type Fact } from "./classify";
+import { classify, measure, type Fact } from "./classify";
 
 const DIR = import.meta.dirname;
 const problems: string[] = [];
@@ -153,6 +153,12 @@ async function main() {
   expect("poang", "poang-armchair");
   expect("viskafors", "viskafors-2-seat-sofa");
   if (articleNo("S292.975.72") !== "29297572") fail("article numbers with an S in front don't parse");
+  // the US range's measures, in inches with fractions, or in inches and cm, are read in cm
+  for (const [text, cm] of [['30 3/8x15 3/8 "', "77 × 39 cm"], ['55 1/8x18 7/8x29 1/2 "', "140 × 48 × 75 cm"], ['29 ½ "', "75 cm"], ['15 3/4 "/40 cm', "40 cm"], ["80x202 cm", "80 × 202 cm"]] as const)
+    if (measure(text)?.text !== cm) fail(`measure "${text}" gave ${measure(text)?.text}, expected ${cm}`);
+  // a US-only product comes after the family's UK pieces, and is found by its own words
+  expect("hemnes bed", "hemnes-bed-frame-160-x-200");
+  expect("sektion corner base cabinet", "sektion-corner-base-cabinet-carousel-96-5-x-61-x");
   for (const [no, slug] of [["60324520", "kallax-2x2"]] as const) {
     if (articleSlug(no) !== slug) fail(`article ${no} gave ${articleSlug(no)}, expected ${slug}`);
     for (const q of [no, `${no.slice(0, 3)}.${no.slice(3, 6)}.${no.slice(6)}`, `${no.slice(0, 3)} ${no.slice(3, 6)} ${no.slice(6)}`]) expect(q, slug);
