@@ -311,6 +311,7 @@
   box-shadow: none;
   border: 1.5px dashed var(--line-2);
   gap: 0;
+  overflow: hidden;
 }
 .pg-add button {
   display: flex;

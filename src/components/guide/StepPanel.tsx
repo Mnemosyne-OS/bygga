@@ -202,7 +202,7 @@ export default function StepPanel({
         </button>
         <div className="foot-row">
           <button className="btn link stuck" onClick={onHelp}>
-            <IHelp size={17} /> Stuck?
+            <IHelp size={16} /> Stuck?
           </button>
           <span className="kbd-hint" aria-hidden="true">
             <kbd>&larr;</kbd>

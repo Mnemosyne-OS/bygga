@@ -646,6 +646,15 @@
 .foot-row .btn.link {
   font-size: 14.5px;
 }
+.foot-row .btn.link.stuck {
+  gap: 6px;
+  text-decoration: none;
+  font-size: 13px;
+  color: var(--ink-3);
+}
+.foot-row .btn.link.stuck:hover {
+  color: var(--ink);
+}
 .kbd-hint {
   font-size: 13px;
   color: var(--ink-3);
@@ -1468,7 +1477,8 @@ input[type="range"] {
   margin: 0;
   padding: 0;
   border-radius: 16px;
-  box-shadow: inset 0 0 0 1px var(--line);
+  /* a real border: an inset shadow sits under the rows, so a hovered row would paint over it */
+  border: 1px solid var(--line);
   overflow: hidden;
 }
 .needs li {
