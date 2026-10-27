@@ -991,12 +991,16 @@ nordli-bed-frame-storage-140-x-200|40349847 00349849
 nordli-chest-12-drawers-120-x-145|99239489
 nordli-chest-12-drawers-160-x-145|79239490
 nordli-chest-2-drawers-40-x-54|09239827
+nordli-chest-2-drawers-40-x-99|49276549
 nordli-chest-2-drawers-80-x-54|99239494
+nordli-chest-3-drawers-120-x-169|39295138
 nordli-chest-3-drawers-120-x-54|69276567
 nordli-chest-3-drawers-40-x-76|39239835
+nordli-chest-3-drawers-80-x-192|59295217
 nordli-chest-3-drawers-80-x-76|69239495
 nordli-chest-4-drawers|79239843
 nordli-chest-4-drawers-160-x-54|49239496
+nordli-chest-4-drawers-80-x-192|89336872
 nordli-chest-5-drawers-120-x-169|09295286
 nordli-chest-5-drawers-120-x-76|49248033
 nordli-chest-5-drawers-80-x-122|29276550
@@ -1006,9 +1010,17 @@ nordli-chest-6-drawers-120-x-99|69276633
 nordli-chest-6-drawers-160-x-169|89295169
 nordli-chest-6-drawers-160-x-54|49276629
 nordli-chest-6-drawers-80-x-145|89239499
+nordli-chest-7-drawers-120-x-76|39336884
+nordli-chest-7-drawers-80-x-122|99239502
+nordli-chest-7-drawers-80-x-99|09248006
 nordli-chest-8-drawers|19276621 29239505 29248010 59239491
 nordli-chest-8-drawers-120-x-99|79239503
+nordli-chest-8-drawers-160-x-169|69295349 49295208
+nordli-chest-8-drawers-160-x-192|79295377
 nordli-chest-8-drawers-160-x-54|59239504
+nordli-chest-8-drawers-80-x-99|69336887
+nordli-chest-9-drawers-160-x-76|89239507
+nordli-chest-9-drawers-160-x-99|19248015
 nordli-chest-drawers-40-x-54|19276522
 nordli-modular-chest-2-drawers-40-x-45|90383457
 nordli-modular-chest-2-drawers-80-x-23|70471619

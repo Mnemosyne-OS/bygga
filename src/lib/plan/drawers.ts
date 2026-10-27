@@ -4,6 +4,7 @@ import { FrameKit } from "./frame";
 import { clamp } from "./math";
 import { buildChanging } from "./changing";
 import { CASTOR_H, castorStep, liftOntoCastors } from "./castors";
+import { buildModular } from "./modular";
 
 export function defaultsDrawers(s: ProductSpec): DrawersParams {
   const p = s.drawers ?? {};
@@ -18,6 +19,7 @@ export function defaultsDrawers(s: ProductSpec): DrawersParams {
 
 export function buildDrawers(b: PlanBuilder, s: ProductSpec) {
   if (s.drawers?.changing) return buildChanging(b, s, buildDrawers);
+  if (s.drawers?.modules) return buildModular(b, s);
   const p = defaultsDrawers(s);
   // on castors: the carcass is built on the floor, then lifted onto them
   const ch = s.drawers?.castors ? CASTOR_H : 0;

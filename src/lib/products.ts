@@ -477,6 +477,11 @@ function specOf(kind: Kind, name: string, variant: string, w: number, h: number,
       return { ...base, difficulty: 1, people: 1, shelf: { style: "bookcase", shelves: x.shelves ?? (h >= 55 ? 1 : 0), fixedShelf: true, back: false, plinth: false, outer: 18 } };
     case "chest":
     case "nightstand": {
+      // x.mods: a modular chest, columns of x.rows slots with x.dr drawers from the bottom up
+      if (x.mods) {
+        const dr = x.dr ?? x.mods * (x.rows ?? 4);
+        return { ...base, minutes: x.min ?? 40 + 20 * dr + 10 * (x.mods - 1), people: 2, drawers: { cols: 1, rows: x.rows ?? 4, knobs: x.knobs ?? "none", plinth: false, thickness: 16, modules: x.mods, ...(x.dr ? { count: x.dr } : {}) } };
+      }
       // x.cast: a drawer unit on castors
       const cast = x.cast ? { castors: true } : {};
       return { ...base, minutes: x.min ?? (kind === "nightstand" ? 30 + 15 * (x.rows ?? 2) : 30 + 20 * (x.rows ?? 3) * (x.cols ?? 1)) + (x.cast ? 5 : 0), drawers: { cols: x.cols ?? 1, rows: x.rows ?? (kind === "nightstand" ? 2 : 3), knobs: x.knobs ?? "knob", plinth: x.plinth ?? false, thickness: 16, ...cast } };

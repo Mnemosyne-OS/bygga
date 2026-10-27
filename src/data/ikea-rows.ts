@@ -923,26 +923,38 @@ NORDLI|chest|Modular chest of drawers, 40 × 45 cm|40|45|48|rows=3,knobs=none
 NORDLI|chest|Chest of drawers, 40 × 54 cm|40|54|48|rows=4,knobs=none
 NORDLI|chest|Modular chest of 3 drawers, 40 × 68 cm|40|68|48|rows=3,knobs=none
 NORDLI|chest|Chest of 3 drawers, 40 × 76 cm|40|76|48|rows=3,knobs=none
+NORDLI|chest|Chest of 2 drawers, 40 × 99 cm|40|99|48|rows=4,knobs=none,mods=1,dr=2
 NORDLI|chest|Modular chest of 2 drawers, 80 × 23 cm|80|23|48|rows=2,knobs=none
 NORDLI|chest|Modular chest of 2 drawers, 80 × 45 cm|80|45|48|rows=2,knobs=none
 NORDLI|chest|Chest of 2 drawers, 80 × 54 cm|80|54|48|rows=2,knobs=none
 NORDLI|chest|Modular chest of 3 drawers, 80 × 68 cm|80|68|48|rows=3,knobs=none
 NORDLI|chest|Chest of 3 drawers, 80 × 76 cm|80|76|48|rows=3,knobs=none
+NORDLI|chest|Chest of 7 drawers, 80 × 99 cm|80|99|48|rows=4,knobs=none,mods=2,dr=7
+NORDLI|chest|Chest of 8 drawers, 80 × 99 cm|80|99|48|rows=4,knobs=none,mods=2
 NORDLI|chest|Chest of 5 drawers, 80 × 122 cm|80|122|48|rows=5,knobs=none
+NORDLI|chest|Chest of 7 drawers, 80 × 122 cm|80|122|48|rows=5,knobs=none,mods=2,dr=7
 NORDLI|chest|Chest of 6 drawers, 80 × 145 cm|80|145|48|rows=6,knobs=none
+NORDLI|chest|Chest of 3 drawers, 80 × 192 cm|80|192|48|rows=8,knobs=none,mods=2,dr=3
+NORDLI|chest|Chest of 4 drawers, 80 × 192 cm|80|192|48|rows=8,knobs=none,mods=2,dr=4
 NORDLI|chest|Chest of 3 drawers, 120 × 54 cm|120|54|47|rows=3,knobs=none
 NORDLI|chest|Chest of 6 drawers, 120 × 54 cm|120|54|47|rows=3,cols=2,knobs=none
 NORDLI|chest|Chest of 5 drawers, 120 × 76 cm|120|76|47|rows=5,knobs=none
 NORDLI|chest|Chest of 6 drawers, 120 × 76 cm|120|76|47|rows=3,cols=2,knobs=none
+NORDLI|chest|Chest of 7 drawers, 120 × 76 cm|120|76|47|rows=3,knobs=none,mods=3,dr=7
 NORDLI|chest|Chest of 6 drawers, 120 × 99 cm|120|99|47|rows=3,cols=2,knobs=none
 NORDLI|chest|Chest of 8 drawers, 120 × 99 cm|120|99|47|rows=4,cols=2,knobs=none
 NORDLI|chest|Chest of 12 drawers, 120 × 145 cm|120|145|47|rows=6,cols=2,knobs=none
+NORDLI|chest|Chest of 3 drawers, 120 × 169 cm|120|169|47|rows=7,knobs=none,mods=3,dr=3
 NORDLI|chest|Chest of 5 drawers, 120 × 169 cm|120|169|47|rows=5,knobs=none
 NORDLI|chest|Chest of 4 drawers, 160 × 54 cm|160|54|47|rows=2,cols=2,knobs=none
 NORDLI|chest|Chest of 6 drawers, 160 × 54 cm|160|54|47|rows=3,cols=2,knobs=none
 NORDLI|chest|Chest of 8 drawers, 160 × 54 cm|160|54|47|rows=4,cols=2,knobs=none
+NORDLI|chest|Chest of 9 drawers, 160 × 76 cm|160|76|47|rows=3,knobs=none,mods=4,dr=9
+NORDLI|chest|Chest of 9 drawers, 160 × 99 cm|160|99|47|rows=4,knobs=none,mods=4,dr=9
 NORDLI|chest|Chest of 12 drawers, 160 × 145 cm|160|145|47|rows=6,cols=2,knobs=none
 NORDLI|chest|Chest of 6 drawers, 160 × 169 cm|160|169|47|rows=6,knobs=none
+NORDLI|chest|Chest of 8 drawers, 160 × 169 cm|160|169|47|rows=7,knobs=none,mods=4,dr=8
+NORDLI|chest|Chest of 8 drawers, 160 × 192 cm|160|192|47|rows=8,knobs=none,mods=4,dr=8
 NORDLI|nightstand|Modular chest of 2 drawers, 40 × 45 cm|40|45|48|rows=2,knobs=none
 NORDLI|nightstand|Chest of 2 drawers, 40 × 54 cm|40|54|48|rows=2,knobs=none
 NORDMANSSKÄR|chair|Chair|44|88|50

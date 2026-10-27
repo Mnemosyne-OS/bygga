@@ -154,6 +154,8 @@ const DAYBED_SIZE: Record<string, [number, number, number]> = { HEMNES: [210, 83
 const BLIND_DOOR: Record<string, number> = { METOD: 60, KNOXHULT: 50 };
 /** Corner base cabinets IKEA measures wide by high, with the worktop on top, and how deep they are. */
 const CORNER_WH: Record<string, number> = { KNOXHULT: 61 };
+/** Modular chests: how wide a column is and how tall a drawer slot is, in cm (a NORDLI chest is 7 cm of top and plinth). */
+const MODULE: Record<string, [number, number, number]> = { NORDLI: [40, 23, 7] };
 /** Pieces IKEA gives no size for, by type: typical ones (w, h, d). */
 const TYPICAL: Record<string, [number, number, number]> = {
   "trolley table with storage": [50, 52, 50],
@@ -784,6 +786,16 @@ export function classify(f: Fact, hints: Hints): Verdict {
     const total = x.rows ?? (kind === "nightstand" ? (h >= 60 ? 2 : 1) : Math.min(6, Math.max(2, Math.round(h / 14))));
     if (kind === "chest" && total === 2 && w <= 60 && h <= 65 && !/^mini/.test(t)) return finish("nightstand");
     const shape = kind === "nightstand" ? { rows: Math.min(total, 3), cols: 1 as const } : chestShape(total, w, h);
+    // a modular chest: columns of drawer slots, some left open
+    const mod = !shape && kind === "chest" ? MODULE[family] : undefined;
+    if (mod) {
+      const mods = Math.round(w / mod[0]), rows = Math.round((h - mod[2]) / mod[1]);
+      if (mods >= 1 && mods <= 4 && rows >= 1 && rows <= 8 && mods * rows >= total) {
+        Object.assign(x, { mods, rows, ...(total < mods * rows ? { dr: total } : {}) });
+        if (hint?.x.knobs) x.knobs = hint.x.knobs;
+        return finish(kind);
+      }
+    }
     if (!shape) return { skip: "drawers we can't lay out (open sections or 3 columns)" };
     x.rows = shape.rows;
     if (shape.cols === 2) x.cols = 2;
