@@ -23,6 +23,7 @@ const CATEGORY_WORDS: [Kind, string[]][] = [
   ["appliance", ["appliance cabinet", "oven cabinet", "oven housing", "oven unit", "tall oven unit", "wall oven cabinet", "cabinet for oven", "fridge cabinet", "fridge housing", "refrigerator cabinet", "freezer cabinet", "cabinet for fridge", "microwave cabinet", "hob cabinet", "hob unit", "cooktop cabinet", "hood cabinet", "extractor hood cabinet"]],
   ["cornerrobe", ["corner wardrobe", "corner closet", "corner armoire", "l shaped wardrobe", "l shaped closet", "corner wardrobe unit"]],
   ["cornercab", ["corner cabinet", "corner base cabinet", "corner wall cabinet", "corner cupboard", "corner base unit", "corner wall unit", "corner kitchen cabinet", "corner kitchen unit", "blind corner", "blind corner cabinet", "lazy susan", "lazy susan cabinet", "carousel unit", "carousel cabinet"]],
+  ["lidbox", ["storage bench", "storage chest", "storage table", "storage ottoman", "storage footstool", "footstool with storage", "pouffe with storage", "pouf with storage", "storage pouffe", "storage pouf", "storage stool", "blanket box", "toy box", "toy chest", "bench with lid", "hope chest"]],
   ["divider", ["room divider", "room dividers", "folding screen", "privacy screen", "partition screen", "room screen"]],
   ["changing", ["changing table", "changing unit", "baby changing table", "changing station", "diaper changing table", "nappy changing table"]],
   ["clothesrack", ["clothes rack", "clothes rail", "clothing rack", "clothing rail", "garment rack", "garment rail", "coat rack", "coat stand"]],
@@ -78,7 +79,7 @@ const CATEGORY_WORDS: [Kind, string[]][] = [
 ];
 const KIND_WORDS = new Map(CATEGORY_WORDS);
 // rows, sections, and kinds drawn later than a family's other pieces, which only come first when asked for
-const LESSER = new Set<Kind>(["bookrow", "cabrow", "section", "sinkcab", "appliance", "washstand", "shoerack", "clothesrack", "changing", "divider", "backbench", "junior", "lounge", "highchair", "cornercab", "cornerrobe", "usofa", "lounger", "swivel", "conference", "cornerdesk", "conftable"]);
+const LESSER = new Set<Kind>(["bookrow", "cabrow", "section", "sinkcab", "appliance", "washstand", "shoerack", "clothesrack", "changing", "divider", "backbench", "junior", "lounge", "highchair", "cornercab", "cornerrobe", "usofa", "lounger", "swivel", "conference", "cornerdesk", "conftable", "lidbox"]);
 
 export function kindOf(q: string): Kind | null {
   const f = " " + fold(q) + " ";

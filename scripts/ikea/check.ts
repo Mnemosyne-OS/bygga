@@ -132,6 +132,11 @@ async function main() {
   // a corner cabinet when asked for, without taking the family's wall cabinets
   expect("metod corner base cabinet", "metod-corner-base-cabinet-carousel-88-x-88");
   expect("metod wall cabinet", "metod-wall-cabinet-w-shelves-glass-door-30-x-80");
+  // a storage bench with a lid when asked for, the family's bench or table otherwise
+  expect("kallso storage bench", "kallso-storage-bench-80-x-38-x-56");
+  expect("kallso bench", "kallso-bench-shoe-storage-80-x-38-x-56");
+  expect("hol storage table", "hol-storage-table-98-x-50");
+  expect("hol", "hol-side-table-50-x-50");
   if (articleNo("S292.975.72") !== "29297572") fail("article numbers with an S in front don't parse");
   for (const [no, slug] of [["60324520", "kallax-2x2"]] as const) {
     if (articleSlug(no) !== slug) fail(`article ${no} gave ${articleSlug(no)}, expected ${slug}`);

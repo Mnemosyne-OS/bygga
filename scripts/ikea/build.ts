@@ -59,7 +59,7 @@ function hints(family: string, kind: Kind): Hint | undefined {
 
 /* ---------- matching against hand made entries ---------- */
 
-const LATER_KINDS = new Set<Kind>(["office", "chaise", "corner", "cot", "bunk", "loft", "dropleaf", "daybed", "mixed", "sliding", "slidecab", "bookrow", "cabrow", "section", "gateleg", "washstand", "sinkcab", "appliance", "shoerack", "clothesrack", "changing", "divider", "backbench", "junior", "lounge", "highchair", "cornercab", "cornerrobe", "usofa", "lounger", "swivel", "conference", "cornerdesk", "conftable"]);
+const LATER_KINDS = new Set<Kind>(["office", "chaise", "corner", "cot", "bunk", "loft", "dropleaf", "daybed", "mixed", "sliding", "slidecab", "bookrow", "cabrow", "section", "gateleg", "washstand", "sinkcab", "appliance", "shoerack", "clothesrack", "changing", "divider", "backbench", "junior", "lounge", "highchair", "cornercab", "cornerrobe", "usofa", "lounger", "swivel", "conference", "cornerdesk", "conftable", "lidbox"]);
 
 function baseMatch(name: string, draw: Draw): CatalogEntry | undefined {
   const fam = fold(name);
@@ -72,6 +72,8 @@ function baseMatch(name: string, draw: Draw): CatalogEntry | undefined {
     if (e.archetype !== spec.archetype && e.category !== spec.category) continue;
     // the newer kinds draw a different shape from anything hand made in their archetype
     if (LATER_KINDS.has(draw.kind) && e.category !== spec.category) continue;
+    // IKEA's own name for what it is sets it apart from a hand made entry of another category
+    if (draw.x.cat && e.category !== spec.category) continue;
     if (draw.kind === "bed") {
       if (e.bed?.mattressW === draw.x.m && (e.bed?.mattressL ?? 200) === (draw.x.l ?? 200)) return e;
       continue;

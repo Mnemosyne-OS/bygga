@@ -154,6 +154,13 @@ const DAYBED_SIZE: Record<string, [number, number, number]> = { HEMNES: [210, 83
 const BLIND_DOOR: Record<string, number> = { METOD: 60, KNOXHULT: 50 };
 /** Corner base cabinets IKEA measures wide by high, with the worktop on top, and how deep they are. */
 const CORNER_WH: Record<string, number> = { KNOXHULT: 61 };
+/** Boxes with a lid IKEA gives no size for, or only part of one (w, h, d): typical ones of each kind. */
+const LIDBOX_SIZE: Record<string, [number, number, number]> = {
+  "Footstool with storage": [62, 42, 42],
+  "Pouffe with storage": [38, 38, 38],
+  "Storage stool": [36, 46, 36],
+  "Storage table": [98, 50, 50],
+};
 
 type Pick = { kind: Kind; x?: X } | string;
 type Rule = [RegExp, (m: RegExpMatchArray, c: Ctx) => Pick];
@@ -378,6 +385,14 @@ const RULES: Rule[] = [
   [/^(?:cabinet with (\d) drawers|drawer unit with drop-file storage|modular chest of drawers)$/, (m) =>
     ({ kind: "chest", x: m[1] ? { rows: Number(m[1]) } : /drop-file/.test(m[0]) ? { rows: 2 } : {} })],
   [/^cabinet with \d compartments$/, () => ({ kind: "cube" })],
+  // boxes with a lid on hinges: storage benches, a storage table, footstools and pouffes with a padded lid (a round
+  // basket table and benches built from frames and fronts stay skipped)
+  [/^(storage bench|storage table|footstool with storage|pouffe with storage|storage stool)$/, (m, c) => {
+    if (c.f.name === "PLATSA") return "storage bench built from frames and fronts";
+    if (m[1] === "storage table" && c.sz.n.length === 1) return "round storage table";
+    const cat = { "storage table": "Storage table", "footstool with storage": "Footstool with storage", "pouffe with storage": "Pouffe with storage", "storage stool": "Storage stool" }[m[1]];
+    return { kind: "lidbox", x: cat ? { cat } : {} };
+  }],
   [/^wall cb (?:with (\d) doors?|w (\d) shlf\/door|w (\d) shelves)$/, (m) =>
     ({ kind: "wallcab", x: m[3] ? { doors: 0, shelves: Number(m[3]) } : m[2] ? { doors: 1, shelves: Number(m[2]) } : { doors: Number(m[1]) > 1 ? 2 : 1 } })],
   [/^(?:wall frame with shelves|wall shelf frame|wall-mounted bedside table)$/, () => ({ kind: "wallshelf" })],
@@ -692,6 +707,13 @@ export function classify(f: Fact, hints: Hints): Verdict {
     else set(v[0], 80, v[1]);
     guessed.h = v.length === 2 && !x.hung && !CORNER_WH[family];
     if (hint?.x.knobs) x.knobs = hint.x.knobs;
+  } else if (kind === "lidbox") {
+    // wide by deep by high; a table measured from above; a stool by its height
+    const typical = LIDBOX_SIZE[x.cat ?? ""];
+    if (typical) [w, h, d] = typical;
+    if (v.length === 3) set(v[0], v[2], v[1]);
+    else if (v.length === 2) set(v[0], undefined, v[1]);
+    else if (v.length === 1) set(undefined, v[0]);
   } else if (kind === "office") {
     // IKEA gives no size for office chairs: a typical one, taller with a headrest, smaller for children
     if (v.length === 3) set(v[0], v[2], v[1]);

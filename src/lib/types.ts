@@ -72,6 +72,7 @@ export interface CabinetParams {
   slides?: number; // sliding doors: how many, running in two tracks
   fit?: FitParams; // built around a basin, a sink or an appliance that is fitted afterwards
   corner?: CornerCab; // a kitchen corner cabinet
+  lid?: { soft?: boolean }; // a box with a lid on hinges instead (storage benches); a padded lid on a footstool
 }
 
 /**

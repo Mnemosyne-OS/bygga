@@ -286,6 +286,7 @@ GALANT|cabinet|Cabinet with doors, 80 × 120 cm|80|120|40
 GALANT|chest|Drawer unit on castors, 45 × 55 cm|45|55|48|rows=4
 GALANT|chest|Drawer unit, 80 × 80 cm|80|80|48|rows=6
 GALANT|slidecab|Cabinet with sliding doors, 160 × 120 cm|160|120|45|slides=2
+GAMLEHULT|lidbox|Footstool with storage|62|42|42|cat=Footstool with storage
 GARNANÄS|coffee|Coffee table, 65 × 65 cm|65|45|65
 GÄVLE|armchair|Easy chair|75|90|80
 GILLERSBERG|nightstand|Bedside table, 39 × 39 × 56 cm|39|56|39|rows=1
@@ -304,6 +305,7 @@ GRÅFJÄLLET|divider|Room divider, 150 × 175 cm|150|175|25
 GRÅFJÄLLET|nightstand|Bedside table, 45 × 36 × 59 cm|45|59|36|rows=1
 GRÅFJÄLLET|wallshelf|Wall-mounted bedside table, 42 × 29 × 31 cm|42|31|29
 GREJSIMOJS|kidstable|Children's table, 84 × 42 cm|84|48|42||kids
+GREJSIMOJS|lidbox|Pouffe with storage|38|38|38|cat=Pouffe with storage
 GREJSIMOJS|stool|Children's stool|35|30|35||kids
 GRILLSKÄR|side|Side table, outdoor, 30 × 61 cm|30|50|61||outdoor garden
 GRÖNFJÄLL|office|Office chair with armrests|64|105|64|arms=slim
@@ -325,6 +327,7 @@ GULLABERG|chest|Chest of 3 drawers, 99 × 48 × 100 cm|99|100|48|rows=3
 GULLABERG|chest|Chest of 8 drawers, 168 × 48 × 100 cm|168|100|48|rows=4,cols=2
 GULLABERG|desk|Desk, 120 × 65 × 75 cm|120|75|65
 GULLABERG|desk|Desk, 155 × 65 × 75 cm|155|75|65
+GULLABERG|lidbox|Storage bench, 148 × 43 × 52 cm|148|52|43
 GULLABERG|nightstand|Bedside table, 38 × 40 × 75 cm|38|75|40|rows=2
 GULLABERG|nightstand|Bedside table, 53 × 43 × 69 cm|53|69|43|rows=2
 GULLABERG|shoe|Shoe cabinet with 2 compartments, 88 × 30 × 122 cm|88|122|30|c=2
@@ -400,6 +403,7 @@ HEMNES / VÄSTERSJÖN|washstand|Open wash-stand w drawer/wash-basin, 82 × 48 ×
 HEMNES / VÄSTERSJÖN|washstand|Open wsh-stnd w drw/wash-basin/tap, 82 × 48 × 90 cm|82|90|48|knobs=knob,z=o1+r1@18,basin=7
 HERRÅKRA|armchair|Armchair|75|90|80
 HÖGVED|chair|Chair|44|88|50
+HOL|lidbox|Storage table, 98 × 50 cm|98|50|50|cat=Storage table
 HOL|side|Side table, 50 × 50 cm|50|50|50
 HOLMERUD|side|Side table, 80 × 31 cm|80|50|31
 HOLMSTA|armchair|Armchair|75|90|80
@@ -519,6 +523,7 @@ KALLAX|cube|Shelving unit with 10 inserts, 182 × 182 cm|182|182|39|ins=10
 KALLAX|cube|Shelving unit, 182 × 182 cm|182|182|39
 KALLAX|desk|Desk, 111 × 39 cm|111|74|39
 KALLSÖ|bench|Bench with shoe storage, 80 × 38 × 56 cm|80|56|38
+KALLSÖ|lidbox|Storage bench, 80 × 38 × 56 cm|80|56|38
 KARSKÄR|chair|Chair|44|88|50
 KARSKÄR|dining|Extendable table, 160/220 × 90 cm|160|74|90
 KARSKÄR|dining|Extendable table, 240/300 × 100 cm|240|74|100
@@ -869,6 +874,7 @@ MULIG|clothesrack|Clothes rack, 99 × 152 cm|99|152|46
 MULLSJÖ|desk|Desk, 135 × 70 cm|135|74|70
 MULLSJÖ|office|Swivel chair|60|105|64|arms=none
 MUSKAN|bench|Bench, 58 × 38 cm|58|45|38
+MUSKAN|lidbox|Storage stool, 50 cm|36|50|36|cat=Storage stool
 MUSKAN|open|Shelving unit, 37 × 140 cm|37|140|35
 MYDAL|bunk|Bunk bed frame, 90 × 200 cm|211|160|100|m=90
 MYLLRA|changing|Changing table with drawers, 85 × 79 × 97 cm|85|97|79|rows=3|kids children

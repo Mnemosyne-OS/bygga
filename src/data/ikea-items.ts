@@ -309,6 +309,7 @@ galant-cabinet-doors-80-x-120|10365141 50365139
 galant-cabinet-sliding-doors-160-x-120|30365135 20365131
 galant-drawer-unit-80-x-80|90365161 30365159
 galant-drawer-unit-on-castors-45-x-55|10365155 60365153
+gamlehult-footstool-storage|10434309
 garnanas-coffee-table-65-x-65|00556508
 gavle-easy-chair|80588845 50588842
 gillersberg-bedside-table-39-x-39-x-56|30608983
@@ -329,6 +330,7 @@ grafjallet-room-divider-150-x-175|10570226
 grafjallet-wall-mounted-bedside-table-42-x-29-x|00603114
 grejsimojs-children-s-stool|60598973 50598959
 grejsimojs-children-s-table-84-x-42|70598963
+grejsimojs-pouffe-storage|60603644
 grillskar-side-table-outdoor-30-x-61|00523179
 gronfjall-office-chair-arm-headrest|89513921
 gronfjall-office-chair-armrests|20503477
@@ -353,6 +355,7 @@ gullaberg-desk-120-x-65-x-75|20609681
 gullaberg-desk-155-x-65-x-75|50601669
 gullaberg-shoe-cabinet-2-compartments-88-x-30-x|50587692 40587697
 gullaberg-shoe-cabinet-4-compartments-105-x-22-x|10587707 50587710
+gullaberg-storage-bench-148-x-43-x-52|40573959 80573957
 gullaberg-wardrobe-128-x-64-x-201|00609903 80609904
 gulliver-changing-table-82-x-54-x-93|20307037
 gulliver-cot-60-x-120|20589503 10248519
@@ -436,6 +439,7 @@ hemnes-wash-stand-2-drawers-60-x-47-x-83|50217667 20217664 90217665
 herrakra-armchair|20544717 80535545 80535550
 hogved-chair|90606820
 hol-side-table-50-x-50|70161320
+hol-storage-table-98-x-50|50161321
 holmerud-coffee-table-90-x-55|90540706 00541418
 holmerud-side-table-80-x-31|40541421 20538721
 holmsta-armchair|90508551
@@ -567,6 +571,7 @@ kallax-shelving-unit-underframe-147-x-94|29442677 39442686 89442679 79442689 594
 kallax-shelving-unit-underframe-77-x-164|69442642 89442655 19442654 99442645 79442646 49442643 29442615 79607557
 kallax-shelving-unit-underframe-77-x-94|89442617 59442628 49442619 69442618 79442627 09442616 29634983
 kallso-bench-shoe-storage-80-x-38-x-56|20599328
+kallso-storage-bench-80-x-38-x-56|80599325
 karskar-chair|00611251
 karskar-extendable-table-160-220-x-90|50611263
 karskar-extendable-table-240-300-x-100|00611265
@@ -939,6 +944,7 @@ mullsjo-desk-135-x-70|30553240
 mullsjo-swivel-chair|70576584
 muskan-bench-58-x-38|50345957
 muskan-shelving-unit-37-x-140|50424327
+muskan-storage-stool-50|00360587
 mydal-bunk-bed-frame-90-x-200|20467629 00102452
 myllra-changing-table-drawers-85-x-79-x-97|40595744
 myllra-cot-drawer-70-x-140|80597048 60483590
