@@ -147,6 +147,9 @@ export interface SofaParams {
   open?: boolean; // corner sofas: no armrest at the front of the return
   depth?: number; // cm, depth of the seat sections of a corner or chaise sofa
   reach?: number; // cm, how far a U-shaped sofa's chaise longue reaches forward (with both corner and chaise set)
+  foot?: boolean; // an armchair that comes with its footstool, built after it and stood in front of it
+  pouffe?: boolean; // a pouffe or footstool on its own: a padded block on four legs
+  bed?: boolean; // a chair-bed: it folds out into a bed
 }
 
 /** A product read from someone's own manual: parts as boxes in the assembled product, steps that add them. */

@@ -2,6 +2,7 @@ import type { ProductSpec, SofaParams, Vec3 } from "../types";
 import { HW, PlanBuilder, type FitOpts } from "./builder";
 import { clamp } from "./math";
 import { buildCornerSofa } from "./corner";
+import { buildPouffe, footstool } from "./footstool";
 
 export function defaultsSofa(s: ProductSpec): SofaParams {
   const p = s.sofa ?? {};
@@ -14,6 +15,7 @@ export function defaultsSofa(s: ProductSpec): SofaParams {
 
 /** Upholstered sofas and armchairs: legs on the base, arms and back bolted on, cushions last. */
 export function buildSofa(b: PlanBuilder, s: ProductSpec) {
+  if (s.sofa?.pouffe) return buildPouffe(b, s);
   // more than four seats: two sections joined, like a corner sofa without the corner
   if (s.sofa?.chaise || s.sofa?.corner || (s.sofa?.seats ?? 0) > 4) return buildCornerSofa(b, s);
   const p = defaultsSofa(s);
@@ -150,4 +152,15 @@ export function buildSofa(b: PlanBuilder, s: ProductSpec) {
       backs.forEach((k) => b.add(k, [0, 160, 360]));
     },
   );
+  if (s.sofa?.bed) {
+    b.step(
+      {
+        title: "Fold it out into a bed once",
+        detail: "Pull the seat forward until it lies flat, then fold it back. It should move smoothly both ways.",
+        kind: "general",
+      },
+      () => {},
+    );
+  }
+  if (s.sofa?.foot) footstool(b, { w: Math.min(W * 0.8, 620), h: 420, d: 420, z: D / 2 + 140 + 210 });
 }

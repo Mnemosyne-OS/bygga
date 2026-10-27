@@ -273,6 +273,8 @@ const RULES: Rule[] = [
     if (/drawer/.test(what)) x.rows = 1;
     return { kind: "cornercab", x };
   }],
+  // an armchair with its footstool: one guide for the two of them
+  [/^(?:armchair|high-back armchair|wing chair) (?:and|with) footstool$/, () => ({ kind: "armchair", x: { foot: true, cat: "Armchair with footstool" } })],
   // a hat and coat stand is one piece, whatever its name says
   [/^(hat and coat stand|clothes stand|coat stand)$/, () => ({ kind: "coatstand" })],
   // things that are several products, or only part of one
@@ -541,6 +543,12 @@ const RULES: Rule[] = [
   // a bench with a backrest and armrests, built like a wide chair (IKEA gives no size: a typical garden bench)
   [/^bench with backrest$/, (_m, c) => (c.f.spr ? "bench with backrest sold with cushions" : { kind: "backbench" })],
   [/^(armchair|easy chair|wing chair|high-back armchair|low-back armchair|rocking-chair|children's armchair|armchair with cushion)$/, () => ({ kind: "armchair" })],
+  // a recliner and a wide armchair, built like any other armchair
+  [/^recliner$/, () => ({ kind: "armchair", x: { cat: "Recliner" } })],
+  [/^1,5-seat armchair$/, () => ({ kind: "armchair", x: { cat: "Armchair" } })],
+  // pouffes on legs, and chairs that fold out into a bed
+  [/^pouffe$/, () => ({ kind: "pouffe" })],
+  [/^(chair-bed|armchair-bed)$/, (m) => ({ kind: "chairbed", x: m[1] === "armchair-bed" ? { arms: "slim" } : {} })],
   [/^((\d)(,5)?-seat (modular )?sofa(-bed)?|sofa|sofa-bed|loveseat)$/, (m) => {
     const seats = m[2] ? Number(m[2]) + (m[3] ? 1 : 0) : 3;
     return seats > 6 ? "sofa with more than 6 seats" : { kind: "sofa", x: { seats } };
@@ -828,6 +836,8 @@ export function classify(f: Fact, hints: Hints): Verdict {
       [h, d] = [hint.h, hint.d];
     }
     if (kind === "armchair" && /wing|high-back/.test(t) && guessed.h) h = 104;
+    if (kind === "armchair" && /^1,5-seat/.test(t) && guessed.w) w = 105;
+    if (kind === "pouffe" && v.length === 2) [w, d] = [v[0], v[1]];
     if (kind === "armchair" && kids && guessed.w) [w, h, d] = [55, 68, 58];
     if (kind === "swivel" && kids && guessed.w) [w, h, d] = [59, 70, 64];
     if (hint && guessed.w && guessed.h && hint.kind === kind && (kind !== "sofa" || hint.x.seats === x.seats)) {

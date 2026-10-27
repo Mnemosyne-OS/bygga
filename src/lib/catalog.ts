@@ -11,6 +11,8 @@ type Entry = Omit<ProductSpec, "source" | "slug" | "variants" | "siblings"> & {
   keywords?: string[];
   featured?: boolean;
   checked?: boolean;
+  /** drawn later than the family's other pieces under IKEA's own name for it: comes after them in search */
+  late?: boolean;
 };
 
 /** Hand-checked starting points for popular flat packs. Dimensions in cm. */
@@ -453,7 +455,7 @@ for (const r of decodeRows(IKEA_ROWS)) {
   const slug = r.slug ?? baseSlug(r.name, r.variant);
   if (used.has(slug)) continue;
   used.add(slug);
-  IKEA.push({ ...specFor(r.kind, r.name, r.variant, r.w, r.h, r.d, r.x), slug, family: fold(r.name), kind: r.kind, keywords: r.keywords });
+  IKEA.push({ ...specFor(r.kind, r.name, r.variant, r.w, r.h, r.d, r.x), slug, family: fold(r.name), kind: r.kind, keywords: r.keywords, ...(r.x.cat ? { late: true } : {}) });
 }
 
 /** Every product we can draw offline: hand-checked entries first, then the wider index, then IKEA's catalog. */
@@ -491,7 +493,8 @@ function sizeLabel(x: Entry, same: Entry[]) {
 }
 
 export function toSpec(e: Entry): ProductSpec {
-  const { family, kind, keywords, featured, checked, ...rest } = e;
+  const { family, kind, keywords, featured, checked, late, ...rest } = e;
+  void late;
   void kind;
   void keywords;
   void featured;

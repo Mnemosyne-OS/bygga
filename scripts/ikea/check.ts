@@ -148,6 +148,10 @@ async function main() {
   expect("tjusig hat rack", "tjusig-hat-rack-79");
   expect("nipasen coat stand", "nipasen-hat-and-coat-stand-181");
   expect("nipasen", "nipasen-bench-shoe-storage-79-x-35-x-52");
+  // an armchair with its footstool when asked for, the armchair alone otherwise; a new piece after the family's sofa
+  expect("poang armchair and footstool", "poang-armchair-and-footstool");
+  expect("poang", "poang-armchair");
+  expect("viskafors", "viskafors-2-seat-sofa");
   if (articleNo("S292.975.72") !== "29297572") fail("article numbers with an S in front don't parse");
   for (const [no, slug] of [["60324520", "kallax-2x2"]] as const) {
     if (articleSlug(no) !== slug) fail(`article ${no} gave ${articleSlug(no)}, expected ${slug}`);

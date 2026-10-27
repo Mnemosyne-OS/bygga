@@ -73,7 +73,9 @@ const CATEGORY_WORDS: [Kind, string[]][] = [
   ["swivel", ["swivel armchair", "swivel easy chair", "swivel lounge chair", "swivel accent chair", "swivel rocker", "rocking armchair", "rocker recliner"]],
   ["conference", ["conference chair", "meeting chair", "meeting room chair", "boardroom chair"]],
   ["lounge", ["lounge chair", "reclining chair", "garden chair", "patio chair", "deck chair", "adirondack chair"]],
+  ["chairbed", ["chair bed", "armchair bed", "sleeper chair", "chair sleeper", "fold out chair", "convertible chair"]],
   ["armchair", ["armchair", "wing chair", "recliner"]],
+  ["pouffe", ["pouffe", "pouf", "footstool", "foot stool", "ottoman", "footrest"]],
   ["highchair", ["highchair", "high chair", "baby chair", "feeding chair"]],
   ["junior", ["junior chair", "youth chair", "child s dining chair", "toddler chair", "booster chair"]],
   ["kidschair", ["children s chair", "childrens chair", "kids chair", "kid chair"]],
@@ -86,7 +88,7 @@ const CATEGORY_WORDS: [Kind, string[]][] = [
 ];
 const KIND_WORDS = new Map(CATEGORY_WORDS);
 // rows, sections, and kinds drawn later than a family's other pieces, which only come first when asked for
-const LESSER = new Set<Kind>(["bookrow", "cabrow", "section", "sinkcab", "appliance", "washstand", "shoerack", "clothesrack", "changing", "divider", "backbench", "junior", "lounge", "highchair", "cornercab", "cornerrobe", "usofa", "lounger", "swivel", "conference", "cornerdesk", "conftable", "lidbox", "shelfbench", "workbench", "extension", "deskdraw", "boxdesk", "hatrack", "coatstand"]);
+const LESSER = new Set<Kind>(["bookrow", "cabrow", "section", "sinkcab", "appliance", "washstand", "shoerack", "clothesrack", "changing", "divider", "backbench", "junior", "lounge", "highchair", "cornercab", "cornerrobe", "usofa", "lounger", "swivel", "conference", "cornerdesk", "conftable", "lidbox", "shelfbench", "workbench", "extension", "deskdraw", "boxdesk", "hatrack", "coatstand", "pouffe", "chairbed"]);
 
 export function kindOf(q: string): Kind | null {
   const f = " " + fold(q) + " ";
@@ -196,6 +198,8 @@ export function searchCatalog(q: string, limit = 8): Hit[] {
     if (e.kind && (LESSER.has(e.kind) || e.cabinet?.fit) && kind !== e.kind) score -= 1;
     // and rows of frames that aren't all alike after the rows of frames that are
     if (e.row?.units) score -= 0.5;
+    // and pieces drawn later under IKEA's own name for them after the family's older ones of the same kind
+    if (e.late && kind !== e.kind) score -= 1;
     if (e.checked) score += 3;
     if (e.featured) score += 2;
     if (score > 15) hits.push({ entry: e, score, exact: ns >= 80 });
