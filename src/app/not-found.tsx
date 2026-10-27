@@ -1,8 +1,11 @@
+import type { Metadata } from "next";
 import Link from "next/link";
 import SiteHeader from "@/components/SiteHeader";
 import SiteFooter from "@/components/SiteFooter";
 import { Figure } from "@/components/art/Figure";
 import { HeroSearch } from "@/components/home/HomeClient";
+
+export const metadata: Metadata = { title: "Page not found | Bygga", robots: { index: false } };
 
 export default function NotFound() {
   return (

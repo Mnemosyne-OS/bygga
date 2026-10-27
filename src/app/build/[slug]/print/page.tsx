@@ -7,7 +7,8 @@ type Props = { params: Promise<{ slug: string }> };
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const s = catalogSpec(decodeURIComponent((await params).slug));
-  return { title: `Print: ${s ? `${s.name} ${s.variant.toLowerCase()}` : "assembly guide"} | Bygga`, robots: { index: false } };
+  const slug = decodeURIComponent((await params).slug);
+  return { title: `Print: ${s ? `${s.name} ${s.variant.toLowerCase()}` : "assembly guide"} | Bygga`, robots: { index: false }, alternates: { canonical: `/build/${slug}` } };
 }
 
 export default function Page({ params }: Props) {

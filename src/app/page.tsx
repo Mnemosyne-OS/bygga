@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import Link from "next/link";
 import SiteHeader from "@/components/SiteHeader";
 import SiteFooter from "@/components/SiteFooter";
@@ -13,6 +14,8 @@ import { IArrowOut, IArrowRight, IScan } from "@/components/art/Icons";
 import { TogetherMark } from "@/components/art/Together";
 import { PRODUCT_COUNT } from "@/lib/search";
 import { SCAN_ENABLED } from "@/lib/site";
+
+export const metadata: Metadata = { alternates: { canonical: "/" } };
 
 const QUICK = [
   { slug: "kallax-2x2", label: "KALLAX" },

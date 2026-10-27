@@ -32,7 +32,6 @@ export const metadata: Metadata = {
   appleWebApp: { capable: true, title: "Bygga", statusBarStyle: "default" },
   openGraph: { type: "website", siteName: "Bygga", title: "Bygga: step-by-step assembly for IKEA furniture", description, url: "/" },
   twitter: { card: "summary_large_image", title: "Bygga: step-by-step assembly for IKEA furniture", description },
-  alternates: { canonical: "/" },
 };
 
 export const viewport: Viewport = {
