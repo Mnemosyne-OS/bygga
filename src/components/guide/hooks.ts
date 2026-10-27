@@ -31,7 +31,7 @@ export function useWakeLock(active: boolean) {
   }, [active]);
 }
 
-export type Mic = "off" | "asking" | "on" | "denied" | "busy" | "nomic" | "unsupported" | "offline";
+export type Mic = "off" | "asking" | "on" | "paused" | "denied" | "busy" | "nomic" | "unsupported" | "offline";
 
 type Ctx = typeof AudioContext;
 const AudioCtx = () => (typeof window === "undefined" ? undefined : (window.AudioContext ?? (window as unknown as { webkitAudioContext?: Ctx }).webkitAudioContext));
@@ -123,8 +123,16 @@ export function useListener(enabled: boolean, onHeard: (text: string, seg: Segme
       if (seg) send(seg);
     };
 
+    // Safari won't start audio again after the screen locks until there's a tap
+    let wake: (() => void) | null = null;
+    const unwake = () => {
+      if (wake) document.removeEventListener("pointerdown", wake);
+      wake = null;
+    };
+
     const release = () => {
       clearTimeout(asking);
+      unwake();
       for (const n of nodes) {
         try {
           n.disconnect();
@@ -197,7 +205,16 @@ export function useListener(enabled: boolean, onHeard: (text: string, seg: Segme
         tap.connect(sink);
         nodes = [src, tap, sink];
         cut = segmenter();
-        setMic("on");
+        if (ctx.state === "running") setMic("on");
+        else {
+          setMic("paused");
+          unwake();
+          wake = () => {
+            unwake();
+            ctx.resume().then(() => !stop && stream === s && setMic(ctx.state === "running" ? "on" : "paused"), () => {});
+          };
+          document.addEventListener("pointerdown", wake);
+        }
         // a mic unplugged, or taken by a call, ends the track: open it again
         s.getAudioTracks()[0]?.addEventListener("ended", () => {
           if (stream !== s) return;

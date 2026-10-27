@@ -793,19 +793,21 @@ function Guide({ plan, slug, via, ai, startStep }: { plan: Plan; slug: string; v
                   ? `Heard “${heard}”`
                   : mic === "on"
                     ? "Say “next” when you're ready"
-                    : mic === "asking"
-                      ? "Allow the microphone, then say “next”"
-                      : mic === "denied"
-                        ? "Mic is blocked. Tap done to move on"
-                        : mic === "busy"
-                          ? "Another app has the mic. Tap done to move on"
-                          : mic === "nomic"
-                            ? "No microphone found. Tap done to move on"
-                            : mic === "offline"
-                              ? "Can't listen right now. Tap done to move on"
-                              : mic === "unsupported" || !canListen
-                                ? "Reading aloud. Tap done to move on"
-                                : "Turning on the mic"}
+                    : mic === "paused"
+                      ? "Tap anywhere to keep listening"
+                      : mic === "asking"
+                        ? "Allow the microphone, then say “next”"
+                        : mic === "denied"
+                          ? "Mic is blocked. Tap done to move on"
+                          : mic === "busy"
+                            ? "Another app has the mic. Tap done to move on"
+                            : mic === "nomic"
+                              ? "No microphone found. Tap done to move on"
+                              : mic === "offline"
+                                ? "Can't listen right now. Tap done to move on"
+                                : mic === "unsupported" || !canListen
+                                  ? "Reading aloud. Tap done to move on"
+                                  : "Turning on the mic"}
               </span>
             </div>
           )}
