@@ -3,7 +3,7 @@
 import { useEffect, useMemo, useState } from "react";
 import Link from "next/link";
 import { AnimatePresence, motion } from "motion/react";
-import { POPULAR, articleNo, fold, loadArticles, searchText, slugify } from "@/lib/search";
+import { POPULAR, articleNo, fold, kindOf, loadArticles, searchCatalog, searchText, slugify } from "@/lib/search";
 import { articleSlug } from "@/lib/ikea";
 import { PRODUCTS, type CatalogEntry } from "@/lib/catalog";
 import { KIND_ARCH, type Kind } from "@/lib/products";
@@ -94,18 +94,27 @@ export function Catalog({ limit, search }: { limit?: number; search?: boolean })
     const c = CATS.find((x) => x.id === cat)!;
     let l = c.kinds || c.tag ? PRODUCTS.filter((e) => inCat(e, c)) : limit ? POPULAR : PRODUCTS;
     const f = fold(q);
+    let ranked = false;
     if (no) {
       const slug = articles ? articleSlug(no) : null;
       l = l.filter((e) => e.slug === slug);
     } else if (f) {
       // every word starts a word of the product's name, type, category or keywords
       const words = f.split(" ");
-      l = l.filter((e) => {
+      const literal = l.filter((e) => {
         const text = searchText(e);
         return words.every((w) => text.includes(" " + w));
       });
+      // a type word ("crib", "desk chair") or a typo ("kalax") goes through the same search as the home page, best first
+      if (kindOf(q) || !literal.length) {
+        const inView = new Set(l);
+        const hits = searchCatalog(q, 600).map((h) => h.entry).filter((e) => inView.has(e));
+        const seen = new Set(hits);
+        l = [...hits, ...literal.filter((e) => !seen.has(e))];
+        ranked = hits.length > 0;
+      } else l = literal;
     }
-    if (!limit) l = [...l].sort((a, b) => a.name.localeCompare(b.name, "sv") || a.variant.localeCompare(b.variant, "sv"));
+    if (!limit && !ranked) l = [...l].sort((a, b) => a.name.localeCompare(b.name, "sv") || a.variant.localeCompare(b.variant, "sv"));
     return limit ? l.slice(0, limit) : l;
   }, [cat, q, limit, no, articles]);
 
