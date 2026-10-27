@@ -245,6 +245,9 @@ const RULES: Rule[] = [
   [/^hi cab f micro w door\/(\d) drawers$/, (m) => ({ kind: "appliance", x: { use: "microwave", z: `r${m[1]}@80+g@40+d1` } })],
   [/^hi cab w shlvs\/\d drawers\/dr\/(\d) frnts$/, (m) => ({ kind: "kitchen", x: { z: `r${m[1]}@80+d1s3` } })],
   [/^base cabinet$/, () => ({ kind: "kitchen", x: { doors: 0 } })],
+  // a kitchen island with a rack, and an outdoor kitchen unit with a back panel, rising from the back of the top
+  [/^kitchen island with rack$/, (_m, c) => ({ kind: "trolley", x: { up: Math.max(40, (c.sz.n[2] ?? 190) - 90), cat: "Kitchen island" } })],
+  [/^kitchen island w back panel$/, (_m, c) => ({ kind: "kitchen", x: { doors: 0, shelves: 1, up: Math.max(40, (c.sz.n[2] ?? 176) - 90), cat: "Outdoor kitchen unit" } })],
   // open units of an outdoor kitchen: a frame with a shelf and no doors
   [/^(open kitchen unit|kitchen island shelf unit)$/, () => ({ kind: "kitchen", x: { doors: 0, shelves: 1, cat: "Outdoor kitchen unit" } })],
   [/^base cb w shelf$/, () => ({ kind: "kitchen", x: { doors: 0, shelves: 1 } })],

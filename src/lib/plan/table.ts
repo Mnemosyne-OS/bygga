@@ -30,7 +30,8 @@ export function buildTable(b: PlanBuilder, s: ProductSpec) {
   if (s.table?.gate) return buildGateleg(b, s);
   if (s.table?.leaves) return buildDropLeaf(b, s);
   const p = defaultsTable(s);
-  const W = s.size.w * 10, H = s.size.h * 10;
+  const rackH = (s.table?.rack ?? 0) * 10;
+  const W = s.size.w * 10, H = s.size.h * 10 - rackH;
   const D = p.round ? W : s.size.d * 10;
   const tt = p.topThickness, ls = p.legSize;
   const inset = p.round ? (W / 2) * (1 - 0.78 / Math.SQRT2) - ls / 2 : p.attach === "screw" ? 0 : p.attach === "plate" ? 30 : 45;
@@ -232,5 +233,48 @@ export function buildTable(b: PlanBuilder, s: ProductSpec) {
       warnings: big ? ["two"] : [],
     },
     () => {},
+  );
+  if (rackH) rackSteps(b, top, W, D, H, rackH);
+}
+
+/** A rack on a kitchen island: two posts bolted up through the back of the top, a rail across them, hooks under it. */
+function rackSteps(b: PlanBuilder, top: string, W: number, D: number, H: number, R: number) {
+  const ps = 40;
+  const px = W / 2 - ps / 2 - 20, pz = -D / 2 + ps / 2 + 20;
+  const postT = b.part("Rack post", [ps, R - ps, ps], { material: "wood" });
+  const posts = [-1, 1].map((sx) => b.place(postT, [sx * px, H + (R - ps) / 2, pz]));
+  const railT = b.part("Rack rail", [W - 40, ps, ps], { material: "wood" });
+  const rail = b.place(railT, [0, H + R - ps / 2, pz]);
+  b.step(
+    {
+      title: "Bolt the rack posts onto the top",
+      detail: "One at each back corner. The bolts go up through the top into the posts.",
+      tools: ["allen"],
+      kind: "bolts",
+    },
+    () => {
+      b.stagger(0.3);
+      posts.forEach((k) => b.add(k, [0, 300, 0]));
+      b.then(0.1);
+      b.fits(HW.boltL, [-1, 1].map((sx) => ({ on: top, at: [sx * px, H - 30, pz] as Vec3, dir: [0, 1, 0] as Vec3, mate: posts[sx < 0 ? 0 : 1] })), 0.15);
+    },
+  );
+  const nh = Math.max(3, Math.round(W / 250));
+  b.step(
+    {
+      title: "Screw the rail across the posts, then the hooks",
+      detail: "Two people make it easier: one holds the rail level while the other screws.",
+      tools: ["screwdriver"],
+      kind: "screws",
+      people: 2,
+      warnings: ["two"],
+    },
+    () => {
+      b.add(rail, [0, 260, 0]);
+      b.then(0.1);
+      b.fits(HW.screwL, [-1, 1].map((sx) => ({ on: rail, at: [sx * px, H + R, pz] as Vec3, dir: [0, -1, 0] as Vec3, mate: posts[sx < 0 ? 0 : 1] })), 0.15);
+      b.then(0.1);
+      b.fits(HW.hook, Array.from({ length: nh }, (_, i) => ({ on: rail, at: [-W / 2 + 60 + ((W - 120) * (i + 0.5)) / nh, H + R - ps, pz] as Vec3, dir: [0, 1, 0] as Vec3 })), 0.08);
+    },
   );
 }

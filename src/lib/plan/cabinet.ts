@@ -36,7 +36,8 @@ export function buildCabinet(b: PlanBuilder, s: ProductSpec) {
   if (p.fronts === "tilt") return tiltCabinet(b, s, p);
   // on castors: the carcass is built on the floor, then lifted onto them
   const ch = s.cabinet?.castors ? CASTOR_H : 0;
-  const W = s.size.w * 10, H = s.size.h * 10 - ch, D = s.size.d * 10;
+  const up = (s.cabinet?.upstand ?? 0) * 10;
+  const W = s.size.w * 10, H = s.size.h * 10 - ch - up, D = s.size.d * 10;
   const t = p.thickness;
   const wall = !!s.cabinet?.wall;
   if (wall || ch) p.plinth = false;
@@ -179,8 +180,32 @@ export function buildCabinet(b: PlanBuilder, s: ProductSpec) {
   // a cabinet on castors rolls about: nothing to fix to the wall
   if (ch) liftOntoCastors(b);
   else if (s.cabinet?.onTop) onTopStep(b, s.cabinet.onTop, f.bottom, W, D, t);
+  else if (up) {
+    upstandStep(b, f.top, W, D, H, up);
+    f.anchor();
+  }
   else if (wall) f.hang();
   else if (H >= 800) f.anchor();
+}
+
+/** A back panel standing up from the back of the top, screwed on from behind. */
+function upstandStep(b: PlanBuilder, top: string, W: number, D: number, H: number, up: number) {
+  const panelT = b.part("Back panel, standing", [W, up, 18]);
+  const panel = b.place(panelT, [0, H + up / 2, -D / 2 + 9]);
+  b.step(
+    {
+      title: "Screw on the back panel",
+      detail: "It stands up along the back of the top. Screw it on through its brackets.",
+      tools: ["screwdriver"],
+      kind: "screws",
+      people: W > 800 ? 2 : 1,
+    },
+    () => {
+      b.add(panel, [0, 300, -100]);
+      b.then(0.1);
+      b.fits(HW.screwM, [-W / 3, 0, W / 3].map((x) => ({ on: panel, at: [x, H + 20, -D / 2 + 18] as Vec3, dir: [0, 0, -1] as Vec3, mate: top })), 0.1);
+    },
+  );
 }
 
 /** A height extension unit goes on top of the bookcase or cabinet it extends, screwed down through its bottom. */

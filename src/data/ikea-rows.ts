@@ -345,6 +345,7 @@ GREJSIMOJS|lidbox|Pouffe with storage|38|38|38|cat=Pouffe with storage
 GREJSIMOJS|stool|Children's stool|35|30|35||kids
 GRILLSKÄR|kitchen|Open kitchen unit, 61 × 61 cm|61|90|61|doors=0,shelves=1,cat=Outdoor kitchen unit|outdoor garden
 GRILLSKÄR|kitchen|Kitchen island shelf unit, 86 × 61 cm|86|90|61|doors=0,shelves=1,cat=Outdoor kitchen unit|outdoor garden
+GRILLSKÄR|kitchen|Kitchen island w back panel, 86 × 61 × 176 cm|86|176|61|doors=0,shelves=1,cat=Outdoor kitchen unit,up=86|outdoor garden
 GRILLSKÄR|side|Side table, outdoor, 30 × 61 cm|30|50|61||outdoor garden
 GRÖNFJÄLL|office|Office chair with armrests|64|105|64|arms=slim
 GRÖNFJÄLL|office|Office chair with arm/headrest|64|128|64|arms=slim
@@ -1535,6 +1536,7 @@ VADHOLMA|chest|Drawer unit, 40 × 37 × 40 cm|40|40|37|rows=3
 VADHOLMA|open|Open storage, 20 × 37 × 60 cm|20|60|37
 VADHOLMA|trolley|Kitchen island, 79 × 63 × 90 cm|79|90|63
 VADHOLMA|trolley|Kitchen island, 126 × 79 × 90 cm|126|90|79
+VADHOLMA|trolley|Kitchen island with rack, 126 × 79 × 193 cm|126|193|79|cat=Kitchen island,up=103
 VALNÄS|coffee|Coffee table, 118 × 72 cm|118|45|72
 VALNÄS|sofa|2-seat sofa|170|85|92|seats=2
 VALNÄS|sofa|3-seat sofa|230|85|92|seats=3

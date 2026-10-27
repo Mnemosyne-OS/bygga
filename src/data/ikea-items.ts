@@ -368,6 +368,7 @@ grejsimojs-children-s-table-84-x-42|70598963
 grejsimojs-clothes-stand-125|10602996
 grejsimojs-pouffe-storage|60603644
 grillskar-kitchen-island-shelf-unit-86-x-61|50471446 29390107
+grillskar-kitchen-island-w-back-panel-86-x-61-x|79495244 79548233
 grillskar-open-kitchen-unit-61-x-61|40598790
 grillskar-side-table-outdoor-30-x-61|00523179
 gronfjall-office-chair-arm-headrest|89513921
@@ -1621,6 +1622,7 @@ utter-children-s-stool|50357785
 vadholma-drawer-unit-40-x-37-x-40|50374332
 vadholma-kitchen-island-126-x-79-x-90|20359154
 vadholma-kitchen-island-79-x-63-x-90|40366115
+vadholma-kitchen-island-rack-126-x-79-x-193|59276228
 vadholma-open-storage-20-x-37-x-60|60374341 20374338 60374336
 valnas-2-seat-sofa|99615325 69615322 39615328
 valnas-3-seat-sofa|49615337 79615331 19615334

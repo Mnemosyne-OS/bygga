@@ -151,6 +151,8 @@ export type X = {
   t?: number;
   /** a mirror on top */
   mirror?: boolean;
+  /** cm: a rack or a back panel rising from the back of the top (size.h takes it in) */
+  up?: number;
 };
 
 export type Row = [name: string, kind: Kind, variant: string, w: number, h: number, d: number, x?: X, keywords?: string];
@@ -569,8 +571,12 @@ function specOf(kind: Kind, name: string, variant: string, w: number, h: number,
     case "kitchen":
       // x.z: a front of drawers and doors, drawn like the cabinets built around an appliance
       if (x.z) return fitted(kind, base, w, h, { use: "storage", ...x });
+      // x.up: a back panel standing up from the back of the top
+      if (x.up) return { ...base, minutes: x.min ?? MIN.kitchen + 10, cabinet: { doors: x.doors ?? (w > 50 ? 2 : 1), shelves: x.shelves ?? 1, rail: false, plinth: true, handles: x.knobs ?? "bar", thickness: 18, upstand: x.up } };
       return { ...base, cabinet: { doors: x.doors ?? (w > 50 ? 2 : 1), shelves: x.shelves ?? Math.max(1, Math.round(h / 45) - 1), rail: false, plinth: true, handles: x.knobs ?? "bar", thickness: 18 } };
     case "trolley":
+      // x.up: a kitchen island with a rack rising from the back of its top
+      if (x.up) return { ...base, minutes: x.min ?? MIN.trolley + 20, people: 2, difficulty: 2, table: { attach: "plate", legs: "round", legSize: 25, topThickness: 20, shelf: true, rack: x.up } };
       return { ...base, difficulty: 1, table: { attach: "plate", legs: "round", legSize: 25, topThickness: 20, shelf: true } };
     case "bar":
       return { ...base, people: 2, table: { attach: x.attach ?? "apron", legs: x.legs ?? "square", legSize: 50, topThickness: 25, shelf: false, ...round(x) } };

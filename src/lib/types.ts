@@ -53,6 +53,7 @@ export interface TableParams {
   boxes?: number; // boxes in each of those frames
   shelvesIn?: boolean; // shelves in the frames instead of boxes
   riser?: boolean; // a laptop or monitor stand: a top on two side panels
+  rack?: number; // cm: a rack rising from the back of the top, two posts and a rail with hooks (size.h takes it in)
   seat?: boolean; // a bench or stool built like a table: the top is its seat
   inner?: boolean; // the shelf fits between the legs, screwed through them
 }
@@ -91,6 +92,7 @@ export interface CabinetParams {
   castors?: boolean; // stands on castors (size.h takes them in)
   onTop?: "bookcase" | "cabinet"; // a height extension unit: fixed on top of the bookcase or cabinet it extends
   low?: number; // cm: a shelving unit with a cabinet this high at the bottom, doors over it and open shelves above
+  upstand?: number; // cm: a back panel standing up from the back of the top (size.h takes it in)
 }
 
 /**
