@@ -26,6 +26,7 @@ export interface DrawersParams {
   plinth: boolean;
   thickness: number;
   changing?: boolean; // a changing table: a changing top goes on last (size.h and size.d take it in)
+  castors?: boolean; // stands on castors (size.h takes them in)
 }
 
 export interface TableParams {
@@ -75,6 +76,7 @@ export interface CabinetParams {
   fit?: FitParams; // built around a basin, a sink or an appliance that is fitted afterwards
   corner?: CornerCab; // a kitchen corner cabinet
   lid?: { soft?: boolean }; // a box with a lid on hinges instead (storage benches); a padded lid on a footstool
+  castors?: boolean; // stands on castors (size.h takes them in)
 }
 
 /**

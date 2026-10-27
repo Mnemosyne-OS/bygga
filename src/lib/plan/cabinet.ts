@@ -7,6 +7,7 @@ import { buildMixed } from "./mixed";
 import { buildSliding } from "./sliding";
 import { buildCornerCabinet } from "./cornercab";
 import { buildLidBox } from "./lidbox";
+import { CASTOR_H, castorStep, liftOntoCastors } from "./castors";
 
 export function defaultsCabinet(s: ProductSpec): CabinetParams {
   const p = s.cabinet ?? {};
@@ -31,10 +32,12 @@ export function buildCabinet(b: PlanBuilder, s: ProductSpec) {
   if (s.cabinet?.fronts === "sliding") return buildSliding(b, s);
   const p = defaultsCabinet(s);
   if (p.fronts === "tilt") return tiltCabinet(b, s, p);
-  const W = s.size.w * 10, H = s.size.h * 10, D = s.size.d * 10;
+  // on castors: the carcass is built on the floor, then lifted onto them
+  const ch = s.cabinet?.castors ? CASTOR_H : 0;
+  const W = s.size.w * 10, H = s.size.h * 10 - ch, D = s.size.d * 10;
   const t = p.thickness;
   const wall = !!s.cabinet?.wall;
-  if (wall) p.plinth = false;
+  if (wall || ch) p.plinth = false;
   const base = p.plinth ? 70 : 0;
   const lying = H > 1100;
   const f = new FrameKit(b, {
@@ -52,6 +55,7 @@ export function buildCabinet(b: PlanBuilder, s: ProductSpec) {
   f.cams();
   f.plinthStep();
   f.backSteps();
+  if (ch) castorStep(b, { bottom: f.bottom, W, D, y: base, big: H > 1000 });
   f.standUp();
 
   // shelves sit lower when there is a rail
@@ -170,7 +174,9 @@ export function buildCabinet(b: PlanBuilder, s: ProductSpec) {
     }
   }
 
-  if (wall) f.hang();
+  // a cabinet on castors rolls about: nothing to fix to the wall
+  if (ch) liftOntoCastors(b);
+  else if (wall) f.hang();
   else if (H >= 800) f.anchor();
 }
 

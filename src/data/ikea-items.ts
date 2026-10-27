@@ -7,6 +7,7 @@ alefjall-office-chair|90320224 00419984
 alex-desk-100-x-48|10473555 50473558 40588885
 alex-desk-132-x-58|80483438 60473529 80588888
 alex-drawer-unit|00473546 80473547 60588894
+alex-drawer-unit-9-drawers-36-x-116|90486139
 alex-drawer-unit-on-castors-36-x-50|09582664 59582671 59582666
 alex-drawer-unit-on-castors-36-x-76|59422220 69582680 39422221 29628029
 alex-drawer-unit-on-castors-67-x-66|80485423 50473544 20588891
@@ -59,6 +60,7 @@ baggebo-sideboard-78-x-92|40553616
 barslov-3-seat-sofa-bed|90541584 40541591
 barslov-3-seat-sofa-bed-chaise-longue|30541596 10541578
 bastboll-gaming-chair|50586254
+bekant-storage-unit-on-castors-41-x-101|20591370 60591373
 bekvam-kitchen-trolley-58-x-50|70240351
 bekvam-step-stool|70569545 10225589 40178888 40463852
 bekvam-step-stool-63|90190411 90219829
@@ -305,6 +307,7 @@ fryksas-armchair|80540033
 fryksas-armchair-cushion|09563156
 fryksas-cabinet-81-x-124|40574096
 fryksas-desk-110-x-54|60574104
+fryksas-storage-unit-on-castors-37-x-53|90574174
 fryksas-tv-bench-157-x-41-x-49|80574099
 galant-cabinet-doors-80-x-120|10365141 50365139
 galant-cabinet-sliding-doors-160-x-120|30365135 20365131
@@ -329,6 +332,7 @@ grafjallet-clothes-rack-shoe-storage-90-x-36-x-1|00570222
 grafjallet-dressing-table-100-x-42|30570225
 grafjallet-room-divider-150-x-175|10570226
 grafjallet-wall-mounted-bedside-table-42-x-29-x|00603114
+greaker-cabinet-drawers-84-x-101|50501071
 grejsimojs-children-s-stool|60598973 50598959
 grejsimojs-children-s-table-84-x-42|70598963
 grejsimojs-pouffe-storage|60603644
@@ -951,6 +955,7 @@ mydal-bunk-bed-frame-90-x-200|20467629 00102452
 myllra-changing-table-drawers-85-x-79-x-97|40595744
 myllra-cot-drawer-70-x-140|80597048 60483590
 nackanas-table-140-x-76|40511056
+nalmakare-cabinet-on-castors-79-x-44-x-88|80595761
 nammaro-2-seat-sofa-126|59610240 39611170 19579307 49607511 09621509 09575423
 nammaro-2-seat-sofa-147|99579308 59611174 89610248 09607513 69621511 19575427
 nammaro-3-seat-sofa-264|79649114 59576024 39579311 19610440 09649688 09643605
@@ -1481,6 +1486,7 @@ trotten-desk-120-x-70|49621885 09621873 59621917 19621919
 trotten-desk-160-x-80|79621921
 trotten-desk-sit-stand-160-x-80|59621899
 trotten-drawer-unit-34-x-56|20474762 40474841
+trotten-drawer-unit-w-3-drawers-on-castors|70485094 80485098 10619671
 tuffing-bunk-bed-frame-90-x-200|00239233
 tuffing-loft-bed-frame-90-x-200|90299449
 tufjord-upholstered-bed-frame-standard-king-150|29555358 69555356 19555330 99555331 89555317 69555318 49555357

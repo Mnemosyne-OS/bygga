@@ -6,6 +6,7 @@ AGEN|chair|Chair|44|88|50
 ALEFJÄLL|office|Office chair|64|105|64|arms=slim
 ALEX|chest|Drawer unit on castors, 36 × 50 cm|36|50|58|rows=4,knobs=none
 ALEX|chest|Drawer unit on castors, 36 × 76 cm|36|76|58|rows=5,knobs=none
+ALEX|chest|Drawer unit with 9 drawers, 36 × 116 cm|36|116|58|rows=9,knobs=none
 ALEX|chest|Drawer unit on castors, 67 × 66 cm|67|66|58|rows=5,knobs=none
 ALEX|desk|Desk, 100 × 48 cm|100|74|48
 ALEX|desk|Desk, 132 × 58 cm|132|74|58
@@ -57,6 +58,7 @@ BAGGEBO|sideboard|Sideboard, 78 × 92 cm|78|92|45
 BÅRSLÖV|chaise|3-seat sofa-bed with chaise longue|226|85|160|seats=3,arms=wide,chaise=right,sd=92
 BÅRSLÖV|sofa|3-seat sofa-bed|230|85|92|seats=3
 BÄSTBOLL|office|Gaming chair|64|128|64|arms=slim,seatH=50
+BEKANT|cabinet|Storage unit on castors, 41 × 101 cm|41|101|40|doors=0,shelves=2,cat=Storage unit on castors,cast=1
 BEKVÄM|stool|Step stool, 63 cm|35|63|35
 BEKVÄM|trolley|Kitchen trolley, 58 × 50 cm|58|80|50
 BERGSHYTTAN|bench|Bench, 210 × 38 cm|210|45|38
@@ -280,6 +282,7 @@ FRÖTORP|coffee|Coffee table, 88 cm|88|45|88|round=1
 FRÖTORP|side|Side table, 48 cm|48|50|48|round=1
 FRYKSÅS|armchair|Armchair|75|90|80
 FRYKSÅS|armchair|Armchair with cushion|75|90|80
+FRYKSÅS|cabinet|Storage unit on castors, 37 × 53 cm|37|53|40|doors=0,shelves=1,cat=Storage unit on castors,cast=1
 FRYKSÅS|cabinet|Cabinet, 81 × 124 cm|81|124|40
 FRYKSÅS|desk|Desk, 110 × 54 cm|110|74|54
 FRYKSÅS|tv|TV bench, 157 × 41 × 49 cm|157|49|41
@@ -305,6 +308,7 @@ GRÅFJÄLLET|desk|Dressing table, 100 × 42 cm|100|74|42
 GRÅFJÄLLET|divider|Room divider, 150 × 175 cm|150|175|25
 GRÅFJÄLLET|nightstand|Bedside table, 45 × 36 × 59 cm|45|59|36|rows=1
 GRÅFJÄLLET|wallshelf|Wall-mounted bedside table, 42 × 29 × 31 cm|42|31|29
+GREÅKER|chest|Cabinet with drawers, 84 × 101 cm|84|101|48|rows=4
 GREJSIMOJS|kidstable|Children's table, 84 × 42 cm|84|48|42||kids
 GREJSIMOJS|lidbox|Pouffe with storage|38|38|38|cat=Pouffe with storage
 GREJSIMOJS|stool|Children's stool|35|30|35||kids
@@ -882,6 +886,7 @@ MYDAL|bunk|Bunk bed frame, 90 × 200 cm|211|160|100|m=90
 MYLLRA|changing|Changing table with drawers, 85 × 79 × 97 cm|85|97|79|rows=3|kids children
 MYLLRA|cot|Cot with drawer, 70 × 140 cm|150|86|78|m=70,l=140,drawer=1
 NACKANÄS|dining|Table, 140 × 76 cm|140|74|76
+NÅLMAKARE|cabinet|Cabinet on castors, 79 × 44 × 88 cm|79|88|44|cat=Cabinet on castors,cast=1
 NÄMMARÖ|backbench|Bench with backrest, outdoor|120|86|60||outdoor garden
 NÄMMARÖ|bar|Bar table, outdoor, 120 × 40 cm|120|105|40||outdoor garden
 NÄMMARÖ|bench|Bench, outdoor, 120 cm|120|45|38||outdoor garden
@@ -1389,6 +1394,7 @@ TROFAST|wallshelf|Wall storage, 99 × 30 cm|99|30|22||kids children
 TROTTEN|cabinet|Cabinet with doors, 70 × 35 × 110 cm|70|110|35
 TROTTEN|cabinet|Cabinet with doors, 70 × 35 × 173 cm|70|173|35
 TROTTEN|chest|Drawer unit, 34 × 56 cm|34|56|48|rows=4
+TROTTEN|chest|Drawer unit w 3 drawers on castors|42|61|51|rows=3,cast=1
 TROTTEN|desk|Desk sit/stand, 160 × 80 cm|160|75|80|legs=square,attach=apron
 TROTTEN|desk|Desk, 160 × 80 cm|160|75|80|legs=square,attach=apron
 TROTTEN|slidecab|Cabinet with sliding doors, 80 × 55 × 75 cm|80|75|55|slides=2

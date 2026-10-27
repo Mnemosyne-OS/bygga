@@ -157,6 +157,7 @@ const CORNER_WH: Record<string, number> = { KNOXHULT: 61 };
 /** Pieces IKEA gives no size for, by type: typical ones (w, h, d). */
 const TYPICAL: Record<string, [number, number, number]> = {
   "trolley table with storage": [50, 52, 50],
+  "drawer unit w 3 drawers on castors": [42, 61, 51],
 };
 /** Boxes with a lid IKEA gives no size for, or only part of one (w, h, d): typical ones of each kind. */
 const LIDBOX_SIZE: Record<string, [number, number, number]> = {
@@ -415,6 +416,11 @@ const RULES: Rule[] = [
   [/^three-seat sofa$/, () => ({ kind: "sofa", x: { seats: 3 } })],
   [/^(modular )?chest of (\d+) drawers$/, (m) => ({ kind: "chest", x: { rows: Number(m[2]) } })],
   [/^(drawer unit|drawer unit on castors|chest of drawers|dresser)$/, () => ({ kind: "chest" })],
+  // drawer units, cabinets and open storage on castors (castors drawn on the ones that say so in their name)
+  [/^drawer unit w(?:ith)? (\d+) drawers( on castors)?$/, (m) => ({ kind: "chest", x: { rows: Number(m[1]), ...(m[2] ? { cast: true } : {}) } })],
+  [/^cabinet on castors$/, () => ({ kind: "cabinet", x: { cast: true, cat: "Cabinet on castors" } })],
+  [/^storage unit on castors$/, (_m, c) => ({ kind: "cabinet", x: { doors: 0, shelves: (c.sz.n[1] ?? 60) > 80 ? 2 : 1, cast: true, cat: "Storage unit on castors" } })],
+  [/^cabinet with drawers$/, () => ({ kind: "chest", x: { rows: 4 } })],
   [/^(bedside table|nightstand|bedside table with (\d) drawers?)$/, (m) => ({ kind: "nightstand", x: m[2] ? { rows: Number(m[2]) } : {} })],
   [/^(wardrobe frame|open wardrobe|open clothes hanging unit)$/, () => ({ kind: "wardrobe", x: { doors: 0 } })],
   // PLATSA wardrobes are a row of identical frames: one or two doors on each, as many frames as that takes
@@ -504,7 +510,8 @@ const RULES: Rule[] = [
 
 /** Drawers in one or two columns, each between 7 and 42 cm tall (taller means open sections we can't show). */
 function chestShape(total: number, w: number, h: number): { rows: number; cols: 1 | 2 } | null {
-  const ok = (rows: number) => rows <= 6 && h / rows >= 7 && h / rows <= 42;
+  // a narrow drawer unit can hold up to ten shallow drawers (ALEX)
+  const ok = (rows: number) => (rows <= 6 || (rows <= 10 && w <= 50)) && h / rows >= 7 && h / rows <= 42;
   if (total % 2 === 0 && w >= 100 && ok(total / 2)) return { rows: total / 2, cols: 2 };
   return ok(total) ? { rows: total, cols: 1 } : null;
 }
@@ -571,6 +578,7 @@ export function classify(f: Fact, hints: Hints): Verdict {
     } else if (v.length === 1) return { skip: "upright piece with one size" };
     else if (hint?.kind === kind) set(hint.w, hint.h, hint.d);
     else if (kind === "clothesrack" && RACK_SIZE[family]) set(...RACK_SIZE[family]);
+    else if (TYPICAL[t]) [w, h, d] = TYPICAL[t];
     else return { skip: "no size given" };
     if (kind === "clothesrack" && h < 100) return { skip: "clothes rack measured in a way we can't read" };
     // a mini chest measured from the front only is a small, shallow box

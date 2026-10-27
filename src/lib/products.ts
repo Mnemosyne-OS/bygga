@@ -476,8 +476,11 @@ function specOf(kind: Kind, name: string, variant: string, w: number, h: number,
       // an open rack: a fixed shelf in the middle, and one more on pins when it's tall enough for three rows of shoes
       return { ...base, difficulty: 1, people: 1, shelf: { style: "bookcase", shelves: x.shelves ?? (h >= 55 ? 1 : 0), fixedShelf: true, back: false, plinth: false, outer: 18 } };
     case "chest":
-    case "nightstand":
-      return { ...base, minutes: x.min ?? (kind === "nightstand" ? 30 + 15 * (x.rows ?? 2) : 30 + 20 * (x.rows ?? 3) * (x.cols ?? 1)), drawers: { cols: x.cols ?? 1, rows: x.rows ?? (kind === "nightstand" ? 2 : 3), knobs: x.knobs ?? "knob", plinth: x.plinth ?? false, thickness: 16 } };
+    case "nightstand": {
+      // x.cast: a drawer unit on castors
+      const cast = x.cast ? { castors: true } : {};
+      return { ...base, minutes: x.min ?? (kind === "nightstand" ? 30 + 15 * (x.rows ?? 2) : 30 + 20 * (x.rows ?? 3) * (x.cols ?? 1)) + (x.cast ? 5 : 0), drawers: { cols: x.cols ?? 1, rows: x.rows ?? (kind === "nightstand" ? 2 : 3), knobs: x.knobs ?? "knob", plinth: x.plinth ?? false, thickness: 16, ...cast } };
+    }
     case "desk":
       return { ...base, table: { attach: x.attach ?? "plate", legs: x.legs ?? "round", legSize: x.legs === "square" ? 45 : 34, topThickness: 28, shelf: false } };
     case "coffee":
@@ -491,6 +494,8 @@ function specOf(kind: Kind, name: string, variant: string, w: number, h: number,
     case "wardrobe":
       return { ...base, people: 2, cabinet: { doors: x.doors ?? (w >= 60 ? 2 : 1), shelves: x.shelves ?? 1, rail: true, plinth: true, handles: x.knobs ?? "knob", thickness: 18 } };
     case "cabinet":
+      // x.cast: on castors, so no plinth
+      if (x.cast) return { ...base, minutes: x.min ?? MIN.cabinet + 5, cabinet: { doors: x.doors ?? (w > 50 ? 2 : 1), shelves: x.shelves ?? (h > 100 ? 2 : 1), rail: false, plinth: false, handles: x.knobs ?? "knob", thickness: 18, castors: true } };
       return { ...base, cabinet: { doors: x.doors ?? (w > 50 ? 2 : 1), shelves: x.shelves ?? (h > 100 ? 2 : 1), rail: false, plinth: h > 100, handles: x.knobs ?? "knob", thickness: 18 } };
     case "sideboard":
       return { ...base, cabinet: { doors: 2, shelves: 1, rail: false, plinth: true, handles: x.knobs ?? "knob", thickness: 18 } };
