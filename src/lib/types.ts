@@ -3,7 +3,7 @@ export type Vec3 = [number, number, number];
 export type Archetype = "shelf" | "drawers" | "table" | "bed" | "cabinet" | "seat" | "sofa" | "custom";
 
 export interface ShelfParams {
-  style: "grid" | "bookcase" | "rack" | "screen"; // a rack: two uprights on feet with a rail across the top; a screen: hinged panels
+  style: "grid" | "bookcase" | "rack" | "screen" | "hatrack" | "stand" | "airer"; // a rack: two uprights on feet with a rail across the top; a screen: hinged panels; a hat rack on the wall; a coat stand
   cols: number;
   rows: number;
   shelves: number; // adjustable shelves (bookcase)
@@ -17,6 +17,8 @@ export interface ShelfParams {
   inserts?: number; // a cube grid sold with this many inserts with a door, from the bottom row up
   shoes?: boolean; // a rack with a shoe shelf low down instead of a lower rail
   changing?: boolean; // a changing table: a changing top goes on last (size.h takes it in)
+  rail?: boolean; // open shelving with a clothes rail under a shelf near the top
+  boxUnder?: number; // cm: open shelving with this much room under the bottom shelf, for a storage box on castors
 }
 
 export interface DrawersParams {
@@ -26,6 +28,10 @@ export interface DrawersParams {
   plinth: boolean;
   thickness: number;
   changing?: boolean; // a changing table: a changing top goes on last (size.h and size.d take it in)
+  castors?: boolean; // stands on castors (size.h takes them in)
+  free?: boolean; // low enough to stand free: not fixed to the wall (a TV bench with drawers)
+  modules?: number; // a modular chest (NORDLI): this many columns of `rows` slots, split by dividers
+  count?: number; // modular chests: drawers in the slots, from the bottom row up; the rest stay open
 }
 
 export interface TableParams {
@@ -40,6 +46,16 @@ export interface TableParams {
   gate?: boolean; // a gateleg table: each leaf rests on a gate leg that swings out from the frame
   hinges?: boolean; // the leaves come loose and are screwed on with hinges
   ell?: number; // cm: a corner desk, an L-shaped top this deep along each wall (size.w and size.d are its legs)
+  drawers?: number; // drawers side by side under the top, in guides between the rails
+  knobs?: "none" | "knob" | "bar"; // on the drawer fronts
+  mirror?: number; // cm: a dressing table's mirror, standing at the back of the top (size.h takes it in)
+  frame?: number; // cm: a low desk whose top sits between two storage frames this wide (TROFAST)
+  boxes?: number; // boxes in each of those frames
+  shelvesIn?: boolean; // shelves in the frames instead of boxes
+  riser?: boolean; // a laptop or monitor stand: a top on two side panels
+  rack?: number; // cm: a rack rising from the back of the top, two posts and a rail with hooks (size.h takes it in)
+  seat?: boolean; // a bench or stool built like a table: the top is its seat
+  inner?: boolean; // the shelf fits between the legs, screwed through them
 }
 
 export interface BedParams {
@@ -72,6 +88,11 @@ export interface CabinetParams {
   slides?: number; // sliding doors: how many, running in two tracks
   fit?: FitParams; // built around a basin, a sink or an appliance that is fitted afterwards
   corner?: CornerCab; // a kitchen corner cabinet
+  lid?: { soft?: boolean }; // a box with a lid on hinges instead (storage benches); a padded lid on a footstool
+  castors?: boolean; // stands on castors (size.h takes them in)
+  onTop?: "bookcase" | "cabinet"; // a height extension unit: fixed on top of the bookcase or cabinet it extends
+  low?: number; // cm: a shelving unit with a cabinet this high at the bottom, doors over it and open shelves above
+  upstand?: number; // cm: a back panel standing up from the back of the top (size.h takes it in)
 }
 
 /**
@@ -129,6 +150,10 @@ export interface SofaParams {
   open?: boolean; // corner sofas: no armrest at the front of the return
   depth?: number; // cm, depth of the seat sections of a corner or chaise sofa
   reach?: number; // cm, how far a U-shaped sofa's chaise longue reaches forward (with both corner and chaise set)
+  foot?: boolean; // an armchair that comes with its footstool, built after it and stood in front of it
+  pouffe?: boolean; // a pouffe or footstool on its own: a padded block on four legs
+  bed?: boolean; // a chair-bed: it folds out into a bed
+  table?: number; // cm: a side table module at the right-hand end (size.w takes it in)
 }
 
 /** A product read from someone's own manual: parts as boxes in the assembled product, steps that add them. */
@@ -264,7 +289,8 @@ export type HwKind =
   | "gasLift"
   | "connector"
   | "roller"
-  | "flatHinge";
+  | "flatHinge"
+  | "hook";
 
 export interface HwType {
   id: string;

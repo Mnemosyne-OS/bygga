@@ -23,11 +23,17 @@ const CATEGORY_WORDS: [Kind, string[]][] = [
   ["appliance", ["appliance cabinet", "oven cabinet", "oven housing", "oven unit", "tall oven unit", "wall oven cabinet", "cabinet for oven", "fridge cabinet", "fridge housing", "refrigerator cabinet", "freezer cabinet", "cabinet for fridge", "microwave cabinet", "hob cabinet", "hob unit", "cooktop cabinet", "hood cabinet", "extractor hood cabinet"]],
   ["cornerrobe", ["corner wardrobe", "corner closet", "corner armoire", "l shaped wardrobe", "l shaped closet", "corner wardrobe unit"]],
   ["cornercab", ["corner cabinet", "corner base cabinet", "corner wall cabinet", "corner cupboard", "corner base unit", "corner wall unit", "corner kitchen cabinet", "corner kitchen unit", "blind corner", "blind corner cabinet", "lazy susan", "lazy susan cabinet", "carousel unit", "carousel cabinet"]],
+  ["lidbox", ["storage bench", "storage chest", "storage table", "storage ottoman", "storage footstool", "footstool with storage", "pouffe with storage", "pouf with storage", "storage pouffe", "storage pouf", "storage stool", "blanket box", "toy box", "toy chest", "bench with lid", "hope chest"]],
   ["divider", ["room divider", "room dividers", "folding screen", "privacy screen", "partition screen", "room screen"]],
   ["changing", ["changing table", "changing unit", "baby changing table", "changing station", "diaper changing table", "nappy changing table"]],
+  ["airer", ["drying rack", "clothes airer", "airer", "clothes horse", "laundry rack", "clothes drying rack", "drying stand", "laundry drying rack"]],
+  ["riser", ["laptop stand", "monitor stand", "monitor riser", "laptop riser", "screen riser", "desk riser", "desktop shelf", "monitor shelf", "computer stand"]],
+  ["coatstand", ["coat stand", "hat and coat stand", "hat stand", "clothes stand", "coat tree", "hall tree", "hat tree", "standing coat rack", "coat rack stand"]],
+  ["hatrack", ["hat rack", "hat shelf", "wall coat rack", "coat rack with shelf", "wall hat rack", "hat and coat rack", "coat hooks with shelf"]],
   ["clothesrack", ["clothes rack", "clothes rail", "clothing rack", "clothing rail", "garment rack", "garment rail", "coat rack", "coat stand"]],
   ["shoerack", ["shoe rack", "shoe shelf", "shoe stand", "shoe bench", "open shoe storage"]],
   ["shoe", ["shoe", "shoes", "shoe cabinet", "shoe rack"]],
+  ["extension", ["height extension", "height extension unit", "extension unit", "top unit", "bookcase topper", "bookshelf topper", "wardrobe top unit", "closet top unit", "top cabinet for wardrobe"]],
   ["nightstand", ["nightstand", "bedside", "night stand"]],
   ["mixed", ["doors and drawers", "cabinet with drawers", "cupboard with drawers", "wardrobe with drawers", "armoire with drawers"]],
   ["chest", ["drawer", "drawers", "chest", "dresser"]],
@@ -44,6 +50,8 @@ const CATEGORY_WORDS: [Kind, string[]][] = [
   ["trolley", ["trolley", "cart", "kitchen island"]],
   ["conftable", ["conference table", "meeting table", "meeting room table", "boardroom table"]],
   ["cornerdesk", ["corner desk", "l shaped desk", "corner workstation", "corner computer desk", "corner office desk", "l desk"]],
+  ["deskdraw", ["desk with drawers", "desk with drawer", "writing desk with drawers", "table with drawer", "table with drawers", "work bench with drawers", "dressing table with mirror", "makeup table with mirror"]],
+  ["boxdesk", ["desk with storage", "desk with storage boxes", "desk with boxes", "kids desk with storage", "children s desk with storage", "desk with shelves"]],
   ["desk", ["desk"]],
   ["gateleg", ["gateleg", "gateleg table", "gate leg", "gate leg table"]],
   ["dropleaf", ["drop leaf", "drop leaf table"]],
@@ -67,18 +75,22 @@ const CATEGORY_WORDS: [Kind, string[]][] = [
   ["swivel", ["swivel armchair", "swivel easy chair", "swivel lounge chair", "swivel accent chair", "swivel rocker", "rocking armchair", "rocker recliner"]],
   ["conference", ["conference chair", "meeting chair", "meeting room chair", "boardroom chair"]],
   ["lounge", ["lounge chair", "reclining chair", "garden chair", "patio chair", "deck chair", "adirondack chair"]],
+  ["chairbed", ["chair bed", "armchair bed", "sleeper chair", "chair sleeper", "fold out chair", "convertible chair"]],
   ["armchair", ["armchair", "wing chair", "recliner"]],
+  ["pouffe", ["pouffe", "pouf", "footstool", "foot stool", "ottoman", "footrest"]],
   ["highchair", ["highchair", "high chair", "baby chair", "feeding chair"]],
   ["junior", ["junior chair", "youth chair", "child s dining chair", "toddler chair", "booster chair"]],
   ["kidschair", ["children s chair", "childrens chair", "kids chair", "kid chair"]],
   ["chair", ["chair", "chairs"]],
+  ["workbench", ["work bench", "workbench", "work table", "garage bench", "potting bench", "tool bench", "craft table"]],
+  ["shelfbench", ["bench with storage", "bench with shelf", "bench with a shelf", "stool with storage", "stool with shelf", "entryway bench", "hallway bench", "mudroom bench"]],
   ["stool", ["stool", "stools"]],
   ["backbench", ["bench with backrest", "garden bench", "bench with back", "outdoor bench", "park bench", "patio bench"]],
   ["bench", ["bench"]],
 ];
 const KIND_WORDS = new Map(CATEGORY_WORDS);
 // rows, sections, and kinds drawn later than a family's other pieces, which only come first when asked for
-const LESSER = new Set<Kind>(["bookrow", "cabrow", "section", "sinkcab", "appliance", "washstand", "shoerack", "clothesrack", "changing", "divider", "backbench", "junior", "lounge", "highchair", "cornercab", "cornerrobe", "usofa", "lounger", "swivel", "conference", "cornerdesk", "conftable"]);
+const LESSER = new Set<Kind>(["bookrow", "cabrow", "section", "sinkcab", "appliance", "washstand", "shoerack", "clothesrack", "changing", "divider", "backbench", "junior", "lounge", "highchair", "cornercab", "cornerrobe", "usofa", "lounger", "swivel", "conference", "cornerdesk", "conftable", "lidbox", "shelfbench", "workbench", "extension", "deskdraw", "boxdesk", "hatrack", "coatstand", "pouffe", "chairbed", "airer", "riser"]);
 
 export function kindOf(q: string): Kind | null {
   const f = " " + fold(q) + " ";
@@ -188,6 +200,10 @@ export function searchCatalog(q: string, limit = 8): Hit[] {
     if (e.kind && (LESSER.has(e.kind) || e.cabinet?.fit) && kind !== e.kind) score -= 1;
     // and rows of frames that aren't all alike after the rows of frames that are
     if (e.row?.units) score -= 0.5;
+    // and pieces drawn later under IKEA's own name for them after the family's older ones of the same kind
+    if (e.late) score -= kind === e.kind ? 0.5 : 1;
+    // and the US range's own pieces after the UK ones of a family, as much as a word of the query is worth
+    if (e.us) score -= 13;
     if (e.checked) score += 3;
     if (e.featured) score += 2;
     if (score > 15) hits.push({ entry: e, score, exact: ns >= 80 });

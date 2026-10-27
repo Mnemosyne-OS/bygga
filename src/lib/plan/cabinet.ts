@@ -6,6 +6,9 @@ import { buildFitted } from "./fitted";
 import { buildMixed } from "./mixed";
 import { buildSliding } from "./sliding";
 import { buildCornerCabinet } from "./cornercab";
+import { buildLidBox } from "./lidbox";
+import { CASTOR_H, castorStep, liftOntoCastors } from "./castors";
+import { buildShelfCab } from "./shelfcab";
 
 export function defaultsCabinet(s: ProductSpec): CabinetParams {
   const p = s.cabinet ?? {};
@@ -23,16 +26,21 @@ export function defaultsCabinet(s: ProductSpec): CabinetParams {
 }
 
 export function buildCabinet(b: PlanBuilder, s: ProductSpec) {
+  if (s.cabinet?.lid) return buildLidBox(b, s);
+  if (s.cabinet?.low) return buildShelfCab(b, s);
   if (s.cabinet?.corner) return buildCornerCabinet(b, s);
   if (s.cabinet?.fit) return buildFitted(b, s);
   if (s.cabinet?.drawers) return buildMixed(b, s);
   if (s.cabinet?.fronts === "sliding") return buildSliding(b, s);
   const p = defaultsCabinet(s);
   if (p.fronts === "tilt") return tiltCabinet(b, s, p);
-  const W = s.size.w * 10, H = s.size.h * 10, D = s.size.d * 10;
+  // on castors: the carcass is built on the floor, then lifted onto them
+  const ch = s.cabinet?.castors ? CASTOR_H : 0;
+  const up = (s.cabinet?.upstand ?? 0) * 10;
+  const W = s.size.w * 10, H = s.size.h * 10 - ch - up, D = s.size.d * 10;
   const t = p.thickness;
   const wall = !!s.cabinet?.wall;
-  if (wall) p.plinth = false;
+  if (wall || ch) p.plinth = false;
   const base = p.plinth ? 70 : 0;
   const lying = H > 1100;
   const f = new FrameKit(b, {
@@ -50,6 +58,7 @@ export function buildCabinet(b: PlanBuilder, s: ProductSpec) {
   f.cams();
   f.plinthStep();
   f.backSteps();
+  if (ch) castorStep(b, { bottom: f.bottom, W, D, y: base, big: H > 1000 });
   f.standUp();
 
   // shelves sit lower when there is a rail
@@ -168,8 +177,54 @@ export function buildCabinet(b: PlanBuilder, s: ProductSpec) {
     }
   }
 
-  if (wall) f.hang();
+  // a cabinet on castors rolls about: nothing to fix to the wall
+  if (ch) liftOntoCastors(b);
+  else if (s.cabinet?.onTop) onTopStep(b, s.cabinet.onTop, f.bottom, W, D, t);
+  else if (up) {
+    upstandStep(b, f.top, W, D, H, up);
+    f.anchor();
+  }
+  else if (wall) f.hang();
   else if (H >= 800) f.anchor();
+}
+
+/** A back panel standing up from the back of the top, screwed on from behind. */
+function upstandStep(b: PlanBuilder, top: string, W: number, D: number, H: number, up: number) {
+  const panelT = b.part("Back panel, standing", [W, up, 18]);
+  const panel = b.place(panelT, [0, H + up / 2, -D / 2 + 9]);
+  b.step(
+    {
+      title: "Screw on the back panel",
+      detail: "It stands up along the back of the top. Screw it on through its brackets.",
+      tools: ["screwdriver"],
+      kind: "screws",
+      people: W > 800 ? 2 : 1,
+    },
+    () => {
+      b.add(panel, [0, 300, -100]);
+      b.then(0.1);
+      b.fits(HW.screwM, [-W / 3, 0, W / 3].map((x) => ({ on: panel, at: [x, H + 20, -D / 2 + 18] as Vec3, dir: [0, 0, -1] as Vec3, mate: top })), 0.1);
+    },
+  );
+}
+
+/** A height extension unit goes on top of the bookcase or cabinet it extends, screwed down through its bottom. */
+function onTopStep(b: PlanBuilder, what: string, bottom: string, W: number, D: number, t: number) {
+  b.step(
+    {
+      title: `Screw it onto the top of the ${what}`,
+      detail: `Line it up with the back and both sides, then screw down through its bottom into the ${what}.`,
+      tools: ["screwdriver"],
+      people: W > 600 ? 2 : 1,
+      kind: "screws",
+      warnings: W > 600 ? ["two"] : [],
+    },
+    () => {
+      const list: FitOpts[] = [];
+      for (const x of W > 600 ? [-W / 2 + 80, 0, W / 2 - 80] : [-W / 2 + 80, W / 2 - 80]) for (const z of [-D / 4, D / 4]) list.push({ on: bottom, at: [x, t, z], dir: [0, -1, 0], hole: false });
+      b.fits(HW.screwM, list, 0.08);
+    },
+  );
 }
 
 /** Shoe cabinets like BISSA or HEMNES: stacked compartments with fronts that tip open from the bottom. */

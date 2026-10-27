@@ -12,7 +12,7 @@ import { clamp } from "./math";
 export function buildMixed(b: PlanBuilder, s: ProductSpec) {
   const c = s.cabinet ?? {};
   const p = {
-    doors: c.doors === 1 ? 1 : 2,
+    doors: c.doors === 0 ? 0 : c.doors === 1 ? 1 : 2,
     shelves: clamp(Math.round(c.shelves ?? 1), 0, 4),
     rail: !!c.rail,
     plinth: c.plinth ?? s.size.h > 100,
@@ -180,55 +180,58 @@ export function buildMixed(b: PlanBuilder, s: ProductSpec) {
     const sgn = nd === 2 && i === 1 ? 1 : -1;
     return { x: sgn * (W / 2 - 22), sgn };
   };
-  b.step(
-    {
-      title: nd > 1 ? "Press the hinges into the doors" : "Press the hinges into the door",
-      detail: "Two small screws hold each one.",
-      tools: ["screwdriver"],
-      scene: "doors",
-      kind: "hinges",
-      warnings: ["floor"],
-    },
-    () => {
-      b.stagger(0.2);
-      doors.forEach((d, i) => b.stage(d, [(i - (nd - 1) / 2) * (dwid + 80), t / 2, 0], [Math.PI / 2, 0, 0], [0, 160, 0]));
-      b.then(0.1);
-      const hinges: FitOpts[] = [];
-      const screws: FitOpts[] = [];
-      doors.forEach((d, i) => {
-        const { x, sgn } = hingeX(i);
-        for (const y of hingeYs) {
-          hinges.push({ on: d, at: [x, y, D / 2], dir: [0, 0, 1], twist: sgn > 0 ? Math.PI : 0 });
-          for (const dy2 of [-24, 24]) screws.push({ on: d, at: [x + sgn * 4, y + dy2, D / 2], dir: [0, 0, 1], hole: false });
-        }
-      });
-      b.fits(HW.hinge, hinges, 0.1);
-      b.then(0.05);
-      b.fits(HW.screwS, screws, 0.03);
-    },
-  );
-  b.step(
-    {
-      title: nd > 1 ? "Hang the doors" : "Hang the door",
-      detail: "Slide each hinge arm onto its plate until it clicks.",
-      kind: "doors",
-      people: dht > 1500 ? 2 : 1,
-      warnings: dht > 1500 ? ["two"] : [],
-    },
-    () => {
-      b.stagger(0.35);
-      doors.forEach((d) => b.add(d, [0, 0, 380]));
-    },
-  );
-  b.step(
-    {
-      title: "Line up the doors",
-      detail: "Turn the hinge screws a little until the gaps look even.",
-      tools: ["screwdriver"],
-      kind: "doors",
-    },
-    () => {},
-  );
+  // a bookcase with a drawer: open shelves above it, no doors
+  if (nd > 0) {
+    b.step(
+      {
+        title: nd > 1 ? "Press the hinges into the doors" : "Press the hinges into the door",
+        detail: "Two small screws hold each one.",
+        tools: ["screwdriver"],
+        scene: "doors",
+        kind: "hinges",
+        warnings: ["floor"],
+      },
+      () => {
+        b.stagger(0.2);
+        doors.forEach((d, i) => b.stage(d, [(i - (nd - 1) / 2) * (dwid + 80), t / 2, 0], [Math.PI / 2, 0, 0], [0, 160, 0]));
+        b.then(0.1);
+        const hinges: FitOpts[] = [];
+        const screws: FitOpts[] = [];
+        doors.forEach((d, i) => {
+          const { x, sgn } = hingeX(i);
+          for (const y of hingeYs) {
+            hinges.push({ on: d, at: [x, y, D / 2], dir: [0, 0, 1], twist: sgn > 0 ? Math.PI : 0 });
+            for (const dy2 of [-24, 24]) screws.push({ on: d, at: [x + sgn * 4, y + dy2, D / 2], dir: [0, 0, 1], hole: false });
+          }
+        });
+        b.fits(HW.hinge, hinges, 0.1);
+        b.then(0.05);
+        b.fits(HW.screwS, screws, 0.03);
+      },
+    );
+    b.step(
+      {
+        title: nd > 1 ? "Hang the doors" : "Hang the door",
+        detail: "Slide each hinge arm onto its plate until it clicks.",
+        kind: "doors",
+        people: dht > 1500 ? 2 : 1,
+        warnings: dht > 1500 ? ["two"] : [],
+      },
+      () => {
+        b.stagger(0.35);
+        doors.forEach((d) => b.add(d, [0, 0, 380]));
+      },
+    );
+    b.step(
+      {
+        title: "Line up the doors",
+        detail: "Turn the hinge screws a little until the gaps look even.",
+        tools: ["screwdriver"],
+        kind: "doors",
+      },
+      () => {},
+    );
+  }
 
   /* ---------- steps: the drawers ---------- */
   const d0 = drawers[0];
@@ -290,7 +293,7 @@ export function buildMixed(b: PlanBuilder, s: ProductSpec) {
     b.step(
       {
         title: bar ? "Screw on the handles" : "Screw on the knobs",
-        detail: "Screw from the inside of each door and drawer. Snug is enough.",
+        detail: nd > 0 ? "Screw from the inside of each door and drawer. Snug is enough." : "Screw from inside the drawer. Snug is enough.",
         tools: ["screwdriver"],
         kind: "screws",
       },

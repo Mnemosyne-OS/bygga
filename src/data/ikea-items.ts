@@ -7,30 +7,51 @@ alefjall-office-chair|90320224 00419984
 alex-desk-100-x-48|10473555 50473558 40588885
 alex-desk-132-x-58|80483438 60473529 80588888
 alex-drawer-unit|00473546 80473547 60588894
+alex-drawer-unit-9-drawers-36-x-116|90486139
 alex-drawer-unit-on-castors-36-x-50|09582664 59582671 59582666
 alex-drawer-unit-on-castors-36-x-76|59422220 69582680 39422221 29628029
 alex-drawer-unit-on-castors-67-x-66|80485423 50473544 20588891
 alex-storage-unit-36-x-70|50563752 70588898 50563790
 alganas-clothes-rack-shoe-storage-46-x-39-x-166|10585888
+alganas-hat-and-coat-stand-173-x-33|90585894
 alganas-shoe-rack-76-x-24-x-59|20585883
 alhult-bench-103-x-36|60603093 40603094
 alhult-chair|50600801 40600774
 alhult-extendable-table-120-170-x-80|60597921 20600789
 alhult-extendable-table-170-220-x-80|50600783 40597922
 alhult-table-120-x-80|40600793 00597919
+alhult-table-80-x-74|20597918 70600796
+alseda-stool|20033919
 alskvard-changing-table-chest-drawers-94-x-77-x|80466679
 alskvard-cot-70-x-140|40466704
+alskvard-crib-70-x-132|00466701
 alvdalen-3-seat-sofa-bed|10530650 10530645
 alvdalen-3-seat-sofa-bed-chaise-longue|70530666 70530671
+alvsta-chair|59481568
 ammaryd-coffee-table-98-x-59|00609125 40609128
 ammaryd-side-table-59-x-40|80609126 70609122
+anfallare-adils-desk-140-x-65|09417693 39417696
+anfallare-alex-desk-140-x-65|59417742 89417745 59521668
+anfallare-hilver-desk-140-x-65|29417710
+anfallare-krille-desk-140-x-65|89417707
+anfallare-olov-desk-140-x-65|19417701 59417704
 angsjon-backsjon-wash-stand-wash-basin-102-x-49|09629586 89629587 69629687 59629584
+angsjon-backsjon-wash-stand-wash-basin-122-x-53|29629528 29629463 19629595
+angsjon-backsjon-wash-stand-wash-basin-124-5-x-5|79629601 59629536 59629503 49629570 39629783 39629636 39629467
+angsjon-backsjon-wash-stand-wash-basin-124-5-x-5-2|99633683 79629465 69629531 09629746 79633684 79629597 39629778 69629748 89629634 79629781 09629567 99629501 89629568 69629673 09629534 99629600 79629535 79629502 69629569 59629782 59629635
+angsjon-backsjon-wash-stand-wash-basin-155-x-54|79629564 69629630 59629744 09629529 29634426 89634428 09634427
+angsjon-backsjon-wash-stand-wash-basin-170-x-54|69629499 49629631 49629565 29629566
 angsjon-backsjon-wash-stnd-w-drawer-wash-basin-6|39629575 19629543 99629643 79629719 49629443 29629646
+angsjon-backsjon-wash-stnd-w-drawer-wash-basin-6-2|79629521 19634422 59634420 39634421 29629458 09629591
 angsjon-backsjon-wash-stnd-w-drawers-wash-basin|29629444 69629512 19629722 59629720 79629446 49629513 39629679
 angsjon-backsjon-wash-stnd-w-drawers-wash-basin-2|39629580 29629651 99629718 99629577 99629544 89629648 79629724
+angsjon-bathroom-vanity-drawer-76-x-53-5-x-33-5|40535383 10535389 70535386 90535371 20535379 80535376
+angsjon-bathroom-vanity-drawers-45-5-x-53-5-x-64|50535325 10535346 70535334 20535355 90535328 40535340 90535352
 angsjon-high-cabinet-door-40-x-35-x-195|80535079 40535081 60535080
+angsjon-high-cabinet-doors-45-5-x-38-x-195-5|40535316 80535319 20535322
 angsjon-orrsjon-wash-stnd-w-drawers-wash-basin-6|39629641 19629717 09629647 99629723 59629683 59629447 49629787
 angsjon-wall-cabinet-door-40-x-15-x-95|20535077 00535078 40535076
+angsjon-wall-cabinet-door-45-5-x-15-x-94|70535310 30535307 10535313
 angsjon-wash-stand-drawer-60-x-48-x-33|20535096 00535101 80535098 60535099 20535100 00535097
 angsjon-wash-stand-drawers-40-x-48-x-63|00535083 70535089 80535084 90535088 80531769 10535092 20535082
 ankarudden-chest-4-drawers-80-x-48-x-107|80627149
@@ -43,11 +64,14 @@ applaryd-3-seat-sofa|80506246 10506235 20575087 30575077
 applaryd-3-seat-sofa-chaise-longue|79418057 89418066 79528174 79528169
 applaryd-4-seat-sofa-chaise-longue|49429533 69528179 39429538 09528182
 applaryd-chaise-longue-section|10506264 70575136 60506271 60575132
+arsunda-armchair|30535897
 askholmen-chair-armrests-outdoor|50535684
 askholmen-chair-outdoor|89576046 59529221 39576256 20557502
 askholmen-table-outdoor-143-x-75|50535679
 askholmen-table-outdoor-60-x-62|30557498
+asperod-console-table-140-x-40-x-65|60586710
 asperod-side-table-45|10462180
+aterloga-pouf|00572792 60572789
 baggboda-side-table-71-x-50|20556507
 baggebo-bookcase-50-x-30-x-80|70481171
 baggebo-cabinet-door-50-x-30-x-80|60481204
@@ -56,9 +80,17 @@ baggebo-shelf-unit-50-x-160|20436713
 baggebo-shelving-unit-60-x-25-x-116|50481172
 baggebo-shelving-unit-60-x-30-x-80|30621480
 baggebo-sideboard-78-x-92|40553616
+balkarp-sleeper-sofa|50307936
+baltsar-chair|60532147
+baltsar-swivel-chair|40532134 20532130
 barslov-3-seat-sofa-bed|90541584 40541591
 barslov-3-seat-sofa-bed-chaise-longue|30541596 10541578
 bastboll-gaming-chair|50586254
+batskar-add-on-unit-shelves-120-x-70|70553399
+batskar-bar-table-120-x-40|70623236
+batskar-closed-kitchen-unit-120-x-60|90623240
+batskar-open-kitchen-unit-60-x-60|80623250
+bekant-storage-unit-on-castors-41-x-101|20591370 60591373
 bekvam-kitchen-trolley-58-x-50|70240351
 bekvam-step-stool|70569545 10225589 40178888 40463852
 bekvam-step-stool-63|90190411 90219829
@@ -83,6 +115,8 @@ besta-tv-bench-doors-120-x-42-x-74|39068334 09506095 99420506 99420479 79420480 
 besta-tv-bench-doors-240-x-42-x-38|09603572 39612155 59603579 19603581 99603624 89603573 59612159
 besta-tv-bench-doors-240-x-42-x-40|29623135 49623144 49623139 29623140 89623137 69623143 19623145
 besta-tv-bench-doors-240-x-42-x-76|89622958 39622965 59622969 99622967 59622974 89622963 79622968
+besta-tv-bench-drawers-120-x-42-x-48|79188320 09399180 99188343 39419940 39435860 99555656 99435862 99435857
+besta-tv-unit-120-x-40-x-64|60575226
 beteshast-desk-120-x-60|80619804
 billy-40x202|50263838 60477382 80508641 70477334 40594928
 billy-80x106|30263844 90477385 30508648 00477337
@@ -96,16 +130,24 @@ billy-bookcase-40-x-28-x-237|49217734
 billy-bookcase-40-x-39-x-202|10401931
 billy-bookcase-80-x-28-x-237|59182201
 billy-bookcase-80-x-39-x-202|90401932
+billy-bookcase-drawer-80-x-30-x-106|29487840
+billy-bookcase-drawer-80-x-30-x-202|39483808
+billy-bookcase-glass-doors-80-x-30-x-202|20323805 00594925
+billy-bookcase-w-hght-ext-ut-pnl-glss-drs-80-x-3|69581505
+billy-height-extension-unit-40-x-28-x-35|90263860 00508664 80477395 60477358
+billy-height-extension-unit-80-x-28-x-35|40263853 60477396 00477361 30508667
 billy-hogadal-bookcase-door-40-x-30-x-106|69562494
 billy-hogadal-bookcase-door-40-x-30-x-202|29562491
 billy-hogadal-bookcase-doors-80-x-30-x-106|79572204
 billy-hogadal-bookcase-doors-80-x-30-x-202|19578464 49572205
 billy-hogbo-bookcase-glass-doors-80-x-30-x-202|99484386 79483613
 billy-oxberg-bookcase-120-x-30-x-237|59217724
+billy-oxberg-bookcase-160-x-30-x-202|69581548
 billy-oxberg-bookcase-200-x-30-x-237|49017834
 billy-oxberg-bookcase-80-x-30-x-202|69017828
 billy-oxberg-bookcase-80-x-30-x-237|69217714
 billy-oxberg-bookcase-door-40-x-30-x-106|69287392 09483292 49483290 69483289
+billy-oxberg-bookcase-doors-200-x-30-x-106|89581528
 billy-oxberg-bookcase-doors-40-x-30-x-202|29563136 79563134 49563135 89598326
 billy-oxberg-bookcase-doors-40-x-41-x-202|79304126
 billy-oxberg-bookcase-doors-80-x-30-x-106|39483276 49280042 59483275 19483277
@@ -123,9 +165,13 @@ billy-oxberg-bookcase-panel-glass-doors-120-x-30|79281790
 billy-oxberg-bookcase-panel-glass-doors-160-x-30|79581859 39581861 79280738 79280724 49581865 19581862
 billy-oxberg-bookcase-panel-glass-doors-80-x-30|69281776 69483326 29483328 89483325
 billy-oxberg-bookcase-panel-glass-doors-80-x-41|69398837
+billy-oxberg-bookcase-w-doors-extension-unit-80|89483368 89483373 49483370 29483371
+billy-oxberg-bookcase-w-height-extension-ut-drs|89581905 49280754 69581906
+billy-oxberg-bookcase-w-hght-ext-ut-pnl-glss-drs|89287433
 bingsta-armchair|10455655
 bissa-shoe-cabinet-2-compartments|70530218 70530256
 bissa-shoe-cabinet-3-compartments|10530259 10530221
+bjorkasen-laptop-stand|90467838 20636415
 bjorkberget-swivel-chair|60487159 20487161
 bjorksnas-bed-frame-standard-king-150-x-200|79501725 09501724 69501721 49501722
 bjorksnas-bedside-table-48-x-38|70407360
@@ -133,13 +179,19 @@ bjorksnas-chest-5-drawers-90-x-47-x-90|70407299
 bladdra-mini-chest-3-drawers-33-x-38|10417055
 blaliden-glass-door-cabinet-35-x-32-x-151|00501243 00520519
 blames-highchair-tray|50165079
+blankhallan-bedside-table|50620998 70620997
 blastasen-bedside-table-50-x-37-x-76|70617570 00595067
 bleckberget-swivel-chair|70564331 40573271
 boastad-high-cabinet-41-x-32-x-185|50507006
 boastad-sideboard-161-x-52-x-75|30507012
+boastad-tv-unit-121-5-x-42-x-45|30542751
+boastad-tv-unit-181-5-x-42-x-45|10542752
+boastad-wall-shelf-121-5-x-32-x-32|50527783
 boastad-wall-shelf-181-x-32-x-32|00507018
 boaxel-shelving-unit-62-x-40-x-201|09590126 09392616 89590127
 bollpojke-desk-90-x-55|00591366 00604161
+bollsidan-desk-sit-stand-120-x-70|90609814
+bollsidan-laptop-stand-68-x-36|30574370
 bolmen-step-stool|70574429
 bondholmen-2-seat-sofa-outdoor|49583732
 bondholmen-2-seat-sofa-outdoor-139-x-81-x-73|50558185
@@ -147,7 +199,9 @@ bondholmen-armchair-outdoor|19583724 60558161
 bondholmen-bench-backrest-outdoor|50558166
 bondholmen-chair-armrests-outdoor|10558173
 bondholmen-reclining-chair-outdoor|80558179
+bondholmen-table-outdoor-108|50558190
 bondholmen-table-outdoor-235-x-90|20558196
+bondskaret-hat-and-coat-stand-175|40554381
 borgeby-coffee-table-70|70389356 30500355
 borgeby-side-table-46|40619882 80619880
 brannboll-side-table-on-castors-69-x-39|00586360
@@ -177,7 +231,12 @@ bror-shelving-unit-65-x-55-x-190|29619402
 bror-shelving-unit-85-x-190|19619407 19650233 09619403 49516139
 bror-shelving-unit-85-x-55-x-110|39272655 39272641 69272649
 bror-shelving-unit-85-x-55-x-190|89617443 99650253 59619405 69516138
+bror-shelving-unit-cabinet-85-x-40-x-110|89283005
+bror-shelving-unit-cabinet-85-x-40-x-190|89516142
+bror-shelving-unit-cabinets-170-x-40-x-190|09516141
 bror-trolley-85-x-55|60333850 80547384
+bror-work-bench-110-x-55|30333286
+bror-work-bench-drawers-85-x-40-x-89|70494300
 brusali-shoe-cabinet-3-compartments|80480393
 brytning-desk-110-x-53-x-75|80609744 50609750
 brytning-desk-135-x-53-x-75|50609745 30609751
@@ -188,25 +247,33 @@ burvik-side-table-38|60340389 70340384
 buskbo-armchair|49615399 70434311
 buslatt-chair|90601139
 busunge-extendable-bed-80-x-200|70305700
+busunge-extendable-bed-97-x-190|90305704
 byas-tv-bench-160-x-42-x-45|80227797
 byasjon-wash-basin-base-cabinet-66-x-37-x-59|40591519
+centerhalv-office-chair|10601124
+dagnar-child-s-desk-chair|20563715
 danderyd-dining-table-130-x-80|40568726 20568727 10463858
+danderyd-dining-table-180-x-90|20516130 00568728
 danderyd-drop-leaf-table-74-134-x-80|10516121
 docksta-table-103|19324995
 domsten-stool|60554380
+dubbla-laptop-stand-60-x-40|80534701
 duvskar-chair-in-outdoor|70515760
 duvskar-table-outdoor-76-x-63|90515759
 dyvlinge-swivel-easy-chair|20623861 60581920 00570830 50570837
 ekenabben-cabinet-70-x-35-x-51|40595206
 ekenabben-open-shelving-unit-70-x-34-x-154|80487813 10487816 40596395 90596393
 ekenaset-armchair|50533492 30533488 00624343 80624339 20624323 40624341 10539014 90624329 70624330
+ekenaset-armchair-and-footstool|49622804 09622820 59622808 89622798 79622812 89622816
 ekenaset-bench-112|60533547
 ekenaset-high-back-armchair|50624350 40624379 60624378 70624373 70624392 70624368
+ekenaset-high-back-armchair-and-footstool|09621458 49621437 59621446 49621442 79621450 99621454
 eket-cabinet|69602131 69336359 79533019 59336374 49602132 29602133 19336371 90344927 60574590 80332114 09581179 20595523 60530577 80334603 50334591 30595527 80428852 70595525
 eket-cabinet-2-drawers-35-x-35-x-35|30428920 20574592 30428915
 eket-cabinet-2-drawers-70-x-35-x-35|00333947 80574594 80344923
 eket-cabinet-35-x-25-x-35|70332124 40595522 30530574 40334558 90428842 50595526 00595524
-eket-cabinet-combination-70-x-70|60333954 10574583 00334536 89435221 69435222
+eket-cabinet-combination-70-x-70|60333954 10574583 00334536 89285820 09581184 19285833 89435221 69435222
+eket-media-shelf-70-x-35-x-35|00576479 90582027 30582025
 eket-wall-cabinet-glass-door-35-x-25-x-35|89602125 29336356 29533012 99336353 69602126 49602127 49336341
 eket-wall-cb-2-doors-70-x-35-x-70|49581182
 eket-wall-cb-w-1-shlf-door-35-x-35-x-70|39590380 19590376 99590382
@@ -216,42 +283,61 @@ ekholma-2-seat-sofa|79537404 69537409 99537403 19537398
 ekholma-2-seat-sofa-bed|19598565
 ekholma-3-seat-sofa|19537416 89537413 09537412 59537419
 ekholma-corner-sofa-4-seat-open-end|09563076 59563074 29563075 79563073
+ekolsund-recliner|29297185 79297183
+ekrar-hat-and-coat-stand-169|10415594
 ektorp-2-seat-sofa|59620729 49628684 09628681 09509027 99509018 59509015 89628677
 ektorp-3-seat-sofa|59619759 29509012 89509009 19509003 79509000 59628706 99628709
 ektorp-3-seat-sofa-chaise-longue|29628736 59628730 99628733 99509042 89509033 49509030 19509036
 ektorp-armchair|79628654 69628635 69628640 79552102 59552103 89552106 29552109
+ektorp-armchair-and-footstool|79633844 99633838 89633834 59553862 69553871 99633819 09553874
 ektorp-corner-sofa-4-seat|69628664 19628666 29508994 89508986 89508991 39508984 59508997
 eldberget-malskar-swivel-chair|59331847
+emmislov-pouf|30572738 70572741
 enhet-base-cb-f-sink-60-x-60-x-75|50440426
 enhet-base-cb-f-washbasin-w-2-drawers-60-x-40-x|80440509
 enhet-base-cb-w-3-drawers-40-x-60-x-75|40440422
 enhet-base-cb-w-shelf-80-x-60-x-75|80440420 10440414 20440423
 enhet-base-fr-w-shelves-40-x-60-x-75|00448953 20448952 10448976 30448975
+enhet-base-fr-w-shelves-45-5-x-45-5-x-61|60515888
+enhet-base-fr-w-shelves-45-5-x-61-x-76|50514455 80514454 00514453 20514452
 enhet-base-fr-w-shelves-60-x-40-x-60|60448974 80448973 40448951 60448950
 enhet-base-frame-for-washbasin-60-x-40-x-60|40464470 20464471
+enhet-bathroom-vanity-2-drawers-61-x-47-5-x-61|59434483 70623024 70623019
+enhet-bathroom-vanity-doors-61-x-47-5-x-61|00623051 90623056
 enhet-high-cabinet-door-30-x-32-x-180|10623036 30632054
 enhet-high-cabinet-for-fridge-freezer-60-x-60-x|30514197
 enhet-high-cb-w-4-shelves-30-x-30-x-180|10440452
+enhet-high-fr-w-shelves-30-5-x-30-5-x-183|80515892 00515891
 enhet-high-fr-w-shelves-60-x-30-x-180|70448964 40448946 20448947 80448954
+enhet-high-fr-w-shelves-61-x-30-5-x-203|90514482 30514461
 enhet-mirror-cabinet-60-x-17-x-75|59336519 99336517 19336516 79336518
 enhet-mirror-cabinet-door-40-x-17-x-75|30623040
+enhet-mirror-cabinet-door-45-5-x-17-x-76|70623043
 enhet-mirror-cabinet-doors-60-x-17-x-75|50623044 80623047
 enhet-sink-cabinet-door-60-x-62-x-75|00623032
 enhet-tvallen-open-wash-stand-2-shelves-64-x-43|99554671 09554661
 enhet-tvallen-wash-stnd-w-door-wash-basin-44-x-4|49613357
 enhet-tvallen-wash-stnd-w-doors-wash-basin-64-x|79613346 09613335 29623625
 enhet-tvallen-wash-stnd-w-drawers-wash-basin-64|49613343 19613354 99623622
+enhet-wall-cabinet-door-45-5-x-32-x-76|60623029
 enhet-wall-cabinet-door-60-x-32-x-75|40623025
+enhet-wall-cb-w-2-shelves-45-5-x-15-x-76|80515571 40515573
 enhet-wall-cb-w-2-shelves-80-x-30-x-75|60440416 10440428 10440447
 enhet-wall-frame-shelves-40-x-15-x-75|30448937 70448935 80448968 20448971 00448972 00448967 60448945
 enhet-wall-shelf-frame-60-x-45-x-40|40622988
 enhet-wash-stand-door-40-x-42-x-60|80623146
+enhet-wash-stand-door-45-5-x-47-5-x-61|00623150
 enhet-wash-stand-doors-60-x-42-x-60|70623057 10632050 60623053
 enhet-wash-stand-drawers-60-x-42-x-60|80632056 50623020 20623012
 enkroken-desk-85-x-56-x-75|50587079
 ensholm-chair|10543737
+esseboda-3-seat-sofa|99443522 99443517 89443532 09443507
+esseboda-loveseat|99443466 99443471 89443481 89443476 79443491 09443461
+esseboda-ottoman|49443435 59443425 49443440 39443450
 fabrikor-glass-door-cabinet-57-x-150|00242278 50601424
+fagelfjallet-8-drawer-dresser-160-x-51-x-101|40627995 70628248 00611637
 fagelfjallet-bed-frame-2-storage-boxes-standard|79630906 69620861 19621071 99630905 89620860 39621070
+fagelfjallet-bed-frame-2-storage-boxes-twin-97-x|49620862 99620845 99621072 49621135 29630895 69630921 00607193 20607173 49620763 89620780 69621120 19620986
 fagelfjallet-bed-frame-4-storage-boxes-standard|69620880 89621100 49630917 89620879 69630916 29621099
 fagelfjallet-bed-frame-standard-king-150-x-200|60607171 80607170 39620985 49620819 69620984 49620824
 fagelfjallet-bedside-table-32-x-41-x-56|30627694 60598609
@@ -259,6 +345,7 @@ fagelfjallet-chest-3-drawers-82-x-51-x-78|40611640 60611644
 fagelfjallet-chest-4-drawers-82-x-51-x-101|20598606 60611639
 fagelfjallet-chest-6-drawers-160-x-51-x-78|00611642 10611646
 fagelfjallet-chest-6-drawers-82-x-51-x-123|70611648 80611638
+fagelfjallet-nightstand-52-x-46-x-66|60627683 60633537 20611636
 fagelfjallet-wardrobe-2-doors-82-x-60-x-194|40598610 70611629
 fagerbacken-armchair|59612673 69612677 09612680
 fargsattare-wall-shelf-60-x-16-x-74|70595785
@@ -267,6 +354,17 @@ farjkarl-cabinet-77-x-45-x-116|10597607
 farjkarl-glass-door-cabinet-87-x-45-x-161|40597644
 fejan-chair-outdoor|10255307
 fejan-table-outdoor-50-x-44|40469019
+finnala-3-seat-sleeper-sofa-chaise|69575694 49575690 09575692 49575685 09575734 29575634 69575627 09575625
+finnala-armchair|89505167 69505168
+finnala-chaise-section|19319588 79319590 49319596 89319293 99319301 39319295 89319542 49319544 69319538 49319290 50455007
+finnala-corner-section|99319607 89319599 29319601 30455008
+finnala-corner-sleeper-sofa-5-seat|29542808 59319256 39319262 09319254 89319274 49319266 09319268 89319858 29319856 19319852 19319263 99575616 59575623 49575614 69319251
+finnala-crnr-sleeper-sofa-5-seat-w-chaise|99575678 59575680 09575673 69575670 59575604 29575610 69575608 99575664 99575659 39575662 99575602
+finnala-loveseat|79319019 39319021 69318925 49319025 79319024 60456431 20455004 39319554 79319552 99319546 89542853 79542844 29542846 59542840 19542842
+finnala-ottoman-storage|59319609 19319611 89319617 79319613
+finnala-sectional-4-seat-chaise|59575736
+finnala-sectional-4-seat-corner|89319231 59319237 29319229 99319216 49319214 79319222 59319223 59319242 19319244 49409177
+finnala-sleeper-sofa|29542832 89542834 99542857 69542830 09542828 69542892 59542883 09542885 69542868 09542866 99542876 09319070 29319069 19319060 79319062 49319068 99319099 39319101 09319107 69319086 29319088 09319094 89319108
 fjaderharv-mini-chest-2-drawers-32-x-25|00596892 10596896
 fjallberget-conference-chair|00396421 60487767
 fjallbo-desk-140-x-70|90587690
@@ -275,14 +373,17 @@ fjallbo-shelving-unit-100-x-95|50339292
 fjallbo-shelving-unit-51-x-136|70342199
 fjallbo-sideboard-111-x-47-x-95|00502799
 fjallbo-tv-bench-150-x-36-x-54|90339290 90501309 40579032
+fjallbo-tv-unit-198-x-45-x-54|00579034 60566439
 flekke-day-bed-frame-2-drawers-80-x-200|00320134
 flekke-day-bed-w-2-drawers-2-mattresses-80-x-200|39521457 49495943 29497349 09521449
+flinshult-armchair|40505022
 flintan-office-chair|50489031 30492204
 flintan-office-chair-armrests|49424470 79424464
 flisat-children-s-stool|30596536
 flisat-children-s-table-83-x-58|50298418
 flisat-open-storage-88-x-38-x-117|60620120
 forhoja-kitchen-trolley-100-x-43|80035920
+forlunda-pouffe|40572752 80572745
 forsaljare-sideboard-140-x-46-x-78|90595888
 forsiktig-children-s-stool|10591318
 franklin-bar-stool-backrest-foldable-63|50406465 70404875
@@ -297,39 +398,59 @@ frosjon-shelving-unit-40-x-96|70574900
 frosjon-trolley-55-x-35|40574906
 froskelas-gaming-desk-144-x-71|00619681
 froskelas-storage-unit-63-x-35-x-141|40619684
+frost-drying-rack-in-outdoor|40244831
 frosvi-folding-chair|10534318 70534315 80534329 80534334 10534323
 frotorp-coffee-table-88|70622091 70497582
 frotorp-side-table-48|10492276 30622093
 fryksas-armchair|80540033
+fryksas-armchair-and-footstool|79563167
 fryksas-armchair-cushion|09563156
 fryksas-cabinet-81-x-124|40574096
 fryksas-desk-110-x-54|60574104
+fryksas-storage-unit-on-castors-37-x-53|90574174
 fryksas-tv-bench-157-x-41-x-49|80574099
+fyresdal-daybed-frame-twin-97-x-191|30424366 40613088
 galant-cabinet-doors-80-x-120|10365141 50365139
 galant-cabinet-sliding-doors-160-x-120|30365135 20365131
 galant-drawer-unit-80-x-80|90365161 30365159
+galant-drawer-unit-drop-file-storage-45-x-55|90365123 40365125
 galant-drawer-unit-on-castors-45-x-55|10365155 60365153
+gamlehult-footstool-storage|10434309
 garnanas-coffee-table-65-x-65|00556508
 gavle-easy-chair|80588845 50588842
 gillersberg-bedside-table-39-x-39-x-56|30608983
 gladhojden-desk-sit-stand-100-x-60|30493939
+gladstad-upholstered-bed-2-storage-boxes-standar|99406807 09406802
+gladstad-upholstered-bed-2-storage-boxes-twin-97|49406763
+gladstad-upholstered-bed-4-storage-boxes-standar|49407022 29407023
 gladstad-upholstered-bed-frame-standard-king-150|40490469 60490468
+gladstad-upholstered-bed-frame-twin-97-x-191|00490471
 glamberget-room-divider-150-x-150|90564735
 glamberget-wardrobe-3-sliding-doors-117-x-63-x-1|20564512
 glenn-bar-stool-66|60131734
 glostad-2-seat-sofa|90489010
 glostad-3-seat-sofa|80595940
 glostad-3-seat-sofa-chaise-longue|89578601
+glostad-ottoman|60595936
 godishus-chest-3-drawers-60-x-40-x-60|80598095
+godishus-wardrobe-60-x-54-x-178|80576512
 gonatt-cot-drawer-70-x-140|90467089
+gonatt-crib-drawer-70-x-132|30467087
 grafjallet-bedside-table-45-x-36-x-59|20570221
 grafjallet-clothes-rack-shoe-storage-90-x-36-x-1|00570222
 grafjallet-dressing-table-100-x-42|30570225
 grafjallet-room-divider-150-x-175|10570226
 grafjallet-wall-mounted-bedside-table-42-x-29-x|00603114
+greaker-cabinet-drawers-84-x-101|50501071
 grejsimojs-children-s-stool|60598973 50598959
 grejsimojs-children-s-table-84-x-42|70598963
+grejsimojs-clothes-stand-125|10602996
+grejsimojs-pouffe-storage|60603644
+grillskar-kitchen-island-shelf-unit-86-x-61|50471446 29390107
+grillskar-kitchen-island-w-back-panel-86-x-61-x|79495244 79548233
+grillskar-open-kitchen-unit-61-x-61|40598790
 grillskar-side-table-outdoor-30-x-61|00523179
+groeryd-utility-cart-72-x-37-x-80|30498946
 gronfjall-office-chair-arm-headrest|89513921
 gronfjall-office-chair-armrests|20503477
 gronsta-bar-stool-64|30554635
@@ -337,10 +458,13 @@ gronsta-chair|10637241 70637238 70519763 70554577
 gronsta-chair-armrests-in-outdoor|20557875 90557886
 grotan-chair|70617565
 grotan-table-105|40610424
+grotan-table-80|80610422
 grunnarp-3-seat-sofa-bed|70585084 90585078 30585081
 grysna-upholstered-bed-frame-90-x-200|19628435
+grysna-upholstered-bed-frame-twin-97-x-191|79628461
 gullaberg-bed-frame-2-storage-boxes-standard-dou|89614736 09614735 19614834 49614738 89614835 19630947 49614837
 gullaberg-bed-frame-2-storage-boxes-standard-sin|89614699 69614803 49614700 59631011 89614802 09631018
+gullaberg-bed-frame-2-storage-boxes-twin-97-x-19|29614701 09614702 89631019 49614804 39631012 19614805 00608102 80608117 29614485 09614580 69614582 19614495
 gullaberg-bed-frame-4-storage-boxes-standard-kin|79614869 19614867 39614866 99614769 39614767 29630961 19614768
 gullaberg-bed-frame-standard-double-135-x-190|89614524 79614789 29614517 69614544 89614543 59614790 09614603
 gullaberg-bed-frame-standard-single-90-x-190|80608103 00608116 99614482 89614576 49614494 49614578
@@ -353,81 +477,118 @@ gullaberg-desk-120-x-65-x-75|20609681
 gullaberg-desk-155-x-65-x-75|50601669
 gullaberg-shoe-cabinet-2-compartments-88-x-30-x|50587692 40587697
 gullaberg-shoe-cabinet-4-compartments-105-x-22-x|10587707 50587710
+gullaberg-storage-bench-148-x-43-x-52|40573959 80573957
 gullaberg-wardrobe-128-x-64-x-201|00609903 80609904
 gulliver-changing-table-82-x-54-x-93|20307037
 gulliver-cot-60-x-120|20589503 10248519
+gulliver-crib-70-x-132|70589505 80248525
 gullvalla-2-seat-sofa|80618507 20618510
 gullvalla-3-seat-sofa|60618513 50618504
 gultarp-stool|80614585
 gunde-folding-chair|00217797
 gunde-folding-stool|40570404
+gunrik-child-s-desk-chair|00563716
 gursken-chest-3-drawers-69-x-67|00486327
+gursken-wardrobe-2-doors-59-5-x-55-x-185-5|60586809
 gursken-wardrobe-49-x-55-x-186|20486326
 guttane-coffee-table-116-x-39|10587712
 guttane-side-table-58-x-39|80587718
 haddarp-step-stool|60581944 20600708
 hagaan-open-cabinet-40-x-48-x-33|40535514 70534909 40535528 60535532
+hagaan-open-cabinet-45-5-x-53-5-x-33-5|80535531 90535521 60535513 90535535
 hagaan-wall-open-cabinet-40-x-15-x-95|70535522 70535536
+hagaan-wall-open-cabinet-45-5-x-15-x-94|10535539 00535525
 hagernas-stool|80607014
 hakanskar-coffee-table-80-x-64|70597162
 hammarn-sofa-bed|00361493
 hattefjall-office-chair-armrests|20598159 60598162 40598163 00598160
 hattholmen-table-outdoor-75-x-75-x-74|40443048
+hauga-2-drawer-chest-50-x-46-x-68|10572824 00576177
+hauga-4-drawer-dresser-70-x-104|50572822 80576178
+hauga-8-drawer-dresser-138-x-104|30572823 60576179
 hauga-bedside-table-40-x-36|00488963
 hauga-cabinet-2-doors-70-x-116|00415052 40415050
 hauga-chair|10576718 30576717
 hauga-chest-3-drawers|20581521 80581518
+hauga-chest-3-drawers-shelf-70-x-46-x-116|50581529 30581525
 hauga-chest-6-drawers|00581536 70581533
 hauga-drop-leaf-table-55-82-109-x-74|20586000 80586002
 hauga-glass-door-cabinet-105-x-116|80415048 30415055
 hauga-sideboard-140-x-46-x-84|40621489 60621488
 hauga-table-118-x-74|00576709 50576716
+hauga-table-168-x-74|30576722 50576721
+hauga-table-74-x-74|70576720 90576719
 hauga-tv-bench-206-x-46-x-54|80593385 50593382
 hauga-wardrobe-70-x-199|20415046 60415054
 hauga-wardrobe-sliding-doors-118-x-55-x-199|60456916 60407271
+havback-bathroom-vanity-doors-76-x-53-5-x-64|90535253 10574007 80535244 90574008 30535232 40535241
+havback-bathroom-vanity-drawers-76-x-53-5-x-64|10535214 50574010 60535202 90535205 70574009 70535193 30574011
 havback-high-cabinet-door-40-x-35-x-195|40535000 20535063 40535062
+havback-high-cabinet-doors-45-5-x-38-x-195-5|20535181 80574004 30535190
+havback-orrsjon-wash-stand-wash-basin-124-5-x-54|19629406 99629389 99629365 89629441 79629390 69629258 49629419 49629297 19629388
+havback-orrsjon-wash-stand-wash-basin-124-5-x-55|19633875 89629257 39629387
+havback-orrsjon-wash-stand-wash-basin-155-x-54-5|69629404 79629314 49629438 49629363
 havback-orrsjon-wash-stnd-w-doors-wash-basin-82|99629252 79629291 09629416 99629308 89629380 79629267 59629428
 havback-orrsjon-wash-stnd-w-drawers-wash-basin-4|09629299 59629391
 havback-orrsjon-wash-stnd-w-drawers-wash-basin-8|69629300 29629420 39629245 99629346 89629281 89629276 69629319
 havback-orrsjon-wash-stnd-w-drawers-wash-basin-8-2|99629370 99629327 99629285 89629422 89629304 79629248 49629283
 havback-orrsjon-wash-stnd-w-drawers-wash-basin-t|79522563 19522486
 havback-orrsjon-wash-stnd-w-drs-deep-wash-basin|69515346
+havback-orrsjon-wash-stnd-w-drs-deep-wash-basin-2|59634439 79634438 39634440
 havback-vindelalven-wash-stnd-w-drawers-wash-bas|99622458 89622454 89622449 79622464 79622459 69622450 59622460
 havback-wall-cabinet-door-40-x-15-x-95|60535056 40534996 40535057
+havback-wall-cabinet-door-45-5-x-15-x-94|70535169 10574012 80535178
 havback-wash-stand-doors-80-x-48-x-63|00535035 30535072 90535074 10535073 80535003 70535070
 havback-wash-stand-drawers-40-x-33-x-63|90591885 30591888
 havback-wash-stand-drawers-60-x-48-x-63|70535065 10535068 90535069 90531764 50535066 40535024 10535025
+havberg-ottoman|90531660
+havberg-swivel-chair|50531657
 havsta-cabinet-doors-81-x-123|50529249 30529245 60529263 40529259 00529261
 havsta-cabinet-plinth-81-x-37-x-134|29534667 39534662
 havsta-cabinet-plinth-81-x-47-x-89|00529242 80529238
 havsta-chest-3-drawers-81-x-47-x-89|90599476 70599477
 havsta-chest-6-drawers-121-x-47-x-89|30599479 10599480
+havsta-console-table-100-x-35-x-63|60422549
 havsta-glass-door-cabinet-121-x-35-x-123|00529256 90529252
 havsta-glass-door-cabinet-plinth-121-x-37-x-134|89534669 29534672
 havsta-glass-door-cabinet-plinth-81-x-37-x-134|49534652 09534654
 havsta-shelving-unit-81-x-35-x-123|50529273 60529277 00529275
+havsta-shelving-unit-plinth-81-x-37-x-134|79534641 19534644
 havsta-sideboard-basic-unit-121-x-47-x-89|40529235 30529231
 havsta-tv-bench-plinth-160-x-47-x-62|10529270 90529266
 havsten-2-seat-sofa-outdoor|39500959
 havsten-2-seat-sofa-outdoor-179-x-92-x-76|10542498
 havsten-armchair-outdoor|30542497 49500954
+hejne-shelf-unit-78-x-50-x-171|79031414 39031411
 helmer-drawer-unit-on-castors|00619902 70625023 20625025
+hemnes-2-drawer-chest-54-x-66|80242627 50242619
 hemnes-3-drawers|80424745 70610738
+hemnes-bathroom-vanity-drawers-122-x-82|60605313 40605314
+hemnes-bench-83|70349011 00243800
 hemnes-bookcase-90-x-197|60413502 40596159 20452294
 hemnes-chest-8-drawers|10239280
 hemnes-day-bed-frame-3-drawers-80-x-200|90349326 80622892 60372276
 hemnes-day-bed-w-3-drawers-2-mattresses-80-x-200|49521503 79610220 59521499 49521485 19428120 19390952 59610235
 hemnes-desk-155-x-65|20535044
+hemnes-desk-2-drawers-120-x-47|30534954
+hemnes-dressing-table-mirror-100-x-50|30374413
+hemnes-dressing-table-mirror-110-x-45|60384967
 hemnes-glass-door-cabinet-3-drawers-90-x-197|50452297 00596161 50413507
+hemnes-hat-rack-85|60243798
 hemnes-high-cabinet-mirror-door-49-x-31-x-200|70217685
 hemnes-mirror-cabinet-1-door-63-x-16-x-98|70217671
+hemnes-mirror-cabinet-2-doors-120-x-98|20348995
 hemnes-mirror-cabinet-2-doors-83-x-16-x-98|40217677 80217675
 hemnes-nightstand-2-drawers|50610739
 hemnes-open-wash-stand-1-drawer-82-x-48-x-76|30396698
+hemnes-orrsjon-open-wash-stand-w-drawer-wash-bas|89654732 99649368
+hemnes-orrsjon-open-wash-stand-w-drawer-wash-bas-2|79649369 69654733
+hemnes-orrsjon-open-wash-stand-w-drawer-wash-bas-3|59649370 49654734
 hemnes-orrsjon-wash-stnd-w-drawers-wash-basin-10|69654988 09654972 59654979
 hemnes-orrsjon-wash-stnd-w-drawers-wash-basin-ta|29546788 09546794 49546810
 hemnes-rutsjon-wash-stnd-w-drawers-wash-basin-62|69655006 49655007 09655014
 hemnes-rutsjon-wash-stnd-w-drawers-wash-basin-ta|49546853 79546837 29546830
+hemnes-shelf-unit-42-x-172|30217654 20349004
 hemnes-sideboard-157-x-88|70476259 80628667
 hemnes-tv-bench-148-x-57|50413526
 hemnes-vastersjon-open-wash-stand-w-drawer-wash|19649391
@@ -436,10 +597,12 @@ hemnes-wash-stand-2-drawers-60-x-47-x-83|50217667 20217664 90217665
 herrakra-armchair|20544717 80535545 80535550
 hogved-chair|90606820
 hol-side-table-50-x-50|70161320
+hol-storage-table-98-x-50|50161321
 holmerud-coffee-table-90-x-55|90540706 00541418
 holmerud-side-table-80-x-31|40541421 20538721
 holmsta-armchair|90508551
 holmsta-froknabo-armchair|99428809
+holmsund-sleeper-sectional-3-seat|39516903 79516897 89516892 09516886
 hornavan-trolley-26-x-48-x-77|70243873
 huvudspelare-gaming-chair|30507601
 huvudspelare-gaming-desk-140-x-80|90539166
@@ -450,6 +613,7 @@ hyltarp-2-seat-sofa-bed|29489580 59514880 49514885 89514874 39514862 89489600 79
 hyltarp-3-seat-sofa|09489637 39489631 69514945 79514940 49514951 09514929 89489643
 hyltarp-3-seat-sofa-w-chaise-longue-left|19489689 49515012 89489695 39515017 19515023 49489683 49489701
 hyltarp-3-seat-sofa-w-chaise-longue-right|59495829 19514995 29514990 79514978 29495835 09514967 09495841
+hyltarp-sectional-4-seat-corner|09514830 79514841 59489569 59489574 39514819 19514858 09514825
 ibbarbo-stool|40571535
 idanas-bed-frame-standard-double-135-x-190|09390066 49390069 29390070 89390091 49390088 09390090 89390067
 idanas-bed-frame-storage-standard-king-150-x-200|69390105 89390072 49390074 19390099 79390100 09390071 99390104
@@ -468,6 +632,9 @@ idanas-side-table-46-x-36|00496048 60496045
 idanas-sideboard-124-x-50-x-95|80496025
 idanas-tv-bench-162-x-40-x-63|90487860
 idanas-upholstered-bed-frame-standard-king-150-x|80458962 20458960 60588083 80588082
+idanas-upholstered-bed-frame-twin-97-x-191|90594940 10459677 69386575 59567289 19386573 79567288 70459660 50459661 59386571 99386569 49567280 29567281
+idanas-upholstered-ottoman-bed-standard-king-150|40590949 10588090
+idanas-upholstered-storage-bed-standard-king-150|20447194 60447192 70588105 00588104
 idanas-wardrobe-121-x-211|60458835
 idasen-desk-160-x-80|89281030 89280969
 idasen-drawer-unit-on-castors-42-x-61|10320727 50397913
@@ -476,27 +643,41 @@ ikea-ps-2026-bedside-table-30-x-30-x-50|60619942
 ikea-ps-2026-bench-127|30617893
 ikea-ps-2026-cabinet-80-x-46-x-140|00616946
 ikea-ps-2026-chair|10617969 70617966
+ikea-ps-2026-chair-bed|30620372 00620378
 ikea-ps-2026-easy-chair|50623204 00621071
 ikea-ps-2026-folding-chair|10617894
 ikea-ps-2026-glass-door-cabinet-73-x-36-x-160|80616952
+ikea-ps-2026-ottoman-storage|50624265
 ikea-ps-2026-shelving-unit-160-x-35-x-161|50616816
 ikea-ps-2026-side-table-50-x-40|80621067
 ikea-ps-2026-stool|20617916
 ikea-ps-2026-table-156-x-75|00617861
 ikea-ps-2026-table-96|80617895
+ikea-ps-2026-table-drawer-70-x-70|40617878
 ikea-ps-2026-trolley-89-x-48|50621078 40621074
 ikea-ps-cabinet-119-x-63|10251451
 ikea-ps-lomsk-children-s-swivel-armchair|30609237
 ingolf-junior-chair|60353838
+inndyr-storage-bench|90461214 60461215
 invallning-trolley-68-x-39|10569398
 ismantorp-armchair|60598218 10598225
+ivar-2-sections-shelves-134-x-30-x-179|99590612
+ivar-2-sections-shelves-134-x-50-x-179|49407055 19403935
+ivar-2-sections-shelves-134-x-50-x-226|29407056
+ivar-2-sections-shelves-174-x-30-x-124|99403936
+ivar-2-sections-shelves-174-x-50-x-124|09407057
+ivar-2-sections-shelves-174-x-50-x-226|89407058
+ivar-3-sections-shelves-219-x-30-x-226|89403946
+ivar-3-sections-shelves-259-x-30-x-179|49407258 69403947
+ivar-3-sections-shelves-259-x-50-x-226|69407064 49403948
+ivar-box-shelf-divider-83-x-30-x-25|20596382
 ivar-cabinet-doors-160-x-30-x-83|89508118 99508108
 ivar-cabinet-doors-80-x-83|50531252 00531240 40033763 70033766
 ivar-cabinet-doors-89-x-30-x-124|69508162 49508158
 ivar-cabinet-sliding-doors-80-x-30-x-60|00494394
 ivar-shelving-unit-80-x-30-x-166|69562823
 ivar-shelving-unit-80-x-30-x-83|00522330
-ivar-shelving-unit-89-x-179|49590577 99572571
+ivar-shelving-unit-89-x-179|49590577 99572571 29403845 79407054 89590599
 ivar-shelving-unit-89-x-30-x-124|69590576 89404583
 ivar-shelving-unit-89-x-30-x-226|29590578
 ivar-shelving-unit-89-x-50-x-179|39407070 89404578
@@ -506,11 +687,15 @@ ivar-shelving-unit-doors-259-x-30-x-124|79403471
 ivar-shelving-unit-doors-259-x-30-x-226|59403472
 ivar-shelving-unit-doors-89-x-30-x-124|39403473 89507883 59508087 09507858
 ivar-shelving-unit-doors-89-x-30-x-179|89403461 19403474
+ivar-shelving-unit-storage-box-89-x-30-x-124|09404582
+ivar-shelving-unit-storage-box-89-x-30-x-179|59403815
 ivar-wall-cabinet-doors-160-x-30-x-83|09417382
 ivosjon-cabinet-doors-33-x-34-x-99|30569095 90609871
 ivosjon-wash-basin-base-cabinet-50-x-33-x-57|20597292
 jakobsfors-coffee-table-80|90500121 50515167
+jall-drying-rack-in-outdoor|80242892
 janinge-chair|70246089
+jarrestad-pouf|50572761 10572758
 jarvfjallet-office-chair-armrests|20510642 00521854
 jattebo-2-5-seat-mod-sofa-w-chaise-longue|89469490 79617599 79618532 19471340 09617748 09617418 09490103 99607617 79607637 69607633 69490100 19607621
 jattebo-2-seat-modular-sofa|09471411 09617705 29471410 29617634 99617428 09618620 89510404 69617707 59617623 59510410 49621183 49618623
@@ -530,11 +715,14 @@ jattesta-tv-bench-160-x-40-x-49|70508934 50538852
 jolpen-2-seat-sofa-outdoor-100-x-59-x-67|60515483
 jonaxel-frame-25-x-51-x-70|10429992
 jonaxel-frame-50-x-51-x-70|40419958 60419957
+jonaxel-shelf-unit-80-x-38-x-160|50419972
 juteboda-stool|30543741
 jutholmen-2-seat-modular-sofa-outdoor|69579852
 jutholmen-2-seat-modular-sofa-outdoor-146-x-73|49579848
 jutholmen-3-seat-modular-sofa-outdoor|79579856
 jutholmen-3-seat-modular-sofa-outdoor-210-x-73|99579860
+jutholmen-chair-outdoor-65-x-73-x-71|99579841
+jutholmen-chair-outdoor-65-x-73-x-83|09579845
 jutholmen-corner-section-outdoor|80469116
 jutholmen-easy-chair-outdoor-65-x-73-x-71|39579839
 jutholmen-easy-chair-outdoor-65-x-73-x-83|39579844
@@ -567,6 +755,8 @@ kallax-shelving-unit-underframe-147-x-94|29442677 39442686 89442679 79442689 594
 kallax-shelving-unit-underframe-77-x-164|69442642 89442655 19442654 99442645 79442646 49442643 29442615 79607557
 kallax-shelving-unit-underframe-77-x-94|89442617 59442628 49442619 69442618 79442627 09442616 29634983
 kallso-bench-shoe-storage-80-x-38-x-56|20599328
+kallso-hat-rack-80|60599326
+kallso-storage-bench-80-x-38-x-56|80599325
 karskar-chair|00611251
 karskar-extendable-table-160-220-x-90|50611263
 karskar-extendable-table-240-300-x-100|00611265
@@ -588,16 +778,20 @@ kivik-corner-sofa-5-seat|99440477 69443019 49482865 89500419 29500422 09500418 8
 kivik-corner-sofa-5-seat-w-chaise-longue|69482874 19440481 89443023 39500426 19500427
 kivik-corner-sofa-6-seat|29443182
 kivik-corner-sofa-6-seat-w-chaise-longue|99482882 99443027 79500434 49500435 29440485
+kivik-ottoman-storage|89440500 69443043 69482906 89482905 69499676 89499680 99499670
 kivik-u-shaped-sofa-6-seat|19494394 79527805 79443066 49527656 49440578 39527652 69443199
 kivik-u-shaped-sofa-7-seat|99443070 99527705 89527701 39527807 39440574 29494402 89443202
 kjellarne-corner-desk-138-x-130|40613677
+kjuge-pouf-storage|30531903 40629683 20629679
 klackenas-sideboard-120-x-97|90506750
+kleppstad-bed-frame-queen-152-x-203|00492682 40492680
 kleppstad-bed-frame-standard-double-135-x-190|40492675 20492681
 kleppstad-wardrobe-2-doors-79-x-176|80437234
 kleppstad-wardrobe-3-doors-117-x-55-x-176|00441758
 kleppstad-wardrobe-sliding-doors-117-x-55-x-176|90437238
 klippan-2-seat-sofa|49625204 89246862 89561667 90399316
 klippuggla-bed-frame-storage-90-x-200|19627346 09627827
+klippuggla-bed-frame-storage-twin-97-x-191|29627826 69627829
 knarrevik-bedside-table-37-x-28-x-45|00576318 20569977
 knoxhult-corner-base-cabinet-100-x-91|00486129 70603974 30603985 00588788
 knoxhult-high-cabinet-door-60-x-31-x-153|50604352 40604079 90604246 10604354
@@ -606,10 +800,12 @@ knoxhult-wall-cabinet-door-40-x-75|50326789 00603982 80588789 40603975
 knoxhult-wall-cabinet-door-60-x-60|60588790 10326791 80603983 20603976
 knoxhult-wall-cabinet-door-60-x-75|40588791 40496310 10603986 00603977
 knoxhult-wall-cabinet-doors-120-x-75|80603978 90326792 20588792 60603984
+knoxhult-wall-cabinet-doors-76-x-30-5-x-32|90500277 70603993 70604011 20604004
 kolbjorn-cabinet-80-x-81|30409295
 kolbjorn-cabinet-90-x-161|60601862
 kolbjorn-shelving-unit-80-x-45|20601864
 kolbjorn-shelving-unit-80-x-81|60409294
+kolbjorn-shelving-unit-cabinet-80-x-37-x-161|19291645
 kolbjorn-shelving-unit-in-outdoor-80-x-35-x-162|99291646
 kompishang-desk-100-x-55|00628751
 kompishang-side-table-50|50628819
@@ -630,9 +826,11 @@ krylbo-swivel-chair|90573589
 kullen-chest-2-drawers|80309241
 kungsfors-kitchen-trolley-60-x-40|80334924
 kura-reversible-bed-90-x-200|80253809
+kura-reversible-bed-twin-97-x-191|80253814
 kyrre-stool|60416925 10608130
 lack-coffee-table|00104291 40431535 80449901
 lack-coffee-table-90-x-55|40104294 50319029 90449905
+lack-console-table-140-x-39|30574351 10574352
 lack-side-table|30449908 80104268 70319028
 lack-side-table-35-x-35|30514791
 lack-tv-bench|00450088
@@ -670,10 +868,15 @@ landskrona-armchair|69269722 09269720 29415787 69416394 19269164 99269725 494163
 landskrona-chaise-longue-add-on-unit|79270254 89416406 89270244 79415803 49270241 39415800 29416409 89270239 69270240 89124035 09124039
 landskrona-corner-sofa-5-seat|29270063 79270065 49270076 99416397 59416399 49415791 39270072 69270042 79031843 89031847 69270037
 landskrona-corner-sofa-6-seat|29270218 29046272 09270219 09046268 49270222 69270221 89415794 79416402 69270235 59270231 39415796
+lanespelare-monitor-stand-97-x-19|00588873
 lanesund-bookcase-121-x-37-x-152|20434827
 lanesund-glass-door-cabinet-121-x-37-x-152|80466556
 lanesund-sideboard-161-x-47-x-81|90466546
 lanesund-tv-bench-161-x-47-x-55|50466553
+langaryd-loveseat|89506039 29506042
+langaryd-sofa|59506045 09506043
+langaryd-sofa-w-chaise-left|39506051 19506047
+langaryd-sofa-w-chaise-right|49506055 19506052
 langfjall-conference-chair|79252368 49177568 99567329 49567157
 lastare-bench-90-x-42-x-48|70615665
 lastare-chest-4-drawers-80-x-42-x-100|60599350 40599351 20599352
@@ -681,22 +884,31 @@ lastare-frame-40-x-42-x-100|60596484 80596483 00596482
 lastare-frame-60-x-30-x-100|60616241
 lastare-frame-doors-60-x-42-x-100|90596468 30596471 10617484 10630353
 lastare-frame-doors-80-x-42-x-200|90596473 70596474 50596470 70596469
+lastare-height-extension-unit-doors-80-x-42-x-36|30596490 90596487 70596488 30596485
 lastare-table-100-x-42-x-74|20615837
 lastare-wall-mounted-frame-doors-60-x-32-x-60|60616255
 ledamot-cabinet-150-x-42-x-75|40544740
+lennart-drawer-unit|30326177
 lillanas-bar-stool-63|80534796
 lillanas-chair|50534769 30534765 10534766
 lillberget-chest-3-drawers-70-x-43-x-68|80630477
 lillberget-chest-5-drawers-70-x-43-x-108|60630478
 lillberget-chest-6-drawers-140-x-43-x-68|40630479
+lillberget-nightstand-40-x-42-x-49|10567568
 lillehem-1-seat-module|39552929 39471551 29471542 59471550 29552920 19552925
 lillehem-2-seat-modular-sofa|59471282 79471276 39471264 29471288 39471259 09471270
+lillehem-2-seat-modular-sofa-side-table|49536062 89536084 59570324 29570325 19536073 09570326
 lillehem-2-seat-module|99536012 19536006 69536023 89536017 49535996 29536001 89577499 79577503 49577528 89577507 79577517 59577523
 lillehem-3-seat-modular-sofa|99617800 89617810 69617806 59617802 29617808 19617804
+lillehem-3-seat-modular-sofa-side-table|99570322 89536258 79570323 39536270 19570321 09536262
 lillehem-3-seat-modular-sofa-w-chaise-longue|99570384 69570385 49570386 39570382 29570387 19570383
 lillehem-4-seat-modular-sofa|69536056 99536045 79536051 59536028 39536034 29536039
+lillehem-4-seat-modular-sofa-side-table|89536239 79570318 59570319 39570320 39536232 19536228
+lillehem-5-seat-modular-sofa-side-table|99553474 89570327 69570328 49570329 39553472 19553473
 lillehem-6-seat-modular-sofa|69536198 29536204 19536214 19536209 09536224 09536219
+lillehem-6-seat-modular-sofa-side-table|89553484 89574778 79574774 79574750 69574760 19574809
 lillehem-armchair|89470323 89470295 69470300 39470306 19470312 09470317
+lillehem-armchair-side-table|89570332 59536311 49536316 29570330 29536322 09570331
 lillehem-modular-corner-sofa-2-seat|89536282 79536287 49536298 59536293 09536304 09536276
 lillehem-modular-corner-sofa-4-seat|69536155 79536150 49536161 19536172 19536167 09536144
 lillesater-3-seat-sofa|40618496 00619073
@@ -705,6 +917,7 @@ lillesater-5-seat-sofa|59614281 19614297
 lillesater-6-seat-sofa|89614289 19614301
 lillesater-swivel-easy-chair|70618490 60618688
 lindakra-2-seat-sofa-bed|80582612 80629271
+lindakra-sleeper-sofa|60582613 60629272
 linneback-easy-chair|40487235 20487222 10487227
 linnmon-adils-desk|29932181 09932177
 linnmon-adils-table-100-x-45|49590153 79590203 69590227 09590230 29590205 99590160 79590156
@@ -714,10 +927,13 @@ linnmon-olov-desk-100-x-60|19416198 69416346 19416358 79416195
 linnmon-spand-desk-100-x-60|09563868 69563865
 lisabo-chair|60561045 10561038 00457235 60446786
 lisabo-coffee-table-118-x-50|70297658
+lisabo-desk-128-x-65|10606273
 lisabo-table-105|40416498 50416501
 lisabo-table-140-x-78|70294339 80382439
+lisabo-table-200-x-78|10563773 20563782
 lisabo-table-88-x-78|40563776
 listerby-coffee-table-140-x-60|90562246
+listerby-console-table-92-x-38-x-71|50562248
 lixhult-cabinet-35-x-60|20476520
 lixhult-cabinet-60-x-35|70328669
 loberget-malskar-swivel-chair|19445469 29488571
@@ -728,11 +944,16 @@ lommarp-cabinet-glass-doors-86-x-199|40383737
 lommarp-tv-bench-159-x-45-x-81|30437000
 loparbana-gaming-chair|50586329 70586328
 loshult-trolley-38-x-38-x-82|40576279
+lote-3-drawer-dresser-55-x-36-x-62|50293722
 lovbacken-side-table-77-x-39|80270125
+lubban-trolley-table-storage|50434307
 lustebo-chair|00541164
 lyckan-chair|00569191 00569186
 lycksele-lovas-2-seat-sofa-bed|19387006 49387038 19387134 89563204 89561709
+lycksele-lovas-chair-bed|39386968 29386978 69561705 09563199 49386996
+lycksele-lovas-sleeper-sofa|79387027 69387122 59563205 69561710 29387039
 lycksele-murbo-2-seat-sofa-bed|09387021 49387137 49387043 19561717 69563219
+lycksele-murbo-chair-bed|69386981 79386971 49563215 09561713 09387002
 mabarsskar-coffee-table-61-x-41|30597164
 mackapar-coat-rack-shoe-storage-unit-78-x-32-x-2|50530988
 mackapar-shoe-rack-78-x-32-x-40|50530993
@@ -743,14 +964,22 @@ malm-bed-frame-high-standard-single-90-x-190|49009947 69009946
 malm-bed-frame-high-w-2-storage-boxes-standard-d|69175974 59175984 79176280 99175977 69590005 79590000 59176281
 malm-bed-frame-high-w-2-storage-boxes-standard-s|99011504 19011503
 malm-bed-frame-high-w-4-storage-boxes-standard-k|79006985 29006983 69590010 39002442 49006982 49590006 89590009
+malm-bed-frame-mattress-standard-double-135-x-19|59544858 49544608 89544687 79544862 99544615 69544688 39544859
+malm-bed-frame-twin-97-x-191|40249490 20599446 49574394 49009952 69574393 19019599
 malm-dressing-table-120-x-41|90577436 70577480 10203610
 malm-ottoman-bed-standard-double-135-x-190|30404820 90404822 50404819 10404821
 malm-ottoman-bed-standard-single-90-x-190|40493043
+malmkoping-3-seat-sofa|19626634 89626310 99626630 29626817 49626821 59626825
+malmkoping-armchair|99626282 29626271 79626278
+malmkoping-loveseat|49626294 59626302 59626298
+malmkoping-sectional-4-seat|29626638 79626805 79626792
 malomrade-gaming-desk-sit-stand-180-x-80|70585809
 mammut-children-s-chair|40365371 90581990 30581988 70581986
 mammut-children-s-stool|40586607 60581996 70581991
 mammut-children-s-table-77-x-55|50365177 50581992 10581994
+mandal-bed-frame-headboard-160-x-200|89094948 09094947
 mandal-bed-frame-storage-120-x-200|10272076
+mandal-bed-frame-storage-queen-152-x-203|90280483 30280481
 mannarp-2-seat-sofa|49604032 69619155 39619152 39604004 99619149 19604000
 mannarp-3-seat-sofa|59604041 09619158 49619161 89619164 59604036 09604048
 mannarp-3-seat-sofa-chaise-longue|59619170 89598675 19619167 79604064 99619173 89604068
@@ -763,6 +992,8 @@ marius-stool|90184047 10135659
 markus-office-chair|30261152 50521861
 markus-office-chair-armrests|79628041 59628037
 matchspel-gaming-chair|50571530 20507606
+mellgrund-bed-frame-queen-152-x-203|70603752 50603767 39613391 29613396 19630179 99630180
+mellgrund-bed-frame-twin-97-x-191|00605684 99613393 79630181
 metod-base-cab-f-havsen-double-bowl-sink-80-x-60|89588209 59507139 39487118 99601111 99509103 99460371 89589039
 metod-base-cab-f-havsen-single-bowl-sink-60-x-60|99473378 79507138 59458916 59455442 39589188 19487082 99464755
 metod-base-cab-f-sink-waste-sorting-40-x-60|99586276 89587375 79587615 59586848 59586725 49588211 09589364
@@ -832,6 +1063,7 @@ metod-knivshult-hi-cab-f-ov-w-dr-2-frnts-2-hi-dr|89588855 89588940 89588313 8958
 metod-knivshult-hi-cab-w-2-doors-4-drawers-40-x|79588144 99588317 99587737 89588600 89588266 89587177 89586823
 metod-knivshult-hi-cab-w-shlvs-4-drawers-dr-2-fr|09589552 89588860 89588822 79589704 69588564 59587838
 metod-knivshult-high-cab-f-oven-w-door-3-drawers|99588138 99586945 99586747 89588676 89588087 89586875 79589902
+metod-knivshult-high-cabinet-drawers-60-x-60-x-1|99589878 89588775 89588110 89587163 59589597 59588593 49587155
 metod-knivshult-high-cabinet-f-built-in-applianc|69589714 69588106 59587720 49587198 39589329 29587905
 metod-knivshult-high-cabinet-f-built-in-applianc-2|89615608 69615609 49615610 29615611 29615606 09615607 99616283 79616284 59616280 49616285 39616281 19616282
 metod-knivshult-high-cabinet-f-built-in-applianc-3|99587803 79589327 79588484 69587734 69587606 59587126 49587834 99616650 79616651 59616652 39616653 19616654 19616649 99617027 89617023 79617028 69617024 39617025 19617026
@@ -870,6 +1102,7 @@ metod-maximera-hi-cab-f-ov-w-dr-2-frnts-2-hi-drw|99586257 99492367 99470092 9946
 metod-maximera-hi-cab-w-2-doors-4-drawers-60-x-6|99466132 89557608 79507044 79486579 59604871 49507045 19518639
 metod-maximera-hi-cab-w-shlvs-4-drawers-dr-2-frn|39377799 29507027 79509463 79355677 59507035 49507026 29493431
 metod-maximera-high-cab-f-oven-w-door-3-drawers|99459966 99624424 99565392 99556769 99517155 99507062 99492621
+metod-maximera-high-cabinet-drawers-40-x-60-x-20|99507024 99473321 79518783 79362215 99628342 99628224 99606203
 metod-maximera-high-cabinet-f-built-in-appliance|99538025 99509532 89518061 79578946 79558255 79557171 69254061
 metod-maximera-high-cabinet-f-built-in-appliance-2|89507053 09466848 99606038 99605864 99604195 99565537 99538959 29615649 89615689 29615710 99615740 99615735 99615716 99615641 99616396 69616393 99616419 99616382 99616344 99616315 89616405
 metod-maximera-high-cabinet-f-built-in-appliance-3|49616737 09616715 99616787 99616768 99616749 99616711 99616674 99617126 99617112 99617094 89617160 89617155 89617103 79617146
@@ -912,9 +1145,15 @@ micke-desk-142-x-50|90214308 60244745
 micke-desk-73-x-50|30213076 20244747
 micke-drawer-unit-drop-file-storage-35-x-75|50213080 40244751
 millberget-swivel-chair|20489396 50489390
+milsbo-glass-door-cabinet-101-x-100|90452304 20452307
 milsbo-glass-door-cabinet-73-x-175|30396448 00396416
 minnen-ext-bed-frame-slatted-bed-base-80-x-200|79418806 29123958 29580126
+minnen-ext-bed-frame-slatted-bed-base-97-x-190|59124621 89418815 49580130
 mittplan-desk-80-x-60|10549428
+mittzon-conference-table-120-x-108-x-105|79513950 59532817 29532828 29532606 19532664 79532835 59591147
+mittzon-conference-table-120-x-108-x-75|29532135 69532138 09532103 19532107 99532113 59532105 59513951
+mittzon-conference-table-120-x-68-x-105|99530623 29530626 89530647 79530619 89530652 49530630 79530643
+mittzon-conference-table-120-x-68-x-75|79530563 69530592 79530577 99530543 89514652 09514651 29530594
 mittzon-conference-table-120-x-75|69530441 19530504 09530458 99513930 89530435 59530502 59530446
 mittzon-conference-table-140-x-108-x-105|09533433 69533468 19533461 99533457 89533448 69533473 39533455
 mittzon-conference-table-140-x-108-x-75|39533422 19533381 19533395 79533378 79533420 99533400 59533384
@@ -923,26 +1162,44 @@ mittzon-conference-table-140-x-68-x-75|19533003 29532989 79532920 39532998 39513
 mittzon-desk-120-x-80|89526099 09526036 29526097 99526070 99526094 79526033 89526103
 mittzon-desk-140-x-60|89528055 89528140 99513954 99528130 39528053 29528044 79528051
 mittzon-desk-160-x-80|49513956 39529118 09529087 19529124 69529126 59529122 99529083
+mittzon-desk-sit-stand-120-x-60|99526881 59527793 09527578 69527900 19526130 09527743 29527756
 mittzon-desk-sit-stand-120-x-80|19527573 09527899 79527787 49527755 29527780 49591237 69527919
 mittzon-desk-sit-stand-140-x-80|69528985 29528322 79528305 89528970 59528189 29528567 59528962
 mittzon-desk-sit-stand-160-x-80|29529958 59530253 49530277 79530209 39530334 49530244 19530189
 mofalla-easy-chair|80555091
 moppe-mini-chest-drawers-31-x-18-x-32|90623141
 moppe-mini-chest-drawers-42-x-18-x-32|40216357 80562770
+morabo-5-seat-sofa-chaises|99442396 69442393 69442388 59442379 29442385 19442395 79442397 79442383 49442389 39442380
+morabo-armchair|19317476 39317847 99317477 39316598 39316602 59317846 59318327 59318308 79318307 79318326 69317855 69317474 69316605 39317475 19316603 99317854 69318317 89318335 89318316 09416504 29416503 19318334
+morabo-chaise-add-on-unit|39318333 09318315 39318314 59318332 69416501 49416502 69317775 19317773 19317853 79316676 39317852 29316674
+morabo-loveseat|69317756 89316633 29317857 89317755 49317856 29316612 29318319 49318337 49318318 69318336
+morabo-sectional-4-seat|59575901 19575899 99318325 49318342 29318343
+morabo-sectional-4-seat-chaise|29575894 49575893 89575891 79575896 69575892 99575895 79554323 59554324 29554325 09554326
+morabo-sectional-5-seat-corner|99317849 59317752 79317751 99316637 19317848 79316638 99318311 19318310 19318329 39318328 59318313 79318331 99318330 79318312
+morabo-sectional-6-seat-crn-chaise|89575867 09575866 69575868 29575870 29575865
+morabo-sleeper-sofa|39491323 99491320 19491324 19491319 79491321 59491322 89491325 69491326 89317859 29317758 49317757 69316672 09317858 09316670 89318321 09318320 09318339 29318338 49318323 69318341 89318340 69318322
+morabo-sofa-chaise|19575880 79575877 59575878 39575879 99575881
+morbylanga-bench-180|50348258
 morbylanga-table-140-x-85|50386245
 morbylanga-table-145|60412885
+mortfors-pouffe-47-x-47|80572769 20572772
 mossjon-glass-door-cabinet-2-doors-60-x-34-x-146|30564333
 mossjon-wall-cabinet-glass-door-36-x-18-x-44|20621640
 mossjon-wall-cabinet-w-shelves-glass-door-36-x-1|60567778
 mulig-clothes-rack-99-x-152|60179434
+mulig-drying-rack-in-outdoor|50228755
 mullsjo-desk-135-x-70|30553240
 mullsjo-swivel-chair|70576584
 muskan-bench-58-x-38|50345957
 muskan-shelving-unit-37-x-140|50424327
+muskan-storage-stool-50|00360587
 mydal-bunk-bed-frame-90-x-200|20467629 00102452
+mydal-bunk-bed-frame-twin-97-x-191|00531891 70448313
 myllra-changing-table-drawers-85-x-79-x-97|40595744
 myllra-cot-drawer-70-x-140|80597048 60483590
+myllra-crib-drawer-70-x-132|80483589
 nackanas-table-140-x-76|40511056
+nalmakare-cabinet-on-castors-79-x-44-x-88|80595761
 nammaro-2-seat-sofa-126|59610240 39611170 19579307 49607511 09621509 09575423
 nammaro-2-seat-sofa-147|99579308 59611174 89610248 09607513 69621511 19575427
 nammaro-3-seat-sofa-264|79649114 59576024 39579311 19610440 09649688 09643605
@@ -955,11 +1212,14 @@ nammaro-chair-armrests-outdoor|90511105 59610264 69610268
 nammaro-chair-outdoor|50503353
 nammaro-lounge-chair-outdoor|40510306
 nammaro-modular-easy-chair-63|79584363 39529156 49621507 19611166 99575414 79607473
+nammaro-open-kitchen-unit-80-x-62|80608810
 nammaro-reclining-chair-outdoor|50510301
+nammaro-shelving-unit-outdoor-83-5-x-75|10534653
 nammaro-stool-outdoor-37-x-45|70510300
 nammaro-sun-lounger|30503354 49534888 69576028
 nammaro-table-outdoor-130|50586701
 nammaro-table-outdoor-140-x-75|20510307
+nammaro-table-outdoor-200-x-75|30510298
 nammaro-table-outdoor-75-x-63|00510308
 nasinge-chair|20590399 40590398
 nasinge-extendable-table-130-190-x-80|70587498 00587492
@@ -968,22 +1228,29 @@ nasinge-table-130-x-80|70587506 30587508
 nasinge-table-80-x-60|60587535 10587533
 neiden-bed-frame-standard-double-135-x-190|79248611
 neiden-bed-frame-standard-single-90-x-190|99248605
+neiden-bed-frame-twin-97-x-191|00395252 59248607
 nipasen-bench-shoe-storage-79-x-35-x-52|20586142
+nipasen-hat-and-coat-stand-181|50586150
 nissafors-trolley-50-5-x-19-x-67|10602982 40602985
 nissafors-trolley-50-5-x-30-x-83|20399777 40585801 40465733 10606782
 nordkisa-bedside-table-40-x-40|60447677
 nordkisa-dressing-table-76-x-47|20439472
 nordkroken-rocking-and-swivel-armchair|79616953 49616940
 nordli-bed-frame-storage-140-x-200|40349847 00349849
+nordli-bed-frame-storage-queen-152-x-203|50372781 00372788
 nordli-chest-12-drawers-120-x-145|99239489
 nordli-chest-12-drawers-160-x-145|79239490
 nordli-chest-2-drawers-40-x-54|09239827
+nordli-chest-2-drawers-40-x-99|49276549
 nordli-chest-2-drawers-80-x-54|99239494
+nordli-chest-3-drawers-120-x-169|39295138
 nordli-chest-3-drawers-120-x-54|69276567
 nordli-chest-3-drawers-40-x-76|39239835
+nordli-chest-3-drawers-80-x-192|59295217
 nordli-chest-3-drawers-80-x-76|69239495
 nordli-chest-4-drawers|79239843
 nordli-chest-4-drawers-160-x-54|49239496
+nordli-chest-4-drawers-80-x-192|89336872
 nordli-chest-5-drawers-120-x-169|09295286
 nordli-chest-5-drawers-120-x-76|49248033
 nordli-chest-5-drawers-80-x-122|29276550
@@ -993,9 +1260,17 @@ nordli-chest-6-drawers-120-x-99|69276633
 nordli-chest-6-drawers-160-x-169|89295169
 nordli-chest-6-drawers-160-x-54|49276629
 nordli-chest-6-drawers-80-x-145|89239499
+nordli-chest-7-drawers-120-x-76|39336884
+nordli-chest-7-drawers-80-x-122|99239502
+nordli-chest-7-drawers-80-x-99|09248006
 nordli-chest-8-drawers|19276621 29239505 29248010 59239491
 nordli-chest-8-drawers-120-x-99|79239503
+nordli-chest-8-drawers-160-x-169|69295349 49295208
+nordli-chest-8-drawers-160-x-192|79295377
 nordli-chest-8-drawers-160-x-54|59239504
+nordli-chest-8-drawers-80-x-99|69336887
+nordli-chest-9-drawers-160-x-76|89239507
+nordli-chest-9-drawers-160-x-99|19248015
 nordli-chest-drawers-40-x-54|19276522
 nordli-modular-chest-2-drawers-40-x-45|90383457
 nordli-modular-chest-2-drawers-80-x-23|70471619
@@ -1005,14 +1280,17 @@ nordli-modular-chest-3-drawers-80-x-68|40383469
 nordli-modular-chest-drawers-40-x-45|40401901
 nordmansskar-chair|39618435 29618426 09618432
 nordviken-bar-stool-backrest-62|60424690 00424693 60369113
+nordviken-bar-table-140-x-80-x-105|00368814
 nordviken-chair|40369109 30488546 00369111
 nordviken-drop-leaf-table-74-104-x-74|70368716 50368717
 nordviken-extendable-table-152-223-x-95|20368714 90368715 80488544
+nordviken-extendable-table-210-289-x-105|00488543 70359991
 norrmanso-bench-outdoor-100|70586696
 norrmanso-bench-outdoor-200|30586698
 norrmanso-chair-outdoor|40511080
 norrmanso-table-outdoor-220-x-100|30500794
 norrmjole-table-105|90620562 00620566 50620564
+norrmjole-table-170-x-97|70620563 20620565
 nyhamn-3-seat-sofa-bed|89494625 49555574 99555576 99494615 79555577 29494628 19555575
 nysjon-bjorkan-wash-basin-base-cabinet-w-2-doors|39556324
 nysjon-bjorkan-wash-stnd-w-door-wash-basin-tap-5|09556288
@@ -1027,6 +1305,8 @@ omar-shelving-unit-46-x-36-x-94|00069768
 omar-shelving-unit-60-x-25-x-40|30483073
 omar-shelving-unit-92-x-36-x-94|10069763
 omar-shelving-unit-92-x-50-x-94|70483071
+omar-shelving-unit-clothes-rail-186-x-50-x-201|99487691 59487688
+omar-shelving-unit-clothes-rail-92-x-50-x-201|60530978
 ommjange-chair|50594678
 onnestad-armchair|09554473 49554471
 orfjall-children-s-desk-chair|30441771 90541433 60501886
@@ -1034,14 +1314,23 @@ orfjall-swivel-chair|09416014 99501098
 orreslatt-armchair|30555098
 ortrask-coffee-table-110-x-68|10635845 30635849
 ortrask-coffee-table-75-x-48|70635847
+oskarshamn-ottoman-storage|30523620 80521685 70521676
 oskarshamn-wing-chair|90523622 30521678 50521663
+oskarshamn-wing-chair-footstool|59485340 19485342 29485346
+ostavall-adjustable-coffee-table-90|40534152 00530066
 ovning-trolley-54-x-33|00517003
 pahl-desk-96-x-58|49619340
+panget-coat-rack-shoe-storage-unit-59-5-x-40-5-x|00474174
 paronholmen-bench-backrest-outdoor|90503799
+pax-2-wardrobe-frames-199-5-x-58-x-236-5|79556402 79556398 99556397 99556401 99556415 39562382 19556400
+pax-2-wardrobe-frames-200-x-58-x-201|59494759 39494760 59494820 09494752 79494819 29494812 99494818 89494767 79494763 69494768 59494764 29494765 19494761 09494766
+pax-3-wardrobe-frames-199-5-x-58-x-236-5|89556406 39556404 99562384 19556419 09556405 79556416 59556417
+pax-3-wardrobe-frames-200-x-58-x-201|99494795 89494772 79494796 59494815 19494822 19494756 89494814
 pax-add-on-corner-unit-4-shelves-53-x-35-x-236|00346964 20346958 80346960 60346956
 pax-add-on-corner-unit-4-shelves-53-x-58-x-201|70346932 50515110 10515112 30346934 60515119 20515121 80346941
 pax-auli-wardrobe-sliding-doors-150-x-43-x-201|29561335 89561342 59561329 79561333 59561334 09561336
 pax-auli-wardrobe-sliding-doors-150-x-66-x-201|99561351 59561305 79561314 09561317
+pax-auli-wardrobe-sliding-doors-150-x-66-x-236-5|89561257 09561256 49561264 69561263
 pax-bergsbo-aheim-corner-wardrobe-211-161-x-236|99600041 59600038
 pax-bergsbo-corner-wardrobe-111-88-x-201|89600046 69600047
 pax-bergsbo-wardrobe|59502716
@@ -1049,10 +1338,14 @@ pax-bergsbo-wardrobe-100-x-60-x-201|09503011 59502655 89503012 39502656
 pax-bergsbo-wardrobe-150-x-60-x-201|99502328 39502331
 pax-bergsbo-wardrobe-200-x-60-x-201|89502545 19502544
 pax-bergsbo-wardrobe-200-x-60-x-236|79502635
+pax-corner-wardrobe-160-5-110-5-x-201-5|69602602 49602603
+pax-corner-wardrobe-160-5-187-5-x-236-5|59559029 29559021
 pax-corner-wardrobe-161-188-x-201|69502315 09502318 99502314 29502317
 pax-corner-wardrobe-210-180-x-236|19607126 09607122 99600036 19600035
+pax-corner-wardrobe-210-5-160-5-x-236-5|59560730 99560728 79590726 79590731 69590736 69590722
 pax-corner-wardrobe-211-161-x-201|69502985 49502986 99590730 99590725 89590721 89590735
 pax-corner-wardrobe-211-213-x-236|99503139
+pax-fardal-aheim-corner-wardrobe-110-5-88-x-236|09560742 29560741
 pax-fardal-aheim-corner-wardrobe-111-88-x-201|19502657 99502658
 pax-fardal-wardrobe-150-x-60-x-201|89502381 69502382
 pax-flisberget-corner-wardrobe-111-88-x-201|69626151 79626160
@@ -1071,16 +1364,25 @@ pax-frame|70458203 80458207 90458202 50458204 00458206 60458208 10458201
 pax-fyrudden-corner-wardrobe-161-111-x-236|59581756 29581753
 pax-grimo-aheim-corner-wardrobe-211-161-x-201|29502987 09502988
 pax-grimo-corner-wardrobe-110-110-x-201|29502652 89502654
+pax-grimo-corner-wardrobe-110-110-x-236-5|89560818 09560799
 pax-grimo-wardrobe-100-x-60-x-201|19503020 89502668
 pax-grimo-wardrobe-150-x-66-x-201|89502791 29500295 09502648 29502647
 pax-grimo-wardrobe-sliding-doors-150-x-43-x-201|39590139 79590142
+pax-grimo-wardrobe-sliding-doors-150-x-43-x-236|39590144 59590143
+pax-grimo-wardrobe-sliding-doors-150-x-66-x-236|59560805 89560804 99560790 59560792 99560813 19560812 99560832 39560830
+pax-grimo-wardrobe-sliding-doors-200-x-66-x-201|39560806 19560807 79560809 59560810 79560828 59560829
+pax-grimo-wardrobe-sliding-doors-200-x-66-x-236|09560822 49560820
+pax-gullaberg-corner-wardrobe-160-5-110-5-x-236|19602586 39602585
 pax-gullaberg-corner-wardrobe-161-111-x-201|59600019 39600020
 pax-hasvik-wardrobe-150-x-66-x-201|29502794 79502796 79502800 59502797 19502803 09500296
 pax-hasvik-wardrobe-200-x-66-x-201|49502547 69502546 29503152 39503156 39503161 99503158 19503162 89503154
 pax-hasvik-wardrobe-sliding-doors-150-x-43-x-201|69626556 29626539 39626548 29626563
+pax-hasvik-wardrobe-sliding-doors-150-x-66-x-236|69560683 29560680 49560679 09560681
+pax-hasvik-wardrobe-sliding-doors-200-x-66-x-236|89560677 69560678
 pax-lundbrasma-wardrobe-sliding-doors-150-x-66-x|69617892 79617896 99618461 89618466
 pax-lundbrasma-wardrobe-sliding-doors-150-x-66-x-2|29617889 89617886
 pax-lundbrasma-wardrobe-sliding-doors-200-x-66-x|19617903 29617907 69617910 89617914
+pax-lundbrasma-wardrobe-sliding-doors-200-x-66-x-2|09617908 99617904 59617915 49617911
 pax-mehamn-auli-wardrobe-250-x-66-x-201|19561430
 pax-mehamn-auli-wardrobe-sliding-doors-150-x-43|19552157 59552155 69551706 39552156 29551713 19551718
 pax-mehamn-auli-wardrobe-sliding-doors-150-x-66|79608854 59608850 39608846 69608538
@@ -1094,13 +1396,19 @@ pax-mehamn-wardrobe-sliding-doors-150-x-66-x-201|19608748 89608759 39608752 0960
 pax-mehamn-wardrobe-sliding-doors-150-x-66-x-236|49608822 29608818 29608559 09608555 89562247 29562245 49608817 39608813
 pax-mehamn-wardrobe-sliding-doors-200-x-66-x-201|49608860 99608867 89608863 79608651 09608659 39608648 39608667 89551748 99551738 79551758 49551745 19551742
 pax-mehamn-wardrobe-sliding-doors-200-x-66-x-236|69608779 49608775
+pax-mehamn-wardrobe-sliding-doors-250-x-66-x-236|59560848 59560853
+pax-svartisdal-wardrobe-sliding-doors-200-x-66-x|99568705 49560877
 pax-tonstad-corner-wardrobe-211-161-x-201|79600037 19600040
 pax-tonstad-corner-wardrobe-231-161-x-236|59612060 39612056
+pax-tyssedal-corner-wardrobe-160-5-110-5-x-201-5|19603393 09603398
 pax-tyssedal-corner-wardrobe-161-111-x-236|29603397 39603392
+pax-tyssedal-wardrobe-175-x-60-x-236-5|89568089
 pax-wardrobe-150-x-58-x-201|59502561 79502560
 pax-wardrobe-175-x-58-x-201|49502632 69502631
 pax-wardrobe-frame-50-x-58-x-201|70458217 90458221 90458216 10458215 50458218 10458220 70458222
 pax-wardrobe-frame-75-x-58-x-201|80458231 90458235 60458232 00458230 70458236 20458229 20458234
+perjohan-bench-storage-100|60485339
+perjohan-stool-storage|80485338
 persbol-armchair|50525915 90525923 70525924
 pinntorp-chair|90635177 00635167 30635175 00590480 00529478 40529476
 pinntorp-gateleg-table-67-124-x-75|70529465
@@ -1133,8 +1441,10 @@ platsa-wardrobe-w-6-doors-240-x-57-x-231|99625046
 platsa-wardrobe-w-6-doors-300-x-42-x-241|69615505
 plojker-bedside-table-41-x-41-x-50|30613550 80595068
 poang-armchair|89627178 59627170 89502201 79627174 69502037 89502116 79429254 19627134 79627126 79627150 99627154 99627130 99625857 59627146 49627118 69627122 39627166 29627162 59501972 19502054 79502131 39502213 79429268 19429153 09429243 89617711 59625350 99625334 29625342 89625358 39625285 19625366 49625237 69625217 89501980 59501905 89625301 99240789 19502134 29502058 79625269 79625293 09625277 29625257 19625309 19618691 59625289 39625370 99625305 99625273 79625354 39625346 99625027 39625030 79625245 99625225 39625233 19625253 99625249 19625229 29412562 49598917 29598923 29551609 79551598 29551567 59551603
+poang-armchair-and-footstool|29625889 49625869 59617736 39625997 49626029 39625978 99625881 19625861 89626013 69626033 09501998 09502078 69617731 39502152 59625982 49626005 59625901 89625990 19626021 79625716 09618696 19625719 79625877 59625897 99626041 99626017 69625986 39626001 69625873 49625893
 racknas-chest-3-drawers-69-x-78|10594524
 radmanso-bed-frame-standard-king-150-x-200|00599174 70599180 79598647 09598641 69598662 49598663
+radmanso-bed-frame-twin-97-x-191|20599168 49598615 29598621
 radmanso-bedside-table-54-x-38-x-58|80593597
 radmanso-cabinet-118-x-49-x-103|80597755
 radmanso-chest-3-drawers-90-x-48-x-81|20593604
@@ -1149,13 +1459,20 @@ ragrund-trolley-42-x-33-x-76|20549418
 rakkestad-wardrobe-2-doors-79-x-176|50453758
 rakkestad-wardrobe-3-doors-117-x-176|70453762
 rakkestad-wardrobe-sliding-doors-117-x-176|60453767
+ramnefjall-upholstered-bed-frame-king-193-x-203|89627258 69627216 29627261 29627256 19627214 09627219 29607507
 ramnefjall-upholstered-bed-frame-standard-double|49560212 79560215 09560266 89627263 69627264 69560268 69627221
 ramnefjall-upholstered-bed-frame-standard-single|59560216 09560271
+ramnefjall-upholstered-bed-frame-twin-97-x-191|19627266 09627224 19560275 89607509 19560223 79560220 69560273
+ramsnas-chair|50636447
+raskog-norrava-trolley-lid-28-x-38-x-61|79580765 69580761 69622153 39580753 89622232 79622157 29622094
+raskog-norrava-trolley-lid-35-x-45-x-77|09580759 79580751 29580763 79622096 99622236 19622155 39580767
 raskog-trolley-28-x-38-x-61|00586789 50591769 10637203 20629716 80586790 00629717 40629715
 raskog-trolley-35-x-45-x-77|30586783 20591662 40582181 70629714 30629711 00591663 90629713
+rast-6-drawer-dresser-124-x-68|00582164
 rast-chest-3-drawers-60-x-35-x-59|20609860
 ravsten-bar-stool-62|70602069 30597055
 ravsten-bench-93|00607895
+ravsten-table-75|60621011 00621014
 relatera-desk-117-x-60|29552864
 relatera-desk-90-x-60|69552857
 relatera-desk-sit-stand-117-x-60|99552865
@@ -1164,10 +1481,12 @@ renberget-swivel-chair|90503285
 rian-side-table-50-x-30|80343419
 ridspo-desk-140-x-70|00485224
 rigga-clothes-rack|50231630
+rimforsa-work-bench-120-x-63-5-x-92|90399284
 risholmen-wing-chair-in-outdoor|00503794
 risor-room-divider-216-x-185|70182191
 rocksjon-2-seat-sofa|19508862 59514696 59508855
 rocksjon-armchair|89508854 29514693 89508849
+rocksjon-armchair-footstool|99508896 29514688 29508890
 ronninge-bar-table-75-x-75|50511230
 ronninge-chair|10422504
 ronninge-trolley-78-x-39|50507488
@@ -1181,6 +1500,7 @@ rosentorp-stool|10618191
 rosentorp-swivel-chair|40576547
 rudsta-glass-door-cabinet-42-x-37-x-155|60434825 90601417
 rudsta-glass-door-cabinet-80-x-37-x-120|50450137
+sagesund-upholstered-bed-frame-king-193-x-203|00490391 69496480 09496510
 sagesund-upholstered-bed-frame-standard-double-1|89496484 99496469 49496513 29496514
 sagmastare-cabinet-83-x-36-x-128|90555364
 sagmastare-shelving-unit-83-x-36-x-128|30570249
@@ -1210,15 +1530,65 @@ segeron-one-seat-section-outdoor|50510805
 segeron-sun-lounger|79500863 20510798
 segeron-table-outdoor-91-x-147|10510812 90510813
 segrare-desk-sit-stand-110-x-60|40534703
+sektion-base-cab-f-havsen-double-bowl-sink-91-5|19623961 39472310 19506504 59466676 79600546 69472766 29516300
+sektion-base-cab-f-havsen-single-bowl-sink-61-x|99472307 79516208 39601086 39464230 99604355 99601187 89497817
+sektion-base-cab-f-tallsjon-sink-61-x-61-x-76|59556506 99550625 99550499 89565750 89550904 79577230 79550626
+sektion-base-cab-f-tallsjon-sink-76-x-61-x-76|29519290 19624022 19508697 99601615 99508716 89508707 89508689 79508736 99508735 99508721
+sektion-base-cabinet-61-x-61-x-76|90265388 30265386 80265398 20265396 00265397 10265392 50265390
+sektion-base-cabinet-for-sink-2-doors-91-5-x-61|29624088 49506499 39472305 29462873 79472761 69506498 29458116
+sektion-base-cabinet-for-sink-61-x-61-x-76|79468165 89506497 99565274 89472303 69519306 49461434 89576386
+sektion-base-cabinet-shelves-2-doors-91-5-x-61-x|69624086 09472298 09472284 99506449 69466930 59506408 39506409
+sektion-base-cabinet-shelves-30-5-x-61-x-76|89472275 69506403 09506401 89472732 89459797 69506399 39498584
+sektion-corner-base-cab-w-drawer-and-shelf-127-x|99583485 49583483 19583502 89583508 89583495 79583504 79583491
+sektion-corner-base-cab-w-pull-out-fitting-127-x|39582554 99582551 89582575 09582560 69582557 59582567 59582553
+sektion-corner-base-cabinet-127-x-61-x-76|50596757 70596756 69582604 99582607 59624143 59582591 39582605 39582587 29582597
+sektion-corner-base-cabinet-carousel-96-5-x-61-x|79582533 69582543 89582523 39623917 29582521 19601860 99582546
+sektion-corner-base-cabinet-shelf-96-5-x-61-x-76|69583397 69583364 39583426 09583442 99583372 89583363 59583374
+sektion-corner-wall-cab-w-carousel-glass-dr-66-x|09472689 89472713 89472690 89439243 69601650
+sektion-corner-wall-cab-w-shelves-glass-dr-66-x|29472693 09472694 79472718 59600533 49396226 99472717 99439247 59506385 69624048 69040664 19216986 89652196 69605281 59623940
+sektion-corner-wall-cabinet-66-x-37-5-x-101-5|30265503 10265504 80265505
+sektion-corner-wall-cabinet-66-x-38-x-51|19040727 89606232 89604290 89216983 79559387 79519438 79273752
+sektion-corner-wall-cabinet-carousel-66-x-38-x-1|99601842 79565270 29472688 19498995 19040633 09624150 09506383
+sektion-high-cabinet-61-x-61-x-228-5|70265445 40487419 20487415 00265439 20265438 30265447 10265448 89624014 79624038 49624153 29506136 89455450 79472563 79466185
+sektion-high-cabinet-f-built-in-appliances-61-x|00499730 80499731
+sektion-high-cabinet-for-fridge-freezer-61-x-61|39418219 29417989 09498477 99557504 99519277 99506166 99418075
+sektion-high-cabinet-for-fridge-freezer-61-x-61-2|99624136 29624111 99548208 99559800 89548204 89548181 79557109
+sektion-high-cabinet-shelves-2-doors-61-x-38-x-2|39623984 59506192 69506158 49506197 49472994 19472580 19472542
+sektion-maximera-base-cab-2-fronts-3-drawers-91|69623893 89624108 19472330 19036155 69150803 39557210 99036156
+sektion-maximera-base-cab-f-cktp-2-fronts-3-draw|09623952 69506479 99605840 99472864 99439657 99421049
+sektion-maximera-base-cab-f-cktp-3-fronts-3-draw|49623950 39472409 29506481 79498426 79497945 49472866 29576803 49624011 09506477 59566039 99604341 99601861
+sektion-maximera-base-cab-f-cktp-4-fronts-3-draw|69624091 89605586 89506483 59601009 99556509 99472411
+sektion-maximera-base-cabinet-2-drawers-76-x-38|89472379 79519103 99624037 99506454 69472380 39036437 09623985
+sektion-maximera-base-cabinet-3-drawers-38-x-38|69624029 79472389 59506465 29506462 99288837 99036646 89506464
+sektion-maximera-base-cabinet-3-drawers-91-5-x-6|99624075 09624094 69506417 69472337 49506418 09472335 49498282
+sektion-maximera-base-cabinet-4-drawers-91-5-x-6|79624062 89623887 59506427 59472347 99288776 39506428 29559766
+sektion-maximera-base-cabinet-drawer-2-doors-91|99623882 09472321 69464040 19472778 39472777 49519982 39516451
+sektion-maximera-base-cabinet-drawer-door-45-5-x|59623879 79472313 79455686 99497459 89516284
+sektion-maximera-wall-cab-w-2-glass-doors-2-draw|89472510 69472511 49516648 99396460 89600796 89466383 69516181
+sektion-maximera-wall-cabinet-door-2-drawers-38|79456921 69470003 89472497 79624024 69516322 59455734 49472499
+sektion-maximera-wall-cabinet-w-glass-door-2-dra|09516315 79472501 49396387 09457919 99516250 99472500 89470573
+sektion-top-cabinet-for-fridge-freezer-76-x-61-x|99624080 59472696 79472695 39392813 19506387 79516331 59392807
+sektion-wall-cabinet-2-doors-91-5-x-38-x-38|39623955 99624179 29506339 19472467 69459982 89506336 69461471
+sektion-wall-cabinet-2-glass-doors-76-x-38-x-76|99472473 79472474 29472476 49472475 79490500 69490497 49490498
+sektion-wall-cabinet-45-5-x-38-x-51|29623908 09623933 49506324 59506328 39472452 39506334 19472448
+sektion-wall-cabinet-76-x-37-5-x-101-5|90265468 70265469 70265450 50265470 20265462 60265460 10265453
+sektion-wall-cabinet-glass-door-45-5-x-38-x-101|89490496 89472459 89467165 49472461 79472916 59490493 39472918
+sektion-wall-cabinet-w-2-doors-2-drawers-91-5-x|09506378
+sidsjo-pouf|70572779 30572776
+sigfinn-monitor-stand-fixed-height|20362929 60467689
+sjalso-armchair|90555095
 skalboda-armchair|40555309 90554388 20582035
 skalsta-chair|39612829 79612832 99612826 59612847 29612844 29608465 19608121 09608471 69608468 29608470 49608756 69608755 79608745 09608744 39608120 99590768 29608427 79590769 49612838 09612835 89612841
 skalsta-table-140-x-80|19608263 59608336 59590765 09608287 99608320 19590767 39608337 99608235 79608321 89608288 99608264 69608289 59608119 59608322 19608319 29608286 29608234 39590766
 skansnas-chair|70563242 90565768
 skansnas-extendable-table-115-170|70563237 30563220
 skansnas-extendable-table-150-205-x-90|00565763 00565758
+skapafors-chair|90505029 70505030 10505028 50505031 30505027
 skarpo-armchair-outdoor|50575811 70234185
 skogson-easy-chair|80569465 00592224
 skogsta-bar-stool-backrest-62|50620677
+skogsta-bench-235|90640937
+skogsta-bench-storage-120|10593807 20611882
 skogsta-chair|50544867 70544866
 skogsta-dining-table-120|20593802
 skogsta-dining-table-235-x-100|70419264
@@ -1226,6 +1596,7 @@ skogsta-table-150-x-74|90620680
 skogsta-table-160-x-81-x-74|00452643 30611886
 skogsta-table-74-x-74|00614532
 skonaback-2-seat-sofa-bed|30582544 40582548
+skonaback-sleeper-sofa|50582543 80582546
 skruvby-bookcase-60-x-140|20520354 40503546
 skruvby-cabinet-doors-70-x-90|20503547 30520358
 skruvby-cabinet-glass-doors-70-x-90|20508842 70520361
@@ -1237,14 +1608,19 @@ slakt-bed-frame-3-storage-boxes-90-x-200|89386070
 slakt-bed-frame-90-x-200|99608419 59612041
 slakt-bed-frame-slatted-bed-base-90-x-200|79227755
 slakt-bed-frame-storage-90-x-200|09612048
+slakt-bed-frame-storage-twin-97-x-191|49612051 99608424 59227775 19612043
+slakt-ext-bed-frame-slatted-bed-base-97-x-190|69326548
 slatorp-2-seat-sofa|60594381 70594366 90594394
 slatorp-3-seat-sofa|70594390 10594369 50594386
 slatorp-3-seat-sofa-chaise-longue|59577580 79577598 39577576
 slatorp-4-seat-sofa-chaise-longues|59577603
+slattum-upholstered-bed-frame-queen-152-x-203|70571256 40571253 39613490 49613480
 slattum-upholstered-bed-frame-standard-double-13|50571257 30571258
 slattum-upholstered-bed-frame-standard-single-90|90578737
+slattum-upholstered-bed-frame-twin-97-x-191|79613493 10571259
 smagora-changing-table-bookshelf-60-x-81-x-103|10597952
 smagora-cot-70-x-140|20461236
+smagora-crib-70-x-132|40461235
 smagora-desk-93-x-51|90489883
 smagora-shelf-unit-29-x-88|30465489
 smagora-wardrobe-80-x-50-x-187|10460888
@@ -1260,18 +1636,29 @@ smastad-platsa-chest-6-drawers-60-x-57-x-123|59387655 79388395 69545329 89545328
 smastad-platsa-wardrobe-60-x-42-x-181|09426305
 smastad-platsa-wardrobe-60-x-57-x-123|49483313 39483342 59483355 99546515 49546513 39546523 89428273 79544094 49544095 09430147 59430140 99544093
 smastad-platsa-wardrobe-60-x-57-x-181|99428277 89546525 69546531 69428325 19546538 79546535 89428310 09544101 99430845 19430849 09544097 69544099
+smastad-uppfora-3-drawer-dresser-60-x-65-x-76|59555861 49542930 79555860 19542903
+smastad-uppfora-6-drawer-dresser-60-x-65-x-136|19555863 89546870 69555865 19546755
+smastad-uppfora-bookcase-60-x-65-x-136|29555848 89555850 49546914 19546915
+smastad-uppfora-bookcase-60-x-65-x-196|69555851 59555856 49555852 59542642 09555854 89542645
+smastad-uppfora-cabinet-60-x-65-x-76|99555859
+smastad-uppfora-wardrobe-60-x-65-x-136|69555889 29546514 39546518 89555888 09555892 49555890 29547815 09547816
+smastad-uppfora-wardrobe-60-x-65-x-196|89555893 49546532 49546527 29555886 39546537 39546542 59555899 99555897 79546663 29546547
 smastad-wall-cabinet-60-x-32-x-60|39388444
 smastad-wall-storage-60-x-30-x-60|00433522
 smastad-wardrobe-60-x-42-x-181|49390875
 smedstorp-2-seat-sofa|09477229
 smedstorp-3-seat-sofa|79477235 29477233
+smedstorp-sectional-4-seat-chaise|49478340 19478346
 smorkull-office-chair-armrests|90503450 80503455
 smyga-bed-frame-90-x-200|60480780
 smyga-bed-frame-storage-90-x-200|59444142
+smyga-bed-frame-storage-twin-97-x-191|69444146 60480799
 smyga-desk-122-x-60|40480781
 sniglar-bed-frame-slatted-bed-base-70-x-160|19185433
 sniglar-changing-table-53-x-72-x-87|20045205
+sniglar-changing-table-72-x-53|50197589
 sniglar-cot-60-x-120|30248537
+sniglar-crib-70-x-132|50248541
 soderhamn-1-seat-section|69305664 39449640 09621590 49621593 79621596 79452051 69621587
 soderhamn-2-seat-sofa|29305755
 soderhamn-3-seat-section|29449645 29305618 09621608 09500531 69621605 39621602 19621599
@@ -1281,9 +1668,15 @@ soderhamn-4-seat-sofa-chaise-longue|69449709 79621676 59621682 19621783 19621679
 soderhamn-corner-section|19305628 99449680 39452091 49449606 09500574 69621728 49621734
 soderhamn-corner-sofa-4-seat|09449665 79305847 99622038 79622044 39622041 09622047
 soderhamn-corner-sofa-bed-6-seat|59616275 89616453 69621403 29621400 09621397 09618682
+soderhamn-sectional-5-seat|89305903 89449671 59449597 29452082
 soluppgang-stool-outdoor-43-x-40|70621303
+songesand-bed-frame-2-storage-boxes-twin-97-x-19|09240977 99240987 89240978 10372561 49240923 39240952
+songesand-bed-frame-queen-152-x-203|59241069 89241044 19241066 49241084 79241049 09241081 29241141 99241133 89241143 69241139 79241134 19241132 89241195 49241197 39241193 59241187 79241186 39241188
 songesand-nightstand|30367441
 sotenas-armchair|60581915
+spiksmed-cabinet-59-5-x-96|10520873
+spiksmed-media-shelf-117-x-32|00573150
+spiksmed-sideboard-97-x-40-x-79-5|80565518
 stackholmen-stool-outdoor-48-x-35-x-43|20411425
 stall-shoe-cabinet-3-compartments|50530262
 stall-shoe-cabinet-4-compartments-96-x-17-x-90|60530266
@@ -1297,8 +1690,10 @@ stensele-bar-table-70|09288224
 stensele-table-70|79288230
 stig-bar-stool-backrest-63|80652431 30498418
 stigbygel-swivel-chair-armrests|50556431
+stjarno-bed-frame-queen-152-x-203|40570183 80579501 40579503 30570188 50570192 79563346 69563337
 stjarno-bed-frame-standard-double-135-x-190|89563341 79563365 99563326 19563410 99563411 99563388 59563366
 stjarno-bed-frame-standard-single-90-x-190|39563367 99563331 59563390 79563412
+stjarno-bed-frame-twin-97-x-191|20579504 40575369 09563340 19563368 59563413 79564567 39563391
 stockholm-2025-1-seat-section|40586136 30586132 10586128
 stockholm-2025-2-seat-sofa|60586121 60586116 50586112
 stockholm-2025-3-seat-sofa|99574297 29574291 09574305 20586095
@@ -1321,13 +1716,21 @@ stockholm-2025-table-230-x-90|79579984
 stockholm-chair-armrests|00621212 10621216
 stockholm-coffee-table-180-x-59|70239710
 stockholm-three-seat-sofa|00245050
+stora-loft-bed-frame-full-double-137-x-191|80160867
 storedamm-bench-63-x-31|20576162
+storedamm-shelf-unit-60-x-71|30576166
 storedamm-shelving-unit-60-x-141|10576167
+storemolla-3-drawer-dresser-93-x-50-x-91|50590915 70590919
+storemolla-5-drawer-dresser-63-x-50-x-131|70590900 10590903
+storemolla-8-drawer-dresser-171-x-50-x-91|60522394 80522393
+storemolla-nightstand-50-x-50-x-72|70590924 40590925
+storklinta-2-drawer-chest-50-x-48-x-53|70559297 80561153 90559296
 storklinta-bed-frame-2-storage-boxes-standard-do|29626775 39630814 09626842 59630846 09626776 99628549 79628550
 storklinta-bed-frame-2-storage-boxes-standard-si|49628368 99626687 89630802 29626695 09628898 69628367 89630864
 storklinta-bed-frame-4-storage-boxes-standard-do|79626787 79630826 59626854 99628587 89630859 79628588 59626788
 storklinta-bed-frame-standard-double-135-x-190|60615557 89626715 09626743 79628418 29628406 89626744 59628419
 storklinta-bed-frame-standard-single-90-x-190|90615551 80615622 50618274 99626649 49626656 69628131 09628153
+storklinta-bedside-table-glass-top-40-x-50-x-53|69654865
 storklinta-chest-2-drawers-30-x-50-x-53|70632387
 storklinta-chest-2-drawers-40-x-50-x-53|00631414 60631411 80628219 20631413 79654879 39654876 99654878
 storklinta-chest-3-drawers-70-x-50-x-75|30627533 60628220 50627551 70627531
@@ -1335,10 +1738,15 @@ storklinta-chest-4-drawers-70-x-50-x-98|40627537 40628221 80627535 10627553
 storklinta-chest-5-drawers-40-x-50-x-120|40627542 20628222 00627539 60627555
 storklinta-chest-6-drawers-140-x-50-x-75|70627550 00628223 30627547 80627559
 storklinta-chest-6-drawers-70-x-50-x-120|70627545 80628224 00627544 20627557
+storklinta-nightstand-50-x-48-x-53|10574644
+strandmon-ottoman-storage|40628947 80613190 30621357 40613192 80613185 70613195
 strandmon-wing-chair|50628942 70359830 80613171 40613168 90613175 60613167 30359846 40494641 30392544
+strandmon-wing-chair-footstool|39590342 99618102 79590364 89590368 19590357 69628598
 strandon-folding-stool|30591100
 strandon-sun-lounger|80605944
 styrspel-gaming-chair|80522034 90613057
+sundbron-loveseat|90632579 90613420
+sundbron-sofa|50631440 70632580
 sundso-cabinet-60-x-35-x-86|80586243 70584188 10584186
 sundso-folding-chair|50575887 40575883 90575890 10575889 30575888 90575885 70575891
 sundso-table-65|80575895 40575897
@@ -1347,6 +1755,8 @@ sundvik-changing-table-chest-drawers-78-x-79-x-9|30591299
 sundvik-children-s-chair|70628314 60196358 10494020
 sundvik-children-s-table-76-x-50|20628316 10201673
 sundvik-cot-70-x-140|60497587
+sundvik-crib-70-x-132|30248575 50494080
+sundvik-ext-bed-frame-slatted-bed-base-97-x-190|69046072 09421666
 sundvik-extendable-bed-80-x-200|49046068 49421508
 sundvik-rocking-chair|80201740
 sundvik-wardrobe-80-x-50-x-171|10269696
@@ -1355,34 +1765,53 @@ svarta-bunk-bed-frame-90-x-200|10247973
 svarta-loft-bed-frame-90-x-200|20247982
 syntorp-bar-stool-backrest-66|40615006
 syvde-dressing-table-100-x-48|80430746
+tallasen-upholstered-bed-frame-mattress-queen-15|89537432 49537537 19537242 99631170 99631165 89537535 89537427
+tallasen-upholstered-bed-frame-mattress-standard|99537436 99537441 79537442 79537437 69537433 59537443 19537440
+tallasen-upholstered-bed-frame-queen-152-x-203|40538937 30550425 10538934 90572797 19520251 59514762 19514759
 tallasen-upholstered-bed-frame-standard-double-1|39514763 79514780 19514778 19514764
 tallskar-2-seat-sofa-outdoor|40575152
 tallskar-armchair-outdoor|60575146
 tallskar-chair-armrests-outdoor|20575148
 tanebro-side-table-46|60578970 60554988 60638182 70605162
+tannforsen-bathroom-vanity-doors-61-x-53-5-x-64|60535462 10535469 10535474 70535466
+tannforsen-bathroom-vanity-drawers-76-x-53-5-x-6|40535444 10535450 20535459 50535453 80535456 90535432 20535435
 tannforsen-high-cabinet-door-40-x-35-x-195|90535111
+tannforsen-high-cabinet-doors-45-5-x-38-x-195-5|10535426 50535429
+tannforsen-mirror-cabinet-doors-76-x-15-x-94|70535490 70555256 30535487 60555252 00535484 10535493
 tannforsen-mirror-cabinet-doors-80-x-15-x-95|10535129 00555250 30535128
 tannforsen-orrsjon-wash-stand-wash-basin-102-x-4|89629827
+tannforsen-orrsjon-wash-stand-wash-basin-124-5-x|89629870 29634469 19629901 09634470 59634477 49629886 39634478 19634479 99633876 39629919
+tannforsen-orrsjon-wash-stand-wash-basin-155-x-5|89634471 69634472 59629937 49629810
 tannforsen-orrsjon-wash-stnd-w-doors-wash-basin|69629932 49629867
 tannforsen-orrsjon-wash-stnd-w-drawers-wash-basi|89629926 59629819 39629820 29629849 09629893
 tannforsen-orrsjon-wash-stnd-w-drawers-wash-basi-2|69629913 29629910 09629789
 tannforsen-orrsjon-wash-stnd-w-drs-deep-wash-bas|19515377
+tannforsen-rutsjon-wash-stand-wash-basin-124-5-x|59629857 59629843 79629936 69629809
+tannforsen-rutsjon-wash-stand-wash-basin-155-x-5|69629871 39629938
 tannforsen-rutsjon-wash-stnd-w-doors-wash-basin|29629892 39629801
 tannforsen-rutsjon-wash-stnd-w-drawers-wash-basi|49629891 09629850 99629817
 tannforsen-vastersjon-wash-stnd-w-doors-wash-bas|79629941 29629905
 tannforsen-vastersjon-wash-stnd-w-drawers-wash-b|99629940 39629844 29629811 09629845 09629812
 tannforsen-wall-cabinet-door-40-x-15-x-95|50535108
+tannforsen-wall-cabinet-door-45-5-x-15-x-94|80535423 40535420
 tannforsen-wash-stand-doors-80-x-48-x-63|60535122 20535124
 tannforsen-wash-stand-drawers-80-x-48-x-63|60535117 60531770 80535116 00535115
+tarnkullen-upholstered-bed-frame-queen-152-x-203|59564375 29564372 69569240 69564370 49569236 99569234 49564347 69608152 69564346 89564345 69608147 59608143 99608155
 tarnkullen-upholstered-bed-frame-standard-double|69564351 79564355 39564376 19564377
+tarnkullen-upholstered-bed-frame-twin-97-x-191|59564380 29569242 29564353 59608157 89569220 19608159
 tarno-chair-outdoor|90095428 09576328 09576314
 tarno-stool-30-x-42|70603281
 tarno-stool-outdoor|09621533 59621521
 tarno-table-outdoor-55-x-54|70095429 00469021
 tarsele-coffee-table-114-x-72|70587605
 tarsele-extendable-table-150-200-x-80|70581359
+tarva-3-drawer-dresser-76-x-92|30589871
+tarva-6-drawer-dresser-151-x-92|50589870
+tarva-bed-frame-queen-152-x-203|29007794 29069796 09418584 59553956 39553981 29930097 49930100
 tarva-bed-frame-standard-double-135-x-190|49553985 39007005 19007006 89553988
 tarva-bed-frame-standard-single-90-x-190|09553992
+tarva-bed-frame-twin-97-x-191|70261268 30586212 89009573 19553963
+tarva-nightstand-48-x-39-x-62|50219609
 taxasklint-bed-frame-standard-double-135-x-190|90621509 80621519 79626339 99626343
 tegelon-chair-in-outdoor|20555918 00503807
 tegelon-table-outdoor-216-x-86|30492143
@@ -1390,13 +1819,17 @@ teodores-chair|99399835 19399839 90530627 20530621 90350937
 tingby-side-table-on-castors-50-x-50|20295930 00349444
 tjarkil-extendable-table-180-235-290-x-100|70630454
 tjusig-bench-shoe-storage-108-x-34-x-50|70152702 50152703
+tjusig-hat-rack-79|40152633 20152634
 tjusig-shoe-rack-79-x-32-x-37|10152639 30152638
 tobias-chair|30635123 80349671 90532589
+tolkning-bench-storage-120|80512657
+tolkning-pouf-storage|90512666
 tolkning-room-divider-150-x-170|60512663
 tonstad-bed-frame-standard-double-135-x-190|39577717 99577719 59577716 19577718 99577743 49577745 79577744
 tonstad-bed-frame-standard-single-90-x-190|10603547 90603609 59577721 79577720 29577746 09577747
 tonstad-bed-frame-storage-standard-king-150-x-20|49496674 69496673 69496654 39496655 29496613 89496592 89496587
 tonstad-bed-frame-storage-standard-single-90-x-1|99496577 79496615
+tonstad-bed-frame-twin-97-x-191|00603642 90603553 70603610 39577722 79577701 49575812 19577723 80489195 00489104 10489151 99496657 99496676 39567313 89496728
 tonstad-bedside-table-40-x-40-x-59|40489319 80489322 80510007
 tonstad-bookcase-81-x-37-x-201|10528464
 tonstad-bookcase-82-x-37-x-201|70528461
@@ -1431,8 +1864,10 @@ tonstad-tv-bench-177-x-37-x-56|60488880
 tonstad-tv-bench-178-x-37-x-55|00489302
 torald-desk-65-x-40|90493955
 tornsborg-2-seat-sofa-bed|40586103
+tornsborg-armchair-bed|00586100
 tornviken-kitchen-island-126-x-77|40391657
 tornviken-open-cabinet-20-x-37-x-60|60358968 20358970 20358965
+tornviken-open-cabinet-23-x-37-x-76|10359036 30359035 00359027
 torparo-chair-armrests-outdoor|60595408
 torparo-table-outdoor-130-x-74|60595724
 torsjo-coffee-table-88|50590406
@@ -1443,6 +1878,12 @@ tossberg-malskar-swivel-chair|59508228 69508223 09508235 89508203 69508242 59508
 tranered-coffee-table-90-x-90|10608998
 tranno-stool|50546381
 travsport-desk-sit-stand-120-x-70|59620951
+treasjon-mirror-cab-2-door-built-in-lighting-80|50573906
+trofast-desk-mesh-storage-boxes-124-x-44-x-52|69613912 29613933
+trofast-desk-mesh-storage-boxes-trays-124-x-44-x|89613930
+trofast-desk-shelves-124-x-44-x-52|59613936
+trofast-desk-storage-boxes-124-x-44-x-52|89613906 29613909 99613944 29613848 99613897 19613938 09613873 69613870
+trofast-desk-storage-boxes-trays-124-x-44-x-52|59613903 79613921 49613927 39613918 99613915 59613941
 trofast-frame-32-x-44-x-52|90516061
 trofast-frame-34-x-44-x-56|50516063
 trofast-frame-44-x-91|10308693
@@ -1465,8 +1906,11 @@ trotten-desk-120-x-70|49621885 09621873 59621917 19621919
 trotten-desk-160-x-80|79621921
 trotten-desk-sit-stand-160-x-80|59621899
 trotten-drawer-unit-34-x-56|20474762 40474841
+trotten-drawer-unit-w-3-drawers-on-castors|70485094 80485098 10619671
 tuffing-bunk-bed-frame-90-x-200|00239233
+tuffing-bunk-bed-frame-twin-97-x-191|70299285
 tuffing-loft-bed-frame-90-x-200|90299449
+tuffing-loft-bed-frame-twin-97-x-191|30299447
 tufjord-upholstered-bed-frame-standard-king-150|29555358 69555356 19555330 99555331 89555317 69555318 49555357
 tullsta-armchair|89284665 19619695 89619692 69619688
 tunsta-side-table-70-x-50|50299502
@@ -1484,39 +1928,62 @@ uppakra-corner-module|49620796 89620756 79620790 79620771 69620781 69620762 3962
 uppakra-modular-corner-sofa-3-seat|99620553 89620558 79620573 69620564 49620579 29621358 29620556
 uppakra-modular-corner-sofa-6-seat|99620628 79620634 49620616 49620602 39620607 29620622 19620613 99620690 89620704 89620695 59620710 59620687 29620716 29620684 99620647 79620667 69620658 69620644 49620678 49620664 39620650
 uppakra-u-shaped-sofa-4-5-seat|19620910 99620925 99620893 99620869 89620902 59620913 09620939 99621005 79621247 69621021 69621002 49620999 39621027 39621008
+uppfora-frame-60-x-55-x-136|10576501
+uppfora-frame-60-x-55-x-196|90576502
+uppfora-frame-60-x-55-x-76|30576500
+uppland-armchair|89384108 79553842 19553840 09553845 59553838 39553839 99553841 09384112
+uppland-armchair-and-ottoman|49575553 59575538 19575535 79575542 29575549 89575546 69575547
+uppland-loveseat|99442476 69384114 89442472 29442470 49442474 79488615 09499957
+uppland-sectional-4-seat-corner|39442460 69442454 49384110 19442456 09488609 79442458 19508188
+uppland-sofa-chaise|69442492 79384118 49442488 09442490 59499974 29499975 29488627
 urban-junior-chair|00165213
+utaker-stackable-bed-80-x-200|00360484
+utaker-stackable-bed-twin-97-x-191|30360487
 utespelare-gaming-desk-160-x-80|10571532 80507627
 utklassning-gaming-chair|40629287 60629045
+utmaning-gaming-desk-120-x-80|29571706 69571672
 utmaning-gaming-desk-160-x-80|89571732
 utmaning-gaming-desk-sit-stand-160-x-80|09571689
 utter-children-s-stool|50357785
 vadholma-drawer-unit-40-x-37-x-40|50374332
 vadholma-kitchen-island-126-x-79-x-90|20359154
 vadholma-kitchen-island-79-x-63-x-90|40366115
+vadholma-kitchen-island-rack-126-x-79-x-193|59276228
 vadholma-open-storage-20-x-37-x-60|60374341 20374338 60374336
+vadholma-open-storage-23-x-36-5-x-76|00374344 70374345
 valnas-2-seat-sofa|99615325 69615322 39615328
 valnas-3-seat-sofa|49615337 79615331 19615334
 valnas-coffee-table-118-x-72|20628038
+valnas-trolley-table-storage|60628036
 valtorp-bench-103|40572785 30572781
 varmanso-chair-outdoor|00536389
 varmanso-table-outdoor-224-x-93|10515683
 vasman-chair-armrests-outdoor|70563402 40211637
 vasman-extendable-table-outdoor-135-190-x-74|30469034
 vassholmen-chair-in-outdoor|30503740
+vattenkar-desktop-shelf-49-x-15|20541568 40541572
+vattenkar-laptop-monitor-stand-52-x-26|80541565
 vedbo-armchair|00423580 30424125
 vedbo-high-back-armchair|70424133 70423591
 veinge-easy-chair|30565158 80558570 50565162
+venngarn-loveseat|20613433 40632685 90641913
+venngarn-sofa|20632686 70641914 70632636
 vesken-shelf-unit-37-x-23-x-101|40307866 30450807
 vesken-trolley-54-x-18-x-71|00471222 60471224
+vevelstad-bed-frame-1-headboard-standard-single|59441780
+vevelstad-bed-frame-1-headboard-twin-97-x-191|39441781
 vevelstad-bed-frame-2-headboards-standard-double|89441731 09441730
 vevelstad-bed-frame-2-headboards-standard-single|09441810
 vevelstad-bed-frame-3-headboards-standard-single|29441828
 vevelstad-bed-frame-standard-double-135-x-190|80506393 20506391
 vevelstad-bed-frame-standard-single-90-x-190|60518274
+vevelstad-bed-frame-twin-97-x-191|10518276 69441812 89441830
 viggso-lounge-chair-outdoor|20597070
 vihals-bar-table-125-x-74-x-92|89621789
 vihals-bed-frame-2-storage-boxes-standard-double|49581988 29581989
 vihals-bed-frame-2-storage-boxes-standard-single|09581990
+vihals-bed-frame-2-storage-boxes-twin-97-x-191|89581991 09634738 10602449 39581856
+vihals-bed-frame-4-storage-boxes-queen-152-x-203|19582003 39582002 19634747 39634746
 vihals-bed-frame-4-storage-boxes-standard-double|69582005 49582006
 vihals-bed-frame-standard-double-135-x-190|39581842 59581841
 vihals-bed-frame-standard-single-90-x-190|30602429 89581854
@@ -1539,15 +2006,19 @@ vihals-folding-chair|30569104 00592752 90651742
 vihals-gateleg-table-39-95-151-x-90|70593574
 vihals-shelving-unit-10-shelves-95-x-37-x-200|70483274 50542905
 vihals-shelving-unit-4-shelves-95-x-37-x-90|50483289 30542911
+vihals-shelving-unit-6-shelves-95-x-37-x-140|80542918
 vihals-sideboard-140-x-37-x-75|30491718
+vihals-sideboard-140-x-47-x-75|90491720 90542927
 vihals-storage-unit-105-x-37-x-140|90483268
 vihals-table-107|49589970
 vihals-table-125-x-74|39578509
+vihals-table-180-x-74|59578513
 vihals-table-74-x-74|59578508
 vihals-tv-bench-146-x-37-x-50|20483295 00543672
 vihals-tv-bench-176-x-37-x-50|80542857
 vihals-wardrobe-2-doors-105-x-57-x-200|60483255
 vikhammer-bedside-table-40-x-39|20388972 00381764
+vikhammer-nightstand-60-x-39|30388981 90388978
 vildgas-junior-chair|70589384
 vilhatten-wardrobe-2-doors-and-2-drawers-98-x-57|70530609
 vilto-shelving-unit-46-x-150|90344456
@@ -1571,15 +2042,22 @@ vimle-corner-sofa-4-seat|09635342 69635339 09635337 89635362 19635365 29399481 8
 vimle-corner-sofa-5-seat|79399577 49399668 89399586 59399583 59401802 69401811 29306750 89306766
 vimle-corner-sofa-5-seat-w-chaise-longue|79501278 69401830 09401833
 vimle-crnr-sofa-bed-5-seat-w-chaise-lng|89545248 59545202 59501298 19477380 09545228 49545269
+vimle-ottoman-storage|09657051 09632065 59632044 49632068 19632041 79632081 79632062 80628304 10628312
 vimle-u-shaped-sofa-6-seat|69306786
+vimund-child-s-desk-chair|50531964
 vingson-wing-chair-in-outdoor|70503738
+vinliden-sofa-chaise|39304680
 visingso-chair-armrests|60575542
 visingso-table-70-x-70|40569467
+viskafors-1-5-seat-armchair|29443304 49443280 59443294 49443299 49443275 39443285
 viskafors-2-seat-sofa|89443264 69443217 99443254 89443259 39443214 19443210
 viskafors-3-seat-sofa|99443329 59443374 99443334 89443339 69443364 59443369
 visthus-chest-6-drawers-63-x-49-x-126|40493444
 visthus-wardrobe-122-x-216|90493446
+vitteryd-adjustable-coffee-table-97|20530065
 vittsjo-coffee-table-75|80213309 30604348
+vittsjo-desk-110-x-60|70607439
+vittsjo-laptop-stand-35-x-65|00250249
 vittsjo-laptop-table-100-x-36|60619536 40619537
 vittsjo-shelving-unit-100-x-175|20213312
 vittsjo-shelving-unit-100-x-93|90305803
@@ -1600,7 +2078,13 @@ vittskar-modular-chaise-longue|29591257 69618844 79618848 99591273 29618860 5959
 vittskar-modular-easy-chair|49618864 89590981
 vittskar-table-264-x-96|30575162
 vitval-bunk-bed-frame-90-x-200|80411272
+vitval-bunk-bed-frame-twin-97-x-191|70411277
 vitval-loft-bed-frame-90-x-200|10411242
+vitval-loft-bed-frame-twin-97-x-191|70411239
+voxlov-chair|50450236
+voxlov-dining-table-180-x-90|40434322
 vretstorp-3-seat-sofa-bed|89491245 19491239 69491251 49491233 39491257
+vuku-wardrobe-74-x-51-x-149|80331973
 yngvar-bar-stool-75|60400745
-yngvar-chair|80417636`;
+yngvar-chair|80417636
+yxstaby-gaming-monitor-stand-98-x-27-x-16|80620001`;

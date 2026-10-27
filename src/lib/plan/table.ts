@@ -4,6 +4,9 @@ import { clamp } from "./math";
 import { buildDropLeaf } from "./dropleaf";
 import { buildGateleg } from "./gateleg";
 import { buildCornerDesk } from "./cornerdesk";
+import { buildDeskDrawers } from "./deskdraw";
+import { buildBoxDesk } from "./boxdesk";
+import { buildRiser } from "./riser";
 
 export function defaultsTable(s: ProductSpec): TableParams {
   const p = s.table ?? {};
@@ -20,18 +23,23 @@ export function defaultsTable(s: ProductSpec): TableParams {
 }
 
 export function buildTable(b: PlanBuilder, s: ProductSpec) {
+  if (s.table?.drawers) return buildDeskDrawers(b, s);
+  if (s.table?.frame) return buildBoxDesk(b, s);
+  if (s.table?.riser) return buildRiser(b, s);
   if (s.table?.ell) return buildCornerDesk(b, s);
   if (s.table?.gate) return buildGateleg(b, s);
   if (s.table?.leaves) return buildDropLeaf(b, s);
   const p = defaultsTable(s);
-  const W = s.size.w * 10, H = s.size.h * 10;
+  const rackH = (s.table?.rack ?? 0) * 10;
+  const W = s.size.w * 10, H = s.size.h * 10 - rackH;
   const D = p.round ? W : s.size.d * 10;
   const tt = p.topThickness, ls = p.legSize;
   const inset = p.round ? (W / 2) * (1 - 0.78 / Math.SQRT2) - ls / 2 : p.attach === "screw" ? 0 : p.attach === "plate" ? 30 : 45;
   const Lh = H - tt;
   const big = W > 1000;
 
-  const topT = b.part(s.category.toLowerCase().includes("desk") ? "Desk top" : "Table top", [W, tt, D], p.round ? { shape: "cyl" } : undefined);
+  const seat = !!s.table?.seat;
+  const topT = b.part(seat ? "Seat" : s.category.toLowerCase().includes("desk") ? "Desk top" : "Table top", [W, tt, D], p.round ? { shape: "cyl" } : undefined);
   const top = b.place(topT, [0, H - tt / 2, 0]);
   const legT = b.part("Leg", p.legs === "round" ? [ls, Lh, ls] : [ls, Lh, ls], { shape: p.legs === "round" ? "cyl" : "box", material: "wood" });
   const corners: [number, number][] = [
@@ -45,7 +53,7 @@ export function buildTable(b: PlanBuilder, s: ProductSpec) {
 
   b.step(
     {
-      title: "Lay the top upside down",
+      title: seat ? "Lay the seat upside down" : "Lay the top upside down",
       detail: "Put the flattened box under it so the surface stays scratch free.",
       pose: "-y",
       kind: "general",
@@ -91,7 +99,7 @@ export function buildTable(b: PlanBuilder, s: ProductSpec) {
     ];
     b.step(
       {
-        title: "Screw the rails under the top",
+        title: seat ? "Screw the rails under the seat" : "Screw the rails under the top",
         detail: "They frame the underside, set in from the edge.",
         tools: ["screwdriver"],
         pose: "-y",
@@ -168,7 +176,30 @@ export function buildTable(b: PlanBuilder, s: ProductSpec) {
     },
   );
 
-  if (p.shelf) {
+  if (p.shelf && s.table?.inner) {
+    // between the legs, set in like they are, and screwed through them
+    const shT = b.part("Shelf", [W - 2 * inset - 2 * ls - 2, 18, D - 2 * inset], { material: "board" });
+    const sy = Math.max(110, H * 0.22);
+    const shelf = b.place(shT, [0, sy, 0]);
+    b.step(
+      {
+        title: "Fit the shelf between the legs",
+        detail: "Two screws through each leg.",
+        tools: ["screwdriver"],
+        pose: "-y",
+        kind: "screws",
+      },
+      () => {
+        b.add(shelf, [0, -320, 0]);
+        b.then(0.1);
+        const sc: FitOpts[] = [];
+        corners.forEach(([sx, sz], i) => {
+          for (const dz of [-ls / 5, ls / 5]) sc.push({ on: legs[i], at: [sx * (lx + ls / 2), sy, sz * lz + dz], dir: [-sx, 0, 0], hole: false });
+        });
+        b.fits(HW.screwL, sc, 0.06);
+      },
+    );
+  } else if (p.shelf) {
     const shT = b.part("Shelf", [W - 2 * ls - 2, 16, D], { material: "board" });
     const sy = Math.max(110, H * 0.26);
     const shelf = b.place(shT, [0, sy, 0]);
@@ -195,12 +226,55 @@ export function buildTable(b: PlanBuilder, s: ProductSpec) {
   b.step(
     {
       title: big ? "Turn it over together" : "Turn it over",
-      detail: "Lift it by the top, not the legs.",
+      detail: seat ? "Lift it by the seat, not the legs." : "Lift it by the top, not the legs.",
       pose: "+y",
       kind: "flip",
       people: big ? 2 : 1,
       warnings: big ? ["two"] : [],
     },
     () => {},
+  );
+  if (rackH) rackSteps(b, top, W, D, H, rackH);
+}
+
+/** A rack on a kitchen island: two posts bolted up through the back of the top, a rail across them, hooks under it. */
+function rackSteps(b: PlanBuilder, top: string, W: number, D: number, H: number, R: number) {
+  const ps = 40;
+  const px = W / 2 - ps / 2 - 20, pz = -D / 2 + ps / 2 + 20;
+  const postT = b.part("Rack post", [ps, R - ps, ps], { material: "wood" });
+  const posts = [-1, 1].map((sx) => b.place(postT, [sx * px, H + (R - ps) / 2, pz]));
+  const railT = b.part("Rack rail", [W - 40, ps, ps], { material: "wood" });
+  const rail = b.place(railT, [0, H + R - ps / 2, pz]);
+  b.step(
+    {
+      title: "Bolt the rack posts onto the top",
+      detail: "One at each back corner. The bolts go up through the top into the posts.",
+      tools: ["allen"],
+      kind: "bolts",
+    },
+    () => {
+      b.stagger(0.3);
+      posts.forEach((k) => b.add(k, [0, 300, 0]));
+      b.then(0.1);
+      b.fits(HW.boltL, [-1, 1].map((sx) => ({ on: top, at: [sx * px, H - 30, pz] as Vec3, dir: [0, 1, 0] as Vec3, mate: posts[sx < 0 ? 0 : 1] })), 0.15);
+    },
+  );
+  const nh = Math.max(3, Math.round(W / 250));
+  b.step(
+    {
+      title: "Screw the rail across the posts, then the hooks",
+      detail: "Two people make it easier: one holds the rail level while the other screws.",
+      tools: ["screwdriver"],
+      kind: "screws",
+      people: 2,
+      warnings: ["two"],
+    },
+    () => {
+      b.add(rail, [0, 260, 0]);
+      b.then(0.1);
+      b.fits(HW.screwL, [-1, 1].map((sx) => ({ on: rail, at: [sx * px, H + R, pz] as Vec3, dir: [0, -1, 0] as Vec3, mate: posts[sx < 0 ? 0 : 1] })), 0.15);
+      b.then(0.1);
+      b.fits(HW.hook, Array.from({ length: nh }, (_, i) => ({ on: rail, at: [-W / 2 + 60 + ((W - 120) * (i + 0.5)) / nh, H + R - ps, pz] as Vec3, dir: [0, 1, 0] as Vec3 })), 0.08);
+    },
   );
 }

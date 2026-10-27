@@ -13,9 +13,10 @@ import { existsSync, readFileSync, readdirSync, writeFileSync } from "node:fs";
 import path from "node:path";
 import { BASE, baseSlug, type CatalogEntry } from "@/lib/catalog";
 import { fold } from "@/lib/fold";
-import { encodeRow, type IkeaRow } from "@/lib/ikea";
+import { decodeRows, encodeRow, type IkeaRow } from "@/lib/ikea";
 import { KIND_ARCH, ROWS, specFor, type Kind, type X } from "@/lib/products";
 import { classify, type Draw, type Fact, type Hint } from "./classify";
+import { asUk, usBedName } from "./us";
 
 const DIR = import.meta.dirname;
 const ROOT = path.resolve(DIR, "../..");
@@ -59,19 +60,22 @@ function hints(family: string, kind: Kind): Hint | undefined {
 
 /* ---------- matching against hand made entries ---------- */
 
-const LATER_KINDS = new Set<Kind>(["office", "chaise", "corner", "cot", "bunk", "loft", "dropleaf", "daybed", "mixed", "sliding", "slidecab", "bookrow", "cabrow", "section", "gateleg", "washstand", "sinkcab", "appliance", "shoerack", "clothesrack", "changing", "divider", "backbench", "junior", "lounge", "highchair", "cornercab", "cornerrobe", "usofa", "lounger", "swivel", "conference", "cornerdesk", "conftable"]);
+const LATER_KINDS = new Set<Kind>(["office", "chaise", "corner", "cot", "bunk", "loft", "dropleaf", "daybed", "mixed", "sliding", "slidecab", "bookrow", "cabrow", "section", "gateleg", "washstand", "sinkcab", "appliance", "shoerack", "clothesrack", "changing", "divider", "backbench", "junior", "lounge", "highchair", "cornercab", "cornerrobe", "usofa", "lounger", "swivel", "conference", "cornerdesk", "conftable", "lidbox", "shelfbench", "workbench", "extension", "deskdraw", "boxdesk", "hatrack", "coatstand", "pouffe", "chairbed", "airer", "riser"]);
 
 function baseMatch(name: string, draw: Draw): CatalogEntry | undefined {
   const fam = fold(name);
   const spec = specFor(draw.kind, name, "", draw.w, draw.h, draw.d, draw.x);
   const g = draw.guessed;
-  // a cube shelf with inserts or on an underframe is more than the hand made shelf of the same size
-  if (draw.x.ins || draw.x.uf) return undefined;
+  // a cube shelf with inserts or on an underframe is more than the hand made shelf of the same size, and a modular
+  // chest's drawers and open sections are its own
+  if (draw.x.ins || draw.x.uf || draw.x.mods) return undefined;
   for (const e of BASE) {
     if (fold(e.name) !== fam) continue;
     if (e.archetype !== spec.archetype && e.category !== spec.category) continue;
     // the newer kinds draw a different shape from anything hand made in their archetype
     if (LATER_KINDS.has(draw.kind) && e.category !== spec.category) continue;
+    // IKEA's own name for what it is sets it apart from a hand made entry of another category
+    if (draw.x.cat && e.category !== spec.category) continue;
     if (draw.kind === "bed") {
       if (e.bed?.mattressW === draw.x.m && (e.bed?.mattressL ?? 200) === (draw.x.l ?? 200)) return e;
       continue;
@@ -88,6 +92,81 @@ function baseMatch(name: string, draw: Draw): CatalogEntry | undefined {
     return e;
   }
   return undefined;
+}
+
+/* ---------- the US range ---------- */
+
+/** Two drawings of one product: the same family and kind, and sizes within a few cm wherever both were measured. */
+function sameDrawing(a: { name: string; draw: Draw }, name: string, draw: Draw) {
+  if (fold(a.name) !== fold(name)) return false;
+  // IKEA gives no size at all (most seats): a seat the family sells in the UK is the same one by its US name (a US
+  // "chair" can be the UK's easy chair)
+  const unsized = draw.guessed.w && draw.guessed.h && draw.guessed.d;
+  const seating = (k: Kind) => KIND_ARCH[k] === "seat" || KIND_ARCH[k] === "sofa";
+  if (unsized && seating(a.draw.kind) && seating(draw.kind) && (a.draw.x.seats ?? 1) === (draw.x.seats ?? 1)) return true;
+  if (a.draw.kind !== draw.kind) return false;
+  if (draw.kind === "bed") return Math.abs((a.draw.x.m ?? 0) - (draw.x.m ?? 0)) <= 3 && Math.abs((a.draw.x.l ?? 200) - (draw.x.l ?? 200)) <= 4;
+  const close = (k: "w" | "h" | "d", tol: number) => a.draw.guessed[k] || draw.guessed[k] || Math.abs(a.draw[k] - draw[k]) <= tol;
+  return close("w", 3) && close("h", 4) && close("d", 5) && (a.draw.x.seats ?? 0) === (draw.x.seats ?? 0);
+}
+
+/**
+ * US products the UK range doesn't have, read by the same rules: none of their article numbers is a UK one, and no
+ * UK or hand made guide draws the same family and kind at about the same size. Their own US type name stays as the
+ * start of the variant; the size is given in cm like every other.
+ */
+function usOnly(us: Fact[], gb: Fact[], groups: Map<string, { name: string; variant: string; draw: Draw; items: string[] }>) {
+  const gbItems = new Set(gb.flatMap((f) => f.items));
+  const uk = [...groups.values()];
+  const added: { name: string; variant: string; draw: Draw; items: string[] }[] = [];
+  const stats = { facts: us.length, shared: 0, drawable: 0, same: 0, added: 0, products: 0 };
+  for (const f of us) {
+    if (f.items.some((i) => gbItems.has(i))) {
+      stats.shared++;
+      continue;
+    }
+    const read = asUk(f);
+    const v = read ? classify(read, hints) : null;
+    if (!v || "skip" in v) continue;
+    stats.drawable++;
+    const bed = usBedName(f.size);
+    const draw: Draw = { ...v.draw, label: f.type.replace(/\s+/g, " ").trim(), ...(bed ? { size: `${bed}, ${v.draw.size}` } : {}), x: { ...v.draw.x, us: true } };
+    if (uk.some((g) => sameDrawing(g, f.name, draw)) || baseMatch(f.name, draw)) {
+      stats.same++;
+      continue;
+    }
+    // the same US product under a type spelled another way ("Sectional 4-seat" and "Sectional, 4-seat"), or in
+    // another colour: one row
+    const twin = added.find((g) => sameDrawing(g, f.name, draw) && JSON.stringify(g.draw.x) === JSON.stringify(draw.x));
+    stats.products++;
+    if (twin) {
+      twin.items.push(...f.items);
+      continue;
+    }
+    const variant = draw.size ? `${draw.label}, ${draw.size}` : draw.label;
+    const g = { name: f.name, variant, draw, items: [...f.items] };
+    groups.set(f.name + "|" + variant, g);
+    added.push(g);
+    stats.added++;
+  }
+  return stats;
+}
+
+/** Without facts-us.json, the US rows and article numbers the last build wrote, as they were. */
+function previousUs() {
+  const read = (file: string) => {
+    const p = path.join(DATA, file);
+    if (!existsSync(p)) return "";
+    const text = readFileSync(p, "utf8");
+    return text.slice(text.indexOf("`") + 1, text.lastIndexOf("`"));
+  };
+  const rows = decodeRows(read("ikea-rows.ts")).filter((r) => r.x.us);
+  const items = new Map<string, string[]>();
+  for (const line of read("ikea-items.ts").split("\n")) {
+    const [slug, list] = line.split("|");
+    if (list) items.set(slug, list.split(" "));
+  }
+  return rows.map((r) => ({ ...r, key: r.name + "|" + r.variant, items: items.get(r.slug ?? baseSlug(r.name, r.variant)) ?? [] }));
 }
 
 /* ---------- names ---------- */
@@ -208,6 +287,10 @@ function main() {
     else groups.set(key, { name: f.name, variant, draw: v.draw, items: [...f.items] });
   }
 
+  // the US range, kept apart in facts-us.json (fetch.ts --market us): only what the UK range doesn't have
+  const usFile = path.join(DIR, "facts-us.json");
+  const us = existsSync(usFile) ? usOnly(JSON.parse(readFileSync(usFile, "utf8")).products, facts, groups) : null;
+
   const items = new Map<string, string[]>();
   const attach = (slug: string, list: string[]) => items.set(slug, [...new Set([...(items.get(slug) ?? []), ...list])]);
   const rows: (IkeaRow & { key: string; items: string[] })[] = [];
@@ -222,6 +305,7 @@ function main() {
     const { kind, x, w, h, d, kw } = g.draw;
     rows.push({ key, name: g.name, kind, variant: g.variant, w, h, d, x, keywords: kw.length ? kw : undefined, items: g.items });
   }
+  if (!us) rows.push(...previousUs());
   rows.sort((a, b) => fold(a.name).localeCompare(fold(b.name)) || a.kind.localeCompare(b.kind) || a.w - b.w || a.h - b.h || a.d - b.d || a.variant.localeCompare(b.variant));
 
   // the hand made slugs as they were when IKEA data first came in; check.ts holds them to it
@@ -271,6 +355,8 @@ function main() {
   console.log(`${facts.length} IKEA products, ${drawable} drawable, ${groups.size} after merging colours`);
   console.log(`${merged} match a hand made entry (article numbers added), ${rows.length} new rows`);
   console.log(`names: ${names.gb} UK families, ${names.all} with US-only names, ${guard.length} guarded against typo matches`);
+  if (us) console.log(`US range: ${us.facts} products, ${us.shared} share an article number with the UK range, ${us.drawable} of the rest drawable, ${us.same} drawn as a UK product already, ${us.products} US-only products in ${us.added} new rows`);
+  else console.log(`US range: no facts-us.json, kept the ${rows.filter((r) => r.x.us).length} US-only rows of the last build`);
   console.log(`article numbers: ${[...items.values()].reduce((s, l) => s + l.length, 0)} for ${items.size} guides`);
   console.log(Object.entries(perKind).sort((a, b) => b[1] - a[1]).map(([k, c]) => `${k} ${c}`).join(", "));
 }

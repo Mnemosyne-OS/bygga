@@ -53,6 +53,7 @@ export const HW = {
   connector: { kind: "connector", len: 120, dia: 30 },
   roller: { kind: "roller", len: 44, dia: 26 },
   flatHinge: { kind: "flatHinge", len: 60, dia: 34 },
+  hook: { kind: "hook", len: 55, dia: 22 },
 } satisfies Record<string, HwDef>;
 
 const HW_NAMES: Record<HwKind, string> = {
@@ -77,6 +78,7 @@ const HW_NAMES: Record<HwKind, string> = {
   connector: "Connector",
   roller: "Door roller",
   flatHinge: "Flat hinge",
+  hook: "Hook",
 };
 
 export function hwSpecText(kind: HwKind, len: number, dia: number) {

@@ -70,7 +70,20 @@ export type Kind =
   | "swivel"
   | "conference"
   | "cornerdesk"
-  | "conftable";
+  | "conftable"
+  // the long tail of single pieces
+  | "lidbox"
+  | "shelfbench"
+  | "workbench"
+  | "extension"
+  | "deskdraw"
+  | "boxdesk"
+  | "hatrack"
+  | "coatstand"
+  | "pouffe"
+  | "chairbed"
+  | "airer"
+  | "riser";
 
 export type X = {
   rows?: number;
@@ -118,6 +131,30 @@ export type X = {
   cu?: number;
   inner?: "shelf" | "carousel" | "pullout";
   rock?: boolean;
+  /** IKEA's own kind of product when the kind's category doesn't name it ("Storage table", "Pouffe") */
+  cat?: string;
+  /** stands on castors */
+  cast?: boolean;
+  /** a modular chest: this many columns side by side (NORDLI) */
+  mods?: number;
+  /** drawers, when there are fewer than the slots: the rest stay open */
+  dr?: number;
+  /** comes with a footstool */
+  foot?: boolean;
+  /** cm: a side table module at the right-hand end */
+  st?: number;
+  /** cm: a cabinet with doors this high at the bottom, open shelves above */
+  low?: number;
+  /** cm: room under the bottom shelf for a storage box on castors */
+  box?: number;
+  /** mm: panel thickness, when it isn't the kind's own */
+  t?: number;
+  /** a mirror on top */
+  mirror?: boolean;
+  /** cm: a rack or a back panel rising from the back of the top (size.h takes it in) */
+  up?: number;
+  /** sold in the US and not in the UK: comes after the family's UK pieces in search */
+  us?: boolean;
 };
 
 export type Row = [name: string, kind: Kind, variant: string, w: number, h: number, d: number, x?: X, keywords?: string];
@@ -291,7 +328,7 @@ const MIN: Record<Kind, number> = {
   cube: 40, bookcase: 50, open: 40, chest: 90, nightstand: 40, desk: 25, coffee: 20, side: 15, dining: 40,
   bed: 100, wardrobe: 120, cabinet: 60, sideboard: 80, tv: 60, shoe: 45, chair: 25, stool: 12, bench: 20, sofa: 40, armchair: 30,
   wallshelf: 25, wallcab: 40, kitchen: 50, trolley: 25, bar: 35, console: 30, kidstable: 15, kidschair: 20,
-  office: 20, chaise: 55, corner: 70, cot: 35, bunk: 90, loft: 75, dropleaf: 40, daybed: 60, mixed: 50, sliding: 110, slidecab: 60, bookrow: 120, cabrow: 120, section: 25, gateleg: 50, washstand: 35, sinkcab: 45, appliance: 50, shoerack: 25, clothesrack: 20, changing: 50, divider: 20, backbench: 35, junior: 25, lounge: 30, highchair: 15, cornercab: 45, cornerrobe: 150, usofa: 110, lounger: 35, swivel: 25, conference: 20, cornerdesk: 35, conftable: 30,
+  office: 20, chaise: 55, corner: 70, cot: 35, bunk: 90, loft: 75, dropleaf: 40, daybed: 60, mixed: 50, sliding: 110, slidecab: 60, bookrow: 120, cabrow: 120, section: 25, gateleg: 50, washstand: 35, sinkcab: 45, appliance: 50, shoerack: 25, clothesrack: 20, changing: 50, divider: 20, backbench: 35, junior: 25, lounge: 30, highchair: 15, cornercab: 45, cornerrobe: 150, usofa: 110, lounger: 35, swivel: 25, conference: 20, cornerdesk: 35, conftable: 30, lidbox: 30, shelfbench: 30, workbench: 45, extension: 20, deskdraw: 40, boxdesk: 35, hatrack: 20, coatstand: 15, pouffe: 10, chairbed: 35, airer: 10, riser: 10,
 };
 
 const CATEGORY: Record<Kind, string> = {
@@ -300,7 +337,7 @@ const CATEGORY: Record<Kind, string> = {
   cabinet: "Cabinet", sideboard: "Sideboard", tv: "TV bench", shoe: "Shoe cabinet", chair: "Chair", stool: "Stool",
   bench: "Bench", sofa: "Sofa", armchair: "Armchair", wallshelf: "Wall shelf", wallcab: "Wall cabinet", kitchen: "Kitchen cabinet",
   trolley: "Trolley", bar: "Bar table", console: "Console table", kidstable: "Children's table", kidschair: "Children's chair",
-  office: "Office chair", chaise: "Sofa with chaise longue", corner: "Corner sofa", cot: "Cot", bunk: "Bunk bed", loft: "Loft bed", dropleaf: "Drop-leaf table", daybed: "Day-bed", mixed: "Cabinet with doors and drawers", sliding: "Wardrobe with sliding doors", slidecab: "Cabinet with sliding doors", bookrow: "Bookcase combination", cabrow: "Storage combination", section: "Sofa section", gateleg: "Gateleg table", washstand: "Wash-stand", sinkcab: "Sink cabinet", appliance: "Appliance cabinet", shoerack: "Shoe rack", clothesrack: "Clothes rack", changing: "Changing table", divider: "Room divider", backbench: "Bench with backrest", junior: "Junior chair", lounge: "Lounge chair", highchair: "Highchair", cornercab: "Corner base cabinet", cornerrobe: "Corner wardrobe", usofa: "U-shaped sofa", lounger: "Sun lounger", swivel: "Swivel easy chair", conference: "Conference chair", cornerdesk: "Corner desk", conftable: "Conference table",
+  office: "Office chair", chaise: "Sofa with chaise longue", corner: "Corner sofa", cot: "Cot", bunk: "Bunk bed", loft: "Loft bed", dropleaf: "Drop-leaf table", daybed: "Day-bed", mixed: "Cabinet with doors and drawers", sliding: "Wardrobe with sliding doors", slidecab: "Cabinet with sliding doors", bookrow: "Bookcase combination", cabrow: "Storage combination", section: "Sofa section", gateleg: "Gateleg table", washstand: "Wash-stand", sinkcab: "Sink cabinet", appliance: "Appliance cabinet", shoerack: "Shoe rack", clothesrack: "Clothes rack", changing: "Changing table", divider: "Room divider", backbench: "Bench with backrest", junior: "Junior chair", lounge: "Lounge chair", highchair: "Highchair", cornercab: "Corner base cabinet", cornerrobe: "Corner wardrobe", usofa: "U-shaped sofa", lounger: "Sun lounger", swivel: "Swivel easy chair", conference: "Conference chair", cornerdesk: "Corner desk", conftable: "Conference table", lidbox: "Storage bench", shelfbench: "Bench with storage", workbench: "Work bench", extension: "Height extension unit", deskdraw: "Desk with drawers", boxdesk: "Desk with storage", hatrack: "Hat rack", coatstand: "Hat and coat stand", pouffe: "Pouffe", chairbed: "Chair-bed", airer: "Drying rack", riser: "Laptop stand",
 };
 
 export const KIND_ARCH: Record<Kind, Archetype> = {
@@ -308,7 +345,7 @@ export const KIND_ARCH: Record<Kind, Archetype> = {
   side: "table", dining: "table", bed: "bed", wardrobe: "cabinet", cabinet: "cabinet", sideboard: "cabinet", tv: "cabinet",
   shoe: "cabinet", chair: "seat", stool: "seat", bench: "seat", sofa: "sofa", armchair: "sofa", wallshelf: "shelf", wallcab: "cabinet",
   kitchen: "cabinet", trolley: "table", bar: "table", console: "table", kidstable: "table", kidschair: "seat",
-  office: "seat", chaise: "sofa", corner: "sofa", cot: "bed", bunk: "bed", loft: "bed", dropleaf: "table", daybed: "bed", mixed: "cabinet", sliding: "cabinet", slidecab: "cabinet", bookrow: "shelf", cabrow: "cabinet", section: "sofa", gateleg: "table", washstand: "cabinet", sinkcab: "cabinet", appliance: "cabinet", shoerack: "shelf", clothesrack: "shelf", changing: "drawers", divider: "shelf", backbench: "seat", junior: "seat", lounge: "seat", highchair: "seat", cornercab: "cabinet", cornerrobe: "cabinet", usofa: "sofa", lounger: "seat", swivel: "seat", conference: "seat", cornerdesk: "table", conftable: "table",
+  office: "seat", chaise: "sofa", corner: "sofa", cot: "bed", bunk: "bed", loft: "bed", dropleaf: "table", daybed: "bed", mixed: "cabinet", sliding: "cabinet", slidecab: "cabinet", bookrow: "shelf", cabrow: "cabinet", section: "sofa", gateleg: "table", washstand: "cabinet", sinkcab: "cabinet", appliance: "cabinet", shoerack: "shelf", clothesrack: "shelf", changing: "drawers", divider: "shelf", backbench: "seat", junior: "seat", lounge: "seat", highchair: "seat", cornercab: "cabinet", cornerrobe: "cabinet", usofa: "sofa", lounger: "seat", swivel: "seat", conference: "seat", cornerdesk: "table", conftable: "table", lidbox: "cabinet", shelfbench: "table", workbench: "table", extension: "cabinet", deskdraw: "table", boxdesk: "table", hatrack: "shelf", coatstand: "shelf", pouffe: "sofa", chairbed: "sofa", airer: "shelf", riser: "table",
 };
 
 const round = (x: X) => (x.round ? { round: true } : {});
@@ -378,6 +415,12 @@ function fitted(kind: Kind, base: Omit<ProductSpec, "source">, w: number, h: num
 
 /** Turn a kind and a size into a full product spec. */
 export function specFor(kind: Kind, name: string, variant: string, w: number, h: number, d: number, x: X = {}): Omit<ProductSpec, "source"> {
+  const spec = specOf(kind, name, variant, w, h, d, x);
+  // IKEA's own name for what it is, when the kind's category doesn't say it
+  return x.cat ? { ...spec, category: x.cat } : spec;
+}
+
+function specOf(kind: Kind, name: string, variant: string, w: number, h: number, d: number, x: X): Omit<ProductSpec, "source"> {
   const big = h > 150 || w > 150;
   const base = {
     name,
@@ -400,11 +443,16 @@ export function specFor(kind: Kind, name: string, variant: string, w: number, h:
         const cols = Math.max(1, Math.round((w - 6) / 35)), rows = Math.max(1, Math.round((h - x.uf - 6) / 35));
         return { ...base, minutes: x.min ?? 30 + 7 * cols * rows, people: cols * rows > 4 ? 2 : 1, shelf: { style: "grid", cols, rows, outer: 40, inner: 16, back: false, underframe: x.uf } };
       }
+      // x.t: thinner panels than KALLAX's (IVAR's box shelf)
+      if (x.t) return { ...base, minutes: x.min ?? 15, people: 1, shelf: { style: "grid", cols: Math.max(1, Math.round((w - 6) / 35)), rows: Math.max(1, Math.round((h - 6) / 35)), outer: x.t, inner: x.t, back: false } };
       return { ...base, shelf: { style: "grid", cols: Math.max(1, Math.round((w - 6) / 35)), rows: Math.max(1, Math.round((h - 6) / 35)), outer: 40, inner: 16, back: false } };
     case "bookcase":
       return { ...base, shelf: { style: "bookcase", shelves: x.shelves ?? Math.max(1, Math.round(h / 45) - 1), fixedShelf: h > 150, back: true, plinth: h > 100, outer: 16 } };
     case "open":
-      return { ...base, difficulty: 1, shelf: { style: "bookcase", shelves: x.shelves ?? Math.max(1, Math.round(h / 45) - 1), fixedShelf: h > 150, back: false, plinth: false, outer: 18 } };
+      // x.rail: a clothes rail under a shelf near the top; x.box: room under the bottom shelf for a storage box on castors
+      if (x.rail) return { ...base, difficulty: 2, people: 2, shelf: { style: "bookcase", shelves: 1, fixedShelf: false, back: false, plinth: false, outer: 18, rail: true } };
+      if (x.box) return { ...base, minutes: x.min ?? MIN.open + 10, difficulty: 1, shelf: { style: "bookcase", shelves: x.shelves ?? Math.max(1, Math.round((h - x.box) / 45) - 1), fixedShelf: h > 150, back: false, plinth: false, outer: 18, boxUnder: x.box } };
+      return { ...base, difficulty: 1, shelf: { style: "bookcase", shelves: x.shelves ?? Math.max(1, Math.round(h / 45) - 1), fixedShelf: h > 150, back: false, plinth: x.plinth ?? false, outer: 18 } };
     case "changing": {
       // x.rows: a chest of that many drawers under the changing top; otherwise an open frame with x.shelves
       if (x.rows) {
@@ -446,8 +494,16 @@ export function specFor(kind: Kind, name: string, variant: string, w: number, h:
       // an open rack: a fixed shelf in the middle, and one more on pins when it's tall enough for three rows of shoes
       return { ...base, difficulty: 1, people: 1, shelf: { style: "bookcase", shelves: x.shelves ?? (h >= 55 ? 1 : 0), fixedShelf: true, back: false, plinth: false, outer: 18 } };
     case "chest":
-    case "nightstand":
-      return { ...base, minutes: x.min ?? (kind === "nightstand" ? 30 + 15 * (x.rows ?? 2) : 30 + 20 * (x.rows ?? 3) * (x.cols ?? 1)), drawers: { cols: x.cols ?? 1, rows: x.rows ?? (kind === "nightstand" ? 2 : 3), knobs: x.knobs ?? "knob", plinth: x.plinth ?? false, thickness: 16 } };
+    case "nightstand": {
+      // x.mods: a modular chest, columns of x.rows slots with x.dr drawers from the bottom up
+      if (x.mods) {
+        const dr = x.dr ?? x.mods * (x.rows ?? 4);
+        return { ...base, minutes: x.min ?? 40 + 20 * dr + 10 * (x.mods - 1), people: 2, drawers: { cols: 1, rows: x.rows ?? 4, knobs: x.knobs ?? "none", plinth: false, thickness: 16, modules: x.mods, ...(x.dr ? { count: x.dr } : {}) } };
+      }
+      // x.cast: a drawer unit on castors
+      const cast = x.cast ? { castors: true } : {};
+      return { ...base, minutes: x.min ?? (kind === "nightstand" ? 30 + 15 * (x.rows ?? 2) : 30 + 20 * (x.rows ?? 3) * (x.cols ?? 1)) + (x.cast ? 5 : 0), drawers: { cols: x.cols ?? 1, rows: x.rows ?? (kind === "nightstand" ? 2 : 3), knobs: x.knobs ?? "knob", plinth: x.plinth ?? false, thickness: 16, ...cast } };
+    }
     case "desk":
       return { ...base, table: { attach: x.attach ?? "plate", legs: x.legs ?? "round", legSize: x.legs === "square" ? 45 : 34, topThickness: 28, shelf: false } };
     case "coffee":
@@ -461,10 +517,16 @@ export function specFor(kind: Kind, name: string, variant: string, w: number, h:
     case "wardrobe":
       return { ...base, people: 2, cabinet: { doors: x.doors ?? (w >= 60 ? 2 : 1), shelves: x.shelves ?? 1, rail: true, plinth: true, handles: x.knobs ?? "knob", thickness: 18 } };
     case "cabinet":
+      // x.low: a shelving unit with a cabinet this many cm high at the bottom, open shelves above
+      if (x.low) return { ...base, minutes: x.min ?? MIN.cabinet + 25, people: h > 150 ? 2 : 1, cabinet: { doors: x.doors ?? (w > 50 ? 2 : 1), shelves: 0, rail: false, plinth: false, handles: x.knobs ?? "knob", thickness: 18, low: x.low } };
+      // x.cast: on castors, so no plinth
+      if (x.cast) return { ...base, minutes: x.min ?? MIN.cabinet + 5, cabinet: { doors: x.doors ?? (w > 50 ? 2 : 1), shelves: x.shelves ?? (h > 100 ? 2 : 1), rail: false, plinth: false, handles: x.knobs ?? "knob", thickness: 18, castors: true } };
       return { ...base, cabinet: { doors: x.doors ?? (w > 50 ? 2 : 1), shelves: x.shelves ?? (h > 100 ? 2 : 1), rail: false, plinth: h > 100, handles: x.knobs ?? "knob", thickness: 18 } };
     case "sideboard":
       return { ...base, cabinet: { doors: 2, shelves: 1, rail: false, plinth: true, handles: x.knobs ?? "knob", thickness: 18 } };
     case "tv":
+      // x.rows: a TV bench full of drawers, side by side when it's wide
+      if (x.rows) return { ...base, archetype: "drawers", minutes: x.min ?? 30 + 20 * x.rows * (w >= 100 ? 2 : 1), difficulty: 3, drawers: { cols: w >= 100 ? 2 : 1, rows: x.rows, knobs: x.knobs ?? "none", plinth: false, thickness: 16, free: true } };
       return { ...base, cabinet: { doors: 2, shelves: 0, rail: false, plinth: false, handles: x.knobs ?? "knob", thickness: 16 } };
     case "shoe":
       return { ...base, cabinet: { fronts: "tilt", compartments: x.c ?? 2, doors: 0, shelves: 0, rail: false, plinth: false, handles: x.knobs ?? "knob", thickness: 16 } };
@@ -474,8 +536,27 @@ export function specFor(kind: Kind, name: string, variant: string, w: number, h:
       return { ...base, seat: { kind: "stool", seat: "round", seatH: h, splay: true, stretchers: h > 60 } };
     case "bench":
       return { ...base, seat: { kind: "bench", seat: "square", seatH: h, splay: false } };
+    case "airer":
+      // two end frames, rails between them and a wing each side
+      return { ...base, difficulty: 1, people: 1, shelf: { style: "airer" } };
+    case "riser":
+      // a top on two side panels, felt pads under them
+      return { ...base, difficulty: 1, people: 1, table: { attach: "screw", legs: "square", legSize: 20, topThickness: 18, shelf: false, riser: true } };
+    case "pouffe":
+      // a padded block on four legs
+      return { ...base, difficulty: 1, people: 1, sofa: { seats: 1, arms: "none", legs: "round", pouffe: true } };
+    case "chairbed":
+      // built like an armchair, and it folds out into a bed
+      return { ...base, people: 1, difficulty: 2, sofa: { seats: 1, arms: x.arms ?? "none", legs: "round", bed: true } };
     case "sofa":
     case "armchair":
+      // x.st: a side table module at the right-hand end, x.st cm wide
+      if (x.st) {
+        const seats = x.seats ?? (kind === "armchair" ? 1 : Math.max(1, Math.round((w - x.st - 30) / 62)));
+        return { ...base, minutes: x.min ?? MIN[kind] + 20 + (seats > 4 ? 30 : 0), people: 2, difficulty: seats > 4 ? 3 : 2, sofa: { seats, arms: x.arms ?? "wide", legs: "round", table: x.st } };
+      }
+      // x.foot: an armchair with its footstool
+      if (x.foot) return { ...base, minutes: x.min ?? MIN.armchair + 15, people: 1, sofa: { seats: x.seats ?? 1, arms: x.arms ?? "wide", legs: "round", foot: true } };
       return {
         ...base,
         people: kind === "sofa" ? 2 : 1,
@@ -492,8 +573,12 @@ export function specFor(kind: Kind, name: string, variant: string, w: number, h:
     case "kitchen":
       // x.z: a front of drawers and doors, drawn like the cabinets built around an appliance
       if (x.z) return fitted(kind, base, w, h, { use: "storage", ...x });
+      // x.up: a back panel standing up from the back of the top
+      if (x.up) return { ...base, minutes: x.min ?? MIN.kitchen + 10, cabinet: { doors: x.doors ?? (w > 50 ? 2 : 1), shelves: x.shelves ?? 1, rail: false, plinth: true, handles: x.knobs ?? "bar", thickness: 18, upstand: x.up } };
       return { ...base, cabinet: { doors: x.doors ?? (w > 50 ? 2 : 1), shelves: x.shelves ?? Math.max(1, Math.round(h / 45) - 1), rail: false, plinth: true, handles: x.knobs ?? "bar", thickness: 18 } };
     case "trolley":
+      // x.up: a kitchen island with a rack rising from the back of its top
+      if (x.up) return { ...base, minutes: x.min ?? MIN.trolley + 20, people: 2, difficulty: 2, table: { attach: "plate", legs: "round", legSize: 25, topThickness: 20, shelf: true, rack: x.up } };
       return { ...base, difficulty: 1, table: { attach: "plate", legs: "round", legSize: 25, topThickness: 20, shelf: true } };
     case "bar":
       return { ...base, people: 2, table: { attach: x.attach ?? "apron", legs: x.legs ?? "square", legSize: 50, topThickness: 25, shelf: false, ...round(x) } };
@@ -540,7 +625,7 @@ export function specFor(kind: Kind, name: string, variant: string, w: number, h:
     case "mixed": {
       // x.rows: drawers, under the doors unless x.dtop (a kitchen base cabinet); x.rail: a wardrobe
       const rows = x.rows ?? 1;
-      const category = x.rail ? "Wardrobe with drawers" : CATEGORY.mixed;
+      const category = x.rail ? "Wardrobe with drawers" : x.doors === 0 ? "Bookcase with drawer" : CATEGORY.mixed;
       const at = x.dtop ? { drawerAt: "top" as const } : {};
       return { ...base, category, minutes: x.min ?? MIN.mixed + 20 * rows + (h > 150 ? 30 : 0), people: h > 150 ? 2 : 1, difficulty: 3, cabinet: { doors: x.doors ?? (w > 50 ? 2 : 1), shelves: x.shelves ?? (h > 150 ? 2 : 1), rail: !!x.rail, plinth: x.plinth ?? (h > 100 || !!x.dtop), handles: x.knobs ?? (x.dtop ? "bar" : "knob"), thickness: 18, drawers: rows, ...at } };
     }
@@ -576,6 +661,32 @@ export function specFor(kind: Kind, name: string, variant: string, w: number, h:
         : { shape: "l", depth: x.sd ?? (hung ? 37 : 60), ...inner };
       const minutes = x.min ?? MIN.cornercab + (door ? 15 : 0) + (x.inner ? 15 : 0) + (x.rows ? 30 : 0) + 5 * (x.shelves ?? 0);
       return { ...base, category: hung ? "Corner wall cabinet" : CATEGORY.cornercab, minutes, people: w > 100 ? 2 : 1, difficulty: x.rows ? 3 : 2, cabinet: { doors: door ? 1 : 0, shelves: x.shelves ?? 0, rail: false, plinth: !hung, handles: x.knobs ?? "bar", thickness: 18, ...(hung ? { wall: true } : {}), corner } };
+    }
+    case "hatrack":
+      // a back rail with hooks, an end at each side and a shelf on top, hung on the wall
+      return { ...base, difficulty: 1, people: 1, shelf: { style: "hatrack" } };
+    case "coatstand":
+      // feet in a cross, a pole in sections, hooks around the top
+      return { ...base, difficulty: 1, people: h > 1500 ? 2 : 1, shelf: { style: "stand" } };
+    case "deskdraw":
+      // x.rows drawers side by side under the top; x.mirror: a dressing table's mirror on the back of the top
+      return { ...base, minutes: x.min ?? MIN.deskdraw + 20 * (x.rows ?? 2) + (x.mirror ? 15 : 0), people: w > 100 || x.mirror ? 2 : 1, difficulty: 2, table: { attach: "apron", legs: "square", legSize: 50, topThickness: 25, shelf: false, drawers: x.rows ?? 2, knobs: x.knobs ?? "knob", ...(x.mirror ? { mirror: 85 } : {}) } };
+    case "boxdesk":
+      // a low desk top between two storage frames, x.rows boxes in each, or shelves when x.shelf
+      return { ...base, minutes: x.min ?? MIN.boxdesk + 5 * (x.rows ?? 2), people: 1, difficulty: 1, table: { attach: "plate", legs: "square", legSize: 40, topThickness: 22, shelf: false, frame: 32, boxes: x.rows ?? 2, ...(x.shelf ? { shelvesIn: true } : {}) } };
+    case "extension":
+      // a short box that stands on top of a bookcase or wardrobe: open, or with doors (x.doors)
+      return { ...base, minutes: x.min ?? MIN.extension + (x.doors ? 15 : 0), people: 1, difficulty: x.doors ? 2 : 1, cabinet: { doors: x.doors ?? 0, shelves: 0, rail: false, plinth: false, handles: x.knobs ?? (x.doors ? "knob" : "none"), thickness: 16, onTop: x.doors ? "cabinet" : "bookcase" } };
+    case "shelfbench":
+      // a bench or stool with a shelf under the seat, built like a table: rails under the seat, legs, the shelf between them
+      return { ...base, difficulty: 2, people: w > 100 ? 2 : 1, table: { attach: w > 70 ? "apron" : "plate", legs: "square", legSize: 45, topThickness: 30, shelf: true, seat: true, inner: true } };
+    case "workbench":
+      // a sturdy table with a shelf low down between its legs
+      return { ...base, difficulty: 2, people: 2, table: { attach: "apron", legs: "square", legSize: 60, topThickness: 30, shelf: true, inner: true } };
+    case "lidbox": {
+      // a box with a lid on hinges: a storage bench, a storage table, a footstool or pouffe with a padded lid
+      const soft = /pouffe|footstool/i.test(x.cat ?? "");
+      return { ...base, minutes: x.min ?? MIN.lidbox + (w > 100 ? 15 : 0), people: w > 120 ? 2 : 1, difficulty: 2, cabinet: { doors: 0, shelves: 0, rail: false, plinth: false, handles: "none", thickness: 18, lid: soft ? { soft: true } : {} } };
     }
     case "cornerrobe": {
       // an L of wardrobe frames: x.u along the back wall, ending at its far end, x.v along the left-hand wall, ending at its
@@ -661,5 +772,5 @@ export const KIND_DEFAULT_SIZE: Record<Kind, [number, number, number]> = {
   sideboard: [140, 85, 45], tv: [150, 50, 42], shoe: [60, 100, 28], chair: [44, 88, 50], stool: [35, 45, 35], bench: [100, 45, 38],
   sofa: [210, 85, 92], armchair: [75, 90, 80], wallshelf: [60, 60, 22], wallcab: [60, 60, 35], kitchen: [60, 80, 60], trolley: [50, 80, 40],
   bar: [120, 105, 60], console: [100, 79, 35], kidstable: [77, 48, 55], kidschair: [34, 60, 34],
-  office: [64, 105, 64], chaise: [226, 85, 160], corner: [233, 85, 171], cot: [130, 84, 68], bunk: [211, 160, 100], loft: [211, 195, 100], dropleaf: [134, 75, 80], daybed: [207, 83, 91], mixed: [80, 120, 40], sliding: [118, 200, 60], slidecab: [80, 110, 45], bookrow: [160, 202, 28], cabrow: [240, 48, 42], section: [192, 83, 92], gateleg: [151, 75, 90], washstand: [60, 83, 47], sinkcab: [60, 80, 60], appliance: [60, 200, 60], shoerack: [80, 40, 32], clothesrack: [100, 160, 46], changing: [80, 100, 55], divider: [150, 170, 25], backbench: [120, 86, 60], junior: [43, 91, 52], lounge: [72, 88, 80], highchair: [58, 90, 62], cornercab: [88, 80, 88], cornerrobe: [161, 201, 111], usofa: [306, 83, 241], lounger: [66, 87, 195], swivel: [78, 98, 80], conference: [60, 86, 60], cornerdesk: [140, 74, 130], conftable: [140, 74, 68],
+  office: [64, 105, 64], chaise: [226, 85, 160], corner: [233, 85, 171], cot: [130, 84, 68], bunk: [211, 160, 100], loft: [211, 195, 100], dropleaf: [134, 75, 80], daybed: [207, 83, 91], mixed: [80, 120, 40], sliding: [118, 200, 60], slidecab: [80, 110, 45], bookrow: [160, 202, 28], cabrow: [240, 48, 42], section: [192, 83, 92], gateleg: [151, 75, 90], washstand: [60, 83, 47], sinkcab: [60, 80, 60], appliance: [60, 200, 60], shoerack: [80, 40, 32], clothesrack: [100, 160, 46], changing: [80, 100, 55], divider: [150, 170, 25], backbench: [120, 86, 60], junior: [43, 91, 52], lounge: [72, 88, 80], highchair: [58, 90, 62], cornercab: [88, 80, 88], cornerrobe: [161, 201, 111], usofa: [306, 83, 241], lounger: [66, 87, 195], swivel: [78, 98, 80], conference: [60, 86, 60], cornerdesk: [140, 74, 130], conftable: [140, 74, 68], lidbox: [100, 48, 42], shelfbench: [110, 46, 38], workbench: [110, 90, 55], extension: [80, 35, 28], deskdraw: [120, 75, 50], boxdesk: [124, 52, 44], hatrack: [80, 26, 32], coatstand: [45, 175, 45], pouffe: [45, 42, 45], chairbed: [80, 87, 98], airer: [140, 95, 55], riser: [40, 15, 26],
 };

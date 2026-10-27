@@ -3,12 +3,14 @@ import { HW, PlanBuilder, type FitOpts } from "./builder";
 import { FrameKit } from "./frame";
 import { clamp } from "./math";
 import { buildChanging } from "./changing";
+import { CASTOR_H, castorStep, liftOntoCastors } from "./castors";
+import { buildModular } from "./modular";
 
 export function defaultsDrawers(s: ProductSpec): DrawersParams {
   const p = s.drawers ?? {};
   return {
     cols: p.cols === 2 ? 2 : 1,
-    rows: clamp(Math.round(p.rows ?? 3), 1, 6),
+    rows: clamp(Math.round(p.rows ?? 3), 1, 10),
     knobs: p.knobs ?? "none",
     plinth: p.plinth ?? false,
     thickness: clamp(p.thickness ?? 16, 12, 24),
@@ -17,8 +19,11 @@ export function defaultsDrawers(s: ProductSpec): DrawersParams {
 
 export function buildDrawers(b: PlanBuilder, s: ProductSpec) {
   if (s.drawers?.changing) return buildChanging(b, s, buildDrawers);
+  if (s.drawers?.modules) return buildModular(b, s);
   const p = defaultsDrawers(s);
-  const W = s.size.w * 10, H = s.size.h * 10, D = s.size.d * 10;
+  // on castors: the carcass is built on the floor, then lifted onto them
+  const ch = s.drawers?.castors ? CASTOR_H : 0;
+  const W = s.size.w * 10, H = s.size.h * 10 - ch, D = s.size.d * 10;
   const t = p.thickness;
   const base = p.plinth ? 70 : 0;
   const f = new FrameKit(b, { W, H, D, t, base, plinth: p.plinth, fixed: [], back: true, pinRows: false, lying: false });
@@ -136,6 +141,7 @@ export function buildDrawers(b: PlanBuilder, s: ProductSpec) {
   f.cams();
   f.plinthStep();
   f.backSteps();
+  if (ch) castorStep(b, { bottom: f.bottom, W, D, y: base, big: H > 1000 });
   f.standUp();
 
   // build the first drawer in its own scene, front face down
@@ -269,6 +275,9 @@ export function buildDrawers(b: PlanBuilder, s: ProductSpec) {
     );
   }
 
+  // a drawer unit on castors rolls about: nothing to fix to the wall
+  if (ch) return liftOntoCastors(b);
+  if (s.drawers?.free) return;
   f.anchor(f.top, H);
   const last = b.steps[b.steps.length - 1];
   last.detail = "Chests of drawers can tip over if they're not fixed. Wall screws aren't included: pick ones made for your wall.";

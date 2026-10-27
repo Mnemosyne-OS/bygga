@@ -264,6 +264,13 @@ export function hwDrawable(kind: HwKind, len: number, dia: number) {
       for (const x of [-1, 1]) addSolid(d, `fh:leaf:${len}:${dia}`, () => new THREE.BoxGeometry(len / 2 - 3, 1.6, dia), metal, { position: [x * (len / 4 + 1.5), 0.8, 0] });
       addSolid(d, `fh:pin:${dia}`, () => new THREE.CylinderGeometry(3, 3, dia, 12).rotateX(Math.PI / 2), metal, { hull: "radial", position: [0, 2.2, 0] });
       break;
+    case "hook":
+      // a coat peg: a thread into the wood, a round plate against it, a stem, and a ball on the end
+      addSolid(d, "hk:thread", cyl(2.5, 12, 10), metal, { hull: "cyl", position: [0, -6, 0] });
+      addSolid(d, `hk:plate:${dia}`, cyl(r * 0.55, 3, 20), metal, { hull: "cyl", position: [0, 1.5, 0] });
+      addSolid(d, `hk:stem:${len}`, cyl(4, len - 12, 14), metal, { hull: "cyl", position: [0, 3 + (len - 12) / 2, 0] });
+      addSolid(d, `hk:ball:${dia}`, () => new THREE.SphereGeometry(r * 0.42, 18, 12), metal, { hull: "radial", position: [0, len - 6, 0], edges: false });
+      break;
     case "roller":
       // a sliding door's roller: a plate screwed to the door's edge, an arm, and a wheel that runs in the track
       addSolid(d, `ro:plate:${len}`, () => new THREE.BoxGeometry(len, 3, 14), metal, { position: [0, 1.5, 0] });

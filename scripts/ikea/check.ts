@@ -15,7 +15,7 @@ import { buildPlan } from "@/lib/plan";
 import { articleNo, articleSlug, ikeaType, loadArticles } from "@/lib/ikea";
 import { matchCatalog, searchCatalog } from "@/lib/search";
 import type { Plan } from "@/lib/types";
-import { classify, type Fact } from "./classify";
+import { classify, measure, type Fact } from "./classify";
 
 const DIR = import.meta.dirname;
 const problems: string[] = [];
@@ -132,7 +132,33 @@ async function main() {
   // a corner cabinet when asked for, without taking the family's wall cabinets
   expect("metod corner base cabinet", "metod-corner-base-cabinet-carousel-88-x-88");
   expect("metod wall cabinet", "metod-wall-cabinet-w-shelves-glass-door-30-x-80");
+  // a storage bench with a lid when asked for, the family's bench or table otherwise
+  expect("kallso storage bench", "kallso-storage-bench-80-x-38-x-56");
+  expect("kallso bench", "kallso-bench-shoe-storage-80-x-38-x-56");
+  expect("hol storage table", "hol-storage-table-98-x-50");
+  expect("hol", "hol-side-table-50-x-50");
+  // a work bench when asked for, the family's shelving otherwise
+  expect("bror work bench", "bror-work-bench-110-x-55");
+  expect("bror", "bror-shelving-unit-85-x-190");
+  // a height extension unit or a TV bench with drawers when asked for, the family's own otherwise
+  expect("billy height extension unit", "billy-height-extension-unit-40-x-28-x-35");
+  expect("besta tv bench with drawers", "besta-tv-bench-drawers-120-x-42-x-48");
+  expect("besta tv bench", "besta-tv-bench-120-x-40");
+  // a hat rack or a coat stand when asked for, the family's bench otherwise
+  expect("tjusig hat rack", "tjusig-hat-rack-79");
+  expect("nipasen coat stand", "nipasen-hat-and-coat-stand-181");
+  expect("nipasen", "nipasen-bench-shoe-storage-79-x-35-x-52");
+  // an armchair with its footstool when asked for, the armchair alone otherwise; a new piece after the family's sofa
+  expect("poang armchair and footstool", "poang-armchair-and-footstool");
+  expect("poang", "poang-armchair");
+  expect("viskafors", "viskafors-2-seat-sofa");
   if (articleNo("S292.975.72") !== "29297572") fail("article numbers with an S in front don't parse");
+  // the US range's measures, in inches with fractions, or in inches and cm, are read in cm
+  for (const [text, cm] of [['30 3/8x15 3/8 "', "77 × 39 cm"], ['55 1/8x18 7/8x29 1/2 "', "140 × 48 × 75 cm"], ['29 ½ "', "75 cm"], ['15 3/4 "/40 cm', "40 cm"], ["80x202 cm", "80 × 202 cm"]] as const)
+    if (measure(text)?.text !== cm) fail(`measure "${text}" gave ${measure(text)?.text}, expected ${cm}`);
+  // a US-only product comes after the family's UK pieces, and is found by its own words
+  expect("hemnes bed", "hemnes-bed-frame-160-x-200");
+  expect("sektion corner base cabinet", "sektion-corner-base-cabinet-carousel-96-5-x-61-x");
   for (const [no, slug] of [["60324520", "kallax-2x2"]] as const) {
     if (articleSlug(no) !== slug) fail(`article ${no} gave ${articleSlug(no)}, expected ${slug}`);
     for (const q of [no, `${no.slice(0, 3)}.${no.slice(3, 6)}.${no.slice(6)}`, `${no.slice(0, 3)} ${no.slice(3, 6)} ${no.slice(6)}`]) expect(q, slug);

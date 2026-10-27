@@ -299,6 +299,21 @@ function draw(kind: HwKind, len: number, dia: number): Drawn {
           </g>
         ),
       };
+    case "hook":
+      // lying down: the thread on the left, the plate, the stem and its ball
+      return {
+        w: len + 12,
+        h: dia,
+        scalable: true,
+        node: (
+          <g>
+            <rect x={0} y={-2.5} width={12} height={5} rx={1} fill={METAL} {...stroke} />
+            <rect x={12} y={-dia * 0.28} width={3} height={dia * 0.56} rx={1} fill={METAL} {...stroke} />
+            <rect x={15} y={-4} width={len - 18} height={8} rx={3} fill={METAL} {...stroke} />
+            <circle cx={len + 12 - dia * 0.42} cy={0} r={dia * 0.42} fill={METAL} {...stroke} />
+          </g>
+        ),
+      };
     case "connector":
       // a flat strip with a screw hole at each end
       return {

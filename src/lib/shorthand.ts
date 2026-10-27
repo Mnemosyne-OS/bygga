@@ -22,6 +22,10 @@ const SHORTHAND: [RegExp, string][] = [
   [/\bshlf\b/g, "shelf"],
   [/\bshlvs?\b/g, "shelves"],
   [/\bp-out\b/g, "pull-out"],
+  [/\bhght\b/g, "height"],
+  [/\bext ut\b/g, "extension unit"],
+  [/\bpnl\b/g, "panel"],
+  [/\bglss\b/g, "glass"],
 ];
 
 export function spellOut(t: string) {

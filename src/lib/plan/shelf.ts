@@ -5,6 +5,9 @@ import { clamp } from "./math";
 import { buildChanging } from "./changing";
 import { buildRack } from "./rack";
 import { buildScreen } from "./screen";
+import { CASTOR_H } from "./castors";
+import { buildCoatStand, buildHatRack } from "./stands";
+import { buildAirer } from "./airer";
 
 export function defaultsShelf(s: ProductSpec): ShelfParams {
   const p = s.shelf ?? {};
@@ -26,9 +29,121 @@ export function buildShelf(b: PlanBuilder, s: ProductSpec) {
   if (s.shelf?.changing) return buildChanging(b, s, buildShelf);
   if (s.shelf?.style === "rack") return buildRack(b, s);
   if (s.shelf?.style === "screen") return buildScreen(b, s);
+  if (s.shelf?.style === "hatrack") return buildHatRack(b, s);
+  if (s.shelf?.style === "stand") return buildCoatStand(b, s);
+  if (s.shelf?.style === "airer") return buildAirer(b, s);
   const p = defaultsShelf(s);
   if (p.style === "grid") return s.shelf?.underframe ? onUnderframe(b, s, p) : s.shelf?.inserts ? withInserts(b, s, p) : grid(b, s, p);
+  if (s.shelf?.rail) return withRail(b, s, p);
+  if (s.shelf?.boxUnder) return withBox(b, s, p);
   return bookcase(b, s, p);
+}
+
+/** Open shelving with a clothes rail (OMAR): a fixed shelf near the top with the rail under it, and one shelf low down. */
+function withRail(b: PlanBuilder, s: ProductSpec, p: ShelfParams) {
+  const W = s.size.w * 10, H = s.size.h * 10, D = s.size.d * 10;
+  const t = p.outer;
+  const lying = H > 1100;
+  const yTop = Math.round((H - Math.min(420, H * 0.22)) / 32) * 32;
+  const f = new FrameKit(b, { W, H, D, t, base: 0, plinth: false, fixed: [yTop], back: p.back, pinRows: false, lying, names: { fixed: "Top shelf" } });
+  const yLow = 320;
+  const shT = b.part("Shelf", [W - 2 * t - 3, t, D - 26]);
+  const low = b.place(shT, [0, yLow + 3 + t / 2, 11]);
+  for (const dy of [-64, 0, 64])
+    for (const [i, side] of f.sides.entries()) {
+      const xi = i === 0 ? -W / 2 + t : W / 2 - t;
+      for (const z of [D / 2 - 40, -D / 2 + 40]) b.hole(side, [xi, yLow + dy, z], [i === 0 ? 1 : -1, 0, 0], 2.5);
+    }
+  const two: 1 | 2 = H > 1500 ? 2 : 1;
+  f.prepSides();
+  f.join(lying ? 1 : two);
+  f.otherSide(lying ? 1 : two);
+  f.cams();
+  if (p.back) f.backSteps();
+  if (p.back || lying) f.standUp();
+  b.step(
+    {
+      title: "Add the shelf pins and the low shelf",
+      detail: "Near the bottom, for shoes or boxes. Use the same hole on all four corners.",
+      kind: "shelves",
+    },
+    () => {
+      const pins: FitOpts[] = [];
+      for (const [i, sd] of f.sides.entries()) {
+        const x = i === 0 ? -W / 2 + t : W / 2 - t;
+        for (const z of [D / 2 - 40, -D / 2 + 40]) pins.push({ on: sd, at: [x, yLow, z], dir: [i === 0 ? -1 : 1, 0, 0], hole: false });
+      }
+      b.fits(HW.pin, pins, 0.06);
+      b.then(0.2);
+      b.add(low, [0, 0, 420]);
+    },
+  );
+  const ry = yTop - t / 2 - 150; // low enough under the shelf to lift hangers on and off
+  const railT = b.part("Clothes rail", [24, W - 2 * t - 2, 24], { shape: "cyl", material: "metal" });
+  const rail = b.place(railT, [0, ry, 0], [0, 0, Math.PI / 2]);
+  b.step(
+    {
+      title: "Fit the clothes rail",
+      detail: "Screw the holders to the sides under the top shelf, then drop the rail in.",
+      tools: ["screwdriver"],
+      kind: "screws",
+    },
+    () => {
+      b.fits(
+        HW.screwS,
+        f.sides.map((sd, i) => ({ on: sd, at: [(i === 0 ? -1 : 1) * (W / 2 - t), ry, 0] as Vec3, dir: [i === 0 ? -1 : 1, 0, 0] as Vec3, hole: false })),
+        0.1,
+      );
+      b.then(0.1);
+      b.add(rail, [0, -180, 260]);
+    },
+  );
+  f.anchor();
+}
+
+/** Open shelving with its bottom shelf raised, and a storage box on castors that rolls in under it (IVAR). */
+function withBox(b: PlanBuilder, s: ProductSpec, p: ShelfParams) {
+  const W = s.size.w * 10, H = s.size.h * 10, D = s.size.d * 10;
+  const t = p.outer;
+  const U = clamp(s.shelf!.boxUnder! * 10, 150, 500);
+  const lying = H > 1100;
+  const f = new FrameKit(b, { W, H, D, t, base: U, plinth: false, fixed: p.fixedShelf ? [Math.round((U + H) / 2 / 32) * 32] : [], back: p.back, pinRows: p.shelves > 0, lying });
+  const two: 1 | 2 = H > 1500 ? 2 : 1;
+  f.prepSides();
+  f.join(lying ? 1 : two);
+  f.otherSide(lying ? 1 : two);
+  f.cams();
+  if (p.back) f.backSteps();
+  if (p.back || lying) f.standUp();
+  f.shelves(p.shelves);
+  const bw = W - 2 * t - 30, bh = U - CASTOR_H - 25, bd = D - 30;
+  const boxT = b.part("Storage box", [bw, bh, bd]);
+  const box = b.place(boxT, [0, CASTOR_H + bh / 2, 0]);
+  b.step(
+    {
+      title: "Fit the castors under the storage box",
+      detail: "Turn it upside down. Push a castor into each corner until it clicks.",
+      scene: "box",
+      kind: "legs",
+      warnings: ["floor"],
+    },
+    () => {
+      b.stage(box, [0, bh / 2, 0], [Math.PI, 0, 0], [0, 160, 0]);
+      b.then(0.1);
+      const list: FitOpts[] = [];
+      for (const x of [-bw / 2 + 45, bw / 2 - 45]) for (const z of [-bd / 2 + 45, bd / 2 - 45]) list.push({ on: box, at: [x, CASTOR_H, z], dir: [0, 1, 0], travel: 70, hole: false });
+      b.fits(HW.castor, list, 0.12);
+    },
+  );
+  b.step(
+    {
+      title: "Roll the storage box in under the bottom shelf",
+      detail: "It sits on its castors, clear of the floor, and pulls out from the front.",
+      kind: "general",
+    },
+    () => b.add(box, [0, 0, 480]),
+  );
+  if (H >= 900) f.anchor();
 }
 
 function bookcase(b: PlanBuilder, s: ProductSpec, p: ShelfParams) {
