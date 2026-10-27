@@ -1,5 +1,5 @@
 <p align="center">
-  <a href="https://www.usebygga.com"><img alt="Bygga" src="docs/img/banner.svg"></a>
+  <a href="https://www.usebygga.com"><img alt="Bygga" src="docs/img/og.png"></a>
 </p>
 
 <h1 align="center">Bygga</h1>
