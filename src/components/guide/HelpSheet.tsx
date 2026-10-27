@@ -76,6 +76,11 @@ export default function HelpSheet({
 }) {
   const kind = index >= 0 ? plan.steps[index].kind : "general";
   const faqs = faqFor(kind);
+  // keyboard and screen reader users land inside the sheet, not behind it
+  const sheet = useRef<HTMLElement>(null);
+  useEffect(() => {
+    sheet.current?.focus({ preventScroll: true });
+  }, []);
   const [open, setOpen] = useState<number | null>(focusMissing ? faqs.length - 2 : null);
   const [msgs, setMsgs] = useState<Msg[]>([]);
   const [q, setQ] = useState("");
@@ -158,8 +163,11 @@ export default function HelpSheet({
   return (
     <motion.div className="sheet-back" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} onClick={onClose}>
       <motion.aside
+        ref={sheet}
+        tabIndex={-1}
         className="side-sheet"
         role="dialog"
+        aria-modal="true"
         aria-label="Help"
         initial={{ x: 40, opacity: 0 }}
         animate={{ x: 0, opacity: 1 }}

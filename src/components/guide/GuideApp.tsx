@@ -619,9 +619,11 @@ function Guide({ plan, slug, via, ai, startStep }: { plan: Plan; slug: string; v
   }, [voiceOn, phase, step, steps.length, plan]);
 
   useEffect(() => {
-    const base = `${plan.spec.name} | Bygga`;
-    document.title = phase === "steps" ? `Step ${step + 1} of ${steps.length}, ${base}` : phase === "done" ? `Built: ${base}` : base;
-  }, [phase, step, steps.length, plan.spec.name]);
+    const s = plan.spec;
+    // the cover keeps the page's own title; steps and the end say where you are
+    document.title =
+      phase === "steps" ? `Step ${step + 1} of ${steps.length}, ${s.name} | Bygga` : phase === "done" ? `Built: ${s.name} | Bygga` : `${s.name} ${s.variant.toLowerCase()}: assembly step by step | Bygga`;
+  }, [phase, step, steps.length, plan.spec]);
 
   const mode: StageMode = useMemo(() => {
     if (phase === "cover") return introPlayed || resume ? { kind: "assembled", turntable: true, dims: true } : { kind: "intro", dims: true };

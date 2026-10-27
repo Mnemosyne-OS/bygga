@@ -2054,7 +2054,7 @@
 
 @media (max-width: 1080px) {
   .hero {
-    grid-template-columns: 1fr;
+    grid-template-columns: minmax(0, 1fr);
     gap: 34px;
     min-height: 0;
     padding: 18px 0 36px;
@@ -2291,6 +2291,12 @@
   .quick .chip {
     padding: 0 10px;
     font-size: 13.5px;
+  }
+}
+/* the smallest phones (320 px) can't fit five: let them wrap */
+@media (max-width: 350px) {
+  .quick {
+    flex-wrap: wrap;
   }
 }
 

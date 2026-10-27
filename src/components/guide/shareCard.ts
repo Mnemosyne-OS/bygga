@@ -83,7 +83,10 @@ export async function buildCard(plan: Plan, key: string, stat: string): Promise<
     ctx.strokeStyle = "#e8e6e0";
     ctx.stroke();
 
+    // multiply, so the drawing's own white sheet melts into the card instead of showing as a box
+    ctx.globalCompositeOperation = "multiply";
     ctx.drawImage(img, 90, 96, 900, 760);
+    ctx.globalCompositeOperation = "source-over";
 
     // the stamp: a yellow check, like a finished page in a manual
     ctx.fillStyle = "#ffd21f";

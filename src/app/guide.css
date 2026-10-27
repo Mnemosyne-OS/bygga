@@ -1973,6 +1973,10 @@ input[type="range"] {
   place-items: stretch end;
   padding: 12px;
 }
+/* focused on open so keyboards start inside it; the sheet itself needs no ring */
+.side-sheet:focus {
+  outline: none;
+}
 .side-sheet {
   width: min(460px, 100%);
   height: 100%;
@@ -2921,6 +2925,11 @@ input[type="range"] {
     border-radius: 0;
     box-shadow: none;
     break-after: page;
+    overflow: hidden;
+  }
+  /* the last sheet ends the document: no empty page after it */
+  .print-page:last-child {
+    break-after: auto;
   }
 }
 
