@@ -35,6 +35,7 @@ export default function SiteFooter() {
             <a href="https://www.together.ai" target="_blank" rel="noreferrer">
               Together AI <IArrowOut size={14} />
             </a>
+            <Link href="/privacy">Privacy and terms</Link>
           </div>
         </nav>
 

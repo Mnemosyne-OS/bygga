@@ -147,7 +147,7 @@ export default function CoverPanel({
               <b>{s.custom?.fromCover ? "Drawn from the cover" : "Made from your manual"}</b>
               <span>
                 {s.custom?.fromCover
-                  ? "Together AI only saw the cover, so this is a typical build for this product. Scan the inside pages for an exact match."
+                  ? `Together AI only saw the cover, so this is a typical build for this product.${SCAN_ENABLED ? " Scan the inside pages for an exact match." : " Keep the paper manual close."}`
                   : "Together AI read your pages and drew each step. Check every step against the paper manual before you fix anything."}
               </span>
               {s.custom?.fromCover && SCAN_ENABLED && (
@@ -175,13 +175,14 @@ export default function CoverPanel({
         <div className="cover-links">
           {via !== "scan" && (
             <a className="official" href={official} target="_blank" rel="noreferrer">
-              Official manual on ikea.com <IExternal size={15} />
+              Find the manual on ikea.com <IExternal size={15} />
             </a>
           )}
           <Link className="official" href={`/build/${s.slug}/print`}>
             <IPrint size={15} /> Print this guide
           </Link>
         </div>
+        <p className="cover-note">Not affiliated with IKEA. Check each step against the paper manual in the box.</p>
       </div>
       <div className="pane-foot">
         {resumable ? (
@@ -244,7 +245,6 @@ function chipLabels(labels: string[]) {
   });
 }
 
-/** IKEA's shorthand in its type names, as words. */
 
 /** IKEA's shorthand spelled out, first letter up. */
 function tidy(t: string) {

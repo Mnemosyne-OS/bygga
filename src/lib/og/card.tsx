@@ -61,11 +61,15 @@ function Logo() {
   );
 }
 
+/** The stamp, and the line that travels with every card: these guides are not IKEA's. */
 function Powered() {
   return (
-    <div style={{ display: "flex", alignItems: "center", gap: 11, fontSize: 20, color: INK_2 }}>
-      <span>Powered by</span>
-      <TogetherStamp height={25} color={INK} />
+    <div style={{ display: "flex", flexDirection: "column", gap: 8, marginTop: 20 }}>
+      <div style={{ display: "flex", alignItems: "center", gap: 11, fontSize: 20, color: INK_2 }}>
+        <span>Powered by</span>
+        <TogetherStamp height={25} color={INK} />
+      </div>
+      <span style={{ fontSize: 15, color: "#8a877f" }}>Unofficial guide. Not affiliated with IKEA.</span>
     </div>
   );
 }
@@ -133,7 +137,7 @@ function nameSize(name: string) {
   const lines = name.includes(" / ") ? name.split(" / ").map((l, i, a) => (i < a.length - 1 ? l + " /" : l)) : name.split(/\s+/);
   const em = Math.max(...lines.map((l) => [...l.toUpperCase()].reduce((a, c) => a + (WIDE[c] ?? 0.64), 0)));
   // two lines of name leave room for the rest of the column
-  return Math.max(56, Math.min(lines.length > 1 ? 88 : 118, Math.floor(NAME_W / em)));
+  return Math.max(56, Math.min(lines.length > 1 ? 80 : 118, Math.floor(NAME_W / em)));
 }
 
 export async function guideCard(o: { name: string; variant: string; steps: number | null; art: string | null }) {
@@ -147,7 +151,7 @@ export async function guideCard(o: { name: string; variant: string; steps: numbe
           <span style={{ fontSize: 24, fontWeight: 700, color: INK_2 }}>Assembly guide</span>
           <span style={{ display: "flex", flexWrap: "wrap", fontFamily: "Display", fontWeight: 800, fontSize: size, lineHeight: 1.04, letterSpacing: "-0.045em", marginTop: 10 }}>{o.name}</span>
           <span style={{ fontSize: 30, fontWeight: 500, color: INK_2, marginTop: 16, lineHeight: 1.25, maxWidth: 420 }}>{variant}</span>
-          <div style={{ display: "flex", marginTop: 30 }}>
+          <div style={{ display: "flex", marginTop: 26 }}>
             <span style={{ display: "flex", fontSize: 26, fontWeight: 700 }}>
               <Marked size={26}>{o.steps ? `${o.steps} steps, in 3D` : "Every step, in 3D"}</Marked>
             </span>

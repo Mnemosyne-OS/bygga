@@ -1063,6 +1063,12 @@
   flex-wrap: wrap;
   gap: 0 22px;
 }
+.cover-note {
+  margin: 14px 0 0;
+  font-size: 12.5px;
+  line-height: 1.45;
+  color: var(--ink-3);
+}
 
 /* ================= tools ================= */
 

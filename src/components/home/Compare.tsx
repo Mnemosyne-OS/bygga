@@ -84,12 +84,12 @@ export default function Compare() {
         <h2 className="sec-title" id="compare-title">
           The paper manual, explained
         </h2>
-        <p className="cmp-sub">One step from the KALLAX booklet, next to the same step on Bygga.</p>
+        <p className="cmp-sub">A KALLAX step redrawn in the style of the paper booklet, next to the same step on Bygga.</p>
       </div>
 
       <div className="cmp-pair" style={{ gridTemplateColumns: `${VB.paper.w}fr ${VB.bygga.w}fr` }}>
         <figure className="cmp-card paper">
-          <figcaption className="cmp-tag paper">In the box</figcaption>
+          <figcaption className="cmp-tag paper">Booklet style</figcaption>
           <div className="cmp-art" style={{ aspectRatio: `${VB.paper.w} / ${VB.paper.h}` }}>
             <svg viewBox={`${VB.paper.x} ${VB.paper.y} ${VB.paper.w} ${VB.paper.h}`} aria-hidden="true">
               <PaperPage vb={VB.paper} />
