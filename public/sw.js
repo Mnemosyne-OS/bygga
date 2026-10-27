@@ -22,6 +22,66 @@ self.addEventListener("activate", (e) => {
   );
 });
 
+/** A byte range of a clip, cut from the whole clip in the cache (fetched and kept first when missing). */
+async function ranged(req) {
+  let res = await caches.match(req.url);
+  if (!res) {
+    try {
+      const full = await fetch(req.url);
+      if (full.ok) {
+        await (await caches.open(FILES)).put(req.url, full.clone());
+        res = full;
+      }
+    } catch {
+      /* offline and never heard: let the request fail below */
+    }
+  }
+  if (!res) return fetch(req);
+  const buf = await res.arrayBuffer();
+  const m = /bytes=(\d*)-(\d*)/.exec(req.headers.get("range") || "");
+  const start = m && m[1] ? Number(m[1]) : 0;
+  const end = m && m[2] ? Math.min(Number(m[2]), buf.byteLength - 1) : buf.byteLength - 1;
+  return new Response(buf.slice(start, end + 1), {
+    status: 206,
+    headers: {
+      "Content-Type": res.headers.get("Content-Type") || "audio/mpeg",
+      "Content-Range": `bytes ${start}-${end}/${buf.byteLength}`,
+      "Content-Length": String(end - start + 1),
+      "Accept-Ranges": "bytes",
+    },
+  });
+}
+
+// the page that registered the worker loaded before it was in charge, and pages reached in the app never
+// load as a page at all: the app names them here, so they are kept like any other visit
+self.addEventListener("message", (e) => {
+  const d = e.data;
+  if (!d || d.type !== "keep") return;
+  const same = (u) => {
+    try {
+      return new URL(u, location.origin).origin === location.origin;
+    } catch {
+      return false;
+    }
+  };
+  e.waitUntil(
+    Promise.all([
+      d.page && same(d.page)
+        ? fetch(d.page, { credentials: "same-origin" })
+            .then((res) => res.ok && caches.open(PAGES).then((c) => c.put(d.page, res).then(() => trim(PAGES, 40))))
+            .catch(() => {})
+        : null,
+      caches.open(FILES).then((c) =>
+        Promise.all(
+          (d.files || [])
+            .filter((u) => same(u) && /\/_next\/static\/|\.(woff2?|png|svg)$/.test(new URL(u, location.origin).pathname))
+            .map((u) => c.match(u).then((hit) => hit || c.add(u).catch(() => {}))),
+        ),
+      ),
+    ]),
+  );
+});
+
 async function trim(name, max) {
   const c = await caches.open(name);
   const keys = await c.keys();
@@ -33,8 +93,11 @@ self.addEventListener("fetch", (e) => {
   if (req.method !== "GET") return;
   const url = new URL(req.url);
   if (url.origin !== location.origin || url.pathname.startsWith("/api/") || url.pathname.startsWith("/dev/")) return;
-  // media elements ask for byte ranges: let the network answer those
-  if (req.headers.has("range")) return;
+  // audio asks for byte ranges: voice clips answer them from the cache, so the voice works offline too
+  if (req.headers.has("range")) {
+    if (url.pathname.startsWith("/voice/")) e.respondWith(ranged(req));
+    return;
+  }
 
   if (req.mode === "navigate") {
     e.respondWith(
