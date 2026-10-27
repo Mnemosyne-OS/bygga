@@ -61,6 +61,8 @@ baggebo-sideboard-78-x-92|40553616
 barslov-3-seat-sofa-bed|90541584 40541591
 barslov-3-seat-sofa-bed-chaise-longue|30541596 10541578
 bastboll-gaming-chair|50586254
+batskar-add-on-unit-shelves-120-x-70|70553399
+batskar-closed-kitchen-unit-120-x-60|90623240
 bekant-storage-unit-on-castors-41-x-101|20591370 60591373
 bekvam-kitchen-trolley-58-x-50|70240351
 bekvam-step-stool|70569545 10225589 40178888 40463852
@@ -145,6 +147,7 @@ bjorksnas-chest-5-drawers-90-x-47-x-90|70407299
 bladdra-mini-chest-3-drawers-33-x-38|10417055
 blaliden-glass-door-cabinet-35-x-32-x-151|00501243 00520519
 blames-highchair-tray|50165079
+blankhallan-bedside-table|50620998 70620997
 blastasen-bedside-table-50-x-37-x-76|70617570 00595067
 bleckberget-swivel-chair|70564331 40573271
 boastad-high-cabinet-41-x-32-x-185|50507006
@@ -227,7 +230,7 @@ eket-cabinet|69602131 69336359 79533019 59336374 49602132 29602133 19336371 9034
 eket-cabinet-2-drawers-35-x-35-x-35|30428920 20574592 30428915
 eket-cabinet-2-drawers-70-x-35-x-35|00333947 80574594 80344923
 eket-cabinet-35-x-25-x-35|70332124 40595522 30530574 40334558 90428842 50595526 00595524
-eket-cabinet-combination-70-x-70|60333954 10574583 00334536 89435221 69435222
+eket-cabinet-combination-70-x-70|60333954 10574583 00334536 89285820 09581184 19285833 89435221 69435222
 eket-media-shelf-70-x-35-x-35|00576479 90582027 30582025
 eket-wall-cabinet-glass-door-35-x-25-x-35|89602125 29336356 29533012 99336353 69602126 49602127 49336341
 eket-wall-cb-2-doors-70-x-35-x-70|49581182
@@ -415,6 +418,7 @@ hauga-bedside-table-40-x-36|00488963
 hauga-cabinet-2-doors-70-x-116|00415052 40415050
 hauga-chair|10576718 30576717
 hauga-chest-3-drawers|20581521 80581518
+hauga-chest-3-drawers-shelf-70-x-46-x-116|50581529 30581525
 hauga-chest-6-drawers|00581536 70581533
 hauga-drop-leaf-table-55-82-109-x-74|20586000 80586002
 hauga-glass-door-cabinet-105-x-116|80415048 30415055
@@ -536,6 +540,15 @@ ikea-ps-lomsk-children-s-swivel-armchair|30609237
 ingolf-junior-chair|60353838
 invallning-trolley-68-x-39|10569398
 ismantorp-armchair|60598218 10598225
+ivar-2-sections-shelves-134-x-30-x-179|99590612
+ivar-2-sections-shelves-134-x-50-x-179|49407055 19403935
+ivar-2-sections-shelves-134-x-50-x-226|29407056
+ivar-2-sections-shelves-174-x-30-x-124|99403936
+ivar-2-sections-shelves-174-x-50-x-124|09407057
+ivar-2-sections-shelves-174-x-50-x-226|89407058
+ivar-3-sections-shelves-219-x-30-x-226|89403946
+ivar-3-sections-shelves-259-x-30-x-179|49407258 69403947
+ivar-3-sections-shelves-259-x-50-x-226|69407064 49403948
 ivar-box-shelf-divider-83-x-30-x-25|20596382
 ivar-cabinet-doors-160-x-30-x-83|89508118 99508108
 ivar-cabinet-doors-80-x-83|50531252 00531240 40033763 70033766
@@ -543,7 +556,7 @@ ivar-cabinet-doors-89-x-30-x-124|69508162 49508158
 ivar-cabinet-sliding-doors-80-x-30-x-60|00494394
 ivar-shelving-unit-80-x-30-x-166|69562823
 ivar-shelving-unit-80-x-30-x-83|00522330
-ivar-shelving-unit-89-x-179|49590577 99572571
+ivar-shelving-unit-89-x-179|49590577 99572571 29403845 79407054 89590599
 ivar-shelving-unit-89-x-30-x-124|69590576 89404583
 ivar-shelving-unit-89-x-30-x-226|29590578
 ivar-shelving-unit-89-x-50-x-179|39407070 89404578
@@ -739,6 +752,7 @@ lastare-height-extension-unit-doors-80-x-42-x-36|30596490 90596487 70596488 3059
 lastare-table-100-x-42-x-74|20615837
 lastare-wall-mounted-frame-doors-60-x-32-x-60|60616255
 ledamot-cabinet-150-x-42-x-75|40544740
+lennart-drawer-unit|30326177
 lillanas-bar-stool-63|80534796
 lillanas-chair|50534769 30534765 10534766
 lillberget-chest-3-drawers-70-x-43-x-68|80630477
@@ -1549,6 +1563,7 @@ tossberg-malskar-swivel-chair|59508228 69508223 09508235 89508203 69508242 59508
 tranered-coffee-table-90-x-90|10608998
 tranno-stool|50546381
 travsport-desk-sit-stand-120-x-70|59620951
+treasjon-mirror-cab-2-door-built-in-lighting-80|50573906
 trofast-desk-mesh-storage-boxes-124-x-44-x-52|69613912 29613933
 trofast-desk-mesh-storage-boxes-trays-124-x-44-x|89613930
 trofast-desk-shelves-124-x-44-x-52|59613936

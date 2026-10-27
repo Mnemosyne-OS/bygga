@@ -59,6 +59,8 @@ BAGGEBO|sideboard|Sideboard, 78 × 92 cm|78|92|45
 BÅRSLÖV|chaise|3-seat sofa-bed with chaise longue|226|85|160|seats=3,arms=wide,chaise=right,sd=92
 BÅRSLÖV|sofa|3-seat sofa-bed|230|85|92|seats=3
 BÄSTBOLL|office|Gaming chair|64|128|64|arms=slim,seatH=50
+BÅTSKÄR|kitchen|Closed kitchen unit, 120 × 60 cm|120|90|60|doors=2,cat=Outdoor kitchen unit|outdoor garden
+BÅTSKÄR|kitchen|Add-on unit with shelves, 120 × 70 cm|120|90|70|doors=0,shelves=1,cat=Outdoor kitchen unit|outdoor garden
 BEKANT|cabinet|Storage unit on castors, 41 × 101 cm|41|101|40|doors=0,shelves=2,cat=Storage unit on castors,cast=1
 BEKVÄM|stool|Step stool, 63 cm|35|63|35
 BEKVÄM|trolley|Kitchen trolley, 58 × 50 cm|58|80|50
@@ -133,6 +135,7 @@ BJÖRKSNÄS|nightstand|Bedside table, 48 × 38 cm|48|55|38|rows=1
 BLÄDDRA|chest|Mini chest with 3 drawers, 33 × 38 cm|33|38|20|rows=3,min=35
 BLÅLIDEN|cabinet|Glass-door cabinet, 35 × 32 × 151 cm|35|151|32
 BLÅMES|highchair|Highchair with tray|58|90|62
+BLANKHÄLLAN|nightstand|Bedside table|45|55|38|rows=1
 BLÄSTÅSEN|nightstand|Bedside table, 50 × 37 × 76 cm|50|76|37|rows=2
 BLECKBERGET|office|Swivel chair|60|105|64|arms=none
 BOASTAD|cabinet|High cabinet, 41 × 32 × 185 cm|41|185|32
@@ -392,6 +395,7 @@ HAUGA|cabinet|Glass-door cabinet, 105 × 116 cm|105|116|40|knobs=bar
 HAUGA|chair|Chair|44|88|50
 HAUGA|dining|Table, 118 × 74 cm|118|74|74
 HAUGA|dropleaf|Drop-leaf table, 55/82/109 × 74 cm|109|75|74|leaves=2,leaf=27
+HAUGA|mixed|Chest of 3 drawers with shelf, 70 × 46 × 116 cm|70|116|46|rows=3,knobs=bar,doors=0,shelves=1,cat=Chest of drawers
 HAUGA|nightstand|Bedside table, 40 × 36 cm|40|55|36|rows=1,knobs=bar
 HAUGA|sideboard|Sideboard, 140 × 46 × 84 cm|140|84|46|knobs=bar
 HAUGA|sliding|Wardrobe with sliding doors, 118 × 55 × 199 cm|118|199|55|slides=2
@@ -496,6 +500,15 @@ IKEA PS LÖMSK|swivel|Children's swivel armchair|59|70|64|arms=none,seatH=30|kid
 INGOLF|junior|Junior chair|43|91|52||kids children
 INVALLNING|trolley|Trolley, 68 × 39 cm|68|80|39
 ISMANTORP|armchair|Armchair|75|90|80
+IVAR|bookrow|2 sections/shelves, 134 × 30 × 179 cm|134|179|30|of=open,u=89+48,cat=Shelving combination
+IVAR|bookrow|2 sections/shelves, 134 × 50 × 179 cm|134|179|50|of=open,u=89+48,cat=Shelving combination
+IVAR|bookrow|2 sections/shelves, 134 × 50 × 226 cm|134|226|50|of=open,u=89+48,cat=Shelving combination
+IVAR|bookrow|2 sections/shelves, 174 × 30 × 124 cm|174|124|30|of=open,u=89+89,cat=Shelving combination
+IVAR|bookrow|2 sections/shelves, 174 × 50 × 124 cm|174|124|50|of=open,u=89+89,cat=Shelving combination
+IVAR|bookrow|2 sections/shelves, 174 × 50 × 226 cm|174|226|50|of=open,u=89+89,cat=Shelving combination
+IVAR|bookrow|3 sections/shelves, 219 × 30 × 226 cm|219|226|30|of=open,u=89+89+48,cat=Shelving combination
+IVAR|bookrow|3 sections/shelves, 259 × 30 × 179 cm|259|179|30|of=open,u=89+89+89,cat=Shelving combination
+IVAR|bookrow|3 sections/shelves, 259 × 50 × 226 cm|259|226|50|of=open,u=89+89+89,cat=Shelving combination
 IVAR|cabinet|Cabinet with doors, 89 × 30 × 124 cm|89|124|30
 IVAR|cabinet|Shelving unit with doors, 89 × 30 × 124 cm|89|124|30
 IVAR|cabinet|Shelving unit with doors, 89 × 30 × 179 cm|89|179|30
@@ -678,6 +691,7 @@ LASTARE|dining|Table, 100 × 42 × 74 cm|100|74|42
 LASTARE|extension|Height extension unit with doors, 80 × 42 × 36 cm|80|36|42|doors=2
 LASTARE|wallcab|Wall mounted frame with doors, 60 × 32 × 60 cm|60|60|32
 LEDAMOT|cabinet|Cabinet, 150 × 42 × 75 cm|150|75|42
+LENNART|chest|Drawer unit|30|56|34|rows=4
 LILLÅNÄS|chair|Chair|44|88|50
 LILLÅNÄS|stool|Bar stool, 63 cm|35|63|35
 LILLBERGET|chest|Chest of 3 drawers, 70 × 43 × 68 cm|70|68|43|rows=3
@@ -1465,6 +1479,7 @@ TOSSBERG / MALSKÄR|office|Swivel chair|60|105|64|arms=none
 TRANERED|coffee|Coffee table, 90 × 90 cm|90|45|90
 TRÄNNÖ|stool|Stool|35|45|35
 TRAVSPORT|desk|Desk sit/stand, 120 × 70 cm|120|74|70
+TREASJÖN|wallcab|Mirror cab 2 door/built-in lighting, 80 × 17 × 75 cm|80|75|17|doors=2,cat=Wall cabinet
 TROFAST|boxdesk|Desk with mesh storage boxes, 124 × 44 × 52 cm|124|52|44|rows=2|kids children
 TROFAST|boxdesk|Desk with mesh storage boxes/trays, 124 × 44 × 52 cm|124|52|44|rows=2|kids children
 TROFAST|boxdesk|Desk with shelves, 124 × 44 × 52 cm|124|52|44|rows=2,shelf=1|kids children
