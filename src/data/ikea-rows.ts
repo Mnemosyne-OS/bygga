@@ -12,6 +12,7 @@ ALEX|desk|Desk, 100 × 48 cm|100|74|48
 ALEX|desk|Desk, 132 × 58 cm|132|74|58
 ALEX|open|Storage unit, 36 × 70 cm|36|70|35
 ÄLGANÄS|clothesrack|Clothes rack with shoe storage, 46 × 39 × 166 cm|46|166|39|shelf=1
+ÄLGANÄS|coatstand|Hat and coat stand, 173 × 33 cm|33|173|33
 ÄLGANÄS|shoerack|Shoe rack, 76 × 24 × 59 cm|76|59|24
 ÅLHULT|bench|Bench, 103 × 36 cm|103|45|36
 ÅLHULT|chair|Chair|44|88|50
@@ -146,6 +147,7 @@ BONDHOLMEN|dining|Table, outdoor, 235 × 90 cm|235|74|90||outdoor garden
 BONDHOLMEN|lounge|Reclining chair, outdoor|66|102|84||outdoor garden
 BONDHOLMEN|sofa|2-seat sofa, outdoor, 139 × 81 × 73 cm|139|73|81|seats=2|outdoor garden
 BONDHOLMEN|sofa|2-seat sofa, outdoor|170|85|92|seats=2|outdoor garden
+BONDSKÄRET|coatstand|Hat and coat stand, 175 cm|45|175|45
 BORGEBY|coffee|Coffee table, 70 cm|70|45|70|round=1
 BORGEBY|side|Side table, 46 cm|46|50|46|round=1
 BRÄNNBOLL|side|Side table on castors, 69 × 39 cm|69|50|39
@@ -210,6 +212,7 @@ EKHOLMA|corner|Corner sofa, 4-seat with open end|237|85|156|seats=4,arms=wide,co
 EKHOLMA|sofa|2-seat sofa|170|85|92|seats=2
 EKHOLMA|sofa|2-seat sofa-bed|170|85|92|seats=2
 EKHOLMA|sofa|3-seat sofa|230|85|92|seats=3
+EKRAR|coatstand|Hat and coat stand, 169 cm|45|169|45
 EKTORP|armchair|Armchair|75|90|80
 EKTORP|chaise|3-seat sofa with chaise longue|218|88|156|seats=3,arms=wide,chaise=right,sd=88
 EKTORP|corner|Corner sofa, 4-seat|228|88|166|seats=4,arms=wide,corner=left,sd=88
@@ -321,6 +324,7 @@ GRÅFJÄLLET|divider|Room divider, 150 × 175 cm|150|175|25
 GRÅFJÄLLET|nightstand|Bedside table, 45 × 36 × 59 cm|45|59|36|rows=1
 GRÅFJÄLLET|wallshelf|Wall-mounted bedside table, 42 × 29 × 31 cm|42|31|29
 GREÅKER|chest|Cabinet with drawers, 84 × 101 cm|84|101|48|rows=4
+GREJSIMOJS|coatstand|Clothes stand, 125 cm|45|125|45
 GREJSIMOJS|kidstable|Children's table, 84 × 42 cm|84|48|42||kids
 GREJSIMOJS|lidbox|Pouffe with storage|38|38|38|cat=Pouffe with storage
 GREJSIMOJS|stool|Children's stool|35|30|35||kids
@@ -547,6 +551,7 @@ KALLAX|cube|Shelving unit with 10 inserts, 182 × 182 cm|182|182|39|ins=10
 KALLAX|cube|Shelving unit, 182 × 182 cm|182|182|39
 KALLAX|desk|Desk, 111 × 39 cm|111|74|39
 KALLSÖ|bench|Bench with shoe storage, 80 × 38 × 56 cm|80|56|38
+KALLSÖ|hatrack|Hat rack, 80 cm|80|26|32
 KALLSÖ|lidbox|Storage bench, 80 × 38 × 56 cm|80|56|38
 KARSKÄR|chair|Chair|44|88|50
 KARSKÄR|dining|Extendable table, 160/220 × 90 cm|160|74|90
@@ -936,6 +941,7 @@ NÄSINGE|dining|Table, 130 × 80 cm|130|74|80
 NEIDEN|bed|Bed frame, Standard Single, 90 × 190 cm|106|72|199|m=90,l=190,f=46
 NEIDEN|bed|Bed frame, Standard Double, 135 × 190 cm|151|72|199|m=135,l=190,f=46
 NIPÅSEN|bench|Bench with shoe storage, 79 × 35 × 52 cm|79|52|35
+NIPÅSEN|coatstand|Hat and coat stand, 181 cm|45|181|45
 NISSAFORS|trolley|Trolley, 50.5 × 19 × 67 cm|51|67|19
 NISSAFORS|trolley|Trolley, 50.5 × 30 × 83 cm|51|83|30
 NORDKISA|desk|Dressing table, 76 × 47 cm|76|74|47
@@ -1363,6 +1369,7 @@ TEGELÖN|dining|Table, outdoor, 216 × 86 cm|216|74|86||outdoor garden
 TINGBY|side|Side table on castors, 50 × 50 cm|50|50|50
 TJÄRKIL|dining|Extendable table, 180/235/290 × 100 cm|180|74|100
 TJUSIG|bench|Bench with shoe storage, 108 × 34 × 50 cm|108|50|34
+TJUSIG|hatrack|Hat rack, 79 cm|79|26|32
 TJUSIG|shoerack|Shoe rack, 79 × 32 × 37 cm|79|37|32
 TOBIAS|chair|Chair|44|88|50
 TOLKNING|divider|Room divider, 150 × 170 cm|150|170|25

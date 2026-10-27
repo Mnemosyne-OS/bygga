@@ -273,6 +273,8 @@ const RULES: Rule[] = [
     if (/drawer/.test(what)) x.rows = 1;
     return { kind: "cornercab", x };
   }],
+  // a hat and coat stand is one piece, whatever its name says
+  [/^(hat and coat stand|clothes stand|coat stand)$/, () => ({ kind: "coatstand" })],
   // things that are several products, or only part of one
   // an armchair that rocks as it swivels is one chair, whatever its name says
   [/^rocking and swivel armchair$/, () => ({ kind: "swivel", x: { rock: true } })],
@@ -481,6 +483,8 @@ const RULES: Rule[] = [
     c.f.name === "KALLAX" ? "cube shelf with door inserts" : { kind: "tv", x: m[0] === "tv bench" && /^(BESTÅ|LACK)$/.test(c.f.name) ? { doors: 0 } : {} }],
   [/^(shoe rack|open shoe storage unit)$/, () => ({ kind: "shoerack" })],
   [/^room divider$/, () => ({ kind: "divider" })],
+  // a hat rack on the wall: a shelf over a row of hooks (IKEA gives only the width)
+  [/^hat rack$/, () => ({ kind: "hatrack" })],
   // changing tables: a chest of drawers or an open frame with shelves, and a changing top on it
   [/^changing table(?: with drawers|\/chest of drawers|\/bookshelf|\/desk)?$/, (m, c) =>
     c.f.spr ? "changing table sold as a combination" : { kind: "changing", x: /drawers/.test(m[0]) ? { rows: 3 } : { shelves: /desk/.test(m[0]) ? 1 : 2 } }],
@@ -764,6 +768,15 @@ export function classify(f: Fact, hints: Hints): Verdict {
     else set(v[0], 80, v[1]);
     guessed.h = v.length === 2 && !x.hung && !CORNER_WH[family];
     if (hint?.x.knobs) x.knobs = hint.x.knobs;
+  } else if (kind === "hatrack") {
+    // IKEA gives the width, sometimes the depth and height
+    if (v.length === 3) set(v[0], v[2], v[1]);
+    else if (v.length >= 1) set(v[0]);
+  } else if (kind === "coatstand") {
+    // IKEA gives the height, sometimes the width of the feet after it
+    if (v.length === 1) set(undefined, v[0]);
+    else if (v.length === 2) set(v[1], v[0], v[1]);
+    if (kids && guessed.w) [w, d] = [38, 38];
   } else if (kind === "deskdraw" || kind === "boxdesk") {
     // measured from above, or wide by deep by high; a dressing table's height takes in its mirror
     if (v.length === 3) set(v[0], v[2], v[1]);

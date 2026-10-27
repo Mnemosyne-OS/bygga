@@ -13,6 +13,7 @@ alex-drawer-unit-on-castors-36-x-76|59422220 69582680 39422221 29628029
 alex-drawer-unit-on-castors-67-x-66|80485423 50473544 20588891
 alex-storage-unit-36-x-70|50563752 70588898 50563790
 alganas-clothes-rack-shoe-storage-46-x-39-x-166|10585888
+alganas-hat-and-coat-stand-173-x-33|90585894
 alganas-shoe-rack-76-x-24-x-59|20585883
 alhult-bench-103-x-36|60603093 40603094
 alhult-chair|50600801 40600774
@@ -158,6 +159,7 @@ bondholmen-bench-backrest-outdoor|50558166
 bondholmen-chair-armrests-outdoor|10558173
 bondholmen-reclining-chair-outdoor|80558179
 bondholmen-table-outdoor-235-x-90|20558196
+bondskaret-hat-and-coat-stand-175|40554381
 borgeby-coffee-table-70|70389356 30500355
 borgeby-side-table-46|40619882 80619880
 brannboll-side-table-on-castors-69-x-39|00586360
@@ -231,6 +233,7 @@ ekholma-2-seat-sofa|79537404 69537409 99537403 19537398
 ekholma-2-seat-sofa-bed|19598565
 ekholma-3-seat-sofa|19537416 89537413 09537412 59537419
 ekholma-corner-sofa-4-seat-open-end|09563076 59563074 29563075 79563073
+ekrar-hat-and-coat-stand-169|10415594
 ektorp-2-seat-sofa|59620729 49628684 09628681 09509027 99509018 59509015 89628677
 ektorp-3-seat-sofa|59619759 29509012 89509009 19509003 79509000 59628706 99628709
 ektorp-3-seat-sofa-chaise-longue|29628736 59628730 99628733 99509042 89509033 49509030 19509036
@@ -347,6 +350,7 @@ grafjallet-wall-mounted-bedside-table-42-x-29-x|00603114
 greaker-cabinet-drawers-84-x-101|50501071
 grejsimojs-children-s-stool|60598973 50598959
 grejsimojs-children-s-table-84-x-42|70598963
+grejsimojs-clothes-stand-125|10602996
 grejsimojs-pouffe-storage|60603644
 grillskar-side-table-outdoor-30-x-61|00523179
 gronfjall-office-chair-arm-headrest|89513921
@@ -595,6 +599,7 @@ kallax-shelving-unit-underframe-147-x-94|29442677 39442686 89442679 79442689 594
 kallax-shelving-unit-underframe-77-x-164|69442642 89442655 19442654 99442645 79442646 49442643 29442615 79607557
 kallax-shelving-unit-underframe-77-x-94|89442617 59442628 49442619 69442618 79442627 09442616 29634983
 kallso-bench-shoe-storage-80-x-38-x-56|20599328
+kallso-hat-rack-80|60599326
 kallso-storage-bench-80-x-38-x-56|80599325
 karskar-chair|00611251
 karskar-extendable-table-160-220-x-90|50611263
@@ -1005,6 +1010,7 @@ nasinge-table-80-x-60|60587535 10587533
 neiden-bed-frame-standard-double-135-x-190|79248611
 neiden-bed-frame-standard-single-90-x-190|99248605
 nipasen-bench-shoe-storage-79-x-35-x-52|20586142
+nipasen-hat-and-coat-stand-181|50586150
 nissafors-trolley-50-5-x-19-x-67|10602982 40602985
 nissafors-trolley-50-5-x-30-x-83|20399777 40585801 40465733 10606782
 nordkisa-bedside-table-40-x-40|60447677
@@ -1447,6 +1453,7 @@ teodores-chair|99399835 19399839 90530627 20530621 90350937
 tingby-side-table-on-castors-50-x-50|20295930 00349444
 tjarkil-extendable-table-180-235-290-x-100|70630454
 tjusig-bench-shoe-storage-108-x-34-x-50|70152702 50152703
+tjusig-hat-rack-79|40152633 20152634
 tjusig-shoe-rack-79-x-32-x-37|10152639 30152638
 tobias-chair|30635123 80349671 90532589
 tolkning-bench-storage-120|80512657
