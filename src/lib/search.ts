@@ -26,6 +26,8 @@ const CATEGORY_WORDS: [Kind, string[]][] = [
   ["lidbox", ["storage bench", "storage chest", "storage table", "storage ottoman", "storage footstool", "footstool with storage", "pouffe with storage", "pouf with storage", "storage pouffe", "storage pouf", "storage stool", "blanket box", "toy box", "toy chest", "bench with lid", "hope chest"]],
   ["divider", ["room divider", "room dividers", "folding screen", "privacy screen", "partition screen", "room screen"]],
   ["changing", ["changing table", "changing unit", "baby changing table", "changing station", "diaper changing table", "nappy changing table"]],
+  ["airer", ["drying rack", "clothes airer", "airer", "clothes horse", "laundry rack", "clothes drying rack", "drying stand", "laundry drying rack"]],
+  ["riser", ["laptop stand", "monitor stand", "monitor riser", "laptop riser", "screen riser", "desk riser", "desktop shelf", "monitor shelf", "computer stand"]],
   ["coatstand", ["coat stand", "hat and coat stand", "hat stand", "clothes stand", "coat tree", "hall tree", "hat tree", "standing coat rack", "coat rack stand"]],
   ["hatrack", ["hat rack", "hat shelf", "wall coat rack", "coat rack with shelf", "wall hat rack", "hat and coat rack", "coat hooks with shelf"]],
   ["clothesrack", ["clothes rack", "clothes rail", "clothing rack", "clothing rail", "garment rack", "garment rail", "coat rack", "coat stand"]],
@@ -88,7 +90,7 @@ const CATEGORY_WORDS: [Kind, string[]][] = [
 ];
 const KIND_WORDS = new Map(CATEGORY_WORDS);
 // rows, sections, and kinds drawn later than a family's other pieces, which only come first when asked for
-const LESSER = new Set<Kind>(["bookrow", "cabrow", "section", "sinkcab", "appliance", "washstand", "shoerack", "clothesrack", "changing", "divider", "backbench", "junior", "lounge", "highchair", "cornercab", "cornerrobe", "usofa", "lounger", "swivel", "conference", "cornerdesk", "conftable", "lidbox", "shelfbench", "workbench", "extension", "deskdraw", "boxdesk", "hatrack", "coatstand", "pouffe", "chairbed"]);
+const LESSER = new Set<Kind>(["bookrow", "cabrow", "section", "sinkcab", "appliance", "washstand", "shoerack", "clothesrack", "changing", "divider", "backbench", "junior", "lounge", "highchair", "cornercab", "cornerrobe", "usofa", "lounger", "swivel", "conference", "cornerdesk", "conftable", "lidbox", "shelfbench", "workbench", "extension", "deskdraw", "boxdesk", "hatrack", "coatstand", "pouffe", "chairbed", "airer", "riser"]);
 
 export function kindOf(q: string): Kind | null {
   const f = " " + fold(q) + " ";

@@ -506,6 +506,11 @@ const RULES: Rule[] = [
     c.f.name === "KALLAX" ? "cube shelf with door inserts" : { kind: "tv", x: m[0] === "tv bench" && /^(BESTÅ|LACK)$/.test(c.f.name) ? { doors: 0 } : {} }],
   [/^(shoe rack|open shoe storage unit)$/, () => ({ kind: "shoerack" })],
   [/^room divider$/, () => ({ kind: "divider" })],
+  // a freestanding drying rack (one that hangs on a wall system's rail stays skipped)
+  [/^drying rack$/, (_m, c) => (c.f.name === "BOAXEL" ? "drying rack that hangs on a wall rail" : { kind: "airer", x: { cat: "Drying rack" } })],
+  // laptop and monitor stands: a top on two side panels
+  [/^(laptop stand|laptop\/monitor stand|monitor stand|monitor stand, fixed height|gaming monitor stand|desktop shelf)$/, (m) =>
+    ({ kind: "riser", x: /monitor stand$|fixed height/.test(m[1]) && !/laptop/.test(m[1]) ? { cat: "Monitor stand" } : m[1] === "desktop shelf" ? { cat: "Desktop shelf" } : {} })],
   // a hat rack on the wall: a shelf over a row of hooks (IKEA gives only the width)
   [/^hat rack$/, () => ({ kind: "hatrack" })],
   // changing tables: a chest of drawers or an open frame with shelves, and a changing top on it
@@ -809,6 +814,12 @@ export function classify(f: Fact, hints: Hints): Verdict {
     else set(v[0], 80, v[1]);
     guessed.h = v.length === 2 && !x.hung && !CORNER_WH[family];
     if (hint?.x.knobs) x.knobs = hint.x.knobs;
+  } else if (kind === "riser") {
+    // wide by deep, or wide by deep by high; a stand IKEA gives as wide by high stands on the floor
+    if (v.length === 3) set(v[0], v[2], v[1]);
+    else if (v.length === 2 && v[1] > 45) [w, h, d] = [v[0], v[1], 50];
+    else if (v.length === 2) set(v[0], undefined, v[1]);
+    if (x.cat === "Monitor stand" && guessed.w) [w, d] = [55, 24];
   } else if (kind === "hatrack") {
     // IKEA gives the width, sometimes the depth and height
     if (v.length === 3) set(v[0], v[2], v[1]);
@@ -967,7 +978,7 @@ export function classify(f: Fact, hints: Hints): Verdict {
     const arch = KIND_ARCH[k];
     // a long sofa is drawn as sections joined together, so it can be longer than anything else
     if (w < 20 || w > (arch === "sofa" ? 400 : 320) || h < 15 || h > 260 || d < 12 || d > 240) return { skip: "size out of range" };
-    if (arch === "table" && h < 30 && k !== "kidstable") return { skip: "size out of range" };
+    if (arch === "table" && h < 30 && k !== "kidstable" && k !== "riser") return { skip: "size out of range" };
     if (arch === "shelf" && h < 25) return { skip: "size out of range" };
     const kw: string[] = [];
     if (outdoor) kw.push("outdoor", "garden");

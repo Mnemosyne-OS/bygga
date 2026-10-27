@@ -3,7 +3,7 @@ export type Vec3 = [number, number, number];
 export type Archetype = "shelf" | "drawers" | "table" | "bed" | "cabinet" | "seat" | "sofa" | "custom";
 
 export interface ShelfParams {
-  style: "grid" | "bookcase" | "rack" | "screen" | "hatrack" | "stand"; // a rack: two uprights on feet with a rail across the top; a screen: hinged panels; a hat rack on the wall; a coat stand
+  style: "grid" | "bookcase" | "rack" | "screen" | "hatrack" | "stand" | "airer"; // a rack: two uprights on feet with a rail across the top; a screen: hinged panels; a hat rack on the wall; a coat stand
   cols: number;
   rows: number;
   shelves: number; // adjustable shelves (bookcase)
@@ -52,6 +52,7 @@ export interface TableParams {
   frame?: number; // cm: a low desk whose top sits between two storage frames this wide (TROFAST)
   boxes?: number; // boxes in each of those frames
   shelvesIn?: boolean; // shelves in the frames instead of boxes
+  riser?: boolean; // a laptop or monitor stand: a top on two side panels
   seat?: boolean; // a bench or stool built like a table: the top is its seat
   inner?: boolean; // the shelf fits between the legs, screwed through them
 }

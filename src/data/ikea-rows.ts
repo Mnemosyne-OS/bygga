@@ -125,6 +125,7 @@ BILLY / OXBERG|cabrow|Bookcase with panel/glass doors, 120 × 30 × 202 cm|120|2
 BILLY / OXBERG|cabrow|Bookcase with panel/glass doors, 160 × 30 × 202 cm|160|202|30|n=2,of=cabinet
 BILLY / OXBERG|cabrow|Bookcase w height extension ut/drs, 160 × 30 × 237 cm|160|237|30|n=2,of=cabinet
 BINGSTA|armchair|Armchair|75|90|80
+BJÖRKÅSEN|riser|Laptop stand|40|15|26
 BJÖRKBERGET|office|Swivel chair|60|105|64|arms=none
 BJÖRKSNÄS|bed|Bed frame, Standard King, 150 × 200 cm|166|100|209|m=150
 BJÖRKSNÄS|chest|Chest of 5 drawers, 90 × 47 × 90 cm|90|90|47|rows=5
@@ -139,6 +140,7 @@ BOASTAD|sideboard|Sideboard, 161 × 52 × 75 cm|161|75|52
 BOASTAD|wallshelf|Wall shelf, 181 × 32 × 32 cm|181|32|32
 BOAXEL|open|Shelving unit, 62 × 40 × 201 cm|62|201|40
 BOLLPOJKE|desk|Desk, 90 × 55 cm|90|74|55
+BOLLSIDAN|riser|Laptop stand, 68 × 36 cm|68|15|36
 BOLMEN|stool|Step stool|35|50|35
 BONDHOLMEN|armchair|Armchair, outdoor|75|90|80||outdoor garden
 BONDHOLMEN|backbench|Bench with backrest, outdoor|120|86|60||outdoor garden
@@ -191,6 +193,7 @@ DANDERYD|dining|Dining table, 130 × 80 cm|130|74|80
 DANDERYD|dropleaf|Drop-leaf table, 74/134 × 80 cm|134|75|80|leaves=2,leaf=30
 DOCKSTA|dining|Table, 103 cm|103|74|103|round=1
 DOMSTEN|stool|Stool|35|45|35
+DUBBLA|riser|Laptop stand, 60 × 40 cm|60|15|40
 DUVSKÄR|chair|Chair, in/outdoor|44|88|50||outdoor garden
 DUVSKÄR|dining|Table, outdoor, 76 × 63 cm|76|74|63||outdoor garden
 DYVLINGE|swivel|Swivel easy chair|78|98|80|arms=none
@@ -297,6 +300,7 @@ FRÖSJÖN|open|Shelving unit, 40 × 156 cm|40|156|35
 FRÖSJÖN|trolley|Trolley, 55 × 35 cm|55|80|35
 FRÖSKELÅS|desk|Gaming desk, 144 × 71 cm|144|74|71
 FRÖSKELÅS|open|Storage unit, 63 × 35 × 141 cm|63|141|35
+FROST|airer|Drying rack, in/outdoor|140|95|55|cat=Drying rack|outdoor garden
 FRÖSVI|chair|Folding chair|44|88|50
 FRÖTORP|coffee|Coffee table, 88 cm|88|45|88|round=1
 FRÖTORP|side|Side table, 48 cm|48|50|48|round=1
@@ -513,6 +517,7 @@ IVAR|slidecab|Cabinet with sliding doors, 80 × 30 × 60 cm|80|60|30|slides=2
 IVÖSJÖN|cabinet|Cabinet with doors, 33 × 34 × 99 cm|33|99|34
 IVÖSJÖN|washstand|Wash-basin base cabinet, 50 × 33 × 57 cm|50|57|33|z=d1,hung=1
 JAKOBSFORS|coffee|Coffee table, 80 cm|80|45|80|round=1
+JÄLL|airer|Drying rack, in/outdoor|140|95|55|cat=Drying rack|outdoor garden
 JÄRVFJÄLLET|office|Office chair with armrests|64|105|64|arms=slim
 JÄTTEBO|chaise|2,5-seat mod sofa w chaise longue|226|85|160|seats=3,arms=wide,chaise=right,sd=92
 JÄTTEBO|chaise|3,5-seat mod sofa w chaise longues|290|85|160|seats=4,arms=wide,chaise=both,sd=92
@@ -657,6 +662,7 @@ LANDSKRONA|section|Chaise longue, add-on unit|63|89|157|seats=1
 LANDSKRONA|sofa|2-seat sofa|170|85|92|seats=2,arms=slim
 LANDSKRONA|sofa|4-seat sofa|290|85|92|seats=4,arms=slim
 LANDSKRONA|sofa|5-seat sofa|329|89|89|seats=5,arms=slim
+LÅNESPELARE|riser|Monitor stand, 97 × 19 cm|97|15|19|cat=Monitor stand
 LANESUND|bookcase|Bookcase, 121 × 37 × 152 cm|121|152|37
 LANESUND|cabinet|Glass-door cabinet, 121 × 37 × 152 cm|121|152|37
 LANESUND|sideboard|Sideboard, 161 × 47 × 81 cm|161|81|47
@@ -927,6 +933,7 @@ MÖRTFORS|pouffe|Pouffe, 47 × 47 cm|47|42|47
 MOSSJÖN|cabinet|Glass-door cabinet with 2 doors, 60 × 34 × 146 cm|60|146|34
 MOSSJÖN|wallcab|Wall cabinet with glass door, 36 × 18 × 44 cm|36|44|18|doors=1
 MOSSJÖN|wallcab|Wall cabinet w shelves/glass door, 36 × 18 × 102 cm|36|102|18|doors=1
+MULIG|airer|Drying rack, in/outdoor|140|95|55|cat=Drying rack|outdoor garden
 MULIG|clothesrack|Clothes rack, 99 × 152 cm|99|152|46
 MULLSJÖ|desk|Desk, 135 × 70 cm|135|74|70
 MULLSJÖ|office|Swivel chair|60|105|64|arms=none
@@ -1225,6 +1232,7 @@ SEGERÖN|section|Corner section with cushion|92|83|92|seats=1,corner=left|outdoo
 SEGERÖN|section|Corner section, outdoor|92|83|92|seats=1,corner=left|outdoor garden
 SEGERÖN|sofa|2-seat sofa, outdoor|170|85|92|seats=2|outdoor garden
 SEGRARE|desk|Desk sit/stand, 110 × 60 cm|110|74|60
+SIGFINN|riser|Monitor stand, fixed height|55|15|24|cat=Monitor stand
 SKÅLBODA|armchair|Armchair|75|90|80
 SKÅLSTA|chair|Chair|44|88|50
 SKÅLSTA|dining|Table, 140 × 80 cm|140|74|80
@@ -1522,6 +1530,8 @@ VÄRMANSÖ|dining|Table, outdoor, 224 × 93 cm|224|74|93||outdoor garden
 VÄSMAN|chair|Chair with armrests, outdoor|44|88|50|arms=slim|outdoor garden
 VÄSMAN|dining|Extendable table, outdoor, 135/190 × 74 cm|135|74|74||outdoor garden
 VASSHOLMEN|chair|Chair, in/outdoor|44|88|50||outdoor garden
+VATTENKAR|riser|Desktop shelf, 49 × 15 cm|49|15|15|cat=Desktop shelf
+VATTENKAR|riser|Laptop/monitor stand, 52 × 26 cm|52|15|26
 VEDBO|armchair|Armchair|75|90|80
 VEDBO|armchair|High-back armchair|75|104|80
 VEINGE|armchair|Easy chair|75|90|80
@@ -1603,6 +1613,7 @@ VITTSJÖ|coffee|Coffee table, 75 cm|75|40|75|legs=square,shelf=1,round=1
 VITTSJÖ|desk|Laptop table, 100 × 36 cm|100|74|36
 VITTSJÖ|open|Shelving unit, 100 × 93 cm|100|93|36
 VITTSJÖ|open|Shelving unit, 100 × 175 cm|100|175|36
+VITTSJÖ|riser|Laptop stand, 35 × 65 cm|35|65|50
 VITTSKÄR|chair|Chair with armrests|44|88|50|arms=slim|outdoor garden
 VITTSKÄR|chaise|3-seat sofa with chaise longue|226|85|160|seats=3,arms=wide,chaise=right,sd=92
 VITTSKÄR|coffee|Coffee table, 110 × 58 cm|110|45|58||outdoor garden
@@ -1622,4 +1633,5 @@ VITVAL|bunk|Bunk bed frame, 90 × 200 cm|211|160|100|m=90
 VITVAL|loft|Loft bed frame, 90 × 200 cm|211|195|100|m=90
 VRETSTORP|sofa|3-seat sofa-bed|230|85|92|seats=3
 YNGVAR|chair|Chair|44|88|50
-YNGVAR|stool|Bar stool, 75 cm|35|75|35`;
+YNGVAR|stool|Bar stool, 75 cm|35|75|35
+YXSTABY|riser|Gaming monitor stand, 98 × 27 × 16 cm|98|16|27|cat=Monitor stand`;

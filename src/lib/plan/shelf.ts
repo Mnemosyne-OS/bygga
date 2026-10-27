@@ -7,6 +7,7 @@ import { buildRack } from "./rack";
 import { buildScreen } from "./screen";
 import { CASTOR_H } from "./castors";
 import { buildCoatStand, buildHatRack } from "./stands";
+import { buildAirer } from "./airer";
 
 export function defaultsShelf(s: ProductSpec): ShelfParams {
   const p = s.shelf ?? {};
@@ -30,6 +31,7 @@ export function buildShelf(b: PlanBuilder, s: ProductSpec) {
   if (s.shelf?.style === "screen") return buildScreen(b, s);
   if (s.shelf?.style === "hatrack") return buildHatRack(b, s);
   if (s.shelf?.style === "stand") return buildCoatStand(b, s);
+  if (s.shelf?.style === "airer") return buildAirer(b, s);
   const p = defaultsShelf(s);
   if (p.style === "grid") return s.shelf?.underframe ? onUnderframe(b, s, p) : s.shelf?.inserts ? withInserts(b, s, p) : grid(b, s, p);
   if (s.shelf?.rail) return withRail(b, s, p);
