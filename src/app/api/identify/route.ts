@@ -15,7 +15,8 @@ export async function POST(req: Request) {
     const { text } = await chatText({
       key,
       models: MODELS.vision,
-      maxTokens: 200,
+      // vision models think before they answer: a short budget comes back empty
+      maxTokens: 1500,
       temperature: 0,
       messages: [{ role: "user", content: [{ type: "text", text: PROMPT }, { type: "image_url", image_url: { url: image } }] }],
     });

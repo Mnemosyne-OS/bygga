@@ -106,10 +106,15 @@ async function chatWith(o: ChatOpts, key: string): Promise<{ res: Response; mode
 }
 
 export async function chatText(o: Omit<ChatOpts, "stream">) {
-  const { res, model } = await chat(o);
-  const j = await res.json();
-  const text: string = j?.choices?.[0]?.message?.content ?? "";
-  return { text, model };
+  // a model can spend its whole budget thinking and answer nothing: the next one in the list gets a go
+  for (let models = o.models; ; ) {
+    const { res, model } = await chat({ ...o, models });
+    const j = await res.json();
+    const text: string = j?.choices?.[0]?.message?.content ?? "";
+    const rest = models.slice(models.indexOf(model) + 1);
+    if (text.trim() || !rest.length) return { text, model };
+    models = rest;
+  }
 }
 
 export function extractJson(text: string): unknown {
