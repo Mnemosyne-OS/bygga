@@ -50,11 +50,19 @@ const nextConfig: NextConfig = {
       {
         // share cards only change on deploy: let the CDN keep them, so a viral link renders each card once
         source: "/:path(opengraph-image|twitter-image)",
-        headers: [{ key: "Cache-Control", value: "public, max-age=3600, s-maxage=31536000, stale-while-revalidate=86400" }],
+        headers: [
+          { key: "Cache-Control", value: "public, max-age=3600, s-maxage=31536000, stale-while-revalidate=86400" },
+          // Next sets its own Cache-Control on dynamic images; Vercel's CDN reads this one first
+          { key: "Vercel-CDN-Cache-Control", value: "max-age=31536000, stale-while-revalidate=86400" },
+        ],
       },
       {
         source: "/build/:slug/:img(opengraph-image|twitter-image)",
-        headers: [{ key: "Cache-Control", value: "public, max-age=3600, s-maxage=31536000, stale-while-revalidate=86400" }],
+        headers: [
+          { key: "Cache-Control", value: "public, max-age=3600, s-maxage=31536000, stale-while-revalidate=86400" },
+          // Next sets its own Cache-Control on dynamic images; Vercel's CDN reads this one first
+          { key: "Vercel-CDN-Cache-Control", value: "max-age=31536000, stale-while-revalidate=86400" },
+        ],
       },
       {
         // the service worker itself must never be stale

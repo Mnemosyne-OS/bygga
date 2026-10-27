@@ -23,16 +23,13 @@ const INK_2 = "#55534e";
 const ACCENT = "#ffd21f";
 const PAD = 72;
 
+// read once when the module loads, not per request: that keeps the site card static, so it is drawn at build time
 const here = join(process.cwd(), "src/lib/og");
-let fonts: Promise<{ name: string; data: Buffer; weight: 500 | 700 | 800; style: "normal" }[]> | null = null;
-function loadFonts() {
-  fonts ??= Promise.all([
-    readFile(join(here, "display-800.woff")).then((data) => ({ name: "Display", data, weight: 800 as const, style: "normal" as const })),
-    readFile(join(here, "sans-500.woff")).then((data) => ({ name: "Sans", data, weight: 500 as const, style: "normal" as const })),
-    readFile(join(here, "sans-700.woff")).then((data) => ({ name: "Sans", data, weight: 700 as const, style: "normal" as const })),
-  ]);
-  return fonts;
-}
+const FONTS = await Promise.all([
+  readFile(join(here, "display-800.woff")).then((data) => ({ name: "Display", data, weight: 800 as const, style: "normal" as const })),
+  readFile(join(here, "sans-500.woff")).then((data) => ({ name: "Sans", data, weight: 500 as const, style: "normal" as const })),
+  readFile(join(here, "sans-700.woff")).then((data) => ({ name: "Sans", data, weight: 700 as const, style: "normal" as const })),
+]);
 
 /** A drawing from public/og as a data URI, or null. */
 export async function drawing(name: string) {
@@ -85,11 +82,13 @@ function Marked({ children, size }: { children: string; size: number }) {
 }
 
 function render(node: React.ReactElement) {
-  return loadFonts().then((f) => new ImageResponse(node, { ...OG_SIZE, fonts: f }));
+  return new ImageResponse(node, { ...OG_SIZE, fonts: FONTS });
 }
 
-export async function siteCard() {
-  const [front, back] = await Promise.all([drawing("hero-bygga"), drawing("hero-paper")]);
+const HERO = await Promise.all([drawing("hero-bygga"), drawing("hero-paper")]);
+
+export function siteCard() {
+  const [front, back] = HERO;
   const H = 84;
   return render(
     <div style={{ width: "100%", height: "100%", display: "flex", position: "relative", background: PAGE, fontFamily: "Sans", color: INK, overflow: "hidden" }}>
@@ -140,7 +139,7 @@ function nameSize(name: string) {
   return Math.max(56, Math.min(lines.length > 1 ? 80 : 118, Math.floor(NAME_W / em)));
 }
 
-export async function guideCard(o: { name: string; variant: string; steps: number | null; art: string | null }) {
+export function guideCard(o: { name: string; variant: string; steps: number | null; art: string | null }) {
   const size = nameSize(o.name);
   const variant = spellOut(o.variant);
   return render(
