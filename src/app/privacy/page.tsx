@@ -30,6 +30,7 @@ export default function Privacy() {
           <li>The product name you search for, to find or draft its guide.</li>
           <li>Questions and photos you send from &ldquo;Stuck?&rdquo;, and photos of a box label you search with. Photos are resized in your browser first, which also removes location data.</li>
           <li>The text of a voice line that has no recording yet, to record it.</li>
+          <li>While the voice is on, short bits of sound from your mic each time someone talks, so it can hear you say &ldquo;next&rdquo;. They are turned into text, and Bygga keeps neither.</li>
           <li>Feedback you send, such as &ldquo;This step doesn&apos;t match my box&rdquo;, kept in our server logs with the product and step.</li>
           <li>Your IP address, held in memory for a few minutes to stop abuse, then dropped.</li>
         </ul>
@@ -37,7 +38,7 @@ export default function Privacy() {
         <h2>Who else sees it</h2>
         <ul>
           <li>
-            <b>Together AI</b> (United States) turns searches, questions and photos into answers and records voice lines. See their{" "}
+            <b>Together AI</b> (United States) turns searches, questions and photos into answers, records voice lines, and turns what the mic hears into text. See their{" "}
             <a href="https://www.together.ai/privacy" target="_blank" rel="noreferrer">
               privacy policy
             </a>
@@ -49,9 +50,6 @@ export default function Privacy() {
               analytics privacy notes
             </a>
             .
-          </li>
-          <li>
-            <b>Your browser&apos;s speech service</b>, only when you turn on the voice and say &ldquo;next&rdquo;. Bygga never receives the audio, but your browser may send it to its maker to turn it into text: Google in Chrome, Apple in Safari.
           </li>
         </ul>
 

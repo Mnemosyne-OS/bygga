@@ -1,7 +1,8 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
-import { talkDetector } from "@/lib/voice/talk";
+import { downsampler, segmenter, toWav, type Segment } from "@/lib/voice/talk";
+import { keyHeaders } from "@/lib/userKey";
 
 /** Keeps the screen on while building. */
 export function useWakeLock(active: boolean) {
@@ -30,251 +31,203 @@ export function useWakeLock(active: boolean) {
   }, [active]);
 }
 
-interface SR {
-  continuous: boolean;
-  interimResults: boolean;
-  lang: string;
-  start(track?: MediaStreamTrack): void;
-  stop(): void;
-  abort(): void;
-  onresult: ((e: { results: ArrayLike<ArrayLike<{ transcript: string }> & { isFinal: boolean }>; resultIndex: number }) => void) | null;
-  onend: (() => void) | null;
-  onerror: ((e: { error: string }) => void) | null;
-  onstart: (() => void) | null;
+export type Mic = "off" | "asking" | "on" | "denied" | "busy" | "nomic" | "unsupported" | "offline";
+
+type Ctx = typeof AudioContext;
+const AudioCtx = () => (typeof window === "undefined" ? undefined : (window.AudioContext ?? (window as unknown as { webkitAudioContext?: Ctx }).webkitAudioContext));
+
+/** Every browser that can open a mic can listen: it's the same code everywhere, with no browser speech service. */
+export function micSupported() {
+  return typeof navigator !== "undefined" && !!navigator.mediaDevices?.getUserMedia && !!AudioCtx();
 }
 
-type SRCtor = (new () => SR) & { available?: unknown };
+let shared: AudioContext | null = null;
+const worklets = new WeakSet<AudioContext>();
 
-export function speechSupported() {
-  if (typeof window === "undefined") return false;
-  const w = window as unknown as { SpeechRecognition?: unknown; webkitSpeechRecognition?: unknown };
-  return !!(w.SpeechRecognition || w.webkitSpeechRecognition);
+/** Call inside the tap that turns the voice on: Safari only lets audio start from a tap. */
+export function primeListening() {
+  try {
+    const C = AudioCtx();
+    if (!C) return;
+    shared ??= new C();
+    shared.resume().catch(() => {});
+  } catch {
+    /* no audio */
+  }
 }
 
 /**
- * Desktop Chrome and Edge can listen through a mic the page opens itself, with
- * echo cancelling on, so the voice playing from the same speakers is taken out
- * before the recognizer hears it. `available` arrived alongside, so it marks
- * a browser new enough; Android's recognizer opens its own mic.
+ * Listens while voice mode is on. The page opens the mic itself, with echo
+ * cancelling, so the voice playing from the same speakers is mostly gone
+ * before anything else hears it; each time someone talks, that piece goes to
+ * Whisper on Together (/api/listen) and onHeard gets the text, with the
+ * piece's times so her own words can be told apart. onHeard returns what it
+ * acted on, to show as "Heard ...", or null. `her` says whether the voice is
+ * playing, so what's left of her in the mic isn't taken for someone talking.
  */
-function takesTrack(Ctor: SRCtor) {
-  return typeof Ctor.available === "function" && !!navigator.mediaDevices?.getUserMedia && !/Android/i.test(navigator.userAgent);
-}
-
-/** Calls onTalk when someone starts or stops talking into the stream. `her` says whether the voice is playing. */
-function watchLevel(stream: MediaStream, her: () => boolean, onTalk: (on: boolean) => void) {
-  const Ctx = window.AudioContext ?? (window as unknown as { webkitAudioContext?: typeof AudioContext }).webkitAudioContext;
-  if (!Ctx) return () => {};
-  const ac = new Ctx();
-  const an = ac.createAnalyser();
-  an.fftSize = 2048;
-  ac.createMediaStreamSource(stream).connect(an);
-  const buf = new Float32Array(an.fftSize);
-  const talk = talkDetector();
-  let on = false;
-  const iv = setInterval(() => {
-    if (ac.state === "suspended") ac.resume().catch(() => {});
-    an.getFloatTimeDomainData(buf);
-    let e = 0;
-    for (const v of buf) e += v * v;
-    const now = talk(10 * Math.log10(e / buf.length + 1e-10), her());
-    if (now !== on) onTalk((on = now));
-  }, 50);
-  return () => {
-    clearInterval(iv);
-    ac.close().catch(() => {});
-    if (on) onTalk(false);
-  };
-}
-
-export type Mic = "off" | "starting" | "on" | "denied" | "unsupported";
-
-/** What onPhrase made of the transcript: the words it acted on, a command it waits to hear settle, or nothing. */
-export type PhraseResult = { act: string } | { wait: string } | null;
-
-/**
- * Keeps the mic listening while voice mode is on. onPhrase sees the whole
- * transcript of the current session as it grows: "interim" while words are
- * still coming, "settled" when an interim stayed the same for a moment, and
- * "final". Once it acts, listening starts over, so nothing is acted on twice.
- * `from` is the first word it hasn't seen yet. `talking` is true while
- * someone speaks into the mic (only where the page opens the mic itself);
- * `her` says whether the voice is playing, so her echo isn't taken for them.
- */
-export function useListener(enabled: boolean, onPhrase: (text: string, state: "interim" | "settled" | "final", from: number) => PhraseResult, her: () => boolean = () => false) {
-  const cb = useRef(onPhrase);
+export function useListener(enabled: boolean, onHeard: (text: string, seg: Segment) => string | null, her: () => boolean) {
+  const cb = useRef(onHeard);
   const herRef = useRef(her);
   useEffect(() => {
-    cb.current = onPhrase;
+    cb.current = onHeard;
     herRef.current = her;
   });
   const [mic, setMic] = useState<Mic>("off");
   const [heard, setHeard] = useState("");
-  const [talking, setTalking] = useState(false);
 
   useEffect(() => {
-    if (!enabled) return;
-    // on-device recognition (SpeechRecognition.available, processLocally) is left out on purpose:
-    // asking the browser whether it has a local model crashed the whole tab in Chromium
-    const w = window as unknown as { SpeechRecognition?: SRCtor; webkitSpeechRecognition?: SRCtor };
-    const Ctor = w.SpeechRecognition || w.webkitSpeechRecognition;
-    if (!Ctor) return;
+    const C = AudioCtx();
+    if (!enabled || !micSupported() || !C) return;
     let stop = false;
-    let rec: SR | null = null;
-    let fails = 0;
-    let again = false;
-    let timer: ReturnType<typeof setTimeout> | undefined;
-    let clear: ReturnType<typeof setTimeout> | undefined;
-    let settle: ReturnType<typeof setTimeout> | undefined;
-    let waiting = "";
-    let useTrack = takesTrack(Ctor);
     let stream: MediaStream | null = null;
-    let unwatch = () => {};
-    let seen = 0;
-    let opening = false;
+    let nodes: AudioNode[] = [];
+    let retry: ReturnType<typeof setTimeout> | undefined;
+    let asking: ReturnType<typeof setTimeout> | undefined;
+    let clear: ReturnType<typeof setTimeout> | undefined;
+    let tries = 0;
+    let fails = 0;
+    let inflight = 0;
+    // a piece that overlaps one already acted on can't act again
+    let acted = 0;
+    let cut = segmenter();
     const hidden = () => document.visibilityState === "hidden";
 
+    const send = async (seg: Segment) => {
+      // a noisy room: drop a piece rather than queue it behind others
+      if (inflight >= 3) return;
+      inflight++;
+      try {
+        const r = await fetch("/api/listen", { method: "POST", headers: { "Content-Type": "audio/wav", ...keyHeaders() }, body: toWav(seg.pcm), signal: AbortSignal.timeout(9000) });
+        if (stop) return;
+        if (!r.ok) throw new Error(String(r.status));
+        const text = String(((await r.json()) as { text?: unknown }).text ?? "");
+        fails = 0;
+        setMic((m) => (m === "offline" ? "on" : m));
+        if (!text.trim() || seg.start < acted) return;
+        const did = cb.current(text, seg);
+        if (!did) return;
+        acted = seg.end;
+        setHeard(did);
+        clearTimeout(clear);
+        clear = setTimeout(() => setHeard(""), 2400);
+      } catch {
+        if (!stop && ++fails >= 3) setMic("offline");
+      } finally {
+        inflight--;
+      }
+    };
+
+    const frame = (pcm: Float32Array) => {
+      if (stop) return;
+      const seg = cut(pcm, Date.now(), herRef.current());
+      if (seg) send(seg);
+    };
+
     const release = () => {
-      unwatch();
-      unwatch = () => {};
+      clearTimeout(asking);
+      for (const n of nodes) {
+        try {
+          n.disconnect();
+        } catch {
+          /* already */
+        }
+        if (n instanceof AudioWorkletNode) n.port.onmessage = null;
+        if (n instanceof ScriptProcessorNode) n.onaudioprocess = null;
+      }
+      nodes = [];
       stream?.getTracks().forEach((t) => t.stop());
       stream = null;
     };
 
-    const acted = (words: string) => {
-      setHeard(words);
-      clearTimeout(clear);
-      clear = setTimeout(() => setHeard(""), 2400);
-      // a clean slate: the recognizer can rewrite earlier words, which must not count twice
-      again = true;
-      rec?.abort();
-    };
-
     const open = async () => {
-      if (!useTrack || stream) return;
+      if (stop || stream || hidden()) return;
+      // only say "allow the mic" when the browser is actually asking
+      asking = setTimeout(() => setMic((m) => (m === "on" ? m : "asking")), 500);
+      let s: MediaStream;
       try {
-        stream = await navigator.mediaDevices.getUserMedia({ audio: { echoCancellation: true, noiseSuppression: true, autoGainControl: false } });
-        if (stop) return release();
-        unwatch = watchLevel(stream, () => herRef.current(), setTalking);
+        s = await navigator.mediaDevices.getUserMedia({ audio: { echoCancellation: true, noiseSuppression: true, autoGainControl: false, channelCount: 1 } });
       } catch (e) {
-        if ((e as Error).name === "NotAllowedError" || (e as Error).name === "SecurityError") {
-          stop = true;
-          setMic("denied");
-        } else useTrack = false;
+        clearTimeout(asking);
+        if (stop) return;
+        const name = (e as Error).name;
+        if (name === "NotAllowedError" || name === "SecurityError") setMic("denied");
+        else if (name === "NotFoundError" || name === "OverconstrainedError") setMic("nomic");
+        else if (name === "TypeError") setMic("unsupported");
+        else {
+          // a call or another app has the mic: try again a few times, then say so
+          setMic("busy");
+          if (++tries < 4) retry = setTimeout(open, 1500 * tries);
+        }
+        return;
+      }
+      clearTimeout(asking);
+      if (stop || hidden()) {
+        s.getTracks().forEach((t) => t.stop());
+        return;
+      }
+      stream = s;
+      tries = 0;
+      try {
+        const ctx = (shared ??= new C());
+        if (ctx.state !== "running") await ctx.resume().catch(() => {});
+        const src = ctx.createMediaStreamSource(s);
+        // nodes only run when something downstream pulls, so the frames end in silence
+        const sink = ctx.createGain();
+        sink.gain.value = 0;
+        sink.connect(ctx.destination);
+        let tap: AudioNode;
+        try {
+          if (!ctx.audioWorklet) throw new Error("no worklet");
+          if (!worklets.has(ctx)) {
+            await ctx.audioWorklet.addModule("/listen-worklet.js");
+            worklets.add(ctx);
+          }
+          const w = new AudioWorkletNode(ctx, "bygga-listen", { channelCount: 1, channelCountMode: "explicit" });
+          w.port.onmessage = (e: MessageEvent<Float32Array>) => frame(e.data);
+          tap = w;
+        } catch {
+          // older browsers: the same frames from the main thread
+          const sp = ctx.createScriptProcessor(4096, 1, 1);
+          const down = downsampler(ctx.sampleRate, frame);
+          sp.onaudioprocess = (e) => down(e.inputBuffer.getChannelData(0));
+          tap = sp;
+        }
+        if (stop || stream !== s) return;
+        src.connect(tap);
+        tap.connect(sink);
+        nodes = [src, tap, sink];
+        cut = segmenter();
+        setMic("on");
+        // a mic unplugged, or taken by a call, ends the track: open it again
+        s.getAudioTracks()[0]?.addEventListener("ended", () => {
+          if (stream !== s) return;
+          release();
+          if (!stop) retry = setTimeout(open, 800);
+        });
+      } catch {
+        release();
+        setMic("unsupported");
       }
     };
 
-    const start = async () => {
-      if (stop || opening || hidden()) return;
-      opening = true;
-      await open();
-      opening = false;
-      if (stop || rec || hidden()) return;
-      seen = 0;
-      const r = new Ctor();
-      rec = r;
-      r.continuous = true;
-      r.interimResults = true;
-      r.lang = "en-US";
-      r.onstart = () => {
-        fails = 0;
-        setMic("on");
-      };
-      r.onresult = (e) => {
-        if (rec !== r) return;
-        let text = "";
-        for (let i = 0; i < e.results.length; i++) text += " " + e.results[i][0].transcript;
-        text = text.trim();
-        if (!text) return;
-        const final = e.results[e.results.length - 1].isFinal;
-        const from = Math.max(0, seen - 3);
-        seen = Math.max(seen, text.split(/\s+/).length);
-        const got = cb.current(text, final ? "final" : "interim", from);
-        const settled = () => {
-          clearTimeout(settle);
-          waiting = "";
-          const late = cb.current(text, "settled", from);
-          if (late && "act" in late) acted(late.act);
-        };
-        if (got && "wait" in got) {
-          // the same command twice in a row is settled; otherwise give it a moment for more words.
-          // her echo can rewrite a word away within half a second, so the clock isn't restarted
-          if (got.wait === waiting) settled();
-          else {
-            clearTimeout(settle);
-            waiting = got.wait;
-            settle = setTimeout(() => rec === r && settled(), 280);
-          }
-          return;
-        }
-        clearTimeout(settle);
-        waiting = "";
-        if (got) acted(got.act);
-      };
-      r.onend = () => {
-        if (rec === r) rec = null;
-        clearTimeout(settle);
-        waiting = "";
-        if (stop) return;
-        // straight back after a command; quick restarts are normal too, but back off if it keeps failing
-        timer = setTimeout(start, again ? 0 : Math.min(4000, 250 * 2 ** fails));
-        again = false;
-      };
-      r.onerror = (e) => {
-        // a busy mic (a call, another app) is temporary: only a refusal, or a mic that stays busy, ends listening
-        if (e.error === "not-allowed" || e.error === "service-not-allowed" || (e.error === "audio-capture" && fails >= 4)) {
-          stop = true;
-          setMic("denied");
-        } else if (e.error === "network" && fails >= 2) {
-          // the speech service is out of reach (no signal, or a browser without one): stop, and say to tap instead
-          stop = true;
-          setMic("unsupported");
-        } else if (e.error !== "no-speech" && e.error !== "aborted") {
-          fails++;
-          // a recognizer that won't take the page's mic opens its own instead
-          if (useTrack && (e.error === "audio-capture" || e.error === "bad-grammar" || e.error === "language-not-supported")) {
-            useTrack = false;
-            release();
-          }
-        }
-      };
-      setMic((m) => (m === "on" ? m : "starting"));
-      try {
-        const track = stream?.getAudioTracks()[0];
-        if (useTrack && track?.readyState === "live") r.start(track);
-        else r.start();
-      } catch {
-        // already started; or a browser that can't listen to a track, which listens on its own mic instead
-        if (useTrack) {
-          useTrack = false;
-          release();
-          rec = null;
-          timer = setTimeout(start, 0);
-        }
-      }
-    };
     const onVis = () => {
-      if (hidden()) {
-        rec?.abort();
-        release();
-      } else if (!rec) start();
+      if (hidden()) release();
+      else open();
     };
     document.addEventListener("visibilitychange", onVis);
-    start();
+    open();
     return () => {
       stop = true;
-      clearTimeout(timer);
+      clearTimeout(retry);
       clearTimeout(clear);
-      clearTimeout(settle);
       document.removeEventListener("visibilitychange", onVis);
-      rec?.abort();
       release();
-      setTalking(false);
+      setMic("off");
     };
   }, [enabled]);
 
-  if (!enabled) return { mic: "off" as Mic, heard: "", talking: false };
-  return { mic: speechSupported() ? mic : ("unsupported" as Mic), heard, talking };
+  if (!enabled) return { mic: "off" as Mic, heard: "" };
+  return { mic: micSupported() ? mic : ("unsupported" as Mic), heard };
 }
 
 export function haptic(ms = 8) {

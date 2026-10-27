@@ -13,7 +13,7 @@ export type Intent =
 type Kind = Exclude<Intent["kind"], "goto" | "ask">;
 
 const PHRASES: Record<Kind, string[]> = {
-  next: ["next", "next step", "next one", "next please", "skip", "skip it", "skip this one", "done", "im done", "i am done", "all done", "got it", "finished", "im finished", "continue", "go on", "go ahead", "keep going", "ready", "move on", "whats next", "what is next", "forward", "go"],
+  next: ["next", "next step", "next one", "next please", "skip", "skip it", "skip this one", "done", "im done", "i am done", "all done", "finished", "im finished", "continue", "go on", "go ahead", "keep going", "move on", "whats next", "what is next"],
   back: ["back", "go back", "previous", "previous step", "previous one", "step back", "go back one", "back one", "undo"],
   repeat: ["again", "repeat", "repeat that", "say again", "say that again", "what", "sorry", "pardon", "come again", "one more time", "what did you say", "huh"],
   replay: ["show me", "show me again", "show again", "replay", "play again", "watch again", "show"],
@@ -88,47 +88,93 @@ export function canon(text: string) {
 /** Small words that belong to whoever said the words around them. */
 const GLUE = new Set(["the", "a", "an", "and", "to", "two", "in", "into", "on", "of", "it", "its", "is", "you", "your", "youll", "i", "im", "this", "that", "with", "for", "four", "at", "by", "up", "out", "then", "so", "now", "just", "we", "be"]);
 
-/** While she is talking, a phrase of one word has to be one of these to count: short words in her echo get misheard. */
-const BARGE_WORDS = new Set(["next", "skip", "back", "previous", "stop", "wait", "pause", "quiet", "again", "repeat"]);
+/** Words that can come with a plain "next" ("what's next", "next please"); not "step", which is how "last step" is misheard. */
+const PLAIN = new Set(["next", "whats", "lets", "go", "yep", "yup", "ok", "okay"]);
 
-export interface Heard {
-  intent: Intent;
-  /** The person's phrase that holds the command. */
-  words: string;
-  /** Nothing follows it yet: the person may still be saying it. */
-  open: boolean;
+/** One of her lines and when she said it (Date.now() times), for telling her words from the person's. */
+export interface Said {
+  words: string[];
+  start: number;
+  end: number;
+}
+
+/** A piece of mic audio: when it was heard, and whether it was a window taken while she read. */
+export interface Piece {
+  start: number;
+  end: number;
+  over: boolean;
 }
 
 /**
- * Finds a command in a running transcript. The mic can hear the voice too, so
- * the words she said lately (`hers`) split the transcript into the person's
- * own phrases, and a phrase has to be a whole command by itself: "next" said
- * over her reading still counts, "grab the next panel" never does. Phrases
- * ending before word `from` were looked at already. While she is `talking`
- * only short, distinct commands count, and questions wait until she is done.
+ * One letter added, dropped or changed, how a recognizer mishears her ("bottom" as "bottoms"). Only for
+ * longer words: short ones are too close to each other ("step" and "stop") and to the commands.
  */
-export function findCommand(transcript: string, hers: (word: string) => boolean, talking: boolean, from = 0): Heard | null {
+function close(a: string, b: string) {
+  if (a === b) return true;
+  if (a.length < 5 || b.length < 5 || Math.abs(a.length - b.length) > 1) return false;
+  let i = 0;
+  while (i < a.length && a[i] === b[i]) i++;
+  if (a.length === b.length) return a.slice(i + 1) === b.slice(i + 1);
+  return a.length > b.length ? a.slice(i + 1) === b.slice(i) : a.slice(i) === b.slice(i + 1);
+}
+
+/** When she said a word of a line, roughly: lines are read at an even pace. */
+function wordAt(l: Said, i: number) {
+  return l.start + ((i + 0.5) / l.words.length) * (l.end - l.start);
+}
+
+/**
+ * Which words of a transcript were hers. A word only counts as hers next to
+ * another of her words, so "back" alone is the person's even while she reads
+ * "the back panel"; in a window under her reading every match counts. "next"
+ * also has to be one she said inside the piece: "...before starting the next"
+ * a second earlier doesn't hide a "next" said now.
+ */
+function herMask(words: string[], piece: Piece, lines: Said[]) {
+  const match = words.map((w) => {
+    if (GLUE.has(w)) return false;
+    const parts = canon(w);
+    return lines.some((l) => parts.every((p) => l.words.some((h) => close(p, h))));
+  });
+  const mask = words.map((w, i) => {
+    if (!match[i]) return false;
+    if (!piece.over && !match.some((m, j) => m && j !== i && Math.abs(j - i) <= 2)) return false;
+    if (w !== "next") return true;
+    return lines.some((l) => l.words.some((h, k) => h === "next" && wordAt(l, k) >= piece.start - 900 && wordAt(l, k) <= piece.end + 400));
+  });
+  // in a window of her reading, a "next" right up against her words is a mishearing of her: "last step" heard as "next step"
+  return { match, mask: words.map((w, i) => mask[i] || (piece.over && w === "next" && (match[i - 1] || match[i + 1]))) };
+}
+
+/**
+ * What a piece of talk from the mic asks for. Her own words are set aside
+ * first (the mic can still catch a little of her), then "next" anywhere in
+ * what's left moves on, so it works mid-sentence or said in passing.
+ * Anything else has to be the whole phrase ("go back", "again"), and
+ * questions wait until she isn't `talking`. A window taken under her reading,
+ * or a piece that turns out to be mostly her, can only move on, and only for
+ * a "next" standing nearly alone: Whisper can finish a line of hers cut off
+ * mid-word with words of its own ("when you're done, go to the next slide").
+ */
+export function hearIntent(transcript: string, piece: Piece, lines: Said[], talking: boolean): Intent | null {
   const words = normalize(transcript);
-  const mine = words.map((w) => !GLUE.has(w) && hers(w));
-  for (let i = 0; i < words.length; ) {
-    if (mine[i]) {
-      i++;
-      continue;
-    }
-    let j = i;
-    while (j < words.length && !mine[j]) j++;
-    // small words at a seam with her words were hers: "into the | next"
-    let a = i,
-      b = j;
-    if (a > 0) while (a < b && GLUE.has(words[a])) a++;
-    if (b < words.length) while (b > a && GLUE.has(words[b - 1])) b--;
-    if (j > from && b > a) {
-      const text = words.slice(a, b).join(" ");
-      const intent = parse(text);
-      const kept = normalize(text).filter((w) => !FILLER.has(w));
-      if (intent && !(talking && (intent.kind === "ask" || (kept.length === 1 && !BARGE_WORDS.has(kept[0]))))) return { intent, words: text, open: j === words.length };
-    }
-    i = j;
+  // a piece that's mostly her words is her echo, however it started: it gets the same care as a window.
+  // only longer words count here, since "do" and "one" turn up in anyone's sentence, and "next" itself doesn't
+  const long = (w: string) => w.length >= 4 && !GLUE.has(w) && w !== "next";
+  const content = words.filter(long).length;
+  const first = herMask(words, piece, lines);
+  const hersMostly = !piece.over && content >= 2 && words.filter((w, i) => long(w) && first.match[i]).length * 2 >= content;
+  if (hersMostly) piece = { ...piece, over: true };
+  const { mask } = hersMostly ? herMask(words, piece, lines) : first;
+  const own = words.filter((_, i) => !mask[i]);
+  if (own.includes("next")) {
+    if (!piece.over) return { kind: "next" };
+    // under her reading, only a plain "next" said on its own: "next", "okay, next", "what's next?"
+    return own.every((w) => GLUE.has(w) || FILLER.has(w) || PLAIN.has(w)) ? { kind: "next" } : null;
   }
-  return null;
+  if (piece.over) return null;
+  const intent = parse(own.join(" "));
+  if (!intent || (intent.kind === "ask" && talking)) return null;
+  // a question goes to the helper as it was said, punctuation and all
+  return intent.kind === "ask" ? { kind: "ask", text: transcript.trim() } : intent;
 }

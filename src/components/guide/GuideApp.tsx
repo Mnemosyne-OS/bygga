@@ -26,11 +26,11 @@ import HelpSheet from "./HelpSheet";
 import Overview from "./Overview";
 import Loader from "./Loader";
 import Drawing from "../Drawing";
-import { haptic, speechSupported, useListener, useWakeLock, type Mic } from "./hooks";
+import { haptic, micSupported, primeListening, useListener, useWakeLock, type Mic } from "./hooks";
 import { playDone, playStep, playTick, setSound, soundOn } from "./sound";
 import { mediaSession, voice } from "./voice";
 import { LINES, builtLine, needsLine, spokenAnswer, stepLines, toolsLine, whereLine } from "@/lib/voice/script";
-import { findCommand, type Intent } from "@/lib/voice/commands";
+import { hearIntent, type Intent } from "@/lib/voice/commands";
 import { useMounted } from "@/lib/useMounted";
 import { getUserKey, keyHeaders } from "@/lib/userKey";
 import { decodeSpec } from "@/lib/scan/share";
@@ -279,7 +279,7 @@ function Guide({ plan, slug, via, ai, startStep }: { plan: Plan; slug: string; v
   const clock = useRef({ at: 0, ms: 0, live: false });
   const stage = useRef<StageHandle | null>(null);
   const mounted = useMounted();
-  const canListen = mounted && speechSupported();
+  const canListen = mounted && ai && micSupported();
 
   // restore progress once we are in the browser
   const [restored, setRestored] = useState(false);
@@ -467,6 +467,7 @@ function Guide({ plan, slug, via, ai, startStep }: { plan: Plan; slug: string; v
   // runs inside the tap or key press, so the browser lets it play sound
   const startVoice = useCallback(() => {
     voice.unlock();
+    if (canListen) primeListening();
     track("voice_on", { product: plan.spec.name });
     setVoiceOn(true);
     setOffer(false);
@@ -476,7 +477,7 @@ function Guide({ plan, slug, via, ai, startStep }: { plan: Plan; slug: string; v
       if (!ok) return;
       // by now the mic has either started or been refused, so the tip matches what works
       const m = micRef.current;
-      voice.say([canListen && m !== "denied" && m !== "unsupported" ? LINES.sayNext : LINES.tapNext]);
+      voice.say([canListen && (m === "on" || m === "asking") ? LINES.sayNext : LINES.tapNext]);
     });
   }, [canListen, plan, step]);
 
@@ -581,21 +582,17 @@ function Guide({ plan, slug, via, ai, startStep }: { plan: Plan; slug: string; v
     }
   };
 
-  const { mic, heard, talking } = useListener(voiceOn && phase === "steps", (text, state, from) => {
-    // the mic can hear the voice itself: her words are set aside, and what's left has to be a whole command
-    const got = findCommand(text, voice.hers, voice.busy, from);
-    if (!got) return null;
-    if (got.intent.kind === "ask" && state !== "final") return null;
-    // "stop" can't wait; anything else still being said waits a moment, in case more words follow
-    if (got.open && state === "interim" && got.intent.kind !== "stop") return { wait: got.words };
-    run(got.intent);
-    return { act: got.words };
-  }, () => voice.busy);
-
-  // she gets quieter while you talk over her, so the mic hears you
-  useEffect(() => {
-    voice.duck(talking);
-  }, [talking]);
+  const { mic, heard } = useListener(
+    voiceOn && phase === "steps" && canListen,
+    (text, seg) => {
+      // what's left of her in the mic is set aside by when she said it; then "next" anywhere moves on
+      const intent = hearIntent(text, seg, voice.linesBetween(seg.start, seg.end), voice.busy || voice.spokeBetween(seg.start, seg.end));
+      if (!intent) return null;
+      run(intent);
+      return intent.kind === "next" ? "next" : text.trim().replace(/[.!?]+$/, "");
+    },
+    () => voice.busy,
+  );
 
   useEffect(() => {
     micRef.current = mic;
@@ -786,7 +783,7 @@ function Guide({ plan, slug, via, ai, startStep }: { plan: Plan; slug: string; v
           {phase === "parts" && <span className="sheet-caption">Lay your panels out like this</span>}
           {voiceOn && phase === "steps" && (
             <div className="listening" role="status">
-              <span className={"eq" + (talking ? " on hear" : speaking ? " on" : "")} aria-hidden="true">
+              <span className={"eq" + (speaking ? " on" : "")} aria-hidden="true">
                 <i />
                 <i />
                 <i />
@@ -794,13 +791,21 @@ function Guide({ plan, slug, via, ai, startStep }: { plan: Plan; slug: string; v
               <span>
                 {heard
                   ? `Heard “${heard}”`
-                  : talking && mic === "on"
-                    ? "Listening"
-                    : mic === "denied" || mic === "unsupported"
-                    ? "Reading aloud. Tap done to move on"
-                    : mic === "on"
-                      ? "Say “next”, “back” or “again”"
-                      : "Starting the mic"}
+                  : mic === "on"
+                    ? "Say “next” when you're ready"
+                    : mic === "asking"
+                      ? "Allow the microphone, then say “next”"
+                      : mic === "denied"
+                        ? "Mic is blocked. Tap done to move on"
+                        : mic === "busy"
+                          ? "Another app has the mic. Tap done to move on"
+                          : mic === "nomic"
+                            ? "No microphone found. Tap done to move on"
+                            : mic === "offline"
+                              ? "Can't listen right now. Tap done to move on"
+                              : mic === "unsupported" || !canListen
+                                ? "Reading aloud. Tap done to move on"
+                                : "Turning on the mic"}
               </span>
             </div>
           )}
