@@ -132,7 +132,7 @@ export async function buildCard(plan: Plan, key: string, stat: string): Promise<
     ctx.font = `500 26px ${body}`;
     const host = location.host.replace(/^www\./, "");
     ctx.textAlign = "right";
-    ctx.fillText(`Every IKEA step in 3D, ${host}`, W - 110, 1280);
+    ctx.fillText(`Step by step in 3D, ${host}`, W - 110, 1280);
     ctx.textAlign = "left";
 
     return await new Promise<Blob | null>((r) => c.toBlob(r, "image/png"));

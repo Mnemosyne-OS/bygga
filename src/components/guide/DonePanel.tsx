@@ -37,7 +37,7 @@ export default function DonePanel({ plan, slug, finish, onReview }: { plan: Plan
           You built {s.name}.
         </motion.h2>
         <motion.p className="sub center" initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.4 }}>
-          {faster ? `${s.minutes - spent!} minutes faster than most people.` : spent ? "Built at your own pace. That's the right pace." : "Every step done. Nice work."}
+          {faster ? `${s.minutes - spent!} ${s.minutes - spent! === 1 ? "minute" : "minutes"} under the typical time.` : spent ? "Built at your own pace. That's the right pace." : "Every step done. Nice work."}
         </motion.p>
         <motion.dl className="stats" initial={{ opacity: 0, y: 8 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.5 }}>
           <div>

@@ -22,21 +22,21 @@ const display = Noto_Sans_Display({
   display: "swap",
 });
 
-const description = "Type the product name from the box. Bygga shows every assembly step in 3D, with the exact parts, screws and tools, and reads each one out loud.";
+const description = "Type the product name from the box. Bygga shows every assembly step in 3D, with the parts, screws and tools for each one, and reads it out loud.";
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
-  title: "Bygga: IKEA assembly, step by step",
+  title: "Bygga: step-by-step assembly for IKEA furniture",
   description,
   applicationName: "Bygga",
   appleWebApp: { capable: true, title: "Bygga", statusBarStyle: "default" },
-  openGraph: { type: "website", siteName: "Bygga", title: "Bygga: IKEA assembly, step by step", description, url: "/" },
-  twitter: { card: "summary_large_image", title: "Bygga: IKEA assembly, step by step", description },
+  openGraph: { type: "website", siteName: "Bygga", title: "Bygga: step-by-step assembly for IKEA furniture", description, url: "/" },
+  twitter: { card: "summary_large_image", title: "Bygga: step-by-step assembly for IKEA furniture", description },
   alternates: { canonical: "/" },
 };
 
 export const viewport: Viewport = {
-  themeColor: "#f7f6f2",
+  themeColor: "#f5f4f0",
   width: "device-width",
   initialScale: 1,
 };

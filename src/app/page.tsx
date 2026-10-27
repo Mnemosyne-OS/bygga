@@ -43,7 +43,7 @@ export default function Home() {
             <br />
             step by step.
           </h1>
-          <p className="lead">Type the name from the box. Each step plays in 3D and is read out loud, with the exact parts, screws and tools.</p>
+          <p className="lead">Type the name from the box. Each step plays in 3D and is read out loud, with the parts, screws and tools it needs.</p>
           <HeroSearch />
           <div className="quick">
             <span>Try</span>
@@ -134,7 +134,7 @@ export default function Home() {
         <div className="sec-head">
           <h2 className="sec-title">Popular builds</h2>
           <Link href="/browse" className="sec-link">
-            All {PRODUCT_COUNT} guides <IArrowRight size={15} />
+            All {PRODUCT_COUNT.toLocaleString("en-US")} products <IArrowRight size={15} />
           </Link>
         </div>
         <Catalog limit={9} />
