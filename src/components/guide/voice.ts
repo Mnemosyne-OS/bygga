@@ -2,11 +2,12 @@
 
 import { VOICE_DIR, clipId } from "@/lib/voice/script";
 import { canon, type Said } from "@/lib/voice/commands";
+import { keyHeaders } from "@/lib/userKey";
 
 /**
  * Plays the hands-free voice. Lines with a pre-recorded clip play from
  * /voice; other lines (scanned guides, spoken answers) are recorded live in
- * the same voice when the server allows it. A line that can't be played in
+ * the same voice, on the person's own key when they've added one. A line that can't be played in
  * that voice is skipped (it is on screen anyway): the device's own voice is
  * never used, so the guide only ever has one voice.
  *
@@ -38,7 +39,7 @@ class Voice {
   private ended = 0;
   /** Live lines, fetched whole so they can load ahead and play without gaps. */
   private fetched = new Map<string, Promise<string | null>>();
-  /** The server can record lines that have no clip. */
+  /** Lines with no clip can be recorded live: there's a key to record them on. */
   live = false;
   rate = 1;
 
@@ -79,7 +80,7 @@ class Voice {
     const t = text.trim();
     let p = this.fetched.get(t);
     if (!p) {
-      p = fetch(`/api/voice?t=${encodeURIComponent(t)}`, { signal: AbortSignal.timeout(10_000) })
+      p = fetch(`/api/voice?t=${encodeURIComponent(t)}`, { headers: keyHeaders(), signal: AbortSignal.timeout(10_000) })
         .then((r) => (r.ok ? r.blob() : null))
         .then((b) => (b && b.size ? URL.createObjectURL(b) : null))
         .catch(() => null)
@@ -100,6 +101,12 @@ class Voice {
   private src(text: string): Promise<string | null> {
     const c = this.clip(text);
     return c ? Promise.resolve(c.src) : this.live ? this.liveSrc(text) : Promise.resolve(null);
+  }
+
+  /** Whether any of these lines can be played: a clip, or a key to record it live. */
+  async readable(lines: string[]) {
+    await this.load();
+    return lines.some((l) => this.has(l));
   }
 
   subscribe(fn: Listener) {

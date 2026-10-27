@@ -31,7 +31,7 @@ export function useWakeLock(active: boolean) {
   }, [active]);
 }
 
-export type Mic = "off" | "asking" | "on" | "paused" | "denied" | "busy" | "nomic" | "unsupported" | "offline";
+export type Mic = "off" | "asking" | "on" | "paused" | "denied" | "busy" | "nomic" | "unsupported" | "offline" | "refused" | "credits";
 
 type Ctx = typeof AudioContext;
 const AudioCtx = () => (typeof window === "undefined" ? undefined : (window.AudioContext ?? (window as unknown as { webkitAudioContext?: Ctx }).webkitAudioContext));
@@ -64,8 +64,10 @@ export function primeListening() {
  * piece's times so her own words can be told apart. onHeard returns what it
  * acted on, to show as "Heard ...", or null. `her` says whether the voice is
  * playing, so what's left of her in the mic isn't taken for someone talking.
+ * It runs on the person's own key: a new key (or a new `key` token, after a
+ * top-up) starts it afresh.
  */
-export function useListener(enabled: boolean, onHeard: (text: string, seg: Segment) => string | null, her: () => boolean) {
+export function useListener(enabled: boolean, key: string, onHeard: (text: string, seg: Segment) => string | null, her: () => boolean) {
   const cb = useRef(onHeard);
   const herRef = useRef(her);
   useEffect(() => {
@@ -87,6 +89,8 @@ export function useListener(enabled: boolean, onHeard: (text: string, seg: Segme
     let tries = 0;
     let fails = 0;
     let inflight = 0;
+    // a key turned away, or an account out of credit, fails every piece the same way: stop sending
+    let dead = false;
     // a piece that overlaps one already acted on can't act again
     let acted = 0;
     let cut = segmenter();
@@ -94,11 +98,18 @@ export function useListener(enabled: boolean, onHeard: (text: string, seg: Segme
 
     const send = async (seg: Segment) => {
       // a noisy room: drop a piece rather than queue it behind others
-      if (inflight >= 3) return;
+      if (inflight >= 3 || dead) return;
       inflight++;
       try {
         const r = await fetch("/api/listen", { method: "POST", headers: { "Content-Type": "audio/wav", ...keyHeaders() }, body: toWav(seg.pcm), signal: AbortSignal.timeout(9000) });
         if (stop) return;
+        if (r.status === 401 || r.status === 402) {
+          // nothing more will be heard on this key: the mic goes off too, so no recording light stays on for nothing
+          dead = true;
+          release();
+          setMic(r.status === 401 ? "refused" : "credits");
+          return;
+        }
         if (!r.ok) throw new Error(String(r.status));
         const text = String(((await r.json()) as { text?: unknown }).text ?? "");
         fails = 0;
@@ -111,7 +122,7 @@ export function useListener(enabled: boolean, onHeard: (text: string, seg: Segme
         clearTimeout(clear);
         clear = setTimeout(() => setHeard(""), 2400);
       } catch {
-        if (!stop && ++fails >= 3) setMic("offline");
+        if (!stop && !dead && ++fails >= 3) setMic("offline");
       } finally {
         inflight--;
       }
@@ -148,7 +159,7 @@ export function useListener(enabled: boolean, onHeard: (text: string, seg: Segme
     };
 
     const open = async () => {
-      if (stop || stream || hidden()) return;
+      if (stop || dead || stream || hidden()) return;
       // only say "allow the mic" when the browser is actually asking
       asking = setTimeout(() => setMic((m) => (m === "on" ? m : "asking")), 500);
       let s: MediaStream;
@@ -205,13 +216,14 @@ export function useListener(enabled: boolean, onHeard: (text: string, seg: Segme
         tap.connect(sink);
         nodes = [src, tap, sink];
         cut = segmenter();
+        if (dead) return;
         if (ctx.state === "running") setMic("on");
         else {
           setMic("paused");
           unwake();
           wake = () => {
             unwake();
-            ctx.resume().then(() => !stop && stream === s && setMic(ctx.state === "running" ? "on" : "paused"), () => {});
+            ctx.resume().then(() => !stop && !dead && stream === s && setMic(ctx.state === "running" ? "on" : "paused"), () => {});
           };
           document.addEventListener("pointerdown", wake);
         }
@@ -241,7 +253,7 @@ export function useListener(enabled: boolean, onHeard: (text: string, seg: Segme
       release();
       setMic("off");
     };
-  }, [enabled]);
+  }, [enabled, key]);
 
   if (!enabled) return { mic: "off" as Mic, heard: "" };
   return { mic: micSupported() ? mic : ("unsupported" as Mic), heard };

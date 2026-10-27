@@ -1,9 +1,8 @@
 import { PRODUCTS, toSpec } from "@/lib/catalog";
 import { categoryOf, fold, guessSpec, matchCatalog, searchCatalog } from "@/lib/search";
 import { parseSpec, SPEC_PROMPT } from "@/lib/spec";
-import { draft, type Draft } from "@/lib/draft";
 import { ikeaType } from "@/lib/ikea";
-import { chatText, extractJson, fromApp, hasKey, ipOf, MODELS, rateLimited, TogetherError, userKey } from "@/lib/together";
+import { chatText, extractJson, fromApp, ipOf, keyTrouble, MODELS, rateLimited, TogetherError, userKey } from "@/lib/together";
 import type { ProductSpec } from "@/lib/types";
 
 const cache = new Map<string, { spec: ProductSpec; model: string }>();
@@ -26,15 +25,17 @@ export async function POST(req: Request) {
   // IKEA's own word for what this is: steers the draft, and says plainly when it's something we can't draw
   const type = await ikeaType(q);
   if (type && !drawable(type)) return Response.json({ found: false, ikea: type, suggestions: suggestions(), via: "ikea" });
-  // one spelling per name, so the shared draft cache isn't split by upper and lower case
+  // names read the same to the model however they were typed
   const said = q.replace(/\s+/g, " ").toUpperCase();
   const hint = type ? `${said} (IKEA sells this as: ${type})` : said;
 
+  // working out a product we don't know runs on the person's own key; without one, they pick its shape
   const own = userKey(req);
-  if (hasKey() || own) {
+  let trouble: string | null = null;
+  if (own) {
     if (rateLimited(ipOf(req) + ":guide", 12)) return Response.json({ error: "slow down" }, { status: 429 });
     try {
-      const d = await draftWith(own, type ? `${key}|${fold(type)}` : key, hint);
+      const d = await draft(own, hint);
       if (d && "found" in d) {
         return Response.json({ found: false, suggestions: suggestions(d.suggestions), via: "ai" });
       }
@@ -50,13 +51,14 @@ export async function POST(req: Request) {
       }
     } catch (e) {
       const err = e as TogetherError;
+      trouble = keyTrouble(err.status);
       console.error("[guide] together error", err.status, err.message);
     }
   }
 
   const g = guessSpec(type ? `${q} ${type}` : q);
-  if (g && categoryOf(type ? `${q} ${type}` : q)) return Response.json({ spec: { ...g, variant: type ?? g.variant }, via: "guess" });
-  return Response.json({ found: false, ikea: type ?? undefined, suggestions: suggestions(), via: hasKey() || own ? "ai" : "offline" });
+  if (g && categoryOf(type ? `${q} ${type}` : q)) return Response.json({ spec: { ...g, variant: type ?? g.variant }, via: "guess", trouble: trouble ?? undefined });
+  return Response.json({ found: false, ikea: type ?? undefined, suggestions: suggestions(), via: own ? "ai" : "offline", trouble: trouble ?? undefined });
 }
 
 /** Types the plan generator can draw: lamps, mattresses, textiles, plants and the like it can't. */
@@ -65,22 +67,11 @@ function drawable(type: string) {
   return categoryOf(type) !== null;
 }
 
-/** The shared, cached draft on the server key; a visitor's own key is never cached under someone else's name. */
-async function draftWith(own: string | undefined, key: string, q: string): Promise<Draft | null> {
-  if (!own && hasKey()) return draft(key, q);
-  try {
-    return await draftOwn(own!, q);
-  } catch (e) {
-    // a saved key that stopped working gets the shared, cached draft, not a fresh call on the server key
-    if (e instanceof TogetherError && (e.status === 401 || e.status === 403) && hasKey()) return draft(key, q);
-    throw e;
-  }
-}
+type Draft = { spec: ProductSpec; model: string } | { found: false; suggestions: string[] };
 
-async function draftOwn(own: string, q: string): Promise<Draft | null> {
+async function draft(own: string, q: string): Promise<Draft | null> {
   const { text, model } = await chatText({
     key: own,
-    fallback: false,
     models: MODELS.text,
     json: true,
     maxTokens: 1800,

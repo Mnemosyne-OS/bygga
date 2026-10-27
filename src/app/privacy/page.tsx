@@ -20,7 +20,7 @@ export default function Privacy() {
         <h2>On your device</h2>
         <ul>
           <li>Your build progress, which step you are on, and settings like the voice, saved in your browser&apos;s local storage.</li>
-          <li>Your own Together AI key, if you add one. It is sent with your requests so they run on your account, and never stored on our side.</li>
+          <li>Your own Together AI key, if you add one. Every AI feature runs on it, so it is sent with those requests and used for them only. It is never stored or logged on our side.</li>
           <li>Guides and voice clips you have opened, kept by the browser so they work offline.</li>
         </ul>
         <p>Clearing this site&apos;s data in your browser deletes all of it.</p>
@@ -28,7 +28,7 @@ export default function Privacy() {
         <h2>What reaches our server</h2>
         <ul>
           <li>The product name you search for, to find or draft its guide.</li>
-          <li>Questions and photos you send from &ldquo;Stuck?&rdquo;, and photos of a box label you search with. Photos are resized in your browser first, which also removes location data.</li>
+          <li>Questions and photos you send from the help panel, and photos of a box label you search with. Photos are resized in your browser first, which also removes location data.</li>
           <li>The text of a voice line that has no recording yet, to record it.</li>
           <li>While the voice is on, short bits of sound from your mic each time someone talks, so it can hear you say &ldquo;next&rdquo;. They are turned into text, and Bygga keeps neither.</li>
           <li>Feedback you send, such as &ldquo;This step doesn&apos;t match my box&rdquo;, kept in our server logs with the product and step.</li>
@@ -38,7 +38,7 @@ export default function Privacy() {
         <h2>Who else sees it</h2>
         <ul>
           <li>
-            <b>Together AI</b> (United States) turns searches, questions and photos into answers, records voice lines, and turns what the mic hears into text. See their{" "}
+            <b>Together AI</b> (United States) turns searches, questions and photos into answers, records voice lines, and turns what the mic hears into text, all on your own key. See their{" "}
             <a href="https://www.together.ai/privacy" target="_blank" rel="noreferrer">
               privacy policy
             </a>

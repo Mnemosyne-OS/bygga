@@ -1,4 +1,4 @@
-import { chatText, extractJson, fromApp, hasKey, ipOf, MODELS, rateLimited, userKey } from "@/lib/together";
+import { chatText, extractJson, fromApp, ipOf, keyTrouble, MODELS, rateLimited, TogetherError, userKey } from "@/lib/together";
 
 const PROMPT = `This photo shows an IKEA product, its box, its label or its assembly manual cover. Read the product name.
 Reply with JSON only: {"name": "KALLAX", "variant": "2x4 shelving unit", "confidence": 0.0-1.0}.
@@ -7,7 +7,7 @@ The name is the word in capitals (it may contain Å, Ä or Ö). If you can't rea
 export async function POST(req: Request) {
   if (!fromApp(req)) return Response.json({ error: "forbidden" }, { status: 403 });
   const key = userKey(req);
-  if (!hasKey() && !key) return Response.json({ error: "ai-off" }, { status: 503 });
+  if (!key) return Response.json({ error: "key" }, { status: 401 });
   if (rateLimited(ipOf(req) + ":identify", 8)) return Response.json({ error: "slow down" }, { status: 429 });
   const { image } = (await req.json().catch(() => ({}))) as { image?: string };
   if (typeof image !== "string" || !image.startsWith("data:image/") || image.length > 3_000_000) return Response.json({ error: "bad image" }, { status: 400 });
@@ -26,6 +26,7 @@ export async function POST(req: Request) {
     return Response.json({ name, variant, query: [name, variant].filter(Boolean).join(" ").trim(), confidence: Number(j?.confidence ?? 0) });
   } catch (e) {
     console.error("[identify]", (e as Error).message);
-    return Response.json({ error: "failed" }, { status: 502 });
+    const trouble = e instanceof TogetherError ? keyTrouble(e.status) : null;
+    return Response.json({ error: trouble ?? "failed" }, { status: trouble === "key" ? 401 : trouble === "credits" ? 402 : 502 });
   }
 }

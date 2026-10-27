@@ -1,4 +1,4 @@
-import { chat, fromApp, hasKey, ipOf, MODELS, rateLimited, userKey, type Msg } from "@/lib/together";
+import { chat, fromApp, ipOf, keyTrouble, MODELS, rateLimited, TogetherError, userKey, type Msg } from "@/lib/together";
 
 interface Body {
   context?: string;
@@ -12,16 +12,17 @@ Answer in plain, warm English. At most 3 short sentences, or a short numbered li
 Be practical and specific to the step they are on. If something could hurt them or damage the furniture, say so first.
 If a part is missing or broken: tell them to note the number printed on the bag or panel, and that IKEA stores and customer service usually replace small fittings for free.
 If they send a photo of a part, say which part from the list it most likely is and why (size, shape, head).
+They see pictures from their own guide when you add tags: [part B] shows panel B, [fitting 3] shows fitting 3, [step 5] shows the drawing of step 5, using the letters and numbers in the lists below. Add the tags for what your answer is about: the panel or fitting you matched in a photo, the ones you name, the step you point them to, or this step when they ask what to do. At most 3, together on the last line. Never mention the tags or the pictures in words. In your words, call a panel by its letter and name ("panel B, the divider") and a fitting by its name ("the wooden dowels"), never by its number.
 Never use em dashes or en dashes.`;
 
 export async function POST(req: Request) {
   if (!fromApp(req)) return Response.json({ error: "forbidden" }, { status: 403 });
   const key = userKey(req);
-  if (!hasKey() && !key) return Response.json({ error: "ai-off" }, { status: 503 });
+  if (!key) return Response.json({ error: "key" }, { status: 401 });
   if (rateLimited(ipOf(req) + ":help", 20)) return Response.json({ error: "slow down" }, { status: 429 });
   const b = (await req.json().catch(() => ({}))) as Body;
   const question = (b.question ?? "").toString().slice(0, 600);
-  const context = (b.context ?? "").toString().slice(0, 3000);
+  const context = (b.context ?? "").toString().slice(0, 7000);
   const history = (Array.isArray(b.history) ? b.history : [])
     .filter((m) => m && (m.role === "user" || m.role === "assistant"))
     .slice(-6)
@@ -75,6 +76,7 @@ export async function POST(req: Request) {
     return new Response(stream, { headers: { "Content-Type": "text/plain; charset=utf-8", "Cache-Control": "no-store" } });
   } catch (e) {
     console.error("[help]", (e as Error).message);
-    return Response.json({ error: "failed" }, { status: 502 });
+    const trouble = e instanceof TogetherError ? keyTrouble(e.status) : null;
+    return Response.json({ error: trouble ?? "failed" }, { status: trouble === "key" ? 401 : trouble === "credits" ? 402 : 502 });
   }
 }

@@ -88,6 +88,13 @@ export function cacheSpec(slug: string, spec: ProductSpec) {
     /* ignore */
   }
 }
+export function uncacheSpec(slug: string) {
+  try {
+    localStorage.removeItem(SPEC_KEY + slug);
+  } catch {
+    /* ignore */
+  }
+}
 export function cachedSpec(slug: string): ProductSpec | null {
   try {
     const s = localStorage.getItem(SPEC_KEY + slug);

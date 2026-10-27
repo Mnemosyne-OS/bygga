@@ -7,6 +7,7 @@ import { articleNo, articlesReady, loadArticles, searchCatalog, slugify, matchCa
 import Drawing from "../Drawing";
 import { keyHeaders } from "@/lib/userKey";
 import { IArrowRight, ICamera, ISearch, ISparkle } from "../art/Icons";
+import KeyModal, { type KeyTrouble } from "../KeyModal";
 
 const EXAMPLES = ["KALLAX", "MALM 3 drawers", "802.758.87", "BILLY bookcase", "LACK side table", "HEMNES chest", "IDÅSEN desk"];
 
@@ -18,6 +19,8 @@ export default function Search({ ai, autoFocus }: { ai: boolean; autoFocus?: boo
   const [ph, setPh] = useState("");
   const [reading, setReading] = useState(false);
   const [msg, setMsg] = useState("");
+  // photo search runs on the person's own key: without one, the camera asks for it first
+  const [askKey, setAskKey] = useState<KeyTrouble | "" | null>(null);
   const input = useRef<HTMLInputElement>(null);
   const file = useRef<HTMLInputElement>(null);
 
@@ -88,6 +91,10 @@ export default function Search({ ai, autoFocus }: { ai: boolean; autoFocus?: boo
       const img = await shrink(f);
       const r = await fetch("/api/identify", { method: "POST", headers: { "Content-Type": "application/json", ...keyHeaders() }, body: JSON.stringify({ image: img }) });
       const j = await r.json();
+      if (r.status === 401 || r.status === 402) {
+        setAskKey(r.status === 401 ? "key" : "credits");
+        return;
+      }
       if (!r.ok) throw new Error(j.error);
       if (j.name) {
         setQ(j.query || j.name);
@@ -95,7 +102,7 @@ export default function Search({ ai, autoFocus }: { ai: boolean; autoFocus?: boo
         setTimeout(() => go(j.query || j.name), 650);
       } else setMsg("Couldn't read a name. Try a closer photo of the label.");
     } catch {
-      setMsg(ai ? "Couldn't read that photo. Try again or type the name." : "Photo search needs Together AI on the server.");
+      setMsg("Couldn't read that photo. Try again or type the name.");
     } finally {
       setReading(false);
     }
@@ -140,7 +147,7 @@ export default function Search({ ai, autoFocus }: { ai: boolean; autoFocus?: boo
           autoFocus={autoFocus}
           enterKeyHint="go"
         />
-        <button type="button" className={"cam-btn" + (reading ? " busy" : "")} onClick={() => file.current?.click()} aria-label="Search with a photo of the box label" title="Snap the box label">
+        <button type="button" className={"cam-btn" + (reading ? " busy" : "")} onClick={() => (ai ? file.current?.click() : setAskKey(""))} aria-label="Search with a photo of the box label" title="Snap the box label">
           <ICamera size={22} />
         </button>
         <button type="submit" className="go-btn" aria-label="Find assembly steps">
@@ -160,6 +167,19 @@ export default function Search({ ai, autoFocus }: { ai: boolean; autoFocus?: boo
         />
       </form>
       <AnimatePresence>{msg && <motion.p className="search-msg" initial={{ opacity: 0, y: -4 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0 }}>{msg}</motion.p>}</AnimatePresence>
+      <AnimatePresence>
+        {askKey !== null && (
+          <KeyModal
+            why="photo"
+            trouble={askKey || null}
+            onClose={() => setAskKey(null)}
+            onSaved={() => {
+              setAskKey(null);
+              setMsg("Key saved. Tap the camera to snap the label.");
+            }}
+          />
+        )}
+      </AnimatePresence>
       <AnimatePresence>
         {open && (
           <motion.ul className="suggest" role="listbox" initial={{ opacity: 0, y: -6, scale: 0.99 }} animate={{ opacity: 1, y: 0, scale: 1 }} exit={{ opacity: 0, y: -6 }} transition={{ duration: 0.18 }}>

@@ -1,13 +1,15 @@
 "use client";
 
-import { motion } from "motion/react";
+import { useEffect, useState } from "react";
+import { AnimatePresence, motion } from "motion/react";
 import type { Plan, WarnId } from "@/lib/types";
 import { stepContents, tipFor } from "@/lib/plan/contents";
 import { HwArt } from "../art/Hardware";
 import { ToolArt, TOOL_INFO } from "../art/Tools";
-import { IArrowLeft, IArrowRight, ICheck, IClock, IClose, IHelp, IMic, ISparkle, WarnIcon, WARN_TEXT } from "../art/Icons";
+import { IArrowLeft, IArrowRight, ICheck, IClock, IClose, IMic, ISparkle, WarnIcon, WARN_TEXT } from "../art/Icons";
 import { TwoPeople } from "../art/Figure";
 import Thumb from "../Thumb";
+import { getPref, setPref } from "@/lib/store";
 
 export function minutesLeft(plan: Plan, index: number) {
   return plan.steps.slice(index).reduce((s, x) => s + x.minutes, 0);
@@ -20,7 +22,6 @@ export default function StepPanel({
   onNext,
   onBack,
   onHover,
-  onHelp,
   offer,
 }: {
   plan: Plan;
@@ -29,7 +30,6 @@ export default function StepPanel({
   onNext: () => void;
   onBack: () => void;
   onHover: (ids: string[] | null) => void;
-  onHelp: () => void;
   /** Invite to turn voice on, while it is off. */
   offer?: { again: boolean; listen: boolean; onStart: () => void; onDismiss: () => void } | null;
 }) {
@@ -190,6 +190,7 @@ export default function StepPanel({
         </motion.div>
       </div>
       <div className="pane-foot">
+        <KeysTip />
         <button className="btn round" onClick={onBack} aria-label="Previous step" title="Previous (left arrow)">
           <IArrowLeft />
         </button>
@@ -200,16 +201,56 @@ export default function StepPanel({
           <span className="done-label">{last ? "Done, finish up" : "Done, next step"}</span>
           <IArrowRight />
         </button>
-        <div className="foot-row">
-          <button className="btn link stuck" onClick={onHelp}>
-            <IHelp size={16} /> Stuck?
-          </button>
-          <span className="kbd-hint" aria-hidden="true">
-            <kbd>&larr;</kbd>
-            <kbd>&rarr;</kbd> to move, <kbd>R</kbd> to replay
-          </span>
-        </div>
       </div>
     </div>
+  );
+}
+
+/**
+ * The keyboard shortcuts, once: a tip over the Done button on a first visit
+ * with a keyboard and mouse. Closing it, or using the keys, puts it away for good.
+ */
+function KeysTip() {
+  const [show, setShow] = useState(false);
+  useEffect(() => {
+    if (getPref("keysTip", false) || !matchMedia("(hover: hover) and (pointer: fine) and (min-width: 901px)").matches) return;
+    const t = setTimeout(() => setShow(true), 1200);
+    const onKey = (e: KeyboardEvent) => {
+      if (e.metaKey || e.ctrlKey || e.altKey || !(e.key === "ArrowLeft" || e.key === "ArrowRight" || e.key.toLowerCase() === "r")) return;
+      const t = e.target as HTMLElement;
+      if (t?.tagName === "INPUT" || t?.tagName === "TEXTAREA") return;
+      setPref("keysTip", true);
+      setShow(false);
+    };
+    window.addEventListener("keydown", onKey);
+    return () => {
+      clearTimeout(t);
+      window.removeEventListener("keydown", onKey);
+    };
+  }, []);
+  return (
+    <AnimatePresence>
+      {show && (
+        <motion.div className="keys-tip" role="note" initial={{ opacity: 0, y: 8, scale: 0.97 }} animate={{ opacity: 1, y: 0, scale: 1 }} exit={{ opacity: 0, y: 4 }} transition={{ type: "spring", stiffness: 460, damping: 32 }}>
+          <span>
+            <kbd aria-label="Left arrow">&larr;</kbd>
+            <kbd aria-label="Right arrow">&rarr;</kbd> to move
+          </span>
+          <span>
+            <kbd>R</kbd> to replay
+          </span>
+          <button
+            className="keys-tip-x"
+            onClick={() => {
+              setPref("keysTip", true);
+              setShow(false);
+            }}
+            aria-label="Got it, hide this tip"
+          >
+            <IClose size={14} />
+          </button>
+        </motion.div>
+      )}
+    </AnimatePresence>
   );
 }

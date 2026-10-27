@@ -22,7 +22,7 @@ export function forTTS(text: string) {
   return t;
 }
 
-/** Renders one line to mp3. The key is the server's, never the visitor's. */
+/** Renders one line to mp3: on the person's own key live, on the recording script's key for the clips. */
 export async function speak(text: string, key: string) {
   const r = await fetch("https://api.together.ai/v1/audio/speech", {
     method: "POST",

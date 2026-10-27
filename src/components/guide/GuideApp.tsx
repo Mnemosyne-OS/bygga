@@ -10,7 +10,7 @@ import { buildPlan } from "@/lib/plan";
 import { stepContents } from "@/lib/plan/contents";
 import { matchCatalog, specForKind } from "@/lib/search";
 import { KIND_LABELS, type Kind } from "@/lib/products";
-import { BREAK_MS, cacheSpec, cachedSpec, getPref, isBuilt, loadProgress, saveProgress, setPref, type Phase, type Progress } from "@/lib/store";
+import { BREAK_MS, cacheSpec, cachedSpec, getPref, isBuilt, loadProgress, saveProgress, setPref, uncacheSpec, type Phase, type Progress } from "@/lib/store";
 import StageView, { type StageHandle } from "../StageView";
 import type { StageMode } from "@/engine/stage";
 import { LogoMark } from "../Logo";
@@ -32,7 +32,8 @@ import { mediaSession, voice } from "./voice";
 import { LINES, builtLine, needsLine, spokenAnswer, stepLines, toolsLine, whereLine } from "@/lib/voice/script";
 import { hearIntent, type Intent } from "@/lib/voice/commands";
 import { useMounted } from "@/lib/useMounted";
-import { getUserKey, keyHeaders } from "@/lib/userKey";
+import { getUserKey, keyHeaders, useUserKey } from "@/lib/userKey";
+import KeyModal, { type KeyTrouble, type KeyWhy } from "../KeyModal";
 import { decodeSpec } from "@/lib/scan/share";
 import { track } from "@vercel/analytics";
 import { SCAN_ENABLED } from "@/lib/site";
@@ -46,8 +47,10 @@ export default function GuideApp({ slug, query, step, kind }: { slug: string; qu
   const isScan = slug.startsWith("scan-");
   const q = query || slug.replace(/-/g, " ");
   const initial = useMemo(() => (isScan ? null : (catalogSpec(slug) ?? (picked ? { ...specForKind(picked, q.split(" ")[0] || q), slug } : null))), [isScan, slug, picked, q]);
+  // asked again after a key was added: a typical build gives way to one worked out for this product
+  const [attempt, setAttempt] = useState(0);
   // a build saved under this name (an AI draft, a picked shape) wins over a near-miss in the catalog
-  const stored = useMemo(() => (mounted && !initial ? (cachedSpec(slug) ?? loadProgress(slug)?.spec ?? null) : null), [mounted, initial, slug]);
+  const stored = useMemo(() => (mounted && !initial ? (cachedSpec(slug) ?? loadProgress(slug)?.spec ?? null) : null), [mounted, initial, slug, attempt]); // eslint-disable-line react-hooks/exhaustive-deps
   const match = useMemo(() => (initial || isScan ? null : matchCatalog(q)), [initial, isScan, q]);
   const local = stored ? null : match;
   const [imported, setImported] = useState<{ slug: string; spec: ProductSpec | null } | null>(null);
@@ -71,8 +74,16 @@ export default function GuideApp({ slug, query, step, kind }: { slug: string; qu
   useEffect(() => {
     if (mounted && local?.slug && local.slug !== slug) router.replace(`/build/${local.slug}` + (step ? `?step=${step}` : ""));
   }, [mounted, local, slug, step, router]);
-  const [fetched, setFetched] = useState<{ slug: string; spec?: ProductSpec; via?: Via; suggestions?: string[]; ikea?: string; error?: boolean } | null>(null);
-  const [ai, setAi] = useState(false);
+  const [fetched, setFetched] = useState<{ slug: string; spec?: ProductSpec; via?: Via; suggestions?: string[]; ikea?: string; error?: boolean; trouble?: KeyTrouble } | null>(null);
+  // every AI feature runs on the person's own key
+  const key = useUserKey();
+  const ai = !!key;
+  const [askKey, setAskKey] = useState<KeyTrouble | "" | null>(null);
+  const again = () => {
+    uncacheSpec(slug);
+    setFetched(null);
+    setAttempt((a) => a + 1);
+  };
   const result = fetched?.slug === slug ? fetched : null;
   const spec = initial ?? cached ?? result?.spec ?? null;
   const via: Via = initial ? (initial.source === "guess" ? "guess" : "catalog") : cached ? cached.source : (result?.via ?? "ai");
@@ -81,14 +92,8 @@ export default function GuideApp({ slug, query, step, kind }: { slug: string; qu
   const suggestions = result?.suggestions ?? [];
 
   useEffect(() => {
-    fetch("/api/status")
-      .then((r) => r.json())
-      .then((j) => {
-        setAi(!!j.ai || !!getUserKey());
-        voice.live = !!j.voice;
-      })
-      .catch(() => {});
-  }, []);
+    voice.live = !!key;
+  }, [key]);
 
   // resolve unknown products through the API
   useEffect(() => {
@@ -105,15 +110,16 @@ export default function GuideApp({ slug, query, step, kind }: { slug: string; qu
             return;
           }
           sp.slug = slug;
-          cacheSpec(slug, sp);
-          setFetched({ slug, spec: sp, via: j.via });
-        } else setFetched({ slug, suggestions: j.suggestions ?? [], ikea: j.ikea });
+          // a typical build is only a stand-in: not kept, so the next visit (with a key, say) can ask for the real thing
+          if (j.via !== "guess") cacheSpec(slug, sp);
+          setFetched({ slug, spec: sp, via: j.via, trouble: j.trouble });
+        } else setFetched({ slug, suggestions: j.suggestions ?? [], ikea: j.ikea, trouble: j.trouble });
       })
       .catch(() => alive && setFetched({ slug, error: true }));
     return () => {
       alive = false;
     };
-  }, [mounted, initial, cached, local, isScan, slug, q, step, router]);
+  }, [mounted, initial, cached, local, isScan, slug, q, step, router, attempt]);
 
   const plan = useMemo(() => {
     if (!spec) return null;
@@ -124,6 +130,24 @@ export default function GuideApp({ slug, query, step, kind }: { slug: string; qu
       return null;
     }
   }, [spec]);
+
+  const draftKey = (
+    <AnimatePresence>
+      {askKey !== null && (
+        <KeyModal
+          why="draft"
+          name={(spec?.name ?? q.split(" ")[0]).toUpperCase()}
+          trouble={askKey || null}
+          onClose={() => setAskKey(null)}
+          onSaved={() => {
+            // with a key, ask again: this time AI works the product out
+            setAskKey(null);
+            again();
+          }}
+        />
+      )}
+    </AnimatePresence>
+  );
 
   if (status === "scangone")
     return (
@@ -147,10 +171,38 @@ export default function GuideApp({ slug, query, step, kind }: { slug: string; qu
   if (status === "notfound" || status === "error" || !plan)
     return (
       <Shell title={q.toUpperCase()}>
-        <NotFound query={q} slug={slug} suggestions={suggestions} ikea={result?.ikea} error={status === "error"} />
+        <NotFound
+          query={q}
+          slug={slug}
+          suggestions={suggestions}
+          ikea={result?.ikea}
+          error={status === "error"}
+          ai={ai}
+          trouble={result?.trouble}
+          onAddKey={() => setAskKey(result?.trouble ?? "")}
+          onRetry={again}
+        />
+        {draftKey}
       </Shell>
     );
-  return <Guide key={slug + (picked ?? "")} plan={plan} slug={slug} via={via} ai={ai} startStep={step} />;
+  // a typical build, not yet started, can still be swapped for one worked out with the person's key
+  const trouble = result?.trouble;
+  const ownSteps =
+    via === "guess" && !initial && mounted && !loadProgress(slug)
+      ? !ai
+        ? { text: `Add your Together AI key for ${plan.spec.name}'s own steps`, act: () => setAskKey("") }
+        : trouble === "key"
+          ? { text: `Together turned your key away. Fix it for ${plan.spec.name}'s own steps`, act: () => setAskKey("key") }
+          : trouble === "credits"
+            ? { text: "Your Together credit ran out. Top it up, then tap here to try again", act: again }
+            : { text: `Try again for ${plan.spec.name}'s own steps`, act: again }
+      : undefined;
+  return (
+    <>
+      <Guide key={slug + (picked ?? "")} plan={plan} slug={slug} via={via} ai={ai} startStep={step} onOwnSteps={ownSteps} />
+      {draftKey}
+    </>
+  );
 }
 
 function Shell({ title, children }: { title: string; children: React.ReactNode }) {
@@ -169,7 +221,27 @@ function Shell({ title, children }: { title: string; children: React.ReactNode }
   );
 }
 
-function NotFound({ query, slug, suggestions, ikea, error }: { query: string; slug: string; suggestions: string[]; ikea?: string; error: boolean }) {
+function NotFound({
+  query,
+  slug,
+  suggestions,
+  ikea,
+  error,
+  ai,
+  trouble,
+  onAddKey,
+  onRetry,
+}: {
+  query: string;
+  slug: string;
+  suggestions: string[];
+  ikea?: string;
+  error: boolean;
+  ai: boolean;
+  trouble?: KeyTrouble;
+  onAddKey: () => void;
+  onRetry: () => void;
+}) {
   const name = query.split(" ")[0].toUpperCase();
   const what = ikea?.toLowerCase();
   const kinds = KIND_LABELS;
@@ -210,6 +282,33 @@ function NotFound({ query, slug, suggestions, ikea, error }: { query: string; sl
           )}
         </div>
       </div>
+      {!what && (!ai || trouble) && (
+        <div className="nf-ai">
+          <ISparkle size={18} />
+          <span>
+            {trouble === "credits" ? (
+              <>
+                <b>Your Together credit ran out.</b>{" "}
+                <a href="https://api.together.ai/settings/billing" target="_blank" rel="noreferrer">
+                  Top it up
+                </a>{" "}
+                and AI can work out {name}&apos;s own steps.
+              </>
+            ) : trouble === "key" ? (
+              <>
+                <b>Together turned your key away.</b> Fix it and AI can work out {name}&apos;s own steps.
+              </>
+            ) : (
+              <>
+                <b>Want {name}&apos;s own steps?</b> Add your Together AI key and AI works them out, for about a cent.
+              </>
+            )}
+          </span>
+          <button className="btn nf-ai-go" onClick={trouble === "credits" ? onRetry : onAddKey}>
+            {trouble === "credits" ? "Try again" : trouble ? "Fix it" : "Add key"}
+          </button>
+        </div>
+      )}
       <div className="kind-grid">
         {kinds.map((k, i) => (
           <motion.div key={k.kind} initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: i * 0.025 }}>
@@ -244,7 +343,7 @@ function NotFound({ query, slug, suggestions, ikea, error }: { query: string; sl
 
 /* ------------------------------------------------------------------ */
 
-function Guide({ plan, slug, via, ai, startStep }: { plan: Plan; slug: string; via: Via; ai: boolean; startStep?: number }) {
+function Guide({ plan, slug, via, ai, startStep, onOwnSteps }: { plan: Plan; slug: string; via: Via; ai: boolean; startStep?: number; onOwnSteps?: { text: string; act: () => void } }) {
   const steps = plan.steps;
   const deep = startStep ? Math.min(startStep, steps.length) - 1 : null;
   const [phase, setPhase] = useState<Phase>(deep !== null ? "steps" : "cover");
@@ -279,7 +378,14 @@ function Guide({ plan, slug, via, ai, startStep }: { plan: Plan; slug: string; v
   const clock = useRef({ at: 0, ms: 0, live: false });
   const stage = useRef<StageHandle | null>(null);
   const mounted = useMounted();
+  const key = useUserKey();
   const canListen = mounted && ai && micSupported();
+  // asking for a key: why, and what to do once there is one
+  const [askKey, setAskKey] = useState<{ why: KeyWhy; trouble?: KeyTrouble; then?: "voice" | "tip" } | null>(null);
+  // a guide with no recordings (an AI draft) can't be read aloud without a key either
+  const [readable, setReadable] = useState(true);
+  // bumped after the key modal closes on a key problem (a top-up, say), so listening tries again
+  const [listenTry, setListenTry] = useState(0);
 
   // restore progress once we are in the browser
   const [restored, setRestored] = useState(false);
@@ -405,7 +511,7 @@ function Guide({ plan, slug, via, ai, startStep }: { plan: Plan; slug: string; v
   // keyboard
   useEffect(() => {
     const onKey = (e: KeyboardEvent) => {
-      if (help || overview) return;
+      if (help || overview || askKey) return;
       const t = e.target as HTMLElement;
       if (t && (t.tagName === "INPUT" || t.tagName === "TEXTAREA")) return;
       if (phase !== "steps" || e.metaKey || e.ctrlKey || e.altKey) return;
@@ -424,7 +530,7 @@ function Guide({ plan, slug, via, ai, startStep }: { plan: Plan; slug: string; v
     };
     window.addEventListener("keydown", onKey);
     return () => window.removeEventListener("keydown", onKey);
-  }, [phase, next, back, help, overview]);
+  }, [phase, next, back, help, overview, askKey]);
 
   // the phone's back gesture steps back through the guide instead of leaving it
   const nav = useRef({ phase, back });
@@ -454,9 +560,9 @@ function Guide({ plan, slug, via, ai, startStep }: { plan: Plan; slug: string; v
 
   const said = useRef("");
   const micRef = useRef<Mic>("off");
-  const live = useRef({ next, back, step, voiceOn });
+  const live = useRef({ next, back, step, voiceOn, asking: false });
   useEffect(() => {
-    live.current = { next, back, step, voiceOn };
+    live.current = { next, back, step, voiceOn, asking: !!askKey };
   });
   useEffect(() => voice.subscribe(setSpeaking), []);
   useEffect(() => () => voice.stop(), []);
@@ -467,8 +573,10 @@ function Guide({ plan, slug, via, ai, startStep }: { plan: Plan; slug: string; v
   // runs inside the tap or key press, so the browser lets it play sound
   const startVoice = useCallback(() => {
     voice.unlock();
-    if (canListen) primeListening();
-    track("voice_on", { product: plan.spec.name });
+    // read now, not from the render: a key saved a moment ago counts
+    const listen = micSupported() && !!getUserKey();
+    if (listen) primeListening();
+    track("voice_on", { product: plan.spec.name, listen });
     setVoiceOn(true);
     setOffer(false);
     setPref("voice", true);
@@ -477,9 +585,19 @@ function Guide({ plan, slug, via, ai, startStep }: { plan: Plan; slug: string; v
       if (!ok) return;
       // by now the mic has either started or been refused, so the tip matches what works
       const m = micRef.current;
-      voice.say([canListen && (m === "on" || m === "asking") ? LINES.sayNext : LINES.tapNext]);
+      voice.say([listen && (m === "on" || m === "asking" || m === "off") ? LINES.sayNext : LINES.tapNext]);
     });
-  }, [canListen, plan, step]);
+  }, [plan, step]);
+
+  // with no key yet, turning the voice on first says what a key adds; once skipped, it just reads for the rest of the visit
+  const turnOnVoice = useCallback(() => {
+    if (getUserKey() || !micSupported() || skippedKey()) return startVoice();
+    // still inside the tap: Safari lets sound start later only if it was unlocked here
+    voice.unlock();
+    primeListening();
+    setAskKey({ why: "voice", then: "voice" });
+    voice.readable(stepLines(plan, step)).then(setReadable);
+  }, [startVoice, plan, step]);
 
   const stopVoice = useCallback((confirm = false) => {
     setVoiceOn(false);
@@ -584,7 +702,10 @@ function Guide({ plan, slug, via, ai, startStep }: { plan: Plan; slug: string; v
 
   const { mic, heard } = useListener(
     voiceOn && phase === "steps" && canListen,
+    `${key}#${listenTry}`,
     (text, seg) => {
+      // nothing acts while the key modal is open
+      if (askKey) return null;
       // what's left of her in the mic is set aside by when she said it; then "next" anywhere moves on
       const intent = hearIntent(text, seg, voice.linesBetween(seg.start, seg.end), voice.busy || voice.spokeBetween(seg.start, seg.end));
       if (!intent) return null;
@@ -605,13 +726,15 @@ function Guide({ plan, slug, via, ai, startStep }: { plan: Plan; slug: string; v
   useEffect(() => {
     const onKey = (e: KeyboardEvent) => {
       const t = e.target as HTMLElement;
-      if (e.key.toLowerCase() !== "v" || e.metaKey || e.ctrlKey || e.repeat || phase !== "steps" || help || overview || t?.tagName === "INPUT" || t?.tagName === "TEXTAREA") return;
+      if (e.key.toLowerCase() !== "v" || e.metaKey || e.ctrlKey || e.repeat || phase !== "steps" || help || overview || askKey || t?.tagName === "INPUT" || t?.tagName === "TEXTAREA") return;
+      // the key field opens focused: the "v" mustn't land in it
+      e.preventDefault();
       if (voiceOn) stopVoice();
-      else startVoice();
+      else turnOnVoice();
     };
     window.addEventListener("keydown", onKey);
     return () => window.removeEventListener("keydown", onKey);
-  }, [phase, help, overview, voiceOn, startVoice, stopVoice]);
+  }, [phase, help, overview, askKey, voiceOn, turnOnVoice, stopVoice]);
 
   // headphone buttons and the lock screen: next track, previous track
   useEffect(() => {
@@ -619,8 +742,8 @@ function Guide({ plan, slug, via, ai, startStep }: { plan: Plan; slug: string; v
     return mediaSession(
       { title: `Step ${step + 1} of ${steps.length}`, artist: plan.spec.name },
       {
-        next: () => live.current.next(),
-        back: () => live.current.back(),
+        next: () => !live.current.asking && live.current.next(),
+        back: () => !live.current.asking && live.current.back(),
         play: () => voice.say(stepLines(plan, live.current.step)),
         pause: () => voice.stop(),
       },
@@ -680,7 +803,7 @@ function Guide({ plan, slug, via, ai, startStep }: { plan: Plan; slug: string; v
             {sound ? <ISound /> : <ISoundOff />}
           </button>
           {phase === "steps" && (
-            <button className={"voice-btn" + (voiceOn ? " on" : "")} onClick={() => (voiceOn ? stopVoice() : startVoice())} aria-pressed={voiceOn} aria-label={voiceOn ? "Turn voice off" : "Turn voice on"} data-tip="Voice (V)">
+            <button className={"voice-btn" + (voiceOn ? " on" : "")} onClick={() => (voiceOn ? stopVoice() : turnOnVoice())} aria-pressed={voiceOn} aria-label={voiceOn ? "Turn voice off" : "Turn voice on"} data-tip="Voice (V)">
               <IMic size={18} />
               <span>{voiceOn ? "Voice on" : "Voice"}</span>
             </button>
@@ -788,8 +911,14 @@ function Guide({ plan, slug, via, ai, startStep }: { plan: Plan; slug: string; v
                 <i />
                 <i />
               </span>
-              <span>
-                {heard
+              <span className="listening-text">
+                {!canListen && mounted && micSupported()
+                  ? "Reading aloud"
+                  : mic === "refused"
+                    ? "Together turned your key away"
+                    : mic === "credits"
+                      ? "Your Together credit ran out"
+                      : heard
                   ? `Heard “${heard}”`
                   : mic === "on"
                     ? "Say “next” when you're ready"
@@ -809,6 +938,17 @@ function Guide({ plan, slug, via, ai, startStep }: { plan: Plan; slug: string; v
                                   ? "Reading aloud. Tap done to move on"
                                   : "Turning on the mic"}
               </span>
+              {((!canListen && mounted && micSupported()) || mic === "refused" || mic === "credits") && (
+                <button
+                  className="listening-fix"
+                  onClick={() => {
+                    primeListening();
+                    setAskKey(mic === "refused" ? { why: "key", trouble: "key" } : mic === "credits" ? { why: "key", trouble: "credits" } : { why: "voice", then: "tip" });
+                  }}
+                >
+                  {mic === "credits" ? "Top up" : mic === "refused" ? "Fix key" : "Turn on “next”"}
+                </button>
+              )}
             </div>
           )}
           {(via === "ai" || via === "scan") && phase === "cover" && (
@@ -846,6 +986,7 @@ function Guide({ plan, slug, via, ai, startStep }: { plan: Plan; slug: string; v
                     go("tools");
                   }}
                   onReview={() => go("steps", 0)}
+                  onOwnSteps={onOwnSteps}
                   onResume={() => {
                     if (!resume) return;
                     if (resume.phase === "steps") go("steps", Math.min(resume.step, steps.length - 1));
@@ -882,8 +1023,7 @@ function Guide({ plan, slug, via, ai, startStep }: { plan: Plan; slug: string; v
                   onNext={next}
                   onBack={back}
                   onHover={setHl}
-                  onHelp={() => setHelp({})}
-                  offer={!voiceOn && offer && (step === 0 || usedVoice) ? { again: usedVoice, listen: canListen, onStart: startVoice, onDismiss: () => setOffer(false) } : null}
+                  offer={!voiceOn && offer && (step === 0 || usedVoice) ? { again: usedVoice, listen: canListen || (mounted && micSupported() && !skippedKey()), onStart: turnOnVoice, onDismiss: () => setOffer(false) } : null}
                 />
               )}
               {phase === "done" && <DonePanel plan={plan} slug={slug} finish={finish} onReview={back} />}
@@ -907,7 +1047,42 @@ function Guide({ plan, slug, via, ai, startStep }: { plan: Plan; slug: string; v
             ask={help.ask}
             askId={help.at}
             onAnswer={voiceOn ? speakAnswer : undefined}
+            onAddKey={(why, trouble) => setAskKey({ why, trouble })}
+            onShow={setHl}
+            onGoto={(i) => {
+              setHelp(null);
+              if (phase !== "steps" || i !== step) go("steps", i, phase !== "steps" || i > step ? 1 : -1);
+            }}
             onClose={() => setHelp(null)}
+          />
+        )}
+      </AnimatePresence>
+      <AnimatePresence>
+        {askKey && (
+          <KeyModal
+            why={askKey.why}
+            trouble={askKey.trouble}
+            skip={askKey.then === "voice" && readable ? "Just read it aloud" : undefined}
+            onSkip={() => {
+              setAskKey(null);
+              skipKey();
+              startVoice();
+            }}
+            onClose={() => {
+              if (askKey.trouble) setListenTry((n) => n + 1);
+              setAskKey(null);
+            }}
+            onGesture={() => {
+              if (!voiceOn) voice.unlock();
+              primeListening();
+            }}
+            onSaved={() => {
+              const then = askKey.then;
+              setAskKey(null);
+              if (then === "voice") startVoice();
+              // already reading aloud: now it listens too, and says so when it isn't mid-line
+              else if (then === "tip" && !voice.speaking) voice.say([LINES.sayNext]);
+            }}
           />
         )}
       </AnimatePresence>
@@ -930,6 +1105,23 @@ function Guide({ plan, slug, via, ai, startStep }: { plan: Plan; slug: string; v
 }
 
 const PHASES: Phase[] = ["cover", "tools", "parts", "steps", "done"];
+
+/** "Just read it aloud" holds for the rest of the visit, so turning the voice on again doesn't ask again. */
+const SKIP = "bygga:key-skip";
+function skippedKey() {
+  try {
+    return sessionStorage.getItem(SKIP) === "1";
+  } catch {
+    return false;
+  }
+}
+function skipKey() {
+  try {
+    sessionStorage.setItem(SKIP, "1");
+  } catch {
+    /* storage blocked */
+  }
+}
 
 function toggle(s: Set<string>, id: string) {
   const n = new Set(s);

@@ -18,6 +18,7 @@ export default function CoverPanel({
   onStart,
   onResume,
   onReview,
+  onOwnSteps,
 }: {
   plan: Plan;
   via: "catalog" | "ai" | "guess" | "scan";
@@ -27,6 +28,8 @@ export default function CoverPanel({
   onStart: () => void;
   onResume: () => void;
   onReview: () => void;
+  /** A typical build stands in for this product: a key gets it worked out properly. */
+  onOwnSteps?: { text: string; act: () => void };
 }) {
   const s = plan.spec;
   const t = totals(plan);
@@ -171,6 +174,11 @@ export default function CoverPanel({
                     ? "Built from what Together AI knows about this product. If your box looks different, trust the paper manual."
                     : "We don't know this exact product yet, so this follows a typical build. Keep the paper manual close."}
                 </span>
+                {via === "guess" && onOwnSteps && (
+                  <button className="callout-link plain" onClick={onOwnSteps.act}>
+                    {onOwnSteps.text}
+                  </button>
+                )}
               </div>
             </div>
           )

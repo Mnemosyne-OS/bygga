@@ -17,10 +17,6 @@ function list(env: string | undefined, fallback: string) {
   return (env?.trim() || fallback).split(",").map((m) => m.trim()).filter(Boolean);
 }
 
-export function hasKey() {
-  return !!process.env.TOGETHER_API_KEY?.trim();
-}
-
 type Content = string | ({ type: "text"; text: string } | { type: "image_url"; image_url: { url: string } })[];
 export interface Msg {
   role: "system" | "user" | "assistant";
@@ -35,10 +31,8 @@ interface ChatOpts {
   temperature?: number;
   stream?: boolean;
   signal?: AbortSignal;
-  /** The person's own key. Falls back to the server key, unless `fallback` is false. */
-  key?: string;
-  /** False for calls that must only ever spend the person's own credit. */
-  fallback?: boolean;
+  /** The person's own key: every call runs on it, and there is no other. */
+  key: string;
   reasoning?: "low" | "medium" | "high";
 }
 
@@ -53,22 +47,8 @@ export class TogetherError extends Error {
 
 /** Calls Together's chat completions, falling back through the model list when one is unavailable. */
 export async function chat(o: ChatOpts): Promise<{ res: Response; model: string }> {
-  // a visitor's saved key can expire: the server key takes over when it is turned away
-  const keys = [...new Set([o.key?.trim(), o.fallback === false ? undefined : process.env.TOGETHER_API_KEY?.trim()].filter((k): k is string => !!k))];
-  if (!keys.length) throw new TogetherError("missing key", 401);
-  let lastErr: TogetherError | null = null;
-  for (const key of keys) {
-    try {
-      return await chatWith(o, key);
-    } catch (e) {
-      lastErr = e as TogetherError;
-      if (!(e instanceof TogetherError) || (e.status !== 401 && e.status !== 403)) throw e;
-    }
-  }
-  throw lastErr!;
-}
-
-async function chatWith(o: ChatOpts, key: string): Promise<{ res: Response; model: string }> {
+  const key = o.key?.trim();
+  if (!key) throw new TogetherError("missing key", 401);
   let lastErr: TogetherError | null = null;
   for (const model of o.models.map((m) => m.trim()).filter(Boolean)) {
     const reasoning = model.includes("gpt-oss") ? { reasoning_effort: o.reasoning ?? "low" } : {};
@@ -150,10 +130,23 @@ export function rateLimited(bucket: string, max = 20, windowMs = 60_000) {
   return false;
 }
 
-/** A key the person pasted into the app, sent along with their request. Never stored or logged. */
+/** Only for trying the app locally: stands in for the key in .env.local. Never accepted in production. */
+export const DEV_KEY = "bygga-dev-mock-key-000000";
+
+export function isDevKey(req: Request) {
+  return process.env.NODE_ENV !== "production" && req.headers.get("x-together-key")?.trim() === DEV_KEY;
+}
+
+/** The key the person pasted into the app, sent along with each request. Never stored or logged, and the only key any AI call runs on. */
 export function userKey(req: Request) {
+  if (isDevKey(req)) return process.env.TOGETHER_API_KEY?.trim() || undefined;
   const k = req.headers.get("x-together-key")?.trim() ?? "";
   return k.length >= 20 && k.length <= 200 && /^[\w.-]+$/.test(k) ? k : undefined;
+}
+
+/** What a turned-away call tells the person: their key was refused, or their account is out of credit. */
+export function keyTrouble(status: number) {
+  return status === 401 || status === 403 ? "key" : status === 402 ? "credits" : null;
 }
 
 /**

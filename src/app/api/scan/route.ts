@@ -2,28 +2,26 @@ import { buildPlan } from "@/lib/plan";
 import { clean, fallbackSpec, parseScan } from "@/lib/scan/parse";
 import { PAGE_PROMPT, PLAN_PROMPT, planInput, repairInput } from "@/lib/scan/prompts";
 import { SAMPLE_SCAN } from "@/lib/scan/sample";
-import { chatText, extractJson, fromApp, ipOf, MODELS, rateLimited, TogetherError, userKey, type Msg } from "@/lib/together";
+import { chatText, extractJson, fromApp, ipOf, isDevKey, MODELS, rateLimited, TogetherError, userKey, type Msg } from "@/lib/together";
 import type { ProductSpec } from "@/lib/types";
 import { SCAN_ENABLED } from "@/lib/site";
 
 export const maxDuration = 300;
-
-/** Only for trying the scan flow locally without spending credits. Never accepted in production. */
-const DEV_MOCK_KEY = "bygga-dev-mock-key-000000";
 
 type Note = { kind?: string; product?: { name?: string; brand?: string; type?: string }; parts?: unknown[]; hardware?: unknown[]; steps?: { n?: number }[] };
 
 export async function POST(req: Request) {
   if (!SCAN_ENABLED) return Response.json({ error: "off" }, { status: 404 });
   if (!fromApp(req)) return Response.json({ error: "forbidden" }, { status: 403 });
-  const key = userKey(req);
+  // the dev key tries the scan flow locally without spending credits
+  const mock = isDevKey(req);
+  const key = mock ? "mock" : userKey(req);
   if (!key) return Response.json({ error: "key" }, { status: 401 });
   if (rateLimited(ipOf(req) + ":scan", 6, 10 * 60_000)) return Response.json({ error: "busy" }, { status: 429 });
   const body = (await req.json().catch(() => null)) as { pages?: unknown[]; hint?: unknown } | null;
   const pages = (body?.pages ?? []).filter((p): p is string => typeof p === "string" && p.startsWith("data:image/") && p.length < 4_000_000).slice(0, 12);
   if (!pages.length) return Response.json({ error: "pages" }, { status: 400 });
   const hint = clean(String(body?.hint ?? "")).slice(0, 80);
-  const mock = key === DEV_MOCK_KEY && process.env.NODE_ENV !== "production";
 
   const enc = new TextEncoder();
   const stream = new ReadableStream({
@@ -60,10 +58,8 @@ async function scan(key: string, pages: string[], hint: string, send: (o: object
     while (next < pages.length) {
       const i = next++;
       try {
-        // scans only ever spend the person's own key, never the server's
         const { text } = await chatText({
           key,
-          fallback: false,
           models: MODELS.read,
           maxTokens: 2000,
           temperature: 0,
@@ -90,7 +86,7 @@ async function scan(key: string, pages: string[], hint: string, send: (o: object
     { role: "user", content: planInput(notes, hint) },
   ];
   const ask = async () => {
-    const { text } = await chatText({ key, fallback: false, models: MODELS.plan, json: true, maxTokens: 16000, temperature: 0.2, reasoning: "medium", signal, messages: msgs });
+    const { text } = await chatText({ key, models: MODELS.plan, json: true, maxTokens: 16000, temperature: 0.2, reasoning: "medium", signal, messages: msgs });
     return { text, raw: extractJson(text) };
   };
   let { text, raw } = await ask();

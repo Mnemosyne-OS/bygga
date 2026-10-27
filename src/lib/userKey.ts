@@ -1,6 +1,8 @@
 "use client";
 
-/** The person's own Together AI key. It lives only in this browser and rides along with AI requests. */
+import { useSyncExternalStore } from "react";
+
+/** The person's own Together AI key. It lives only in this browser and rides along with AI requests: every AI feature runs on it. */
 const K = "bygga:together-key";
 
 export function getUserKey(): string {
@@ -34,3 +36,11 @@ export function subscribeKey(cb: () => void) {
     window.removeEventListener("storage", cb);
   };
 }
+
+/** The saved key, kept in step across tabs; "" until the page is in the browser. */
+export function useUserKey() {
+  return useSyncExternalStore(subscribeKey, getUserKey, () => "");
+}
+
+/** Where to make a key. */
+export const KEY_URL = "https://api.together.ai/settings/api-keys";

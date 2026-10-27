@@ -9,7 +9,7 @@ import { PRODUCTS, type CatalogEntry } from "@/lib/catalog";
 import { KIND_ARCH, type Kind } from "@/lib/products";
 import type { Archetype } from "@/lib/types";
 import Drawing from "../Drawing";
-import { getUserKey } from "@/lib/userKey";
+import { useUserKey } from "@/lib/userKey";
 import { Dots } from "../guide/ui";
 import { IArrowRight, IClock, IClose, ISearch } from "../art/Icons";
 
@@ -183,13 +183,7 @@ export function Catalog({ limit, search }: { limit?: number; search?: boolean })
   );
 }
 
+/** AI features run on the person's own key: they're on once one is saved. */
 export function useAiStatus() {
-  const [ai, setAi] = useState(false);
-  useEffect(() => {
-    fetch("/api/status")
-      .then((r) => r.json())
-      .then((j) => setAi(!!j.ai || !!getUserKey()))
-      .catch(() => {});
-  }, []);
-  return ai;
+  return !!useUserKey();
 }
