@@ -42,7 +42,7 @@ export default function Home() {
             <IArrowOut size={14} className="tg-go" />
           </a>
           <h1>
-            IKEA assembly,
+            Build IKEA furniture,
             <br />
             step by step.
           </h1>

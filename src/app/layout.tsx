@@ -27,12 +27,12 @@ const description = "Type the product name from the box. Bygga shows every assem
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
-  title: "Bygga: step-by-step assembly for IKEA furniture",
+  title: "Bygga: build IKEA furniture, step by step",
   description,
   applicationName: "Bygga",
   appleWebApp: { capable: true, title: "Bygga", statusBarStyle: "default" },
-  openGraph: { type: "website", siteName: "Bygga", title: "Bygga: step-by-step assembly for IKEA furniture", description, url: "/" },
-  twitter: { card: "summary_large_image", title: "Bygga: step-by-step assembly for IKEA furniture", description },
+  openGraph: { type: "website", siteName: "Bygga", title: "Bygga: build IKEA furniture, step by step", description, url: "/" },
+  twitter: { card: "summary_large_image", title: "Bygga: build IKEA furniture, step by step", description },
 };
 
 export const viewport: Viewport = {

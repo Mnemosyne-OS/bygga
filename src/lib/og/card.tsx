@@ -116,7 +116,7 @@ export function siteCard() {
       <div style={{ display: "flex", flexDirection: "column", justifyContent: "space-between", width: 600, height: "100%", padding: `${PAD - 8}px 0 ${PAD - 12}px ${PAD}px` }}>
         <Logo />
         <div style={{ display: "flex", flexDirection: "column", fontFamily: "Display", fontWeight: 800, fontSize: H, lineHeight: 1, letterSpacing: "-0.045em" }}>
-          <span>IKEA assembly,</span>
+          <span>Build IKEA furniture,</span>
           <div style={{ display: "flex", marginTop: 4 }}>
             <Marked size={H}>step by step.</Marked>
           </div>
