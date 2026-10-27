@@ -11,7 +11,7 @@
 - Next.js 16 (App Router, Cache Components), React 19 and TypeScript, plain CSS with Motion, no UI kit
 - A three.js line-art stage (`src/engine`) and a parametric plan generator (`src/lib/plan`) that draw 1,171 IKEA products (2,180 sizes, UK and US ranges) offline, built from IKEA's public listings (`scripts/ikea`)
 - A hands-free voice: 1,476 pre-recorded Kokoro clips that play with no key, and Whisper on Together listening for "next" through an echo-cancelled mic (`/api/listen`, `hearIntent` in `src/lib/voice/commands.ts`)
-- Together AI on each visitor's own key (`src/components/KeyModal.tsx`): drafts for products we don't have, photo lookup, and a help chat that answers with drawings of the exact panel, fitting or step
+- [Together AI](https://togetherai.link/) on each visitor's own key (`src/components/KeyModal.tsx`): drafts for products we don't have, photo lookup, and a help chat that answers with drawings of the exact panel, fitting or step
 - Share cards drawn by the same engine (`scripts/og/render.mjs`), an A4 print view, and a service worker so opened guides work with no signal
 - Tests: `npm run voice:check` replays 283 recorded listening runs, and `npm run ikea:check` tests every catalog row
 

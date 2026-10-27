@@ -32,7 +32,7 @@ export default function Home() {
 
       <section className="hero">
         <div className="hero-copy">
-          <a className="tg-pill" href="https://www.together.ai" target="_blank" rel="noreferrer">
+          <a className="tg-pill" href="https://togetherai.link/" target="_blank" rel="noreferrer">
             <span className="tg-badge">
               <TogetherMark size={16} />
             </span>

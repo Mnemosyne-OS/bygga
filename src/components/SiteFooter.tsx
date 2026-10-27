@@ -32,7 +32,7 @@ export default function SiteFooter() {
             <a href={GITHUB_URL} target="_blank" rel="noreferrer">
               Source code <IArrowOut size={14} />
             </a>
-            <a href="https://www.together.ai" target="_blank" rel="noreferrer">
+            <a href="https://togetherai.link/" target="_blank" rel="noreferrer">
               Together AI <IArrowOut size={14} />
             </a>
             <Link href="/privacy">Privacy and terms</Link>
@@ -56,7 +56,7 @@ export default function SiteFooter() {
 
       <div className="foot-base">
         <p>Bygga is an independent, unofficial project. It is not affiliated with, sponsored or endorsed by Inter IKEA Systems B.V. or any IKEA company. IKEA and IKEA product names are trademarks of their owners.</p>
-        <a className="foot-powered" href="https://www.together.ai" target="_blank" rel="noreferrer">
+        <a className="foot-powered" href="https://togetherai.link/" target="_blank" rel="noreferrer">
           <span>Powered by</span>
           <TogetherWordmark height={19} className="tg-word" />
         </a>
