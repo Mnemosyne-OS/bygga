@@ -3,6 +3,8 @@
  * commands, so talking to a friend ("hold the back panel") never moves a step.
  */
 
+import { numWords } from "./script";
+
 export type Intent =
   | { kind: "next" | "back" | "repeat" | "replay" | "stop" | "needs" | "where" | "slower" | "faster" | "help" | "commands" | "off" }
   | { kind: "goto"; step: number }
@@ -11,7 +13,7 @@ export type Intent =
 type Kind = Exclude<Intent["kind"], "goto" | "ask">;
 
 const PHRASES: Record<Kind, string[]> = {
-  next: ["next", "next step", "next one", "done", "im done", "i am done", "all done", "got it", "finished", "im finished", "continue", "go on", "go ahead", "keep going", "ready", "move on", "whats next", "what is next", "forward", "go"],
+  next: ["next", "next step", "next one", "next please", "skip", "skip it", "skip this one", "done", "im done", "i am done", "all done", "got it", "finished", "im finished", "continue", "go on", "go ahead", "keep going", "ready", "move on", "whats next", "what is next", "forward", "go"],
   back: ["back", "go back", "previous", "previous step", "previous one", "step back", "go back one", "back one", "undo"],
   repeat: ["again", "repeat", "repeat that", "say again", "say that again", "what", "sorry", "pardon", "come again", "one more time", "what did you say", "huh"],
   replay: ["show me", "show me again", "show again", "replay", "play again", "watch again", "show"],
@@ -75,7 +77,58 @@ export function parse(raw: string): Intent | null {
   return null;
 }
 
-/** Words of the phrase that triggered an intent, for the echo check. */
-export function heardWords(raw: string) {
-  return normalize(raw).filter((w) => !FILLER.has(w));
+// how a recognizer may write back what the voice said: digits and sound-alikes
+const ALIKE: Record<string, string> = { won: "one", to: "two", too: "two", for: "four", fore: "four", ate: "eight" };
+
+/** Words of a line the way a recognizer might write them, for telling her words from the person's. */
+export function canon(text: string) {
+  return normalize(text).flatMap((w) => (/^\d+$/.test(w) ? numWords(Number(w)).split("-") : [ALIKE[w] ?? w]));
+}
+
+/** Small words that belong to whoever said the words around them. */
+const GLUE = new Set(["the", "a", "an", "and", "to", "two", "in", "into", "on", "of", "it", "its", "is", "you", "your", "youll", "i", "im", "this", "that", "with", "for", "four", "at", "by", "up", "out", "then", "so", "now", "just", "we", "be"]);
+
+/** While she is talking, a phrase of one word has to be one of these to count: short words in her echo get misheard. */
+const BARGE_WORDS = new Set(["next", "skip", "back", "previous", "stop", "wait", "pause", "quiet", "again", "repeat"]);
+
+export interface Heard {
+  intent: Intent;
+  /** The person's phrase that holds the command. */
+  words: string;
+  /** Nothing follows it yet: the person may still be saying it. */
+  open: boolean;
+}
+
+/**
+ * Finds a command in a running transcript. The mic can hear the voice too, so
+ * the words she said lately (`hers`) split the transcript into the person's
+ * own phrases, and a phrase has to be a whole command by itself: "next" said
+ * over her reading still counts, "grab the next panel" never does. Phrases
+ * ending before word `from` were looked at already. While she is `talking`
+ * only short, distinct commands count, and questions wait until she is done.
+ */
+export function findCommand(transcript: string, hers: (word: string) => boolean, talking: boolean, from = 0): Heard | null {
+  const words = normalize(transcript);
+  const mine = words.map((w) => !GLUE.has(w) && hers(w));
+  for (let i = 0; i < words.length; ) {
+    if (mine[i]) {
+      i++;
+      continue;
+    }
+    let j = i;
+    while (j < words.length && !mine[j]) j++;
+    // small words at a seam with her words were hers: "into the | next"
+    let a = i,
+      b = j;
+    if (a > 0) while (a < b && GLUE.has(words[a])) a++;
+    if (b < words.length) while (b > a && GLUE.has(words[b - 1])) b--;
+    if (j > from && b > a) {
+      const text = words.slice(a, b).join(" ");
+      const intent = parse(text);
+      const kept = normalize(text).filter((w) => !FILLER.has(w));
+      if (intent && !(talking && (intent.kind === "ask" || (kept.length === 1 && !BARGE_WORDS.has(kept[0]))))) return { intent, words: text, open: j === words.length };
+    }
+    i = j;
+  }
+  return null;
 }

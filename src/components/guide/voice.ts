@@ -1,6 +1,7 @@
 "use client";
 
-import { VOICE_DIR, clipId, numWords } from "@/lib/voice/script";
+import { VOICE_DIR, clipId } from "@/lib/voice/script";
+import { canon } from "@/lib/voice/commands";
 
 /**
  * Plays the hands-free voice. Lines with a pre-recorded clip play from
@@ -20,16 +21,20 @@ type Listener = (speaking: boolean) => void;
 
 const OPTIONAL = /^(You'll need|Grab |Do this for all)/;
 
-// how a recognizer may write back what the voice said: digits and sound-alikes
-const ALIKE: Record<string, string> = { won: "one", to: "two", too: "two", for: "four", fore: "four", ate: "eight" };
+/** How long the mic may still be hearing a line after she said it: recognizers write words a second or more late. */
+const ECHO_MS = 6000;
 
-function canon(text: string) {
-  return text
-    .toLowerCase()
-    .replace(/[’']/g, "")
-    .split(/[^a-z0-9]+/)
-    .filter(Boolean)
-    .flatMap((w) => (/^\d+$/.test(w) ? numWords(Number(w)).split("-") : [ALIKE[w] ?? w]));
+/**
+ * One letter added, dropped or changed, how a recognizer mishears her ("bottom" as "bottoms"). Only for
+ * longer words: short ones are too close to each other ("step" and "stop") and to the commands.
+ */
+function close(a: string, b: string) {
+  if (a === b) return true;
+  if (a.length < 5 || b.length < 5 || Math.abs(a.length - b.length) > 1) return false;
+  let i = 0;
+  while (i < a.length && a[i] === b[i]) i++;
+  if (a.length === b.length) return a.slice(i + 1) === b.slice(i + 1);
+  return a.length > b.length ? a.slice(i + 1) === b.slice(i) : a.slice(i) === b.slice(i + 1);
 }
 
 class Voice {
@@ -39,9 +44,13 @@ class Voice {
   private token = 0;
   private settle: ((ok: boolean) => void) | null = null;
   private listeners = new Set<Listener>();
-  /** Text being said right now, and the line before it, for the echo check. */
+  /** Text being said right now, and the lines before it, for telling her words from the person's. */
   private now = "";
-  private recent = { text: "", at: 0 };
+  private said: { words: string[]; until: number }[] = [];
+  private ended = 0;
+  /** Volume while the person talks over her, so the mic hears them. */
+  private gain = 1;
+  private fade: ReturnType<typeof setInterval> | undefined;
   /** Live lines, fetched whole so they can load ahead and play without gaps. */
   private fetched = new Map<string, Promise<string | null>>();
   /** The server can record lines that have no clip. */
@@ -114,7 +123,11 @@ class Voice {
   }
 
   private set(text: string) {
-    if (this.now) this.recent = { text: this.now, at: Date.now() };
+    const now = Date.now();
+    if (this.now) {
+      this.said = this.said.filter((s) => s.until > now).concat({ words: canon(this.now), until: now + ECHO_MS });
+      if (!text) this.ended = now;
+    }
     this.now = text;
     this.listeners.forEach((fn) => fn(!!text));
   }
@@ -123,11 +136,34 @@ class Voice {
     return !!this.now;
   }
 
-  /** True when every word heard is something the voice is saying or has just said, as a recognizer might write it. */
-  echo(words: string[]) {
-    const said = new Set(canon(this.now + " " + (Date.now() - this.recent.at < 1800 ? this.recent.text : "")));
-    const heard = words.flatMap(canon);
-    return heard.length > 0 && heard.every((w) => said.has(w));
+  /** Speaking, or only just stopped: what the mic hears may still be her. */
+  get busy() {
+    return !!this.now || Date.now() - this.ended < 1500;
+  }
+
+  /** True for a word she is saying or said a moment ago, as a recognizer might write it. */
+  hers = (word: string) => {
+    const now = Date.now();
+    const lines = [canon(this.now), ...this.said.filter((s) => s.until > now).map((s) => s.words)];
+    const parts = canon(word);
+    return parts.length > 0 && parts.every((w) => lines.some((l) => l.some((h) => close(w, h))));
+  };
+
+  /** Quieter while the person talks over her, so the mic hears them, then back up. */
+  duck(on: boolean) {
+    const to = on ? 0.3 : 1;
+    if (to === this.gain) return;
+    this.gain = to;
+    clearInterval(this.fade);
+    const el = this.el;
+    if (!el) return;
+    // down fast, so the next word is heard; up slowly, so it doesn't jump
+    const step = on ? -0.14 : 0.05;
+    this.fade = setInterval(() => {
+      const v = Math.min(1, Math.max(to, el.volume + step));
+      el.volume = on ? Math.max(to, v) : Math.min(to, v);
+      if (el.volume === to) clearInterval(this.fade);
+    }, 20);
   }
 
   stop() {

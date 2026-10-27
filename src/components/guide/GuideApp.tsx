@@ -30,7 +30,7 @@ import { haptic, speechSupported, useListener, useWakeLock, type Mic } from "./h
 import { playDone, playStep, playTick, setSound, soundOn } from "./sound";
 import { mediaSession, voice } from "./voice";
 import { LINES, builtLine, needsLine, spokenAnswer, stepLines, toolsLine, whereLine } from "@/lib/voice/script";
-import { heardWords, parse, type Intent } from "@/lib/voice/commands";
+import { findCommand, type Intent } from "@/lib/voice/commands";
 import { useMounted } from "@/lib/useMounted";
 import { getUserKey, keyHeaders } from "@/lib/userKey";
 import { decodeSpec } from "@/lib/scan/share";
@@ -512,13 +512,18 @@ function Guide({ plan, slug, via, ai, startStep }: { plan: Plan; slug: string; v
     if (intent.kind !== "next") playTick();
     switch (intent.kind) {
       case "next":
+        // quiet at once, so it's plain she heard
+        voice.stop();
         setHelp(null);
         setOverview(false);
         next();
         break;
       case "back":
         if (step === 0) voice.say([LINES.first]);
-        else back();
+        else {
+          voice.stop();
+          back();
+        }
         break;
       case "repeat":
         stage.current?.replay();
@@ -560,7 +565,10 @@ function Guide({ plan, slug, via, ai, startStep }: { plan: Plan; slug: string; v
         break;
       case "goto": {
         const n = intent.step === -1 ? steps.length : intent.step;
-        if (n >= 1 && n <= steps.length && n - 1 !== step) go("steps", n - 1, n - 1 > step ? 1 : -1);
+        if (n >= 1 && n <= steps.length && n - 1 !== step) {
+          voice.stop();
+          go("steps", n - 1, n - 1 > step ? 1 : -1);
+        }
         break;
       }
       case "ask":
@@ -573,17 +581,21 @@ function Guide({ plan, slug, via, ai, startStep }: { plan: Plan; slug: string; v
     }
   };
 
-  const { mic, heard } = useListener(voiceOn && phase === "steps", (text, final) => {
-    const intent = parse(text);
-    if (!intent) return false;
-    // the mic can hear the voice itself: ignore anything she is saying, and questions while she talks
-    if (voice.echo(heardWords(text))) return false;
-    if (intent.kind === "ask" && voice.speaking) return false;
-    // "stop" can't wait; everything else waits for the whole phrase
-    if (!final && intent.kind !== "stop") return false;
-    run(intent);
-    return true;
-  });
+  const { mic, heard, talking } = useListener(voiceOn && phase === "steps", (text, state, from) => {
+    // the mic can hear the voice itself: her words are set aside, and what's left has to be a whole command
+    const got = findCommand(text, voice.hers, voice.busy, from);
+    if (!got) return null;
+    if (got.intent.kind === "ask" && state !== "final") return null;
+    // "stop" can't wait; anything else still being said waits a moment, in case more words follow
+    if (got.open && state === "interim" && got.intent.kind !== "stop") return { wait: got.words };
+    run(got.intent);
+    return { act: got.words };
+  }, () => voice.busy);
+
+  // she gets quieter while you talk over her, so the mic hears you
+  useEffect(() => {
+    voice.duck(talking);
+  }, [talking]);
 
   useEffect(() => {
     micRef.current = mic;
@@ -774,7 +786,7 @@ function Guide({ plan, slug, via, ai, startStep }: { plan: Plan; slug: string; v
           {phase === "parts" && <span className="sheet-caption">Lay your panels out like this</span>}
           {voiceOn && phase === "steps" && (
             <div className="listening" role="status">
-              <span className={"eq" + (speaking ? " on" : "")} aria-hidden="true">
+              <span className={"eq" + (talking ? " on hear" : speaking ? " on" : "")} aria-hidden="true">
                 <i />
                 <i />
                 <i />
@@ -782,7 +794,9 @@ function Guide({ plan, slug, via, ai, startStep }: { plan: Plan; slug: string; v
               <span>
                 {heard
                   ? `Heard “${heard}”`
-                  : mic === "denied" || mic === "unsupported"
+                  : talking && mic === "on"
+                    ? "Listening"
+                    : mic === "denied" || mic === "unsupported"
                     ? "Reading aloud. Tap done to move on"
                     : mic === "on"
                       ? "Say “next”, “back” or “again”"
