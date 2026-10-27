@@ -444,7 +444,7 @@ function specOf(kind: Kind, name: string, variant: string, w: number, h: number,
         return { ...base, minutes: x.min ?? 30 + 7 * cols * rows, people: cols * rows > 4 ? 2 : 1, shelf: { style: "grid", cols, rows, outer: 40, inner: 16, back: false, underframe: x.uf } };
       }
       // x.t: thinner panels than KALLAX's (IVAR's box shelf)
-      if (x.t) return { ...base, shelf: { style: "grid", cols: Math.max(1, Math.round((w - 6) / 35)), rows: Math.max(1, Math.round((h - 6) / 35)), outer: x.t, inner: x.t, back: false } };
+      if (x.t) return { ...base, minutes: x.min ?? 15, people: 1, shelf: { style: "grid", cols: Math.max(1, Math.round((w - 6) / 35)), rows: Math.max(1, Math.round((h - 6) / 35)), outer: x.t, inner: x.t, back: false } };
       return { ...base, shelf: { style: "grid", cols: Math.max(1, Math.round((w - 6) / 35)), rows: Math.max(1, Math.round((h - 6) / 35)), outer: 40, inner: 16, back: false } };
     case "bookcase":
       return { ...base, shelf: { style: "bookcase", shelves: x.shelves ?? Math.max(1, Math.round(h / 45) - 1), fixedShelf: h > 150, back: true, plinth: h > 100, outer: 16 } };
