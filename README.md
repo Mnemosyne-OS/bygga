@@ -10,18 +10,18 @@
 
 - Next.js 16 (App Router, Cache Components) with React 19 and TypeScript, plain CSS with Motion and Lucide icons, no UI kit
 - three.js line-art stage (`src/engine`): ink outlines, fly-in parts, a zoomed callout per fitting, offscreen thumbnails
-- A parametric plan generator (`src/lib/plan`) for 7 furniture types and 62 kinds: 973 IKEA products (1,696 sizes) drawn offline, with typo-tolerant search and article numbers
+- A parametric plan generator (`src/lib/plan`) for 7 furniture types and 74 kinds: 1,171 IKEA products (2,180 sizes, UK and US ranges) drawn offline, with typo-tolerant search and article numbers
 - IKEA's public product listings (`scripts/ikea`): `npm run ikea:fetch` downloads them locally (they are git ignored, see NOTICE), `classify.ts` maps name, type and size to kinds, `npm run ikea:build` writes the catalog rows in `src/data`, and `npm run ikea:check` tests them; every IKEA family name is known, so MARKUS reads as an office chair and never as a typo of MARIUS
 - Manual scanner (`/scan`, parked for v2 and off unless `NEXT_PUBLIC_SCAN=1`): a vision model reads each page, `gpt-oss-120b` lays out the parts in millimetres, and `src/lib/plan/custom.ts` places every dowel, bolt and screw where parts touch
 - Together AI for unknown product names (steered by IKEA's own type, cached for good with `use cache: remote`), photo lookup and the "Stuck?" helper, with model fallback lists in `src/lib/together.ts`
-- A hands-free voice on Together AI (Kokoro, `src/lib/voice/tts.ts`): every catalog line is pre-recorded with `npm run voice` (1,283 clips cover all 1,696 guides), the rest are recorded live, product names keep phonetic spellings where they help (`npm run voice:names`), and saying "next" turns the page
+- A hands-free voice on Together AI (Kokoro, `src/lib/voice/tts.ts`): every catalog line is pre-recorded with `npm run voice` (1,476 clips cover all 2,180 guides), the rest are recorded live, product names keep phonetic spellings where they help (`npm run voice:names`), and saying "next" turns the page
 - Workshop (`/builds`): every finished build merged into one scene and rendered at true scale next to a person
 - Share cards drawn by the engine (`scripts/og/render.mjs`, `src/lib/og`), a picture of your finished build to post, an A4 print view, and a service worker so opened guides work with no signal
 
 ## Cloning & running
 
 1. Clone: `git clone https://github.com/Luffixos/bygga.git && cd bygga && npm install`
-2. Optional key: `cp .env.example .env.local`, then set `TOGETHER_API_KEY` (the 1,696 offline guides work without it)
+2. Optional key: `cp .env.example .env.local`, then set `TOGETHER_API_KEY` (the 2,180 offline guides work without it)
 3. Run: `npm run dev`, open http://localhost:3000 and type `BISSA`
 4. Jump to a step: http://localhost:3000/build/malm-3-drawers?step=12, print one at `/build/malm-3-drawers/print`, or see finished builds at `/builds`
 5. Try the scanner free: run with `NEXT_PUBLIC_SCAN=1`, then on `/scan` paste `bygga-dev-mock-key-000000` as the key and add any photo (only `npm run dev` accepts it)
