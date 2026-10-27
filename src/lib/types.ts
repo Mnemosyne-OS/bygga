@@ -150,6 +150,7 @@ export interface SofaParams {
   foot?: boolean; // an armchair that comes with its footstool, built after it and stood in front of it
   pouffe?: boolean; // a pouffe or footstool on its own: a padded block on four legs
   bed?: boolean; // a chair-bed: it folds out into a bed
+  table?: number; // cm: a side table module at the right-hand end (size.w takes it in)
 }
 
 /** A product read from someone's own manual: parts as boxes in the assembled product, steps that add them. */

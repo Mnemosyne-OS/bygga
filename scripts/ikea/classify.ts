@@ -543,6 +543,9 @@ const RULES: Rule[] = [
   // a bench with a backrest and armrests, built like a wide chair (IKEA gives no size: a typical garden bench)
   [/^bench with backrest$/, (_m, c) => (c.f.spr ? "bench with backrest sold with cushions" : { kind: "backbench" })],
   [/^(armchair|easy chair|wing chair|high-back armchair|low-back armchair|rocking-chair|children's armchair|armchair with cushion)$/, () => ({ kind: "armchair" })],
+  // a modular sofa or armchair with a side table module at the end
+  [/^(?:(\d)-seat modular sofa|armchair) with side table$/, (m) =>
+    m[1] ? { kind: "sofa", x: { seats: Number(m[1]), st: 45, cat: "Modular sofa with side table" } } : { kind: "armchair", x: { st: 45, cat: "Armchair with side table" } }],
   // a recliner and a wide armchair, built like any other armchair
   [/^recliner$/, () => ({ kind: "armchair", x: { cat: "Recliner" } })],
   [/^1,5-seat armchair$/, () => ({ kind: "armchair", x: { cat: "Armchair" } })],
@@ -828,6 +831,8 @@ export function classify(f: Fact, hints: Hints): Verdict {
     if (kind === "chair" && x.seatH && guessed.h) h = x.seatH + 32;
     if (kind === "lounge" && guessed.h && /reclin/.test(t)) [w, h, d] = [66, 102, 84];
     if (kind === "sofa" && guessed.w) w = (x.seats ?? 3) * 60 + 50;
+    // a sofa or armchair with a side table module is that much wider, as wide as we draw at most
+    if (x.st && guessed.w) w = Math.min(400, (kind === "armchair" ? 75 : (x.seats ?? 3) * 60 + 50) + x.st);
     // more than four seats: two sections side by side, as wide as the family's own seats, or as wide as we draw
     if (kind === "sofa" && guessed.w && (x.seats ?? 3) > 4) w = Math.min(398, w);
     if (kind === "sofa" && guessed.w && (x.seats ?? 3) > 4 && hint?.kind === "sofa" && hint.x.seats) {

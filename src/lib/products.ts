@@ -538,6 +538,11 @@ function specOf(kind: Kind, name: string, variant: string, w: number, h: number,
       return { ...base, people: 1, difficulty: 2, sofa: { seats: 1, arms: x.arms ?? "none", legs: "round", bed: true } };
     case "sofa":
     case "armchair":
+      // x.st: a side table module at the right-hand end, x.st cm wide
+      if (x.st) {
+        const seats = x.seats ?? (kind === "armchair" ? 1 : Math.max(1, Math.round((w - x.st - 30) / 62)));
+        return { ...base, minutes: x.min ?? MIN[kind] + 20 + (seats > 4 ? 30 : 0), people: 2, difficulty: seats > 4 ? 3 : 2, sofa: { seats, arms: x.arms ?? "wide", legs: "round", table: x.st } };
+      }
       // x.foot: an armchair with its footstool
       if (x.foot) return { ...base, minutes: x.min ?? MIN.armchair + 15, people: 1, sofa: { seats: x.seats ?? 1, arms: x.arms ?? "wide", legs: "round", foot: true } };
       return {

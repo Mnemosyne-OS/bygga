@@ -16,6 +16,7 @@ export function defaultsSofa(s: ProductSpec): SofaParams {
 /** Upholstered sofas and armchairs: legs on the base, arms and back bolted on, cushions last. */
 export function buildSofa(b: PlanBuilder, s: ProductSpec) {
   if (s.sofa?.pouffe) return buildPouffe(b, s);
+  if (s.sofa?.table) return withSideTable(b, s);
   // more than four seats: two sections joined, like a corner sofa without the corner
   if (s.sofa?.chaise || s.sofa?.corner || (s.sofa?.seats ?? 0) > 4) return buildCornerSofa(b, s);
   const p = defaultsSofa(s);
@@ -163,4 +164,68 @@ export function buildSofa(b: PlanBuilder, s: ProductSpec) {
     );
   }
   if (s.sofa?.foot) footstool(b, { w: Math.min(W * 0.8, 620), h: 420, d: 420, z: D / 2 + 140 + 210 });
+}
+
+/**
+ * A modular sofa or armchair with a side table module at its right-hand end (LILLEHEM): the sofa is built as it is on
+ * its own, then the side table is put together, set at the end and joined to the seat frame with connectors.
+ */
+function withSideTable(b: PlanBuilder, s: ProductSpec) {
+  const T = clamp(s.sofa!.table! * 10, 300, 700);
+  const W = s.size.w * 10, D = s.size.d * 10, H = s.size.h * 10;
+  const sofa: ProductSpec = { ...s, size: { ...s.size, w: s.size.w - T / 10 }, sofa: { ...s.sofa, table: undefined } };
+  buildSofa(b, sofa);
+  // the sofa stands at the left, the table at the right-hand end
+  const dx = -T / 2;
+  for (const it of b.items) {
+    if (it.kind === "part") {
+      const old = it.final.pos;
+      it.final = { pos: [old[0] + dx, old[1], old[2]], rot: it.final.rot };
+      for (const st of it.states) if (st.scene === "main") st.pos = st.pos === old ? it.final.pos : [st.pos[0] + dx, st.pos[1], st.pos[2]];
+    } else if (!it.parent && it.scene === "main") it.pos = [it.pos[0] + dx, it.pos[1], it.pos[2]];
+  }
+  const th = clamp(H * 0.65, 420, 620), td = D - 120, t = 20;
+  const xc = W / 2 - T / 2;
+  const topT = b.part("Side table top", [T, 25, td], { material: "wood" });
+  const sideT = b.part("Side table end", [t, th - 25, td], { material: "wood" });
+  const shelfT = b.part("Side table shelf", [T - 2 * t, 18, td - 20], { material: "wood" });
+  const top = b.place(topT, [xc, th - 12.5, 0]);
+  const ends = [-1, 1].map((sx) => b.place(sideT, [xc + sx * (T / 2 - t / 2), (th - 25) / 2, 0]));
+  const shelf = b.place(shelfT, [xc, 160, 0]);
+  const parts = [...ends, shelf, top];
+  const at = (k: string) => b.partItem(k).final.pos;
+  b.step(
+    {
+      title: "Put the side table together",
+      detail: "Screw the shelf in between the two ends, then the top down onto them.",
+      tools: ["screwdriver"],
+      scene: "table",
+      kind: "screws",
+      warnings: ["floor"],
+    },
+    () => {
+      b.stagger(0.22);
+      parts.forEach((k) => b.stage(k, [at(k)[0] - xc, at(k)[1], at(k)[2]], [0, 0, 0], [0, 160, 0]));
+      b.then(0.1);
+      const sc: FitOpts[] = [];
+      for (const [i, k] of ends.entries()) for (const z of [-td / 4, td / 4]) sc.push({ on: k, at: [at(k)[0] + (i === 0 ? -t / 2 : t / 2), 160, z], dir: [i === 0 ? 1 : -1, 0, 0], mate: shelf });
+      for (const [i, k] of ends.entries()) for (const z of [-td / 4, td / 4]) sc.push({ on: top, at: [at(k)[0], th, z], dir: [0, -1, 0], mate: k });
+      b.fits(HW.screwM, sc, 0.06);
+    },
+  );
+  b.step(
+    {
+      title: "Join the side table to the end of the sofa",
+      detail: "Stand it tight against the end, then screw the connectors across underneath, into the seat frame and the table.",
+      tools: ["screwdriver"],
+      kind: "join",
+    },
+    () => {
+      b.stagger(0);
+      parts.forEach((k) => b.add(k, [260, 0, 0]));
+      b.then(0.15);
+      const x = W / 2 - T;
+      b.fits(HW.connector, [-D / 4, D / 4].map((z) => ({ at: [x, 110, z] as Vec3, dir: [0, 1, 0] as Vec3, twist: 0 })), 0.15);
+    },
+  );
 }

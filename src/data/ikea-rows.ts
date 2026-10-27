@@ -672,15 +672,21 @@ LILLBERGET|chest|Chest of 3 drawers, 70 × 43 × 68 cm|70|68|43|rows=3
 LILLBERGET|chest|Chest of 5 drawers, 70 × 43 × 108 cm|70|108|43|rows=5
 LILLBERGET|chest|Chest of 6 drawers, 140 × 43 × 68 cm|140|68|43|rows=3,cols=2
 LILLEHEM|armchair|Armchair|75|90|80
+LILLEHEM|armchair|Armchair with side table|120|90|80|cat=Armchair with side table,st=45
 LILLEHEM|chaise|3-seat modular sofa w chaise longue|226|85|160|seats=3,arms=wide,chaise=right,sd=92
 LILLEHEM|corner|Modular corner sofa, 2-seat|173|85|92|seats=2,arms=wide,corner=left,sd=92
 LILLEHEM|corner|Modular corner sofa, 4 seat|237|85|173|seats=4,arms=wide,corner=left,sd=92
 LILLEHEM|section|1-seat module|64|83|92|seats=1
 LILLEHEM|section|2-seat module|128|83|92|seats=2
 LILLEHEM|sofa|2-seat modular sofa|170|85|92|seats=2
+LILLEHEM|sofa|2-seat modular sofa with side table|215|85|92|seats=2,cat=Modular sofa with side table,st=45
 LILLEHEM|sofa|3-seat modular sofa|230|85|92|seats=3
+LILLEHEM|sofa|3-seat modular sofa with side table|275|85|92|seats=3,cat=Modular sofa with side table,st=45
 LILLEHEM|sofa|4-seat modular sofa|290|85|92|seats=4
+LILLEHEM|sofa|4-seat modular sofa with side table|335|85|92|seats=4,cat=Modular sofa with side table,st=45
+LILLEHEM|sofa|5-seat modular sofa with side table|395|85|92|seats=5,cat=Modular sofa with side table,st=45
 LILLEHEM|sofa|6-seat modular sofa|398|85|92|seats=6
+LILLEHEM|sofa|6-seat modular sofa with side table|398|85|92|seats=6,cat=Modular sofa with side table,st=45
 LILLESÄTER|sofa|3-seat sofa|230|85|92|seats=3
 LILLESÄTER|sofa|4-seat sofa|290|85|92|seats=4
 LILLESÄTER|sofa|5-seat sofa|350|85|92|seats=5
