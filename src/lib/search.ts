@@ -199,7 +199,7 @@ export function searchCatalog(q: string, limit = 8): Hit[] {
     // and rows of frames that aren't all alike after the rows of frames that are
     if (e.row?.units) score -= 0.5;
     // and pieces drawn later under IKEA's own name for them after the family's older ones of the same kind
-    if (e.late && kind !== e.kind) score -= 1;
+    if (e.late) score -= kind === e.kind ? 0.5 : 1;
     if (e.checked) score += 3;
     if (e.featured) score += 2;
     if (score > 15) hits.push({ entry: e, score, exact: ns >= 80 });

@@ -339,6 +339,8 @@ garnanas-coffee-table-65-x-65|00556508
 gavle-easy-chair|80588845 50588842
 gillersberg-bedside-table-39-x-39-x-56|30608983
 gladhojden-desk-sit-stand-100-x-60|30493939
+gladstad-upholstered-bed-2-storage-boxes-standar|99406807 09406802
+gladstad-upholstered-bed-4-storage-boxes-standar|49407022 29407023
 gladstad-upholstered-bed-frame-standard-king-150|40490469 60490468
 glamberget-room-divider-150-x-150|90564735
 glamberget-wardrobe-3-sliding-doors-117-x-63-x-1|20564512
@@ -502,6 +504,8 @@ idanas-side-table-46-x-36|00496048 60496045
 idanas-sideboard-124-x-50-x-95|80496025
 idanas-tv-bench-162-x-40-x-63|90487860
 idanas-upholstered-bed-frame-standard-king-150-x|80458962 20458960 60588083 80588082
+idanas-upholstered-ottoman-bed-standard-king-150|40590949 10588090
+idanas-upholstered-storage-bed-standard-king-150|20447194 60447192 70588105 00588104
 idanas-wardrobe-121-x-211|60458835
 idasen-desk-160-x-80|89281030 89280969
 idasen-drawer-unit-on-castors-42-x-61|10320727 50397913
@@ -795,6 +799,7 @@ malm-bed-frame-high-standard-single-90-x-190|49009947 69009946
 malm-bed-frame-high-w-2-storage-boxes-standard-d|69175974 59175984 79176280 99175977 69590005 79590000 59176281
 malm-bed-frame-high-w-2-storage-boxes-standard-s|99011504 19011503
 malm-bed-frame-high-w-4-storage-boxes-standard-k|79006985 29006983 69590010 39002442 49006982 49590006 89590009
+malm-bed-frame-mattress-standard-double-135-x-19|59544858 49544608 89544687 79544862 99544615 69544688 39544859
 malm-dressing-table-120-x-41|90577436 70577480 10203610
 malm-ottoman-bed-standard-double-135-x-190|30404820 90404822 50404819 10404821
 malm-ottoman-bed-standard-single-90-x-190|40493043
@@ -1410,6 +1415,7 @@ storklinta-bed-frame-2-storage-boxes-standard-si|49628368 99626687 89630802 2962
 storklinta-bed-frame-4-storage-boxes-standard-do|79626787 79630826 59626854 99628587 89630859 79628588 59626788
 storklinta-bed-frame-standard-double-135-x-190|60615557 89626715 09626743 79628418 29628406 89626744 59628419
 storklinta-bed-frame-standard-single-90-x-190|90615551 80615622 50618274 99626649 49626656 69628131 09628153
+storklinta-bedside-table-glass-top-40-x-50-x-53|69654865
 storklinta-chest-2-drawers-30-x-50-x-53|70632387
 storklinta-chest-2-drawers-40-x-50-x-53|00631414 60631411 80628219 20631413 79654879 39654876 99654878
 storklinta-chest-3-drawers-70-x-50-x-75|30627533 60628220 50627551 70627531
@@ -1438,6 +1444,7 @@ svarta-bunk-bed-frame-90-x-200|10247973
 svarta-loft-bed-frame-90-x-200|20247982
 syntorp-bar-stool-backrest-66|40615006
 syvde-dressing-table-100-x-48|80430746
+tallasen-upholstered-bed-frame-mattress-standard|99537436 99537441 79537442 79537437 69537433 59537443 19537440
 tallasen-upholstered-bed-frame-standard-double-1|39514763 79514780 19514778 19514764
 tallskar-2-seat-sofa-outdoor|40575152
 tallskar-armchair-outdoor|60575146
@@ -1577,6 +1584,7 @@ uppakra-modular-corner-sofa-3-seat|99620553 89620558 79620573 69620564 49620579 
 uppakra-modular-corner-sofa-6-seat|99620628 79620634 49620616 49620602 39620607 29620622 19620613 99620690 89620704 89620695 59620710 59620687 29620716 29620684 99620647 79620667 69620658 69620644 49620678 49620664 39620650
 uppakra-u-shaped-sofa-4-5-seat|19620910 99620925 99620893 99620869 89620902 59620913 09620939 99621005 79621247 69621021 69621002 49620999 39621027 39621008
 urban-junior-chair|00165213
+utaker-stackable-bed-80-x-200|00360484
 utespelare-gaming-desk-160-x-80|10571532 80507627
 utklassning-gaming-chair|40629287 60629045
 utmaning-gaming-desk-160-x-80|89571732
@@ -1601,6 +1609,7 @@ vedbo-high-back-armchair|70424133 70423591
 veinge-easy-chair|30565158 80558570 50565162
 vesken-shelf-unit-37-x-23-x-101|40307866 30450807
 vesken-trolley-54-x-18-x-71|00471222 60471224
+vevelstad-bed-frame-1-headboard-standard-single|59441780
 vevelstad-bed-frame-2-headboards-standard-double|89441731 09441730
 vevelstad-bed-frame-2-headboards-standard-single|09441810
 vevelstad-bed-frame-3-headboards-standard-single|29441828

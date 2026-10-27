@@ -316,6 +316,8 @@ GARNANÄS|coffee|Coffee table, 65 × 65 cm|65|45|65
 GÄVLE|armchair|Easy chair|75|90|80
 GILLERSBERG|nightstand|Bedside table, 39 × 39 × 56 cm|39|56|39|rows=1
 GLADHÖJDEN|desk|Desk sit/stand, 100 × 60 cm|100|74|60
+GLADSTAD|bed|Upholstered bed, 2 storage boxes, Standard Double, 135 × 190 cm|151|100|199|m=135,l=190,cat=Bed frame
+GLADSTAD|bed|Upholstered bed, 4 storage boxes, Standard Double, 135 × 190 cm|151|100|199|m=135,l=190,cat=Bed frame
 GLADSTAD|bed|Upholstered bed frame, Standard King, 150 × 200 cm|166|100|209|m=150
 GLAMBERGET|divider|Room divider, 150 × 150 cm|150|150|25
 GLAMBERGET|sliding|Wardrobe with 3 sliding doors, 117 × 63 × 150 cm|117|150|63|slides=3
@@ -451,6 +453,8 @@ IBBARBO|stool|Stool|35|45|35
 IDANÄS|bed|Bed frame, Standard Double, 135 × 190 cm|151|101|199|m=135,l=190
 IDANÄS|bed|Bed frame with storage, Standard King, 150 × 200 cm|166|101|209|m=150
 IDANÄS|bed|Upholstered bed frame, Standard King, 150 × 200 cm|166|101|209|m=150
+IDANÄS|bed|Upholstered ottoman bed, Standard King, 150 × 200 cm|166|101|209|m=150,cat=Bed frame
+IDANÄS|bed|Upholstered storage bed, Standard King, 150 × 200 cm|166|101|209|m=150,cat=Bed frame
 IDANÄS|bookcase|Bookcase, 81 × 39 × 211 cm|81|211|39
 IDANÄS|chest|Chest of 6 drawers, 84 × 135 cm|84|135|48|rows=6,knobs=bar
 IDANÄS|chest|Chest of 4 drawers, 104 × 118 cm|104|118|47|rows=4,knobs=bar
@@ -726,6 +730,7 @@ MACKAPÄR|shoerack|Shoe rack, 78 × 32 × 40 cm|78|40|32
 MALM|bed|Bed frame, high, Standard Single, 90 × 190 cm|106|100|199|m=90,l=190
 MALM|bed|Bed frame, high, w 2 storage boxes, Standard Single, 90 × 190 cm|106|100|199|m=90,l=190
 MALM|bed|Ottoman bed, Standard Single, 90 × 190 cm|106|100|199|m=90,l=190
+MALM|bed|Bed frame with mattress, Standard Double, 135 × 190 cm|151|100|199|m=135,l=190,cat=Bed frame
 MALM|bed|Bed frame, high, Standard Double, 135 × 190 cm|151|100|199|m=135,l=190
 MALM|bed|Bed frame, high, w 2 storage boxes, Standard Double, 135 × 190 cm|151|100|199|m=135,l=190
 MALM|bed|Ottoman bed, Standard Double, 135 × 190 cm|151|100|199|m=135,l=190
@@ -1335,6 +1340,7 @@ STORKLINTA|chest|Chest of 4 drawers, 70 × 50 × 98 cm|70|98|50|rows=4
 STORKLINTA|chest|Chest of 6 drawers, 70 × 50 × 120 cm|70|120|50|rows=6
 STORKLINTA|chest|Chest of 6 drawers, 140 × 50 × 75 cm|140|75|50|rows=3,cols=2
 STORKLINTA|nightstand|Chest of 2 drawers, 30 × 50 × 53 cm|30|53|50|rows=2
+STORKLINTA|nightstand|Bedside table with glass top, 40 × 50 × 53 cm|40|53|50|rows=1
 STORKLINTA|nightstand|Chest of 2 drawers, 40 × 50 × 53 cm|40|53|50|rows=2
 STRANDMON|armchair|Wing chair with footstool|82|101|96|arms=wide,cat=Armchair with footstool,foot=1
 STRANDÖN|lounger|Sun lounger|66|87|195||outdoor garden
@@ -1355,6 +1361,7 @@ SVÄRTA|bunk|Bunk bed frame, 90 × 200 cm|211|160|100|m=90
 SVÄRTA|loft|Loft bed frame, 90 × 200 cm|211|195|100|m=90
 SYNTORP|chair|Bar stool with backrest, 66 cm|44|98|50|seatH=66
 SYVDE|desk|Dressing table, 100 × 48 cm|100|74|48
+TÄLLÅSEN|bed|Upholstered bed frame with mattress, Standard Double, 135 × 190 cm|151|100|199|m=135,l=190,cat=Bed frame
 TÄLLÅSEN|bed|Upholstered bed frame, Standard Double, 135 × 190 cm|151|100|199|m=135,l=190
 TALLSKÄR|armchair|Armchair, outdoor|75|90|80||outdoor garden
 TALLSKÄR|chair|Chair with armrests, outdoor|44|88|50|arms=slim|outdoor garden
@@ -1490,6 +1497,7 @@ UPPÅKRA|sofa|3-seat modular sofa|230|85|92|seats=3
 UPPÅKRA|sofa|4,5-seat modular sofa|350|85|92|seats=5
 UPPÅKRA|usofa|U-shaped sofa, 4,5-seat|301|83|173|seats=5,arms=wide,sd=92
 URBAN|junior|Junior chair|43|91|52||kids children
+UTÅKER|bed|Stackable bed, 80 × 200 cm|96|46|209|m=80,f=46
 UTESPELARE|desk|Gaming desk, 160 × 80 cm|160|74|80
 UTKLASSNING|office|Gaming chair|64|128|64|arms=slim,seatH=50
 UTMANING|desk|Gaming desk sit/stand, 160 × 80 cm|160|74|80
@@ -1514,6 +1522,7 @@ VEDBO|armchair|High-back armchair|75|104|80
 VEINGE|armchair|Easy chair|75|90|80
 VESKEN|open|Shelf unit, 37 × 23 × 101 cm|37|101|23
 VESKEN|trolley|Trolley, 54 × 18 × 71 cm|54|71|18
+VEVELSTAD|bed|Bed frame with 1 headboard, Standard Single, 90 × 190 cm|106|100|199|m=90,l=190,cat=Bed frame
 VEVELSTAD|bed|Bed frame with 2 headboards, Standard Single, 90 × 190 cm|106|100|199|m=90,l=190
 VEVELSTAD|bed|Bed frame with 3 headboards, Standard Single, 90 × 190 cm|106|100|199|m=90,l=190
 VEVELSTAD|bed|Bed frame, Standard Single, 90 × 190 cm|106|100|199|m=90,l=190

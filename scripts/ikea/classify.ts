@@ -464,6 +464,8 @@ const RULES: Rule[] = [
   [/^storage unit on castors$/, (_m, c) => ({ kind: "cabinet", x: { doors: 0, shelves: (c.sz.n[1] ?? 60) > 80 ? 2 : 1, cast: true, cat: "Storage unit on castors" } })],
   [/^cabinet with drawers$/, () => ({ kind: "chest", x: { rows: 4 } })],
   [/^(bedside table|nightstand|bedside table with (\d) drawers?)$/, (m) => ({ kind: "nightstand", x: m[2] ? { rows: Number(m[2]) } : {} })],
+  // a bedside table with a glass top is put together like any other
+  [/^bedside table with glass top$/, () => ({ kind: "nightstand", x: { rows: 1 } })],
   [/^(wardrobe frame|open wardrobe|open clothes hanging unit)$/, () => ({ kind: "wardrobe", x: { doors: 0 } })],
   // PLATSA wardrobes are a row of identical frames: one or two doors on each, as many frames as that takes
   [/^wardrobe w(?:ith)? (\d+) doors$/, (m, c) => {
@@ -559,6 +561,10 @@ const RULES: Rule[] = [
 
   // beds
   [/^(bed frame|bed frame, high|upholstered bed frame|bed frame with storage|bed frame with (\d) storage boxes|bed frame, high, w (\d) storage boxes|bed frame with slatted bed base|ottoman bed|extendable bed|ext bed frame with slatted bed base|bed frame with (\d) headboards|bed frame with headboard|children's bed)$/, () => ({ kind: "bed" })],
+  // the same bed frames under other names: with its storage boxes or its mattress in the box, an upholstered storage
+  // or ottoman bed, one headboard, and a low stackable bed with no headboard
+  [/^(upholstered bed, (\d) storage boxes|upholstered bed frame with mattress|bed frame with mattress|upholstered ottoman bed|upholstered storage bed|bed frame with 1 headboard)$/, () => ({ kind: "bed", x: { cat: "Bed frame" } })],
+  [/^stackable bed$/, () => ({ kind: "bed", x: { f: 46 } })],
 ];
 
 /** Drawers in one or two columns, each between 7 and 42 cm tall (taller means open sections we can't show). */
@@ -615,10 +621,13 @@ export function classify(f: Fact, hints: Hints): Verdict {
     const small = mat[0] <= 80 && mat[1] <= 170;
     x.m = mat[0];
     if (mat[1] !== 200) x.l = mat[1];
-    if (hint?.x.f !== undefined) x.f = hint.x.f;
+    // a stackable bed has a low end at the head as at the foot
+    const low = pick.x?.f;
+    if (low) x.f = low;
+    else if (hint?.x.f !== undefined) x.f = hint.x.f;
     else if (small) x.f = 50;
-    const fit = hint?.kind === "bed" && !small;
-    set(mat[0] + 16, fit ? hint.h : small ? 64 : 100, mat[1] + 9);
+    const fit = hint?.kind === "bed" && !small && !low;
+    set(mat[0] + 16, low ?? (fit ? hint.h : small ? 64 : 100), mat[1] + 9);
     guessed.h = !fit;
   } else if (UPRIGHT.has(kind)) {
     if (sz.ext) return { skip: "corner or extendable unit" };
