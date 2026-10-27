@@ -33,6 +33,8 @@ interface SR {
   continuous: boolean;
   interimResults: boolean;
   lang: string;
+  /** Chrome: recognise on the device instead of sending the audio to Google. */
+  processLocally?: boolean;
   start(): void;
   stop(): void;
   abort(): void;
@@ -65,9 +67,15 @@ export function useListener(enabled: boolean, onPhrase: (text: string, final: bo
 
   useEffect(() => {
     if (!enabled) return;
-    const w = window as unknown as { SpeechRecognition?: new () => SR; webkitSpeechRecognition?: new () => SR };
+    type Avail = (o: { langs: string[]; processLocally: boolean }) => Promise<string>;
+    const w = window as unknown as { SpeechRecognition?: (new () => SR) & { available?: Avail }; webkitSpeechRecognition?: new () => SR };
     const Ctor = w.SpeechRecognition || w.webkitSpeechRecognition;
     if (!Ctor) return;
+    // where the browser already has an English model on the device, the audio never leaves it
+    let local = false;
+    w.SpeechRecognition?.available?.({ langs: ["en-US"], processLocally: true })
+      .then((a) => void (local = a === "available"))
+      .catch(() => {});
     let stop = false;
     let rec: SR | null = null;
     let fails = 0;
@@ -81,6 +89,7 @@ export function useListener(enabled: boolean, onPhrase: (text: string, final: bo
       rec.continuous = true;
       rec.interimResults = true;
       rec.lang = "en-US";
+      if (local) rec.processLocally = true;
       rec.onstart = () => {
         fails = 0;
         setMic("on");
@@ -106,6 +115,8 @@ export function useListener(enabled: boolean, onPhrase: (text: string, final: bo
         timer = setTimeout(start, Math.min(4000, 250 * 2 ** fails));
       };
       rec.onerror = (e) => {
+        // on-device recognition that trips up hands over to the browser's usual service on the next start
+        if (local && rec?.processLocally && !["no-speech", "aborted", "not-allowed", "service-not-allowed"].includes(e.error)) local = false;
         // a busy mic (a call, another app) is temporary: only a refusal, or a mic that stays busy, ends listening
         if (e.error === "not-allowed" || e.error === "service-not-allowed" || (e.error === "audio-capture" && fails >= 4)) {
           stop = true;
