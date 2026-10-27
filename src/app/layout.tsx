@@ -1,3 +1,4 @@
+import { Suspense } from "react";
 import type { Metadata, Viewport } from "next";
 import { Noto_Sans, Noto_Sans_Display } from "next/font/google";
 import "./globals.css";
@@ -46,7 +47,10 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
       <body>
         {children}
         <Analytics />
-        <Offline />
+        {/* it reads the path, which the prerendered shell doesn't know yet */}
+        <Suspense fallback={null}>
+          <Offline />
+        </Suspense>
       </body>
     </html>
   );
