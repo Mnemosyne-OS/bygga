@@ -6,7 +6,8 @@ import { AnimatePresence, motion } from "motion/react";
 import { POPULAR, articleNo, fold, loadArticles, searchText, slugify } from "@/lib/search";
 import { articleSlug } from "@/lib/ikea";
 import { PRODUCTS, type CatalogEntry } from "@/lib/catalog";
-import type { Kind } from "@/lib/products";
+import { KIND_ARCH, type Kind } from "@/lib/products";
+import type { Archetype } from "@/lib/types";
 import Drawing from "../Drawing";
 import { getUserKey } from "@/lib/userKey";
 import { Dots } from "../guide/ui";
@@ -15,20 +16,32 @@ import { IArrowRight, IClock, IClose, ISearch } from "../art/Icons";
 /** Tabs over the kinds of furniture. Kids and Outdoor cut across them, by keyword. */
 export const CATS: { id: string; label: string; kinds?: Kind[]; tag?: string }[] = [
   { id: "all", label: "All" },
-  { id: "shelves", label: "Shelves", kinds: ["cube", "bookcase", "open", "wallshelf"] },
-  { id: "drawers", label: "Drawers", kinds: ["chest", "nightstand"] },
-  { id: "wardrobes", label: "Wardrobes", kinds: ["wardrobe"] },
-  { id: "storage", label: "Cabinets", kinds: ["cabinet", "sideboard", "tv", "shoe", "wallcab", "kitchen"] },
-  { id: "tables", label: "Tables", kinds: ["dining", "coffee", "side", "bar", "console", "trolley"] },
-  { id: "desks", label: "Desks", kinds: ["desk"] },
-  { id: "beds", label: "Beds", kinds: ["bed"] },
-  { id: "seating", label: "Chairs", kinds: ["chair", "stool", "bench"] },
-  { id: "sofas", label: "Sofas", kinds: ["sofa", "armchair"] },
-  { id: "kids", label: "Kids", kinds: ["kidstable", "kidschair"], tag: "kids" },
+  { id: "shelves", label: "Shelves", kinds: ["cube", "bookcase", "open", "wallshelf", "bookrow", "divider"] },
+  { id: "drawers", label: "Drawers", kinds: ["chest", "nightstand", "changing"] },
+  { id: "wardrobes", label: "Wardrobes", kinds: ["wardrobe", "sliding", "cornerrobe", "clothesrack"] },
+  {
+    id: "storage",
+    label: "Cabinets",
+    kinds: ["cabinet", "sideboard", "tv", "shoe", "shoerack", "wallcab", "kitchen", "cabrow", "slidecab", "mixed", "cornercab", "sinkcab", "appliance", "washstand"],
+  },
+  { id: "tables", label: "Tables", kinds: ["dining", "coffee", "side", "bar", "console", "trolley", "dropleaf", "gateleg", "conftable"] },
+  { id: "desks", label: "Desks", kinds: ["desk", "cornerdesk"] },
+  { id: "beds", label: "Beds", kinds: ["bed", "daybed", "bunk", "loft", "cot"] },
+  { id: "seating", label: "Chairs", kinds: ["chair", "stool", "bench", "backbench", "office", "conference", "highchair", "junior", "lounge"] },
+  { id: "sofas", label: "Sofas", kinds: ["sofa", "armchair", "corner", "usofa", "section", "chaise", "swivel", "lounger"] },
+  { id: "kids", label: "Kids", kinds: ["kidstable", "kidschair", "junior", "highchair", "cot", "changing"], tag: "kids" },
   { id: "outdoor", label: "Outdoor", tag: "outdoor" },
 ];
 
-const inCat = (e: CatalogEntry, c: (typeof CATS)[number]) => (!c.kinds && !c.tag) || (!!e.kind && !!c.kinds?.includes(e.kind)) || (!!c.tag && !!e.keywords?.includes(c.tag));
+// a kind no tab names yet still lands in the tab for its furniture type
+const LISTED = new Set(CATS.flatMap((c) => c.kinds ?? []));
+const BY_ARCH: Record<Archetype, string> = { shelf: "shelves", drawers: "drawers", cabinet: "storage", table: "tables", bed: "beds", seat: "seating", sofa: "sofas", custom: "storage" };
+
+const inCat = (e: CatalogEntry, c: (typeof CATS)[number]) =>
+  (!c.kinds && !c.tag) ||
+  (!!e.kind && !!c.kinds?.includes(e.kind)) ||
+  (!!e.kind && !LISTED.has(e.kind) && BY_ARCH[KIND_ARCH[e.kind] ?? e.archetype] === c.id) ||
+  (!!c.tag && !!e.keywords?.includes(c.tag));
 
 /** Cards added per "Show more": a multiple of the 2 and 3 column grids. */
 const PAGE = 24;

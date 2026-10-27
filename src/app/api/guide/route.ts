@@ -59,9 +59,9 @@ export async function POST(req: Request) {
   return Response.json({ found: false, ikea: type ?? undefined, suggestions: suggestions(), via: hasKey() || own ? "ai" : "offline" });
 }
 
-/** Types the plan generator can draw believably; office chairs, corner sofas, lamps and the like it can't yet. */
+/** Types the plan generator can draw: lamps, mattresses, textiles, plants and the like it can't. */
 function drawable(type: string) {
-  if (/office|swivel|gaming chair|corner|chaise|sectional|sliding door|cot\b|crib|bunk|loft|lamp|light|mattress|frame\b|mirror|rug|cushion|curtain|plant|pot\b|rail|hook/i.test(type)) return false;
+  if (/lamp|light|mattress|picture frame|mirror|rug|cushion|curtain|plant|pot\b|hook/i.test(type)) return false;
   return categoryOf(type) !== null;
 }
 
