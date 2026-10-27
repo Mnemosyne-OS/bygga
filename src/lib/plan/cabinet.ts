@@ -176,8 +176,28 @@ export function buildCabinet(b: PlanBuilder, s: ProductSpec) {
 
   // a cabinet on castors rolls about: nothing to fix to the wall
   if (ch) liftOntoCastors(b);
+  else if (s.cabinet?.onTop) onTopStep(b, s.cabinet.onTop, f.bottom, W, D, t);
   else if (wall) f.hang();
   else if (H >= 800) f.anchor();
+}
+
+/** A height extension unit goes on top of the bookcase or cabinet it extends, screwed down through its bottom. */
+function onTopStep(b: PlanBuilder, what: string, bottom: string, W: number, D: number, t: number) {
+  b.step(
+    {
+      title: `Screw it onto the top of the ${what}`,
+      detail: `Line it up with the back and both sides, then screw down through its bottom into the ${what}.`,
+      tools: ["screwdriver"],
+      people: W > 600 ? 2 : 1,
+      kind: "screws",
+      warnings: W > 600 ? ["two"] : [],
+    },
+    () => {
+      const list: FitOpts[] = [];
+      for (const x of W > 600 ? [-W / 2 + 80, 0, W / 2 - 80] : [-W / 2 + 80, W / 2 - 80]) for (const z of [-D / 4, D / 4]) list.push({ on: bottom, at: [x, t, z], dir: [0, -1, 0], hole: false });
+      b.fits(HW.screwM, list, 0.08);
+    },
+  );
 }
 
 /** Shoe cabinets like BISSA or HEMNES: stacked compartments with fronts that tip open from the bottom. */

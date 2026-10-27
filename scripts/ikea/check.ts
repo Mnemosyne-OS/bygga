@@ -140,6 +140,10 @@ async function main() {
   // a work bench when asked for, the family's shelving otherwise
   expect("bror work bench", "bror-work-bench-110-x-55");
   expect("bror", "bror-shelving-unit-85-x-190");
+  // a height extension unit or a TV bench with drawers when asked for, the family's own otherwise
+  expect("billy height extension unit", "billy-height-extension-unit-40-x-28-x-35");
+  expect("besta tv bench with drawers", "besta-tv-bench-drawers-120-x-42-x-48");
+  expect("besta tv bench", "besta-tv-bench-120-x-40");
   if (articleNo("S292.975.72") !== "29297572") fail("article numbers with an S in front don't parse");
   for (const [no, slug] of [["60324520", "kallax-2x2"]] as const) {
     if (articleSlug(no) !== slug) fail(`article ${no} gave ${articleSlug(no)}, expected ${slug}`);

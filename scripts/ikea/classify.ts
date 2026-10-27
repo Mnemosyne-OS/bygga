@@ -73,7 +73,7 @@ export function measure(s: string): Size | null {
   return { n: parts.map((p) => Number(p.split("/")[0])), ext: parts.some((p) => p.includes("/")), text: parts.join(" × ") + " cm" };
 }
 
-const UPRIGHT = new Set<Kind>(["cube", "bookcase", "open", "chest", "nightstand", "wardrobe", "cabinet", "sideboard", "tv", "shoe", "wallcab", "wallshelf", "kitchen", "mixed", "sliding", "slidecab", "washstand", "sinkcab", "appliance", "shoerack", "clothesrack", "changing", "divider"]);
+const UPRIGHT = new Set<Kind>(["extension", "cube", "bookcase", "open", "chest", "nightstand", "wardrobe", "cabinet", "sideboard", "tv", "shoe", "wallcab", "wallshelf", "kitchen", "mixed", "sliding", "slidecab", "washstand", "sinkcab", "appliance", "shoerack", "clothesrack", "changing", "divider"]);
 const FLAT = new Set<Kind>(["desk", "coffee", "side", "dining", "bar", "console", "kidstable", "trolley", "bench", "conftable"]);
 
 /** Office chairs IKEA sells with armrests although the type doesn't say so. */
@@ -411,6 +411,21 @@ const RULES: Rule[] = [
   [/^high cb w (\d) shelves$/, (m) => ({ kind: "cabinet", x: { doors: 0, shelves: Math.min(5, Number(m[1])) } })],
   [/^sideboard basic unit$/, () => ({ kind: "sideboard" })],
   [/^tv bench with plinth$/, () => ({ kind: "tv" })],
+  // a TV bench full of drawers
+  [/^tv bench with drawers$/, () => ({ kind: "tv", x: { rows: 1, cat: "TV bench with drawers" } })],
+  // a bookcase with a drawer at the bottom, open shelves above it
+  [/^bookcase with drawer$/, (_m, c) => ({ kind: "mixed", x: { doors: 0, rows: 1, shelves: (c.sz.n[2] ?? 100) > 150 ? 3 : 1 } })],
+  // BILLY with its height extension on top and doors: drawn as one tall bookcase with doors, like the others 237 cm high
+  [/^bookcase w (?:height extension ut\/drs|doors\/extension unit|hght ext ut\/pnl\/glss drs)$/, (_m, c) => ({ kind: "cabinet", x: (c.sz.n[0] ?? 80) <= 40 ? { doors: 1 } : {} })],
+  // height extension units: a short box on top of a bookcase or wardrobe, with doors in some
+  [/^height extension unit( with doors)?$/, (m) => ({ kind: "extension", x: m[1] ? { doors: 2 } : {} })],
+  // a media shelf: an open box on the wall
+  [/^media shelf$/, () => ({ kind: "wallcab", x: { doors: 0, shelves: 0, cat: "Media shelf" } })],
+  // METOD high cabinets full of drawers: 40 cm fronts from the bottom up, a 20 cm one at the top when there's room
+  [/^high cabinet with drawers$/, (_m, c) => {
+    const h = c.sz.n[2] ?? 200, k = Math.floor(h / 40);
+    return { kind: "kitchen", x: { z: h - 40 * k >= 20 ? `r${k}@${40 * k}+r1` : `r${k}`, cat: "High cabinet with drawers" } };
+  }],
   [/^shelving unit\/bench$/, () => ({ kind: "open" })],
   // a laptop table is a small desk
   [/^laptop table$/, () => ({ kind: "desk" })],

@@ -277,6 +277,7 @@ export function buildDrawers(b: PlanBuilder, s: ProductSpec) {
 
   // a drawer unit on castors rolls about: nothing to fix to the wall
   if (ch) return liftOntoCastors(b);
+  if (s.drawers?.free) return;
   f.anchor(f.top, H);
   const last = b.steps[b.steps.length - 1];
   last.detail = "Chests of drawers can tip over if they're not fixed. Wall screws aren't included: pick ones made for your wall.";

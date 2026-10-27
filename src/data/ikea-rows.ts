@@ -75,6 +75,7 @@ BESTÅ|cabrow|TV bench with doors, 240 × 42 × 76 cm|240|76|42|knobs=none,n=2,o
 BESTÅ|open|Shelving unit, 60 × 40 × 193 cm|60|193|40
 BESTÅ|tv|TV bench, 120 × 40 × 48 cm|120|48|40|knobs=none,doors=0
 BESTÅ|tv|TV bench with doors, 120 × 42 × 48 cm|120|48|42|knobs=none
+BESTÅ|tv|TV bench with drawers, 120 × 42 × 48 cm|120|48|42|rows=1,knobs=none,cat=TV bench with drawers
 BESTÅ|tv|TV bench with doors, 120 × 42 × 74 cm|120|74|42|knobs=none
 BESTÅ|tv|TV bench, 180 × 40 × 64 cm|180|64|40|knobs=none,doors=0
 BESTÅ BURS|tv|TV bench, 180 × 41 × 49 cm|180|49|41
@@ -88,6 +89,10 @@ BILLY|bookcase|Bookcase, 120 × 28 × 237 cm|120|237|28
 BILLY|bookrow|Bookcase, 160 × 28 × 202 cm|160|202|28|n=2,of=bookcase
 BILLY|bookrow|Bookcase, 200 × 28 × 237 cm|200|237|28|of=bookcase,u=80+80+40
 BILLY|bookrow|Bookcase, 240 × 28 × 106 cm|240|106|28|n=3,of=bookcase
+BILLY|extension|Height extension unit, 40 × 28 × 35 cm|40|35|28
+BILLY|extension|Height extension unit, 80 × 28 × 35 cm|80|35|28
+BILLY|mixed|Bookcase with drawer, 80 × 30 × 106 cm|80|106|30|rows=1,doors=0,shelves=1
+BILLY|mixed|Bookcase with drawer, 80 × 30 × 202 cm|80|202|30|rows=1,doors=0,shelves=3
 BILLY / HÖGADAL|cabinet|Bookcase with door, 40 × 30 × 106 cm|40|106|30|doors=1
 BILLY / HÖGADAL|cabinet|Bookcase with door, 40 × 30 × 202 cm|40|202|30|doors=1
 BILLY / HÖGADAL|cabinet|Bookcase with doors, 80 × 30 × 106 cm|80|106|30
@@ -104,6 +109,7 @@ BILLY / OXBERG|cabinet|Bookcase with panel/glass door, 40 × 30 × 202 cm|40|202
 BILLY / OXBERG|cabinet|Bookcase with doors, 40 × 41 × 202 cm|40|202|41
 BILLY / OXBERG|cabinet|Bookcase with glass door, 40 × 41 × 202 cm|40|202|41|doors=1
 BILLY / OXBERG|cabinet|Bookcase with panel/glass door, 40 × 41 × 202 cm|40|202|41|doors=1
+BILLY / OXBERG|cabinet|Bookcase w hght ext ut/pnl/glss drs, 40 × 30 × 237 cm|40|237|30|doors=1
 BILLY / OXBERG|cabinet|Bookcase with glass door, 40 × 30 × 237 cm|40|237|30|doors=1
 BILLY / OXBERG|cabinet|Bookcase with doors, 80 × 30 × 106 cm|80|106|30
 BILLY / OXBERG|cabinet|Bookcase with doors, 80 × 30 × 202 cm|80|202|30
@@ -111,10 +117,12 @@ BILLY / OXBERG|cabinet|Bookcase with panel/glass doors, 80 × 30 × 202 cm|80|20
 BILLY / OXBERG|cabinet|Bookcase with doors, 80 × 41 × 202 cm|80|202|41
 BILLY / OXBERG|cabinet|Bookcase with glass-doors, 80 × 41 × 202 cm|80|202|41
 BILLY / OXBERG|cabinet|Bookcase with panel/glass doors, 80 × 41 × 202 cm|80|202|41
+BILLY / OXBERG|cabinet|Bookcase w doors/extension unit, 80 × 30 × 237 cm|80|237|30
 BILLY / OXBERG|cabinet|Bookcase with glass doors, 80 × 30 × 237 cm|80|237|30
 BILLY / OXBERG|cabrow|Bookcase with glass-doors, 120 × 30 × 202 cm|120|202|30|of=cabinet,u=80+40
 BILLY / OXBERG|cabrow|Bookcase with panel/glass doors, 120 × 30 × 202 cm|120|202|30|of=cabinet,u=80+40
 BILLY / OXBERG|cabrow|Bookcase with panel/glass doors, 160 × 30 × 202 cm|160|202|30|n=2,of=cabinet
+BILLY / OXBERG|cabrow|Bookcase w height extension ut/drs, 160 × 30 × 237 cm|160|237|30|n=2,of=cabinet
 BINGSTA|armchair|Armchair|75|90|80
 BJÖRKBERGET|office|Swivel chair|60|105|64|arms=none
 BJÖRKSNÄS|bed|Bed frame, Standard King, 150 × 200 cm|166|100|209|m=150
@@ -191,6 +199,7 @@ EKET|chest|Cabinet with 2 drawers, 70 × 35 × 35 cm|70|35|35|rows=2
 EKET|nightstand|Cabinet with 2 drawers, 35 × 35 × 35 cm|35|35|35|rows=2
 EKET|wallcab|Wall cabinet with glass door, 35 × 25 × 35 cm|35|35|25|knobs=none,doors=1
 EKET|wallcab|Wall cb w 1 shlf/door, 35 × 35 × 70 cm|35|70|35|knobs=none,doors=1,shelves=1
+EKET|wallcab|Media shelf, 70 × 35 × 35 cm|70|35|35|knobs=none,doors=0,shelves=0,cat=Media shelf
 EKET|wallcab|Wall cb with 2 doors, 70 × 35 × 70 cm|70|70|35|knobs=none,doors=2
 EKET|wallshelf|Wall-mounted shelving unit, 35 × 25 × 35 cm|35|35|25
 EKET|wallshelf|Wall-mounted shelving unit, 35 × 35 × 35 cm|35|35|35
@@ -631,6 +640,7 @@ LASTARE|cabinet|Frame with doors, 60 × 42 × 100 cm|60|100|42
 LASTARE|cabinet|Frame with doors, 80 × 42 × 200 cm|80|200|42
 LASTARE|chest|Chest of 4 drawers, 80 × 42 × 100 cm|80|100|42|rows=4
 LASTARE|dining|Table, 100 × 42 × 74 cm|100|74|42
+LASTARE|extension|Height extension unit with doors, 80 × 42 × 36 cm|80|36|42|doors=2
 LASTARE|wallcab|Wall mounted frame with doors, 60 × 32 × 60 cm|60|60|32
 LEDAMOT|cabinet|Cabinet, 150 × 42 × 75 cm|150|75|42
 LILLÅNÄS|chair|Chair|44|88|50
@@ -795,6 +805,7 @@ METOD / KNIVSHULT|kitchen|Hi cab w 2 doors/4 drawers, 40 × 60 × 220 cm|40|220|
 METOD / KNIVSHULT|kitchen|Base cabinet with 2 drawers, 60 × 37 cm|60|80|37|z=r2
 METOD / KNIVSHULT|kitchen|Base cabinet with 3 drawers, 60 × 60 cm|60|80|60|z=r3
 METOD / KNIVSHULT|kitchen|Base cb 3 frnts/2 low/1 md/1 hi drw, 60 × 60 cm|60|80|60|z=r3
+METOD / KNIVSHULT|kitchen|High cabinet with drawers, 60 × 60 × 140 cm|60|140|60|z=r3@120+r1,cat=High cabinet with drawers
 METOD / KNIVSHULT|kitchen|Hi cab w shlvs/4 drawers/dr/2 frnts, 60 × 60 × 220 cm|60|220|60|z=r2@80+d1s3
 METOD / KNIVSHULT|kitchen|Base cab with 2 fronts/3 drawers, 80 × 37 cm|80|80|37|z=r2
 METOD / KNIVSHULT|kitchen|Base cb 2 frnts/2 low/1 md/1 hi drw, 80 × 60 cm|80|80|60|z=r2
@@ -825,6 +836,7 @@ METOD / MAXIMERA|appliance|Base cab f hob/2 fronts/3 drawers, 80 × 60 cm|80|80|
 METOD / MAXIMERA|appliance|Base cab f hob/3 fronts/3 drawers, 80 × 60 cm|80|80|60|use=hob,z=r3||metod-maximera-base-cab-f-hob-3-fronts-3-drawers-2
 METOD / MAXIMERA|cornercab|Corner base cab w drawer and p-out, 128 × 68 cm|128|80|68|rows=1,blind=60,inner=pullout
 METOD / MAXIMERA|cornercab|Corner base cab w drawer and shelf, 128 × 68 cm|128|80|68|rows=1,shelves=1,blind=60
+METOD / MAXIMERA|kitchen|High cabinet with drawers, 40 × 60 × 200 cm|40|200|60|z=r5,cat=High cabinet with drawers
 METOD / MAXIMERA|kitchen|Base cabinet with 2 drawers, 60 × 37 cm|60|80|37|z=r2
 METOD / MAXIMERA|kitchen|Base cabinet with 3 drawers, 60 × 60 cm|60|80|60|z=r3
 METOD / MAXIMERA|kitchen|Base cb 2 fronts/2 high drawers, 60 × 60 cm|60|80|60|z=r2

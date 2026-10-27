@@ -27,6 +27,7 @@ export interface DrawersParams {
   thickness: number;
   changing?: boolean; // a changing table: a changing top goes on last (size.h and size.d take it in)
   castors?: boolean; // stands on castors (size.h takes them in)
+  free?: boolean; // low enough to stand free: not fixed to the wall (a TV bench with drawers)
   modules?: number; // a modular chest (NORDLI): this many columns of `rows` slots, split by dividers
   count?: number; // modular chests: drawers in the slots, from the bottom row up; the rest stay open
 }
@@ -79,6 +80,7 @@ export interface CabinetParams {
   corner?: CornerCab; // a kitchen corner cabinet
   lid?: { soft?: boolean }; // a box with a lid on hinges instead (storage benches); a padded lid on a footstool
   castors?: boolean; // stands on castors (size.h takes them in)
+  onTop?: "bookcase" | "cabinet"; // a height extension unit: fixed on top of the bookcase or cabinet it extends
 }
 
 /**
