@@ -111,6 +111,21 @@ function framesFor(w: number, sizes: number[], post = 0, most = 4): number[] | n
   return best;
 }
 
+/** Exactly `count` frames of these widths that make up w, give or take 2 cm, the widest first. */
+function framesExact(w: number, sizes: number[], count: number): number[] | null {
+  let found: number[] | null = null;
+  const walk = (left: number[], from: number) => {
+    if (found) return;
+    if (left.length === count) {
+      if (Math.abs(left.reduce((a, v) => a + v, 0) - w) <= 2) found = [...left];
+      return;
+    }
+    for (let i = from; i < sizes.length; i++) walk([...left, sizes[i]], i);
+  };
+  walk([], 0);
+  return found;
+}
+
 /** Frames for one leg of a corner wardrobe: the frames that come closest to `len` cm, and how far off they are. */
 function legFrames(len: number, sizes: number[], least: number): [number[], number] {
   let best: [number[], number] = [[], Infinity];
@@ -228,6 +243,8 @@ const RULES: Rule[] = [
   [/^hi cab f micro w door\/(\d) drawers$/, (m) => ({ kind: "appliance", x: { use: "microwave", z: `r${m[1]}@80+g@40+d1` } })],
   [/^hi cab w shlvs\/\d drawers\/dr\/(\d) frnts$/, (m) => ({ kind: "kitchen", x: { z: `r${m[1]}@80+d1s3` } })],
   [/^base cabinet$/, () => ({ kind: "kitchen", x: { doors: 0 } })],
+  // open units of an outdoor kitchen: a frame with a shelf and no doors
+  [/^(open kitchen unit|kitchen island shelf unit)$/, () => ({ kind: "kitchen", x: { doors: 0, shelves: 1, cat: "Outdoor kitchen unit" } })],
   [/^base cb w shelf$/, () => ({ kind: "kitchen", x: { doors: 0, shelves: 1 } })],
   [/^high fr w shelves$/, () => ({ kind: "kitchen", x: { doors: 0 } })],
   // cabinets with room for an oven, a fridge or a microwave, and base cabinets under a hob: the appliance is fitted afterwards
@@ -467,6 +484,8 @@ const RULES: Rule[] = [
   // a bedside table with a glass top is put together like any other
   [/^bedside table with glass top$/, () => ({ kind: "nightstand", x: { rows: 1 } })],
   [/^(wardrobe frame|open wardrobe|open clothes hanging unit)$/, () => ({ kind: "wardrobe", x: { doors: 0 } })],
+  // two or three wardrobe frames sold together: a row of frames without doors
+  [/^(\d) wardrobe frames$/, (m) => ({ kind: "wardrobe", x: { doors: 0, n: Number(m[1]), cat: "Wardrobe combination" } })],
   // PLATSA wardrobes are a row of identical frames: one or two doors on each, as many frames as that takes
   [/^wardrobe w(?:ith)? (\d+) doors$/, (m, c) => {
     const doors = Number(m[1]), w = c.sz.n[0] ?? 0;
@@ -634,6 +653,8 @@ export function classify(f: Fact, hints: Hints): Verdict {
     if (v.length === 3) set(v[0], v[2], v[1]);
     else if (v.length === 2) {
       if ((kind === "kitchen" || kind === "mixed" || kind === "sinkcab" || kind === "appliance") && /^base/.test(t)) set(v[0], 80, v[1]);
+      // an outdoor kitchen unit is measured from above, and stands at worktop height
+      else if (kind === "kitchen" && /kitchen unit$|shelf unit$/.test(t)) set(v[0], 90, v[1]);
       // bedside tables are measured from above, like tables
       else if (kind === "nightstand" && /bedside|nightstand/.test(t)) set(v[0], hint?.kind === kind ? hint.h : 55, v[1]);
       else set(v[0], v[1]);
@@ -900,6 +921,15 @@ export function classify(f: Fact, hints: Hints): Verdict {
       if (!unit && !mixed) return { skip: "PAX with sliding doors over frames of different widths" };
       Object.assign(x, { ...(mixed ? { u: mixed.join("+") } : { n: w / unit! }), of: "wardrobe", slides: 2, doors: undefined, shelves: hints(family, "wardrobe")?.x.shelves });
       for (const k of Object.keys(x) as (keyof X)[]) if (x[k] === undefined) delete x[k];
+      return finish("cabrow");
+    }
+    // a count of frames that can't all be alike (three PAX frames in 200 cm): the family's widths that add up to it
+    const sizesOf = FRAME_SIZES[family];
+    if (x.n && sizesOf && kind === "wardrobe" && !sizesOf.includes(w / x.n)) {
+      const exact = framesExact(w, sizesOf, x.n);
+      if (!exact) return { skip: several };
+      delete x.n;
+      Object.assign(x, { u: exact.join("+"), of: kind });
       return finish("cabrow");
     }
     // the rule may already know how many frames there are (PLATSA)

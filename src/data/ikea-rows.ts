@@ -336,6 +336,8 @@ GREJSIMOJS|coatstand|Clothes stand, 125 cm|45|125|45
 GREJSIMOJS|kidstable|Children's table, 84 × 42 cm|84|48|42||kids
 GREJSIMOJS|lidbox|Pouffe with storage|38|38|38|cat=Pouffe with storage
 GREJSIMOJS|stool|Children's stool|35|30|35||kids
+GRILLSKÄR|kitchen|Open kitchen unit, 61 × 61 cm|61|90|61|doors=0,shelves=1,cat=Outdoor kitchen unit|outdoor garden
+GRILLSKÄR|kitchen|Kitchen island shelf unit, 86 × 61 cm|86|90|61|doors=0,shelves=1,cat=Outdoor kitchen unit|outdoor garden
 GRILLSKÄR|side|Side table, outdoor, 30 × 61 cm|30|50|61||outdoor garden
 GRÖNFJÄLL|office|Office chair with armrests|64|105|64|arms=slim
 GRÖNFJÄLL|office|Office chair with arm/headrest|64|128|64|arms=slim
@@ -945,6 +947,7 @@ NÄMMARÖ|chair|Chair, outdoor|44|88|50||outdoor garden
 NÄMMARÖ|dining|Table, outdoor, 75 × 63 cm|75|74|63||outdoor garden
 NÄMMARÖ|dining|Table, outdoor, 130 cm|130|74|130|round=1|outdoor garden
 NÄMMARÖ|dining|Table, outdoor, 140 × 75 cm|140|74|75||outdoor garden
+NÄMMARÖ|kitchen|Open kitchen unit, 80 × 62 cm|80|90|62|doors=0,shelves=1,cat=Outdoor kitchen unit|outdoor garden
 NÄMMARÖ|lounge|Reclining chair, outdoor|66|102|84||outdoor garden
 NÄMMARÖ|lounge|Lounge chair, outdoor|72|88|80||outdoor garden
 NÄMMARÖ|lounger|Sun lounger|66|87|195||outdoor garden
@@ -1049,6 +1052,8 @@ PAX|cabinet|Add-on corner unit with 4 shelves, 53 × 58 × 201 cm|53|201|58|door
 PAX|cabinet|Add-on corner unit with 4 shelves, 53 × 35 × 236 cm|53|236|35|doors=0,shelves=4
 PAX|cabrow|Wardrobe, 150 × 58 × 201 cm|150|201|58|doors=0,shelves=2,of=wardrobe,u=100+50
 PAX|cabrow|Wardrobe, 175 × 58 × 201 cm|175|201|58|doors=0,shelves=2,of=wardrobe,u=100+75
+PAX|cabrow|2 wardrobe frames, 200 × 58 × 201 cm|200|201|58|doors=0,shelves=2,n=2,of=wardrobe,cat=Wardrobe combination
+PAX|cabrow|3 wardrobe frames, 200 × 58 × 201 cm|200|201|58|doors=0,shelves=2,of=wardrobe,u=100+50+50,cat=Wardrobe combination
 PAX|cornerrobe|Corner wardrobe, 161/188 × 201 cm|161|201|188|doors=0,shelves=2,u=75+50,v=100
 PAX|cornerrobe|Corner wardrobe, 210/180 × 236 cm|180|236|210|doors=0,shelves=2,u=75+50,v=100,cu=58
 PAX|cornerrobe|Corner wardrobe, 211/161 × 201 cm|211|201|161|doors=0,shelves=2,u=100+75,v=75

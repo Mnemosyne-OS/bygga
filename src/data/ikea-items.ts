@@ -360,6 +360,8 @@ grejsimojs-children-s-stool|60598973 50598959
 grejsimojs-children-s-table-84-x-42|70598963
 grejsimojs-clothes-stand-125|10602996
 grejsimojs-pouffe-storage|60603644
+grillskar-kitchen-island-shelf-unit-86-x-61|50471446 29390107
+grillskar-open-kitchen-unit-61-x-61|40598790
 grillskar-side-table-outdoor-30-x-61|00523179
 gronfjall-office-chair-arm-headrest|89513921
 gronfjall-office-chair-armrests|20503477
@@ -1017,6 +1019,7 @@ nammaro-chair-armrests-outdoor|90511105 59610264 69610268
 nammaro-chair-outdoor|50503353
 nammaro-lounge-chair-outdoor|40510306
 nammaro-modular-easy-chair-63|79584363 39529156 49621507 19611166 99575414 79607473
+nammaro-open-kitchen-unit-80-x-62|80608810
 nammaro-reclining-chair-outdoor|50510301
 nammaro-stool-outdoor-37-x-45|70510300
 nammaro-sun-lounger|30503354 49534888 69576028
@@ -1117,6 +1120,8 @@ ostavall-adjustable-coffee-table-90|40534152 00530066
 ovning-trolley-54-x-33|00517003
 pahl-desk-96-x-58|49619340
 paronholmen-bench-backrest-outdoor|90503799
+pax-2-wardrobe-frames-200-x-58-x-201|59494759 39494760 59494820 09494752 79494819 29494812 99494818 89494767 79494763 69494768 59494764 29494765 19494761 09494766
+pax-3-wardrobe-frames-200-x-58-x-201|99494795 89494772 79494796 59494815 19494822 19494756 89494814
 pax-add-on-corner-unit-4-shelves-53-x-35-x-236|00346964 20346958 80346960 60346956
 pax-add-on-corner-unit-4-shelves-53-x-58-x-201|70346932 50515110 10515112 30346934 60515119 20515121 80346941
 pax-auli-wardrobe-sliding-doors-150-x-43-x-201|29561335 89561342 59561329 79561333 59561334 09561336
