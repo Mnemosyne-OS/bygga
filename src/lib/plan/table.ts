@@ -4,6 +4,8 @@ import { clamp } from "./math";
 import { buildDropLeaf } from "./dropleaf";
 import { buildGateleg } from "./gateleg";
 import { buildCornerDesk } from "./cornerdesk";
+import { buildDeskDrawers } from "./deskdraw";
+import { buildBoxDesk } from "./boxdesk";
 
 export function defaultsTable(s: ProductSpec): TableParams {
   const p = s.table ?? {};
@@ -20,6 +22,8 @@ export function defaultsTable(s: ProductSpec): TableParams {
 }
 
 export function buildTable(b: PlanBuilder, s: ProductSpec) {
+  if (s.table?.drawers) return buildDeskDrawers(b, s);
+  if (s.table?.frame) return buildBoxDesk(b, s);
   if (s.table?.ell) return buildCornerDesk(b, s);
   if (s.table?.gate) return buildGateleg(b, s);
   if (s.table?.leaves) return buildDropLeaf(b, s);

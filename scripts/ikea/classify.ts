@@ -442,6 +442,14 @@ const RULES: Rule[] = [
   [/^box shelf with divider$/, () => ({ kind: "cube", x: { t: 18, cat: "Box shelf" } })],
   // a laptop table is a small desk
   [/^laptop table$/, () => ({ kind: "desk" })],
+  // desks and tables with drawers under the top, a dressing table with its mirror
+  [/^desk with (\d) drawers$/, (m) => ({ kind: "deskdraw", x: { rows: Number(m[1]) } })],
+  [/^dressing table with mirror$/, () => ({ kind: "deskdraw", x: { rows: 2, mirror: true, cat: "Dressing table" } })],
+  [/^work bench with drawers$/, () => ({ kind: "deskdraw", x: { rows: 2, knobs: "bar", cat: "Work bench" } })],
+  [/^table with drawer$/, () => ({ kind: "deskdraw", x: { rows: 1, cat: "Table" } })],
+  // TROFAST's low desk: a top between two storage frames, with boxes, trays or shelves in them
+  [/^desk with (?:mesh )?(storage boxes|storage boxes\/trays|shelves)$/, (m, c) =>
+    (c.f.name === "TROFAST" ? { kind: "boxdesk", x: m[1] === "shelves" ? { rows: 2, shelf: true } : { rows: 2 } } : "desk with storage")],
   [/^bar stool with backrest, foldable$/, () => ({ kind: "chair", x: { seatH: 63 } })],
   [/^three-seat sofa$/, () => ({ kind: "sofa", x: { seats: 3 } })],
   [/^(modular )?chest of (\d+) drawers$/, (m) => ({ kind: "chest", x: { rows: Number(m[2]) } })],
@@ -756,6 +764,12 @@ export function classify(f: Fact, hints: Hints): Verdict {
     else set(v[0], 80, v[1]);
     guessed.h = v.length === 2 && !x.hung && !CORNER_WH[family];
     if (hint?.x.knobs) x.knobs = hint.x.knobs;
+  } else if (kind === "deskdraw" || kind === "boxdesk") {
+    // measured from above, or wide by deep by high; a dressing table's height takes in its mirror
+    if (v.length === 3) set(v[0], v[2], v[1]);
+    else if (v.length === 2) set(v[0], undefined, v[1]);
+    if (x.cat === "Work bench" && guessed.h) h = 90;
+    if (x.mirror && guessed.h) h += 85;
   } else if (kind === "shelfbench" || kind === "workbench") {
     // IKEA gives the width, sometimes the depth and height too; a stool without a size is a typical one
     if (x.cat === "Stool with storage") [w, h, d] = [44, 46, 36];

@@ -191,6 +191,7 @@ bror-shelving-unit-cabinet-85-x-40-x-190|89516142
 bror-shelving-unit-cabinets-170-x-40-x-190|09516141
 bror-trolley-85-x-55|60333850 80547384
 bror-work-bench-110-x-55|30333286
+bror-work-bench-drawers-85-x-40-x-89|70494300
 brusali-shoe-cabinet-3-compartments|80480393
 brytning-desk-110-x-53-x-75|80609744 50609750
 brytning-desk-135-x-53-x-75|50609745 30609751
@@ -438,6 +439,8 @@ hemnes-chest-8-drawers|10239280
 hemnes-day-bed-frame-3-drawers-80-x-200|90349326 80622892 60372276
 hemnes-day-bed-w-3-drawers-2-mattresses-80-x-200|49521503 79610220 59521499 49521485 19428120 19390952 59610235
 hemnes-desk-155-x-65|20535044
+hemnes-desk-2-drawers-120-x-47|30534954
+hemnes-dressing-table-mirror-100-x-50|30374413
 hemnes-glass-door-cabinet-3-drawers-90-x-197|50452297 00596161 50413507
 hemnes-high-cabinet-mirror-door-49-x-31-x-200|70217685
 hemnes-mirror-cabinet-1-door-63-x-16-x-98|70217671
@@ -505,6 +508,7 @@ ikea-ps-2026-side-table-50-x-40|80621067
 ikea-ps-2026-stool|20617916
 ikea-ps-2026-table-156-x-75|00617861
 ikea-ps-2026-table-96|80617895
+ikea-ps-2026-table-drawer-70-x-70|40617878
 ikea-ps-2026-trolley-89-x-48|50621078 40621074
 ikea-ps-cabinet-119-x-63|10251451
 ikea-ps-lomsk-children-s-swivel-armchair|30609237
@@ -1497,6 +1501,11 @@ tossberg-malskar-swivel-chair|59508228 69508223 09508235 89508203 69508242 59508
 tranered-coffee-table-90-x-90|10608998
 tranno-stool|50546381
 travsport-desk-sit-stand-120-x-70|59620951
+trofast-desk-mesh-storage-boxes-124-x-44-x-52|69613912 29613933
+trofast-desk-mesh-storage-boxes-trays-124-x-44-x|89613930
+trofast-desk-shelves-124-x-44-x-52|59613936
+trofast-desk-storage-boxes-124-x-44-x-52|89613906 29613909 99613944 29613848 99613897 19613938 09613873 69613870
+trofast-desk-storage-boxes-trays-124-x-44-x-52|59613903 79613921 49613927 39613918 99613915 59613941
 trofast-frame-32-x-44-x-52|90516061
 trofast-frame-34-x-44-x-56|50516063
 trofast-frame-44-x-91|10308693

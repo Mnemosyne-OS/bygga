@@ -167,6 +167,7 @@ BROR|cabinet|Cabinet with 2 doors, 76 × 40 × 66 cm|76|66|40
 BROR|cabinet|Shelving unit with cabinet, 85 × 40 × 190 cm|85|190|40|cat=Shelving unit with cabinet,low=72
 BROR|cabinet|Cabinet with doors, 85 × 40 × 191 cm|85|191|40
 BROR|cabrow|Shelving unit with cabinets, 170 × 40 × 190 cm|170|190|40|of=cabinet,u=85+85,cat=Shelving unit with cabinet,low=72
+BROR|deskdraw|Work bench with drawers, 85 × 40 × 89 cm|85|89|40|rows=2,knobs=bar,cat=Work bench
 BROR|open|Shelving unit, 65 × 40 × 190 cm|65|190|40
 BROR|open|Shelving unit, 65 × 55 × 190 cm|65|190|55
 BROR|open|Shelving unit, 85 × 55 × 110 cm|85|110|55
@@ -407,6 +408,8 @@ HEMNES|cabinet|High cabinet with mirror door, 49 × 31 × 200 cm|49|200|31|doors
 HEMNES|daybed|Day-bed frame with 3 drawers, 80 × 200 cm|210|83|91|rows=3,knobs=knob,m=80,under=pullout
 HEMNES|daybed|Day-bed w 3 drawers/2 mattresses, 80 × 200 cm|210|83|91|rows=3,knobs=knob,m=80,under=pullout,mats=2
 HEMNES|desk|Desk, 155 × 65 cm|155|74|65
+HEMNES|deskdraw|Dressing table with mirror, 100 × 50 cm|100|160|50|rows=2,cat=Dressing table,mirror=1
+HEMNES|deskdraw|Desk with 2 drawers, 120 × 47 cm|120|75|47|rows=2
 HEMNES|mixed|Glass-door cabinet with 3 drawers, 90 × 197 cm|90|197|37|rows=3,knobs=knob
 HEMNES|wallcab|Mirror cabinet with 1 door, 63 × 16 × 98 cm|63|98|16|knobs=knob,doors=1
 HEMNES|wallcab|Mirror cabinet with 2 doors, 83 × 16 × 98 cm|83|98|16|knobs=knob,doors=2
@@ -459,6 +462,7 @@ IKEA PS 2026|cabinet|Glass-door cabinet, 73 × 36 × 160 cm|73|160|36
 IKEA PS 2026|cabinet|Cabinet, 80 × 46 × 140 cm|80|140|46
 IKEA PS 2026|chair|Chair|44|88|50
 IKEA PS 2026|chair|Folding chair|44|88|50
+IKEA PS 2026|deskdraw|Table with drawer, 70 × 70 cm|70|75|70|rows=1,cat=Table
 IKEA PS 2026|dining|Table, 96 cm|96|74|96|round=1
 IKEA PS 2026|dining|Table, 156 × 75 cm|156|74|75
 IKEA PS 2026|nightstand|Bedside table, 30 × 30 × 50 cm|30|50|30|rows=1
@@ -1413,6 +1417,11 @@ TOSSBERG / MALSKÄR|office|Swivel chair|60|105|64|arms=none
 TRANERED|coffee|Coffee table, 90 × 90 cm|90|45|90
 TRÄNNÖ|stool|Stool|35|45|35
 TRAVSPORT|desk|Desk sit/stand, 120 × 70 cm|120|74|70
+TROFAST|boxdesk|Desk with mesh storage boxes, 124 × 44 × 52 cm|124|52|44|rows=2|kids children
+TROFAST|boxdesk|Desk with mesh storage boxes/trays, 124 × 44 × 52 cm|124|52|44|rows=2|kids children
+TROFAST|boxdesk|Desk with shelves, 124 × 44 × 52 cm|124|52|44|rows=2,shelf=1|kids children
+TROFAST|boxdesk|Desk with storage boxes, 124 × 44 × 52 cm|124|52|44|rows=2|kids children
+TROFAST|boxdesk|Desk with storage boxes/trays, 124 × 44 × 52 cm|124|52|44|rows=2|kids children
 TROFAST|open|Frame, 32 × 44 × 52 cm|32|52|44||kids children
 TROFAST|open|Frame, 34 × 44 × 56 cm|34|56|44||kids children
 TROFAST|open|Frame, 44 × 91 cm|44|91|35||kids children
