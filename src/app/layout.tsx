@@ -1,5 +1,6 @@
 import { Suspense } from "react";
 import type { Metadata, Viewport } from "next";
+import Script from "next/script";
 import { Noto_Sans, Noto_Sans_Display } from "next/font/google";
 import "./globals.css";
 import "./guide.css";
@@ -47,6 +48,8 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
       <body>
         {children}
         <Analytics />
+        {/* Plausible, served through our own domain (see the rewrites in next.config.ts) so the CSP stays self-only */}
+        <Script src="/pl/script.js" data-domain="usebygga.com" data-api="/pl/event" strategy="afterInteractive" />
         {/* it reads the path, which the prerendered shell doesn't know yet */}
         <Suspense fallback={null}>
           <Offline />

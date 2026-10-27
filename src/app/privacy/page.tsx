@@ -51,6 +51,13 @@ export default function Privacy() {
             </a>
             .
           </li>
+          <li>
+            <b>Plausible</b> (European Union) also counts visits without cookies or personal data: the page, the referring site, your country and your browser. See their{" "}
+            <a href="https://plausible.io/data-policy" target="_blank" rel="noreferrer">
+              data policy
+            </a>
+            .
+          </li>
         </ul>
 
         <h2>Terms of use</h2>
