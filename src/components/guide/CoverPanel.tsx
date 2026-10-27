@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { spellOut } from "@/lib/shorthand";
 import type { Plan } from "@/lib/types";
-import type { Progress } from "@/lib/store";
+import { buildMinutes, type Progress } from "@/lib/store";
 import { floorSpace, totals } from "@/lib/plan/contents";
 import { IArrowRight, IBox, ICheck, IClock, IExternal, IPeople, IPerson, IPrint, IRuler, ISparkle, IWrench } from "../art/Icons";
 import { Dots } from "./ui";
@@ -44,7 +44,10 @@ export default function CoverPanel({
             <p className="built-pill">
               <ICheck size={15} strokeWidth={2.6} />
               Built {new Date(built.at).toLocaleDateString(undefined, { day: "numeric", month: "short" })}
-              {built.full && built.ms ? `, in ${fmtMin(Math.max(1, Math.round(built.ms / 60000)))}` : ""}
+              {(() => {
+                const m = buildMinutes(built.ms, built.full, s.minutes);
+                return m ? `, in ${fmtMin(m)}` : "";
+              })()}
             </p>
           )}
         </header>

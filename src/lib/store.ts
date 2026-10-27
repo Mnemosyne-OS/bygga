@@ -35,6 +35,13 @@ export const isBuilt = (p: Progress) => !!p.builtAt || p.phase === "done";
 /** A gap longer than this between taps counts as a break, not building time. */
 export const BREAK_MS = 20 * 60_000;
 
+/** Minutes a build took, only when every step was followed and it took at least a fifth of the typical time (not tapped through). */
+export function buildMinutes(ms: number | undefined, full: boolean | undefined, typical: number): number | null {
+  if (!full || !ms) return null;
+  const m = Math.max(1, Math.round(ms / 60000));
+  return m >= typical * 0.2 ? m : null;
+}
+
 const KEY = "bygga:builds";
 
 function read(): Record<string, Progress> {

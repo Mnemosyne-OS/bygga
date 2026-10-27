@@ -7,7 +7,7 @@ import { catalogSpec } from "@/lib/catalog";
 import { buildPlan } from "@/lib/plan";
 import { totals } from "@/lib/plan/contents";
 import { lineup } from "@/lib/plan/lineup";
-import { isBuilt, listProgress, removeProgress, type Progress } from "@/lib/store";
+import { buildMinutes, isBuilt, listProgress, removeProgress, type Progress } from "@/lib/store";
 import type { Plan, ProductSpec } from "@/lib/types";
 import { useMounted } from "@/lib/useMounted";
 import { peekShot, shot, type Shot } from "@/engine/thumbs";
@@ -33,7 +33,7 @@ function fmtTime(min: number) {
 /** Building time, only when the steps were followed (older saves only had start and end). */
 function spentOf(r: Row) {
   const p = r.p;
-  if (p.builtAt) return p.builtFull && p.builtMs ? Math.max(1, Math.round(p.builtMs / 60000)) : null;
+  if (p.builtAt) return buildMinutes(p.builtMs, p.builtFull, r.spec.minutes);
   const m = p.startedAt && p.doneAt && p.doneAt > p.startedAt ? Math.round((p.doneAt - p.startedAt) / 60000) : 0;
   // a wall clock that ran overnight isn't a build time
   return m > 0 && m < r.spec.minutes * 3 ? m : null;

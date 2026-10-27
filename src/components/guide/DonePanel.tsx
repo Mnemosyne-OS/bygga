@@ -6,7 +6,7 @@ import { motion } from "motion/react";
 import type { Plan } from "@/lib/types";
 import { totals } from "@/lib/plan/contents";
 import { POPULAR } from "@/lib/search";
-import { getPref, setPref } from "@/lib/store";
+import { buildMinutes, getPref, setPref } from "@/lib/store";
 import { Figure } from "../art/Figure";
 import { IArrowLeft, IArrowRight, ICheck, ILibrary, IShare } from "../art/Icons";
 import Drawing from "../Drawing";
@@ -19,8 +19,7 @@ export default function DonePanel({ plan, slug, finish, onReview }: { plan: Plan
   const t = totals(plan);
   const s = plan.spec;
   // a time only counts when the steps were followed, not tapped through in a minute
-  const mins = finish?.full ? Math.max(1, Math.round(finish.ms / 60000)) : 0;
-  const spent = mins >= s.minutes * 0.2 ? mins : null;
+  const spent = buildMinutes(finish?.ms, finish?.full, s.minutes);
   const faster = spent !== null && spent < s.minutes * 0.95;
   const a = s.archetype;
   const recheck = a === "table" || a === "bed" || a === "seat" || a === "sofa";
