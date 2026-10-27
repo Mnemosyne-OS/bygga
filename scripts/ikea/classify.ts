@@ -297,6 +297,20 @@ const RULES: Rule[] = [
   }],
   // an armchair with its footstool: one guide for the two of them
   [/^(?:armchair|high-back armchair|wing chair) (?:and|with) footstool$/, () => ({ kind: "armchair", x: { foot: true, cat: "Armchair with footstool" } })],
+  // why the last single pieces stay skipped: parts of a system sold alone, folding pieces, and pieces sold with others
+  [/^side unit$/, () => "upright of a shelving system sold alone"],
+  [/^(adjustable clothes rail|clothes bar)$/, () => "rail that fits inside a wardrobe or a storage system"],
+  [/^rack for kitchen island$/, () => "rack sold alone for a kitchen island"],
+  [/^(slatted bed base|mattress base|headboard|midbeam|guard rail|chair underframe)$/, () => "part sold alone"],
+  [/^storage trunk$/, () => "box or storage trunk"],
+  [/^tv bench with underframe$/, () => "cube shelf with door inserts"],
+  [/^\d sec\/storage unit w foldable table$|^bookcase with foldable table$|^kitchen island w side table$|^wall-mounted drop-leaf table$|^pull-out desk$|^gateleg desk$/, () => "piece with a table that folds out"],
+  [/^changing tbl\/bookshelf w \d shlf ut$/, () => "changing table sold with shelf units"],
+  [/^bench with toy storage$|module with storage$/, () => "seat sold with storage boxes"],
+  [/^stackable bed with \d mattresses$/, () => "two stackable beds sold together"],
+  [/^(trundle bed|underbed|underbed with storage|bed frame with 1 trundle bed|bed frame, \d stor box\/\d trundle bed|extendable bed with storage|extendable bed w stor\/\d mattresses|guest bed)$/, () => "trundle, underbed or folding bed"],
+  [/^mini-kitchen$/, () => "appliance, sink, tap or hood"],
+  [/^kitchen$/, () => "set or combination"],
   // a hat and coat stand is one piece, whatever its name says
   [/^(hat and coat stand|clothes stand|coat stand)$/, () => ({ kind: "coatstand" })],
   // things that are several products, or only part of one
