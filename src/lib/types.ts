@@ -17,6 +17,8 @@ export interface ShelfParams {
   inserts?: number; // a cube grid sold with this many inserts with a door, from the bottom row up
   shoes?: boolean; // a rack with a shoe shelf low down instead of a lower rail
   changing?: boolean; // a changing table: a changing top goes on last (size.h takes it in)
+  rail?: boolean; // open shelving with a clothes rail under a shelf near the top
+  boxUnder?: number; // cm: open shelving with this much room under the bottom shelf, for a storage box on castors
 }
 
 export interface DrawersParams {
@@ -81,6 +83,7 @@ export interface CabinetParams {
   lid?: { soft?: boolean }; // a box with a lid on hinges instead (storage benches); a padded lid on a footstool
   castors?: boolean; // stands on castors (size.h takes them in)
   onTop?: "bookcase" | "cabinet"; // a height extension unit: fixed on top of the bookcase or cabinet it extends
+  low?: number; // cm: a shelving unit with a cabinet this high at the bottom, doors over it and open shelves above
 }
 
 /**

@@ -431,11 +431,16 @@ function specOf(kind: Kind, name: string, variant: string, w: number, h: number,
         const cols = Math.max(1, Math.round((w - 6) / 35)), rows = Math.max(1, Math.round((h - x.uf - 6) / 35));
         return { ...base, minutes: x.min ?? 30 + 7 * cols * rows, people: cols * rows > 4 ? 2 : 1, shelf: { style: "grid", cols, rows, outer: 40, inner: 16, back: false, underframe: x.uf } };
       }
+      // x.t: thinner panels than KALLAX's (IVAR's box shelf)
+      if (x.t) return { ...base, shelf: { style: "grid", cols: Math.max(1, Math.round((w - 6) / 35)), rows: Math.max(1, Math.round((h - 6) / 35)), outer: x.t, inner: x.t, back: false } };
       return { ...base, shelf: { style: "grid", cols: Math.max(1, Math.round((w - 6) / 35)), rows: Math.max(1, Math.round((h - 6) / 35)), outer: 40, inner: 16, back: false } };
     case "bookcase":
       return { ...base, shelf: { style: "bookcase", shelves: x.shelves ?? Math.max(1, Math.round(h / 45) - 1), fixedShelf: h > 150, back: true, plinth: h > 100, outer: 16 } };
     case "open":
-      return { ...base, difficulty: 1, shelf: { style: "bookcase", shelves: x.shelves ?? Math.max(1, Math.round(h / 45) - 1), fixedShelf: h > 150, back: false, plinth: false, outer: 18 } };
+      // x.rail: a clothes rail under a shelf near the top; x.box: room under the bottom shelf for a storage box on castors
+      if (x.rail) return { ...base, difficulty: 2, people: 2, shelf: { style: "bookcase", shelves: 1, fixedShelf: false, back: false, plinth: false, outer: 18, rail: true } };
+      if (x.box) return { ...base, minutes: x.min ?? MIN.open + 10, difficulty: 1, shelf: { style: "bookcase", shelves: x.shelves ?? Math.max(1, Math.round((h - x.box) / 45) - 1), fixedShelf: h > 150, back: false, plinth: false, outer: 18, boxUnder: x.box } };
+      return { ...base, difficulty: 1, shelf: { style: "bookcase", shelves: x.shelves ?? Math.max(1, Math.round(h / 45) - 1), fixedShelf: h > 150, back: false, plinth: x.plinth ?? false, outer: 18 } };
     case "changing": {
       // x.rows: a chest of that many drawers under the changing top; otherwise an open frame with x.shelves
       if (x.rows) {
@@ -500,6 +505,8 @@ function specOf(kind: Kind, name: string, variant: string, w: number, h: number,
     case "wardrobe":
       return { ...base, people: 2, cabinet: { doors: x.doors ?? (w >= 60 ? 2 : 1), shelves: x.shelves ?? 1, rail: true, plinth: true, handles: x.knobs ?? "knob", thickness: 18 } };
     case "cabinet":
+      // x.low: a shelving unit with a cabinet this many cm high at the bottom, open shelves above
+      if (x.low) return { ...base, minutes: x.min ?? MIN.cabinet + 25, people: h > 150 ? 2 : 1, cabinet: { doors: x.doors ?? (w > 50 ? 2 : 1), shelves: 0, rail: false, plinth: false, handles: x.knobs ?? "knob", thickness: 18, low: x.low } };
       // x.cast: on castors, so no plinth
       if (x.cast) return { ...base, minutes: x.min ?? MIN.cabinet + 5, cabinet: { doors: x.doors ?? (w > 50 ? 2 : 1), shelves: x.shelves ?? (h > 100 ? 2 : 1), rail: false, plinth: false, handles: x.knobs ?? "knob", thickness: 18, castors: true } };
       return { ...base, cabinet: { doors: x.doors ?? (w > 50 ? 2 : 1), shelves: x.shelves ?? (h > 100 ? 2 : 1), rail: false, plinth: h > 100, handles: x.knobs ?? "knob", thickness: 18 } };

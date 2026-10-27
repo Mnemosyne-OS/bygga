@@ -92,7 +92,7 @@ const ROW_UNITS: Record<string, number> = { BILLY: 80, BESTÅ: 120, IVAR: 80, PA
 /** PAX frames under a pair of sliding doors: 150 is two 75s, 200 two 100s. */
 const PAX_SLIDE_UNITS = [100, 75];
 /** The frame widths a family's combinations are made of, widest first, and the post two IVAR sections share. */
-const FRAME_SIZES: Record<string, number[]> = { BILLY: [80, 40], PAX: [100, 75, 50], IVAR: [89, 48], BROR: [85, 65] };
+const FRAME_SIZES: Record<string, number[]> = { BILLY: [80, 40], PAX: [100, 75, 50], IVAR: [89, 48], BROR: [85, 65], OMAR: [92, 46] };
 const SHARED_POST: Record<string, number> = { IVAR: 3 };
 
 /** Two to four frames of these widths that make up w, give or take 2 cm: the fewest frames, the widest first. */
@@ -156,6 +156,8 @@ const BLIND_DOOR: Record<string, number> = { METOD: 60, KNOXHULT: 50 };
 const CORNER_WH: Record<string, number> = { KNOXHULT: 61 };
 /** Modular chests: how wide a column is and how tall a drawer slot is, in cm (a NORDLI chest is 7 cm of top and plinth). */
 const MODULE: Record<string, [number, number, number]> = { NORDLI: [40, 23, 7] };
+/** Shelving units with a cabinet at the bottom: how high the cabinet is, in cm. */
+const CABINET_LOW: Record<string, number> = { BROR: 72, KOLBJÖRN: 81 };
 /** Pieces IKEA gives no size for, by type: typical ones (w, h, d). */
 const TYPICAL: Record<string, [number, number, number]> = {
   "trolley table with storage": [50, 52, 50],
@@ -427,6 +429,17 @@ const RULES: Rule[] = [
     return { kind: "kitchen", x: { z: h - 40 * k >= 20 ? `r${k}@${40 * k}+r1` : `r${k}`, cat: "High cabinet with drawers" } };
   }],
   [/^shelving unit\/bench$/, () => ({ kind: "open" })],
+  // shelving units with a clothes rail, a cabinet at the bottom or a storage box on castors under them (the ones
+  // that mix cabinets and drawers, or a box under a row of sections, stay skipped)
+  [/^shelving unit with clothes rail$/, () => ({ kind: "open", x: { rail: true, cat: "Shelving unit with clothes rail" } })],
+  [/^shelving unit with (?:\d )?(cabinet|cabinets)$/, (m, c) => {
+    const low = CABINET_LOW[c.f.name];
+    if (!low || (m[1] === "cabinets") !== ((c.sz.n[0] ?? 0) > 100) || /\d/.test(m[0])) return "shelving unit with cabinets of different sizes";
+    return { kind: "cabinet", x: { low, cat: "Shelving unit with cabinet" } };
+  }],
+  [/^shelving unit with storage box$/, (_m, c) => ((c.sz.n[0] ?? 0) > 100 ? "row of shelving sections with a storage box" : { kind: "open", x: { box: 25, cat: "Shelving unit with storage box" } })],
+  [/^shelving unit with plinth$/, () => ({ kind: "open", x: { plinth: true } })],
+  [/^box shelf with divider$/, () => ({ kind: "cube", x: { t: 18, cat: "Box shelf" } })],
   // a laptop table is a small desk
   [/^laptop table$/, () => ({ kind: "desk" })],
   [/^bar stool with backrest, foldable$/, () => ({ kind: "chair", x: { seatH: 63 } })],

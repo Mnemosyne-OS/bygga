@@ -164,7 +164,9 @@ BROR|bookrow|Shelving unit, 234 × 55 × 190 cm|234|190|55|of=open,u=85+85+65
 BROR|bookrow|Shelving unit, 254 × 40 × 190 cm|254|190|40|of=open,u=85+85+85
 BROR|bookrow|Shelving unit, 254 × 55 × 190 cm|254|190|55|of=open,u=85+85+85
 BROR|cabinet|Cabinet with 2 doors, 76 × 40 × 66 cm|76|66|40
+BROR|cabinet|Shelving unit with cabinet, 85 × 40 × 190 cm|85|190|40|cat=Shelving unit with cabinet,low=72
 BROR|cabinet|Cabinet with doors, 85 × 40 × 191 cm|85|191|40
+BROR|cabrow|Shelving unit with cabinets, 170 × 40 × 190 cm|170|190|40|of=cabinet,u=85+85,cat=Shelving unit with cabinet,low=72
 BROR|open|Shelving unit, 65 × 40 × 190 cm|65|190|40
 BROR|open|Shelving unit, 65 × 55 × 190 cm|65|190|55
 BROR|open|Shelving unit, 85 × 55 × 110 cm|85|110|55
@@ -395,6 +397,7 @@ HAVSTA|cabinet|Glass-door cabinet with plinth, 121 × 37 × 134 cm|121|134|37
 HAVSTA|chest|Chest of 3 drawers, 81 × 47 × 89 cm|81|89|47|rows=3
 HAVSTA|chest|Chest of 6 drawers, 121 × 47 × 89 cm|121|89|47|rows=3,cols=2
 HAVSTA|open|Shelving unit, 81 × 35 × 123 cm|81|123|35
+HAVSTA|open|Shelving unit with plinth, 81 × 37 × 134 cm|81|134|37|plinth=1
 HAVSTA|sideboard|Sideboard basic unit, 121 × 47 × 89 cm|121|89|47
 HAVSTA|tv|TV bench with plinth, 160 × 47 × 62 cm|160|62|47
 HAVSTEN|armchair|Armchair, outdoor|75|90|80||outdoor garden
@@ -476,9 +479,12 @@ IVAR|cabrow|Cabinet with doors, 160 × 30 × 83 cm|160|83|30|n=2,of=cabinet
 IVAR|cabrow|Wall cabinet with doors, 160 × 30 × 83 cm|160|83|30|n=2,of=wallcab
 IVAR|cabrow|Shelving unit with doors, 259 × 30 × 124 cm|259|124|30|of=cabinet,u=89+89+89
 IVAR|cabrow|Shelving unit with doors, 259 × 30 × 226 cm|259|226|30|of=cabinet,u=89+89+89
+IVAR|cube|Box shelf with divider, 83 × 30 × 25 cm|83|25|30|cat=Box shelf,t=18
 IVAR|open|Shelving unit, 80 × 30 × 83 cm|80|83|30
 IVAR|open|Shelving unit, 80 × 30 × 166 cm|80|166|30
+IVAR|open|Shelving unit with storage box, 89 × 30 × 124 cm|89|124|30|cat=Shelving unit with storage box,box=25
 IVAR|open|Shelving unit, 89 × 30 × 124 cm|89|124|30
+IVAR|open|Shelving unit with storage box, 89 × 30 × 179 cm|89|179|30|cat=Shelving unit with storage box,box=25
 IVAR|open|Shelving unit, 89 × 50 × 179 cm|89|179|50
 IVAR|open|Shelving unit, 89 × 30 × 226 cm|89|226|30
 IVAR|open|Shelving unit, 89 × 50 × 226 cm|89|226|50
@@ -574,6 +580,7 @@ KNOXHULT|wallcab|Wall cabinet with door, 40 × 75 cm|40|75|35|doors=1
 KNOXHULT|wallcab|Wall cabinet with door, 60 × 60 cm|60|60|35|doors=1
 KNOXHULT|wallcab|Wall cabinet with door, 60 × 75 cm|60|75|35|doors=1
 KNOXHULT|wallcab|Wall cabinet with doors, 120 × 75 cm|120|75|35
+KOLBJÖRN|cabinet|Shelving unit with cabinet, 80 × 37 × 161 cm|80|161|37|cat=Shelving unit with cabinet,low=81|outdoor garden
 KOLBJÖRN|cabinet|Cabinet, 90 × 161 cm|90|161|37||outdoor garden
 KOLBJÖRN|open|Shelving unit, 80 × 45 cm|80|45|37||outdoor garden
 KOLBJÖRN|open|Shelving unit in/outdoor, 80 × 35 × 162 cm|80|162|35||outdoor garden
@@ -987,11 +994,13 @@ NYSJÖN|washstand|Wash-basin cabinet, 50 × 83 cm|50|83|47|z=d1
 NYSJÖN / BJÖRKÅN|washstand|Wash-basin base cabinet w 2 doors, 54 × 40 × 80 cm|54|80|40|z=d2,basin=15
 NYSJÖN / BJÖRKÅN|washstand|Wash-stnd w door/wash-basin/tap, 54 × 40 × 88 cm|54|88|40|z=d1,basin=16
 OLSERÖD|side|Side table, 53 × 50 cm|53|50|50
+OMAR|bookrow|Shelving unit with clothes rail, 186 × 50 × 201 cm|186|201|50|rail=1,of=open,u=92+92,cat=Shelving unit with clothes rail
 OMAR|open|Shelving unit, 46 × 36 × 94 cm|46|94|36
 OMAR|open|Shelving unit, 46 × 36 × 181 cm|46|181|36
 OMAR|open|Shelving unit, 60 × 25 × 40 cm|60|40|25
 OMAR|open|Shelving unit, 92 × 36 × 94 cm|92|94|36
 OMAR|open|Shelving unit, 92 × 50 × 94 cm|92|94|50
+OMAR|open|Shelving unit with clothes rail, 92 × 50 × 201 cm|92|201|50|rail=1,cat=Shelving unit with clothes rail
 OMMJÄNGE|chair|Chair|44|88|50
 ÖNNESTAD|armchair|Armchair|75|90|80
 ÖRFJÄLL|office|Children's desk chair|52|86|52|arms=none,seatH=42|kids

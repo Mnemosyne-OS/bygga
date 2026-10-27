@@ -8,6 +8,7 @@ import { buildSliding } from "./sliding";
 import { buildCornerCabinet } from "./cornercab";
 import { buildLidBox } from "./lidbox";
 import { CASTOR_H, castorStep, liftOntoCastors } from "./castors";
+import { buildShelfCab } from "./shelfcab";
 
 export function defaultsCabinet(s: ProductSpec): CabinetParams {
   const p = s.cabinet ?? {};
@@ -26,6 +27,7 @@ export function defaultsCabinet(s: ProductSpec): CabinetParams {
 
 export function buildCabinet(b: PlanBuilder, s: ProductSpec) {
   if (s.cabinet?.lid) return buildLidBox(b, s);
+  if (s.cabinet?.low) return buildShelfCab(b, s);
   if (s.cabinet?.corner) return buildCornerCabinet(b, s);
   if (s.cabinet?.fit) return buildFitted(b, s);
   if (s.cabinet?.drawers) return buildMixed(b, s);

@@ -187,6 +187,8 @@ bror-shelving-unit-65-x-55-x-190|29619402
 bror-shelving-unit-85-x-190|19619407 19650233 09619403 49516139
 bror-shelving-unit-85-x-55-x-110|39272655 39272641 69272649
 bror-shelving-unit-85-x-55-x-190|89617443 99650253 59619405 69516138
+bror-shelving-unit-cabinet-85-x-40-x-190|89516142
+bror-shelving-unit-cabinets-170-x-40-x-190|09516141
 bror-trolley-85-x-55|60333850 80547384
 bror-work-bench-110-x-55|30333286
 brusali-shoe-cabinet-3-compartments|80480393
@@ -423,6 +425,7 @@ havsta-glass-door-cabinet-121-x-35-x-123|00529256 90529252
 havsta-glass-door-cabinet-plinth-121-x-37-x-134|89534669 29534672
 havsta-glass-door-cabinet-plinth-81-x-37-x-134|49534652 09534654
 havsta-shelving-unit-81-x-35-x-123|50529273 60529277 00529275
+havsta-shelving-unit-plinth-81-x-37-x-134|79534641 19534644
 havsta-sideboard-basic-unit-121-x-47-x-89|40529235 30529231
 havsta-tv-bench-plinth-160-x-47-x-62|10529270 90529266
 havsten-2-seat-sofa-outdoor|39500959
@@ -508,6 +511,7 @@ ikea-ps-lomsk-children-s-swivel-armchair|30609237
 ingolf-junior-chair|60353838
 invallning-trolley-68-x-39|10569398
 ismantorp-armchair|60598218 10598225
+ivar-box-shelf-divider-83-x-30-x-25|20596382
 ivar-cabinet-doors-160-x-30-x-83|89508118 99508108
 ivar-cabinet-doors-80-x-83|50531252 00531240 40033763 70033766
 ivar-cabinet-doors-89-x-30-x-124|69508162 49508158
@@ -524,6 +528,8 @@ ivar-shelving-unit-doors-259-x-30-x-124|79403471
 ivar-shelving-unit-doors-259-x-30-x-226|59403472
 ivar-shelving-unit-doors-89-x-30-x-124|39403473 89507883 59508087 09507858
 ivar-shelving-unit-doors-89-x-30-x-179|89403461 19403474
+ivar-shelving-unit-storage-box-89-x-30-x-124|09404582
+ivar-shelving-unit-storage-box-89-x-30-x-179|59403815
 ivar-wall-cabinet-doors-160-x-30-x-83|09417382
 ivosjon-cabinet-doors-33-x-34-x-99|30569095 90609871
 ivosjon-wash-basin-base-cabinet-50-x-33-x-57|20597292
@@ -629,6 +635,7 @@ kolbjorn-cabinet-80-x-81|30409295
 kolbjorn-cabinet-90-x-161|60601862
 kolbjorn-shelving-unit-80-x-45|20601864
 kolbjorn-shelving-unit-80-x-81|60409294
+kolbjorn-shelving-unit-cabinet-80-x-37-x-161|19291645
 kolbjorn-shelving-unit-in-outdoor-80-x-35-x-162|99291646
 kompishang-desk-100-x-55|00628751
 kompishang-side-table-50|50628819
@@ -1064,6 +1071,8 @@ omar-shelving-unit-46-x-36-x-94|00069768
 omar-shelving-unit-60-x-25-x-40|30483073
 omar-shelving-unit-92-x-36-x-94|10069763
 omar-shelving-unit-92-x-50-x-94|70483071
+omar-shelving-unit-clothes-rail-186-x-50-x-201|99487691 59487688
+omar-shelving-unit-clothes-rail-92-x-50-x-201|60530978
 ommjange-chair|50594678
 onnestad-armchair|09554473 49554471
 orfjall-children-s-desk-chair|30441771 90541433 60501886
