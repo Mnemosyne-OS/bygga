@@ -121,6 +121,10 @@ export function useListener(enabled: boolean, onPhrase: (text: string, final: bo
         if (e.error === "not-allowed" || e.error === "service-not-allowed" || (e.error === "audio-capture" && fails >= 4)) {
           stop = true;
           setMic("denied");
+        } else if (e.error === "network" && fails >= 2) {
+          // the speech service is out of reach (no signal, or a browser without one): stop, and say to tap instead
+          stop = true;
+          setMic("unsupported");
         } else if (e.error !== "no-speech" && e.error !== "aborted") fails++;
       };
       try {
