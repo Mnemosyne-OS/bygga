@@ -157,6 +157,10 @@
 .pill-btn.float:hover {
   box-shadow: 0 0 0 1.5px var(--ink);
 }
+/* the tip hangs off its own button, wherever the button sits */
+[data-tip] {
+  position: relative;
+}
 [data-tip]::after {
   content: attr(data-tip);
   position: absolute;
@@ -177,7 +181,8 @@
     transform 0.15s var(--ease);
   z-index: 30;
 }
-[data-tip]:hover::after {
+[data-tip]:hover::after,
+[data-tip]:focus-visible::after {
   opacity: 1;
   transform: translate(-50%, 0);
   transition-delay: 0.35s;
@@ -393,7 +398,14 @@
   overflow: hidden;
 }
 
+/*
+ * A pressed button shrinks, and anything scaled gets a layer of its own: its tip
+ * would sink under the drawing and the panel. The bar sits a layer above them,
+ * so its tips stay on top however the buttons move (dialogs sit higher still).
+ */
 .topbar {
+  position: relative;
+  z-index: 20;
   display: grid;
   grid-template-columns: auto minmax(0, 1fr) auto auto;
   align-items: center;
@@ -891,13 +903,14 @@
   z-index: 5;
   white-space: nowrap;
 }
+/* above everything else on the drawing (the step number, the voice pill, toasts), so its tips are too */
 .stage-ctl {
   position: absolute;
   left: 14px;
   bottom: 14px;
   display: flex;
   gap: 8px;
-  z-index: 3;
+  z-index: 6;
 }
 .drag-hint,
 .sheet-caption {
