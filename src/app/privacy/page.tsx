@@ -51,7 +51,7 @@ export default function Privacy() {
             .
           </li>
           <li>
-            <b>Your browser&apos;s speech service</b>, only when you turn on the voice and say &ldquo;next&rdquo;. Bygga never receives the audio, but your browser may send it to its maker to turn it into text: Google in Chrome, Apple in Safari. Where Chrome can listen on the device itself, Bygga asks it to.
+            <b>Your browser&apos;s speech service</b>, only when you turn on the voice and say &ldquo;next&rdquo;. Bygga never receives the audio, but your browser may send it to its maker to turn it into text: Google in Chrome, Apple in Safari.
           </li>
         </ul>
 
