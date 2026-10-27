@@ -137,6 +137,9 @@ async function main() {
   expect("kallso bench", "kallso-bench-shoe-storage-80-x-38-x-56");
   expect("hol storage table", "hol-storage-table-98-x-50");
   expect("hol", "hol-side-table-50-x-50");
+  // a work bench when asked for, the family's shelving otherwise
+  expect("bror work bench", "bror-work-bench-110-x-55");
+  expect("bror", "bror-shelving-unit-85-x-190");
   if (articleNo("S292.975.72") !== "29297572") fail("article numbers with an S in front don't parse");
   for (const [no, slug] of [["60324520", "kallax-2x2"]] as const) {
     if (articleSlug(no) !== slug) fail(`article ${no} gave ${articleSlug(no)}, expected ${slug}`);

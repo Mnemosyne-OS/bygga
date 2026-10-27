@@ -178,6 +178,7 @@ bror-shelving-unit-85-x-190|19619407 19650233 09619403 49516139
 bror-shelving-unit-85-x-55-x-110|39272655 39272641 69272649
 bror-shelving-unit-85-x-55-x-190|89617443 99650253 59619405 69516138
 bror-trolley-85-x-55|60333850 80547384
+bror-work-bench-110-x-55|30333286
 brusali-shoe-cabinet-3-compartments|80480393
 brytning-desk-110-x-53-x-75|80609744 50609750
 brytning-desk-135-x-53-x-75|50609745 30609751
@@ -734,6 +735,7 @@ lommarp-tv-bench-159-x-45-x-81|30437000
 loparbana-gaming-chair|50586329 70586328
 loshult-trolley-38-x-38-x-82|40576279
 lovbacken-side-table-77-x-39|80270125
+lubban-trolley-table-storage|50434307
 lustebo-chair|00541164
 lyckan-chair|00569191 00569186
 lycksele-lovas-2-seat-sofa-bed|19387006 49387038 19387134 89563204 89561709
@@ -1041,6 +1043,7 @@ orreslatt-armchair|30555098
 ortrask-coffee-table-110-x-68|10635845 30635849
 ortrask-coffee-table-75-x-48|70635847
 oskarshamn-wing-chair|90523622 30521678 50521663
+ostavall-adjustable-coffee-table-90|40534152 00530066
 ovning-trolley-54-x-33|00517003
 pahl-desk-96-x-58|49619340
 paronholmen-bench-backrest-outdoor|90503799
@@ -1107,6 +1110,8 @@ pax-wardrobe-150-x-58-x-201|59502561 79502560
 pax-wardrobe-175-x-58-x-201|49502632 69502631
 pax-wardrobe-frame-50-x-58-x-201|70458217 90458221 90458216 10458215 50458218 10458220 70458222
 pax-wardrobe-frame-75-x-58-x-201|80458231 90458235 60458232 00458230 70458236 20458229 20458234
+perjohan-bench-storage-100|60485339
+perjohan-stool-storage|80485338
 persbol-armchair|50525915 90525923 70525924
 pinntorp-chair|90635177 00635167 30635175 00590480 00529478 40529476
 pinntorp-gateleg-table-67-124-x-75|70529465
@@ -1157,6 +1162,8 @@ rakkestad-wardrobe-3-doors-117-x-176|70453762
 rakkestad-wardrobe-sliding-doors-117-x-176|60453767
 ramnefjall-upholstered-bed-frame-standard-double|49560212 79560215 09560266 89627263 69627264 69560268 69627221
 ramnefjall-upholstered-bed-frame-standard-single|59560216 09560271
+raskog-norrava-trolley-lid-28-x-38-x-61|79580765 69580761 69622153 39580753 89622232 79622157 29622094
+raskog-norrava-trolley-lid-35-x-45-x-77|09580759 79580751 29580763 79622096 99622236 19622155 39580767
 raskog-trolley-28-x-38-x-61|00586789 50591769 10637203 20629716 80586790 00629717 40629715
 raskog-trolley-35-x-45-x-77|30586783 20591662 40582181 70629714 30629711 00591663 90629713
 rast-chest-3-drawers-60-x-35-x-59|20609860
@@ -1170,6 +1177,7 @@ renberget-swivel-chair|90503285
 rian-side-table-50-x-30|80343419
 ridspo-desk-140-x-70|00485224
 rigga-clothes-rack|50231630
+rimforsa-work-bench-120-x-63-5-x-92|90399284
 risholmen-wing-chair-in-outdoor|00503794
 risor-room-divider-216-x-185|70182191
 rocksjon-2-seat-sofa|19508862 59514696 59508855
@@ -1225,6 +1233,7 @@ skansnas-extendable-table-150-205-x-90|00565763 00565758
 skarpo-armchair-outdoor|50575811 70234185
 skogson-easy-chair|80569465 00592224
 skogsta-bar-stool-backrest-62|50620677
+skogsta-bench-storage-120|10593807 20611882
 skogsta-chair|50544867 70544866
 skogsta-dining-table-120|20593802
 skogsta-dining-table-235-x-100|70419264
@@ -1398,6 +1407,7 @@ tjarkil-extendable-table-180-235-290-x-100|70630454
 tjusig-bench-shoe-storage-108-x-34-x-50|70152702 50152703
 tjusig-shoe-rack-79-x-32-x-37|10152639 30152638
 tobias-chair|30635123 80349671 90532589
+tolkning-bench-storage-120|80512657
 tolkning-room-divider-150-x-170|60512663
 tonstad-bed-frame-standard-double-135-x-190|39577717 99577719 59577716 19577718 99577743 49577745 79577744
 tonstad-bed-frame-standard-single-90-x-190|10603547 90603609 59577721 79577720 29577746 09577747
@@ -1503,6 +1513,7 @@ vadholma-open-storage-20-x-37-x-60|60374341 20374338 60374336
 valnas-2-seat-sofa|99615325 69615322 39615328
 valnas-3-seat-sofa|49615337 79615331 19615334
 valnas-coffee-table-118-x-72|20628038
+valnas-trolley-table-storage|60628036
 valtorp-bench-103|40572785 30572781
 varmanso-chair-outdoor|00536389
 varmanso-table-outdoor-224-x-93|10515683
@@ -1585,6 +1596,7 @@ viskafors-2-seat-sofa|89443264 69443217 99443254 89443259 39443214 19443210
 viskafors-3-seat-sofa|99443329 59443374 99443334 89443339 69443364 59443369
 visthus-chest-6-drawers-63-x-49-x-126|40493444
 visthus-wardrobe-122-x-216|90493446
+vitteryd-adjustable-coffee-table-97|20530065
 vittsjo-coffee-table-75|80213309 30604348
 vittsjo-laptop-table-100-x-36|60619536 40619537
 vittsjo-shelving-unit-100-x-175|20213312

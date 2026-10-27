@@ -31,7 +31,8 @@ export function buildTable(b: PlanBuilder, s: ProductSpec) {
   const Lh = H - tt;
   const big = W > 1000;
 
-  const topT = b.part(s.category.toLowerCase().includes("desk") ? "Desk top" : "Table top", [W, tt, D], p.round ? { shape: "cyl" } : undefined);
+  const seat = !!s.table?.seat;
+  const topT = b.part(seat ? "Seat" : s.category.toLowerCase().includes("desk") ? "Desk top" : "Table top", [W, tt, D], p.round ? { shape: "cyl" } : undefined);
   const top = b.place(topT, [0, H - tt / 2, 0]);
   const legT = b.part("Leg", p.legs === "round" ? [ls, Lh, ls] : [ls, Lh, ls], { shape: p.legs === "round" ? "cyl" : "box", material: "wood" });
   const corners: [number, number][] = [
@@ -45,7 +46,7 @@ export function buildTable(b: PlanBuilder, s: ProductSpec) {
 
   b.step(
     {
-      title: "Lay the top upside down",
+      title: seat ? "Lay the seat upside down" : "Lay the top upside down",
       detail: "Put the flattened box under it so the surface stays scratch free.",
       pose: "-y",
       kind: "general",
@@ -91,7 +92,7 @@ export function buildTable(b: PlanBuilder, s: ProductSpec) {
     ];
     b.step(
       {
-        title: "Screw the rails under the top",
+        title: seat ? "Screw the rails under the seat" : "Screw the rails under the top",
         detail: "They frame the underside, set in from the edge.",
         tools: ["screwdriver"],
         pose: "-y",
@@ -168,7 +169,30 @@ export function buildTable(b: PlanBuilder, s: ProductSpec) {
     },
   );
 
-  if (p.shelf) {
+  if (p.shelf && s.table?.inner) {
+    // between the legs, set in like they are, and screwed through them
+    const shT = b.part("Shelf", [W - 2 * inset - 2 * ls - 2, 18, D - 2 * inset], { material: "board" });
+    const sy = Math.max(110, H * 0.22);
+    const shelf = b.place(shT, [0, sy, 0]);
+    b.step(
+      {
+        title: "Fit the shelf between the legs",
+        detail: "Two screws through each leg.",
+        tools: ["screwdriver"],
+        pose: "-y",
+        kind: "screws",
+      },
+      () => {
+        b.add(shelf, [0, -320, 0]);
+        b.then(0.1);
+        const sc: FitOpts[] = [];
+        corners.forEach(([sx, sz], i) => {
+          for (const dz of [-ls / 5, ls / 5]) sc.push({ on: legs[i], at: [sx * (lx + ls / 2), sy, sz * lz + dz], dir: [-sx, 0, 0], hole: false });
+        });
+        b.fits(HW.screwL, sc, 0.06);
+      },
+    );
+  } else if (p.shelf) {
     const shT = b.part("Shelf", [W - 2 * ls - 2, 16, D], { material: "board" });
     const sy = Math.max(110, H * 0.26);
     const shelf = b.place(shT, [0, sy, 0]);
@@ -195,7 +219,7 @@ export function buildTable(b: PlanBuilder, s: ProductSpec) {
   b.step(
     {
       title: big ? "Turn it over together" : "Turn it over",
-      detail: "Lift it by the top, not the legs.",
+      detail: seat ? "Lift it by the seat, not the legs." : "Lift it by the top, not the legs.",
       pose: "+y",
       kind: "flip",
       people: big ? 2 : 1,

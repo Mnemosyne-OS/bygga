@@ -72,7 +72,9 @@ export type Kind =
   | "cornerdesk"
   | "conftable"
   // the long tail of single pieces
-  | "lidbox";
+  | "lidbox"
+  | "shelfbench"
+  | "workbench";
 
 export type X = {
   rows?: number;
@@ -313,7 +315,7 @@ const MIN: Record<Kind, number> = {
   cube: 40, bookcase: 50, open: 40, chest: 90, nightstand: 40, desk: 25, coffee: 20, side: 15, dining: 40,
   bed: 100, wardrobe: 120, cabinet: 60, sideboard: 80, tv: 60, shoe: 45, chair: 25, stool: 12, bench: 20, sofa: 40, armchair: 30,
   wallshelf: 25, wallcab: 40, kitchen: 50, trolley: 25, bar: 35, console: 30, kidstable: 15, kidschair: 20,
-  office: 20, chaise: 55, corner: 70, cot: 35, bunk: 90, loft: 75, dropleaf: 40, daybed: 60, mixed: 50, sliding: 110, slidecab: 60, bookrow: 120, cabrow: 120, section: 25, gateleg: 50, washstand: 35, sinkcab: 45, appliance: 50, shoerack: 25, clothesrack: 20, changing: 50, divider: 20, backbench: 35, junior: 25, lounge: 30, highchair: 15, cornercab: 45, cornerrobe: 150, usofa: 110, lounger: 35, swivel: 25, conference: 20, cornerdesk: 35, conftable: 30, lidbox: 30,
+  office: 20, chaise: 55, corner: 70, cot: 35, bunk: 90, loft: 75, dropleaf: 40, daybed: 60, mixed: 50, sliding: 110, slidecab: 60, bookrow: 120, cabrow: 120, section: 25, gateleg: 50, washstand: 35, sinkcab: 45, appliance: 50, shoerack: 25, clothesrack: 20, changing: 50, divider: 20, backbench: 35, junior: 25, lounge: 30, highchair: 15, cornercab: 45, cornerrobe: 150, usofa: 110, lounger: 35, swivel: 25, conference: 20, cornerdesk: 35, conftable: 30, lidbox: 30, shelfbench: 30, workbench: 45,
 };
 
 const CATEGORY: Record<Kind, string> = {
@@ -322,7 +324,7 @@ const CATEGORY: Record<Kind, string> = {
   cabinet: "Cabinet", sideboard: "Sideboard", tv: "TV bench", shoe: "Shoe cabinet", chair: "Chair", stool: "Stool",
   bench: "Bench", sofa: "Sofa", armchair: "Armchair", wallshelf: "Wall shelf", wallcab: "Wall cabinet", kitchen: "Kitchen cabinet",
   trolley: "Trolley", bar: "Bar table", console: "Console table", kidstable: "Children's table", kidschair: "Children's chair",
-  office: "Office chair", chaise: "Sofa with chaise longue", corner: "Corner sofa", cot: "Cot", bunk: "Bunk bed", loft: "Loft bed", dropleaf: "Drop-leaf table", daybed: "Day-bed", mixed: "Cabinet with doors and drawers", sliding: "Wardrobe with sliding doors", slidecab: "Cabinet with sliding doors", bookrow: "Bookcase combination", cabrow: "Storage combination", section: "Sofa section", gateleg: "Gateleg table", washstand: "Wash-stand", sinkcab: "Sink cabinet", appliance: "Appliance cabinet", shoerack: "Shoe rack", clothesrack: "Clothes rack", changing: "Changing table", divider: "Room divider", backbench: "Bench with backrest", junior: "Junior chair", lounge: "Lounge chair", highchair: "Highchair", cornercab: "Corner base cabinet", cornerrobe: "Corner wardrobe", usofa: "U-shaped sofa", lounger: "Sun lounger", swivel: "Swivel easy chair", conference: "Conference chair", cornerdesk: "Corner desk", conftable: "Conference table", lidbox: "Storage bench",
+  office: "Office chair", chaise: "Sofa with chaise longue", corner: "Corner sofa", cot: "Cot", bunk: "Bunk bed", loft: "Loft bed", dropleaf: "Drop-leaf table", daybed: "Day-bed", mixed: "Cabinet with doors and drawers", sliding: "Wardrobe with sliding doors", slidecab: "Cabinet with sliding doors", bookrow: "Bookcase combination", cabrow: "Storage combination", section: "Sofa section", gateleg: "Gateleg table", washstand: "Wash-stand", sinkcab: "Sink cabinet", appliance: "Appliance cabinet", shoerack: "Shoe rack", clothesrack: "Clothes rack", changing: "Changing table", divider: "Room divider", backbench: "Bench with backrest", junior: "Junior chair", lounge: "Lounge chair", highchair: "Highchair", cornercab: "Corner base cabinet", cornerrobe: "Corner wardrobe", usofa: "U-shaped sofa", lounger: "Sun lounger", swivel: "Swivel easy chair", conference: "Conference chair", cornerdesk: "Corner desk", conftable: "Conference table", lidbox: "Storage bench", shelfbench: "Bench with storage", workbench: "Work bench",
 };
 
 export const KIND_ARCH: Record<Kind, Archetype> = {
@@ -330,7 +332,7 @@ export const KIND_ARCH: Record<Kind, Archetype> = {
   side: "table", dining: "table", bed: "bed", wardrobe: "cabinet", cabinet: "cabinet", sideboard: "cabinet", tv: "cabinet",
   shoe: "cabinet", chair: "seat", stool: "seat", bench: "seat", sofa: "sofa", armchair: "sofa", wallshelf: "shelf", wallcab: "cabinet",
   kitchen: "cabinet", trolley: "table", bar: "table", console: "table", kidstable: "table", kidschair: "seat",
-  office: "seat", chaise: "sofa", corner: "sofa", cot: "bed", bunk: "bed", loft: "bed", dropleaf: "table", daybed: "bed", mixed: "cabinet", sliding: "cabinet", slidecab: "cabinet", bookrow: "shelf", cabrow: "cabinet", section: "sofa", gateleg: "table", washstand: "cabinet", sinkcab: "cabinet", appliance: "cabinet", shoerack: "shelf", clothesrack: "shelf", changing: "drawers", divider: "shelf", backbench: "seat", junior: "seat", lounge: "seat", highchair: "seat", cornercab: "cabinet", cornerrobe: "cabinet", usofa: "sofa", lounger: "seat", swivel: "seat", conference: "seat", cornerdesk: "table", conftable: "table", lidbox: "cabinet",
+  office: "seat", chaise: "sofa", corner: "sofa", cot: "bed", bunk: "bed", loft: "bed", dropleaf: "table", daybed: "bed", mixed: "cabinet", sliding: "cabinet", slidecab: "cabinet", bookrow: "shelf", cabrow: "cabinet", section: "sofa", gateleg: "table", washstand: "cabinet", sinkcab: "cabinet", appliance: "cabinet", shoerack: "shelf", clothesrack: "shelf", changing: "drawers", divider: "shelf", backbench: "seat", junior: "seat", lounge: "seat", highchair: "seat", cornercab: "cabinet", cornerrobe: "cabinet", usofa: "sofa", lounger: "seat", swivel: "seat", conference: "seat", cornerdesk: "table", conftable: "table", lidbox: "cabinet", shelfbench: "table", workbench: "table",
 };
 
 const round = (x: X) => (x.round ? { round: true } : {});
@@ -605,6 +607,12 @@ function specOf(kind: Kind, name: string, variant: string, w: number, h: number,
       const minutes = x.min ?? MIN.cornercab + (door ? 15 : 0) + (x.inner ? 15 : 0) + (x.rows ? 30 : 0) + 5 * (x.shelves ?? 0);
       return { ...base, category: hung ? "Corner wall cabinet" : CATEGORY.cornercab, minutes, people: w > 100 ? 2 : 1, difficulty: x.rows ? 3 : 2, cabinet: { doors: door ? 1 : 0, shelves: x.shelves ?? 0, rail: false, plinth: !hung, handles: x.knobs ?? "bar", thickness: 18, ...(hung ? { wall: true } : {}), corner } };
     }
+    case "shelfbench":
+      // a bench or stool with a shelf under the seat, built like a table: rails under the seat, legs, the shelf between them
+      return { ...base, difficulty: 2, people: w > 100 ? 2 : 1, table: { attach: w > 70 ? "apron" : "plate", legs: "square", legSize: 45, topThickness: 30, shelf: true, seat: true, inner: true } };
+    case "workbench":
+      // a sturdy table with a shelf low down between its legs
+      return { ...base, difficulty: 2, people: 2, table: { attach: "apron", legs: "square", legSize: 60, topThickness: 30, shelf: true, inner: true } };
     case "lidbox": {
       // a box with a lid on hinges: a storage bench, a storage table, a footstool or pouffe with a padded lid
       const soft = /pouffe|footstool/i.test(x.cat ?? "");
@@ -694,5 +702,5 @@ export const KIND_DEFAULT_SIZE: Record<Kind, [number, number, number]> = {
   sideboard: [140, 85, 45], tv: [150, 50, 42], shoe: [60, 100, 28], chair: [44, 88, 50], stool: [35, 45, 35], bench: [100, 45, 38],
   sofa: [210, 85, 92], armchair: [75, 90, 80], wallshelf: [60, 60, 22], wallcab: [60, 60, 35], kitchen: [60, 80, 60], trolley: [50, 80, 40],
   bar: [120, 105, 60], console: [100, 79, 35], kidstable: [77, 48, 55], kidschair: [34, 60, 34],
-  office: [64, 105, 64], chaise: [226, 85, 160], corner: [233, 85, 171], cot: [130, 84, 68], bunk: [211, 160, 100], loft: [211, 195, 100], dropleaf: [134, 75, 80], daybed: [207, 83, 91], mixed: [80, 120, 40], sliding: [118, 200, 60], slidecab: [80, 110, 45], bookrow: [160, 202, 28], cabrow: [240, 48, 42], section: [192, 83, 92], gateleg: [151, 75, 90], washstand: [60, 83, 47], sinkcab: [60, 80, 60], appliance: [60, 200, 60], shoerack: [80, 40, 32], clothesrack: [100, 160, 46], changing: [80, 100, 55], divider: [150, 170, 25], backbench: [120, 86, 60], junior: [43, 91, 52], lounge: [72, 88, 80], highchair: [58, 90, 62], cornercab: [88, 80, 88], cornerrobe: [161, 201, 111], usofa: [306, 83, 241], lounger: [66, 87, 195], swivel: [78, 98, 80], conference: [60, 86, 60], cornerdesk: [140, 74, 130], conftable: [140, 74, 68], lidbox: [100, 48, 42],
+  office: [64, 105, 64], chaise: [226, 85, 160], corner: [233, 85, 171], cot: [130, 84, 68], bunk: [211, 160, 100], loft: [211, 195, 100], dropleaf: [134, 75, 80], daybed: [207, 83, 91], mixed: [80, 120, 40], sliding: [118, 200, 60], slidecab: [80, 110, 45], bookrow: [160, 202, 28], cabrow: [240, 48, 42], section: [192, 83, 92], gateleg: [151, 75, 90], washstand: [60, 83, 47], sinkcab: [60, 80, 60], appliance: [60, 200, 60], shoerack: [80, 40, 32], clothesrack: [100, 160, 46], changing: [80, 100, 55], divider: [150, 170, 25], backbench: [120, 86, 60], junior: [43, 91, 52], lounge: [72, 88, 80], highchair: [58, 90, 62], cornercab: [88, 80, 88], cornerrobe: [161, 201, 111], usofa: [306, 83, 241], lounger: [66, 87, 195], swivel: [78, 98, 80], conference: [60, 86, 60], cornerdesk: [140, 74, 130], conftable: [140, 74, 68], lidbox: [100, 48, 42], shelfbench: [110, 46, 38], workbench: [110, 90, 55],
 };

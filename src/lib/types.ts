@@ -40,6 +40,8 @@ export interface TableParams {
   gate?: boolean; // a gateleg table: each leaf rests on a gate leg that swings out from the frame
   hinges?: boolean; // the leaves come loose and are screwed on with hinges
   ell?: number; // cm: a corner desk, an L-shaped top this deep along each wall (size.w and size.d are its legs)
+  seat?: boolean; // a bench or stool built like a table: the top is its seat
+  inner?: boolean; // the shelf fits between the legs, screwed through them
 }
 
 export interface BedParams {

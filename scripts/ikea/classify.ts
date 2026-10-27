@@ -154,6 +154,10 @@ const DAYBED_SIZE: Record<string, [number, number, number]> = { HEMNES: [210, 83
 const BLIND_DOOR: Record<string, number> = { METOD: 60, KNOXHULT: 50 };
 /** Corner base cabinets IKEA measures wide by high, with the worktop on top, and how deep they are. */
 const CORNER_WH: Record<string, number> = { KNOXHULT: 61 };
+/** Pieces IKEA gives no size for, by type: typical ones (w, h, d). */
+const TYPICAL: Record<string, [number, number, number]> = {
+  "trolley table with storage": [50, 52, 50],
+};
 /** Boxes with a lid IKEA gives no size for, or only part of one (w, h, d): typical ones of each kind. */
 const LIDBOX_SIZE: Record<string, [number, number, number]> = {
   "Footstool with storage": [62, 42, 42],
@@ -469,7 +473,7 @@ const RULES: Rule[] = [
   [/^(bar table|high table)$/, () => ({ kind: "bar" })],
   [/^(console table|hall table)$/, () => ({ kind: "console" })],
   [/^(desk|computer desk|gaming desk|desk sit\/stand|gaming desk sit\/stand|dressing table|writing desk)$/, () => ({ kind: "desk" })],
-  [/^(trolley|kitchen trolley|kitchen island|trolley table|serving trolley)$/, () => ({ kind: "trolley" })],
+  [/^(trolley|kitchen trolley|kitchen island|trolley table|serving trolley|trolley with lid|trolley table with storage)$/, () => ({ kind: "trolley" })],
 
   // seating
   [/^(chair|dining chair|folding chair|chair with armrests)$/, (m, c) => (/arm/.test(m[0]) && !c.kids ? { kind: "chair", x: { arms: "slim" } } : { kind: c.kids ? "kidschair" : "chair" })],
@@ -478,6 +482,12 @@ const RULES: Rule[] = [
   [/^(bar stool with backrest|bar chair)$/, () => ({ kind: "chair", x: { seatH: 63 } })],
   [/^(stool|bar stool|step stool|folding stool|children's stool|stool, \d+ steps?)$/, () => ({ kind: "stool" })],
   [/^(bench|bench with shoe storage)$/, () => ({ kind: "bench" })],
+  // benches and stools with a shelf under the seat
+  [/^(bench|stool) with storage$/, (m) => ({ kind: "shelfbench", x: m[1] === "stool" ? { cat: "Stool with storage" } : {} })],
+  // work benches: a sturdy table with a shelf low down (one with drawers stays skipped)
+  [/^work bench$/, () => ({ kind: "workbench" })],
+  // a coffee table that lifts or lowers is put together like any other
+  [/^adjustable coffee table$/, () => ({ kind: "coffee" })],
   // the same bench with a pad on it
   [/^bench with pad$/, () => ({ kind: "bench" })],
   // a bench with a backrest and armrests, built like a wide chair (IKEA gives no size: a typical garden bench)
@@ -600,6 +610,7 @@ export function classify(f: Fact, hints: Hints): Verdict {
         x.round = true;
       }
     } else if (hint?.kind === kind) set(hint.w, hint.h, hint.d);
+    else if (TYPICAL[t]) [w, h, d] = TYPICAL[t];
     else if (kind !== "bench") return { skip: "no size given" };
     if (guessed.h && hint?.kind === kind) h = hint.h;
   } else if (kind === "dropleaf" || kind === "gateleg") {
@@ -707,6 +718,12 @@ export function classify(f: Fact, hints: Hints): Verdict {
     else set(v[0], 80, v[1]);
     guessed.h = v.length === 2 && !x.hung && !CORNER_WH[family];
     if (hint?.x.knobs) x.knobs = hint.x.knobs;
+  } else if (kind === "shelfbench" || kind === "workbench") {
+    // IKEA gives the width, sometimes the depth and height too; a stool without a size is a typical one
+    if (x.cat === "Stool with storage") [w, h, d] = [44, 46, 36];
+    if (v.length === 3) set(v[0], v[2], v[1]);
+    else if (v.length === 2) set(v[0], undefined, v[1]);
+    else if (v.length === 1) set(v[0]);
   } else if (kind === "lidbox") {
     // wide by deep by high; a table measured from above; a stool by its height
     const typical = LIDBOX_SIZE[x.cat ?? ""];

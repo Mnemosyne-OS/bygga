@@ -160,6 +160,7 @@ BROR|open|Shelving unit, 65 × 55 × 190 cm|65|190|55
 BROR|open|Shelving unit, 85 × 55 × 110 cm|85|110|55
 BROR|open|Shelving unit, 85 × 55 × 190 cm|85|190|55
 BROR|trolley|Trolley, 85 × 55 cm|85|80|55
+BROR|workbench|Work bench, 110 × 55 cm|110|90|55
 BRYTNING|desk|Desk, 85 × 53 × 75 cm|85|75|53
 BRYTNING|desk|Desk, 110 × 53 × 75 cm|110|75|53
 BRYTNING|desk|Desk, 135 × 53 × 75 cm|135|75|53
@@ -669,6 +670,7 @@ LOMMARP|tv|TV bench, 159 × 45 × 81 cm|159|81|45
 LÖPARBANA|office|Gaming chair|64|128|64|arms=slim,seatH=50
 LOSHULT|trolley|Trolley, 38 × 38 × 82 cm|38|82|38
 LÖVBACKEN|side|Side table, 77 × 39 cm|77|50|39
+LUBBAN|trolley|Trolley table with storage|50|52|50
 LUSTEBO|chair|Chair|44|88|50
 LYCKAN|chair|Chair|44|88|50
 LYCKSELE LÖVÅS|sofa|2-seat sofa-bed|170|85|92|seats=2
@@ -969,6 +971,7 @@ ORRESLÄTT|armchair|Armchair|75|90|80
 ÖRTRÄSK|coffee|Coffee table, 75 × 48 cm|75|45|48
 ÖRTRÄSK|coffee|Coffee table, 110 × 68 cm|110|45|68
 OSKARSHAMN|armchair|Wing chair|75|104|80
+ÖSTAVALL|coffee|Adjustable coffee table, 90 cm|90|45|90|round=1
 ÖVNING|trolley|Trolley, 54 × 33 cm|54|80|33||kids children
 PÅHL|desk|Desk, 96 × 58 cm|96|74|58||kids children
 PÄRONHOLMEN|backbench|Bench with backrest, outdoor|120|86|60||outdoor garden
@@ -1034,6 +1037,8 @@ PAX / MEHAMN/AULI|cabrow|Wardrobe, 250 × 66 × 201 cm|250|201|66|shelves=2,slid
 PAX / TONSTAD|cornerrobe|Corner wardrobe, 211/161 × 201 cm|211|201|161|shelves=2,u=100+75,v=75
 PAX / TONSTAD|cornerrobe|Corner wardrobe, 231/161 × 236 cm|231|236|161|shelves=2,u=100+75,v=50,cu=58
 PAX / TYSSEDAL|cornerrobe|Corner wardrobe, 161/111 × 236 cm|161|236|111|shelves=2,u=100,cu=58
+PERJOHAN|shelfbench|Stool with storage|44|46|36|cat=Stool with storage
+PERJOHAN|shelfbench|Bench with storage, 100 cm|100|46|38
 PERSBOL|armchair|Armchair|75|90|80
 PINNTORP|chair|Chair|44|88|50
 PINNTORP|dining|Table, 85 cm|85|74|85|round=1
@@ -1084,6 +1089,8 @@ RAMNEFJÄLL|bed|Upholstered bed frame, Standard Single, 90 × 190 cm|106|100|199
 RAMNEFJÄLL|bed|Upholstered bed frame, Standard Double, 135 × 190 cm|151|100|199|m=135,l=190
 RÅSKOG|trolley|Trolley, 28 × 38 × 61 cm|28|61|38
 RÅSKOG|trolley|Trolley, 35 × 45 × 77 cm|35|77|45
+RÅSKOG / NORRÅVA|trolley|Trolley with lid, 28 × 38 × 61 cm|28|61|38
+RÅSKOG / NORRÅVA|trolley|Trolley with lid, 35 × 45 × 77 cm|35|77|45
 RAST|chest|Chest of 3 drawers, 60 × 35 × 59 cm|60|59|35|rows=3,knobs=knob
 RÄVSTEN|bench|Bench, 93 cm|93|45|38
 RÄVSTEN|stool|Bar stool, 62 cm|35|62|35
@@ -1095,6 +1102,7 @@ RENBERGET|office|Swivel chair|60|105|64|arms=none
 RIAN|side|Side table, 50 × 30 cm|50|50|30
 RIDSPÖ|desk|Desk, 140 × 70 cm|140|74|70
 RIGGA|clothesrack|Clothes rack|111|175|51
+RIMFORSA|workbench|Work bench, 120 × 63.5 × 92 cm|120|92|64
 RISHOLMEN|armchair|Wing chair, in/outdoor|75|104|80||outdoor garden
 RISÖR|divider|Room divider, 216 × 185 cm|216|185|25
 ROCKSJÖN|armchair|Armchair|75|90|80
@@ -1154,6 +1162,7 @@ SKOGSTA|dining|Table, 74 × 74 cm|74|74|74
 SKOGSTA|dining|Dining table, 120 cm|120|74|120|round=1
 SKOGSTA|dining|Table, 150 × 74 cm|150|74|74
 SKOGSTA|dining|Table, 160 × 81 × 74 cm|160|74|81
+SKOGSTA|shelfbench|Bench with storage, 120 cm|120|46|38
 SKÖNABÄCK|sofa|2-seat sofa-bed|170|85|92|seats=2
 SKRUVBY|bookcase|Bookcase, 60 × 140 cm|60|140|30
 SKRUVBY|cabinet|Cabinet with doors, 70 × 90 cm|70|90|40
@@ -1315,6 +1324,7 @@ TJUSIG|bench|Bench with shoe storage, 108 × 34 × 50 cm|108|50|34
 TJUSIG|shoerack|Shoe rack, 79 × 32 × 37 cm|79|37|32
 TOBIAS|chair|Chair|44|88|50
 TOLKNING|divider|Room divider, 150 × 170 cm|150|170|25
+TOLKNING|shelfbench|Bench with storage, 120 cm|120|46|38
 TONSTAD|bed|Bed frame with storage, Standard Single, 90 × 190 cm|106|100|199|m=90,l=190
 TONSTAD|bed|Bed frame, Standard Single, 90 × 190 cm|106|100|199|m=90,l=190
 TONSTAD|bed|Bed frame, Standard Double, 135 × 190 cm|151|100|199|m=135,l=190
@@ -1416,6 +1426,7 @@ VADHOLMA|trolley|Kitchen island, 126 × 79 × 90 cm|126|90|79
 VALNÄS|coffee|Coffee table, 118 × 72 cm|118|45|72
 VALNÄS|sofa|2-seat sofa|170|85|92|seats=2
 VALNÄS|sofa|3-seat sofa|230|85|92|seats=3
+VALNÄS|trolley|Trolley table with storage|50|52|50
 VALTORP|bench|Bench, 103 cm|103|45|38
 VÄRMANSÖ|chair|Chair, outdoor|44|88|50||outdoor garden
 VÄRMANSÖ|dining|Table, outdoor, 224 × 93 cm|224|74|93||outdoor garden
@@ -1496,6 +1507,7 @@ VISINGSÖ|dining|Table, 70 × 70 cm|70|74|70||outdoor garden
 VISKAFORS|sofa|2-seat sofa|170|85|92|seats=2
 VISKAFORS|sofa|3-seat sofa|230|85|92|seats=3
 VISTHUS|chest|Chest of 6 drawers, 63 × 49 × 126 cm|63|126|49|rows=6
+VITTERYD|coffee|Adjustable coffee table, 97 cm|97|45|97|round=1
 VITTSJÖ|coffee|Coffee table, 75 cm|75|40|75|legs=square,shelf=1,round=1
 VITTSJÖ|desk|Laptop table, 100 × 36 cm|100|74|36
 VITTSJÖ|open|Shelving unit, 100 × 93 cm|100|93|36
