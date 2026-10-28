@@ -12,7 +12,9 @@
     "voice:check": "node --experimental-transform-types --no-warnings --import ./scripts/voice/register.mjs scripts/voice/listen-check.ts",
     "ikea:fetch": "node --experimental-transform-types --no-warnings scripts/ikea/fetch.ts",
     "ikea:build": "node --experimental-transform-types --no-warnings --import ./scripts/voice/register.mjs scripts/ikea/build.ts",
-    "ikea:check": "node --experimental-transform-types --no-warnings --import ./scripts/voice/register.mjs scripts/ikea/check.ts"
+    "ikea:check": "node --experimental-transform-types --no-warnings --import ./scripts/voice/register.mjs scripts/ikea/check.ts",
+    "dev:cartridge": "vite --config vite.mnemo.config.ts",
+    "build:cartridge": "vite build --config vite.mnemo.config.ts"
   },
   "dependencies": {
     "@vercel/analytics": "^1.6.1",
@@ -30,8 +32,10 @@
     "@types/react": "^19",
     "@types/react-dom": "^19",
     "@types/three": "^0.186.0",
+    "@vitejs/plugin-react": "^5.2.0",
     "eslint": "^9",
     "eslint-config-next": "16.4.2",
-    "typescript": "^5"
+    "typescript": "^5",
+    "vite": "^7.3.7"
   }
 }

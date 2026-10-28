@@ -1,0 +1,52 @@
+{
+  "id": "@mnemosyne-plugins/mnemo-bygga",
+  "name": "@mnemosyne-plugins/mnemo-bygga",
+  "displayName": "Bygga",
+  "version": "0.1.0",
+  "category": "Productivity",
+  "vendor": "Hassan & Youssef (MIT)",
+  "license": "MIT",
+  "description": "Bygga by Hassan & Youssef: step-by-step assembly guides in 3D for 1,171 IKEA products, with every part, screw and tool, read out loud in English. An independent project, not affiliated with IKEA.",
+  "descriptionI18n": {
+    "en": "Bygga by Hassan & Youssef: step-by-step assembly guides in 3D for 1,171 IKEA products, with every part, screw and tool, read out loud in English. An independent project, not affiliated with IKEA.",
+    "fr": "Bygga, par Hassan et Youssef : le montage pas à pas en 3D de 1 171 produits IKEA, avec chaque pièce, vis et outil, lu à voix haute en anglais. Un projet indépendant, sans lien avec IKEA.",
+    "es": "Bygga, de Hassan y Youssef: el montaje paso a paso en 3D de 1171 productos de IKEA, con cada pieza, tornillo y herramienta, leído en voz alta en inglés. Un proyecto independiente, sin relación con IKEA."
+  },
+  "keywords": [
+    "furniture",
+    "flat-pack",
+    "ikea",
+    "kallax",
+    "billy",
+    "malm",
+    "bookcase",
+    "meuble",
+    "meubles",
+    "étagère",
+    "mueble",
+    "muebles",
+    "estantería"
+  ],
+  "icon": "icon.svg",
+  "entrypoints": {
+    "renderer": "http://localhost:5397/index.html"
+  },
+  "widgets": [
+    {
+      "id": "mnemo-bygga-main",
+      "icon": "🔩",
+      "name": "Bygga",
+      "route": "index.html",
+      "defaultWidth": 1280,
+      "defaultHeight": 820
+    }
+  ],
+  "permissions": [],
+  "ui": {
+    "locations": ["sidebar", "desktop-icon"],
+    "label": "Bygga",
+    "defaultWindow": { "width": 1280, "height": 820, "minWidth": 720, "minHeight": 560 },
+    "icon": "<svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.75\" stroke-linejoin=\"round\"><path d=\"M12 3.5 19.4 7.75v8.5L12 20.5l-7.4-4.25v-8.5Z\"/><path d=\"M12 9.2 14.4 10.6v2.8L12 14.8l-2.4-1.4v-2.8Z\"/></svg>",
+    "tooltip": "Bygga: furniture assembly, step by step in 3D"
+  }
+}

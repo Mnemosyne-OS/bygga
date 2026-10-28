@@ -1,0 +1,5 @@
+/* next/font sets these two on <html>. Without them every var(--font) list is invalid and the page falls back to serif. */
+:root {
+  --font-noto: "Noto Sans";
+  --font-display: "Noto Sans Display";
+}

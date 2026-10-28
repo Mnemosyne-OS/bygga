@@ -51,3 +51,6 @@ next-env.d.ts
 
 # local agent sessions and worktrees
 .claude/
+
+# Mnemosyne OS cartridge build (vite.mnemo.config.ts)
+/dist
