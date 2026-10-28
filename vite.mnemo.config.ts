@@ -26,14 +26,40 @@ function relativeAssets(): Plugin {
   };
 }
 
+/**
+ * Serves the cartridge's version of a site file to every importer, whatever the import says
+ * (`@/components/KeyModal` or `../KeyModal`): the import is resolved first, then swapped.
+ */
+function swapModules(swaps: Record<string, string>): Plugin {
+  const key = (id: string) => id.split("?")[0].replace(/\\/g, "/").toLowerCase();
+  const table = new Map(Object.entries(swaps).map(([site, cartridge]) => [key(here(site)), here(cartridge)]));
+  return {
+    name: "mnemo-swap-modules",
+    enforce: "pre",
+    async resolveId(source, importer, options) {
+      if (!importer) return null;
+      const resolved = await this.resolve(source, importer, { ...options, skipSelf: true });
+      return resolved ? (table.get(key(resolved.id)) ?? null) : null;
+    },
+  };
+}
+
 export default defineConfig(({ mode }) => ({
   root: here("./src/mnemo"),
   base: "./",
   publicDir: here("./public"),
-  plugins: [relativeAssets(), react()],
+  plugins: [
+    swapModules({
+      // the live GitHub star count is an async server component
+      "./src/components/SiteHeader.tsx": "./src/mnemo/SiteHeader.tsx",
+      // the Together AI key dialog: in Mnemosyne the hands-free voice is the orb
+      "./src/components/KeyModal.tsx": "./src/mnemo/KeyModal.tsx",
+    }),
+    relativeAssets(),
+    react(),
+  ],
   resolve: {
     alias: [
-      { find: /^@\/components\/SiteHeader$/, replacement: here("./src/mnemo/SiteHeader.tsx") },
       { find: /^next\/link$/, replacement: here("./src/mnemo/shims/next-link.tsx") },
       { find: /^next\/navigation$/, replacement: here("./src/mnemo/shims/next-navigation.ts") },
       { find: /^@vercel\/analytics$/, replacement: here("./src/mnemo/shims/vercel-analytics.ts") },

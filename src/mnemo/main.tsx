@@ -11,6 +11,10 @@ import NotFound from "../app/not-found";
 import GuideApp from "@/components/guide/GuideApp";
 import PrintGuide from "@/components/guide/PrintGuide";
 import { currentRoute, isInternal, navigate, useHash } from "./router";
+import { startAgentDoor } from "./agentDoor";
+
+// before the first render: the host keeps the first subscription a frame sends (doc 149 §17)
+startAgentDoor();
 
 /*
  * The site's /api routes run on a server with the visitor's Together key. The cartridge has

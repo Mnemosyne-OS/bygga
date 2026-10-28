@@ -42,6 +42,48 @@
     }
   ],
   "permissions": [],
+  "agentGuide": [
+    "Bygga shows furniture assembly guides in 3D, one step at a time, for 1,171 IKEA products.",
+    "open takes the product the way the person says it (« KALLAX 2x2 », « BILLY », « MALM 3 drawers »). A name it cannot match is refused with close names: pick one and call again.",
+    "next, back and again work only while a step is on screen. Before the steps (cover, tools, parts) the person presses Start building; after the last step the build is finished.",
+    "again plays the step's 3D animation again. It does not repeat the voice.",
+    "Read status before saying that a step changed."
+  ],
+  "agentActions": [
+    {
+      "id": "status",
+      "summary": "Read what Bygga shows: the screen, and in a guide the product, the phase (before-steps, steps, built) and the step on screen.",
+      "effect": "read",
+      "params": {}
+    },
+    {
+      "id": "open",
+      "summary": "Open the assembly guide of a product, as the search box does.",
+      "effect": "write",
+      "params": {
+        "product": { "type": "string", "maxLength": 80, "description": "The product as the person says it, e.g. « KALLAX 2x2 » or « BILLY »." }
+      },
+      "required": ["product"]
+    },
+    {
+      "id": "next",
+      "summary": "Go to the next step of the guide on screen, as the right arrow does.",
+      "effect": "write",
+      "params": {}
+    },
+    {
+      "id": "back",
+      "summary": "Go back one step in the guide on screen, as the left arrow does.",
+      "effect": "write",
+      "params": {}
+    },
+    {
+      "id": "again",
+      "summary": "Play the 3D animation of the step on screen again, as the R key does.",
+      "effect": "write",
+      "params": {}
+    }
+  ],
   "ui": {
     "locations": ["sidebar", "desktop-icon"],
     "label": "Bygga",

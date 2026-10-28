@@ -3,3 +3,11 @@
   --font-noto: "Noto Sans";
   --font-display: "Noto Sans Display";
 }
+
+/* The cartridge's key dialog (KeyModal.tsx) has one wide action where the site's has its key field. */
+.key-modal > .btn.primary.big {
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  margin-top: 6px;
+}

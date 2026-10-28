@@ -24,7 +24,26 @@ npm run build:cartridge  # dist/, what the host serves once installed
 | `/voice/…` and `/og/…` from the domain root | rewritten to `./voice/…` and `./og/…` at build time. The build fails if those paths move upstream |
 | `next/font` | `mnemo.css` names the two font variables |
 | `/api/*` on the visitor's Together AI key | answers `{ "error": "key" }`, as the site does for a visitor with no key |
+| the Together AI key dialog (`KeyModal`) | `KeyModal.tsx`, same props: « voice » offers the read-aloud and the Mnemosyne assistant, the other reasons say they run on Together AI |
 | Vercel Analytics | nothing is sent |
+
+`SiteHeader` and `KeyModal` are swapped at build time by `swapModules` in
+`vite.mnemo.config.ts`, whatever path the import takes.
+
+## The agent door
+
+`agentDoor.ts` serves the actions declared in `mnemo-plugin.json` (`agentActions`), so an
+agent, or the assistant's voice, can drive the guide:
+
+| Action | What it does |
+|---|---|
+| `status` | the screen, and in a guide the product, the phase and the step, read from the page title |
+| `open {product}` | the guide of a product, matched the way the search box matches it |
+| `next`, `back` | the right and left arrow keys of the guide |
+| `again` | the R key: the step's 3D animation plays again |
+
+Each action reads the screen back. One that changed nothing is refused with a sentence for
+the person (`TO_PERSON:`), in the host's language (`strings.ts`, English, French, Spanish).
 
 ## After an upstream merge
 
