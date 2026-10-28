@@ -155,9 +155,16 @@ export type X = {
   up?: number;
   /** sold in the US and not in the UK: comes after the family's UK pieces in search */
   us?: boolean;
+  /** cm, from IKEA's measurements of a sofa or armchair: armrest height and width, backrest height, room under it, seat depth */
+  ah?: number;
+  aw?: number;
+  bk?: number;
+  lg?: number;
+  sdp?: number;
 };
 
-export type Row = [name: string, kind: Kind, variant: string, w: number, h: number, d: number, x?: X, keywords?: string];
+/** A hand made row. `slug` keeps a row's link when IKEA's name for it is corrected (otherwise it comes from the name and variant). */
+export type Row = [name: string, kind: Kind, variant: string, w: number, h: number, d: number, x?: X, keywords?: string, slug?: string];
 
 export const ROWS: Row[] = [
   // shelving and bookcases
@@ -171,13 +178,13 @@ export const ROWS: Row[] = [
   ["HAUGA", "bookcase", "Bookcase, 80 × 199 cm", 80, 199, 35, { shelves: 3 }],
   ["IDANÄS", "bookcase", "Bookcase, 81 × 225 cm", 81, 225, 39, { shelves: 4 }],
   ["FJÄLKINGE", "open", "Shelving unit, 118 × 193 cm", 118, 193, 35, { shelves: 4 }],
-  ["BAGGEBO", "open", "Shelf unit, 50 × 160 cm", 50, 160, 30, { shelves: 4 }, "metal shelf"],
+  ["BAGGEBO", "bookcase", "Shelf unit, 50 × 160 cm", 50, 160, 25, { shelves: 3 }, "metal shelf"],
   ["HYLLIS", "open", "Shelf unit, 60 × 140 cm", 60, 140, 27, { shelves: 3 }, "metal shelf"],
   ["OMAR", "open", "Shelf section, 92 × 181 cm", 92, 181, 36, { shelves: 4 }, "metal shelving"],
   ["ALBERT", "open", "Shelving unit, 64 × 159 cm", 64, 159, 28, { shelves: 3 }],
   ["BROR", "open", "Shelving unit, 85 × 190 cm", 85, 190, 40, { shelves: 3 }, "garage shelf"],
   ["VITTSJÖ", "open", "Shelving unit, 51 × 175 cm", 51, 175, 36, { shelves: 4 }],
-  ["KOLBJÖRN", "open", "Shelving unit, 80 × 81 cm", 80, 81, 37, { shelves: 1 }],
+  ["KOLBJÖRN", "open", "Shelving unit, 80 × 81 cm", 80, 81, 35, { shelves: 1 }],
   ["TROFAST", "cube", "Storage frame, 99 × 94 cm", 99, 94, 44, {}, "kids toy storage"],
   ["EKET", "cube", "Cabinet combination, 70 × 70 cm", 70, 70, 35],
   ["KALLAX", "cube", "Shelving unit, 112 × 112 cm", 112, 112, 39, {}, "3x3 9 cube"],
@@ -185,7 +192,7 @@ export const ROWS: Row[] = [
   // chests of drawers
   ["HEMNES", "chest", "Chest of 8 drawers", 160, 96, 50, { cols: 2, rows: 4, knobs: "knob", plinth: true, min: 240 }, "dresser"],
   ["HEMNES", "chest", "Chest of 6 drawers", 108, 131, 50, { cols: 2, rows: 3, knobs: "knob", plinth: true, min: 210 }, "dresser"],
-  ["HEMNES", "nightstand", "Nightstand, 2 drawers", 46, 70, 35, { rows: 2, knobs: "knob", plinth: true }, "bedside table"],
+  ["HEMNES", "nightstand", "Nightstand, 2 drawers", 46, 70, 35, { rows: 1, knobs: "knob", plinth: true }, "bedside table"],
   ["KULLEN", "chest", "Chest of 5 drawers", 35, 103, 40, { rows: 5, knobs: "knob" }],
   ["KULLEN", "chest", "Chest of 6 drawers", 140, 72, 40, { cols: 2, rows: 3, knobs: "knob" }],
   ["KULLEN", "nightstand", "Chest of 2 drawers", 35, 49, 40, { rows: 2, knobs: "knob" }, "bedside"],
@@ -198,24 +205,24 @@ export const ROWS: Row[] = [
   ["KOPPANG", "chest", "Chest of 6 drawers", 172, 83, 55, { cols: 2, rows: 3, knobs: "bar" }],
   ["SONGESAND", "chest", "Chest of 4 drawers", 82, 104, 50, { rows: 4, knobs: "knob", plinth: true }],
   ["SONGESAND", "chest", "Chest of 6 drawers", 161, 81, 50, { cols: 2, rows: 3, knobs: "knob", plinth: true }],
-  ["SONGESAND", "nightstand", "Nightstand", 42, 58, 40, { rows: 2, knobs: "knob" }],
-  ["BRIMNES", "chest", "Chest of 3 drawers", 78, 95, 41, { rows: 3, knobs: "none" }],
+  ["SONGESAND", "cabinet", "Nightstand", 42, 58, 40, { doors: 1, shelves: 1, knobs: "knob", cat: "Nightstand" }, "bedside table"],
+  ["BRIMNES", "chest", "Chest of 3 drawers", 78, 95, 46, { rows: 3, knobs: "none" }],
   ["BRIMNES", "nightstand", "Nightstand", 39, 41, 41, { rows: 1, knobs: "none" }],
   ["HAUGA", "chest", "Chest of 6 drawers", 138, 84, 46, { cols: 2, rows: 3, knobs: "bar" }],
   ["HAUGA", "chest", "Chest of 3 drawers", 70, 84, 46, { rows: 3, knobs: "bar" }],
   ["IDANÄS", "chest", "Chest of 6 drawers", 162, 95, 47, { cols: 2, rows: 3, knobs: "bar", min: 210 }],
-  ["GURSKEN", "chest", "Chest of 3 drawers", 69, 74, 39, { rows: 3, knobs: "knob" }],
+  ["GURSKEN", "chest", "Chest of 3 drawers", 69, 67, 38, { rows: 3, knobs: "knob" }],
   ["GURSKEN", "nightstand", "Bedside table", 39, 55, 40, { rows: 2, knobs: "knob" }],
   ["VIHALS", "chest", "Chest of 6 drawers", 140, 85, 47, { cols: 2, rows: 3, knobs: "bar" }],
-  ["HELMER", "chest", "Drawer unit on castors", 28, 69, 43, { rows: 6, knobs: "none" }, "metal office"],
+  ["HELMER", "chest", "Drawer unit on castors", 28, 65, 44, { rows: 5, knobs: "none" }, "metal office"],
   ["NESNA", "nightstand", "Bedside table", 36, 45, 35, { rows: 1, knobs: "none" }],
   ["MALM", "nightstand", "Bedside table, 1 drawer", 40, 55, 48, { rows: 1, knobs: "none" }],
   // tables and desks
   ["MICKE", "desk", "Desk, 105 × 50 cm", 105, 75, 50, { attach: "apron", legs: "square" }, "computer desk"],
   ["LAGKAPTEN", "desk", "Desk, 120 × 60 cm", 120, 73, 60, { attach: "plate", legs: "round" }, "adils olov desk"],
   ["BEKANT", "desk", "Desk, 160 × 80 cm", 160, 65, 80, { attach: "apron", legs: "square" }, "office"],
-  ["IDÅSEN", "desk", "Desk, 160 × 80 cm", 160, 72, 80, { attach: "apron", legs: "square" }, "sit stand standing"],
-  ["TROTTEN", "desk", "Desk, 120 × 70 cm", 120, 75, 70, { attach: "apron", legs: "square" }, "office"],
+  ["IDÅSEN", "desk", "Desk, 160 × 80 cm", 160, 65, 80, { attach: "apron", legs: "square" }, "office"],
+  ["TROTTEN", "desk", "Desk, 120 × 70 cm", 120, 71, 70, { attach: "apron", legs: "square" }, "office"],
   ["LINNMON", "desk", "Table top with legs, 120 × 60 cm", 120, 74, 60, { attach: "plate", legs: "round" }],
   ["LISABO", "dining", "Table, 140 × 78 cm", 140, 74, 78, {}, "dining table ash"],
   ["EKEDALEN", "dining", "Extendable table, 120 × 80 cm", 120, 75, 80, {}, "dining"],
@@ -229,8 +236,8 @@ export const ROWS: Row[] = [
   ["INGATORP", "dining", "Extendable table, 155 × 87 cm", 155, 74, 87, {}, "dining"],
   ["TOMMARYD", "dining", "Table, 130 × 70 cm", 130, 75, 70, {}, "dining"],
   ["HEMNES", "coffee", "Coffee table, 118 × 75 cm", 118, 46, 75, { attach: "apron", shelf: true }],
-  ["LISTERBY", "coffee", "Coffee table, 140 × 60 cm", 140, 50, 60, { attach: "apron", shelf: false }],
-  ["HOLMERUD", "coffee", "Coffee table, 90 × 55 cm", 90, 50, 55, { shelf: true }],
+  ["LISTERBY", "coffee", "Coffee table, 140 × 60 cm", 140, 37, 60, { attach: "apron", shelf: false }],
+  ["HOLMERUD", "coffee", "Coffee table, 90 × 55 cm", 90, 40, 55, { shelf: true }],
   ["VITTSJÖ", "coffee", "Coffee table, 90 × 50 cm", 90, 40, 50, { legs: "square", shelf: true }],
   ["LACK", "coffee", "Coffee table, 90 × 55 cm", 90, 45, 55, { shelf: true }],
   ["HEMNES", "side", "Side table, 55 × 55 cm", 55, 55, 55, { attach: "apron" }, "end table"],
@@ -242,11 +249,11 @@ export const ROWS: Row[] = [
   ["HEMNES", "bed", "Bed frame, 90 × 200 cm", 105, 120, 211, { m: 90, f: 66 }, "single"],
   ["TARVA", "bed", "Bed frame, 140 × 200 cm", 147, 92, 209, { m: 140, f: 40 }, "pine double"],
   ["TARVA", "bed", "Bed frame, 90 × 200 cm", 97, 92, 209, { m: 90, f: 40 }, "pine single"],
-  ["NEIDEN", "bed", "Bed frame, 90 × 200 cm", 97, 72, 206, { m: 90, f: 46 }, "single pine"],
+  ["NEIDEN", "bed", "Bed frame, 90 × 200 cm", 96, 65, 205, { m: 90, f: 30 }, "single pine"],
   ["BRIMNES", "bed", "Bed frame, 160 × 200 cm", 166, 102, 206, { m: 160 }, "storage"],
   ["SONGESAND", "bed", "Bed frame, 160 × 200 cm", 167, 95, 207, { m: 160, f: 59 }],
-  ["SLATTUM", "bed", "Upholstered bed frame, 160 × 200 cm", 168, 85, 213, { m: 160, f: 30 }],
-  ["KLEPPSTAD", "bed", "Bed frame, 160 × 200 cm", 168, 96, 206, { m: 160 }],
+  ["SLATTUM", "bed", "Upholstered bed frame, 160 × 200 cm", 164, 85, 206, { m: 160, f: 40 }],
+  ["KLEPPSTAD", "bed", "Bed frame, 160 × 200 cm", 166, 86, 207, { m: 160, f: 27 }],
   ["IDANÄS", "bed", "Bed frame, 160 × 200 cm", 174, 101, 211, { m: 160 }],
   ["SAGSTUA", "bed", "Bed frame, 160 × 200 cm", 167, 123, 209, { m: 160, f: 84 }, "metal"],
   ["NORDLI", "bed", "Bed frame with storage, 160 × 200 cm", 168, 64, 207, { m: 160 }],
@@ -258,10 +265,10 @@ export const ROWS: Row[] = [
   ["HEMNES", "wardrobe", "Wardrobe with 2 doors, 120 × 197 cm", 120, 197, 59, { knobs: "knob" }],
   ["KLEPPSTAD", "wardrobe", "Wardrobe with 2 doors, 79 × 176 cm", 79, 176, 55],
   ["SONGESAND", "wardrobe", "Wardrobe, 120 × 191 cm", 120, 191, 60],
-  ["RAKKESTAD", "wardrobe", "Wardrobe with 2 doors, 79 × 176 cm", 79, 176, 51],
+  ["RAKKESTAD", "wardrobe", "Wardrobe with 2 doors, 79 × 176 cm", 79, 176, 55],
   ["VISTHUS", "wardrobe", "Wardrobe, 122 × 216 cm", 122, 216, 59],
   ["DOMBÅS", "wardrobe", "Wardrobe, 140 × 181 cm", 140, 181, 51],
-  ["HAUGA", "wardrobe", "Wardrobe, 70 × 199 cm", 70, 199, 55],
+  ["HAUGA", "wardrobe", "Wardrobe, 70 × 199 cm", 70, 199, 46],
   ["IDANÄS", "wardrobe", "Wardrobe, 121 × 211 cm", 121, 211, 59],
   ["BRIMNES", "wardrobe", "Wardrobe with 3 doors, 117 × 190 cm", 117, 190, 50],
   ["HAVSTA", "cabinet", "Cabinet with doors, 81 × 123 cm", 81, 123, 35],
@@ -270,7 +277,7 @@ export const ROWS: Row[] = [
   ["DETOLF", "cabinet", "Glass-door cabinet, 43 × 163 cm", 43, 163, 37, { doors: 1, shelves: 3 }, "display"],
   ["RUDSTA", "cabinet", "Glass-door cabinet, 80 × 170 cm", 80, 170, 37, { shelves: 3 }],
   ["MILSBO", "cabinet", "Glass-door cabinet, 101 × 186 cm", 101, 186, 42, { shelves: 3 }],
-  ["KOLBJÖRN", "cabinet", "Cabinet, 80 × 81 cm", 80, 81, 37, { shelves: 1 }, "outdoor balcony"],
+  ["KOLBJÖRN", "cabinet", "Cabinet, 80 × 81 cm", 80, 81, 35, { shelves: 1 }, "outdoor balcony"],
   ["IVAR", "cabinet", "Cabinet with doors, 80 × 83 cm", 80, 83, 30, { shelves: 1 }, "pine"],
   ["BESTÅ", "cabinet", "Shelf unit with doors, 60 × 64 cm", 60, 64, 40, { doors: 1, shelves: 1, knobs: "none" }],
   ["BRIMNES", "cabinet", "Cabinet with doors, 39 × 95 cm", 39, 95, 34, { doors: 1, shelves: 2 }],
@@ -278,7 +285,7 @@ export const ROWS: Row[] = [
   ["HAVSTA", "sideboard", "Sideboard, 100 × 89 cm", 100, 89, 47],
   ["TONSTAD", "sideboard", "Sideboard, 121 × 81 cm", 121, 81, 47],
   ["IDANÄS", "sideboard", "Sideboard, 160 × 87 cm", 160, 87, 47],
-  ["BESTÅ", "tv", "TV bench, 120 × 40 cm", 120, 40, 42, { knobs: "none" }],
+  ["BESTÅ", "tv", "TV bench, 120 × 40 cm", 120, 38, 42, { knobs: "none" }],
   ["BESTÅ", "tv", "TV bench, 180 × 38 cm", 180, 38, 42, { knobs: "none" }],
   ["BRIMNES", "tv", "TV bench, 120 × 53 cm", 120, 53, 41, { knobs: "none" }],
   ["HEMNES", "tv", "TV bench, 148 × 57 cm", 148, 57, 47, { knobs: "knob" }],
@@ -290,36 +297,37 @@ export const ROWS: Row[] = [
   ["HEMNES", "shoe", "Shoe cabinet with 4 compartments", 107, 101, 22, { c: 2, knobs: "knob" }, "shoe storage"],
   ["STÄLL", "shoe", "Shoe cabinet with 3 compartments", 79, 148, 29, { c: 3, knobs: "knob" }, "shoe storage"],
   ["TRONES", "shoe", "Shoe cabinet, 52 × 39 cm", 52, 39, 18, { c: 1, knobs: "none" }, "shoe storage wall"],
-  ["BRUSALI", "shoe", "Shoe cabinet with 3 compartments", 61, 130, 31, { c: 3, knobs: "knob" }],
+  ["BRUSALI", "shoe", "Shoe cabinet with 3 compartments", 61, 130, 30, { c: 3, knobs: "knob" }],
   ["MACKAPÄR", "shoe", "Shoe cabinet, 80 × 102 cm", 80, 102, 35, { c: 2, knobs: "bar" }],
   // seating
-  ["POÄNG", "armchair", "Armchair", 68, 100, 82, { arms: "slim" }, "rocking chair"],
-  ["STRANDMON", "armchair", "Wing chair", 82, 101, 96, { arms: "wide" }],
+  ["POÄNG", "armchair", "Armchair", 68, 100, 82, { arms: "slim", seatH: 42, sdp: 50 }, "easy chair"],
+  ["STRANDMON", "armchair", "Wing chair", 82, 101, 96, { arms: "wide", seatH: 45, sdp: 54 }],
   ["EKERÖ", "armchair", "Armchair", 70, 73, 73, { arms: "slim" }],
-  ["KIVIK", "sofa", "3-seat sofa", 228, 83, 95, { seats: 3 }, "couch"],
-  ["KLIPPAN", "sofa", "2-seat sofa", 180, 66, 88, { seats: 2, arms: "slim" }, "couch"],
-  ["EKTORP", "sofa", "3-seat sofa", 218, 88, 88, { seats: 3 }, "couch"],
-  ["FRIHETEN", "sofa", "Corner sofa-bed", 230, 66, 151, { seats: 3, arms: "slim" }, "couch sleeper"],
-  ["SÖDERHAMN", "sofa", "3-seat sofa", 198, 69, 99, { seats: 3, arms: "slim" }, "couch"],
-  ["VIMLE", "sofa", "3-seat sofa", 241, 83, 98, { seats: 3 }, "couch"],
-  ["LANDSKRONA", "sofa", "3-seat sofa", 204, 89, 89, { seats: 3, arms: "slim" }, "couch"],
-  ["GLOSTAD", "sofa", "2-seat sofa", 145, 78, 82, { seats: 2 }, "couch"],
+  ["KIVIK", "sofa", "3-seat sofa", 228, 83, 95, { seats: 3, seatH: 45, sdp: 60 }, "couch"],
+  ["KLIPPAN", "sofa", "2-seat sofa", 180, 66, 88, { seats: 2, arms: "slim", seatH: 43, sdp: 54, lg: 11 }, "couch"],
+  ["EKTORP", "sofa", "3-seat sofa", 218, 88, 88, { seats: 3, seatH: 45, sdp: 49, aw: 24 }, "couch"],
+  // its article, page and manual are the 3-seat sofa-bed (the corner sofa-bed is a guide of its own); first listed as a corner sofa-bed
+  ["FRIHETEN", "sofa", "3-seat sofa-bed", 225, 83, 105, { seats: 3, arms: "slim", seatH: 46, sdp: 61 }, "couch sleeper", "friheten-corner-sofa-bed"],
+  ["SÖDERHAMN", "sofa", "3-seat sofa", 198, 83, 99, { seats: 3, arms: "slim", seatH: 40, sdp: 48, aw: 6, bk: 69, lg: 14 }, "couch"],
+  ["VIMLE", "sofa", "3-seat sofa", 241, 83, 98, { seats: 3, seatH: 48, sdp: 55, ah: 68, aw: 15, bk: 68, lg: 6 }, "couch"],
+  ["LANDSKRONA", "sofa", "3-seat sofa", 204, 78, 89, { seats: 3, arms: "slim", seatH: 44, sdp: 61, ah: 64 }, "couch"],
+  ["GLOSTAD", "sofa", "2-seat sofa", 121, 68, 78, { seats: 2, seatH: 41, sdp: 54, ah: 57, bk: 68, lg: 23 }, "couch"],
   ["UPPLAND", "sofa", "3-seat sofa", 231, 89, 98, { seats: 3 }, "couch"],
   ["HEMLINGBY", "sofa", "2-seat sofa", 156, 80, 80, { seats: 2, arms: "slim" }, "couch"],
-  ["STEFAN", "chair", "Chair", 42, 90, 49, {}, "dining chair pine"],
-  ["ODGER", "chair", "Chair", 45, 80, 52, {}, "dining chair"],
+  ["STEFAN", "chair", "Chair", 42, 90, 49, { seatH: 46 }, "dining chair pine"],
+  ["ODGER", "chair", "Chair", 45, 81, 51, { seatH: 43 }, "dining chair"],
   ["TEODORES", "chair", "Chair", 46, 80, 53, {}, "dining chair"],
   ["ADDE", "chair", "Chair", 39, 77, 47, {}, "dining chair"],
-  ["LISABO", "chair", "Chair", 45, 76, 51, {}, "dining chair"],
+  ["LISABO", "chair", "Chair", 46, 80, 51, { seatH: 48 }, "dining chair"],
   ["NORRÅKER", "chair", "Chair", 41, 81, 50, {}, "dining chair"],
   ["JANINGE", "chair", "Chair", 50, 76, 47, {}, "dining chair"],
   ["EKEDALEN", "chair", "Chair", 45, 95, 51, {}, "dining chair"],
-  ["BERGMUND", "chair", "Chair", 52, 95, 59, {}, "dining chair upholstered"],
+  ["BERGMUND", "chair", "Chair", 52, 95, 59, { seatH: 51 }, "dining chair upholstered"],
   ["TERJE", "chair", "Folding chair", 44, 79, 50, {}, "folding"],
   ["STIG", "stool", "Bar stool, 74 cm", 37, 74, 37, {}, "bar"],
   ["DALFRED", "stool", "Bar stool", 50, 74, 50, {}, "bar"],
-  ["KYRRE", "stool", "Stool", 35, 45, 35],
-  ["BEKVÄM", "stool", "Step stool", 43, 50, 43, {}, "step"],
+  ["KYRRE", "stool", "Stool", 42, 45, 48],
+  ["BEKVÄM", "stool", "Step stool", 43, 50, 39, {}, "step"],
   ["ÄPPLARÖ", "bench", "Bench, outdoor", 114, 44, 41, {}, "garden outdoor"],
   ["HEMNES", "bench", "Bench", 98, 45, 37, {}, "hallway"],
 ];
@@ -415,7 +423,19 @@ function fitted(kind: Kind, base: Omit<ProductSpec, "source">, w: number, h: num
 
 /** Turn a kind and a size into a full product spec. */
 export function specFor(kind: Kind, name: string, variant: string, w: number, h: number, d: number, x: X = {}): Omit<ProductSpec, "source"> {
-  const spec = specOf(kind, name, variant, w, h, d, x);
+  let spec = specOf(kind, name, variant, w, h, d, x);
+  // a sofa or armchair IKEA measured: its seat, armrests, backrest and legs as they really are
+  if (spec.sofa && !spec.sofa.pouffe) {
+    const m = { seatH: x.seatH, seatD: x.sdp, armH: x.ah, armW: x.aw, backH: x.bk, legH: x.lg };
+    const known = Object.fromEntries(Object.entries(m).filter(([, v]) => v !== undefined));
+    if (Object.keys(known).length) spec = { ...spec, sofa: { ...spec.sofa, ...known } };
+  }
+  // EKET: a box of four panels with a door or an open front, the open wall-mounted ones too (eket.ts builds it from its manuals)
+  if (name === "EKET" && (spec.cabinet || (kind === "wallshelf" && spec.shelf))) {
+    const wall = kind === "wallcab" || kind === "wallshelf";
+    const cab = spec.cabinet ?? { doors: 0 as const, shelves: 0, rail: false, plinth: false, handles: "none" as const, thickness: 16 };
+    spec = { ...spec, archetype: "cabinet", shelf: undefined, cabinet: { ...cab, shelves: 0, plinth: false, thickness: 16, ...(wall ? { wall: true } : {}) } };
+  }
   // IKEA's own name for what it is, when the kind's category doesn't say it
   return x.cat ? { ...spec, category: x.cat } : spec;
 }
@@ -515,7 +535,7 @@ function specOf(kind: Kind, name: string, variant: string, w: number, h: number,
     case "bed":
       return { ...base, people: 2, bed: { mattressW: x.m ?? Math.max(80, w - 16), mattressL: x.l ?? 200, headH: h, footH: x.f ?? 38, slats: x.l && x.l < 190 ? 13 : 17, centerBeam: (x.m ?? w) >= 120 } };
     case "wardrobe":
-      return { ...base, people: 2, cabinet: { doors: x.doors ?? (w >= 60 ? 2 : 1), shelves: x.shelves ?? 1, rail: true, plinth: true, handles: x.knobs ?? "knob", thickness: 18 } };
+      return { ...base, people: 2, cabinet: { doors: x.doors ?? (w >= 60 ? 2 : 1), shelves: x.shelves ?? 1, rail: x.rail ?? true, plinth: true, handles: x.knobs ?? "knob", thickness: 18 } };
     case "cabinet":
       // x.low: a shelving unit with a cabinet this many cm high at the bottom, open shelves above
       if (x.low) return { ...base, minutes: x.min ?? MIN.cabinet + 25, people: h > 150 ? 2 : 1, cabinet: { doors: x.doors ?? (w > 50 ? 2 : 1), shelves: 0, rail: false, plinth: false, handles: x.knobs ?? "knob", thickness: 18, low: x.low } };
@@ -527,7 +547,7 @@ function specOf(kind: Kind, name: string, variant: string, w: number, h: number,
     case "tv":
       // x.rows: a TV bench full of drawers, side by side when it's wide
       if (x.rows) return { ...base, archetype: "drawers", minutes: x.min ?? 30 + 20 * x.rows * (w >= 100 ? 2 : 1), difficulty: 3, drawers: { cols: w >= 100 ? 2 : 1, rows: x.rows, knobs: x.knobs ?? "none", plinth: false, thickness: 16, free: true } };
-      return { ...base, cabinet: { doors: 2, shelves: 0, rail: false, plinth: false, handles: x.knobs ?? "knob", thickness: 16 } };
+      return { ...base, cabinet: { doors: x.doors ?? 2, shelves: x.doors === 0 ? 1 : 0, rail: false, plinth: false, handles: x.knobs ?? "knob", thickness: 16 } };
     case "shoe":
       return { ...base, cabinet: { fronts: "tilt", compartments: x.c ?? 2, doors: 0, shelves: 0, rail: false, plinth: false, handles: x.knobs ?? "knob", thickness: 16 } };
     case "chair":
@@ -544,7 +564,7 @@ function specOf(kind: Kind, name: string, variant: string, w: number, h: number,
       return { ...base, difficulty: 1, people: 1, table: { attach: "screw", legs: "square", legSize: 20, topThickness: 18, shelf: false, riser: true } };
     case "pouffe":
       // a padded block on four legs
-      return { ...base, difficulty: 1, people: 1, sofa: { seats: 1, arms: "none", legs: "round", pouffe: true } };
+      return { ...base, difficulty: 1, people: 1, sofa: { seats: 1, arms: "none", legs: "round", pouffe: true, ...(x.round ? { round: true } : {}) } };
     case "chairbed":
       // built like an armchair, and it folds out into a bed
       return { ...base, people: 1, difficulty: 2, sofa: { seats: 1, arms: x.arms ?? "none", legs: "round", bed: true } };
@@ -565,6 +585,8 @@ function specOf(kind: Kind, name: string, variant: string, w: number, h: number,
         sofa: { seats: x.seats ?? (kind === "armchair" ? 1 : Math.max(1, Math.round((w - 30) / 62))), arms: x.arms ?? "wide", legs: "round" },
       };
     case "wallshelf":
+      // a wall shelf unit (LACK): a tall narrow column of fixed shelves on a back panel (lack.ts builds it from its manual)
+      if (/^wall shelf unit\b/i.test(variant) && h > 2 * w) return { ...base, difficulty: 1, people: 2, shelf: { style: "bookcase", shelves: x.shelves ?? Math.round(h / 27), fixedShelf: true, back: true, plinth: false, outer: 18, wall: true } };
       return { ...base, difficulty: 1, people: 1, shelf: { style: "bookcase", shelves: x.shelves ?? Math.max(0, Math.round(h / 35) - 1), fixedShelf: false, back: false, plinth: false, outer: 16, wall: true } };
     case "wallcab":
       // x.z: doors over drawers, drawn like the cabinets built around an appliance
@@ -579,7 +601,8 @@ function specOf(kind: Kind, name: string, variant: string, w: number, h: number,
     case "trolley":
       // x.up: a kitchen island with a rack rising from the back of its top
       if (x.up) return { ...base, minutes: x.min ?? MIN.trolley + 20, people: 2, difficulty: 2, table: { attach: "plate", legs: "round", legSize: 25, topThickness: 20, shelf: true, rack: x.up } };
-      return { ...base, difficulty: 1, table: { attach: "plate", legs: "round", legSize: 25, topThickness: 20, shelf: true } };
+      // most trolleys stand three tiers high: the top and two shelves under it
+      return { ...base, difficulty: 1, table: { attach: "plate", legs: "round", legSize: 25, topThickness: 20, shelf: true, levels: x.shelves ?? (h >= 60 ? 2 : 1) } };
     case "bar":
       return { ...base, people: 2, table: { attach: x.attach ?? "apron", legs: x.legs ?? "square", legSize: 50, topThickness: 25, shelf: false, ...round(x) } };
     case "console":
@@ -670,7 +693,7 @@ function specOf(kind: Kind, name: string, variant: string, w: number, h: number,
       return { ...base, difficulty: 1, people: h > 1500 ? 2 : 1, shelf: { style: "stand" } };
     case "deskdraw":
       // x.rows drawers side by side under the top; x.mirror: a dressing table's mirror on the back of the top
-      return { ...base, minutes: x.min ?? MIN.deskdraw + 20 * (x.rows ?? 2) + (x.mirror ? 15 : 0), people: w > 100 || x.mirror ? 2 : 1, difficulty: 2, table: { attach: "apron", legs: "square", legSize: 50, topThickness: 25, shelf: false, drawers: x.rows ?? 2, knobs: x.knobs ?? "knob", ...(x.mirror ? { mirror: 85 } : {}) } };
+      return { ...base, minutes: x.min ?? MIN.deskdraw + 20 * (x.rows ?? 2) + (x.mirror ? 15 : 0), people: w > 100 || x.mirror ? 2 : 1, difficulty: 2, table: { attach: "apron", legs: "square", legSize: 50, topThickness: 25, shelf: false, drawers: x.rows ?? 2, knobs: x.knobs ?? "knob", ...(x.mirror ? { mirror: Math.min(100, Math.max(40, h - 75)) } : {}) } };
     case "boxdesk":
       // a low desk top between two storage frames, x.rows boxes in each, or shelves when x.shelf
       return { ...base, minutes: x.min ?? MIN.boxdesk + 5 * (x.rows ?? 2), people: 1, difficulty: 1, table: { attach: "plate", legs: "square", legSize: 40, topThickness: 22, shelf: false, frame: 32, boxes: x.rows ?? 2, ...(x.shelf ? { shelvesIn: true } : {}) } };

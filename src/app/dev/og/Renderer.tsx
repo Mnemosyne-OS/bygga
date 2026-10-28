@@ -11,6 +11,7 @@ import { shot } from "@/engine/thumbs";
 declare global {
   interface Window {
     __draw?: (o: { slug?: string; kind?: Kind; mode?: StageMode; w: number; h: number }) => Promise<string | null>;
+    __steps?: (slug: string) => string[] | null;
   }
 }
 
@@ -22,6 +23,11 @@ export default function Renderer() {
       const plan = buildPlan(spec);
       const s = await shot(`og:${slug ?? kind}:${JSON.stringify(mode)}`, plan, mode ?? { kind: "assembled" }, w, h);
       return s.url;
+    };
+    // the step titles, for drawing a guide step by step
+    window.__steps = (slug) => {
+      const spec = catalogSpec(slug);
+      return spec ? buildPlan(spec).steps.map((st) => st.title) : null;
     };
     document.body.dataset.ready = "1";
   }, []);

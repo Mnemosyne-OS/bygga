@@ -14,6 +14,8 @@ export interface Fact {
   items: string[];
   spr: boolean;
   cats: string[];
+  /** the measurements on the product's own page (measure.ts), when it has been read */
+  m?: Record<string, string>;
 }
 
 export interface Draw {
@@ -29,6 +31,9 @@ export interface Draw {
   kw: string[];
   /** which of w/h/d came from defaults rather than IKEA's measure */
   guessed: { w: boolean; h: boolean; d: boolean };
+  /** which of w/h/d the listing left out and the product page filled in: matching treats them as unknown, so a
+   * product keeps the guide (and the link) it had before its page was read */
+  paged?: { w: boolean; h: boolean; d: boolean };
 }
 
 export type Verdict = { draw: Draw } | { skip: string };
@@ -84,6 +89,8 @@ export function measure(s: string): Size | null {
 const UPRIGHT = new Set<Kind>(["extension", "cube", "bookcase", "open", "chest", "nightstand", "wardrobe", "cabinet", "sideboard", "tv", "shoe", "wallcab", "wallshelf", "kitchen", "mixed", "sliding", "slidecab", "washstand", "sinkcab", "appliance", "shoerack", "clothesrack", "changing", "divider"]);
 const FLAT = new Set<Kind>(["desk", "coffee", "side", "dining", "bar", "console", "kidstable", "trolley", "bench", "conftable"]);
 
+/** Stools that are really a pouffe: a padded or woven drum on the floor. */
+const POUFFE_STOOL = new Set(["ALSEDA"]);
 /** Office chairs IKEA sells with armrests although the type doesn't say so. */
 const OFFICE_ARMS = new Set(["MARKUS", "ALEFJÄLL"]);
 /** Office chairs with a tall back and a headrest. */
@@ -212,7 +219,9 @@ const n = (s: string | undefined, d: number) => (s ? Number(s) : d);
 function doors(t: string): Pick | X {
   const count = t.match(/\b(\d) (glass )?(doors|drs)\b/);
   if (count && Number(count[1]) > 3) return "more than 3 doors";
-  if (/(^| )frame$|shelves$|^open |^frame /.test(t) && !/doors?$|drs$/.test(t)) return { doors: 0 };
+  // a frame on its own is sold empty: no shelves in it either
+  if (/(^| )frame$/.test(t) && !/doors?$|drs$/.test(t)) return { doors: 0, shelves: 0 };
+  if (/shelves$|^open |^frame /.test(t) && !/doors?$|drs$/.test(t)) return { doors: 0 };
   if (/(^| )(glass )?door$/.test(t)) return { doors: 1 };
   return {};
 }
@@ -353,6 +362,8 @@ const RULES: Rule[] = [
     const n = count ? Number(count[1]) + (count[2] ? 1 : 0) : undefined;
     if (/corner|crnr/.test(t) && n !== undefined) {
       if (n > 6) return "corner sofa with more than 6 seats";
+      // a corner sofa with a chaise longue is an L with the chaise at the far end of the back: drawn like a U
+      if (/chaise|\bch(?:ai)?se?\b|lng/.test(t) && n >= 4) return { kind: "usofa", x: { seats: n } };
       // IKEA's corner sofas go either way round: draw the return on the left, where the view looks into the L
       return { kind: "corner", x: { seats: n, corner: "left", open: /chaise|open end/.test(t) || undefined } };
     }
@@ -505,7 +516,10 @@ const RULES: Rule[] = [
   // desks and tables with drawers under the top, a dressing table with its mirror
   [/^desk with (\d) drawers$/, (m) => ({ kind: "deskdraw", x: { rows: Number(m[1]) } })],
   [/^dressing table with mirror$/, () => ({ kind: "deskdraw", x: { rows: 2, mirror: true, cat: "Dressing table" } })],
-  [/^work bench with drawers$/, () => ({ kind: "deskdraw", x: { rows: 2, knobs: "bar", cat: "Work bench" } })],
+  // a dressing table measured taller than a table is, with the mirror that stands on it
+  [/^dressing table$/, (_m, c) => ((c.sz.n[2] ?? 0) > 110 ? { kind: "deskdraw", x: { rows: 1, mirror: true, cat: "Dressing table" } } : { kind: "desk" })],
+  // BROR's is a steel frame full of drawers under a plywood top, not a desk: drawn as a chest of four
+  [/^work bench with drawers$/, () => ({ kind: "chest", x: { rows: 4, knobs: "bar", cat: "Work bench" } })],
   [/^table with drawer$/, () => ({ kind: "deskdraw", x: { rows: 1, cat: "Table" } })],
   // TROFAST's low desk: a top between two storage frames, with boxes, trays or shelves in them
   [/^desk with (?:mesh )?(storage boxes|storage boxes\/trays|shelves)$/, (m, c) =>
@@ -522,9 +536,11 @@ const RULES: Rule[] = [
   [/^(bedside table|nightstand|bedside table with (\d) drawers?)$/, (m) => ({ kind: "nightstand", x: m[2] ? { rows: Number(m[2]) } : {} })],
   // a bedside table with a glass top is put together like any other
   [/^bedside table with glass top$/, () => ({ kind: "nightstand", x: { rows: 1 } })],
-  [/^(wardrobe frame|open wardrobe|open clothes hanging unit)$/, () => ({ kind: "wardrobe", x: { doors: 0 } })],
-  // two or three wardrobe frames sold together: a row of frames without doors
-  [/^(\d) wardrobe frames$/, (m) => ({ kind: "wardrobe", x: { doors: 0, n: Number(m[1]), cat: "Wardrobe combination" } })],
+  // a wardrobe frame is sold empty: no doors, shelves or rail
+  [/^wardrobe frame$/, () => ({ kind: "wardrobe", x: { doors: 0, shelves: 0, rail: false } })],
+  [/^(open wardrobe|open clothes hanging unit)$/, () => ({ kind: "wardrobe", x: { doors: 0 } })],
+  // two or three wardrobe frames sold together: a row of empty frames
+  [/^(\d) wardrobe frames$/, (m) => ({ kind: "wardrobe", x: { doors: 0, shelves: 0, rail: false, n: Number(m[1]), cat: "Wardrobe combination" } })],
   // PLATSA wardrobes are a row of identical frames: one or two doors on each, as many frames as that takes
   [/^wardrobe w(?:ith)? (\d+) doors$/, (m, c) => {
     const doors = Number(m[1]), w = c.sz.n[0] ?? 0;
@@ -595,8 +611,12 @@ const RULES: Rule[] = [
   [/^children's chair$/, () => ({ kind: "kidschair" })],
   [/^junior chair$/, () => ({ kind: "junior" })],
   [/^(bar stool with backrest|bar chair)$/, () => ({ kind: "chair", x: { seatH: 63 } })],
-  [/^(stool|bar stool|step stool|folding stool|children's stool|stool, \d+ steps?)$/, () => ({ kind: "stool" })],
-  [/^(bench|bench with shoe storage)$/, () => ({ kind: "bench" })],
+  // ALSEDA is a woven pouffe on the floor, though IKEA calls it a stool
+  [/^stool$/, (_m, c) => (POUFFE_STOOL.has(c.f.name) ? { kind: "pouffe", x: { round: true } } : { kind: "stool" })],
+  [/^(bar stool|step stool|folding stool|children's stool|stool, \d+ steps?)$/, () => ({ kind: "stool" })],
+  // a bench with shoe storage has a shelf under the seat for the shoes
+  [/^bench with shoe storage$/, () => ({ kind: "shelfbench" })],
+  [/^bench$/, () => ({ kind: "bench" })],
   // benches and stools with a shelf under the seat
   [/^(bench|stool) with storage$/, (m) => ({ kind: "shelfbench", x: m[1] === "stool" ? { cat: "Stool with storage" } : {} })],
   // work benches: a sturdy table with a shelf low down (one with drawers stays skipped)
@@ -607,7 +627,9 @@ const RULES: Rule[] = [
   [/^bench with pad$/, () => ({ kind: "bench" })],
   // a bench with a backrest and armrests, built like a wide chair (IKEA gives no size: a typical garden bench)
   [/^bench with backrest$/, (_m, c) => (c.f.spr ? "bench with backrest sold with cushions" : { kind: "backbench" })],
-  [/^(armchair|easy chair|wing chair|high-back armchair|low-back armchair|rocking-chair|children's armchair|armchair with cushion)$/, () => ({ kind: "armchair" })],
+  // a rocking chair is drawn as an armchair, and goes by its own name (it is not the family's armchair: POÄNG)
+  [/^rocking-chair$/, () => ({ kind: "armchair", x: { cat: "Rocking chair" } })],
+  [/^(armchair|easy chair|wing chair|high-back armchair|low-back armchair|children's armchair|armchair with cushion)$/, () => ({ kind: "armchair" })],
   // a modular sofa or armchair with a side table module at the end
   [/^(?:(\d)-seat modular sofa|armchair) with side table$/, (m) =>
     m[1] ? { kind: "sofa", x: { seats: Number(m[1]), st: 45, cat: "Modular sofa with side table" } } : { kind: "armchair", x: { st: 45, cat: "Armchair with side table" } }],
@@ -951,7 +973,7 @@ export function classify(f: Fact, hints: Hints): Verdict {
     if (shape.cols === 2) x.cols = 2;
     if (hint?.x.plinth) x.plinth = true;
   }
-  if (kind === "wardrobe" && x.doors === 0 && hint?.x.shelves) x.shelves = hint.x.shelves;
+  if (kind === "wardrobe" && x.doors === 0 && x.shelves === undefined && hint?.x.shelves) x.shelves = hint.x.shelves;
   // a combination this wide is more than one frame, which one carcass can't show: a row of them when the frames are all alike
   const several =
     (kind === "wardrobe" || kind === "sliding") && multi && w > 100
@@ -991,8 +1013,8 @@ export function classify(f: Fact, hints: Hints): Verdict {
       const mixed = !x.n && sizes && ["bookcase", "open", "cabinet", "wardrobe"].includes(kind) ? framesFor(w, sizes, SHARED_POST[family]) : null;
       if (!mixed) return { skip: several };
       x.u = mixed.join("+");
-      // PAX frames on their own come without doors, with the shelves a PAX frame has
-      if (kind === "wardrobe" && !multi) Object.assign(x, { doors: 0, shelves: hints(family, "wardrobe")?.x.shelves });
+      // PAX frames on their own come without doors, and empty
+      if (kind === "wardrobe" && !multi) Object.assign(x, { doors: 0, shelves: 0 });
       for (const k of Object.keys(x) as (keyof X)[]) if (x[k] === undefined) delete x[k];
       x.of = kind as NonNullable<X["of"]>;
       return finish(kind === "bookcase" || kind === "open" ? "bookrow" : "cabrow");
@@ -1015,8 +1037,52 @@ export function classify(f: Fact, hints: Hints): Verdict {
 
   function finish(k: Kind): Verdict {
     const arch = KIND_ARCH[k];
+    // the product page's measurements: real sizes where the listing gave none, and how a sofa really stands
+    const got = f.m ? fromPage(k, f.m, { m: x.m, l: x.l }) : null;
+    // a sofa narrower than its seats can be is measured some other way (a sleeper sofa's width is its depth)
+    if (got && got.w !== undefined && (k === "sofa" || k === "chaise") && (x.seats ?? 1) >= 2 && got.w < 55 * (x.seats ?? 1)) got.w = undefined;
+    // a dressing table its page measures taller than a table is: the mirror standing on it is in that height
+    if (k === "desk" && /^dressing table$/.test(t) && (got?.h ?? (guessed.h ? 0 : h)) > 110) {
+      Object.assign(x, { rows: 1, mirror: true, cat: "Dressing table" });
+      return finish("deskdraw");
+    }
+    // a "4-seat sofa" IKEA measures as deep as a chaise longue is a sofa with one, at the right-hand end
+    if (k === "sofa" && got?.d !== undefined && guessed.d && got.d > 130 && (x.seats ?? 0) >= 3) {
+      x.chaise = "right";
+      x.sd = got.x.sdp ? Math.min(110, got.x.sdp + 38) : 95;
+      return finish("chaise");
+    }
+    const paged = { w: false, h: false, d: false };
+    // a listing that gives two sizes ("48x38 cm") leaves out the third, and doesn't say which: the page does
+    if (got && v.length < 3 && PARTIAL_OK.has(k)) {
+      const now = { w, h, d };
+      for (const key of ["w", "h", "d"] as const) {
+        const g = got[key];
+        if (g !== undefined && !guessed[key] && Math.abs(g - now[key]) > Math.max(3, now[key] * 0.06)) guessed[key] = true;
+      }
+      // drawers need room: a page height too low for them is a measure of something else
+      if (got.h !== undefined && (x.rows ?? 0) * 9 + 6 > got.h) {
+        guessed.h = false;
+        got.h = undefined;
+      }
+    }
+    // a bed's frame by its page, rather than a size worked out from its mattress: as known as the mattress it is for
+    if (got && arch === "bed") {
+      if (got.w !== undefined) [w, guessed.w] = [got.w, false];
+      if (got.h !== undefined) [h, guessed.h] = [got.h, false];
+      if (got.d !== undefined) [d, guessed.d] = [got.d, false];
+    }
+    if (got) {
+      if (got.w !== undefined && guessed.w) paged.w = true;
+      if (got.h !== undefined && guessed.h) paged.h = true;
+      if (got.d !== undefined && guessed.d) paged.d = true;
+      if (got.w !== undefined && guessed.w) [w, guessed.w] = [got.w, false];
+      if (got.h !== undefined && guessed.h) [h, guessed.h] = [got.h, false];
+      if (got.d !== undefined && guessed.d) [d, guessed.d] = [got.d, false];
+      Object.assign(x, got.x);
+    }
     // a long sofa is drawn as sections joined together, so it can be longer than anything else
-    if (w < 20 || w > (arch === "sofa" ? 400 : 320) || h < 15 || h > 260 || d < 12 || d > 240) return { skip: "size out of range" };
+    if (w < 20 || w > (arch === "sofa" ? 400 : 320) || h < 15 || h > 260 || d < 12 || d > (arch === "sofa" ? 400 : 240)) return { skip: "size out of range" };
     if (arch === "table" && h < 30 && k !== "kidstable" && k !== "riser") return { skip: "size out of range" };
     if (arch === "shelf" && h < 25) return { skip: "size out of range" };
     const kw: string[] = [];
@@ -1024,6 +1090,129 @@ export function classify(f: Fact, hints: Hints): Verdict {
     if (kids && !/children/.test(t)) kw.push("kids", "children");
     else if (kids) kw.push("kids");
     const size = sz!.bed ? `${sz!.text}, ${sz!.bed[0]} × ${sz!.bed[1]} cm` : sz!.text;
-    return { draw: { kind: k, x, w: Math.round(w), h: Math.round(h), d: Math.round(d), label: raw, size, kw, guessed } };
+    return { draw: { kind: k, x, w: Math.round(w), h: Math.round(h), d: Math.round(d), label: raw, size, kw, guessed, ...(paged.w || paged.h || paged.d ? { paged } : {}) } };
   }
+}
+
+/** Kinds whose page measures the same outside size we draw, so a page can settle a listing that gives only two sizes. */
+const PARTIAL_OK = new Set<Kind>(["nightstand", "open", "chest", "bookcase", "cabinet", "side", "coffee", "desk", "trolley", "stool", "bench", "tv", "sideboard", "shoe", "wardrobe", "cube", "console"]);
+const SOFA_KINDS = new Set<Kind>(["sofa", "armchair", "chaise", "corner", "section", "usofa", "chairbed"]);
+const SEAT_H_KINDS = new Set<Kind>(["chair", "office", "kidschair", "junior", "conference", "swivel", "lounge"]);
+
+/**
+ * A bed frame as its page measures it: the frame's width and length (with a headboard wider than the frame, that), and
+ * the headboard's height, or the whole height when it has none; a footboard's height goes in x.f. A bed frame is drawn
+ * across our width, a cot, bunk, loft or day-bed lengthways. A page that measures another mattress than the listing's
+ * (one size's page shown for another) says nothing about this one.
+ */
+function bedFromPage(k: Kind, m: Record<string, string>, bed: { m?: number; l?: number }): { w?: number; h?: number; d?: number; x: X } | null {
+  const mw = cm(m["Mattress width"]) ?? cm(m["Bed width"]), ml = cm(m["Mattress length"]) ?? cm(m["Bed length"]);
+  const want = [bed.m, bed.l ?? (k === "bed" || k === "bunk" || k === "loft" || k === "daybed" ? 200 : undefined)];
+  const same = (a?: number, b?: number) => a === undefined || b === undefined || Math.abs(a - b) <= 4;
+  // a page can give the mattress the wrong way round (MINNEN): either way is the same mattress
+  if (!((same(mw, want[0]) && same(ml, want[1])) || (same(ml, want[0]) && same(mw, want[1])))) return null;
+  const r = (n?: number) => (n === undefined ? undefined : Math.round(n));
+  const len = cm(m["Length"]), wide = cm(m["Width"]);
+  // the frame is larger than its mattress, and not by more than a bedside's worth
+  const fits = (v: number | undefined, mat: number | undefined) => v !== undefined && (mat === undefined || (v >= mat - 2 && v <= mat + 45));
+  const W = fits(wide, want[0]) ? wide : undefined, L = fits(len, want[1]) ? len : undefined;
+  const x: X = {};
+  if (k === "bed") {
+    const head = cm(m["Headboard width"]);
+    const h = cm(m["Headboard height"]) ?? cm(m["Height"]);
+    const foot = cm(m["Footboard height"]);
+    if (foot !== undefined && foot >= 10 && (h === undefined || foot <= h)) x.f = r(foot);
+    else if (h !== undefined && h < 38) x.f = r(h);
+    const w = W !== undefined && head !== undefined && head > W && head <= W + 150 ? head : W;
+    if (w === undefined && h === undefined && L === undefined) return null;
+    return { w: r(w), h: r(h), d: r(L), x };
+  }
+  const h = cm(m["Height"]);
+  if (W === undefined && h === undefined && L === undefined) return null;
+  return { w: r(L), h: r(h), d: r(W), x };
+}
+
+/** "48 cm" or "48.5 cm" as a number, or undefined. */
+function cm(v?: string) {
+  const m = v?.match(/^(\d+(?:\.\d+)?) cm$/);
+  return m ? Number(m[1]) : undefined;
+}
+
+/**
+ * What a product page's measurements say about a product drawn as `k`: its outer size in our w, h, d (h is the
+ * height with the back cushions on a sofa), and for sofas and armchairs the seat height and depth, the armrests, the
+ * backrest frame and the room under it. A bed's page measures its frame, long by wide, for the mattress `bed` gives.
+ */
+export function fromPage(k: Kind, m: Record<string, string>, bed?: { m?: number; l?: number }): { w?: number; h?: number; d?: number; x: X } | null {
+  const arch = KIND_ARCH[k];
+  if (arch === "bed") return bedFromPage(k, m, bed ?? {});
+  // corner pieces are measured by each leg, where our depth is the other leg
+  if (k === "cornercab" || k === "cornerrobe" || k === "cornerdesk") return null;
+  const x: X = {};
+  const r = (n?: number) => (n === undefined ? undefined : Math.round(n));
+  let w = cm(m["Width"]), d = cm(m["Depth"]);
+  // a desk or table that goes up and down stands at its lowest
+  let h = cm(m["Height including back cushions"]) ?? cm(m["Height"]) ?? cm(m["Min. height"]);
+  // a sofa whose frame stands taller than its back cushions is as tall as its frame
+  if (SOFA_KINDS.has(k) && cm(m["Height"]) !== undefined && h !== undefined) h = Math.max(h, cm(m["Height"])!);
+  // a chair that goes up and down, measured only at its tallest
+  if (h === undefined && SEAT_H_KINDS.has(k)) h = cm(m["Max. height"]);
+  // tables and benches are measured long by wide: the length runs along our width
+  const len = cm(m["Length"]) ?? (k === "dropleaf" || k === "gateleg" ? cm(m["Max. length"]) : cm(m["Min. length"]));
+  if (len !== undefined && arch !== "sofa") [w, d] = [len, cm(m["Width"]) ?? d];
+  const dia = cm(m["Diameter"]);
+  if (dia !== undefined && w === undefined) w = d = dia;
+  // a round pouffe
+  if (k === "pouffe" && dia !== undefined) {
+    w = d = dia;
+    x.round = true;
+  }
+  // a stool's page can measure the seat alone; anything this far off is a different measure, not a size
+  if (k === "stool" && h !== undefined && h < 30) h = undefined;
+  if (SOFA_KINDS.has(k)) {
+    // (the US pages call it the depth of the chaise)
+    const chaiseD = cm(m["Depth chaise longue"]) ?? cm(m["Depth chaise"]);
+    if (k === "chaise" && chaiseD !== undefined) {
+      if (d !== undefined) x.sd = r(d);
+      d = chaiseD;
+    }
+    // a corner sofa measured leg by leg: its depth is then how deep the seats are. We draw the longer leg along the
+    // back (our width) and the shorter one as the return (our depth), whichever side IKEA's page names first
+    if (k === "corner" && w === undefined && (cm(m["Width left"]) ?? cm(m["Width right"])) !== undefined) {
+      if (d !== undefined) x.sd = r(d);
+      const a = cm(m["Width left"]) ?? cm(m["Width right"])!, b = cm(m["Width right"]) ?? a;
+      [w, d] = [Math.max(a, b), Math.min(a, b)];
+    }
+    // a U is as deep as its chaise reaches: its depth on the page is how deep the seats are
+    if (k === "usofa") {
+      // (unless it is the whole footprint's depth)
+      if (d !== undefined && d <= 120) {
+        x.sd = r(d);
+        d = cm(m["Width right"]) ?? chaiseD;
+      }
+      w = w ?? cm(m["Width left"]);
+      // measured leg by leg: the longer leg runs along the back, the shorter one is how deep it is, as for a corner sofa
+      const a = cm(m["Width left"]), b = cm(m["Width right"]);
+      if (a !== undefined && b !== undefined) [w, d] = [Math.max(a, b), Math.min(a, b)];
+    }
+    // a sofa-bed measured closed and open can give its depth as its width: a sofa is wider than it is deep
+    if ((k === "sofa" || k === "chaise" || k === "corner" || k === "usofa") && w !== undefined && d !== undefined && w < d && k !== "corner") w = d = undefined;
+    const seatH = cm(m["Seat height"]) ?? cm(m["Max. seat height"]);
+    const seatD = cm(m["Seat depth"]);
+    const armH = cm(m["Armrest height"]) ?? cm(m["Max. armrest height"]);
+    const armW = cm(m["Armrest width"]);
+    const back = cm(m["Height backrest"]) ?? cm(m["Backrest height"]);
+    const leg = cm(m["Free height under furniture"]) ?? cm(m["Height under furniture"]);
+    if (seatH !== undefined && seatH >= 25 && seatH <= 65) x.seatH = r(seatH);
+    if (seatD !== undefined && seatD >= 30 && seatD <= 100 && k !== "chaise") x.sdp = r(seatD);
+    if (armH !== undefined && armH >= 35 && armH <= 110) x.ah = r(armH);
+    if (armW !== undefined && armW >= 4 && armW <= 45) x.aw = r(armW);
+    if (back !== undefined && back >= 40 && back <= 120 && (h === undefined || back <= h)) x.bk = r(back);
+    if (leg !== undefined && leg >= 0 && leg <= 40) x.lg = r(leg);
+  } else if (SEAT_H_KINDS.has(k)) {
+    const seatH = cm(m["Seat height"]) ?? cm(m["Max. seat height"]);
+    if (seatH !== undefined && seatH >= 20 && seatH <= 85) x.seatH = r(seatH);
+  }
+  if (w === undefined && h === undefined && d === undefined && !Object.keys(x).length) return null;
+  return { w: r(w), h: r(h), d: r(d), x };
 }

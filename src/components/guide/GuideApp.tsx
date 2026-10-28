@@ -22,6 +22,7 @@ import ToolsPanel from "./ToolsPanel";
 import PartsPanel from "./PartsPanel";
 import StepPanel from "./StepPanel";
 import DonePanel, { Confetti } from "./DonePanel";
+import Feedback from "./Feedback";
 import HelpSheet from "./HelpSheet";
 import Overview from "./Overview";
 import Loader from "./Loader";
@@ -808,6 +809,7 @@ function Guide({ plan, slug, via, ai, startStep, onOwnSteps }: { plan: Plan; slu
               <span>{voiceOn ? "Voice on" : "Voice"}</span>
             </button>
           )}
+          <Feedback ctx={{ slug: plan.spec.slug ?? slug, name: plan.spec.name, variant: plan.spec.variant, phase, step: phase === "steps" ? step + 1 : undefined }} />
           <button className="icon-btn" onClick={() => setHelp({})} aria-label="Help" data-tip="Help">
             <IHelp />
           </button>

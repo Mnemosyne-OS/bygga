@@ -58,6 +58,28 @@ function hints(family: string, kind: Kind): Hint | undefined {
   return undefined;
 }
 
+/* ---------- measurements from the product pages ---------- */
+
+/**
+ * The measurements measure.ts read off product pages (measures.json, git ignored like facts.json), by the article
+ * number each page is for. Only that exact article counts, so what one build wrote never steers the next. Without
+ * the file, the listings' sizes are all there is.
+ */
+function pageMeasures(): Map<string, Record<string, string>> {
+  const out = new Map<string, Record<string, string>>();
+  const file = path.join(DIR, "measures.json");
+  if (!existsSync(file)) return out;
+  const pages: Record<string, { item: string; m: Record<string, string> }> = JSON.parse(readFileSync(file, "utf8"));
+  for (const page of Object.values(pages)) if (Object.keys(page.m).length) out.set(page.item, page.m);
+  return out;
+}
+const MEASURES = pageMeasures();
+/** A product (or a group of its colours) with the measurements of the first of its articles that has a page. */
+const measured = (f: Fact, items = f.items): Fact => {
+  const m = items.map((i) => MEASURES.get(i)).find(Boolean);
+  return m ? { ...f, m } : f;
+};
+
 /* ---------- matching against hand made entries ---------- */
 
 const LATER_KINDS = new Set<Kind>(["office", "chaise", "corner", "cot", "bunk", "loft", "dropleaf", "daybed", "mixed", "sliding", "slidecab", "bookrow", "cabrow", "section", "gateleg", "washstand", "sinkcab", "appliance", "shoerack", "clothesrack", "changing", "divider", "backbench", "junior", "lounge", "highchair", "cornercab", "cornerrobe", "usofa", "lounger", "swivel", "conference", "cornerdesk", "conftable", "lidbox", "shelfbench", "workbench", "extension", "deskdraw", "boxdesk", "hatrack", "coatstand", "pouffe", "chairbed", "airer", "riser"]);
@@ -65,7 +87,9 @@ const LATER_KINDS = new Set<Kind>(["office", "chaise", "corner", "cot", "bunk", 
 function baseMatch(name: string, draw: Draw): CatalogEntry | undefined {
   const fam = fold(name);
   const spec = specFor(draw.kind, name, "", draw.w, draw.h, draw.d, draw.x);
-  const g = draw.guessed;
+  // sizes read off the product page count as unknown here, as they were before the page was read
+  const p = draw.paged;
+  const g = p ? { w: draw.guessed.w || p.w, h: draw.guessed.h || p.h, d: draw.guessed.d || p.d } : draw.guessed;
   // a cube shelf with inserts or on an underframe is more than the hand made shelf of the same size, and a modular
   // chest's drawers and open sections are its own
   if (draw.x.ins || draw.x.uf || draw.x.mods) return undefined;
@@ -101,12 +125,14 @@ function sameDrawing(a: { name: string; draw: Draw }, name: string, draw: Draw) 
   if (fold(a.name) !== fold(name)) return false;
   // IKEA gives no size at all (most seats): a seat the family sells in the UK is the same one by its US name (a US
   // "chair" can be the UK's easy chair)
-  const unsized = draw.guessed.w && draw.guessed.h && draw.guessed.d;
+  const un = (dr: Draw, k: "w" | "h" | "d") => dr.guessed[k] || !!dr.paged?.[k];
+  const unsized = un(draw, "w") && un(draw, "h") && un(draw, "d");
   const seating = (k: Kind) => KIND_ARCH[k] === "seat" || KIND_ARCH[k] === "sofa";
   if (unsized && seating(a.draw.kind) && seating(draw.kind) && (a.draw.x.seats ?? 1) === (draw.x.seats ?? 1)) return true;
   if (a.draw.kind !== draw.kind) return false;
-  if (draw.kind === "bed") return Math.abs((a.draw.x.m ?? 0) - (draw.x.m ?? 0)) <= 3 && Math.abs((a.draw.x.l ?? 200) - (draw.x.l ?? 200)) <= 4;
-  const close = (k: "w" | "h" | "d", tol: number) => a.draw.guessed[k] || draw.guessed[k] || Math.abs(a.draw[k] - draw[k]) <= tol;
+  // a bed or a cot is the same one for the same mattress (a crib's frame can be as long as a cot's)
+  if (draw.kind === "bed" || draw.kind === "cot") return Math.abs((a.draw.x.m ?? 0) - (draw.x.m ?? 0)) <= 3 && Math.abs((a.draw.x.l ?? 200) - (draw.x.l ?? 200)) <= 4;
+  const close = (k: "w" | "h" | "d", tol: number) => un(a.draw, k) || un(draw, k) || Math.abs(a.draw[k] - draw[k]) <= tol;
   return close("w", 3) && close("h", 4) && close("d", 5) && (a.draw.x.seats ?? 0) === (draw.x.seats ?? 0);
 }
 
@@ -119,6 +145,7 @@ function usOnly(us: Fact[], gb: Fact[], groups: Map<string, { name: string; vari
   const gbItems = new Set(gb.flatMap((f) => f.items));
   const uk = [...groups.values()];
   const added: { name: string; variant: string; draw: Draw; items: string[] }[] = [];
+  const first = new Map<(typeof added)[number], Fact>();
   const stats = { facts: us.length, shared: 0, drawable: 0, same: 0, added: 0, products: 0 };
   for (const f of us) {
     if (f.items.some((i) => gbItems.has(i))) {
@@ -147,7 +174,15 @@ function usOnly(us: Fact[], gb: Fact[], groups: Map<string, { name: string; vari
     const g = { name: f.name, variant, draw, items: [...f.items] };
     groups.set(f.name + "|" + variant, g);
     added.push(g);
+    first.set(g, f);
     stats.added++;
+  }
+  // each product as its page measures it, as for the UK range
+  for (const g of added) {
+    const read = asUk(measured(first.get(g)!, g.items));
+    if (!read?.m) continue;
+    const v = classify(read, hints);
+    if (!("skip" in v)) g.draw = { ...g.draw, w: v.draw.w, h: v.draw.h, d: v.draw.d, guessed: v.draw.guessed, paged: v.draw.paged, x: { ...v.draw.x, us: true } };
   }
   return stats;
 }
@@ -276,6 +311,7 @@ function main() {
   const facts: Fact[] = JSON.parse(readFileSync(path.join(DIR, "facts.json"), "utf8")).products;
   const groups = new Map<string, { name: string; variant: string; draw: Draw; items: string[] }>();
   let drawable = 0;
+  const firstFact = new Map<string, Fact>();
   for (const f of facts) {
     const v = classify(f, hints);
     if ("skip" in v) continue;
@@ -284,7 +320,17 @@ function main() {
     const key = f.name + "|" + variant;
     const g = groups.get(key);
     if (g) g.items.push(...f.items);
-    else groups.set(key, { name: f.name, variant, draw: v.draw, items: [...f.items] });
+    else {
+      groups.set(key, { name: f.name, variant, draw: v.draw, items: [...f.items] });
+      firstFact.set(key, f);
+    }
+  }
+  // then each product as its page measures it, whichever of its colours the page was read for
+  for (const [key, g] of groups) {
+    const f = measured(firstFact.get(key)!, g.items);
+    if (!f.m) continue;
+    const v = classify(f, hints);
+    if (!("skip" in v)) g.draw = v.draw;
   }
 
   // the US range, kept apart in facts-us.json (fetch.ts --market us): only what the UK range doesn't have
