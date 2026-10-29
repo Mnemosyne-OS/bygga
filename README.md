@@ -1,3 +1,5 @@
+> **This fork integrates Bygga into [Mnemosyne OS](https://github.com/Mnemosyne-OS)** as a cartridge, an app that runs inside it. `main` stays identical to [Nutlope/bygga](https://github.com/Nutlope/bygga). The integration lives on this `mnemosyne-os` branch and is described in [`src/mnemo/README.md`](src/mnemo/README.md). Bygga is made by Hassan and Youssef.
+
 <p align="center">
   <a href="https://www.usebygga.com"><img alt="Bygga" src="docs/img/og.png"></a>
 </p>
