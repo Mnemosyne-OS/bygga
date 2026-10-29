@@ -36,9 +36,15 @@ export default function KeyModal({
   const name = host.assistantName || t.orb;
   const [orb, setOrb] = useState<"idle" | "calling" | "failed">("idle");
   const box = useRef<HTMLDivElement>(null);
+  // the dialog can close while the orb is being called: its answer must not touch the next one
+  const alive = useRef(true);
 
   useEffect(() => {
     box.current?.focus({ preventScroll: true });
+    alive.current = true;
+    return () => {
+      alive.current = false;
+    };
   }, []);
 
   useEffect(() => {
@@ -53,12 +59,13 @@ export default function KeyModal({
     setOrb("calling");
     try {
       await sdk.invoke("orb.summon", {}, 5000);
+      if (!alive.current) return;
       setOrb("idle");
       onClose();
     } catch (err) {
       // said on the button, until the next click
       console.warn("[bygga] the orb did not come:", err);
-      setOrb("failed");
+      if (alive.current) setOrb("failed");
     }
   };
 

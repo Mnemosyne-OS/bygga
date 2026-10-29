@@ -14,7 +14,8 @@
     "ikea:build": "node --experimental-transform-types --no-warnings --import ./scripts/voice/register.mjs scripts/ikea/build.ts",
     "ikea:check": "node --experimental-transform-types --no-warnings --import ./scripts/voice/register.mjs scripts/ikea/check.ts",
     "dev:cartridge": "vite --config vite.mnemo.config.ts",
-    "build:cartridge": "vite build --config vite.mnemo.config.ts"
+    "build:cartridge": "vite build --config vite.mnemo.config.ts",
+    "test:cartridge": "vitest run --config vitest.mnemo.config.ts"
   },
   "dependencies": {
     "@vercel/analytics": "^1.6.1",
@@ -36,7 +37,9 @@
     "@vitejs/plugin-react": "^5.2.0",
     "eslint": "^9",
     "eslint-config-next": "16.4.2",
+    "jsdom": "^29.1.1",
     "typescript": "^5",
-    "vite": "^7.3.7"
+    "vite": "^7.3.7",
+    "vitest": "^3.2.7"
   }
 }

@@ -27,6 +27,25 @@ function relativeAssets(): Plugin {
 }
 
 /**
+ * The agent door reads where the guide is from the page title (src/mnemo/agentDoor.ts):
+ * GuideApp must still write it the way the door parses it, or status, next and back would
+ * quietly read nothing.
+ */
+function guideTitleGuard(): Plugin {
+  const titles = ["`Step ${step + 1} of ${steps.length}, ", "`Built: "];
+  return {
+    name: "mnemo-guide-title-guard",
+    enforce: "pre",
+    transform(code, id) {
+      if (!/src[\\/]components[\\/]guide[\\/]GuideApp\.tsx$/.test(id.split("?")[0])) return null;
+      const lost = titles.filter((t) => !code.includes(t));
+      if (lost.length) this.error(`GuideApp no longer writes ${lost.join(" and ")} into the title: update STEP_TITLE and BUILT_TITLE in src/mnemo/agentDoor.ts`);
+      return null;
+    },
+  };
+}
+
+/**
  * Serves the cartridge's version of a site file to every importer, whatever the import says
  * (`@/components/KeyModal` or `../KeyModal`): the import is resolved first, then swapped.
  */
@@ -56,6 +75,7 @@ export default defineConfig(({ mode }) => ({
       "./src/components/KeyModal.tsx": "./src/mnemo/KeyModal.tsx",
     }),
     relativeAssets(),
+    guideTitleGuard(),
     react(),
   ],
   resolve: {

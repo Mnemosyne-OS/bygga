@@ -23,6 +23,9 @@ const EN = {
   finished: "The build is finished.",
   noGuide: "No guide is open in Bygga.",
   notMoved: "The step did not change: something is open over the guide in Bygga.",
+  covered: "Something is open over the guide in Bygga: close it first.",
+  notShown: "Bygga did not show the guide of {product}.",
+  onGitHub: "Bygga on GitHub",
   noProduct: "Bygga has no guide for « {q} ».",
   closeNames: " Close names: {names}.",
 };
@@ -49,6 +52,9 @@ const FR: Strings = {
   finished: "Le montage est terminé.",
   noGuide: "Aucun guide n'est ouvert dans Bygga.",
   notMoved: "L'étape n'a pas changé : quelque chose est ouvert par-dessus le guide dans Bygga.",
+  covered: "Quelque chose est ouvert par-dessus le guide dans Bygga : ferme-le d'abord.",
+  notShown: "Bygga n'a pas affiché le guide de {product}.",
+  onGitHub: "Bygga sur GitHub",
   noProduct: "Bygga n'a pas de guide pour « {q} ».",
   closeNames: " Noms proches : {names}.",
 };
@@ -73,6 +79,9 @@ const ES: Strings = {
   finished: "El montaje está terminado.",
   noGuide: "No hay ninguna guía abierta en Bygga.",
   notMoved: "El paso no cambió: hay algo abierto sobre la guía en Bygga.",
+  covered: "Hay algo abierto sobre la guía en Bygga: ciérralo primero.",
+  notShown: "Bygga no mostró la guía de {product}.",
+  onGitHub: "Bygga en GitHub",
   noProduct: "Bygga no tiene guía para « {q} ».",
   closeNames: " Nombres parecidos: {names}.",
 };

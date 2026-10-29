@@ -44,10 +44,11 @@
   "permissions": [],
   "agentGuide": [
     "Bygga shows furniture assembly guides in 3D, one step at a time, for 1,171 IKEA products.",
-    "open takes the product the way the person says it (« KALLAX 2x2 », « BILLY », « MALM 3 drawers »). A name it cannot match is refused with close names: pick one and call again.",
+    "open takes the product's IKEA name, with its size or kind in English when the person said one (« KALLAX 2x2 », « BILLY 80x202 », « MALM bed »). What opens carries the name that was said: a match under another name is refused with close names; pick one and call again.",
     "next, back and again work only while a step is on screen. Before the steps (cover, tools, parts) the person presses Start building, or open is called again with step 1. After the last step the build is finished.",
     "open with step goes straight to that step, skipping the cover, tools and parts, as the site's ?step= link does.",
     "again plays the step's 3D animation again. It does not repeat the voice.",
+    "While help, the overview or a dialog is open over the guide, next, back and again are refused: the person closes it first.",
     "Read status before saying that a step changed."
   ],
   "agentActions": [
