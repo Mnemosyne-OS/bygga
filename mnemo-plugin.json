@@ -45,7 +45,8 @@
   "agentGuide": [
     "Bygga shows furniture assembly guides in 3D, one step at a time, for 1,171 IKEA products.",
     "open takes the product the way the person says it (« KALLAX 2x2 », « BILLY », « MALM 3 drawers »). A name it cannot match is refused with close names: pick one and call again.",
-    "next, back and again work only while a step is on screen. Before the steps (cover, tools, parts) the person presses Start building; after the last step the build is finished.",
+    "next, back and again work only while a step is on screen. Before the steps (cover, tools, parts) the person presses Start building, or open is called again with step 1. After the last step the build is finished.",
+    "open with step goes straight to that step, skipping the cover, tools and parts, as the site's ?step= link does.",
     "again plays the step's 3D animation again. It does not repeat the voice.",
     "Read status before saying that a step changed."
   ],
@@ -58,10 +59,11 @@
     },
     {
       "id": "open",
-      "summary": "Open the assembly guide of a product, as the search box does.",
+      "summary": "Open the assembly guide of a product, as the search box does, on its cover or straight on a step.",
       "effect": "write",
       "params": {
-        "product": { "type": "string", "maxLength": 80, "description": "The product as the person says it, e.g. « KALLAX 2x2 » or « BILLY »." }
+        "product": { "type": "string", "maxLength": 80, "description": "The product as the person says it, e.g. « KALLAX 2x2 » or « BILLY »." },
+        "step": { "type": "number", "minimum": 1, "maximum": 200, "description": "Open the guide on this step (1 = the first). A step past the last one opens the last." }
       },
       "required": ["product"]
     },

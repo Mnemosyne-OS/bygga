@@ -10,7 +10,7 @@ import Builds from "../app/builds/page";
 import NotFound from "../app/not-found";
 import GuideApp from "@/components/guide/GuideApp";
 import PrintGuide from "@/components/guide/PrintGuide";
-import { currentRoute, isInternal, navigate, useHash } from "./router";
+import { currentRoute, isInternal, navigate, pageGeneration, useHash } from "./router";
 import { startAgentDoor } from "./agentDoor";
 
 // before the first render: the host keeps the first subscription a frame sends (doc 149 §17)
@@ -52,7 +52,7 @@ function App() {
     const slug = decodeURIComponent(build[1]);
     if (build[2]) return <PrintGuide key={slug} slug={slug} />;
     const step = Number(search.get("step"));
-    return <GuideApp key={slug} slug={slug} query={search.get("q")?.slice(0, 80)} kind={search.get("kind") ?? undefined} step={step > 0 ? Math.floor(step) : undefined} />;
+    return <GuideApp key={`${slug}:${pageGeneration()}`} slug={slug} query={search.get("q")?.slice(0, 80)} kind={search.get("kind") ?? undefined} step={step > 0 ? Math.floor(step) : undefined} />;
   }
   if (path === "/") return <Home />;
   if (path === "/browse") return <Browse />;

@@ -31,6 +31,17 @@ function subscribe(onChange: () => void) {
   return () => window.removeEventListener("hashchange", onChange);
 }
 
+// Bumped to start the page under the route over, as a reload would: a guide only reads its
+// ?step= deep link when it mounts.
+let generation = 0;
+
+export const pageGeneration = () => generation;
+
+export function restartPage() {
+  generation++;
+  window.dispatchEvent(new HashChangeEvent("hashchange"));
+}
+
 export function useHash(): string {
-  return useSyncExternalStore(subscribe, () => location.hash, () => "");
+  return useSyncExternalStore(subscribe, () => `${generation}|${location.hash}`, () => "");
 }

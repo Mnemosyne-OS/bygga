@@ -1,7 +1,7 @@
 import { catalogSpec } from "@/lib/catalog";
 import { matchCatalog, searchCatalog } from "@/lib/search";
 import { hostNow, sdk } from "./host";
-import { currentRoute, navigate } from "./router";
+import { currentRoute, navigate, restartPage } from "./router";
 import { fill, strings } from "./strings";
 
 /*
@@ -94,12 +94,24 @@ const handlers = {
       throw toPerson(fill(say().noProduct, { q }) + (names.length ? fill(say().closeNames, { names: names.join(", ") }) : ""));
     }
     const slug = spec.slug;
-    navigate(`/build/${slug}`);
-    const shown = await until(() => {
+    const step = typeof args.step === "number" && args.step >= 1 ? Math.floor(args.step) : null;
+    if (step === null) {
+      navigate(`/build/${slug}`);
+      const shown = await until(() => {
+        const now = readScreen();
+        return now.screen === "guide" && now.slug === slug && document.title.includes(spec.name) ? now : null;
+      }, 2000);
+      return { ...(shown ?? readScreen()), say: fill(say().opened, { product: spec.name }) };
+    }
+    // the site's own ?step= link, read by a guide that starts over: straight to that step
+    navigate(`/build/${slug}?step=${step}`);
+    restartPage();
+    const onStep = await until(() => {
       const now = readScreen();
-      return now.screen === "guide" && now.slug === slug && document.title.includes(spec.name) ? now : null;
-    }, 2000);
-    return { ...(shown ?? readScreen()), say: fill(say().opened, { product: spec.name }) };
+      return now.screen === "guide" && now.slug === slug && now.phase === "steps" && now.step === Math.min(step, now.of ?? step) ? now : null;
+    }, 3000);
+    if (!onStep || onStep.screen !== "guide") throw toPerson(say().notMoved);
+    return { ...onStep, say: fill(say().openedAt, { product: spec.name, n: onStep.step ?? step, of: onStep.of ?? 0 }) };
   },
 
   next: () => press("ArrowRight"),
@@ -113,10 +125,28 @@ const handlers = {
   },
 };
 
-/** Registered once, before the app renders: the host keeps the first subscription a frame sends. */
-export function startAgentDoor() {
+/** What the host answered, in the cartridge window's console. */
+function tell(line: string, refused = false) {
+  if (refused) console.warn(`[bygga] agent door: ${line}`);
+  else console.info(`[bygga] agent door: ${line}`);
+}
+
+// A refusal leaves the window unreachable until it reloads: the SDK stops listening. The host
+// may refuse for a passing reason (its manifest read timed out), so the window asks again.
+const RETRY_MS = [2000, 5000, 10000];
+
+/** Registered before the app renders: the host keeps the first subscription a frame sends. */
+export function startAgentDoor(attempt = 0) {
   try {
-    sdk.onAgentActions(handlers);
+    sdk.onAgentActions(handlers).ready.then(
+      ({ actions }) => tell(`served: ${actions.join(", ") || "nothing"}`),
+      (err: unknown) => {
+        const reason = err instanceof Error ? err.message : String(err);
+        const wait = RETRY_MS[attempt];
+        tell(`refused (${reason})${wait ? `, asking again in ${wait / 1000} s` : ""}`, true);
+        if (wait) setTimeout(() => startAgentDoor(attempt + 1), wait);
+      },
+    );
   } catch (err) {
     console.warn("[bygga] the agent door did not start, the guides still run:", err);
   }
