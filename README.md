@@ -1,4 +1,13 @@
-> **This fork integrates Bygga into [Mnemosyne OS](https://github.com/Mnemosyne-OS)** as a cartridge, an app that runs inside it. `main` stays identical to [Nutlope/bygga](https://github.com/Nutlope/bygga). The integration lives on this `mnemosyne-os` branch and is described in [`src/mnemo/README.md`](src/mnemo/README.md). Bygga is made by Hassan and Youssef.
+> **This fork integrates Bygga into [Mnemosyne OS](https://github.com/Mnemosyne-OS)** as a cartridge, an app that runs inside it. Bygga is made by Hassan and Youssef; `main` stays identical to [Nutlope/bygga](https://github.com/Nutlope/bygga).
+>
+> What Mnemosyne OS adds to Bygga:
+>
+> - **It runs on your machine.** The guides, the 3D steps and the read-aloud clips work as a window of Mnemosyne OS, from local files, with no server and no account.
+> - **Your voice drives it.** Tell the Mnemosyne assistant « open Bygga and go to the next step » and the guide moves on. It works in English, French and Spanish, and for the previous step too.
+> - **Agents drive it.** Any AI agent connected to Mnemosyne OS can open a product's guide, go to a step, move forward or back and replay a step. Each action is checked against the screen, so a step that did not change is never reported as done.
+> - **No AI key for the guides.** Where Bygga asks for a Together AI key to go hands-free, Mnemosyne offers its own assistant and the read-aloud instead.
+>
+> How it is built, without changing Bygga's own files: [`src/mnemo/README.md`](src/mnemo/README.md).
 
 <p align="center">
   <a href="https://www.usebygga.com"><img alt="Bygga" src="docs/img/og.png"></a>
