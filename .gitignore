@@ -52,5 +52,6 @@ next-env.d.ts
 # local agent sessions and worktrees
 .claude/
 
-# Mnemosyne OS cartridge build (vite.mnemo.config.ts)
-/dist
+# Mnemosyne OS cartridge build lives in dist/ and MUST be committed: Hub
+# installs download this branch's tarball and never run vite on the user's
+# machine. Local `npm run build:cartridge` refreshes it before a push.
