@@ -6,6 +6,8 @@
   "category": "Productivity",
   "vendor": "Hassan & Youssef (MIT)",
   "license": "MIT",
+  "repository": "https://github.com/Mnemosyne-OS/bygga",
+  "updateStrategy": "git",
   "description": "Bygga by Hassan & Youssef: step-by-step assembly guides in 3D for 1,171 IKEA products, with every part, screw and tool, read out loud in English. An independent project, not affiliated with IKEA.",
   "descriptionI18n": {
     "en": "Bygga by Hassan & Youssef: step-by-step assembly guides in 3D for 1,171 IKEA products, with every part, screw and tool, read out loud in English. An independent project, not affiliated with IKEA.",
