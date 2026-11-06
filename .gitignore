@@ -27,7 +27,12 @@
 /scripts/ikea/cache/
 # IKEA's raw product listings stay local: npm run ikea:fetch rebuilds them
 /scripts/ikea/facts*.json
+# the measurements on IKEA's product pages (npm run ikea:measure)
+/scripts/ikea/measures.json
 *.pem
+
+# feedback saved in development (src/lib/feedback.ts)
+/.feedback/
 
 # debug
 npm-debug.log*

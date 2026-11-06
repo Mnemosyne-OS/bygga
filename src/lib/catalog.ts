@@ -1,8 +1,9 @@
 import type { ProductSpec } from "./types";
-import { ROWS, specFor, type Kind } from "./products";
+import { ROWS, specFor, type Kind, type X } from "./products";
 import { fold } from "./fold";
-import { decodeRows } from "./ikea";
+import { decodeRows, type IkeaRow } from "./ikea";
 import { IKEA_ROWS } from "@/data/ikea-rows";
+import { FIXES, SAME } from "@/data/fixes";
 
 type Entry = Omit<ProductSpec, "source" | "slug" | "variants" | "siblings"> & {
   slug: string;
@@ -15,6 +16,8 @@ type Entry = Omit<ProductSpec, "source" | "slug" | "variants" | "siblings"> & {
   late?: boolean;
   /** sold in the US and not in the UK: comes after the family's UK pieces, even when the query has its US words */
   us?: boolean;
+  /** IKEA's listing's variant, when src/data/fixes.ts gives the product its own name (slugs.json knows it by this one) */
+  listed?: string;
 };
 
 /** Hand-checked starting points for popular flat packs. Dimensions in cm. */
@@ -433,9 +436,9 @@ function rowSlug(name: string, variant: string, used: Set<string>) {
 }
 
 const used = new Set(CATALOG.map((c) => c.slug));
-const GENERATED: Entry[] = ROWS.map(([name, kind, variant, w, h, d, x, kw]) => ({
+const GENERATED: Entry[] = ROWS.map(([name, kind, variant, w, h, d, x, kw, pinned]) => ({
   ...specFor(kind, name, variant, w, h, d, x),
-  slug: rowSlug(name, variant, used),
+  slug: pinned ? (used.add(pinned), pinned) : rowSlug(name, variant, used),
   family: fold(name),
   kind,
   keywords: kw ? kw.split(" ") : undefined,
@@ -449,15 +452,28 @@ const CATEGORY_KIND: Record<string, Kind> = {
   Cabinet: "cabinet", Stool: "stool", Chair: "chair", "TV bench": "tv",
 };
 
-export const BASE: Entry[] = [...CATALOG.map((c) => ({ ...c, checked: true, kind: CATEGORY_KIND[c.category] })), ...GENERATED];
+/** Hand made entries, apart from those that are the same product as another guide (src/data/fixes.ts SAME). */
+export const BASE: Entry[] = [...CATALOG.map((c) => ({ ...c, checked: true, kind: CATEGORY_KIND[c.category] })), ...GENERATED].filter((e) => !SAME[e.slug]);
+
+/** A row from IKEA's listings with its correction from src/data/fixes.ts, when it has one. */
+function fixed(r: IkeaRow, slug: string): IkeaRow & { listed?: string } {
+  const f = FIXES[slug];
+  if (!f) return r;
+  const x = { ...r.x, ...f.x } as X;
+  for (const k of Object.keys(x) as (keyof X)[]) if (x[k] === undefined) delete x[k];
+  const [w, h, d] = f.size ?? [r.w, r.h, r.d];
+  return { ...r, kind: f.kind ?? r.kind, variant: f.variant ?? r.variant, w, h, d, x, ...(f.variant ? { listed: r.variant } : {}) };
+}
 
 /** Rows generated from IKEA's product data (scripts/ikea/build.ts). Hand made entries always win. */
 const IKEA: Entry[] = [];
-for (const r of decodeRows(IKEA_ROWS)) {
-  const slug = r.slug ?? baseSlug(r.name, r.variant);
+for (const row of decodeRows(IKEA_ROWS)) {
+  const slug = row.slug ?? baseSlug(row.name, row.variant);
   if (used.has(slug)) continue;
   used.add(slug);
-  IKEA.push({ ...specFor(r.kind, r.name, r.variant, r.w, r.h, r.d, r.x), slug, family: fold(r.name), kind: r.kind, keywords: r.keywords, ...(r.x.us ? { us: true } : r.x.cat ? { late: true } : {}) });
+  if (SAME[slug]) continue;
+  const r = fixed(row, slug);
+  IKEA.push({ ...specFor(r.kind, r.name, r.variant, r.w, r.h, r.d, r.x), slug, family: fold(r.name), kind: r.kind, keywords: r.keywords, ...(row.x.us ? { us: true } : row.x.cat ? { late: true } : {}), ...(r.listed ? { listed: r.listed } : {}) });
 }
 
 /** Every product we can draw offline: hand-checked entries first, then the wider index, then IKEA's catalog. */
@@ -471,12 +487,13 @@ for (const e of PRODUCTS) {
   else BY_FAMILY.set(e.family, [e]);
 }
 
+/** The guide a slug opens: its own, or the one it is the same product as (src/data/fixes.ts SAME). */
 export function catalogEntry(slug: string): Entry | null {
-  return BY_SLUG.get(slug) ?? null;
+  return BY_SLUG.get(slug) ?? BY_SLUG.get(SAME[slug] ?? "") ?? null;
 }
 
 export function catalogSpec(slug: string): ProductSpec | null {
-  const e = BY_SLUG.get(slug);
+  const e = catalogEntry(slug);
   if (!e) return null;
   return toSpec(e);
 }
@@ -495,7 +512,8 @@ function sizeLabel(x: Entry, same: Entry[]) {
 }
 
 export function toSpec(e: Entry): ProductSpec {
-  const { family, kind, keywords, featured, checked, late, us, ...rest } = e;
+  const { family, kind, keywords, featured, checked, late, us, listed, ...rest } = e;
+  void listed;
   void late;
   void us;
   void kind;

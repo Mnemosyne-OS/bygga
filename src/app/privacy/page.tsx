@@ -31,7 +31,7 @@ export default function Privacy() {
           <li>Questions and photos you send from the help panel, and photos of a box label you search with. Photos are resized in your browser first, which also removes location data.</li>
           <li>The text of a voice line that has no recording yet, to record it.</li>
           <li>While the voice is on, short bits of sound from your mic each time someone talks, so it can hear you say &ldquo;next&rdquo;. They are turned into text, and Bygga keeps neither.</li>
-          <li>Feedback you send, such as &ldquo;This step doesn&apos;t match my box&rdquo;, kept in our server logs with the product and step.</li>
+          <li>Feedback you send, from the Feedback button or &ldquo;This step doesn&apos;t match my box&rdquo;: what you write, the product and step you were on, and your browser and device type (&ldquo;Safari on iPhone&rdquo;). An email address goes with it only if you type one, so we can reply. It&apos;s kept in our feedback database until we&apos;ve dealt with it.</li>
           <li>Your IP address, held in memory for a few minutes to stop abuse, then dropped.</li>
         </ul>
 
@@ -55,6 +55,13 @@ export default function Privacy() {
             <b>Plausible</b> (European Union) also counts visits without cookies or personal data: the page, the referring site, your country and your browser. See their{" "}
             <a href="https://plausible.io/data-policy" target="_blank" rel="noreferrer">
               data policy
+            </a>
+            .
+          </li>
+          <li>
+            <b>Upstash</b> stores the feedback you send, in a database run for us through Vercel. See their{" "}
+            <a href="https://upstash.com/trust/privacy.pdf" target="_blank" rel="noreferrer">
+              privacy policy
             </a>
             .
           </li>

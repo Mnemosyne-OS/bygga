@@ -14,7 +14,8 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const description = s
     ? `How to assemble the IKEA ${s.name} ${s.variant.toLowerCase()}, one step at a time in 3D: every panel, screw and tool, about ${s.minutes} minutes${s.people === 2 ? " with two people" : ""}.`
     : `Assemble ${name} step by step in 3D, with the parts, screws and tools for each step.`;
-  const url = `/build/${slug}`;
+  // a guide that is the same product as another one goes by that one's address
+  const url = `/build/${s?.slug ?? slug}`;
   return {
     title,
     description,

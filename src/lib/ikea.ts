@@ -23,7 +23,7 @@ export interface IkeaRow {
   slug?: string;
 }
 
-const X_KEYS = ["rows", "cols", "knobs", "plinth", "doors", "shelves", "c", "m", "l", "f", "seats", "arms", "legs", "attach", "shelf", "min", "round", "seatH", "chaise", "corner", "open", "sd", "drawer", "leaves", "leaf", "under", "mats", "dtop", "rail", "slides", "n", "of", "hinge", "use", "z", "basin", "hung", "uf", "ins", "blind", "inner", "u", "v", "cu", "rock", "cat", "cast", "mods", "dr", "foot", "st", "low", "box", "t", "mirror", "up", "us"] as const;
+const X_KEYS = ["rows", "cols", "knobs", "plinth", "doors", "shelves", "c", "m", "l", "f", "seats", "arms", "legs", "attach", "shelf", "min", "round", "seatH", "chaise", "corner", "open", "sd", "drawer", "leaves", "leaf", "under", "mats", "dtop", "rail", "slides", "n", "of", "hinge", "use", "z", "basin", "hung", "uf", "ins", "blind", "inner", "u", "v", "cu", "rock", "cat", "cast", "mods", "dr", "foot", "st", "low", "box", "t", "mirror", "up", "us", "ah", "aw", "bk", "lg", "sdp"] as const;
 const FLAGS = new Set<string>(["plinth", "shelf", "round", "open", "drawer", "dtop", "rail", "hinge", "hung", "rock", "cast", "foot", "mirror", "us"]);
 const WORDS = new Set<string>(["knobs", "arms", "legs", "attach", "chaise", "corner", "under", "of", "use", "z", "inner", "u", "v", "cat"]);
 
@@ -116,7 +116,10 @@ let loading: Promise<void> | null = null;
 /** "802.758.87", "80275887", "802 758 87" or the "S" combination form, as 8 digits. */
 export function articleNo(q: string): string | null {
   const m = q.trim().match(/^s?\s*(\d{3})[\s.\-]*(\d{3})[\s.\-]*(\d{2})$/i);
-  return m ? m[1] + m[2] + m[3] : null;
+  if (m) return m[1] + m[2] + m[3];
+  // a product link from any IKEA site ends in its article number: .../p/idanaes-sideboard-white-80496025/
+  const link = q.match(/ikea\.[a-z.]+\/.*\/p\/[^?#\s]*?-s?(\d{8})\b/i);
+  return link ? link[1] : null;
 }
 
 /** Loads the article number index (a separate chunk, so pages don't pay for it until someone types digits). */

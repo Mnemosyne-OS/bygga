@@ -2,7 +2,7 @@
   "id": "@mnemosyne-plugins/mnemo-bygga",
   "name": "@mnemosyne-plugins/mnemo-bygga",
   "displayName": "Bygga",
-  "version": "0.1.1",
+  "version": "0.2.0",
   "category": "Productivity",
   "vendor": "Hassan & Youssef (MIT)",
   "license": "MIT",
